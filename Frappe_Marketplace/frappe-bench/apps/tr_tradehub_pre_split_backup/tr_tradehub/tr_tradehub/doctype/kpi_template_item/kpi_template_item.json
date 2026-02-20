@@ -1,0 +1,257 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "kpi_name",
+    "kpi_code",
+    "metric_type",
+    "column_break_main",
+    "weight",
+    "is_active",
+    "display_order",
+    "formula_section",
+    "data_source",
+    "formula",
+    "column_break_formula",
+    "aggregation_method",
+    "filter_criteria",
+    "threshold_section",
+    "threshold_type",
+    "target_value",
+    "column_break_threshold",
+    "warning_threshold",
+    "critical_threshold",
+    "scoring_section",
+    "scoring_method",
+    "max_score",
+    "column_break_scoring",
+    "invert_score",
+    "bonus_multiplier",
+    "display_section",
+    "description",
+    "unit",
+    "decimal_places",
+    "icon"
+  ],
+  "fields": [
+    {
+      "fieldname": "kpi_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "KPI Name",
+      "reqd": 1,
+      "description": "Display name of the KPI metric (e.g., Order Fulfillment Rate)"
+    },
+    {
+      "fieldname": "kpi_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "KPI Code",
+      "description": "Unique identifier code for programmatic use (e.g., FULFILLMENT_RATE)"
+    },
+    {
+      "fieldname": "metric_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Metric Type",
+      "options": "Count\nSum\nAverage\nPercentage\nRatio\nRate\nScore\nCustom",
+      "reqd": 1,
+      "default": "Percentage",
+      "description": "Type of metric calculation"
+    },
+    {
+      "fieldname": "column_break_main",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "weight",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Weight",
+      "default": "1",
+      "precision": 2,
+      "description": "Weight of this KPI in overall score calculation"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "label": "Is Active",
+      "description": "Whether this KPI metric is currently active"
+    },
+    {
+      "default": "0",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "label": "Display Order",
+      "description": "Order in which to display this KPI (lower numbers first)"
+    },
+    {
+      "fieldname": "formula_section",
+      "fieldtype": "Section Break",
+      "label": "Formula & Calculation"
+    },
+    {
+      "fieldname": "data_source",
+      "fieldtype": "Select",
+      "label": "Data Source",
+      "options": "Sub Order\nMarketplace Order\nReview\nListing\nSKU\nCart\nReturn Request\nDispute\nMessage\nCustom Query",
+      "default": "Sub Order",
+      "description": "DocType or data source for this metric"
+    },
+    {
+      "fieldname": "formula",
+      "fieldtype": "Small Text",
+      "label": "Formula",
+      "description": "Calculation formula using field names and operators (e.g., completed_orders / total_orders * 100)"
+    },
+    {
+      "fieldname": "column_break_formula",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "aggregation_method",
+      "fieldtype": "Select",
+      "label": "Aggregation Method",
+      "options": "Sum\nAverage\nCount\nMin\nMax\nLatest\nFirst",
+      "default": "Sum",
+      "description": "How to aggregate data across the evaluation period"
+    },
+    {
+      "fieldname": "filter_criteria",
+      "fieldtype": "Small Text",
+      "label": "Filter Criteria",
+      "description": "JSON filter criteria for data selection (e.g., {\"status\": \"Completed\"})"
+    },
+    {
+      "fieldname": "threshold_section",
+      "fieldtype": "Section Break",
+      "label": "Thresholds"
+    },
+    {
+      "fieldname": "threshold_type",
+      "fieldtype": "Select",
+      "label": "Threshold Type",
+      "options": "Higher is Better\nLower is Better\nRange\nExact",
+      "default": "Higher is Better",
+      "description": "How to interpret the threshold values"
+    },
+    {
+      "fieldname": "target_value",
+      "fieldtype": "Float",
+      "label": "Target Value",
+      "precision": 2,
+      "description": "Target/ideal value for this KPI"
+    },
+    {
+      "fieldname": "column_break_threshold",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "warning_threshold",
+      "fieldtype": "Float",
+      "label": "Warning Threshold",
+      "precision": 2,
+      "description": "Value at which to show warning (below target but not critical)"
+    },
+    {
+      "fieldname": "critical_threshold",
+      "fieldtype": "Float",
+      "label": "Critical Threshold",
+      "precision": 2,
+      "description": "Value at which to flag as critical/failing"
+    },
+    {
+      "fieldname": "scoring_section",
+      "fieldtype": "Section Break",
+      "label": "Scoring",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "scoring_method",
+      "fieldtype": "Select",
+      "label": "Scoring Method",
+      "options": "Linear\nStep\nLogarithmic\nExponential\nBinary\nCustom",
+      "default": "Linear",
+      "description": "Method for calculating score from metric value"
+    },
+    {
+      "fieldname": "max_score",
+      "fieldtype": "Float",
+      "label": "Max Score",
+      "default": "100",
+      "precision": 2,
+      "description": "Maximum score this KPI can contribute"
+    },
+    {
+      "fieldname": "column_break_scoring",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "invert_score",
+      "fieldtype": "Check",
+      "label": "Invert Score",
+      "description": "Invert score calculation (for metrics where lower is better)"
+    },
+    {
+      "fieldname": "bonus_multiplier",
+      "fieldtype": "Float",
+      "label": "Bonus Multiplier",
+      "default": "1",
+      "precision": 2,
+      "description": "Multiplier applied when exceeding target (e.g., 1.5 for 50% bonus)"
+    },
+    {
+      "fieldname": "display_section",
+      "fieldtype": "Section Break",
+      "label": "Display Settings",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "Detailed description of what this KPI measures"
+    },
+    {
+      "fieldname": "unit",
+      "fieldtype": "Data",
+      "label": "Unit",
+      "description": "Unit of measurement (e.g., %, orders, hours, currency)"
+    },
+    {
+      "fieldname": "decimal_places",
+      "fieldtype": "Int",
+      "label": "Decimal Places",
+      "default": "2",
+      "description": "Number of decimal places to display"
+    },
+    {
+      "fieldname": "icon",
+      "fieldtype": "Data",
+      "label": "Icon",
+      "description": "Icon name or class for display (e.g., fa-chart-line, fa-star)"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "istable": 1,
+  "links": [],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "KPI Template Item",
+  "naming_rule": "Random",
+  "owner": "Administrator",
+  "permissions": [],
+  "quick_entry": 0,
+  "search_fields": "kpi_name, kpi_code, metric_type",
+  "sort_field": "display_order",
+  "sort_order": "ASC",
+  "states": [],
+  "track_changes": 0
+}

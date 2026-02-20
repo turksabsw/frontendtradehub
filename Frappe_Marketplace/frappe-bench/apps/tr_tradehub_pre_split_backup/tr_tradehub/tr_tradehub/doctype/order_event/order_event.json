@@ -1,0 +1,558 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "event_info_section",
+    "event_type",
+    "event_category",
+    "event_description",
+    "column_break_event",
+    "event_timestamp",
+    "severity",
+    "is_system_event",
+    "order_reference_section",
+    "reference_doctype",
+    "marketplace_order",
+    "sub_order",
+    "column_break_order_ref",
+    "order_id",
+    "sub_order_id",
+    "tenant",
+    "status_change_section",
+    "previous_status",
+    "new_status",
+    "column_break_status",
+    "previous_value",
+    "new_value",
+    "field_changed",
+    "actor_section",
+    "actor_type",
+    "actor",
+    "actor_name",
+    "column_break_actor",
+    "actor_role",
+    "seller",
+    "buyer",
+    "metadata_section",
+    "ip_address",
+    "user_agent",
+    "session_id",
+    "column_break_metadata",
+    "request_id",
+    "source_channel",
+    "device_type",
+    "location_section",
+    "location",
+    "city",
+    "country",
+    "column_break_location",
+    "latitude",
+    "longitude",
+    "additional_data_section",
+    "data_json",
+    "notes",
+    "internal_notes",
+    "related_events_section",
+    "parent_event",
+    "related_events",
+    "error_section",
+    "is_error",
+    "error_code",
+    "error_message",
+    "column_break_error",
+    "stack_trace",
+    "notification_section",
+    "notification_sent",
+    "notification_type",
+    "notification_sent_at",
+    "column_break_notification",
+    "notification_recipient",
+    "notification_status",
+    "system_section",
+    "naming_series"
+  ],
+  "fields": [
+    {
+      "fieldname": "event_info_section",
+      "fieldtype": "Section Break",
+      "label": "Event Information"
+    },
+    {
+      "fieldname": "event_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Event Type",
+      "options": "Order Created\nOrder Confirmed\nOrder Updated\nStatus Changed\nPayment Received\nPayment Failed\nPayment Refunded\nEscrow Held\nEscrow Released\nEscrow Disputed\nItem Added\nItem Removed\nItem Updated\nQuantity Changed\nPrice Changed\nDiscount Applied\nCoupon Applied\nShipping Updated\nTracking Added\nPacked\nShipped\nIn Transit\nOut for Delivery\nDelivered\nDelivery Failed\nDelivery Attempted\nReturn Requested\nReturn Approved\nReturn Rejected\nReturn Shipped\nReturn Received\nReturn Completed\nRefund Requested\nRefund Approved\nRefund Processed\nRefund Rejected\nCancellation Requested\nCancellation Approved\nCancellation Rejected\nOrder Cancelled\nDispute Opened\nDispute Escalated\nDispute Resolved\nDispute Closed\nSeller Accepted\nSeller Rejected\nSeller Note Added\nBuyer Note Added\nInternal Note Added\nInvoice Generated\nE-Invoice Sent\nE-Invoice Accepted\nE-Invoice Rejected\nCommission Calculated\nCommission Collected\nPayout Scheduled\nPayout Processed\nPayout Failed\nHold Applied\nHold Released\nFraud Detected\nFraud Cleared\nAddress Changed\nAddress Verified\nDocument Uploaded\nDocument Verified\nReminder Sent\nEscalation Triggered\nSLA Breach\nSystem Event\nAPI Call\nWebhook Triggered\nIntegration Sync\nError Occurred\nWarning Raised\nOther",
+      "reqd": 1
+    },
+    {
+      "default": "Order",
+      "fieldname": "event_category",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Event Category",
+      "options": "Order\nPayment\nFulfillment\nShipping\nReturn\nRefund\nCancellation\nDispute\nCommunication\nInvoice\nCommission\nPayout\nSecurity\nIntegration\nSystem\nError\nOther"
+    },
+    {
+      "fieldname": "event_description",
+      "fieldtype": "Small Text",
+      "in_list_view": 1,
+      "label": "Event Description",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_event",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Now",
+      "fieldname": "event_timestamp",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Event Timestamp",
+      "read_only": 1,
+      "reqd": 1
+    },
+    {
+      "default": "Info",
+      "fieldname": "severity",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Severity",
+      "options": "Debug\nInfo\nWarning\nError\nCritical"
+    },
+    {
+      "default": "0",
+      "description": "Event triggered by system automation",
+      "fieldname": "is_system_event",
+      "fieldtype": "Check",
+      "label": "System Event"
+    },
+    {
+      "fieldname": "order_reference_section",
+      "fieldtype": "Section Break",
+      "label": "Order Reference"
+    },
+    {
+      "default": "Marketplace Order",
+      "fieldname": "reference_doctype",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Reference Type",
+      "options": "Marketplace Order\nSub Order\nCart\nPayment Intent\nEscrow Account\nMarketplace Shipment"
+    },
+    {
+      "fieldname": "marketplace_order",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Marketplace Order",
+      "options": "Marketplace Order"
+    },
+    {
+      "depends_on": "eval:doc.reference_doctype=='Sub Order' || doc.sub_order",
+      "fieldname": "sub_order",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Sub Order",
+      "options": "Sub Order"
+    },
+    {
+      "fieldname": "column_break_order_ref",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Customer-facing Order ID",
+      "fieldname": "order_id",
+      "fieldtype": "Data",
+      "label": "Order ID",
+      "read_only": 1
+    },
+    {
+      "description": "Customer-facing Sub Order ID",
+      "fieldname": "sub_order_id",
+      "fieldtype": "Data",
+      "label": "Sub Order ID",
+      "read_only": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant"
+    },
+    {
+      "collapsible": 1,
+      "collapsible_depends_on": "eval:doc.previous_status || doc.new_status",
+      "fieldname": "status_change_section",
+      "fieldtype": "Section Break",
+      "label": "Status Change"
+    },
+    {
+      "fieldname": "previous_status",
+      "fieldtype": "Data",
+      "label": "Previous Status"
+    },
+    {
+      "fieldname": "new_status",
+      "fieldtype": "Data",
+      "label": "New Status"
+    },
+    {
+      "fieldname": "column_break_status",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Previous value for field changes",
+      "fieldname": "previous_value",
+      "fieldtype": "Small Text",
+      "label": "Previous Value"
+    },
+    {
+      "description": "New value for field changes",
+      "fieldname": "new_value",
+      "fieldtype": "Small Text",
+      "label": "New Value"
+    },
+    {
+      "description": "Name of field that changed",
+      "fieldname": "field_changed",
+      "fieldtype": "Data",
+      "label": "Field Changed"
+    },
+    {
+      "fieldname": "actor_section",
+      "fieldtype": "Section Break",
+      "label": "Actor"
+    },
+    {
+      "default": "System",
+      "fieldname": "actor_type",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Actor Type",
+      "options": "System\nBuyer\nSeller\nAdmin\nSupport\nAPI\nIntegration\nScheduler\nWebhook\nUnknown"
+    },
+    {
+      "description": "User who triggered the event",
+      "fieldname": "actor",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Actor",
+      "options": "User"
+    },
+    {
+      "fieldname": "actor_name",
+      "fieldtype": "Data",
+      "label": "Actor Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_actor",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "actor_role",
+      "fieldtype": "Data",
+      "label": "Actor Role"
+    },
+    {
+      "description": "Seller involved in the event",
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Seller",
+      "options": "Seller Profile"
+    },
+    {
+      "description": "Buyer involved in the event",
+      "fieldname": "buyer",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Buyer",
+      "options": "User"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "metadata_section",
+      "fieldtype": "Section Break",
+      "label": "Request Metadata"
+    },
+    {
+      "fieldname": "ip_address",
+      "fieldtype": "Data",
+      "label": "IP Address"
+    },
+    {
+      "fieldname": "user_agent",
+      "fieldtype": "Small Text",
+      "label": "User Agent"
+    },
+    {
+      "fieldname": "session_id",
+      "fieldtype": "Data",
+      "label": "Session ID"
+    },
+    {
+      "fieldname": "column_break_metadata",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Unique request identifier for tracing",
+      "fieldname": "request_id",
+      "fieldtype": "Data",
+      "label": "Request ID"
+    },
+    {
+      "default": "System",
+      "fieldname": "source_channel",
+      "fieldtype": "Select",
+      "label": "Source Channel",
+      "options": "Website\nMobile App\nAPI\nAdmin Panel\nSeller Portal\nScheduler\nWebhook\nIntegration\nSystem\nOther"
+    },
+    {
+      "fieldname": "device_type",
+      "fieldtype": "Select",
+      "label": "Device Type",
+      "options": "\nDesktop\nMobile\nTablet\nAPI Client\nUnknown"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "location_section",
+      "fieldtype": "Section Break",
+      "label": "Location"
+    },
+    {
+      "fieldname": "location",
+      "fieldtype": "Data",
+      "label": "Location"
+    },
+    {
+      "fieldname": "city",
+      "fieldtype": "Data",
+      "label": "City"
+    },
+    {
+      "fieldname": "country",
+      "fieldtype": "Link",
+      "label": "Country",
+      "options": "Country"
+    },
+    {
+      "fieldname": "column_break_location",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "latitude",
+      "fieldtype": "Float",
+      "label": "Latitude",
+      "precision": "6"
+    },
+    {
+      "fieldname": "longitude",
+      "fieldtype": "Float",
+      "label": "Longitude",
+      "precision": "6"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "additional_data_section",
+      "fieldtype": "Section Break",
+      "label": "Additional Data"
+    },
+    {
+      "description": "Additional event data in JSON format",
+      "fieldname": "data_json",
+      "fieldtype": "JSON",
+      "label": "Event Data"
+    },
+    {
+      "description": "Public notes visible to buyer/seller",
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    },
+    {
+      "description": "Internal notes (not visible to buyer/seller)",
+      "fieldname": "internal_notes",
+      "fieldtype": "Small Text",
+      "label": "Internal Notes"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "related_events_section",
+      "fieldtype": "Section Break",
+      "label": "Related Events"
+    },
+    {
+      "description": "Parent event if this is a follow-up",
+      "fieldname": "parent_event",
+      "fieldtype": "Link",
+      "label": "Parent Event",
+      "options": "Order Event"
+    },
+    {
+      "description": "JSON array of related event names",
+      "fieldname": "related_events",
+      "fieldtype": "JSON",
+      "label": "Related Events"
+    },
+    {
+      "collapsible": 1,
+      "collapsible_depends_on": "eval:doc.is_error",
+      "fieldname": "error_section",
+      "fieldtype": "Section Break",
+      "label": "Error Details"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_error",
+      "fieldtype": "Check",
+      "label": "Is Error Event"
+    },
+    {
+      "depends_on": "eval:doc.is_error",
+      "fieldname": "error_code",
+      "fieldtype": "Data",
+      "label": "Error Code"
+    },
+    {
+      "depends_on": "eval:doc.is_error",
+      "fieldname": "error_message",
+      "fieldtype": "Small Text",
+      "label": "Error Message"
+    },
+    {
+      "fieldname": "column_break_error",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.is_error",
+      "fieldname": "stack_trace",
+      "fieldtype": "Code",
+      "label": "Stack Trace",
+      "options": "Python"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "notification_section",
+      "fieldtype": "Section Break",
+      "label": "Notification"
+    },
+    {
+      "default": "0",
+      "fieldname": "notification_sent",
+      "fieldtype": "Check",
+      "label": "Notification Sent"
+    },
+    {
+      "depends_on": "eval:doc.notification_sent",
+      "fieldname": "notification_type",
+      "fieldtype": "Select",
+      "label": "Notification Type",
+      "options": "\nEmail\nSMS\nPush\nIn-App\nWebhook"
+    },
+    {
+      "depends_on": "eval:doc.notification_sent",
+      "fieldname": "notification_sent_at",
+      "fieldtype": "Datetime",
+      "label": "Notification Sent At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_notification",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.notification_sent",
+      "fieldname": "notification_recipient",
+      "fieldtype": "Data",
+      "label": "Notification Recipient"
+    },
+    {
+      "depends_on": "eval:doc.notification_sent",
+      "fieldname": "notification_status",
+      "fieldtype": "Select",
+      "label": "Notification Status",
+      "options": "\nQueued\nSent\nDelivered\nFailed\nBounced"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "system_section",
+      "fieldtype": "Section Break",
+      "label": "System"
+    },
+    {
+      "default": "OE-.YYYY.-.######",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Naming Series",
+      "options": "OE-.YYYY.-.######\nORDEVT-.#####"
+    }
+  ],
+  "has_web_view": 0,
+  "index_web_pages_for_search": 0,
+  "is_submittable": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Marketplace Order",
+      "link_fieldname": "marketplace_order"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Sub Order",
+      "link_fieldname": "sub_order"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Order Event",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "read_only": 0,
+  "search_fields": "event_type, event_category, marketplace_order, sub_order, actor",
+  "show_name_in_global_search": 0,
+  "sort_field": "event_timestamp",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "event_description",
+  "track_changes": 0
+}

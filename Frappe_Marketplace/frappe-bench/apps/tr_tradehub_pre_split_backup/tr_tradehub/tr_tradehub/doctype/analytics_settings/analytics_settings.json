@@ -1,0 +1,619 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "field:tenant",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "tenant",
+    "tenant_name",
+    "column_break_basic",
+    "enabled",
+    "debug_mode",
+    "ga4_section",
+    "ga4_measurement_id",
+    "ga4_stream_id",
+    "column_break_ga4",
+    "ga4_api_secret",
+    "ga4_property_id",
+    "gtm_section",
+    "gtm_enabled",
+    "gtm_container_id",
+    "column_break_gtm",
+    "gtm_environment",
+    "gtm_auth_token",
+    "consent_section",
+    "consent_mode_enabled",
+    "default_analytics_storage",
+    "default_ad_storage",
+    "column_break_consent",
+    "require_explicit_consent",
+    "consent_banner_text",
+    "geo_targeting_section",
+    "apply_consent_to_eu_only",
+    "eu_countries",
+    "column_break_geo",
+    "apply_consent_to_all",
+    "ecommerce_section",
+    "track_ecommerce_events",
+    "track_product_views",
+    "track_add_to_cart",
+    "column_break_ecommerce",
+    "track_purchases",
+    "track_rfq_events",
+    "track_search_events",
+    "b2b_events_section",
+    "track_quote_requests",
+    "track_sample_requests",
+    "track_seller_interactions",
+    "column_break_b2b",
+    "track_buyer_interactions",
+    "track_user_registration",
+    "track_login_events",
+    "custom_dimensions_section",
+    "custom_dimension_tenant",
+    "custom_dimension_user_type",
+    "custom_dimension_seller_tier",
+    "column_break_dimensions",
+    "custom_dimension_buyer_segment",
+    "custom_dimension_category",
+    "custom_events_section",
+    "custom_events",
+    "server_side_section",
+    "server_side_tracking_enabled",
+    "server_side_api_endpoint",
+    "column_break_server",
+    "server_side_api_key",
+    "advanced_section",
+    "session_timeout_minutes",
+    "engagement_time_threshold",
+    "column_break_advanced",
+    "cross_domain_tracking",
+    "cross_domain_domains",
+    "system_section",
+    "last_verified",
+    "verification_status",
+    "column_break_system",
+    "total_events_sent",
+    "last_event_date"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Settings"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Tenant this analytics configuration belongs to"
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Tenant"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Analytics Enabled",
+      "description": "Enable or disable all analytics tracking for this tenant"
+    },
+    {
+      "default": "0",
+      "fieldname": "debug_mode",
+      "fieldtype": "Check",
+      "label": "Debug Mode",
+      "description": "Enable debug mode for analytics events (logs to console)"
+    },
+    {
+      "fieldname": "ga4_section",
+      "fieldtype": "Section Break",
+      "label": "Google Analytics 4 Configuration"
+    },
+    {
+      "fieldname": "ga4_measurement_id",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "GA4 Measurement ID",
+      "description": "Google Analytics 4 Measurement ID (format: G-XXXXXXX)"
+    },
+    {
+      "fieldname": "ga4_stream_id",
+      "fieldtype": "Data",
+      "label": "Data Stream ID",
+      "description": "GA4 Data Stream ID for this property"
+    },
+    {
+      "fieldname": "column_break_ga4",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "ga4_api_secret",
+      "fieldtype": "Password",
+      "label": "Measurement Protocol API Secret",
+      "description": "API secret for server-side event collection"
+    },
+    {
+      "fieldname": "ga4_property_id",
+      "fieldtype": "Data",
+      "label": "GA4 Property ID",
+      "description": "GA4 Property ID for API access"
+    },
+    {
+      "fieldname": "gtm_section",
+      "fieldtype": "Section Break",
+      "label": "Google Tag Manager",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "gtm_enabled",
+      "fieldtype": "Check",
+      "label": "GTM Enabled",
+      "description": "Use Google Tag Manager for tag management (recommended)"
+    },
+    {
+      "fieldname": "gtm_container_id",
+      "fieldtype": "Data",
+      "label": "GTM Container ID",
+      "depends_on": "eval:doc.gtm_enabled",
+      "description": "Google Tag Manager Container ID (format: GTM-XXXXXXX)"
+    },
+    {
+      "fieldname": "column_break_gtm",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Production",
+      "fieldname": "gtm_environment",
+      "fieldtype": "Select",
+      "label": "GTM Environment",
+      "options": "Production\nStaging\nDevelopment",
+      "depends_on": "eval:doc.gtm_enabled",
+      "description": "GTM environment to use"
+    },
+    {
+      "fieldname": "gtm_auth_token",
+      "fieldtype": "Data",
+      "label": "GTM Auth Token",
+      "depends_on": "eval:doc.gtm_enabled && doc.gtm_environment != 'Production'",
+      "description": "Authentication token for non-production environments"
+    },
+    {
+      "fieldname": "consent_section",
+      "fieldtype": "Section Break",
+      "label": "Consent Management (GDPR Compliance)"
+    },
+    {
+      "default": "1",
+      "fieldname": "consent_mode_enabled",
+      "fieldtype": "Check",
+      "label": "Consent Mode Enabled",
+      "description": "Enable Google Consent Mode v2 for privacy compliance"
+    },
+    {
+      "default": "denied",
+      "fieldname": "default_analytics_storage",
+      "fieldtype": "Select",
+      "label": "Default Analytics Storage",
+      "options": "granted\ndenied",
+      "depends_on": "eval:doc.consent_mode_enabled",
+      "description": "Default consent state for analytics cookies"
+    },
+    {
+      "default": "denied",
+      "fieldname": "default_ad_storage",
+      "fieldtype": "Select",
+      "label": "Default Ad Storage",
+      "options": "granted\ndenied",
+      "depends_on": "eval:doc.consent_mode_enabled",
+      "description": "Default consent state for advertising cookies"
+    },
+    {
+      "fieldname": "column_break_consent",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "require_explicit_consent",
+      "fieldtype": "Check",
+      "label": "Require Explicit Consent",
+      "depends_on": "eval:doc.consent_mode_enabled",
+      "description": "Require explicit opt-in before tracking (EU recommended)"
+    },
+    {
+      "fieldname": "consent_banner_text",
+      "fieldtype": "Small Text",
+      "label": "Consent Banner Text",
+      "depends_on": "eval:doc.consent_mode_enabled",
+      "description": "Custom text for consent banner"
+    },
+    {
+      "fieldname": "geo_targeting_section",
+      "fieldtype": "Section Break",
+      "label": "Geographic Consent Targeting",
+      "depends_on": "eval:doc.consent_mode_enabled",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "apply_consent_to_eu_only",
+      "fieldtype": "Check",
+      "label": "Apply Consent to EU Only",
+      "description": "Only require explicit consent for EU visitors (GDPR)"
+    },
+    {
+      "fieldname": "eu_countries",
+      "fieldtype": "Small Text",
+      "label": "EU Countries",
+      "read_only": 1,
+      "default": "AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE",
+      "description": "ISO 3166-1 alpha-2 codes for EU countries (auto-populated)"
+    },
+    {
+      "fieldname": "column_break_geo",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "apply_consent_to_all",
+      "fieldtype": "Check",
+      "label": "Apply Consent Globally",
+      "description": "Require consent for all visitors regardless of location"
+    },
+    {
+      "fieldname": "ecommerce_section",
+      "fieldtype": "Section Break",
+      "label": "E-commerce Event Tracking"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_ecommerce_events",
+      "fieldtype": "Check",
+      "label": "Track E-commerce Events",
+      "description": "Enable GA4 e-commerce event tracking"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_product_views",
+      "fieldtype": "Check",
+      "label": "Track Product Views",
+      "depends_on": "eval:doc.track_ecommerce_events",
+      "description": "Track view_item and view_item_list events"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_add_to_cart",
+      "fieldtype": "Check",
+      "label": "Track Add to Cart",
+      "depends_on": "eval:doc.track_ecommerce_events",
+      "description": "Track add_to_cart and remove_from_cart events"
+    },
+    {
+      "fieldname": "column_break_ecommerce",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_purchases",
+      "fieldtype": "Check",
+      "label": "Track Purchases",
+      "depends_on": "eval:doc.track_ecommerce_events",
+      "description": "Track purchase and refund events"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_rfq_events",
+      "fieldtype": "Check",
+      "label": "Track RFQ Events",
+      "depends_on": "eval:doc.track_ecommerce_events",
+      "description": "Track Request for Quotation events (B2B specific)"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_search_events",
+      "fieldtype": "Check",
+      "label": "Track Search Events",
+      "depends_on": "eval:doc.track_ecommerce_events",
+      "description": "Track search and filter events"
+    },
+    {
+      "fieldname": "b2b_events_section",
+      "fieldtype": "Section Break",
+      "label": "B2B Event Tracking"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_quote_requests",
+      "fieldtype": "Check",
+      "label": "Track Quote Requests",
+      "description": "Track quotation request and response events"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_sample_requests",
+      "fieldtype": "Check",
+      "label": "Track Sample Requests",
+      "description": "Track sample/prototype request events"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_seller_interactions",
+      "fieldtype": "Check",
+      "label": "Track Seller Interactions",
+      "description": "Track seller profile views, contact requests"
+    },
+    {
+      "fieldname": "column_break_b2b",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_buyer_interactions",
+      "fieldtype": "Check",
+      "label": "Track Buyer Interactions",
+      "description": "Track buyer dashboard and activity events"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_user_registration",
+      "fieldtype": "Check",
+      "label": "Track User Registration",
+      "description": "Track sign_up events for buyers and sellers"
+    },
+    {
+      "default": "1",
+      "fieldname": "track_login_events",
+      "fieldtype": "Check",
+      "label": "Track Login Events",
+      "description": "Track login events"
+    },
+    {
+      "fieldname": "custom_dimensions_section",
+      "fieldtype": "Section Break",
+      "label": "Custom Dimensions",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "custom_dimension_tenant",
+      "fieldtype": "Data",
+      "label": "Tenant Dimension Name",
+      "default": "tenant_id",
+      "description": "GA4 custom dimension name for tenant ID"
+    },
+    {
+      "fieldname": "custom_dimension_user_type",
+      "fieldtype": "Data",
+      "label": "User Type Dimension Name",
+      "default": "user_type",
+      "description": "GA4 custom dimension name for user type (buyer/seller)"
+    },
+    {
+      "fieldname": "custom_dimension_seller_tier",
+      "fieldtype": "Data",
+      "label": "Seller Tier Dimension Name",
+      "default": "seller_tier",
+      "description": "GA4 custom dimension name for seller tier"
+    },
+    {
+      "fieldname": "column_break_dimensions",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "custom_dimension_buyer_segment",
+      "fieldtype": "Data",
+      "label": "Buyer Segment Dimension Name",
+      "default": "buyer_segment",
+      "description": "GA4 custom dimension name for buyer segment"
+    },
+    {
+      "fieldname": "custom_dimension_category",
+      "fieldtype": "Data",
+      "label": "Category Dimension Name",
+      "default": "product_category",
+      "description": "GA4 custom dimension name for product category"
+    },
+    {
+      "fieldname": "custom_events_section",
+      "fieldtype": "Section Break",
+      "label": "Custom Events Configuration",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "custom_events",
+      "fieldtype": "JSON",
+      "label": "Custom Events",
+      "description": "JSON configuration for additional custom events (use UI component)"
+    },
+    {
+      "fieldname": "server_side_section",
+      "fieldtype": "Section Break",
+      "label": "Server-Side Tracking",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "server_side_tracking_enabled",
+      "fieldtype": "Check",
+      "label": "Server-Side Tracking Enabled",
+      "description": "Enable server-side event collection via Measurement Protocol"
+    },
+    {
+      "fieldname": "server_side_api_endpoint",
+      "fieldtype": "Data",
+      "label": "Server-Side API Endpoint",
+      "depends_on": "eval:doc.server_side_tracking_enabled",
+      "description": "Custom server-side tracking endpoint URL"
+    },
+    {
+      "fieldname": "column_break_server",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "server_side_api_key",
+      "fieldtype": "Password",
+      "label": "Server-Side API Key",
+      "depends_on": "eval:doc.server_side_tracking_enabled",
+      "description": "API key for server-side tracking authentication"
+    },
+    {
+      "fieldname": "advanced_section",
+      "fieldtype": "Section Break",
+      "label": "Advanced Settings",
+      "collapsible": 1
+    },
+    {
+      "default": "30",
+      "fieldname": "session_timeout_minutes",
+      "fieldtype": "Int",
+      "label": "Session Timeout (minutes)",
+      "description": "Session timeout in minutes (default: 30)"
+    },
+    {
+      "default": "10",
+      "fieldname": "engagement_time_threshold",
+      "fieldtype": "Int",
+      "label": "Engagement Time Threshold (seconds)",
+      "description": "Minimum engagement time in seconds (default: 10)"
+    },
+    {
+      "fieldname": "column_break_advanced",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "cross_domain_tracking",
+      "fieldtype": "Check",
+      "label": "Cross-Domain Tracking",
+      "description": "Enable cross-domain tracking for multiple domains"
+    },
+    {
+      "fieldname": "cross_domain_domains",
+      "fieldtype": "Small Text",
+      "label": "Cross-Domain Domains",
+      "depends_on": "eval:doc.cross_domain_tracking",
+      "description": "Comma-separated list of domains for cross-domain tracking"
+    },
+    {
+      "fieldname": "system_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "last_verified",
+      "fieldtype": "Datetime",
+      "label": "Last Verified",
+      "read_only": 1,
+      "description": "Last time the GA4 configuration was verified"
+    },
+    {
+      "default": "Not Verified",
+      "fieldname": "verification_status",
+      "fieldtype": "Select",
+      "label": "Verification Status",
+      "options": "Not Verified\nVerified\nFailed",
+      "read_only": 1,
+      "description": "Current verification status of GA4 configuration"
+    },
+    {
+      "fieldname": "column_break_system",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_events_sent",
+      "fieldtype": "Int",
+      "label": "Total Events Sent",
+      "read_only": 1,
+      "description": "Total number of events sent via server-side tracking"
+    },
+    {
+      "fieldname": "last_event_date",
+      "fieldtype": "Datetime",
+      "label": "Last Event Date",
+      "read_only": 1,
+      "description": "Date of last event sent"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "issingle": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Tenant",
+      "link_fieldname": "name"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Analytics Settings",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 0,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "tenant, tenant_name, ga4_measurement_id",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Not Verified"
+    },
+    {
+      "color": "green",
+      "title": "Verified"
+    },
+    {
+      "color": "red",
+      "title": "Failed"
+    }
+  ],
+  "title_field": "tenant_name",
+  "track_changes": 1
+}

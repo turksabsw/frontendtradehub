@@ -1,0 +1,1073 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:method_code",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "method_name",
+  "method_code",
+  "method_type",
+  "column_break_basic",
+  "status",
+  "is_default",
+  "display_order",
+  "icon",
+  "display_section",
+  "display_name",
+  "short_description",
+  "description",
+  "column_break_display",
+  "method_image",
+  "show_in_checkout",
+  "show_in_seller_panel",
+  "gateway_section",
+  "payment_gateway",
+  "gateway_config",
+  "column_break_gateway",
+  "requires_redirect",
+  "supports_refund",
+  "supports_partial_refund",
+  "supports_recurring",
+  "assignment_section",
+  "available_to",
+  "specific_customers",
+  "specific_customer_groups",
+  "column_break_assignment",
+  "required_buyer_levels",
+  "excluded_buyer_levels",
+  "tenant_restrictions",
+  "risk_section",
+  "max_risk_level",
+  "excluded_risk_levels",
+  "risk_score_threshold",
+  "column_break_risk",
+  "requires_kyc",
+  "required_kyc_level",
+  "requires_credit_check",
+  "regional_section",
+  "available_countries",
+  "excluded_countries",
+  "available_regions",
+  "column_break_regional",
+  "excluded_regions",
+  "regional_restrictions_mode",
+  "currency_section",
+  "available_currencies",
+  "default_currency",
+  "column_break_currency",
+  "supports_multi_currency",
+  "currency_conversion_markup",
+  "limits_section",
+  "minimum_amount",
+  "maximum_amount",
+  "minimum_amount_currency",
+  "column_break_limits",
+  "daily_limit",
+  "weekly_limit",
+  "monthly_limit",
+  "transaction_count_limit",
+  "fees_section",
+  "fee_type",
+  "fee_percentage",
+  "fee_fixed_amount",
+  "column_break_fees",
+  "fee_currency",
+  "fee_paid_by",
+  "minimum_fee",
+  "maximum_fee",
+  "installment_section",
+  "supports_installments",
+  "max_installments",
+  "installment_fee_percentage",
+  "column_break_installment",
+  "installment_banks",
+  "installment_options",
+  "credit_terms_section",
+  "supports_credit_terms",
+  "default_credit_days",
+  "max_credit_days",
+  "column_break_credit_terms",
+  "credit_limit_type",
+  "default_credit_limit",
+  "requires_approval_above",
+  "cod_section",
+  "cod_fee_type",
+  "cod_fee_percentage",
+  "cod_fee_fixed",
+  "column_break_cod",
+  "cod_max_amount",
+  "cod_available_regions",
+  "security_section",
+  "requires_3d_secure",
+  "fraud_check_enabled",
+  "fraud_threshold",
+  "column_break_security",
+  "requires_cvv",
+  "requires_billing_address",
+  "pci_compliance_level",
+  "processing_section",
+  "average_processing_time",
+  "settlement_days",
+  "capture_method",
+  "column_break_processing",
+  "auto_capture",
+  "auto_void_hours",
+  "retry_on_failure",
+  "max_retry_attempts",
+  "notification_section",
+  "send_payment_notification",
+  "send_refund_notification",
+  "column_break_notification",
+  "notification_template",
+  "receipt_template",
+  "integration_section",
+  "cron_bi_mode_of_payment",
+  "cron_bi_payment_account",
+  "column_break_integration",
+  "cron_bi_sync_enabled",
+  "webhook_url",
+  "statistics_section",
+  "total_transactions",
+  "total_amount_processed",
+  "success_rate",
+  "column_break_stats",
+  "average_transaction_amount",
+  "last_transaction_at",
+  "notes_section",
+  "internal_notes",
+  "terms_and_conditions"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "method_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_global_search": 1,
+   "label": "Method Name",
+   "reqd": 1
+  },
+  {
+   "description": "Unique code for this payment method (e.g., CREDIT_CARD, BANK_TRANSFER, COD)",
+   "fieldname": "method_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Method Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "Card",
+   "fieldname": "method_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Method Type",
+   "options": "Card\nBank Transfer\nDigital Wallet\nCash on Delivery\nBuy Now Pay Later\nCredit Terms\nEscrow\nLetter of Credit\nPrepaid\nCryptocurrency\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nMaintenance\nDeprecated",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Set as default payment method for new buyers",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default"
+  },
+  {
+   "default": "0",
+   "description": "Display order in checkout (lower numbers appear first)",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order"
+  },
+  {
+   "description": "Font Awesome icon class (e.g., fa-credit-card, fa-bank)",
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Icon"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings"
+  },
+  {
+   "description": "Name shown to customers in checkout",
+   "fieldname": "display_name",
+   "fieldtype": "Data",
+   "label": "Display Name"
+  },
+  {
+   "description": "Short description shown in checkout selection",
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description"
+  },
+  {
+   "description": "Detailed description for help/info display",
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_display",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Logo or icon image for this payment method",
+   "fieldname": "method_image",
+   "fieldtype": "Attach Image",
+   "label": "Method Image"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_in_checkout",
+   "fieldtype": "Check",
+   "label": "Show in Checkout"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_in_seller_panel",
+   "fieldtype": "Check",
+   "label": "Show in Seller Panel"
+  },
+  {
+   "fieldname": "gateway_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Gateway"
+  },
+  {
+   "description": "Payment gateway provider",
+   "fieldname": "payment_gateway",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payment Gateway",
+   "options": "\niyzico\nPayTR\nStripe\nPayPal\nGaranti Pay\nAkbank Direct\nYapi Kredi Pay\nDenizBank\nQNB Finansbank\nManual\nOffline"
+  },
+  {
+   "description": "Gateway-specific configuration (JSON)",
+   "fieldname": "gateway_config",
+   "fieldtype": "Code",
+   "label": "Gateway Configuration",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "column_break_gateway",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Payment requires redirect to external gateway",
+   "fieldname": "requires_redirect",
+   "fieldtype": "Check",
+   "label": "Requires Redirect"
+  },
+  {
+   "default": "1",
+   "fieldname": "supports_refund",
+   "fieldtype": "Check",
+   "label": "Supports Refund"
+  },
+  {
+   "default": "1",
+   "fieldname": "supports_partial_refund",
+   "fieldtype": "Check",
+   "label": "Supports Partial Refund"
+  },
+  {
+   "default": "0",
+   "description": "For subscriptions and recurring payments",
+   "fieldname": "supports_recurring",
+   "fieldtype": "Check",
+   "label": "Supports Recurring"
+  },
+  {
+   "fieldname": "assignment_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Assignment"
+  },
+  {
+   "default": "All",
+   "description": "Who can use this payment method",
+   "fieldname": "available_to",
+   "fieldtype": "Select",
+   "label": "Available To",
+   "options": "All\nAll Buyers\nSpecific Customers\nCustomer Groups\nBuyer Levels\nPremium Only\nEnterprise Only"
+  },
+  {
+   "depends_on": "eval:doc.available_to === 'Specific Customers'",
+   "description": "Select specific customers who can use this method",
+   "fieldname": "specific_customers",
+   "fieldtype": "Table MultiSelect",
+   "label": "Specific Customers",
+   "options": "Payment Method Customer"
+  },
+  {
+   "depends_on": "eval:doc.available_to === 'Customer Groups'",
+   "description": "Comma-separated list of customer group names",
+   "fieldname": "specific_customer_groups",
+   "fieldtype": "Small Text",
+   "label": "Customer Groups"
+  },
+  {
+   "fieldname": "column_break_assignment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Minimum buyer level required (comma-separated level codes)",
+   "fieldname": "required_buyer_levels",
+   "fieldtype": "Small Text",
+   "label": "Required Buyer Levels"
+  },
+  {
+   "description": "Buyer levels excluded from this method",
+   "fieldname": "excluded_buyer_levels",
+   "fieldtype": "Small Text",
+   "label": "Excluded Buyer Levels"
+  },
+  {
+   "description": "Restrict to specific tenants (comma-separated)",
+   "fieldname": "tenant_restrictions",
+   "fieldtype": "Small Text",
+   "label": "Tenant Restrictions"
+  },
+  {
+   "fieldname": "risk_section",
+   "fieldtype": "Section Break",
+   "label": "Risk Management"
+  },
+  {
+   "default": "Critical",
+   "description": "Maximum risk level allowed for this payment method",
+   "fieldname": "max_risk_level",
+   "fieldtype": "Select",
+   "label": "Maximum Risk Level",
+   "options": "Very Low\nLow\nMedium\nHigh\nVery High\nCritical"
+  },
+  {
+   "description": "Risk levels that cannot use this method (comma-separated)",
+   "fieldname": "excluded_risk_levels",
+   "fieldtype": "Small Text",
+   "label": "Excluded Risk Levels"
+  },
+  {
+   "default": "100",
+   "description": "Maximum risk score allowed (0-100)",
+   "fieldname": "risk_score_threshold",
+   "fieldtype": "Int",
+   "label": "Risk Score Threshold"
+  },
+  {
+   "fieldname": "column_break_risk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Require KYC verification to use this method",
+   "fieldname": "requires_kyc",
+   "fieldtype": "Check",
+   "label": "Requires KYC"
+  },
+  {
+   "depends_on": "eval:doc.requires_kyc",
+   "description": "Minimum KYC verification level required",
+   "fieldname": "required_kyc_level",
+   "fieldtype": "Select",
+   "label": "Required KYC Level",
+   "options": "\nBasic\nStandard\nAdvanced\nPremium\nEnterprise"
+  },
+  {
+   "default": "0",
+   "description": "Run credit check before allowing this method",
+   "fieldname": "requires_credit_check",
+   "fieldtype": "Check",
+   "label": "Requires Credit Check"
+  },
+  {
+   "fieldname": "regional_section",
+   "fieldtype": "Section Break",
+   "label": "Regional Availability"
+  },
+  {
+   "description": "Countries where this method is available (comma-separated country codes)",
+   "fieldname": "available_countries",
+   "fieldtype": "Small Text",
+   "label": "Available Countries"
+  },
+  {
+   "description": "Countries excluded from this method",
+   "fieldname": "excluded_countries",
+   "fieldtype": "Small Text",
+   "label": "Excluded Countries"
+  },
+  {
+   "description": "Specific regions/cities where available",
+   "fieldname": "available_regions",
+   "fieldtype": "Small Text",
+   "label": "Available Regions"
+  },
+  {
+   "fieldname": "column_break_regional",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Regions excluded from this method",
+   "fieldname": "excluded_regions",
+   "fieldtype": "Small Text",
+   "label": "Excluded Regions"
+  },
+  {
+   "default": "Include",
+   "description": "How to apply regional restrictions",
+   "fieldname": "regional_restrictions_mode",
+   "fieldtype": "Select",
+   "label": "Restrictions Mode",
+   "options": "Include\nExclude"
+  },
+  {
+   "fieldname": "currency_section",
+   "fieldtype": "Section Break",
+   "label": "Currency Settings"
+  },
+  {
+   "description": "Currencies supported by this method (comma-separated codes)",
+   "fieldname": "available_currencies",
+   "fieldtype": "Small Text",
+   "label": "Available Currencies"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "default_currency",
+   "fieldtype": "Link",
+   "label": "Default Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_currency",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "supports_multi_currency",
+   "fieldtype": "Check",
+   "label": "Supports Multi-Currency"
+  },
+  {
+   "default": "0",
+   "description": "Markup percentage for currency conversion",
+   "fieldname": "currency_conversion_markup",
+   "fieldtype": "Percent",
+   "label": "Currency Conversion Markup"
+  },
+  {
+   "fieldname": "limits_section",
+   "fieldtype": "Section Break",
+   "label": "Transaction Limits"
+  },
+  {
+   "default": "0",
+   "description": "Minimum transaction amount",
+   "fieldname": "minimum_amount",
+   "fieldtype": "Currency",
+   "label": "Minimum Amount",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "default": "0",
+   "description": "Maximum transaction amount (0 = unlimited)",
+   "fieldname": "maximum_amount",
+   "fieldtype": "Currency",
+   "label": "Maximum Amount",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "minimum_amount_currency",
+   "fieldtype": "Link",
+   "label": "Limit Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_limits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Daily transaction limit per buyer (0 = unlimited)",
+   "fieldname": "daily_limit",
+   "fieldtype": "Currency",
+   "label": "Daily Limit",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "default": "0",
+   "description": "Weekly transaction limit per buyer",
+   "fieldname": "weekly_limit",
+   "fieldtype": "Currency",
+   "label": "Weekly Limit",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "default": "0",
+   "description": "Monthly transaction limit per buyer",
+   "fieldname": "monthly_limit",
+   "fieldtype": "Currency",
+   "label": "Monthly Limit",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "default": "0",
+   "description": "Max transactions per day per buyer",
+   "fieldname": "transaction_count_limit",
+   "fieldtype": "Int",
+   "label": "Transaction Count Limit"
+  },
+  {
+   "fieldname": "fees_section",
+   "fieldtype": "Section Break",
+   "label": "Fee Configuration"
+  },
+  {
+   "default": "Percentage",
+   "fieldname": "fee_type",
+   "fieldtype": "Select",
+   "label": "Fee Type",
+   "options": "None\nPercentage\nFixed\nPercentage + Fixed\nTiered"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:['Percentage', 'Percentage + Fixed', 'Tiered'].includes(doc.fee_type)",
+   "fieldname": "fee_percentage",
+   "fieldtype": "Percent",
+   "label": "Fee Percentage"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:['Fixed', 'Percentage + Fixed'].includes(doc.fee_type)",
+   "fieldname": "fee_fixed_amount",
+   "fieldtype": "Currency",
+   "label": "Fixed Fee Amount",
+   "options": "fee_currency"
+  },
+  {
+   "fieldname": "column_break_fees",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "fee_currency",
+   "fieldtype": "Link",
+   "label": "Fee Currency",
+   "options": "Currency"
+  },
+  {
+   "default": "Platform",
+   "description": "Who pays the transaction fee",
+   "fieldname": "fee_paid_by",
+   "fieldtype": "Select",
+   "label": "Fee Paid By",
+   "options": "Platform\nSeller\nBuyer\nSplit"
+  },
+  {
+   "default": "0",
+   "description": "Minimum fee amount",
+   "fieldname": "minimum_fee",
+   "fieldtype": "Currency",
+   "label": "Minimum Fee",
+   "options": "fee_currency"
+  },
+  {
+   "default": "0",
+   "description": "Maximum fee amount (0 = unlimited)",
+   "fieldname": "maximum_fee",
+   "fieldtype": "Currency",
+   "label": "Maximum Fee",
+   "options": "fee_currency"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.method_type === 'Card'",
+   "fieldname": "installment_section",
+   "fieldtype": "Section Break",
+   "label": "Installment Settings (Taksit)"
+  },
+  {
+   "default": "0",
+   "fieldname": "supports_installments",
+   "fieldtype": "Check",
+   "label": "Supports Installments"
+  },
+  {
+   "default": "12",
+   "depends_on": "eval:doc.supports_installments",
+   "description": "Maximum number of installments",
+   "fieldname": "max_installments",
+   "fieldtype": "Int",
+   "label": "Maximum Installments"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.supports_installments",
+   "description": "Additional fee percentage for installments",
+   "fieldname": "installment_fee_percentage",
+   "fieldtype": "Percent",
+   "label": "Installment Fee %"
+  },
+  {
+   "fieldname": "column_break_installment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.supports_installments",
+   "description": "Banks supporting installments (comma-separated)",
+   "fieldname": "installment_banks",
+   "fieldtype": "Small Text",
+   "label": "Installment Banks"
+  },
+  {
+   "depends_on": "eval:doc.supports_installments",
+   "description": "JSON configuration for installment options",
+   "fieldname": "installment_options",
+   "fieldtype": "Code",
+   "label": "Installment Options",
+   "options": "JSON"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.method_type === 'Credit Terms'",
+   "fieldname": "credit_terms_section",
+   "fieldtype": "Section Break",
+   "label": "Credit Terms Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "supports_credit_terms",
+   "fieldtype": "Check",
+   "label": "Supports Credit Terms"
+  },
+  {
+   "default": "30",
+   "depends_on": "eval:doc.supports_credit_terms",
+   "fieldname": "default_credit_days",
+   "fieldtype": "Int",
+   "label": "Default Credit Days"
+  },
+  {
+   "default": "90",
+   "depends_on": "eval:doc.supports_credit_terms",
+   "fieldname": "max_credit_days",
+   "fieldtype": "Int",
+   "label": "Maximum Credit Days"
+  },
+  {
+   "fieldname": "column_break_credit_terms",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Risk Based",
+   "depends_on": "eval:doc.supports_credit_terms",
+   "fieldname": "credit_limit_type",
+   "fieldtype": "Select",
+   "label": "Credit Limit Type",
+   "options": "Fixed\nRisk Based\nCustomer Specific\nUnlimited"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.supports_credit_terms && doc.credit_limit_type === 'Fixed'",
+   "fieldname": "default_credit_limit",
+   "fieldtype": "Currency",
+   "label": "Default Credit Limit",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.supports_credit_terms",
+   "description": "Require approval for orders above this amount",
+   "fieldname": "requires_approval_above",
+   "fieldtype": "Currency",
+   "label": "Requires Approval Above",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.method_type === 'Cash on Delivery'",
+   "fieldname": "cod_section",
+   "fieldtype": "Section Break",
+   "label": "Cash on Delivery Settings"
+  },
+  {
+   "default": "Percentage",
+   "fieldname": "cod_fee_type",
+   "fieldtype": "Select",
+   "label": "COD Fee Type",
+   "options": "None\nPercentage\nFixed\nPercentage + Fixed"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:['Percentage', 'Percentage + Fixed'].includes(doc.cod_fee_type)",
+   "fieldname": "cod_fee_percentage",
+   "fieldtype": "Percent",
+   "label": "COD Fee %"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:['Fixed', 'Percentage + Fixed'].includes(doc.cod_fee_type)",
+   "fieldname": "cod_fee_fixed",
+   "fieldtype": "Currency",
+   "label": "COD Fixed Fee",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "fieldname": "column_break_cod",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Maximum order amount for COD (0 = unlimited)",
+   "fieldname": "cod_max_amount",
+   "fieldtype": "Currency",
+   "label": "COD Max Amount",
+   "options": "minimum_amount_currency"
+  },
+  {
+   "description": "Regions where COD is available",
+   "fieldname": "cod_available_regions",
+   "fieldtype": "Small Text",
+   "label": "COD Available Regions"
+  },
+  {
+   "fieldname": "security_section",
+   "fieldtype": "Section Break",
+   "label": "Security Settings"
+  },
+  {
+   "default": "1",
+   "depends_on": "eval:doc.method_type === 'Card'",
+   "fieldname": "requires_3d_secure",
+   "fieldtype": "Check",
+   "label": "Requires 3D Secure"
+  },
+  {
+   "default": "1",
+   "fieldname": "fraud_check_enabled",
+   "fieldtype": "Check",
+   "label": "Fraud Check Enabled"
+  },
+  {
+   "default": "80",
+   "depends_on": "eval:doc.fraud_check_enabled",
+   "description": "Block transactions above this fraud score",
+   "fieldname": "fraud_threshold",
+   "fieldtype": "Int",
+   "label": "Fraud Threshold"
+  },
+  {
+   "fieldname": "column_break_security",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "depends_on": "eval:doc.method_type === 'Card'",
+   "fieldname": "requires_cvv",
+   "fieldtype": "Check",
+   "label": "Requires CVV"
+  },
+  {
+   "default": "1",
+   "fieldname": "requires_billing_address",
+   "fieldtype": "Check",
+   "label": "Requires Billing Address"
+  },
+  {
+   "depends_on": "eval:doc.method_type === 'Card'",
+   "fieldname": "pci_compliance_level",
+   "fieldtype": "Select",
+   "label": "PCI Compliance Level",
+   "options": "\nLevel 1\nLevel 2\nLevel 3\nLevel 4\nSAQ A\nSAQ A-EP\nSAQ D"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "processing_section",
+   "fieldtype": "Section Break",
+   "label": "Processing Settings"
+  },
+  {
+   "description": "Average time to process payment (in minutes)",
+   "fieldname": "average_processing_time",
+   "fieldtype": "Int",
+   "label": "Avg Processing Time (min)"
+  },
+  {
+   "default": "1",
+   "description": "Days to settlement after capture",
+   "fieldname": "settlement_days",
+   "fieldtype": "Int",
+   "label": "Settlement Days"
+  },
+  {
+   "default": "Automatic",
+   "fieldname": "capture_method",
+   "fieldtype": "Select",
+   "label": "Capture Method",
+   "options": "Automatic\nManual\nDelayed"
+  },
+  {
+   "fieldname": "column_break_processing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_capture",
+   "fieldtype": "Check",
+   "label": "Auto Capture"
+  },
+  {
+   "default": "24",
+   "description": "Auto-void authorized payments after this many hours",
+   "fieldname": "auto_void_hours",
+   "fieldtype": "Int",
+   "label": "Auto Void Hours"
+  },
+  {
+   "default": "1",
+   "fieldname": "retry_on_failure",
+   "fieldtype": "Check",
+   "label": "Retry on Failure"
+  },
+  {
+   "default": "3",
+   "depends_on": "eval:doc.retry_on_failure",
+   "fieldname": "max_retry_attempts",
+   "fieldtype": "Int",
+   "label": "Max Retry Attempts"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notification_section",
+   "fieldtype": "Section Break",
+   "label": "Notification Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "send_payment_notification",
+   "fieldtype": "Check",
+   "label": "Send Payment Notification"
+  },
+  {
+   "default": "1",
+   "fieldname": "send_refund_notification",
+   "fieldtype": "Check",
+   "label": "Send Refund Notification"
+  },
+  {
+   "fieldname": "column_break_notification",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Email template for payment notifications",
+   "fieldname": "notification_template",
+   "fieldtype": "Link",
+   "label": "Notification Template",
+   "options": "Email Template"
+  },
+  {
+   "description": "Print format for payment receipt",
+   "fieldname": "receipt_template",
+   "fieldtype": "Link",
+   "label": "Receipt Template",
+   "options": "Print Format"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "integration_section",
+   "fieldtype": "Section Break",
+   "label": "Cron BI Integration"
+  },
+  {
+   "description": "Mode of Payment in Cron BI",
+   "fieldname": "cron_bi_mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Cron BI Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "description": "Default payment account in Cron BI",
+   "fieldname": "cron_bi_payment_account",
+   "fieldtype": "Link",
+   "label": "Cron BI Payment Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_integration",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "cron_bi_sync_enabled",
+   "fieldtype": "Check",
+   "label": "Cron BI Sync Enabled"
+  },
+  {
+   "description": "Webhook URL for payment notifications",
+   "fieldname": "webhook_url",
+   "fieldtype": "Data",
+   "label": "Webhook URL"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_transactions",
+   "fieldtype": "Int",
+   "label": "Total Transactions",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_amount_processed",
+   "fieldtype": "Currency",
+   "label": "Total Amount Processed",
+   "options": "minimum_amount_currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Success rate percentage",
+   "fieldname": "success_rate",
+   "fieldtype": "Percent",
+   "label": "Success Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "average_transaction_amount",
+   "fieldtype": "Currency",
+   "label": "Avg Transaction Amount",
+   "options": "minimum_amount_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_transaction_at",
+   "fieldtype": "Datetime",
+   "label": "Last Transaction At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text Editor",
+   "label": "Internal Notes"
+  },
+  {
+   "description": "Terms and conditions for this payment method",
+   "fieldname": "terms_and_conditions",
+   "fieldtype": "Text Editor",
+   "label": "Terms and Conditions"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Payments",
+   "link_doctype": "Payment Intent",
+   "link_fieldname": "payment_method_link"
+  },
+  {
+   "group": "Risk",
+   "link_doctype": "Risk Score",
+   "link_fieldname": "payment_method"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Payment Method",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "method_name, method_type, payment_gateway, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "states": [
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "gray",
+   "title": "Inactive"
+  },
+  {
+   "color": "orange",
+   "title": "Maintenance"
+  },
+  {
+   "color": "red",
+   "title": "Deprecated"
+  }
+ ],
+ "title_field": "method_name",
+ "track_changes": 1
+}

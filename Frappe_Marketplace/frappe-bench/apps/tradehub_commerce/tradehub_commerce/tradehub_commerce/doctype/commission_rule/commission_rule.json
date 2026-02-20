@@ -1,0 +1,679 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "COMRUL-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "rule_name",
+  "rule_code",
+  "rule_type",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "priority",
+  "is_default",
+  "description_section",
+  "description",
+  "conditions_section",
+  "apply_to",
+  "apply_to_value",
+  "apply_to_operator",
+  "column_break_conditions",
+  "category",
+  "seller_tier",
+  "seller_type",
+  "product_type",
+  "advanced_conditions_section",
+  "condition_type",
+  "min_order_value",
+  "max_order_value",
+  "column_break_advanced",
+  "min_quantity",
+  "max_quantity",
+  "custom_condition",
+  "commission_section",
+  "commission_type",
+  "commission_rate",
+  "fixed_commission",
+  "column_break_commission",
+  "minimum_commission",
+  "maximum_commission",
+  "commission_currency",
+  "calculation_base_section",
+  "calculation_base",
+  "exclude_shipping",
+  "exclude_tax",
+  "column_break_calc_base",
+  "exclude_discounts",
+  "include_seller_discounts",
+  "validity_section",
+  "effective_from",
+  "effective_until",
+  "is_perpetual",
+  "column_break_validity",
+  "day_of_week_restrictions",
+  "time_start",
+  "time_end",
+  "restrictions_section",
+  "restricted_sellers",
+  "excluded_sellers",
+  "column_break_restrictions",
+  "restricted_categories",
+  "excluded_categories",
+  "override_section",
+  "can_be_overridden",
+  "override_priority",
+  "override_by",
+  "column_break_override",
+  "stacking_allowed",
+  "stack_limit",
+  "usage_section",
+  "usage_count",
+  "total_commission_generated",
+  "average_commission_amount",
+  "column_break_usage",
+  "total_gmv_processed",
+  "last_applied_date",
+  "last_applied_order",
+  "audit_section",
+  "created_by",
+  "created_at",
+  "column_break_audit",
+  "modified_by_user",
+  "modified_at_date",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "description": "Display name for this commission rule",
+   "fieldname": "rule_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Rule Name",
+   "reqd": 1
+  },
+  {
+   "description": "Unique identifier code for this rule",
+   "fieldname": "rule_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Rule Code",
+   "unique": 1
+  },
+  {
+   "default": "Standard",
+   "description": "Type of commission rule",
+   "fieldname": "rule_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Rule Type",
+   "options": "Standard\nCategory Based\nSeller Tier Based\nVolume Based\nPromotional\nSeasonal\nFlash Sale\nNew Seller\nVIP Seller\nCustom",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nActive\nSuspended\nExpired\nArchived",
+   "reqd": 1
+  },
+  {
+   "description": "Tenant this rule belongs to (blank for platform-wide)",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "default": "100",
+   "description": "Higher priority rules are evaluated first (1-1000)",
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Priority",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Use as default rule when no other rules match",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default Rule"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "description": "Detailed description of when and how this rule applies",
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "conditions_section",
+   "fieldtype": "Section Break",
+   "label": "Application Conditions"
+  },
+  {
+   "default": "All",
+   "description": "What this rule applies to",
+   "fieldname": "apply_to",
+   "fieldtype": "Select",
+   "label": "Apply To",
+   "options": "All\nCategory\nSeller\nSeller Tier\nProduct Type\nListing\nOrder Value Range\nQuantity Range",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.apply_to!='All' && doc.apply_to!='Order Value Range' && doc.apply_to!='Quantity Range'",
+   "description": "Specific value for the apply_to filter",
+   "fieldname": "apply_to_value",
+   "fieldtype": "Data",
+   "label": "Apply To Value"
+  },
+  {
+   "depends_on": "eval:doc.apply_to!='All'",
+   "default": "Equals",
+   "description": "How to match the apply_to value",
+   "fieldname": "apply_to_operator",
+   "fieldtype": "Select",
+   "label": "Operator",
+   "options": "Equals\nNot Equals\nIn List\nNot In List\nContains\nStarts With"
+  },
+  {
+   "fieldname": "column_break_conditions",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Filter by product category",
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "description": "Filter by seller tier",
+   "fieldname": "seller_tier",
+   "fieldtype": "Link",
+   "label": "Seller Tier",
+   "options": "Seller Tier"
+  },
+  {
+   "description": "Filter by seller type",
+   "fieldname": "seller_type",
+   "fieldtype": "Select",
+   "label": "Seller Type",
+   "options": "\nIndividual\nBusiness\nEnterprise"
+  },
+  {
+   "description": "Filter by product type",
+   "fieldname": "product_type",
+   "fieldtype": "Select",
+   "label": "Product Type",
+   "options": "\nPhysical\nDigital\nService\nSubscription"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "advanced_conditions_section",
+   "fieldtype": "Section Break",
+   "label": "Advanced Conditions"
+  },
+  {
+   "default": "Simple",
+   "description": "Type of condition matching",
+   "fieldname": "condition_type",
+   "fieldtype": "Select",
+   "label": "Condition Type",
+   "options": "Simple\nAND\nOR\nCustom Expression"
+  },
+  {
+   "description": "Minimum order value for rule to apply",
+   "fieldname": "min_order_value",
+   "fieldtype": "Currency",
+   "label": "Min Order Value"
+  },
+  {
+   "description": "Maximum order value for rule to apply (0 = no limit)",
+   "fieldname": "max_order_value",
+   "fieldtype": "Currency",
+   "label": "Max Order Value"
+  },
+  {
+   "fieldname": "column_break_advanced",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Minimum quantity for rule to apply",
+   "fieldname": "min_quantity",
+   "fieldtype": "Int",
+   "label": "Min Quantity"
+  },
+  {
+   "description": "Maximum quantity for rule to apply (0 = no limit)",
+   "fieldname": "max_quantity",
+   "fieldtype": "Int",
+   "label": "Max Quantity"
+  },
+  {
+   "depends_on": "eval:doc.condition_type=='Custom Expression'",
+   "description": "Python expression for custom condition (use ctx.order, ctx.seller, ctx.listing)",
+   "fieldname": "custom_condition",
+   "fieldtype": "Code",
+   "label": "Custom Condition",
+   "options": "Python"
+  },
+  {
+   "fieldname": "commission_section",
+   "fieldtype": "Section Break",
+   "label": "Commission Configuration"
+  },
+  {
+   "default": "Percentage",
+   "description": "How commission is calculated",
+   "fieldname": "commission_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Commission Type",
+   "options": "Percentage\nFixed Amount\nPercentage + Fixed\nTiered\nCustom Formula",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Commission rate as percentage (e.g., 10 for 10%)",
+   "fieldname": "commission_rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Commission Rate (%)"
+  },
+  {
+   "default": "0",
+   "description": "Fixed commission amount per transaction",
+   "fieldname": "fixed_commission",
+   "fieldtype": "Currency",
+   "label": "Fixed Commission"
+  },
+  {
+   "fieldname": "column_break_commission",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Minimum commission to charge",
+   "fieldname": "minimum_commission",
+   "fieldtype": "Currency",
+   "label": "Minimum Commission"
+  },
+  {
+   "default": "0",
+   "description": "Maximum commission to charge (0 = no limit)",
+   "fieldname": "maximum_commission",
+   "fieldtype": "Currency",
+   "label": "Maximum Commission"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "commission_currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "calculation_base_section",
+   "fieldtype": "Section Break",
+   "label": "Calculation Base"
+  },
+  {
+   "default": "Order Total",
+   "description": "What to base commission calculation on",
+   "fieldname": "calculation_base",
+   "fieldtype": "Select",
+   "label": "Calculation Base",
+   "options": "Order Total\nSubtotal\nItem Price\nNet Amount"
+  },
+  {
+   "default": "0",
+   "description": "Exclude shipping cost from commission base",
+   "fieldname": "exclude_shipping",
+   "fieldtype": "Check",
+   "label": "Exclude Shipping"
+  },
+  {
+   "default": "0",
+   "description": "Exclude tax from commission base",
+   "fieldname": "exclude_tax",
+   "fieldtype": "Check",
+   "label": "Exclude Tax"
+  },
+  {
+   "fieldname": "column_break_calc_base",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Exclude platform discounts from commission base",
+   "fieldname": "exclude_discounts",
+   "fieldtype": "Check",
+   "label": "Exclude Discounts"
+  },
+  {
+   "default": "0",
+   "description": "Include seller-funded discounts in commission base",
+   "fieldname": "include_seller_discounts",
+   "fieldtype": "Check",
+   "label": "Include Seller Discounts"
+  },
+  {
+   "fieldname": "validity_section",
+   "fieldtype": "Section Break",
+   "label": "Validity Period"
+  },
+  {
+   "description": "Date from which this rule is effective",
+   "fieldname": "effective_from",
+   "fieldtype": "Datetime",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "description": "Date until which this rule is effective",
+   "fieldname": "effective_until",
+   "fieldtype": "Datetime",
+   "label": "Effective Until"
+  },
+  {
+   "default": "0",
+   "description": "Rule has no end date",
+   "fieldname": "is_perpetual",
+   "fieldtype": "Check",
+   "label": "Is Perpetual"
+  },
+  {
+   "fieldname": "column_break_validity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Days of week this rule applies (JSON array, e.g., [1,2,3,4,5] for weekdays)",
+   "fieldname": "day_of_week_restrictions",
+   "fieldtype": "JSON",
+   "label": "Day of Week Restrictions"
+  },
+  {
+   "description": "Time of day when rule starts (HH:MM)",
+   "fieldname": "time_start",
+   "fieldtype": "Time",
+   "label": "Time Start"
+  },
+  {
+   "description": "Time of day when rule ends (HH:MM)",
+   "fieldname": "time_end",
+   "fieldtype": "Time",
+   "label": "Time End"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "restrictions_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Restrictions"
+  },
+  {
+   "description": "JSON list of seller profile names this rule is restricted to",
+   "fieldname": "restricted_sellers",
+   "fieldtype": "JSON",
+   "label": "Restricted to Sellers"
+  },
+  {
+   "description": "JSON list of seller profile names excluded from this rule",
+   "fieldname": "excluded_sellers",
+   "fieldtype": "JSON",
+   "label": "Excluded Sellers"
+  },
+  {
+   "fieldname": "column_break_restrictions",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "JSON list of category names this rule is restricted to",
+   "fieldname": "restricted_categories",
+   "fieldtype": "JSON",
+   "label": "Restricted to Categories"
+  },
+  {
+   "description": "JSON list of category names excluded from this rule",
+   "fieldname": "excluded_categories",
+   "fieldtype": "JSON",
+   "label": "Excluded Categories"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "override_section",
+   "fieldtype": "Section Break",
+   "label": "Override Settings"
+  },
+  {
+   "default": "1",
+   "description": "Allow higher priority rules to override this rule",
+   "fieldname": "can_be_overridden",
+   "fieldtype": "Check",
+   "label": "Can Be Overridden"
+  },
+  {
+   "description": "Minimum priority required to override this rule",
+   "fieldname": "override_priority",
+   "fieldtype": "Int",
+   "label": "Override Priority Threshold"
+  },
+  {
+   "description": "Roles that can override this rule",
+   "fieldname": "override_by",
+   "fieldtype": "JSON",
+   "label": "Override Roles"
+  },
+  {
+   "fieldname": "column_break_override",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Allow this rule to stack with other rules",
+   "fieldname": "stacking_allowed",
+   "fieldtype": "Check",
+   "label": "Stacking Allowed"
+  },
+  {
+   "depends_on": "eval:doc.stacking_allowed",
+   "default": "1",
+   "description": "Maximum number of rules that can stack with this one",
+   "fieldname": "stack_limit",
+   "fieldtype": "Int",
+   "label": "Stack Limit"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "usage_section",
+   "fieldtype": "Section Break",
+   "label": "Usage Statistics"
+  },
+  {
+   "default": "0",
+   "description": "Number of times this rule has been applied",
+   "fieldname": "usage_count",
+   "fieldtype": "Int",
+   "label": "Usage Count",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Total commission generated by this rule",
+   "fieldname": "total_commission_generated",
+   "fieldtype": "Currency",
+   "label": "Total Commission Generated",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Average commission per application",
+   "fieldname": "average_commission_amount",
+   "fieldtype": "Currency",
+   "label": "Average Commission",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_usage",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Total GMV processed with this rule",
+   "fieldname": "total_gmv_processed",
+   "fieldtype": "Currency",
+   "label": "Total GMV Processed",
+   "read_only": 1
+  },
+  {
+   "description": "Date this rule was last applied",
+   "fieldname": "last_applied_date",
+   "fieldtype": "Datetime",
+   "label": "Last Applied",
+   "read_only": 1
+  },
+  {
+   "description": "Last order this rule was applied to",
+   "fieldname": "last_applied_order",
+   "fieldtype": "Link",
+   "label": "Last Applied Order",
+   "options": "Sub Order",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "audit_section",
+   "fieldtype": "Section Break",
+   "label": "Audit Trail"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_audit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "modified_by_user",
+   "fieldtype": "Link",
+   "label": "Modified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_at_date",
+   "fieldtype": "Datetime",
+   "label": "Modified At",
+   "read_only": 1
+  },
+  {
+   "description": "Internal notes about this rule",
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Commission Plan",
+   "link_fieldname": "commission_plan"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Commission Rule",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "rule_name, rule_code, rule_type, status, category",
+ "show_name_in_global_search": 1,
+ "sort_field": "priority",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Draft"
+  },
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "orange",
+   "title": "Suspended"
+  },
+  {
+   "color": "red",
+   "title": "Expired"
+  },
+  {
+   "color": "gray",
+   "title": "Archived"
+  }
+ ],
+ "title_field": "rule_name",
+ "track_changes": 1
+}

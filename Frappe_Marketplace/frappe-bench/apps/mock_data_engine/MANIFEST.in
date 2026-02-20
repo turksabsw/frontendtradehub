@@ -1,0 +1,19 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include mock_data_engine *.css
+recursive-include mock_data_engine *.csv
+recursive-include mock_data_engine *.html
+recursive-include mock_data_engine *.ico
+recursive-include mock_data_engine *.js
+recursive-include mock_data_engine *.json
+recursive-include mock_data_engine *.md
+recursive-include mock_data_engine *.png
+recursive-include mock_data_engine *.py
+recursive-include mock_data_engine *.svg
+recursive-include mock_data_engine *.txt
+recursive-include mock_data_engine *.jinja2
+recursive-exclude mock_data_engine *.pyc

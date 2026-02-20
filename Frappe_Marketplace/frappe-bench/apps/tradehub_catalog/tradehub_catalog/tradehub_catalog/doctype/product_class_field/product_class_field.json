@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "field_name",
+  "field_label",
+  "column_break_1",
+  "fieldtype",
+  "options",
+  "settings_section",
+  "is_required",
+  "is_unique",
+  "column_break_2",
+  "default_value",
+  "sort_order",
+  "display_section",
+  "description",
+  "column_break_3",
+  "depends_on",
+  "read_only"
+ ],
+ "fields": [
+  {
+   "fieldname": "field_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Field Name",
+   "reqd": 1,
+   "description": "Internal field name (lowercase, underscores allowed)"
+  },
+  {
+   "fieldname": "field_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Field Label",
+   "reqd": 1,
+   "description": "Display label for the field"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fieldtype",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Field Type",
+   "options": "Data\nText\nLong Text\nText Editor\nInt\nFloat\nCurrency\nCheck\nSelect\nLink\nDate\nDatetime\nTime\nAttach\nAttach Image\nColor\nCode\nJSON\nPassword\nRead Only\nSmall Text",
+   "reqd": 1,
+   "description": "Type of field (maps to Frappe fieldtypes)"
+  },
+  {
+   "fieldname": "options",
+   "fieldtype": "Small Text",
+   "label": "Options",
+   "description": "For Select: newline-separated options. For Link: DocType name. For Code: language"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Field Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Required",
+   "description": "If checked, this field must be filled"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_unique",
+   "fieldtype": "Check",
+   "label": "Is Unique",
+   "description": "If checked, value must be unique across all products"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_value",
+   "fieldtype": "Small Text",
+   "label": "Default Value",
+   "description": "Default value for new products"
+  },
+  {
+   "default": "0",
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Sort Order",
+   "description": "Order in which this field appears"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Help text shown below the field"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "depends_on",
+   "fieldtype": "Data",
+   "label": "Depends On",
+   "description": "Show this field only when condition is met (e.g., eval:doc.status=='Active')"
+  },
+  {
+   "default": "0",
+   "fieldname": "read_only",
+   "fieldtype": "Check",
+   "label": "Read Only",
+   "description": "If checked, field cannot be edited by users"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Product Class Field",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

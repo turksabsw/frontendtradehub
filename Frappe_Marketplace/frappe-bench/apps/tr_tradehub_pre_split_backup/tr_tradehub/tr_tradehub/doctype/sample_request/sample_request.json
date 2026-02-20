@@ -1,0 +1,692 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "SMP-.#####",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "request_info_section",
+    "request_date",
+    "status",
+    "column_break_request",
+    "sample_type",
+    "priority",
+    "product_section",
+    "sku_product",
+    "product_name",
+    "column_break_product",
+    "product_sku_code",
+    "product_status",
+    "ownership_section",
+    "seller",
+    "seller_name",
+    "column_break_ownership",
+    "tenant",
+    "tenant_name",
+    "buyer_section",
+    "buyer",
+    "buyer_name",
+    "buyer_company",
+    "column_break_buyer",
+    "buyer_email",
+    "buyer_phone",
+    "sample_details_section",
+    "quantity",
+    "variant",
+    "variant_name",
+    "column_break_sample_details",
+    "specifications",
+    "customization_notes",
+    "pricing_section",
+    "sample_price",
+    "currency",
+    "column_break_pricing",
+    "shipping_cost",
+    "total_cost",
+    "payment_section",
+    "payment_status",
+    "payment_date",
+    "column_break_payment",
+    "payment_reference",
+    "payment_method",
+    "shipping_section",
+    "shipping_address",
+    "shipping_city",
+    "shipping_country",
+    "column_break_shipping",
+    "shipping_method",
+    "tracking_number",
+    "carrier",
+    "dates_section",
+    "approved_date",
+    "production_start_date",
+    "column_break_dates",
+    "shipped_date",
+    "delivered_date",
+    "credit_section",
+    "credit_to_order",
+    "credit_percentage",
+    "column_break_credit",
+    "credited_amount",
+    "credited_order",
+    "feedback_section",
+    "buyer_feedback",
+    "quality_rating",
+    "column_break_feedback",
+    "approval_decision",
+    "rejection_reason",
+    "notes_section",
+    "internal_notes",
+    "column_break_notes",
+    "seller_notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "request_info_section",
+      "fieldtype": "Section Break",
+      "label": "Request Information"
+    },
+    {
+      "default": "Today",
+      "fieldname": "request_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Request Date",
+      "reqd": 1,
+      "description": "Date when the sample was requested"
+    },
+    {
+      "default": "Requested",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Requested\nUnder Review\nApproved\nRejected\nIn Production\nReady to Ship\nShipped\nDelivered\nCompleted\nCancelled",
+      "reqd": 1,
+      "description": "Current status of the sample request"
+    },
+    {
+      "fieldname": "column_break_request",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Standard",
+      "fieldname": "sample_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Sample Type",
+      "options": "Standard\nCustom\nPrototype\nPre-production",
+      "reqd": 1,
+      "description": "Type of sample requested - Standard (existing product), Custom (modified product), Prototype (new design), Pre-production (bulk production sample)"
+    },
+    {
+      "default": "Normal",
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "label": "Priority",
+      "options": "Low\nNormal\nHigh\nUrgent",
+      "description": "Priority level for processing this sample request"
+    },
+    {
+      "fieldname": "product_section",
+      "fieldtype": "Section Break",
+      "label": "Product Information"
+    },
+    {
+      "fieldname": "sku_product",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "SKU Product",
+      "options": "SKU Product",
+      "reqd": 1,
+      "description": "The product for which sample is requested"
+    },
+    {
+      "fetch_from": "sku_product.product_name",
+      "fieldname": "product_name",
+      "fieldtype": "Data",
+      "label": "Product Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "column_break_product",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "sku_product.sku_code",
+      "fieldname": "product_sku_code",
+      "fieldtype": "Data",
+      "label": "Product SKU Code",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fetch_from": "sku_product.status",
+      "fieldname": "product_status",
+      "fieldtype": "Data",
+      "label": "Product Status",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "ownership_section",
+      "fieldtype": "Section Break",
+      "label": "Seller Information"
+    },
+    {
+      "fetch_from": "sku_product.seller",
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "label": "Seller",
+      "options": "Seller Profile",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fetch_from": "sku_product.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "label": "Seller Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "column_break_ownership",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "sku_product.tenant",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from SKU Product - Multi-tenant isolation field"
+    },
+    {
+      "fetch_from": "sku_product.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "buyer_section",
+      "fieldtype": "Section Break",
+      "label": "Buyer Information"
+    },
+    {
+      "fieldname": "buyer",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Buyer",
+      "options": "Buyer Profile",
+      "reqd": 1,
+      "description": "The buyer requesting the sample"
+    },
+    {
+      "fetch_from": "buyer.buyer_name",
+      "fieldname": "buyer_name",
+      "fieldtype": "Data",
+      "label": "Buyer Name",
+      "read_only": 1,
+      "description": "Auto-filled from Buyer Profile"
+    },
+    {
+      "fetch_from": "buyer.company_name",
+      "fieldname": "buyer_company",
+      "fieldtype": "Data",
+      "label": "Company Name",
+      "read_only": 1,
+      "description": "Auto-filled from Buyer Profile"
+    },
+    {
+      "fieldname": "column_break_buyer",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "buyer.email",
+      "fieldname": "buyer_email",
+      "fieldtype": "Data",
+      "label": "Buyer Email",
+      "read_only": 1,
+      "description": "Auto-filled from Buyer Profile"
+    },
+    {
+      "fetch_from": "buyer.phone",
+      "fieldname": "buyer_phone",
+      "fieldtype": "Data",
+      "label": "Buyer Phone",
+      "read_only": 1,
+      "description": "Auto-filled from Buyer Profile"
+    },
+    {
+      "fieldname": "sample_details_section",
+      "fieldtype": "Section Break",
+      "label": "Sample Details"
+    },
+    {
+      "default": "1",
+      "fieldname": "quantity",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Quantity",
+      "reqd": 1,
+      "description": "Number of sample units requested"
+    },
+    {
+      "fieldname": "variant",
+      "fieldtype": "Link",
+      "label": "Product Variant",
+      "options": "Product Variant",
+      "description": "Specific variant if applicable"
+    },
+    {
+      "fetch_from": "variant.variant_name",
+      "fieldname": "variant_name",
+      "fieldtype": "Data",
+      "label": "Variant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Product Variant"
+    },
+    {
+      "fieldname": "column_break_sample_details",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "specifications",
+      "fieldtype": "Small Text",
+      "label": "Specifications",
+      "description": "Specific requirements for the sample (color, size, material, etc.)"
+    },
+    {
+      "fieldname": "customization_notes",
+      "fieldtype": "Small Text",
+      "label": "Customization Notes",
+      "description": "Notes for custom or prototype samples"
+    },
+    {
+      "fieldname": "pricing_section",
+      "fieldtype": "Section Break",
+      "label": "Pricing"
+    },
+    {
+      "default": "0",
+      "fieldname": "sample_price",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Sample Price",
+      "reqd": 1,
+      "description": "Price per sample unit"
+    },
+    {
+      "default": "USD",
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "reqd": 1,
+      "description": "Currency for pricing"
+    },
+    {
+      "fieldname": "column_break_pricing",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "shipping_cost",
+      "fieldtype": "Currency",
+      "label": "Shipping Cost",
+      "description": "Estimated shipping cost for the sample"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_cost",
+      "fieldtype": "Currency",
+      "label": "Total Cost",
+      "read_only": 1,
+      "description": "Auto-calculated total (sample_price * quantity + shipping_cost)"
+    },
+    {
+      "fieldname": "payment_section",
+      "fieldtype": "Section Break",
+      "label": "Payment",
+      "collapsible": 1
+    },
+    {
+      "default": "Pending",
+      "fieldname": "payment_status",
+      "fieldtype": "Select",
+      "label": "Payment Status",
+      "options": "Pending\nPaid\nRefunded\nWaived",
+      "description": "Payment status for the sample"
+    },
+    {
+      "fieldname": "payment_date",
+      "fieldtype": "Date",
+      "label": "Payment Date",
+      "description": "Date when payment was received"
+    },
+    {
+      "fieldname": "column_break_payment",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "payment_reference",
+      "fieldtype": "Data",
+      "label": "Payment Reference",
+      "description": "Payment transaction reference number"
+    },
+    {
+      "fieldname": "payment_method",
+      "fieldtype": "Select",
+      "label": "Payment Method",
+      "options": "\nBank Transfer\nCredit Card\nPayPal\nOther",
+      "description": "Method of payment for the sample"
+    },
+    {
+      "fieldname": "shipping_section",
+      "fieldtype": "Section Break",
+      "label": "Shipping",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "shipping_address",
+      "fieldtype": "Small Text",
+      "label": "Shipping Address",
+      "description": "Complete shipping address for the sample"
+    },
+    {
+      "fieldname": "shipping_city",
+      "fieldtype": "Data",
+      "label": "City",
+      "description": "Shipping city"
+    },
+    {
+      "fieldname": "shipping_country",
+      "fieldtype": "Link",
+      "label": "Country",
+      "options": "Country",
+      "description": "Shipping country"
+    },
+    {
+      "fieldname": "column_break_shipping",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "shipping_method",
+      "fieldtype": "Select",
+      "label": "Shipping Method",
+      "options": "\nStandard\nExpress\nOvernight\nPick Up",
+      "description": "Preferred shipping method"
+    },
+    {
+      "fieldname": "tracking_number",
+      "fieldtype": "Data",
+      "label": "Tracking Number",
+      "description": "Shipment tracking number"
+    },
+    {
+      "fieldname": "carrier",
+      "fieldtype": "Data",
+      "label": "Carrier",
+      "description": "Shipping carrier name"
+    },
+    {
+      "fieldname": "dates_section",
+      "fieldtype": "Section Break",
+      "label": "Key Dates",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "approved_date",
+      "fieldtype": "Date",
+      "label": "Approved Date",
+      "read_only": 1,
+      "description": "Date when the sample request was approved"
+    },
+    {
+      "fieldname": "production_start_date",
+      "fieldtype": "Date",
+      "label": "Production Start Date",
+      "description": "Date when sample production started"
+    },
+    {
+      "fieldname": "column_break_dates",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "shipped_date",
+      "fieldtype": "Date",
+      "label": "Shipped Date",
+      "description": "Date when the sample was shipped"
+    },
+    {
+      "fieldname": "delivered_date",
+      "fieldtype": "Date",
+      "label": "Delivered Date",
+      "description": "Date when the sample was delivered"
+    },
+    {
+      "fieldname": "credit_section",
+      "fieldtype": "Section Break",
+      "label": "Credit to Order",
+      "collapsible": 1,
+      "description": "Sample cost credit options for final order"
+    },
+    {
+      "default": "0",
+      "fieldname": "credit_to_order",
+      "fieldtype": "Check",
+      "label": "Credit to Order",
+      "description": "If checked, sample cost can be credited to a future order"
+    },
+    {
+      "default": "100",
+      "fieldname": "credit_percentage",
+      "fieldtype": "Percent",
+      "label": "Credit Percentage",
+      "depends_on": "credit_to_order",
+      "description": "Percentage of sample cost that can be credited (0-100)"
+    },
+    {
+      "fieldname": "column_break_credit",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "credited_amount",
+      "fieldtype": "Currency",
+      "label": "Credited Amount",
+      "read_only": 1,
+      "description": "Amount credited to an order"
+    },
+    {
+      "fieldname": "credited_order",
+      "fieldtype": "Link",
+      "label": "Credited Order",
+      "options": "Order",
+      "read_only": 1,
+      "description": "The order to which the sample cost was credited"
+    },
+    {
+      "fieldname": "feedback_section",
+      "fieldtype": "Section Break",
+      "label": "Feedback and Approval",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "buyer_feedback",
+      "fieldtype": "Text",
+      "label": "Buyer Feedback",
+      "description": "Feedback from the buyer after receiving the sample"
+    },
+    {
+      "fieldname": "quality_rating",
+      "fieldtype": "Rating",
+      "label": "Quality Rating",
+      "description": "Buyer's quality rating for the sample (1-5 stars)"
+    },
+    {
+      "fieldname": "column_break_feedback",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "approval_decision",
+      "fieldtype": "Select",
+      "label": "Approval Decision",
+      "options": "\nApproved for Production\nRequires Modifications\nRejected",
+      "description": "Buyer's decision after evaluating the sample"
+    },
+    {
+      "fieldname": "rejection_reason",
+      "fieldtype": "Small Text",
+      "label": "Rejection Reason",
+      "depends_on": "eval:doc.approval_decision == 'Rejected' || doc.approval_decision == 'Requires Modifications'",
+      "description": "Reason for rejection or required modifications"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text",
+      "label": "Internal Notes",
+      "description": "Internal notes (not visible to buyer)"
+    },
+    {
+      "fieldname": "column_break_notes",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "seller_notes",
+      "fieldtype": "Text",
+      "label": "Seller Notes",
+      "description": "Notes from seller about the sample request"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "SKU Product",
+      "link_fieldname": "sku_product"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Buyer Profile",
+      "link_fieldname": "buyer"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Order",
+      "link_fieldname": "credited_order"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Sample Request",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "if_owner": 0,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 0,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Buyer",
+      "share": 0,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "product_name, product_sku_code, buyer_name, buyer_company, seller_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "blue",
+      "title": "Requested"
+    },
+    {
+      "color": "yellow",
+      "title": "Under Review"
+    },
+    {
+      "color": "green",
+      "title": "Approved"
+    },
+    {
+      "color": "red",
+      "title": "Rejected"
+    },
+    {
+      "color": "orange",
+      "title": "In Production"
+    },
+    {
+      "color": "purple",
+      "title": "Ready to Ship"
+    },
+    {
+      "color": "cyan",
+      "title": "Shipped"
+    },
+    {
+      "color": "green",
+      "title": "Delivered"
+    },
+    {
+      "color": "green",
+      "title": "Completed"
+    },
+    {
+      "color": "gray",
+      "title": "Cancelled"
+    }
+  ],
+  "title_field": "product_name",
+  "track_changes": 1
+}

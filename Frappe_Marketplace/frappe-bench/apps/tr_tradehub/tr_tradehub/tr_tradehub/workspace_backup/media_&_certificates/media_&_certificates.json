@@ -1,0 +1,87 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-0\", \"type\": \"card\", \"data\": {\"card_name\": \"Media & Certificates\", \"col\": 4}}]",
+ "creation": "2026-02-10 17:29:47.586022",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Media & Certificates",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Media & Certificates",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Media Asset",
+   "link_count": 0,
+   "link_to": "Media Asset",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Media Library",
+   "link_count": 0,
+   "link_to": "Media Library",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "SEO Meta",
+   "link_count": 0,
+   "link_to": "SEO Meta",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Certificate",
+   "link_count": 0,
+   "link_to": "Certificate",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Certificate Type",
+   "link_count": 0,
+   "link_to": "Certificate Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-13 16:18:26.615674",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Media & Certificates",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 12.0,
+ "shortcuts": [],
+ "title": "Media & Certificates"
+}

@@ -1,0 +1,107 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-0\", \"type\": \"card\", \"data\": {\"card_name\": \"RFQ & Quotation\", \"col\": 4}}]",
+ "creation": "2026-02-10 17:29:47.665102",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "RFQ & Quotation",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ & Quotation",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quotation",
+   "link_count": 0,
+   "link_to": "Quotation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ",
+   "link_count": 0,
+   "link_to": "RFQ",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ Message",
+   "link_count": 0,
+   "link_to": "RFQ Message",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ Message Thread",
+   "link_count": 0,
+   "link_to": "RFQ Message Thread",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ NDA Link",
+   "link_count": 0,
+   "link_to": "RFQ NDA Link",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ Quote",
+   "link_count": 0,
+   "link_to": "RFQ Quote",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ Quote Revision",
+   "link_count": 0,
+   "link_to": "RFQ Quote Revision",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-13 16:18:26.496870",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "RFQ & Quotation",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 7.0,
+ "shortcuts": [],
+ "title": "RFQ & Quotation"
+}

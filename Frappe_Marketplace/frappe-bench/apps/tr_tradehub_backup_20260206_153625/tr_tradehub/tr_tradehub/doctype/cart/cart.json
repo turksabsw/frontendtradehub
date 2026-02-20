@@ -1,0 +1,484 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "cart_id",
+    "status",
+    "column_break_basic",
+    "buyer",
+    "buyer_type",
+    "organization",
+    "tenant",
+    "items_section",
+    "items",
+    "seller_summary_section",
+    "seller_summary",
+    "totals_section",
+    "currency",
+    "subtotal",
+    "discount_amount",
+    "column_break_totals",
+    "shipping_amount",
+    "tax_amount",
+    "grand_total",
+    "savings_section",
+    "total_savings",
+    "coupon_code",
+    "column_break_savings",
+    "coupon_discount",
+    "promotion_discount",
+    "cart_settings_section",
+    "is_b2b_cart",
+    "buyer_organization_type",
+    "column_break_settings",
+    "price_includes_tax",
+    "default_tax_rate",
+    "expiry_section",
+    "expires_at",
+    "is_expired",
+    "column_break_expiry",
+    "abandoned_at",
+    "recovery_email_sent",
+    "conversion_section",
+    "converted_to_order",
+    "marketplace_order",
+    "column_break_conversion",
+    "converted_at",
+    "checkout_started_at",
+    "session_section",
+    "session_id",
+    "ip_address",
+    "column_break_session",
+    "user_agent",
+    "last_activity",
+    "system_section",
+    "naming_series",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Cart Information"
+    },
+    {
+      "description": "Auto-generated unique cart identifier",
+      "fieldname": "cart_id",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Cart ID",
+      "read_only": 1,
+      "unique": 1
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nCheckout\nConverted\nAbandoned\nExpired\nMerged",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "buyer",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Buyer",
+      "options": "User",
+      "description": "The user who owns this cart"
+    },
+    {
+      "default": "Individual",
+      "fieldname": "buyer_type",
+      "fieldtype": "Select",
+      "label": "Buyer Type",
+      "options": "Guest\nIndividual\nOrganization"
+    },
+    {
+      "depends_on": "eval:doc.buyer_type=='Organization'",
+      "fieldname": "organization",
+      "fieldtype": "Link",
+      "label": "Organization",
+      "options": "Organization",
+      "description": "Organization account for B2B purchases"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "description": "Multi-tenant isolation"
+    },
+    {
+      "fieldname": "items_section",
+      "fieldtype": "Section Break",
+      "label": "Cart Items"
+    },
+    {
+      "fieldname": "items",
+      "fieldtype": "Table",
+      "label": "Items",
+      "options": "Cart Line",
+      "reqd": 0
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "seller_summary_section",
+      "fieldtype": "Section Break",
+      "label": "Seller Summary"
+    },
+    {
+      "description": "JSON object with seller-wise item groupings and subtotals",
+      "fieldname": "seller_summary",
+      "fieldtype": "JSON",
+      "label": "Seller Summary"
+    },
+    {
+      "fieldname": "totals_section",
+      "fieldtype": "Section Break",
+      "label": "Cart Totals"
+    },
+    {
+      "default": "TRY",
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "reqd": 1
+    },
+    {
+      "default": "0",
+      "description": "Sum of line totals before discounts",
+      "fieldname": "subtotal",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Subtotal",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total discount applied",
+      "fieldname": "discount_amount",
+      "fieldtype": "Currency",
+      "label": "Discount Amount",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_totals",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Estimated shipping cost",
+      "fieldname": "shipping_amount",
+      "fieldtype": "Currency",
+      "label": "Shipping Amount",
+      "options": "currency"
+    },
+    {
+      "default": "0",
+      "description": "Total tax amount",
+      "fieldname": "tax_amount",
+      "fieldtype": "Currency",
+      "label": "Tax Amount",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "grand_total",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Grand Total",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "savings_section",
+      "fieldtype": "Section Break",
+      "label": "Discounts & Savings"
+    },
+    {
+      "default": "0",
+      "description": "Total savings from all discounts",
+      "fieldname": "total_savings",
+      "fieldtype": "Currency",
+      "label": "Total Savings",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "coupon_code",
+      "fieldtype": "Data",
+      "label": "Coupon Code"
+    },
+    {
+      "fieldname": "column_break_savings",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "coupon_discount",
+      "fieldtype": "Currency",
+      "label": "Coupon Discount",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "promotion_discount",
+      "fieldtype": "Currency",
+      "label": "Promotion Discount",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "cart_settings_section",
+      "fieldtype": "Section Break",
+      "label": "Cart Settings"
+    },
+    {
+      "default": "0",
+      "description": "B2B pricing enabled for this cart",
+      "fieldname": "is_b2b_cart",
+      "fieldtype": "Check",
+      "label": "B2B Cart"
+    },
+    {
+      "depends_on": "eval:doc.is_b2b_cart",
+      "fieldname": "buyer_organization_type",
+      "fieldtype": "Select",
+      "label": "Organization Type",
+      "options": "\nWholesale\nDistributor\nRetailer\nManufacturer\nOther"
+    },
+    {
+      "fieldname": "column_break_settings",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "price_includes_tax",
+      "fieldtype": "Check",
+      "label": "Prices Include Tax"
+    },
+    {
+      "default": "18.00",
+      "description": "Default VAT/KDV rate (%)",
+      "fieldname": "default_tax_rate",
+      "fieldtype": "Percent",
+      "label": "Default Tax Rate"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "expiry_section",
+      "fieldtype": "Section Break",
+      "label": "Cart Expiry & Abandonment"
+    },
+    {
+      "description": "Cart will expire after this time",
+      "fieldname": "expires_at",
+      "fieldtype": "Datetime",
+      "label": "Expires At"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_expired",
+      "fieldtype": "Check",
+      "label": "Is Expired",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_expiry",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "When cart was marked as abandoned",
+      "fieldname": "abandoned_at",
+      "fieldtype": "Datetime",
+      "label": "Abandoned At",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "recovery_email_sent",
+      "fieldtype": "Check",
+      "label": "Recovery Email Sent"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "conversion_section",
+      "fieldtype": "Section Break",
+      "label": "Order Conversion"
+    },
+    {
+      "default": "0",
+      "fieldname": "converted_to_order",
+      "fieldtype": "Check",
+      "label": "Converted to Order",
+      "read_only": 1
+    },
+    {
+      "fieldname": "marketplace_order",
+      "fieldtype": "Link",
+      "label": "Marketplace Order",
+      "options": "Marketplace Order",
+      "read_only": 1,
+      "description": "The order created from this cart"
+    },
+    {
+      "fieldname": "column_break_conversion",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "converted_at",
+      "fieldtype": "Datetime",
+      "label": "Converted At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "checkout_started_at",
+      "fieldtype": "Datetime",
+      "label": "Checkout Started At"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "session_section",
+      "fieldtype": "Section Break",
+      "label": "Session Information"
+    },
+    {
+      "description": "Session ID for guest carts",
+      "fieldname": "session_id",
+      "fieldtype": "Data",
+      "label": "Session ID"
+    },
+    {
+      "fieldname": "ip_address",
+      "fieldtype": "Data",
+      "label": "IP Address"
+    },
+    {
+      "fieldname": "column_break_session",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "user_agent",
+      "fieldtype": "Small Text",
+      "label": "User Agent"
+    },
+    {
+      "fieldname": "last_activity",
+      "fieldtype": "Datetime",
+      "label": "Last Activity"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "system_section",
+      "fieldtype": "Section Break",
+      "label": "System"
+    },
+    {
+      "default": "CART-.#####",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Naming Series",
+      "options": "CART-.#####"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Marketplace Order",
+      "link_fieldname": "cart"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Cart",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 0,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "cart_id, buyer, status",
+  "show_name_in_global_search": 0,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "blue",
+      "title": "Active"
+    },
+    {
+      "color": "yellow",
+      "title": "Checkout"
+    },
+    {
+      "color": "green",
+      "title": "Converted"
+    },
+    {
+      "color": "orange",
+      "title": "Abandoned"
+    },
+    {
+      "color": "gray",
+      "title": "Expired"
+    },
+    {
+      "color": "purple",
+      "title": "Merged"
+    }
+  ],
+  "title_field": "cart_id",
+  "track_changes": 1
+}

@@ -1,0 +1,690 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "STORE-.#####",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "store_name",
+    "seller",
+    "slug",
+    "column_break_basic",
+    "status",
+    "tenant",
+    "is_published",
+    "branding_section",
+    "logo",
+    "banner",
+    "favicon",
+    "column_break_branding",
+    "tagline",
+    "short_description",
+    "about_html",
+    "theme_section",
+    "theme",
+    "primary_color",
+    "secondary_color",
+    "column_break_theme",
+    "accent_color",
+    "background_color",
+    "text_color",
+    "layout_section",
+    "layout_type",
+    "show_banner",
+    "show_featured_products",
+    "featured_products_count",
+    "column_break_layout",
+    "show_categories",
+    "show_reviews",
+    "show_contact_info",
+    "products_per_page",
+    "seo_section",
+    "route",
+    "meta_title",
+    "meta_description",
+    "column_break_seo",
+    "meta_keywords",
+    "og_image",
+    "canonical_url",
+    "contact_section",
+    "public_email",
+    "public_phone",
+    "whatsapp_number",
+    "column_break_contact",
+    "show_address",
+    "public_address",
+    "social_media_section",
+    "facebook_url",
+    "instagram_url",
+    "twitter_url",
+    "column_break_social",
+    "linkedin_url",
+    "youtube_url",
+    "tiktok_url",
+    "policies_section",
+    "shipping_policy",
+    "return_policy",
+    "privacy_policy",
+    "terms_of_service",
+    "stats_section",
+    "total_products",
+    "total_views",
+    "total_followers",
+    "column_break_stats",
+    "average_rating",
+    "total_reviews",
+    "total_sales",
+    "custom_section",
+    "custom_css",
+    "custom_header_html",
+    "custom_footer_html",
+    "featured_section",
+    "is_featured",
+    "featured_from",
+    "featured_until",
+    "column_break_featured",
+    "featured_priority",
+    "timestamps_section",
+    "published_at",
+    "last_updated_at",
+    "column_break_timestamps",
+    "created_by",
+    "modified_by"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "store_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Store Name",
+      "reqd": 1,
+      "description": "The public-facing name of the storefront"
+    },
+    {
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller",
+      "options": "Seller Profile",
+      "reqd": 1,
+      "unique": 1,
+      "description": "The seller who owns this storefront"
+    },
+    {
+      "fieldname": "slug",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "URL Slug",
+      "unique": 1,
+      "description": "URL-friendly identifier for the store (e.g., 'my-awesome-store')"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nPending Review\nActive\nSuspended\nArchived",
+      "reqd": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "description": "The tenant this storefront belongs to"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_published",
+      "fieldtype": "Check",
+      "label": "Is Published",
+      "description": "Whether the storefront is visible to the public"
+    },
+    {
+      "fieldname": "branding_section",
+      "fieldtype": "Section Break",
+      "label": "Branding"
+    },
+    {
+      "fieldname": "logo",
+      "fieldtype": "Attach Image",
+      "label": "Logo",
+      "description": "Store logo (recommended size: 200x200px)"
+    },
+    {
+      "fieldname": "banner",
+      "fieldtype": "Attach Image",
+      "label": "Banner",
+      "description": "Store banner image (recommended size: 1200x300px)"
+    },
+    {
+      "fieldname": "favicon",
+      "fieldtype": "Attach Image",
+      "label": "Favicon",
+      "description": "Store favicon (recommended size: 32x32px)"
+    },
+    {
+      "fieldname": "column_break_branding",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "tagline",
+      "fieldtype": "Data",
+      "label": "Tagline",
+      "description": "A short catchy phrase for your store"
+    },
+    {
+      "fieldname": "short_description",
+      "fieldtype": "Small Text",
+      "label": "Short Description",
+      "description": "Brief description of your store (max 250 characters)"
+    },
+    {
+      "fieldname": "about_html",
+      "fieldtype": "Text Editor",
+      "label": "About Store",
+      "description": "Detailed description about your store (HTML supported)"
+    },
+    {
+      "fieldname": "theme_section",
+      "fieldtype": "Section Break",
+      "label": "Theme & Colors"
+    },
+    {
+      "default": "Default",
+      "fieldname": "theme",
+      "fieldtype": "Select",
+      "label": "Theme",
+      "options": "Default\nModern\nClassic\nMinimal\nBold\nElegant\nCustom",
+      "description": "Visual theme for the storefront"
+    },
+    {
+      "default": "#3B82F6",
+      "fieldname": "primary_color",
+      "fieldtype": "Color",
+      "label": "Primary Color",
+      "description": "Main brand color"
+    },
+    {
+      "default": "#1E40AF",
+      "fieldname": "secondary_color",
+      "fieldtype": "Color",
+      "label": "Secondary Color",
+      "description": "Secondary brand color"
+    },
+    {
+      "fieldname": "column_break_theme",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "#F59E0B",
+      "fieldname": "accent_color",
+      "fieldtype": "Color",
+      "label": "Accent Color",
+      "description": "Accent/highlight color for buttons and CTAs"
+    },
+    {
+      "default": "#FFFFFF",
+      "fieldname": "background_color",
+      "fieldtype": "Color",
+      "label": "Background Color",
+      "description": "Main background color"
+    },
+    {
+      "default": "#1F2937",
+      "fieldname": "text_color",
+      "fieldtype": "Color",
+      "label": "Text Color",
+      "description": "Primary text color"
+    },
+    {
+      "fieldname": "layout_section",
+      "fieldtype": "Section Break",
+      "label": "Layout Settings"
+    },
+    {
+      "default": "Grid",
+      "fieldname": "layout_type",
+      "fieldtype": "Select",
+      "label": "Layout Type",
+      "options": "Grid\nList\nMasonry\nCarousel",
+      "description": "Product display layout"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_banner",
+      "fieldtype": "Check",
+      "label": "Show Banner"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_featured_products",
+      "fieldtype": "Check",
+      "label": "Show Featured Products"
+    },
+    {
+      "default": "8",
+      "fieldname": "featured_products_count",
+      "fieldtype": "Int",
+      "label": "Featured Products Count",
+      "description": "Number of featured products to display"
+    },
+    {
+      "fieldname": "column_break_layout",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_categories",
+      "fieldtype": "Check",
+      "label": "Show Categories"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_reviews",
+      "fieldtype": "Check",
+      "label": "Show Reviews"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_contact_info",
+      "fieldtype": "Check",
+      "label": "Show Contact Info"
+    },
+    {
+      "default": "12",
+      "fieldname": "products_per_page",
+      "fieldtype": "Int",
+      "label": "Products Per Page",
+      "description": "Number of products to show per page"
+    },
+    {
+      "fieldname": "seo_section",
+      "fieldtype": "Section Break",
+      "label": "SEO Settings"
+    },
+    {
+      "fieldname": "route",
+      "fieldtype": "Data",
+      "label": "Route",
+      "unique": 1,
+      "description": "URL path for the storefront (auto-generated from slug)"
+    },
+    {
+      "fieldname": "meta_title",
+      "fieldtype": "Data",
+      "label": "Meta Title",
+      "description": "SEO title tag (max 60 characters recommended)"
+    },
+    {
+      "fieldname": "meta_description",
+      "fieldtype": "Small Text",
+      "label": "Meta Description",
+      "description": "SEO meta description (max 160 characters recommended)"
+    },
+    {
+      "fieldname": "column_break_seo",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "meta_keywords",
+      "fieldtype": "Small Text",
+      "label": "Meta Keywords",
+      "description": "Comma-separated keywords for SEO"
+    },
+    {
+      "fieldname": "og_image",
+      "fieldtype": "Attach Image",
+      "label": "OG Image",
+      "description": "Open Graph image for social sharing (1200x630px recommended)"
+    },
+    {
+      "fieldname": "canonical_url",
+      "fieldtype": "Data",
+      "label": "Canonical URL",
+      "options": "URL",
+      "description": "Canonical URL if different from default"
+    },
+    {
+      "fieldname": "contact_section",
+      "fieldtype": "Section Break",
+      "label": "Public Contact Information"
+    },
+    {
+      "fieldname": "public_email",
+      "fieldtype": "Data",
+      "label": "Public Email",
+      "options": "Email",
+      "description": "Contact email shown on storefront"
+    },
+    {
+      "fieldname": "public_phone",
+      "fieldtype": "Data",
+      "label": "Public Phone",
+      "options": "Phone",
+      "description": "Contact phone shown on storefront"
+    },
+    {
+      "fieldname": "whatsapp_number",
+      "fieldtype": "Data",
+      "label": "WhatsApp Number",
+      "options": "Phone",
+      "description": "WhatsApp number for quick contact"
+    },
+    {
+      "fieldname": "column_break_contact",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "show_address",
+      "fieldtype": "Check",
+      "label": "Show Address"
+    },
+    {
+      "depends_on": "eval:doc.show_address==1",
+      "fieldname": "public_address",
+      "fieldtype": "Small Text",
+      "label": "Public Address",
+      "description": "Address shown on storefront (if enabled)"
+    },
+    {
+      "fieldname": "social_media_section",
+      "fieldtype": "Section Break",
+      "label": "Social Media Links",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "facebook_url",
+      "fieldtype": "Data",
+      "label": "Facebook URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "instagram_url",
+      "fieldtype": "Data",
+      "label": "Instagram URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "twitter_url",
+      "fieldtype": "Data",
+      "label": "Twitter/X URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "column_break_social",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "linkedin_url",
+      "fieldtype": "Data",
+      "label": "LinkedIn URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "youtube_url",
+      "fieldtype": "Data",
+      "label": "YouTube URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "tiktok_url",
+      "fieldtype": "Data",
+      "label": "TikTok URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "policies_section",
+      "fieldtype": "Section Break",
+      "label": "Store Policies",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "shipping_policy",
+      "fieldtype": "Text Editor",
+      "label": "Shipping Policy",
+      "description": "Store-specific shipping policy"
+    },
+    {
+      "fieldname": "return_policy",
+      "fieldtype": "Text Editor",
+      "label": "Return Policy",
+      "description": "Store-specific return policy"
+    },
+    {
+      "fieldname": "privacy_policy",
+      "fieldtype": "Text Editor",
+      "label": "Privacy Policy",
+      "description": "Store-specific privacy policy"
+    },
+    {
+      "fieldname": "terms_of_service",
+      "fieldtype": "Text Editor",
+      "label": "Terms of Service",
+      "description": "Store-specific terms of service"
+    },
+    {
+      "fieldname": "stats_section",
+      "fieldtype": "Section Break",
+      "label": "Store Statistics",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "total_products",
+      "fieldtype": "Int",
+      "label": "Total Products",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "total_views",
+      "fieldtype": "Int",
+      "label": "Total Views",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "total_followers",
+      "fieldtype": "Int",
+      "label": "Total Followers",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_stats",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "average_rating",
+      "fieldtype": "Float",
+      "label": "Average Rating",
+      "precision": 2,
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "total_reviews",
+      "fieldtype": "Int",
+      "label": "Total Reviews",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "total_sales",
+      "fieldtype": "Int",
+      "label": "Total Sales",
+      "read_only": 1
+    },
+    {
+      "fieldname": "custom_section",
+      "fieldtype": "Section Break",
+      "label": "Custom Code",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "custom_css",
+      "fieldtype": "Code",
+      "label": "Custom CSS",
+      "options": "CSS",
+      "description": "Custom CSS styles for the storefront"
+    },
+    {
+      "fieldname": "custom_header_html",
+      "fieldtype": "Code",
+      "label": "Custom Header HTML",
+      "options": "HTML",
+      "description": "Custom HTML to inject in header"
+    },
+    {
+      "fieldname": "custom_footer_html",
+      "fieldtype": "Code",
+      "label": "Custom Footer HTML",
+      "options": "HTML",
+      "description": "Custom HTML to inject in footer"
+    },
+    {
+      "fieldname": "featured_section",
+      "fieldtype": "Section Break",
+      "label": "Featured Status",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "is_featured",
+      "fieldtype": "Check",
+      "label": "Is Featured",
+      "description": "Feature this store on marketplace homepage"
+    },
+    {
+      "depends_on": "eval:doc.is_featured==1",
+      "fieldname": "featured_from",
+      "fieldtype": "Datetime",
+      "label": "Featured From"
+    },
+    {
+      "depends_on": "eval:doc.is_featured==1",
+      "fieldname": "featured_until",
+      "fieldtype": "Datetime",
+      "label": "Featured Until"
+    },
+    {
+      "fieldname": "column_break_featured",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.is_featured==1",
+      "fieldname": "featured_priority",
+      "fieldtype": "Int",
+      "label": "Featured Priority",
+      "description": "Higher priority = higher placement"
+    },
+    {
+      "fieldname": "timestamps_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "published_at",
+      "fieldtype": "Datetime",
+      "label": "Published At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "last_updated_at",
+      "fieldtype": "Datetime",
+      "label": "Last Updated At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_timestamps",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "modified_by",
+      "fieldtype": "Link",
+      "label": "Modified By",
+      "options": "User",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Seller Profile",
+      "link_fieldname": "seller"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Listing",
+      "link_fieldname": "storefront"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Storefront",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "All",
+      "share": 0,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "store_name, seller, slug, status",
+  "show_name_in_global_search": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "store_name",
+  "track_changes": 1
+}

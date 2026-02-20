@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "attribute_group",
+  "column_break_1",
+  "sort_order",
+  "is_required"
+ ],
+ "fields": [
+  {
+   "fieldname": "attribute_group",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Attribute Group",
+   "options": "PIM Attribute Group",
+   "reqd": 1,
+   "description": "Link to the PIM Attribute Group to include in this product class"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Sort Order",
+   "description": "Order in which this group appears in the product form"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Required",
+   "description": "If checked, all attributes in this group are required for this product class"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Product Class Attribute Group",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

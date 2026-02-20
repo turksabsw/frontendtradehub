@@ -1,0 +1,236 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "field:template_code",
+  "creation": "2026-02-12 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "template_code",
+    "template_name",
+    "column_break_basic",
+    "enabled",
+    "is_default",
+    "content_section",
+    "description",
+    "content",
+    "settings_section",
+    "contract_type",
+    "validity_days",
+    "column_break_settings",
+    "requires_signature",
+    "auto_expire",
+    "tenant_section",
+    "tenant",
+    "tenant_name",
+    "column_break_tenant",
+    "is_global",
+    "tracking_section",
+    "usage_count",
+    "last_used_at"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Template Information"
+    },
+    {
+      "fieldname": "template_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Template Code",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique identifier for the template (e.g., NDA_STANDARD, NDA_CONFIDENTIAL)"
+    },
+    {
+      "fieldname": "template_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Template Name",
+      "reqd": 1,
+      "description": "Human-readable name for the template"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled",
+      "description": "Whether this template is active and can be used"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default",
+      "description": "Set as default template for this contract type"
+    },
+    {
+      "fieldname": "content_section",
+      "fieldtype": "Section Break",
+      "label": "Contract Content"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "Brief description of when and why this template is used"
+    },
+    {
+      "fieldname": "content",
+      "fieldtype": "Text Editor",
+      "label": "Contract Content",
+      "reqd": 1,
+      "description": "Contract/NDA content (supports Jinja2 variables like {{ buyer_name }}, {{ seller_name }}, {{ rfq_title }})"
+    },
+    {
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Contract Settings"
+    },
+    {
+      "default": "NDA",
+      "fieldname": "contract_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Contract Type",
+      "options": "NDA\nService Agreement\nSales Contract\nPartnership Agreement\nOther",
+      "reqd": 1,
+      "description": "The type of contract this template represents"
+    },
+    {
+      "default": "365",
+      "fieldname": "validity_days",
+      "fieldtype": "Int",
+      "label": "Validity Days",
+      "description": "Number of days the signed contract remains valid (0 for no expiry)"
+    },
+    {
+      "fieldname": "column_break_settings",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "requires_signature",
+      "fieldtype": "Check",
+      "label": "Requires Signature",
+      "description": "Whether parties must sign this contract"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_expire",
+      "fieldtype": "Check",
+      "label": "Auto Expire",
+      "description": "Automatically expire contract instances after validity period"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Tenant Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "in_standard_filter": 1,
+      "description": "Tenant this template belongs to (leave empty for global templates)"
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Tenant"
+    },
+    {
+      "fieldname": "column_break_tenant",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_global",
+      "fieldtype": "Check",
+      "label": "Is Global",
+      "description": "Global templates are available to all tenants"
+    },
+    {
+      "fieldname": "tracking_section",
+      "fieldtype": "Section Break",
+      "label": "Usage Statistics",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "usage_count",
+      "fieldtype": "Int",
+      "label": "Usage Count",
+      "read_only": 1,
+      "description": "Number of contract instances created from this template"
+    },
+    {
+      "fieldname": "last_used_at",
+      "fieldtype": "Datetime",
+      "label": "Last Used At",
+      "read_only": 1,
+      "description": "Timestamp of the last contract instance created"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Contract Instance",
+      "link_fieldname": "contract_template"
+    }
+  ],
+  "modified": "2026-02-12 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Marketplace Contract Template",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 1,
+      "print": 0,
+      "read": 1,
+      "report": 1,
+      "role": "Tenant Admin",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "template_name, contract_type",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "template_name",
+  "track_changes": 1
+}

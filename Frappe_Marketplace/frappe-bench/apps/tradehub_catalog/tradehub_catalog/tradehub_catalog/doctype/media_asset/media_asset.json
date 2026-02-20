@@ -1,0 +1,740 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "asset_code",
+  "title",
+  "asset_type",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "uploaded_by",
+  "file_section",
+  "file_url",
+  "original_filename",
+  "file_extension",
+  "column_break_file",
+  "file_size",
+  "mime_type",
+  "checksum",
+  "image_details_section",
+  "width",
+  "height",
+  "aspect_ratio",
+  "column_break_image",
+  "orientation",
+  "color_space",
+  "has_transparency",
+  "dominant_colors",
+  "video_details_section",
+  "duration",
+  "frame_rate",
+  "video_codec",
+  "column_break_video",
+  "audio_codec",
+  "bitrate",
+  "resolution",
+  "thumbnail_section",
+  "thumbnail_url",
+  "thumbnail_small_url",
+  "thumbnail_medium_url",
+  "column_break_thumbs",
+  "thumbnail_large_url",
+  "thumbnail_status",
+  "thumbnails_generated_at",
+  "optimization_section",
+  "is_optimized",
+  "optimized_url",
+  "optimized_file_size",
+  "column_break_opt",
+  "optimization_status",
+  "optimization_error",
+  "optimized_at",
+  "cdn_section",
+  "cdn_enabled",
+  "cdn_url",
+  "cdn_provider",
+  "column_break_cdn",
+  "cdn_status",
+  "cdn_uploaded_at",
+  "cdn_cache_key",
+  "entity_section",
+  "entity_type",
+  "entity_name",
+  "column_break_entity",
+  "position",
+  "is_primary",
+  "alt_text",
+  "caption",
+  "metadata_section",
+  "exif_data",
+  "tags",
+  "folder",
+  "column_break_meta",
+  "usage_count",
+  "last_accessed_at",
+  "moderation_section",
+  "moderation_status",
+  "moderated_by",
+  "moderated_at",
+  "column_break_moderation",
+  "is_adult_content",
+  "moderation_score",
+  "moderation_notes",
+  "system_section",
+  "naming_series",
+  "storage_provider",
+  "storage_path"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "description": "Auto-generated unique asset identifier",
+   "fieldname": "asset_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Asset Code",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "length": 255
+  },
+  {
+   "default": "Image",
+   "fieldname": "asset_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Asset Type",
+   "options": "Image\nVideo\nDocument\n360 View\nAR Model",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nProcessing\nActive\nFailed\nArchived\nDeleted",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "description": "The tenant this asset belongs to"
+  },
+  {
+   "fieldname": "uploaded_by",
+   "fieldtype": "Link",
+   "label": "Uploaded By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "file_section",
+   "fieldtype": "Section Break",
+   "label": "File Information"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "File URL",
+   "reqd": 1
+  },
+  {
+   "fieldname": "original_filename",
+   "fieldtype": "Data",
+   "label": "Original Filename",
+   "length": 255,
+   "read_only": 1
+  },
+  {
+   "fieldname": "file_extension",
+   "fieldtype": "Data",
+   "label": "File Extension",
+   "length": 20,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_file",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "File size in bytes",
+   "fieldname": "file_size",
+   "fieldtype": "Int",
+   "label": "File Size (bytes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mime_type",
+   "fieldtype": "Data",
+   "label": "MIME Type",
+   "length": 100,
+   "read_only": 1
+  },
+  {
+   "description": "MD5 hash for deduplication",
+   "fieldname": "checksum",
+   "fieldtype": "Data",
+   "label": "Checksum (MD5)",
+   "length": 64,
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:['Image', '360 View'].includes(doc.asset_type)",
+   "fieldname": "image_details_section",
+   "fieldtype": "Section Break",
+   "label": "Image Details"
+  },
+  {
+   "description": "Width in pixels",
+   "fieldname": "width",
+   "fieldtype": "Int",
+   "label": "Width",
+   "read_only": 1
+  },
+  {
+   "description": "Height in pixels",
+   "fieldname": "height",
+   "fieldtype": "Int",
+   "label": "Height",
+   "read_only": 1
+  },
+  {
+   "description": "Width / Height ratio",
+   "fieldname": "aspect_ratio",
+   "fieldtype": "Float",
+   "label": "Aspect Ratio",
+   "precision": 4,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_image",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "orientation",
+   "fieldtype": "Select",
+   "label": "Orientation",
+   "options": "\nLandscape\nPortrait\nSquare",
+   "read_only": 1
+  },
+  {
+   "fieldname": "color_space",
+   "fieldtype": "Select",
+   "label": "Color Space",
+   "options": "\nRGB\nsRGB\nAdobe RGB\nCMYK\nGrayscale",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "has_transparency",
+   "fieldtype": "Check",
+   "label": "Has Transparency",
+   "read_only": 1
+  },
+  {
+   "description": "JSON array of dominant colors (hex codes)",
+   "fieldname": "dominant_colors",
+   "fieldtype": "JSON",
+   "label": "Dominant Colors",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.asset_type=='Video'",
+   "fieldname": "video_details_section",
+   "fieldtype": "Section Break",
+   "label": "Video Details"
+  },
+  {
+   "description": "Duration in seconds",
+   "fieldname": "duration",
+   "fieldtype": "Float",
+   "label": "Duration (seconds)",
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "frame_rate",
+   "fieldtype": "Float",
+   "label": "Frame Rate (fps)",
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "video_codec",
+   "fieldtype": "Data",
+   "label": "Video Codec",
+   "length": 50,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_video",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "audio_codec",
+   "fieldtype": "Data",
+   "label": "Audio Codec",
+   "length": 50,
+   "read_only": 1
+  },
+  {
+   "description": "Bitrate in kbps",
+   "fieldname": "bitrate",
+   "fieldtype": "Int",
+   "label": "Bitrate (kbps)",
+   "read_only": 1
+  },
+  {
+   "description": "e.g., 1920x1080, 4K",
+   "fieldname": "resolution",
+   "fieldtype": "Data",
+   "label": "Resolution",
+   "length": 50,
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "thumbnail_section",
+   "fieldtype": "Section Break",
+   "label": "Thumbnails"
+  },
+  {
+   "description": "Default thumbnail URL",
+   "fieldname": "thumbnail_url",
+   "fieldtype": "Attach Image",
+   "label": "Thumbnail"
+  },
+  {
+   "description": "Small thumbnail (100x100)",
+   "fieldname": "thumbnail_small_url",
+   "fieldtype": "Data",
+   "label": "Small Thumbnail URL",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "description": "Medium thumbnail (300x300)",
+   "fieldname": "thumbnail_medium_url",
+   "fieldtype": "Data",
+   "label": "Medium Thumbnail URL",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_thumbs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Large thumbnail (600x600)",
+   "fieldname": "thumbnail_large_url",
+   "fieldtype": "Data",
+   "label": "Large Thumbnail URL",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "thumbnail_status",
+   "fieldtype": "Select",
+   "label": "Thumbnail Status",
+   "options": "Pending\nProcessing\nGenerated\nFailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "thumbnails_generated_at",
+   "fieldtype": "Datetime",
+   "label": "Thumbnails Generated At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "optimization_section",
+   "fieldtype": "Section Break",
+   "label": "Optimization"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_optimized",
+   "fieldtype": "Check",
+   "label": "Is Optimized",
+   "read_only": 1
+  },
+  {
+   "description": "URL to optimized version",
+   "fieldname": "optimized_url",
+   "fieldtype": "Data",
+   "label": "Optimized URL",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "description": "Optimized file size in bytes",
+   "fieldname": "optimized_file_size",
+   "fieldtype": "Int",
+   "label": "Optimized File Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_opt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "optimization_status",
+   "fieldtype": "Select",
+   "label": "Optimization Status",
+   "options": "Pending\nProcessing\nCompleted\nFailed\nSkipped",
+   "read_only": 1
+  },
+  {
+   "fieldname": "optimization_error",
+   "fieldtype": "Small Text",
+   "label": "Optimization Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "optimized_at",
+   "fieldtype": "Datetime",
+   "label": "Optimized At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "cdn_section",
+   "fieldtype": "Section Break",
+   "label": "CDN Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "cdn_enabled",
+   "fieldtype": "Check",
+   "label": "CDN Enabled"
+  },
+  {
+   "depends_on": "eval:doc.cdn_enabled",
+   "description": "Public CDN URL for fast delivery",
+   "fieldname": "cdn_url",
+   "fieldtype": "Data",
+   "label": "CDN URL",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cdn_enabled",
+   "fieldname": "cdn_provider",
+   "fieldtype": "Select",
+   "label": "CDN Provider",
+   "options": "\nCloudflare\nAWS CloudFront\nBunny CDN\nFastly\nAkamai"
+  },
+  {
+   "fieldname": "column_break_cdn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.cdn_enabled",
+   "default": "Pending",
+   "fieldname": "cdn_status",
+   "fieldtype": "Select",
+   "label": "CDN Status",
+   "options": "Pending\nUploading\nActive\nFailed\nPurged",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cdn_enabled",
+   "fieldname": "cdn_uploaded_at",
+   "fieldtype": "Datetime",
+   "label": "CDN Uploaded At",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cdn_enabled",
+   "description": "Cache invalidation key",
+   "fieldname": "cdn_cache_key",
+   "fieldtype": "Data",
+   "label": "CDN Cache Key",
+   "read_only": 1
+  },
+  {
+   "fieldname": "entity_section",
+   "fieldtype": "Section Break",
+   "label": "Linked Entity"
+  },
+  {
+   "fieldname": "entity_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Entity Type",
+   "options": "\nListing\nListing Variant\nStorefront\nSeller Profile\nCategory\nReview\nOrganization\nBanner\nPromotion"
+  },
+  {
+   "depends_on": "eval:doc.entity_type",
+   "fieldname": "entity_name",
+   "fieldtype": "Dynamic Link",
+   "in_standard_filter": 1,
+   "label": "Entity Name",
+   "options": "entity_type"
+  },
+  {
+   "fieldname": "column_break_entity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Display order (lower = first)",
+   "fieldname": "position",
+   "fieldtype": "Int",
+   "label": "Position"
+  },
+  {
+   "default": "0",
+   "description": "Mark as primary/featured image",
+   "fieldname": "is_primary",
+   "fieldtype": "Check",
+   "label": "Is Primary"
+  },
+  {
+   "description": "Alternative text for accessibility",
+   "fieldname": "alt_text",
+   "fieldtype": "Data",
+   "label": "Alt Text",
+   "length": 255
+  },
+  {
+   "fieldname": "caption",
+   "fieldtype": "Small Text",
+   "label": "Caption",
+   "length": 500
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "metadata_section",
+   "fieldtype": "Section Break",
+   "label": "Metadata"
+  },
+  {
+   "description": "EXIF data from image (JSON)",
+   "fieldname": "exif_data",
+   "fieldtype": "JSON",
+   "label": "EXIF Data",
+   "read_only": 1
+  },
+  {
+   "description": "Comma-separated tags for search",
+   "fieldname": "tags",
+   "fieldtype": "Small Text",
+   "label": "Tags"
+  },
+  {
+   "description": "Virtual folder for organization",
+   "fieldname": "folder",
+   "fieldtype": "Data",
+   "label": "Folder",
+   "length": 255
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Number of times this asset is used",
+   "fieldname": "usage_count",
+   "fieldtype": "Int",
+   "label": "Usage Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_accessed_at",
+   "fieldtype": "Datetime",
+   "label": "Last Accessed At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "moderation_section",
+   "fieldtype": "Section Break",
+   "label": "Content Moderation"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "moderation_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Moderation Status",
+   "options": "Pending\nIn Review\nApproved\nRejected\nFlagged",
+   "read_only": 1
+  },
+  {
+   "fieldname": "moderated_by",
+   "fieldtype": "Link",
+   "label": "Moderated By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "moderated_at",
+   "fieldtype": "Datetime",
+   "label": "Moderated At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_moderation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Contains adult/NSFW content",
+   "fieldname": "is_adult_content",
+   "fieldtype": "Check",
+   "label": "Adult Content"
+  },
+  {
+   "description": "AI moderation confidence score (0-100)",
+   "fieldname": "moderation_score",
+   "fieldtype": "Float",
+   "label": "Moderation Score",
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "moderation_notes",
+   "fieldtype": "Small Text",
+   "label": "Moderation Notes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System Information"
+  },
+  {
+   "default": "MDA-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "MDA-.#####"
+  },
+  {
+   "default": "Local",
+   "description": "Where the file is stored",
+   "fieldname": "storage_provider",
+   "fieldtype": "Select",
+   "label": "Storage Provider",
+   "options": "Local\nAWS S3\nGoogle Cloud Storage\nAzure Blob\nBackblaze B2",
+   "read_only": 1
+  },
+  {
+   "description": "Internal storage path/key",
+   "fieldname": "storage_path",
+   "fieldtype": "Data",
+   "label": "Storage Path",
+   "read_only": 1
+  }
+ ],
+ "image_field": "thumbnail_url",
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Listing",
+   "link_fieldname": "primary_image"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Media Asset",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "title, asset_code, original_filename, entity_type, entity_name, tags",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "orange",
+   "title": "Pending"
+  },
+  {
+   "color": "blue",
+   "title": "Processing"
+  },
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "red",
+   "title": "Failed"
+  },
+  {
+   "color": "gray",
+   "title": "Archived"
+  },
+  {
+   "color": "red",
+   "title": "Deleted"
+  }
+ ],
+ "title_field": "title",
+ "track_changes": 1
+}

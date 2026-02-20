@@ -1,0 +1,369 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-23 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "naming_series",
+    "party_type",
+    "party",
+    "party_name",
+    "column_break_basic",
+    "status",
+    "consent_topic",
+    "consent_method",
+    "consent_channel",
+    "consent_details_section",
+    "consent_text",
+    "consent_text_version",
+    "consent_text_hash",
+    "column_break_consent",
+    "ip_address",
+    "user_agent",
+    "source_url",
+    "grant_section",
+    "granted_at",
+    "granted_by",
+    "column_break_grant",
+    "expiry_date",
+    "retention_until",
+    "revoke_section",
+    "revoked_at",
+    "revoked_by",
+    "column_break_revoke",
+    "revocation_reason",
+    "revocation_ip_address",
+    "verification_section",
+    "is_verified",
+    "verified_at",
+    "verification_method",
+    "column_break_verify",
+    "verification_token",
+    "double_opt_in_completed",
+    "tenant_section",
+    "tenant",
+    "company",
+    "notes_section",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Party Information"
+    },
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "CONSENT-.YYYY.-.#####",
+      "default": "CONSENT-.YYYY.-.#####",
+      "reqd": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "party_type",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Party Type",
+      "options": "DocType",
+      "reqd": 1,
+      "description": "Type of party (e.g., User, Customer, Lead, Seller Profile)"
+    },
+    {
+      "fieldname": "party",
+      "fieldtype": "Dynamic Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Party",
+      "options": "party_type",
+      "reqd": 1,
+      "description": "The person/entity giving consent"
+    },
+    {
+      "fieldname": "party_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Party Name",
+      "read_only": 1,
+      "description": "Auto-fetched party name"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Pending\nActive\nRevoked\nExpired",
+      "reqd": 1
+    },
+    {
+      "fieldname": "consent_topic",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Consent Topic",
+      "options": "Consent Topic",
+      "reqd": 1,
+      "description": "What the consent is for"
+    },
+    {
+      "fieldname": "consent_method",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Consent Method",
+      "options": "Consent Method",
+      "description": "How the party can be contacted"
+    },
+    {
+      "fieldname": "consent_channel",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Consent Channel",
+      "options": "Consent Channel",
+      "description": "Where consent was collected"
+    },
+    {
+      "fieldname": "consent_details_section",
+      "fieldtype": "Section Break",
+      "label": "Consent Details"
+    },
+    {
+      "fieldname": "consent_text",
+      "fieldtype": "Link",
+      "label": "Consent Text",
+      "options": "Consent Text",
+      "description": "The consent text that was presented"
+    },
+    {
+      "fieldname": "consent_text_version",
+      "fieldtype": "Int",
+      "label": "Text Version",
+      "read_only": 1,
+      "description": "Version of consent text at time of consent"
+    },
+    {
+      "fieldname": "consent_text_hash",
+      "fieldtype": "Data",
+      "label": "Text Hash",
+      "read_only": 1,
+      "description": "SHA256 hash for verification"
+    },
+    {
+      "fieldname": "column_break_consent",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "ip_address",
+      "fieldtype": "Data",
+      "label": "IP Address",
+      "description": "IP address when consent was given"
+    },
+    {
+      "fieldname": "user_agent",
+      "fieldtype": "Small Text",
+      "label": "User Agent",
+      "description": "Browser/device information"
+    },
+    {
+      "fieldname": "source_url",
+      "fieldtype": "Data",
+      "label": "Source URL",
+      "description": "Page URL where consent was collected"
+    },
+    {
+      "fieldname": "grant_section",
+      "fieldtype": "Section Break",
+      "label": "Grant Information"
+    },
+    {
+      "fieldname": "granted_at",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "Granted At",
+      "reqd": 1,
+      "description": "When consent was granted"
+    },
+    {
+      "fieldname": "granted_by",
+      "fieldtype": "Link",
+      "label": "Granted By",
+      "options": "User",
+      "description": "User who recorded the consent"
+    },
+    {
+      "fieldname": "column_break_grant",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "expiry_date",
+      "fieldtype": "Date",
+      "label": "Expiry Date",
+      "description": "When consent expires (if applicable)"
+    },
+    {
+      "fieldname": "retention_until",
+      "fieldtype": "Date",
+      "label": "Retention Until",
+      "read_only": 1,
+      "description": "KVKK minimum retention date (auto-calculated)"
+    },
+    {
+      "fieldname": "revoke_section",
+      "fieldtype": "Section Break",
+      "label": "Revocation Details",
+      "collapsible": 1,
+      "depends_on": "eval:doc.status=='Revoked'"
+    },
+    {
+      "fieldname": "revoked_at",
+      "fieldtype": "Datetime",
+      "label": "Revoked At",
+      "description": "When consent was revoked"
+    },
+    {
+      "fieldname": "revoked_by",
+      "fieldtype": "Link",
+      "label": "Revoked By",
+      "options": "User"
+    },
+    {
+      "fieldname": "column_break_revoke",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "revocation_reason",
+      "fieldtype": "Small Text",
+      "label": "Revocation Reason"
+    },
+    {
+      "fieldname": "revocation_ip_address",
+      "fieldtype": "Data",
+      "label": "Revocation IP Address"
+    },
+    {
+      "fieldname": "verification_section",
+      "fieldtype": "Section Break",
+      "label": "Verification",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "is_verified",
+      "fieldtype": "Check",
+      "label": "Is Verified",
+      "description": "Whether consent has been verified (e.g., double opt-in)"
+    },
+    {
+      "fieldname": "verified_at",
+      "fieldtype": "Datetime",
+      "label": "Verified At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "verification_method",
+      "fieldtype": "Select",
+      "label": "Verification Method",
+      "options": "\nEmail Link\nSMS Code\nPhone Call\nManual"
+    },
+    {
+      "fieldname": "column_break_verify",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "verification_token",
+      "fieldtype": "Data",
+      "label": "Verification Token",
+      "hidden": 1,
+      "description": "Token for double opt-in verification"
+    },
+    {
+      "default": "0",
+      "fieldname": "double_opt_in_completed",
+      "fieldtype": "Check",
+      "label": "Double Opt-in Completed",
+      "read_only": 1
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Multi-Tenant",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant"
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Audit",
+      "link_doctype": "Consent Audit Log",
+      "link_fieldname": "consent_record"
+    }
+  ],
+  "modified": "2024-01-23 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR Tradehub",
+  "name": "Consent Record",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "read": 1,
+      "write": 1,
+      "role": "All",
+      "if_owner": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "party, party_name, consent_topic, status",
+  "show_name_in_global_search": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "party_name",
+  "track_changes": 1
+}

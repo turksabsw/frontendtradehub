@@ -1,0 +1,321 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "naming_series",
+  "template",
+  "title",
+  "column_break_basic",
+  "status",
+  "party_type",
+  "party",
+  "party_name",
+  "template_snapshot_section",
+  "template_version_snapshot",
+  "template_content_snapshot",
+  "content_hash_snapshot",
+  "dates_section",
+  "created_at",
+  "sent_at",
+  "column_break_dates",
+  "expiry_date",
+  "valid_until",
+  "signature_section",
+  "signature_method",
+  "esign_provider",
+  "esign_transaction",
+  "column_break_signature",
+  "signed_at",
+  "signed_by",
+  "signed_pdf",
+  "rejection_section",
+  "rejected_at",
+  "rejected_by",
+  "rejection_reason",
+  "tenant_section",
+  "tenant",
+  "company",
+  "notes_section",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Information"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CONTRACT-.YYYY.-.#####",
+   "default": "CONTRACT-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Template",
+   "options": "Contract Template",
+   "reqd": 1,
+   "description": "Contract template this instance is based on"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "description": "Contract title (auto-generated from template)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nSent\nPending Signature\nSigned\nRejected\nExpired",
+   "reqd": 1
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Party Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Party",
+   "options": "party_type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Data",
+   "label": "Party Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "template_snapshot_section",
+   "fieldtype": "Section Break",
+   "label": "Template Snapshot",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "template_version_snapshot",
+   "fieldtype": "Int",
+   "label": "Template Version",
+   "read_only": 1,
+   "description": "Template version at time of contract creation"
+  },
+  {
+   "fieldname": "template_content_snapshot",
+   "fieldtype": "Text Editor",
+   "label": "Content Snapshot",
+   "read_only": 1,
+   "description": "Template content at time of contract creation"
+  },
+  {
+   "fieldname": "content_hash_snapshot",
+   "fieldtype": "Data",
+   "label": "Content Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dates_section",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sent_at",
+   "fieldtype": "Datetime",
+   "label": "Sent At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date",
+   "description": "Contract expiry date (after signing)"
+  },
+  {
+   "fieldname": "valid_until",
+   "fieldtype": "Datetime",
+   "label": "Valid Until",
+   "description": "Signature must be completed before this time"
+  },
+  {
+   "fieldname": "signature_section",
+   "fieldtype": "Section Break",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "signature_method",
+   "fieldtype": "Select",
+   "label": "Signature Method",
+   "options": "\nDigital\nWet",
+   "description": "How the contract will be/was signed"
+  },
+  {
+   "fieldname": "esign_provider",
+   "fieldtype": "Link",
+   "label": "E-Sign Provider",
+   "options": "ESign Provider",
+   "depends_on": "eval:doc.signature_method=='Digital'"
+  },
+  {
+   "fieldname": "esign_transaction",
+   "fieldtype": "Link",
+   "label": "E-Sign Transaction",
+   "options": "ESign Transaction",
+   "read_only": 1,
+   "depends_on": "eval:doc.signature_method=='Digital'"
+  },
+  {
+   "fieldname": "column_break_signature",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "signed_at",
+   "fieldtype": "Datetime",
+   "label": "Signed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "signed_by",
+   "fieldtype": "Data",
+   "label": "Signed By",
+   "read_only": 1,
+   "description": "Name of the signer"
+  },
+  {
+   "fieldname": "signed_pdf",
+   "fieldtype": "Attach",
+   "label": "Signed PDF",
+   "description": "Signed contract document"
+  },
+  {
+   "fieldname": "rejection_section",
+   "fieldtype": "Section Break",
+   "label": "Rejection",
+   "collapsible": 1,
+   "depends_on": "eval:doc.status=='Rejected'"
+  },
+  {
+   "fieldname": "rejected_at",
+   "fieldtype": "Datetime",
+   "label": "Rejected At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejected_by",
+   "fieldtype": "Data",
+   "label": "Rejected By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Multi-Tenant",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "group": "Revisions",
+   "link_doctype": "Contract Revision",
+   "link_fieldname": "contract_instance"
+  }
+ ],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Contract Instance",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "read": 1,
+   "role": "All",
+   "if_owner": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "title, template, party, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

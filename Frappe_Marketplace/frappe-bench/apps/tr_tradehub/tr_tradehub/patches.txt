@@ -1,0 +1,26 @@
+[pre_model_sync]
+# Phase 2: JSON to Child Table Migrations (2026-02-12)
+tr_tradehub.patches.v1_0.migrate_listing_json_to_child_tables
+tr_tradehub.patches.v1_0.migrate_seller_badges_json_to_child_table
+
+# Phase 3: Address & Bank Child Tables (2026-02-12)
+tr_tradehub.patches.v1_0.migrate_seller_banking_to_child_table
+
+# Phase 6: Buyer Profile Enhancement (2026-02-12)
+tr_tradehub.patches.v1_0.migrate_buyer_address_to_child_table
+
+[post_model_sync]
+# Phase 7: Order & Payment System - Tax Setup (2026-02-12)
+tr_tradehub.patches.v1_0.setup_default_tax_rates
+
+# Phase 7: Order & Payment System - Commission Plans (2026-02-12)
+tr_tradehub.patches.v1_0.setup_default_commission_plans
+
+# Phase 8: Carrier & Shipping System - Turkish Carriers (2026-02-12)
+tr_tradehub.patches.v1_0.setup_turkish_carriers
+
+# Phase 8: Carrier & Shipping System - Shipping Rules (2026-02-12)
+tr_tradehub.patches.v1_0.setup_default_shipping_rules
+
+# Phase 9: Campaigns, Coupons & Product Ranking (2026-02-12)
+tr_tradehub.patches.v1_0.setup_default_ranking_config

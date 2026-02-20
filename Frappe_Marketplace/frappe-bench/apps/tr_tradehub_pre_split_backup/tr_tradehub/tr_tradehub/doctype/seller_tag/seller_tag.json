@@ -1,0 +1,230 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "field:tag_code",
+  "creation": "2024-01-23 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "tag_name",
+    "tag_code",
+    "column_break_basic",
+    "status",
+    "tag_type",
+    "description_section",
+    "description",
+    "badge_section",
+    "badge_icon",
+    "badge_color",
+    "column_break_badge",
+    "badge_image",
+    "display_priority",
+    "display_section",
+    "show_on_profile",
+    "show_on_listings",
+    "column_break_display",
+    "show_on_storefront",
+    "show_in_search_filters",
+    "timestamps_section",
+    "created_by",
+    "created_at"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "tag_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Tag Name",
+      "reqd": 1,
+      "description": "Display name for this tag (e.g., Trusted Seller, Fast Shipper)"
+    },
+    {
+      "fieldname": "tag_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Tag Code",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique identifier code (e.g., TRUSTED_SELLER, FAST_SHIPPER)"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nInactive",
+      "reqd": 1
+    },
+    {
+      "default": "Achievement",
+      "fieldname": "tag_type",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Tag Type",
+      "options": "Achievement\nBadge\nCertification\nWarning\nSpecial",
+      "reqd": 1,
+      "description": "Category of tag"
+    },
+    {
+      "fieldname": "description_section",
+      "fieldtype": "Section Break",
+      "label": "Description"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "Brief description of what this tag represents"
+    },
+    {
+      "fieldname": "badge_section",
+      "fieldtype": "Section Break",
+      "label": "Badge Display"
+    },
+    {
+      "default": "fa-tag",
+      "fieldname": "badge_icon",
+      "fieldtype": "Data",
+      "label": "Badge Icon",
+      "description": "Font Awesome icon class (e.g., fa-star, fa-shield-alt)"
+    },
+    {
+      "default": "#3498db",
+      "fieldname": "badge_color",
+      "fieldtype": "Color",
+      "label": "Badge Color",
+      "description": "Color for badge display"
+    },
+    {
+      "fieldname": "column_break_badge",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "badge_image",
+      "fieldtype": "Attach Image",
+      "label": "Badge Image",
+      "description": "Custom badge image (optional)"
+    },
+    {
+      "default": "10",
+      "fieldname": "display_priority",
+      "fieldtype": "Int",
+      "label": "Display Priority",
+      "description": "Lower number = higher priority in display order"
+    },
+    {
+      "fieldname": "display_section",
+      "fieldtype": "Section Break",
+      "label": "Display Settings"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_on_profile",
+      "fieldtype": "Check",
+      "label": "Show on Seller Profile",
+      "description": "Display this tag on seller profile pages"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_on_listings",
+      "fieldtype": "Check",
+      "label": "Show on Listings",
+      "description": "Display this tag on product listings"
+    },
+    {
+      "fieldname": "column_break_display",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_on_storefront",
+      "fieldtype": "Check",
+      "label": "Show on Storefront",
+      "description": "Display this tag on seller storefront"
+    },
+    {
+      "default": "0",
+      "fieldname": "show_in_search_filters",
+      "fieldtype": "Check",
+      "label": "Show in Search Filters",
+      "description": "Allow filtering by this tag in search"
+    },
+    {
+      "fieldname": "timestamps_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "created_at",
+      "fieldtype": "Datetime",
+      "label": "Created At",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Seller Tag Rule",
+      "link_fieldname": "target_tag"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Seller Tag Assignment",
+      "link_fieldname": "tag"
+    }
+  ],
+  "modified": "2024-01-23 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Seller Tag",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "read": 1,
+      "role": "All"
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "tag_name, tag_code, tag_type, status",
+  "show_name_in_global_search": 1,
+  "sort_field": "display_priority",
+  "sort_order": "ASC",
+  "states": [],
+  "title_field": "tag_name",
+  "track_changes": 1
+}

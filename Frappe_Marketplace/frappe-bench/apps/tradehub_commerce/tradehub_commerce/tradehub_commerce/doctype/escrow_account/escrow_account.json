@@ -1,0 +1,749 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "escrow_id",
+  "status",
+  "escrow_type",
+  "column_break_basic",
+  "tenant",
+  "created_at",
+  "closed_at",
+  "order_section",
+  "marketplace_order",
+  "sub_order",
+  "column_break_order",
+  "payment_intent",
+  "seller",
+  "buyer",
+  "amount_section",
+  "currency",
+  "total_amount",
+  "held_amount",
+  "column_break_amount",
+  "released_amount",
+  "refunded_amount",
+  "pending_release_amount",
+  "fee_section",
+  "commission_amount",
+  "platform_fee",
+  "processing_fee",
+  "column_break_fee",
+  "total_fees",
+  "net_amount_to_seller",
+  "release_section",
+  "release_condition",
+  "release_trigger",
+  "scheduled_release_date",
+  "column_break_release",
+  "auto_release_enabled",
+  "auto_release_days",
+  "delivery_confirmed_at",
+  "release_approved_by",
+  "release_approved_at",
+  "partial_release_section",
+  "allow_partial_release",
+  "partial_releases",
+  "payout_section",
+  "payout_status",
+  "payout_reference",
+  "payout_date",
+  "column_break_payout",
+  "payout_method",
+  "payout_account",
+  "payout_amount",
+  "payout_error",
+  "dispute_section",
+  "has_dispute",
+  "dispute_case",
+  "dispute_opened_at",
+  "column_break_dispute",
+  "dispute_status",
+  "dispute_resolution",
+  "dispute_resolved_at",
+  "dispute_amount_to_buyer",
+  "dispute_amount_to_seller",
+  "hold_extensions_section",
+  "hold_extended",
+  "hold_extension_count",
+  "hold_extension_reason",
+  "column_break_hold",
+  "original_release_date",
+  "extended_release_date",
+  "max_extensions_allowed",
+  "erpnext_section",
+  "erpnext_journal_entry",
+  "erpnext_payment_entry",
+  "column_break_erpnext",
+  "erpnext_sync_status",
+  "erpnext_sync_error",
+  "metadata_section",
+  "notes",
+  "internal_notes",
+  "metadata",
+  "system_section",
+  "naming_series",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Escrow Information"
+  },
+  {
+   "description": "Unique escrow identifier for external reference",
+   "fieldname": "escrow_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Escrow ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nFunds Held\nPartially Released\nReleased\nDisputed\nDispute Resolved\nRefunded\nPartially Refunded\nCancelled\nExpired",
+   "reqd": 1
+  },
+  {
+   "default": "Order Payment",
+   "description": "Type of escrow transaction",
+   "fieldname": "escrow_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Escrow Type",
+   "options": "Order Payment\nAuction Payment\nService Payment\nMilestone Payment\nDeposit\nOther"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "default": "Now",
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "description": "When escrow was fully closed (released, refunded, or cancelled)",
+   "fieldname": "closed_at",
+   "fieldtype": "Datetime",
+   "label": "Closed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "order_section",
+   "fieldtype": "Section Break",
+   "label": "Order & Parties"
+  },
+  {
+   "fieldname": "marketplace_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Marketplace Order",
+   "options": "Marketplace Order"
+  },
+  {
+   "fieldname": "sub_order",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Sub Order",
+   "options": "Sub Order"
+  },
+  {
+   "fieldname": "column_break_order",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_intent",
+   "fieldtype": "Link",
+   "label": "Payment Intent",
+   "options": "Payment Intent"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Buyer",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount_section",
+   "fieldtype": "Section Break",
+   "label": "Amount Details"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Total amount held in escrow",
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Currently held amount (not yet released)",
+   "fieldname": "held_amount",
+   "fieldtype": "Currency",
+   "label": "Held Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_amount",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Amount released to seller",
+   "fieldname": "released_amount",
+   "fieldtype": "Currency",
+   "label": "Released Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Amount refunded to buyer",
+   "fieldname": "refunded_amount",
+   "fieldtype": "Currency",
+   "label": "Refunded Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Amount pending release approval",
+   "fieldname": "pending_release_amount",
+   "fieldtype": "Currency",
+   "label": "Pending Release Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fee_section",
+   "fieldtype": "Section Break",
+   "label": "Fees & Commissions"
+  },
+  {
+   "default": "0",
+   "description": "Marketplace commission deducted from seller payout",
+   "fieldname": "commission_amount",
+   "fieldtype": "Currency",
+   "label": "Commission Amount",
+   "options": "currency"
+  },
+  {
+   "default": "0",
+   "description": "Platform service fee",
+   "fieldname": "platform_fee",
+   "fieldtype": "Currency",
+   "label": "Platform Fee",
+   "options": "currency"
+  },
+  {
+   "default": "0",
+   "description": "Payment processing fee",
+   "fieldname": "processing_fee",
+   "fieldtype": "Currency",
+   "label": "Processing Fee",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_fee",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Total fees (commission + platform + processing)",
+   "fieldname": "total_fees",
+   "fieldtype": "Currency",
+   "label": "Total Fees",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Net amount seller will receive after fees",
+   "fieldname": "net_amount_to_seller",
+   "fieldtype": "Currency",
+   "label": "Net Amount to Seller",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "release_section",
+   "fieldtype": "Section Break",
+   "label": "Release Settings"
+  },
+  {
+   "default": "Delivery Confirmation",
+   "description": "Condition that triggers fund release",
+   "fieldname": "release_condition",
+   "fieldtype": "Select",
+   "label": "Release Condition",
+   "options": "Delivery Confirmation\nBuyer Confirmation\nTime-based Auto Release\nMilestone Completion\nDispute Resolution\nManual Release"
+  },
+  {
+   "description": "What triggered the release",
+   "fieldname": "release_trigger",
+   "fieldtype": "Select",
+   "label": "Release Trigger",
+   "options": "\nBuyer Confirmed\nAuto Released After Delivery\nAuto Released After Timeout\nAdmin Manual Release\nDispute Resolution\nSeller Request Approved"
+  },
+  {
+   "description": "Date when funds should be released",
+   "fieldname": "scheduled_release_date",
+   "fieldtype": "Datetime",
+   "label": "Scheduled Release Date"
+  },
+  {
+   "fieldname": "column_break_release",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Automatically release funds after delivery + hold period",
+   "fieldname": "auto_release_enabled",
+   "fieldtype": "Check",
+   "label": "Auto Release Enabled"
+  },
+  {
+   "default": "7",
+   "description": "Days after delivery to auto-release (default 7 days)",
+   "fieldname": "auto_release_days",
+   "fieldtype": "Int",
+   "label": "Auto Release Days"
+  },
+  {
+   "fieldname": "delivery_confirmed_at",
+   "fieldtype": "Datetime",
+   "label": "Delivery Confirmed At"
+  },
+  {
+   "fieldname": "release_approved_by",
+   "fieldtype": "Link",
+   "label": "Release Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "release_approved_at",
+   "fieldtype": "Datetime",
+   "label": "Release Approved At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "partial_release_section",
+   "fieldtype": "Section Break",
+   "label": "Partial Releases"
+  },
+  {
+   "default": "1",
+   "description": "Allow releasing funds in multiple installments",
+   "fieldname": "allow_partial_release",
+   "fieldtype": "Check",
+   "label": "Allow Partial Release"
+  },
+  {
+   "description": "JSON array of partial release records",
+   "fieldname": "partial_releases",
+   "fieldtype": "JSON",
+   "label": "Partial Releases"
+  },
+  {
+   "fieldname": "payout_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Payout"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "payout_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payout Status",
+   "options": "Pending\nScheduled\nProcessing\nCompleted\nFailed\nHeld\nCancelled"
+  },
+  {
+   "description": "Payout transaction reference",
+   "fieldname": "payout_reference",
+   "fieldtype": "Data",
+   "label": "Payout Reference"
+  },
+  {
+   "fieldname": "payout_date",
+   "fieldtype": "Datetime",
+   "label": "Payout Date"
+  },
+  {
+   "fieldname": "column_break_payout",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payout_method",
+   "fieldtype": "Select",
+   "label": "Payout Method",
+   "options": "\nBank Transfer\niyzico Payout\nPayTR Payout\nManual"
+  },
+  {
+   "description": "Seller's bank account or payout account",
+   "fieldname": "payout_account",
+   "fieldtype": "Data",
+   "label": "Payout Account"
+  },
+  {
+   "default": "0",
+   "fieldname": "payout_amount",
+   "fieldtype": "Currency",
+   "label": "Payout Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payout_error",
+   "fieldtype": "Small Text",
+   "label": "Payout Error"
+  },
+  {
+   "fieldname": "dispute_section",
+   "fieldtype": "Section Break",
+   "label": "Dispute"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_dispute",
+   "fieldtype": "Check",
+   "label": "Has Dispute"
+  },
+  {
+   "depends_on": "eval:doc.has_dispute",
+   "fieldname": "dispute_case",
+   "fieldtype": "Link",
+   "label": "Dispute Case",
+   "options": "Moderation Case"
+  },
+  {
+   "depends_on": "eval:doc.has_dispute",
+   "fieldname": "dispute_opened_at",
+   "fieldtype": "Datetime",
+   "label": "Dispute Opened At"
+  },
+  {
+   "fieldname": "column_break_dispute",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.has_dispute",
+   "fieldname": "dispute_status",
+   "fieldtype": "Select",
+   "label": "Dispute Status",
+   "options": "\nOpen\nUnder Review\nEscalated\nResolved\nClosed"
+  },
+  {
+   "depends_on": "eval:doc.has_dispute",
+   "description": "Resolution decision",
+   "fieldname": "dispute_resolution",
+   "fieldtype": "Select",
+   "label": "Dispute Resolution",
+   "options": "\nFull Refund to Buyer\nPartial Refund to Buyer\nFull Release to Seller\nPartial Release to Seller\nSplit Decision"
+  },
+  {
+   "depends_on": "eval:doc.has_dispute",
+   "fieldname": "dispute_resolved_at",
+   "fieldtype": "Datetime",
+   "label": "Dispute Resolved At"
+  },
+  {
+   "depends_on": "eval:doc.dispute_resolution",
+   "fieldname": "dispute_amount_to_buyer",
+   "fieldtype": "Currency",
+   "label": "Amount to Buyer (Refund)",
+   "options": "currency"
+  },
+  {
+   "depends_on": "eval:doc.dispute_resolution",
+   "fieldname": "dispute_amount_to_seller",
+   "fieldtype": "Currency",
+   "label": "Amount to Seller (Release)",
+   "options": "currency"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "hold_extensions_section",
+   "fieldtype": "Section Break",
+   "label": "Hold Extensions"
+  },
+  {
+   "default": "0",
+   "fieldname": "hold_extended",
+   "fieldtype": "Check",
+   "label": "Hold Extended"
+  },
+  {
+   "default": "0",
+   "fieldname": "hold_extension_count",
+   "fieldtype": "Int",
+   "label": "Extension Count",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.hold_extended",
+   "fieldname": "hold_extension_reason",
+   "fieldtype": "Select",
+   "label": "Extension Reason",
+   "options": "\nBuyer Request\nSeller Request\nDispute Investigation\nQuality Issue Investigation\nShipping Delay\nAdmin Decision"
+  },
+  {
+   "fieldname": "column_break_hold",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.hold_extended",
+   "fieldname": "original_release_date",
+   "fieldtype": "Datetime",
+   "label": "Original Release Date"
+  },
+  {
+   "depends_on": "eval:doc.hold_extended",
+   "fieldname": "extended_release_date",
+   "fieldtype": "Datetime",
+   "label": "Extended Release Date"
+  },
+  {
+   "default": "3",
+   "fieldname": "max_extensions_allowed",
+   "fieldtype": "Int",
+   "label": "Max Extensions Allowed"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "erpnext_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration"
+  },
+  {
+   "fieldname": "erpnext_journal_entry",
+   "fieldtype": "Link",
+   "label": "ERPNext Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "erpnext_payment_entry",
+   "fieldtype": "Link",
+   "label": "ERPNext Payment Entry",
+   "options": "Payment Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_erpnext",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Not Synced",
+   "fieldname": "erpnext_sync_status",
+   "fieldtype": "Select",
+   "label": "ERPNext Sync Status",
+   "options": "Not Synced\nPending\nSynced\nFailed"
+  },
+  {
+   "fieldname": "erpnext_sync_error",
+   "fieldtype": "Small Text",
+   "label": "ERPNext Sync Error"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "metadata_section",
+   "fieldtype": "Section Break",
+   "label": "Notes & Metadata"
+  },
+  {
+   "description": "Public notes visible to buyer and seller",
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "description": "Internal notes (admin only)",
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "description": "Custom metadata JSON",
+   "fieldname": "metadata",
+   "fieldtype": "JSON",
+   "label": "Metadata"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System"
+  },
+  {
+   "default": "ESC-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "ESC-.YYYY.-.#####\nESC-.#####"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Escrow Account",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "has_web_view": 0,
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Marketplace Order",
+   "link_fieldname": "escrow_account"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Sub Order",
+   "link_fieldname": "escrow_account"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Payment Intent",
+   "link_fieldname": "escrow_account"
+  },
+  {
+   "group": "Events",
+   "link_doctype": "Escrow Event",
+   "link_fieldname": "escrow_account"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Escrow Account",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "escrow_id, seller, buyer, marketplace_order, status, total_amount",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Pending"
+  },
+  {
+   "color": "blue",
+   "title": "Funds Held"
+  },
+  {
+   "color": "orange",
+   "title": "Partially Released"
+  },
+  {
+   "color": "green",
+   "title": "Released"
+  },
+  {
+   "color": "red",
+   "title": "Disputed"
+  },
+  {
+   "color": "purple",
+   "title": "Dispute Resolved"
+  },
+  {
+   "color": "orange",
+   "title": "Refunded"
+  },
+  {
+   "color": "orange",
+   "title": "Partially Refunded"
+  },
+  {
+   "color": "gray",
+   "title": "Cancelled"
+  },
+  {
+   "color": "gray",
+   "title": "Expired"
+  }
+ ],
+ "title_field": "escrow_id",
+ "track_changes": 1
+}

@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "original_quote",
+  "revision_no",
+  "revised_at",
+  "revised_by",
+  "price_section",
+  "previous_price",
+  "new_price",
+  "delivery_section",
+  "previous_delivery_days",
+  "new_delivery_days",
+  "terms_section",
+  "previous_terms",
+  "new_terms",
+  "reason_section",
+  "reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "original_quote",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Original Quote",
+   "options": "RFQ Quote",
+   "reqd": 1
+  },
+  {
+   "fieldname": "revision_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Revision No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "revised_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Revised At"
+  },
+  {
+   "fieldname": "revised_by",
+   "fieldtype": "Link",
+   "label": "Revised By",
+   "options": "User"
+  },
+  {
+   "fieldname": "price_section",
+   "fieldtype": "Section Break",
+   "label": "Price Change"
+  },
+  {
+   "fieldname": "previous_price",
+   "fieldtype": "Currency",
+   "label": "Previous Price",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_price",
+   "fieldtype": "Currency",
+   "label": "New Price",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Change"
+  },
+  {
+   "fieldname": "previous_delivery_days",
+   "fieldtype": "Int",
+   "label": "Previous Delivery Days",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_delivery_days",
+   "fieldtype": "Int",
+   "label": "New Delivery Days",
+   "read_only": 1
+  },
+  {
+   "fieldname": "terms_section",
+   "fieldtype": "Section Break",
+   "label": "Terms Change"
+  },
+  {
+   "fieldname": "previous_terms",
+   "fieldtype": "Text",
+   "label": "Previous Terms",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_terms",
+   "fieldtype": "Text",
+   "label": "New Terms",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reason_section",
+   "fieldtype": "Section Break",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason for Revision"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "RFQ Quote Revision",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "original_quote, revision_no",
+ "sort_field": "revised_at",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

@@ -1,0 +1,88 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-contract-engine\", \"type\": \"card\", \"data\": {\"card_name\": \"Contract Engine\", \"col\": 12}}]",
+ "creation": "2026-02-13 10:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "Contract Engine",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Engine",
+   "link_count": 0,
+   "link_to": "",
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Template",
+   "link_count": 0,
+   "link_to": "Contract Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Rule",
+   "link_count": 0,
+   "link_to": "Contract Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Rule Condition",
+   "link_count": 0,
+   "link_to": "Contract Rule Condition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Revision",
+   "link_count": 0,
+   "link_to": "Contract Revision",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Instance",
+   "link_count": 0,
+   "link_to": "Contract Instance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-13 16:18:26.779666",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Contract Engine",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 19.0,
+ "shortcuts": [],
+ "title": "Contract Engine"
+}

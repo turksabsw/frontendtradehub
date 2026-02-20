@@ -1,0 +1,144 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status_name",
+  "status_code",
+  "column_break_1",
+  "color",
+  "sort_order",
+  "behavior_section",
+  "is_default",
+  "is_active_status",
+  "column_break_2",
+  "allows_editing",
+  "allows_deletion",
+  "transition_section",
+  "allowed_transitions",
+  "column_break_3",
+  "auto_transition_after",
+  "auto_transition_to"
+ ],
+ "fields": [
+  {
+   "fieldname": "status_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status Name",
+   "reqd": 1,
+   "description": "Display name for the status"
+  },
+  {
+   "fieldname": "status_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Status Code",
+   "reqd": 1,
+   "description": "Internal code for the status (lowercase, underscores)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Color",
+   "options": "Blue\nGreen\nOrange\nRed\nYellow\nGray\nPurple\nPink\nCyan",
+   "default": "Gray",
+   "description": "Color indicator for the status badge"
+  },
+  {
+   "default": "0",
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Sort Order",
+   "description": "Order in which status appears in lists"
+  },
+  {
+   "fieldname": "behavior_section",
+   "fieldtype": "Section Break",
+   "label": "Status Behavior"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Default",
+   "description": "If checked, new products start with this status"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active_status",
+   "fieldtype": "Check",
+   "label": "Is Active Status",
+   "description": "If checked, products with this status are considered active"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "allows_editing",
+   "fieldtype": "Check",
+   "label": "Allows Editing",
+   "description": "If checked, products can be edited in this status"
+  },
+  {
+   "default": "0",
+   "fieldname": "allows_deletion",
+   "fieldtype": "Check",
+   "label": "Allows Deletion",
+   "description": "If checked, products can be deleted in this status"
+  },
+  {
+   "fieldname": "transition_section",
+   "fieldtype": "Section Break",
+   "label": "Status Transitions",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "allowed_transitions",
+   "fieldtype": "Small Text",
+   "label": "Allowed Transitions",
+   "description": "Comma-separated list of status codes this status can transition to"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auto_transition_after",
+   "fieldtype": "Int",
+   "label": "Auto Transition After (Days)",
+   "description": "Automatically transition to next status after X days (0 = disabled)"
+  },
+  {
+   "fieldname": "auto_transition_to",
+   "fieldtype": "Data",
+   "label": "Auto Transition To",
+   "description": "Status code to auto-transition to"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Product Class Allowed Status",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

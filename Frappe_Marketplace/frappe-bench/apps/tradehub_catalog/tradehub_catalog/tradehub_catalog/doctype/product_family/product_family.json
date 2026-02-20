@@ -1,0 +1,277 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:family_code",
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "family_name",
+  "family_code",
+  "column_break_basic_1",
+  "product_class",
+  "is_active",
+  "description_section",
+  "description",
+  "attributes_section",
+  "family_attributes",
+  "variant_section",
+  "variant_axes",
+  "completeness_section",
+  "completeness_rules",
+  "media_section",
+  "min_images",
+  "max_images",
+  "column_break_media_1",
+  "require_main_image",
+  "allow_video",
+  "required_angles_section",
+  "required_image_angles",
+  "default_values_section",
+  "default_values",
+  "channel_section",
+  "channel_mappings",
+  "localization_section",
+  "translatable_attributes",
+  "label_overrides_section",
+  "label_overrides"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "family_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Family Name",
+   "reqd": 1,
+   "description": "Display name for the product family"
+  },
+  {
+   "fieldname": "family_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Family Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique identifier (lowercase, underscores only)"
+  },
+  {
+   "fieldname": "column_break_basic_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "product_class",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Product Class",
+   "options": "Product Class",
+   "reqd": 1,
+   "description": "The product class this family belongs to"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active",
+   "description": "Enable/disable this product family"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Internal description of this product family"
+  },
+  {
+   "fieldname": "attributes_section",
+   "fieldtype": "Section Break",
+   "label": "Family Attributes"
+  },
+  {
+   "fieldname": "family_attributes",
+   "fieldtype": "Table",
+   "label": "Attributes",
+   "options": "Family Attribute",
+   "description": "PIM Attributes that products in this family can use"
+  },
+  {
+   "fieldname": "variant_section",
+   "fieldtype": "Section Break",
+   "label": "Variant Axes"
+  },
+  {
+   "fieldname": "variant_axes",
+   "fieldtype": "Table",
+   "label": "Variant Axes",
+   "options": "Variant Axis",
+   "description": "Attributes used to generate product variants (e.g., Color, Size)"
+  },
+  {
+   "fieldname": "completeness_section",
+   "fieldtype": "Section Break",
+   "label": "Completeness Rules"
+  },
+  {
+   "fieldname": "completeness_rules",
+   "fieldtype": "Table",
+   "label": "Completeness Rules",
+   "options": "Completeness Rule",
+   "description": "Rules that determine product completeness for this family"
+  },
+  {
+   "fieldname": "media_section",
+   "fieldtype": "Section Break",
+   "label": "Media Requirements"
+  },
+  {
+   "default": "1",
+   "fieldname": "min_images",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Minimum Images",
+   "description": "Minimum number of product images required"
+  },
+  {
+   "default": "10",
+   "fieldname": "max_images",
+   "fieldtype": "Int",
+   "label": "Maximum Images",
+   "description": "Maximum number of product images allowed"
+  },
+  {
+   "fieldname": "column_break_media_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "require_main_image",
+   "fieldtype": "Check",
+   "label": "Require Main Image",
+   "description": "Products must have a main/primary image"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_video",
+   "fieldtype": "Check",
+   "label": "Allow Video",
+   "description": "Allow video media for products in this family"
+  },
+  {
+   "fieldname": "required_angles_section",
+   "fieldtype": "Section Break",
+   "label": "Required Image Angles",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "required_image_angles",
+   "fieldtype": "Table",
+   "label": "Required Angles",
+   "options": "Required Image Angle",
+   "description": "Specific image angles required for products in this family"
+  },
+  {
+   "fieldname": "default_values_section",
+   "fieldtype": "Section Break",
+   "label": "Default Values"
+  },
+  {
+   "fieldname": "default_values",
+   "fieldtype": "Table",
+   "label": "Default Values",
+   "options": "Family Default Value",
+   "description": "Default attribute values for new products in this family"
+  },
+  {
+   "fieldname": "channel_section",
+   "fieldtype": "Section Break",
+   "label": "Channel Mappings"
+  },
+  {
+   "fieldname": "channel_mappings",
+   "fieldtype": "Table",
+   "label": "Channel Mappings",
+   "options": "Channel Field Mapping",
+   "description": "Field mappings and transforms for exporting to sales channels"
+  },
+  {
+   "fieldname": "localization_section",
+   "fieldtype": "Section Break",
+   "label": "Translatable Attributes"
+  },
+  {
+   "fieldname": "translatable_attributes",
+   "fieldtype": "Table",
+   "label": "Translatable Attributes",
+   "options": "Translatable Attribute Flag",
+   "description": "Attributes that can have different values per locale"
+  },
+  {
+   "fieldname": "label_overrides_section",
+   "fieldtype": "Section Break",
+   "label": "Label Overrides",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "label_overrides",
+   "fieldtype": "Table",
+   "label": "Label Overrides",
+   "options": "Attribute Label Override",
+   "description": "Custom labels and descriptions for attributes in this family"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Product Family",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "family_name",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

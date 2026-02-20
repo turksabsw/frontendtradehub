@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "condition_section",
+  "field",
+  "operator",
+  "column_break_condition",
+  "value",
+  "logic"
+ ],
+ "fields": [
+  {
+   "fieldname": "condition_section",
+   "fieldtype": "Section Break",
+   "label": "Condition"
+  },
+  {
+   "description": "Field to evaluate for this condition",
+   "fieldname": "field",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Field",
+   "options": "user_type\nseller_type\nbuyer_type\norganization_type\ntransaction_type\norder_total\nproduct_category\nseller_level\nbuyer_level\nverification_status\nsubscription_plan\ncountry\nregion\ndays_since_registration\ntotal_orders\ntotal_revenue",
+   "reqd": 1
+  },
+  {
+   "description": "Comparison operator",
+   "fieldname": "operator",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Operator",
+   "options": "=\n!=\n>\n<\n>=\n<=\ncontains\nnot contains\nin\nnot in\nis set\nis not set",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_condition",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Value to compare against. For 'in' operator, use comma-separated values.",
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value"
+  },
+  {
+   "default": "AND",
+   "description": "Logical operator to combine with next condition",
+   "fieldname": "logic",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Logic",
+   "options": "AND\nOR"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Contract Rule Condition",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "field, operator, value",
+ "sort_field": "idx",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

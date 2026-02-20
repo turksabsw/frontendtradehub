@@ -1,0 +1,108 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-0\", \"type\": \"card\", \"data\": {\"card_name\": \"Contracts\", \"col\": 4}}, {\"id\": \"link-1\", \"type\": \"link\", \"data\": {\"link_to\": \"Contract Template\", \"link_type\": \"DocType\", \"label\": \"Contract Template\"}}, {\"id\": \"link-2\", \"type\": \"link\", \"data\": {\"link_to\": \"Contract Instance\", \"link_type\": \"DocType\", \"label\": \"Contract Instance\"}}, {\"id\": \"link-3\", \"type\": \"link\", \"data\": {\"link_to\": \"Contract Revision\", \"link_type\": \"DocType\", \"label\": \"Contract Revision\"}}, {\"id\": \"link-7\", \"type\": \"link\", \"data\": {\"link_to\": \"Contract Rule\", \"link_type\": \"DocType\", \"label\": \"Contract Rule\"}}, {\"id\": \"card-break-4\", \"type\": \"card\", \"data\": {\"card_name\": \"E-Sign\", \"col\": 4}}, {\"id\": \"link-5\", \"type\": \"link\", \"data\": {\"link_to\": \"ESign Provider\", \"link_type\": \"DocType\", \"label\": \"ESign Provider\"}}, {\"id\": \"link-6\", \"type\": \"link\", \"data\": {\"link_to\": \"ESign Transaction\", \"link_type\": \"DocType\", \"label\": \"ESign Transaction\"}}]",
+ "creation": "2024-01-23 00:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "file",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Contract Center",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contracts",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Template",
+   "link_count": 0,
+   "link_to": "Contract Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Instance",
+   "link_count": 0,
+   "link_to": "Contract Instance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Revision",
+   "link_count": 0,
+   "link_to": "Contract Revision",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contract Rule",
+   "link_count": 0,
+   "link_to": "Contract Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "E-Sign",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ESign Provider",
+   "link_count": 0,
+   "link_to": "ESign Provider",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ESign Transaction",
+   "link_count": 0,
+   "link_to": "ESign Transaction",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-16 16:22:50.352551",
+ "modified_by": "Administrator",
+ "module": "TR Contract Center",
+ "name": "Contract Center",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 11.0,
+ "shortcuts": [],
+ "title": "Contract Center"
+}

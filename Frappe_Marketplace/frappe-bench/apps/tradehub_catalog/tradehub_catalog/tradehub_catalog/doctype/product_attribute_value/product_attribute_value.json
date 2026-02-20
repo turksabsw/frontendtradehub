@@ -1,0 +1,254 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{attribute}-{value_name}",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "value_name",
+  "value_code",
+  "column_break_basic",
+  "enabled",
+  "is_default",
+  "parent_attribute_section",
+  "attribute",
+  "attribute_name",
+  "column_break_attribute",
+  "attribute_type",
+  "attribute_code",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "column_break_tenant",
+  "is_global",
+  "visual_section",
+  "color_code",
+  "image",
+  "column_break_visual",
+  "abbreviation",
+  "display_section",
+  "display_order",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "value_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Value Name",
+   "reqd": 1,
+   "description": "Display name of the attribute value (e.g., Red, Large, Cotton)"
+  },
+  {
+   "fieldname": "value_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value Code",
+   "description": "Internal code for the value (auto-generated from name if not provided)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled",
+   "description": "Whether this value is active and can be selected"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default",
+   "description": "Mark as default value for this attribute"
+  },
+  {
+   "fieldname": "parent_attribute_section",
+   "fieldtype": "Section Break",
+   "label": "Parent Attribute"
+  },
+  {
+   "fieldname": "attribute",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Attribute",
+   "options": "Product Attribute",
+   "reqd": 1,
+   "description": "Parent attribute this value belongs to"
+  },
+  {
+   "fetch_from": "attribute.attribute_name",
+   "fieldname": "attribute_name",
+   "fieldtype": "Data",
+   "label": "Attribute Name",
+   "read_only": 1,
+   "description": "Auto-filled from Product Attribute"
+  },
+  {
+   "fieldname": "column_break_attribute",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "attribute.attribute_type",
+   "fieldname": "attribute_type",
+   "fieldtype": "Data",
+   "label": "Attribute Type",
+   "read_only": 1,
+   "description": "Auto-filled from Product Attribute"
+  },
+  {
+   "fetch_from": "attribute.attribute_code",
+   "fieldname": "attribute_code",
+   "fieldtype": "Data",
+   "label": "Attribute Code",
+   "read_only": 1,
+   "description": "Auto-filled from Product Attribute"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information"
+  },
+  {
+   "fetch_from": "attribute.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "Auto-filled from Product Attribute - Multi-tenant isolation field"
+  },
+  {
+   "fetch_from": "attribute.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Product Attribute"
+  },
+  {
+   "fieldname": "column_break_tenant",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "attribute.is_global",
+   "fieldname": "is_global",
+   "fieldtype": "Check",
+   "label": "Is Global",
+   "read_only": 1,
+   "description": "Auto-filled from Product Attribute"
+  },
+  {
+   "fieldname": "visual_section",
+   "fieldtype": "Section Break",
+   "label": "Visual Settings",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "color_code",
+   "fieldtype": "Color",
+   "label": "Color Code",
+   "description": "Hex color code for color swatch display (e.g., #FF0000 for Red)"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "description": "Image for swatch or visual representation"
+  },
+  {
+   "fieldname": "column_break_visual",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abbreviation",
+   "fieldtype": "Data",
+   "label": "Abbreviation",
+   "description": "Short abbreviation for display (e.g., S for Small, M for Medium)"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Display Order",
+   "description": "Sort order for display (lower numbers appear first)"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Additional description for this value"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Product Attribute Value",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 0,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Buyer",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "value_name, value_code, attribute_name",
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "title_field": "value_name",
+ "track_changes": 1
+}

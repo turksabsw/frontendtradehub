@@ -1,0 +1,832 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "SAPP-.YYYY.-.#####",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "applicant_user",
+    "business_name",
+    "seller_type",
+    "column_break_basic",
+    "status",
+    "tenant",
+    "priority",
+    "contact_section",
+    "contact_name",
+    "contact_email",
+    "contact_phone",
+    "column_break_contact",
+    "mobile",
+    "whatsapp",
+    "website",
+    "address_section",
+    "address_line_1",
+    "address_line_2",
+    "city",
+    "column_break_address",
+    "state",
+    "country",
+    "postal_code",
+    "tax_section",
+    "tax_id",
+    "tax_id_type",
+    "tax_office",
+    "column_break_tax",
+    "trade_registry_number",
+    "mersis_number",
+    "e_invoice_registered",
+    "e_invoice_alias",
+    "banking_section",
+    "bank_name",
+    "bank_branch",
+    "iban",
+    "column_break_banking",
+    "account_holder_name",
+    "swift_code",
+    "documents_section",
+    "identity_document",
+    "identity_document_type",
+    "identity_document_number",
+    "column_break_identity",
+    "identity_document_expiry",
+    "identity_document_attachment",
+    "business_docs_section",
+    "trade_registry_attachment",
+    "tax_certificate_attachment",
+    "signature_circular_attachment",
+    "column_break_business_docs",
+    "activity_certificate_attachment",
+    "bank_statement_attachment",
+    "additional_documents",
+    "preferences_section",
+    "preferred_categories",
+    "expected_monthly_products",
+    "expected_monthly_sales",
+    "column_break_preferences",
+    "business_description",
+    "selling_experience",
+    "other_marketplaces",
+    "agreements_section",
+    "terms_accepted",
+    "privacy_accepted",
+    "kvkk_accepted",
+    "column_break_agreements",
+    "commission_accepted",
+    "return_policy_accepted",
+    "acceptance_date",
+    "workflow_section",
+    "workflow_state",
+    "submitted_at",
+    "submitted_by",
+    "column_break_workflow",
+    "assigned_to",
+    "review_started_at",
+    "review_deadline",
+    "review_section",
+    "review_status",
+    "review_notes",
+    "rejection_reason",
+    "column_break_review",
+    "reviewed_at",
+    "reviewed_by",
+    "revision_requested",
+    "revision_notes",
+    "approval_section",
+    "approved_at",
+    "approved_by",
+    "seller_profile",
+    "column_break_approval",
+    "commission_plan",
+    "initial_tier",
+    "welcome_email_sent",
+    "history_section",
+    "application_history"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "applicant_user",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Applicant User",
+      "options": "User",
+      "reqd": 1,
+      "unique": 0,
+      "description": "User account for the applicant"
+    },
+    {
+      "fieldname": "business_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Business/Seller Name",
+      "reqd": 1,
+      "description": "Name that will be displayed on the marketplace"
+    },
+    {
+      "default": "Individual",
+      "fieldname": "seller_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller Type",
+      "options": "Individual\nBusiness\nEnterprise",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nSubmitted\nUnder Review\nDocuments Requested\nRevision Required\nApproved\nRejected\nCancelled",
+      "reqd": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "description": "The tenant this application belongs to"
+    },
+    {
+      "default": "Normal",
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Priority",
+      "options": "Low\nNormal\nHigh\nUrgent",
+      "description": "Processing priority for the application"
+    },
+    {
+      "fieldname": "contact_section",
+      "fieldtype": "Section Break",
+      "label": "Contact Information"
+    },
+    {
+      "fieldname": "contact_name",
+      "fieldtype": "Data",
+      "label": "Contact Name",
+      "reqd": 1,
+      "description": "Full name of the primary contact person"
+    },
+    {
+      "fieldname": "contact_email",
+      "fieldtype": "Data",
+      "label": "Contact Email",
+      "options": "Email",
+      "reqd": 1
+    },
+    {
+      "fieldname": "contact_phone",
+      "fieldtype": "Data",
+      "label": "Contact Phone",
+      "options": "Phone",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_contact",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "mobile",
+      "fieldtype": "Data",
+      "label": "Mobile",
+      "options": "Phone"
+    },
+    {
+      "fieldname": "whatsapp",
+      "fieldtype": "Data",
+      "label": "WhatsApp",
+      "options": "Phone"
+    },
+    {
+      "fieldname": "website",
+      "fieldtype": "Data",
+      "label": "Website",
+      "options": "URL"
+    },
+    {
+      "fieldname": "address_section",
+      "fieldtype": "Section Break",
+      "label": "Address"
+    },
+    {
+      "fieldname": "address_line_1",
+      "fieldtype": "Data",
+      "label": "Address Line 1",
+      "reqd": 1
+    },
+    {
+      "fieldname": "address_line_2",
+      "fieldtype": "Data",
+      "label": "Address Line 2"
+    },
+    {
+      "fieldname": "city",
+      "fieldtype": "Data",
+      "in_standard_filter": 1,
+      "label": "City",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_address",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "state",
+      "fieldtype": "Data",
+      "label": "State/Province"
+    },
+    {
+      "default": "Turkey",
+      "fieldname": "country",
+      "fieldtype": "Link",
+      "label": "Country",
+      "options": "Country",
+      "reqd": 1
+    },
+    {
+      "fieldname": "postal_code",
+      "fieldtype": "Data",
+      "label": "Postal Code"
+    },
+    {
+      "fieldname": "tax_section",
+      "fieldtype": "Section Break",
+      "label": "Tax & Business Information"
+    },
+    {
+      "description": "VKN (10 digits for companies) or TCKN (11 digits for individuals)",
+      "fieldname": "tax_id",
+      "fieldtype": "Data",
+      "label": "Tax ID",
+      "mandatory_depends_on": "eval:doc.seller_type != 'Individual'"
+    },
+    {
+      "default": "TCKN",
+      "fieldname": "tax_id_type",
+      "fieldtype": "Select",
+      "label": "Tax ID Type",
+      "options": "TCKN\nVKN"
+    },
+    {
+      "fieldname": "tax_office",
+      "fieldtype": "Data",
+      "label": "Tax Office",
+      "mandatory_depends_on": "eval:doc.seller_type != 'Individual'"
+    },
+    {
+      "fieldname": "column_break_tax",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Trade Registry Number (Ticaret Sicil No)",
+      "fieldname": "trade_registry_number",
+      "fieldtype": "Data",
+      "label": "Trade Registry Number",
+      "mandatory_depends_on": "eval:doc.seller_type == 'Business' || doc.seller_type == 'Enterprise'"
+    },
+    {
+      "description": "MERSIS Number (16 digits)",
+      "fieldname": "mersis_number",
+      "fieldtype": "Data",
+      "label": "MERSIS Number",
+      "mandatory_depends_on": "eval:doc.seller_type == 'Enterprise'"
+    },
+    {
+      "default": "0",
+      "description": "Registered for E-Fatura (Electronic Invoice)",
+      "fieldname": "e_invoice_registered",
+      "fieldtype": "Check",
+      "label": "E-Invoice Registered"
+    },
+    {
+      "depends_on": "eval:doc.e_invoice_registered==1",
+      "description": "E-Invoice portal alias (PK: or GB: prefix)",
+      "fieldname": "e_invoice_alias",
+      "fieldtype": "Data",
+      "label": "E-Invoice Alias"
+    },
+    {
+      "fieldname": "banking_section",
+      "fieldtype": "Section Break",
+      "label": "Banking Information"
+    },
+    {
+      "fieldname": "bank_name",
+      "fieldtype": "Data",
+      "label": "Bank Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "bank_branch",
+      "fieldtype": "Data",
+      "label": "Bank Branch"
+    },
+    {
+      "description": "International Bank Account Number (26 characters for Turkey)",
+      "fieldname": "iban",
+      "fieldtype": "Data",
+      "label": "IBAN",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_banking",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "account_holder_name",
+      "fieldtype": "Data",
+      "label": "Account Holder Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "swift_code",
+      "fieldtype": "Data",
+      "label": "SWIFT/BIC Code"
+    },
+    {
+      "fieldname": "documents_section",
+      "fieldtype": "Section Break",
+      "label": "Identity Documents"
+    },
+    {
+      "fieldname": "identity_document",
+      "fieldtype": "Select",
+      "label": "Identity Document Type",
+      "options": "\nNational ID Card\nPassport\nDriver License",
+      "reqd": 1
+    },
+    {
+      "fieldname": "identity_document_type",
+      "fieldtype": "Data",
+      "label": "Document Description",
+      "description": "Brief description of the document"
+    },
+    {
+      "fieldname": "identity_document_number",
+      "fieldtype": "Data",
+      "label": "Document Number",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_identity",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "identity_document_expiry",
+      "fieldtype": "Date",
+      "label": "Document Expiry Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "identity_document_attachment",
+      "fieldtype": "Attach",
+      "label": "Identity Document Attachment",
+      "reqd": 1,
+      "description": "Upload a clear photo/scan of your identity document"
+    },
+    {
+      "fieldname": "business_docs_section",
+      "fieldtype": "Section Break",
+      "label": "Business Documents",
+      "depends_on": "eval:doc.seller_type != 'Individual'"
+    },
+    {
+      "fieldname": "trade_registry_attachment",
+      "fieldtype": "Attach",
+      "label": "Trade Registry Document",
+      "description": "Ticaret Sicil Gazetesi",
+      "mandatory_depends_on": "eval:doc.seller_type == 'Business' || doc.seller_type == 'Enterprise'"
+    },
+    {
+      "fieldname": "tax_certificate_attachment",
+      "fieldtype": "Attach",
+      "label": "Tax Certificate",
+      "description": "Vergi Levhası",
+      "mandatory_depends_on": "eval:doc.seller_type == 'Business' || doc.seller_type == 'Enterprise'"
+    },
+    {
+      "fieldname": "signature_circular_attachment",
+      "fieldtype": "Attach",
+      "label": "Signature Circular",
+      "description": "İmza Sirküleri",
+      "mandatory_depends_on": "eval:doc.seller_type == 'Enterprise'"
+    },
+    {
+      "fieldname": "column_break_business_docs",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "activity_certificate_attachment",
+      "fieldtype": "Attach",
+      "label": "Activity Certificate",
+      "description": "Faaliyet Belgesi"
+    },
+    {
+      "fieldname": "bank_statement_attachment",
+      "fieldtype": "Attach",
+      "label": "Bank Statement",
+      "description": "Recent bank statement for account verification"
+    },
+    {
+      "fieldname": "additional_documents",
+      "fieldtype": "Table",
+      "label": "Additional Documents",
+      "options": "Seller Application Document",
+      "description": "Any additional documents to support your application"
+    },
+    {
+      "fieldname": "preferences_section",
+      "fieldtype": "Section Break",
+      "label": "Selling Preferences"
+    },
+    {
+      "fieldname": "preferred_categories",
+      "fieldtype": "Table MultiSelect",
+      "label": "Preferred Categories",
+      "options": "Seller Application Category",
+      "description": "Categories you plan to sell in"
+    },
+    {
+      "default": "1-50",
+      "fieldname": "expected_monthly_products",
+      "fieldtype": "Select",
+      "label": "Expected Monthly Products",
+      "options": "1-50\n51-200\n201-500\n501-1000\n1000+",
+      "description": "How many products do you plan to list per month?"
+    },
+    {
+      "default": "0-1000",
+      "fieldname": "expected_monthly_sales",
+      "fieldtype": "Select",
+      "label": "Expected Monthly Sales (TRY)",
+      "options": "0-1000\n1000-5000\n5000-25000\n25000-100000\n100000+",
+      "description": "Expected monthly sales volume"
+    },
+    {
+      "fieldname": "column_break_preferences",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "business_description",
+      "fieldtype": "Small Text",
+      "label": "Business Description",
+      "description": "Describe your business and what you plan to sell"
+    },
+    {
+      "default": "None",
+      "fieldname": "selling_experience",
+      "fieldtype": "Select",
+      "label": "E-Commerce Experience",
+      "options": "None\nLess than 1 year\n1-3 years\n3-5 years\nMore than 5 years"
+    },
+    {
+      "fieldname": "other_marketplaces",
+      "fieldtype": "Small Text",
+      "label": "Other Marketplaces",
+      "description": "List any other marketplaces you currently sell on"
+    },
+    {
+      "fieldname": "agreements_section",
+      "fieldtype": "Section Break",
+      "label": "Terms & Agreements"
+    },
+    {
+      "default": "0",
+      "fieldname": "terms_accepted",
+      "fieldtype": "Check",
+      "label": "Terms & Conditions Accepted",
+      "reqd": 1,
+      "description": "I have read and accept the Terms and Conditions"
+    },
+    {
+      "default": "0",
+      "fieldname": "privacy_accepted",
+      "fieldtype": "Check",
+      "label": "Privacy Policy Accepted",
+      "reqd": 1,
+      "description": "I have read and accept the Privacy Policy"
+    },
+    {
+      "default": "0",
+      "fieldname": "kvkk_accepted",
+      "fieldtype": "Check",
+      "label": "KVKK Consent Given",
+      "reqd": 1,
+      "description": "I consent to the processing of my personal data in accordance with KVKK"
+    },
+    {
+      "fieldname": "column_break_agreements",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "commission_accepted",
+      "fieldtype": "Check",
+      "label": "Commission Terms Accepted",
+      "reqd": 1,
+      "description": "I accept the commission and fee structure"
+    },
+    {
+      "default": "0",
+      "fieldname": "return_policy_accepted",
+      "fieldtype": "Check",
+      "label": "Return Policy Accepted",
+      "reqd": 1,
+      "description": "I accept the marketplace return policy"
+    },
+    {
+      "fieldname": "acceptance_date",
+      "fieldtype": "Datetime",
+      "label": "Acceptance Date",
+      "read_only": 1,
+      "description": "Date and time when terms were accepted"
+    },
+    {
+      "fieldname": "workflow_section",
+      "fieldtype": "Section Break",
+      "label": "Workflow Information"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "workflow_state",
+      "fieldtype": "Select",
+      "label": "Workflow State",
+      "options": "Draft\nPending Review\nIn Review\nDocuments Requested\nRevision Required\nApproved\nRejected\nCancelled",
+      "read_only": 1
+    },
+    {
+      "fieldname": "submitted_at",
+      "fieldtype": "Datetime",
+      "label": "Submitted At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "submitted_by",
+      "fieldtype": "Link",
+      "label": "Submitted By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_workflow",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "assigned_to",
+      "fieldtype": "Link",
+      "label": "Assigned To",
+      "options": "User",
+      "description": "Reviewer assigned to this application"
+    },
+    {
+      "fieldname": "review_started_at",
+      "fieldtype": "Datetime",
+      "label": "Review Started At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "review_deadline",
+      "fieldtype": "Date",
+      "label": "Review Deadline",
+      "description": "Target date for completing the review"
+    },
+    {
+      "fieldname": "review_section",
+      "fieldtype": "Section Break",
+      "label": "Review Details",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "review_status",
+      "fieldtype": "Select",
+      "label": "Review Status",
+      "options": "\nNot Started\nIn Progress\nPending Documents\nPending Verification\nCompleted"
+    },
+    {
+      "fieldname": "review_notes",
+      "fieldtype": "Text",
+      "label": "Review Notes",
+      "description": "Internal notes from the reviewer"
+    },
+    {
+      "fieldname": "rejection_reason",
+      "fieldtype": "Select",
+      "label": "Rejection Reason",
+      "options": "\nIncomplete Documents\nInvalid Tax ID\nFailed Verification\nProhibited Category\nPrevious Violations\nDuplicate Application\nSuspicious Activity\nOther",
+      "depends_on": "eval:doc.status == 'Rejected'"
+    },
+    {
+      "fieldname": "column_break_review",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "reviewed_at",
+      "fieldtype": "Datetime",
+      "label": "Reviewed At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "reviewed_by",
+      "fieldtype": "Link",
+      "label": "Reviewed By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "revision_requested",
+      "fieldtype": "Check",
+      "label": "Revision Requested",
+      "read_only": 1
+    },
+    {
+      "fieldname": "revision_notes",
+      "fieldtype": "Small Text",
+      "label": "Revision Notes",
+      "depends_on": "eval:doc.revision_requested == 1",
+      "description": "What needs to be revised or updated"
+    },
+    {
+      "fieldname": "approval_section",
+      "fieldtype": "Section Break",
+      "label": "Approval Details",
+      "depends_on": "eval:doc.status == 'Approved'"
+    },
+    {
+      "fieldname": "approved_at",
+      "fieldtype": "Datetime",
+      "label": "Approved At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "approved_by",
+      "fieldtype": "Link",
+      "label": "Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "seller_profile",
+      "fieldtype": "Link",
+      "label": "Created Seller Profile",
+      "options": "Seller Profile",
+      "read_only": 1,
+      "description": "Seller Profile created upon approval"
+    },
+    {
+      "fieldname": "column_break_approval",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "commission_plan",
+      "fieldtype": "Link",
+      "label": "Assigned Commission Plan",
+      "options": "Commission Plan",
+      "description": "Commission plan assigned to the seller"
+    },
+    {
+      "fieldname": "initial_tier",
+      "fieldtype": "Link",
+      "label": "Initial Tier",
+      "options": "Seller Tier",
+      "description": "Starting tier for the seller"
+    },
+    {
+      "default": "0",
+      "fieldname": "welcome_email_sent",
+      "fieldtype": "Check",
+      "label": "Welcome Email Sent",
+      "read_only": 1
+    },
+    {
+      "fieldname": "history_section",
+      "fieldtype": "Section Break",
+      "label": "Application History",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "application_history",
+      "fieldtype": "Table",
+      "label": "History",
+      "options": "Seller Application History",
+      "read_only": 1,
+      "description": "Timeline of application status changes"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Seller Profile",
+      "link_fieldname": "seller_profile"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "KYC Profile",
+      "link_fieldname": "applicant_user"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Seller Application",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 0,
+      "read": 1,
+      "report": 1,
+      "role": "Sales Manager",
+      "share": 0,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 1,
+      "if_owner": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "business_name, applicant_user, contact_email, city, status",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Draft"
+    },
+    {
+      "color": "blue",
+      "title": "Submitted"
+    },
+    {
+      "color": "orange",
+      "title": "Under Review"
+    },
+    {
+      "color": "yellow",
+      "title": "Documents Requested"
+    },
+    {
+      "color": "purple",
+      "title": "Revision Required"
+    },
+    {
+      "color": "green",
+      "title": "Approved"
+    },
+    {
+      "color": "red",
+      "title": "Rejected"
+    },
+    {
+      "color": "gray",
+      "title": "Cancelled"
+    }
+  ],
+  "title_field": "business_name",
+  "track_changes": 1
+}

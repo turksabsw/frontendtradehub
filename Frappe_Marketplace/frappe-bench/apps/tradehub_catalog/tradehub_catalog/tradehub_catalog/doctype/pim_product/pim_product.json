@@ -1,0 +1,1774 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:product_code",
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_tab",
+  "basic_section",
+  "product_name",
+  "product_code",
+  "column_break_basic_1",
+  "product_family",
+  "product_class",
+  "status_section",
+  "status",
+  "is_active",
+  "column_break_status_1",
+  "brand",
+  "manufacturer",
+  "identifiers_section",
+  "sku",
+  "barcode",
+  "column_break_ids_1",
+  "gtin",
+  "mpn",
+  "column_break_ids_2",
+  "ean",
+  "upc",
+  "column_break_ids_3",
+  "isbn",
+  "hscode",
+  "attributes_tab",
+  "attribute_values_section",
+  "attribute_values",
+  "class_field_values_section",
+  "class_field_values",
+  "content_tab",
+  "descriptions_section",
+  "descriptions",
+  "short_description",
+  "media_tab",
+  "media_section",
+  "media",
+  "main_image",
+  "pricing_tab",
+  "pricing_section",
+  "prices",
+  "base_price_section",
+  "base_price",
+  "base_currency",
+  "column_break_base_price_1",
+  "cost_price",
+  "compare_at_price",
+  "categories_tab",
+  "categories_section",
+  "categories",
+  "primary_category",
+  "relations_tab",
+  "relations_section",
+  "relations",
+  "parent_product",
+  "trade_tab",
+  "trade_section",
+  "moq",
+  "lead_time_days",
+  "column_break_trade_1",
+  "supply_ability",
+  "supply_ability_unit",
+  "shipping_section",
+  "incoterms",
+  "fob_port",
+  "column_break_shipping_1",
+  "payment_terms",
+  "sample_available",
+  "sample_price",
+  "dimensions_section",
+  "weight",
+  "weight_uom",
+  "column_break_dims_1",
+  "length",
+  "width",
+  "height",
+  "dimension_uom",
+  "packaging_section",
+  "packaging_type",
+  "units_per_package",
+  "column_break_pkg_1",
+  "packages_per_carton",
+  "carton_dimensions",
+  "amazon_tab",
+  "amazon_section",
+  "amazon_asin",
+  "amazon_sku",
+  "column_break_amazon_1",
+  "amazon_product_type",
+  "amazon_brand_registry",
+  "amazon_listing_section",
+  "amazon_bullet_points",
+  "amazon_search_terms",
+  "amazon_fba_section",
+  "amazon_fba_enabled",
+  "amazon_fba_sku",
+  "column_break_amazon_fba_1",
+  "amazon_prep_instructions",
+  "amazon_condition",
+  "ebay_tab",
+  "ebay_section",
+  "ebay_item_id",
+  "ebay_sku",
+  "column_break_ebay_1",
+  "ebay_category_id",
+  "ebay_category_name",
+  "ebay_listing_section",
+  "ebay_listing_type",
+  "ebay_listing_duration",
+  "column_break_ebay_listing_1",
+  "ebay_condition_id",
+  "ebay_condition_description",
+  "ebay_shipping_section",
+  "ebay_shipping_service",
+  "ebay_domestic_shipping_cost",
+  "column_break_ebay_ship_1",
+  "ebay_intl_shipping_service",
+  "ebay_intl_shipping_cost",
+  "alibaba_tab",
+  "alibaba_section",
+  "alibaba_product_id",
+  "alibaba_sku",
+  "column_break_alibaba_1",
+  "alibaba_category_id",
+  "alibaba_subject",
+  "alibaba_trade_section",
+  "alibaba_payment_methods",
+  "alibaba_trade_assurance",
+  "column_break_alibaba_trade_1",
+  "alibaba_moq",
+  "alibaba_fob_price_range",
+  "alibaba_keywords",
+  "trendyol_tab",
+  "trendyol_section",
+  "trendyol_barcode",
+  "trendyol_product_code",
+  "column_break_trendyol_1",
+  "trendyol_category_id",
+  "trendyol_brand_id",
+  "trendyol_listing_section",
+  "trendyol_title",
+  "trendyol_description",
+  "trendyol_stock_code",
+  "hepsiburada_tab",
+  "hepsiburada_section",
+  "hepsiburada_sku",
+  "hepsiburada_merchant_sku",
+  "column_break_hepsiburada_1",
+  "hepsiburada_category_id",
+  "hepsiburada_listing_section",
+  "hepsiburada_listing_status",
+  "hepsiburada_vat_rate",
+  "n11_tab",
+  "n11_section",
+  "n11_product_id",
+  "n11_product_seller_code",
+  "column_break_n11_1",
+  "n11_category_id",
+  "n11_listing_section",
+  "n11_display_price",
+  "n11_stock_quantity",
+  "compliance_tab",
+  "compliance_section",
+  "country_of_origin",
+  "country_of_manufacture",
+  "column_break_compliance_1",
+  "is_hazardous",
+  "hazard_class",
+  "certifications_section",
+  "certifications",
+  "ce_marked",
+  "column_break_certs_1",
+  "rohs_compliant",
+  "reach_compliant",
+  "safety_section",
+  "safety_warnings",
+  "age_restriction",
+  "column_break_safety_1",
+  "requires_adult_signature",
+  "customs_section",
+  "customs_tariff_number",
+  "eccn",
+  "column_break_customs_1",
+  "export_license_required",
+  "import_restrictions",
+  "seo_tab",
+  "seo_section",
+  "meta_title",
+  "meta_description",
+  "column_break_seo_1",
+  "meta_keywords",
+  "canonical_url",
+  "url_section",
+  "url_slug",
+  "url_handle",
+  "column_break_url_1",
+  "page_title",
+  "og_image",
+  "schema_section",
+  "structured_data",
+  "schema_type",
+  "completeness_tab",
+  "completeness_section",
+  "completeness_score",
+  "completeness_status",
+  "column_break_completeness_1",
+  "completeness_detail",
+  "last_completeness_check",
+  "channel_completeness_section",
+  "channel_completeness",
+  "system_tab",
+  "origin_section",
+  "magento_product_id",
+  "magento_sku",
+  "column_break_origin_1",
+  "drupal_product_id",
+  "drupal_sku",
+  "external_ids_section",
+  "external_source",
+  "external_id",
+  "column_break_ext_1",
+  "import_batch",
+  "last_sync",
+  "erpnext_section",
+  "erpnext_item_code",
+  "erpnext_last_sync",
+  "column_break_erpnext_1",
+  "sync_to_erpnext",
+  "erpnext_sync_error",
+  "audit_section",
+  "created_by_user",
+  "creation_source",
+  "column_break_audit_1",
+  "last_modified_by_user",
+  "version_number",
+  "workflow_section",
+  "workflow_state",
+  "approved_by",
+  "column_break_workflow_1",
+  "approved_on",
+  "rejection_reason",
+  "publish_section",
+  "is_published",
+  "published_on",
+  "column_break_publish_1",
+  "unpublished_on",
+  "publish_scheduled"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_tab",
+   "fieldtype": "Tab Break",
+   "label": "Basic Info"
+  },
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Product Information"
+  },
+  {
+   "fieldname": "product_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Product Name",
+   "reqd": 1,
+   "description": "Display name of the product"
+  },
+  {
+   "fieldname": "product_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Product Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique product identifier (lowercase, underscores, hyphens allowed)"
+  },
+  {
+   "fieldname": "column_break_basic_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "product_family",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Product Family",
+   "options": "Product Family",
+   "reqd": 1,
+   "description": "Product family defining attribute schema and completeness rules"
+  },
+  {
+   "fieldname": "product_class",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Product Class",
+   "options": "Product Class",
+   "read_only": 1,
+   "fetch_from": "product_family.product_class",
+   "description": "Auto-fetched from Product Family - defines structural behavior"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "default": "draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending Review\nApproved\nPublished\nArchived\nDiscontinued\nOut of Stock\nHidden",
+   "description": "Product lifecycle status"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active",
+   "description": "Enable/disable the product"
+  },
+  {
+   "fieldname": "column_break_status_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Brand",
+   "options": "Brand",
+   "description": "Product brand"
+  },
+  {
+   "fieldname": "manufacturer",
+   "fieldtype": "Link",
+   "label": "Manufacturer",
+   "options": "Supplier",
+   "description": "Product manufacturer"
+  },
+  {
+   "fieldname": "identifiers_section",
+   "fieldtype": "Section Break",
+   "label": "Core Identifiers"
+  },
+  {
+   "fieldname": "sku",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "SKU",
+   "description": "Stock Keeping Unit - internal inventory code"
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Data",
+   "label": "Barcode",
+   "description": "Product barcode (Code39, Code128, etc.)"
+  },
+  {
+   "fieldname": "column_break_ids_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gtin",
+   "fieldtype": "Data",
+   "label": "GTIN",
+   "description": "Global Trade Item Number (8, 12, 13, or 14 digits)"
+  },
+  {
+   "fieldname": "mpn",
+   "fieldtype": "Data",
+   "label": "MPN",
+   "description": "Manufacturer Part Number"
+  },
+  {
+   "fieldname": "column_break_ids_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ean",
+   "fieldtype": "Data",
+   "label": "EAN",
+   "description": "European Article Number (13 digits)"
+  },
+  {
+   "fieldname": "upc",
+   "fieldtype": "Data",
+   "label": "UPC",
+   "description": "Universal Product Code (12 digits)"
+  },
+  {
+   "fieldname": "column_break_ids_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "isbn",
+   "fieldtype": "Data",
+   "label": "ISBN",
+   "description": "International Standard Book Number (for books)"
+  },
+  {
+   "fieldname": "hscode",
+   "fieldtype": "Data",
+   "label": "HS Code",
+   "description": "Harmonized System code for customs classification"
+  },
+  {
+   "fieldname": "attributes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attributes"
+  },
+  {
+   "fieldname": "attribute_values_section",
+   "fieldtype": "Section Break",
+   "label": "Dynamic Attribute Values"
+  },
+  {
+   "fieldname": "attribute_values",
+   "fieldtype": "Table",
+   "label": "Attribute Values",
+   "options": "PIM Product Attribute Value",
+   "description": "Dynamic attribute values based on Product Family configuration"
+  },
+  {
+   "fieldname": "class_field_values_section",
+   "fieldtype": "Section Break",
+   "label": "Class-Specific Fields"
+  },
+  {
+   "fieldname": "class_field_values",
+   "fieldtype": "Table",
+   "label": "Class Field Values",
+   "options": "PIM Product Class Field Value",
+   "description": "Custom field values defined by the Product Class"
+  },
+  {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "descriptions_section",
+   "fieldtype": "Section Break",
+   "label": "Product Descriptions"
+  },
+  {
+   "fieldname": "descriptions",
+   "fieldtype": "Table",
+   "label": "Descriptions",
+   "options": "PIM Product Description",
+   "description": "Multi-locale, multi-channel product descriptions"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Default Short Description",
+   "description": "Quick access short description for the default locale"
+  },
+  {
+   "fieldname": "media_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
+   "fieldname": "media_section",
+   "fieldtype": "Section Break",
+   "label": "Product Media"
+  },
+  {
+   "fieldname": "media",
+   "fieldtype": "Table",
+   "label": "Media",
+   "options": "PIM Product Media",
+   "description": "Product images, videos, documents, and other media"
+  },
+  {
+   "fieldname": "main_image",
+   "fieldtype": "Attach Image",
+   "label": "Main Image",
+   "description": "Primary product image (synced from media table)"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Price List"
+  },
+  {
+   "fieldname": "prices",
+   "fieldtype": "Table",
+   "label": "Prices",
+   "options": "PIM Product Price",
+   "description": "Multi-currency, multi-channel, tiered pricing"
+  },
+  {
+   "fieldname": "base_price_section",
+   "fieldtype": "Section Break",
+   "label": "Base Pricing"
+  },
+  {
+   "fieldname": "base_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Base Price",
+   "options": "base_currency",
+   "description": "Default selling price"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "base_currency",
+   "fieldtype": "Link",
+   "label": "Base Currency",
+   "options": "Currency",
+   "description": "Currency for base price"
+  },
+  {
+   "fieldname": "column_break_base_price_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cost_price",
+   "fieldtype": "Currency",
+   "label": "Cost Price",
+   "options": "base_currency",
+   "description": "Product cost/purchase price"
+  },
+  {
+   "fieldname": "compare_at_price",
+   "fieldtype": "Currency",
+   "label": "Compare At Price",
+   "options": "base_currency",
+   "description": "Original price for showing discounts"
+  },
+  {
+   "fieldname": "categories_tab",
+   "fieldtype": "Tab Break",
+   "label": "Categories"
+  },
+  {
+   "fieldname": "categories_section",
+   "fieldtype": "Section Break",
+   "label": "Product Categories"
+  },
+  {
+   "fieldname": "categories",
+   "fieldtype": "Table",
+   "label": "Categories",
+   "options": "PIM Product Category Link",
+   "description": "Category assignments for multi-channel publishing"
+  },
+  {
+   "fieldname": "primary_category",
+   "fieldtype": "Link",
+   "label": "Primary Category",
+   "options": "Category",
+   "description": "Main category for the product"
+  },
+  {
+   "fieldname": "relations_tab",
+   "fieldtype": "Tab Break",
+   "label": "Relations"
+  },
+  {
+   "fieldname": "relations_section",
+   "fieldtype": "Section Break",
+   "label": "Product Relations"
+  },
+  {
+   "fieldname": "relations",
+   "fieldtype": "Table",
+   "label": "Relations",
+   "options": "PIM Product Relation",
+   "description": "Cross-sell, up-sell, related products, accessories"
+  },
+  {
+   "fieldname": "parent_product",
+   "fieldtype": "Link",
+   "label": "Parent Product",
+   "options": "PIM Product",
+   "description": "Parent product (for variants or bundles)"
+  },
+  {
+   "fieldname": "trade_tab",
+   "fieldtype": "Tab Break",
+   "label": "Trade / B2B"
+  },
+  {
+   "fieldname": "trade_section",
+   "fieldtype": "Section Break",
+   "label": "Trade Terms"
+  },
+  {
+   "default": "1",
+   "fieldname": "moq",
+   "fieldtype": "Int",
+   "label": "MOQ",
+   "description": "Minimum Order Quantity"
+  },
+  {
+   "fieldname": "lead_time_days",
+   "fieldtype": "Int",
+   "label": "Lead Time (Days)",
+   "description": "Production/fulfillment lead time in days"
+  },
+  {
+   "fieldname": "column_break_trade_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supply_ability",
+   "fieldtype": "Int",
+   "label": "Supply Ability",
+   "description": "Production capacity per time unit"
+  },
+  {
+   "default": "Per Month",
+   "fieldname": "supply_ability_unit",
+   "fieldtype": "Select",
+   "label": "Supply Ability Unit",
+   "options": "Per Day\nPer Week\nPer Month\nPer Quarter\nPer Year"
+  },
+  {
+   "fieldname": "shipping_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping & Payment"
+  },
+  {
+   "default": "FOB",
+   "fieldname": "incoterms",
+   "fieldtype": "Select",
+   "label": "Incoterms",
+   "options": "EXW\nFCA\nCPT\nCIP\nDAP\nDPU\nDDP\nFAS\nFOB\nCFR\nCIF",
+   "description": "International Commercial Terms"
+  },
+  {
+   "fieldname": "fob_port",
+   "fieldtype": "Data",
+   "label": "FOB Port",
+   "description": "Port of loading for FOB terms"
+  },
+  {
+   "fieldname": "column_break_shipping_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_terms",
+   "fieldtype": "Data",
+   "label": "Payment Terms",
+   "description": "Accepted payment terms (e.g., T/T, L/C, PayPal)"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_available",
+   "fieldtype": "Check",
+   "label": "Sample Available",
+   "description": "Samples available for buyers"
+  },
+  {
+   "fieldname": "sample_price",
+   "fieldtype": "Currency",
+   "label": "Sample Price",
+   "depends_on": "sample_available",
+   "description": "Price per sample unit"
+  },
+  {
+   "fieldname": "dimensions_section",
+   "fieldtype": "Section Break",
+   "label": "Weight & Dimensions"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "description": "Product weight"
+  },
+  {
+   "default": "Kg",
+   "fieldname": "weight_uom",
+   "fieldtype": "Link",
+   "label": "Weight UOM",
+   "options": "UOM",
+   "description": "Weight unit of measure"
+  },
+  {
+   "fieldname": "column_break_dims_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length",
+   "description": "Product length"
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Float",
+   "label": "Width",
+   "description": "Product width"
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Float",
+   "label": "Height",
+   "description": "Product height"
+  },
+  {
+   "default": "cm",
+   "fieldname": "dimension_uom",
+   "fieldtype": "Link",
+   "label": "Dimension UOM",
+   "options": "UOM",
+   "description": "Dimension unit of measure"
+  },
+  {
+   "fieldname": "packaging_section",
+   "fieldtype": "Section Break",
+   "label": "Packaging"
+  },
+  {
+   "fieldname": "packaging_type",
+   "fieldtype": "Select",
+   "label": "Packaging Type",
+   "options": "\nBox\nCarton\nPallet\nBag\nPouch\nTube\nBlister\nClamshell\nBulk\nCustom"
+  },
+  {
+   "default": "1",
+   "fieldname": "units_per_package",
+   "fieldtype": "Int",
+   "label": "Units Per Package",
+   "description": "Number of units in one package"
+  },
+  {
+   "fieldname": "column_break_pkg_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "packages_per_carton",
+   "fieldtype": "Int",
+   "label": "Packages Per Carton",
+   "description": "Number of packages in one carton"
+  },
+  {
+   "fieldname": "carton_dimensions",
+   "fieldtype": "Data",
+   "label": "Carton Dimensions",
+   "description": "Carton dimensions (L x W x H)"
+  },
+  {
+   "fieldname": "amazon_tab",
+   "fieldtype": "Tab Break",
+   "label": "Amazon"
+  },
+  {
+   "fieldname": "amazon_section",
+   "fieldtype": "Section Break",
+   "label": "Amazon Identifiers"
+  },
+  {
+   "fieldname": "amazon_asin",
+   "fieldtype": "Data",
+   "label": "Amazon ASIN",
+   "description": "Amazon Standard Identification Number"
+  },
+  {
+   "fieldname": "amazon_sku",
+   "fieldtype": "Data",
+   "label": "Amazon SKU",
+   "description": "Seller SKU for Amazon"
+  },
+  {
+   "fieldname": "column_break_amazon_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amazon_product_type",
+   "fieldtype": "Data",
+   "label": "Amazon Product Type",
+   "description": "Amazon product type identifier"
+  },
+  {
+   "default": "0",
+   "fieldname": "amazon_brand_registry",
+   "fieldtype": "Check",
+   "label": "Brand Registry Enrolled",
+   "description": "Product enrolled in Amazon Brand Registry"
+  },
+  {
+   "fieldname": "amazon_listing_section",
+   "fieldtype": "Section Break",
+   "label": "Amazon Listing"
+  },
+  {
+   "fieldname": "amazon_bullet_points",
+   "fieldtype": "Code",
+   "label": "Bullet Points",
+   "options": "JSON",
+   "description": "Amazon bullet points (array of strings in JSON)"
+  },
+  {
+   "fieldname": "amazon_search_terms",
+   "fieldtype": "Small Text",
+   "label": "Search Terms",
+   "description": "Amazon backend search terms (keywords)"
+  },
+  {
+   "fieldname": "amazon_fba_section",
+   "fieldtype": "Section Break",
+   "label": "Amazon FBA"
+  },
+  {
+   "default": "0",
+   "fieldname": "amazon_fba_enabled",
+   "fieldtype": "Check",
+   "label": "FBA Enabled",
+   "description": "Fulfilled by Amazon"
+  },
+  {
+   "fieldname": "amazon_fba_sku",
+   "fieldtype": "Data",
+   "label": "FBA SKU",
+   "depends_on": "amazon_fba_enabled",
+   "description": "FBA-specific SKU"
+  },
+  {
+   "fieldname": "column_break_amazon_fba_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amazon_prep_instructions",
+   "fieldtype": "Small Text",
+   "label": "Prep Instructions",
+   "description": "FBA prep and labeling requirements"
+  },
+  {
+   "default": "New",
+   "fieldname": "amazon_condition",
+   "fieldtype": "Select",
+   "label": "Condition",
+   "options": "New\nRefurbished\nUsed - Like New\nUsed - Very Good\nUsed - Good\nUsed - Acceptable\nCollectible - Like New\nCollectible - Very Good\nCollectible - Good\nCollectible - Acceptable"
+  },
+  {
+   "fieldname": "ebay_tab",
+   "fieldtype": "Tab Break",
+   "label": "eBay"
+  },
+  {
+   "fieldname": "ebay_section",
+   "fieldtype": "Section Break",
+   "label": "eBay Identifiers"
+  },
+  {
+   "fieldname": "ebay_item_id",
+   "fieldtype": "Data",
+   "label": "eBay Item ID",
+   "description": "eBay listing item number"
+  },
+  {
+   "fieldname": "ebay_sku",
+   "fieldtype": "Data",
+   "label": "eBay SKU",
+   "description": "Seller SKU for eBay"
+  },
+  {
+   "fieldname": "column_break_ebay_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ebay_category_id",
+   "fieldtype": "Data",
+   "label": "eBay Category ID",
+   "description": "eBay category ID number"
+  },
+  {
+   "fieldname": "ebay_category_name",
+   "fieldtype": "Data",
+   "label": "eBay Category Name",
+   "read_only": 1,
+   "description": "eBay category path"
+  },
+  {
+   "fieldname": "ebay_listing_section",
+   "fieldtype": "Section Break",
+   "label": "eBay Listing"
+  },
+  {
+   "default": "FixedPriceItem",
+   "fieldname": "ebay_listing_type",
+   "fieldtype": "Select",
+   "label": "Listing Type",
+   "options": "FixedPriceItem\nAuction\nStoreInventory"
+  },
+  {
+   "default": "GTC",
+   "fieldname": "ebay_listing_duration",
+   "fieldtype": "Select",
+   "label": "Listing Duration",
+   "options": "GTC\nDays_1\nDays_3\nDays_5\nDays_7\nDays_10\nDays_30"
+  },
+  {
+   "fieldname": "column_break_ebay_listing_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1000",
+   "fieldname": "ebay_condition_id",
+   "fieldtype": "Data",
+   "label": "Condition ID",
+   "description": "eBay condition ID (1000=New, 1500=New Other, etc.)"
+  },
+  {
+   "fieldname": "ebay_condition_description",
+   "fieldtype": "Small Text",
+   "label": "Condition Description",
+   "description": "Additional condition details"
+  },
+  {
+   "fieldname": "ebay_shipping_section",
+   "fieldtype": "Section Break",
+   "label": "eBay Shipping"
+  },
+  {
+   "fieldname": "ebay_shipping_service",
+   "fieldtype": "Data",
+   "label": "Domestic Shipping Service",
+   "description": "Primary domestic shipping service"
+  },
+  {
+   "fieldname": "ebay_domestic_shipping_cost",
+   "fieldtype": "Currency",
+   "label": "Domestic Shipping Cost",
+   "description": "Cost for domestic shipping"
+  },
+  {
+   "fieldname": "column_break_ebay_ship_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ebay_intl_shipping_service",
+   "fieldtype": "Data",
+   "label": "International Shipping Service",
+   "description": "International shipping service"
+  },
+  {
+   "fieldname": "ebay_intl_shipping_cost",
+   "fieldtype": "Currency",
+   "label": "International Shipping Cost",
+   "description": "Cost for international shipping"
+  },
+  {
+   "fieldname": "alibaba_tab",
+   "fieldtype": "Tab Break",
+   "label": "Alibaba"
+  },
+  {
+   "fieldname": "alibaba_section",
+   "fieldtype": "Section Break",
+   "label": "Alibaba Identifiers"
+  },
+  {
+   "fieldname": "alibaba_product_id",
+   "fieldtype": "Data",
+   "label": "Alibaba Product ID",
+   "description": "Alibaba product listing ID"
+  },
+  {
+   "fieldname": "alibaba_sku",
+   "fieldtype": "Data",
+   "label": "Alibaba SKU",
+   "description": "Seller SKU for Alibaba"
+  },
+  {
+   "fieldname": "column_break_alibaba_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "alibaba_category_id",
+   "fieldtype": "Data",
+   "label": "Alibaba Category ID",
+   "description": "Alibaba category ID"
+  },
+  {
+   "fieldname": "alibaba_subject",
+   "fieldtype": "Data",
+   "label": "Product Subject",
+   "description": "Alibaba product title/subject"
+  },
+  {
+   "fieldname": "alibaba_trade_section",
+   "fieldtype": "Section Break",
+   "label": "Alibaba Trade"
+  },
+  {
+   "fieldname": "alibaba_payment_methods",
+   "fieldtype": "Data",
+   "label": "Payment Methods",
+   "description": "Accepted payment methods (comma-separated)"
+  },
+  {
+   "default": "0",
+   "fieldname": "alibaba_trade_assurance",
+   "fieldtype": "Check",
+   "label": "Trade Assurance",
+   "description": "Trade Assurance enabled"
+  },
+  {
+   "fieldname": "column_break_alibaba_trade_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "alibaba_moq",
+   "fieldtype": "Data",
+   "label": "Alibaba MOQ",
+   "description": "Minimum Order Quantity for Alibaba"
+  },
+  {
+   "fieldname": "alibaba_fob_price_range",
+   "fieldtype": "Data",
+   "label": "FOB Price Range",
+   "description": "Price range (e.g., $10.00-$15.00)"
+  },
+  {
+   "fieldname": "alibaba_keywords",
+   "fieldtype": "Small Text",
+   "label": "Keywords",
+   "description": "Alibaba search keywords"
+  },
+  {
+   "fieldname": "trendyol_tab",
+   "fieldtype": "Tab Break",
+   "label": "Trendyol"
+  },
+  {
+   "fieldname": "trendyol_section",
+   "fieldtype": "Section Break",
+   "label": "Trendyol Identifiers"
+  },
+  {
+   "fieldname": "trendyol_barcode",
+   "fieldtype": "Data",
+   "label": "Trendyol Barcode",
+   "description": "Product barcode for Trendyol"
+  },
+  {
+   "fieldname": "trendyol_product_code",
+   "fieldtype": "Data",
+   "label": "Trendyol Product Code",
+   "description": "Trendyol product code"
+  },
+  {
+   "fieldname": "column_break_trendyol_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trendyol_category_id",
+   "fieldtype": "Data",
+   "label": "Trendyol Category ID",
+   "description": "Trendyol category ID"
+  },
+  {
+   "fieldname": "trendyol_brand_id",
+   "fieldtype": "Data",
+   "label": "Trendyol Brand ID",
+   "description": "Trendyol brand ID"
+  },
+  {
+   "fieldname": "trendyol_listing_section",
+   "fieldtype": "Section Break",
+   "label": "Trendyol Listing"
+  },
+  {
+   "fieldname": "trendyol_title",
+   "fieldtype": "Data",
+   "label": "Trendyol Title",
+   "description": "Product title for Trendyol"
+  },
+  {
+   "fieldname": "trendyol_description",
+   "fieldtype": "Text",
+   "label": "Trendyol Description",
+   "description": "Product description for Trendyol"
+  },
+  {
+   "fieldname": "trendyol_stock_code",
+   "fieldtype": "Data",
+   "label": "Trendyol Stock Code",
+   "description": "Stock code for Trendyol"
+  },
+  {
+   "fieldname": "hepsiburada_tab",
+   "fieldtype": "Tab Break",
+   "label": "Hepsiburada"
+  },
+  {
+   "fieldname": "hepsiburada_section",
+   "fieldtype": "Section Break",
+   "label": "Hepsiburada Identifiers"
+  },
+  {
+   "fieldname": "hepsiburada_sku",
+   "fieldtype": "Data",
+   "label": "Hepsiburada SKU",
+   "description": "Hepsiburada platform SKU"
+  },
+  {
+   "fieldname": "hepsiburada_merchant_sku",
+   "fieldtype": "Data",
+   "label": "Merchant SKU",
+   "description": "Seller's merchant SKU"
+  },
+  {
+   "fieldname": "column_break_hepsiburada_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hepsiburada_category_id",
+   "fieldtype": "Data",
+   "label": "Hepsiburada Category ID",
+   "description": "Hepsiburada category ID"
+  },
+  {
+   "fieldname": "hepsiburada_listing_section",
+   "fieldtype": "Section Break",
+   "label": "Hepsiburada Listing"
+  },
+  {
+   "default": "Active",
+   "fieldname": "hepsiburada_listing_status",
+   "fieldtype": "Select",
+   "label": "Listing Status",
+   "options": "Active\nInactive\nPending\nRejected"
+  },
+  {
+   "default": "18",
+   "fieldname": "hepsiburada_vat_rate",
+   "fieldtype": "Percent",
+   "label": "VAT Rate",
+   "description": "VAT rate for Hepsiburada"
+  },
+  {
+   "fieldname": "n11_tab",
+   "fieldtype": "Tab Break",
+   "label": "N11"
+  },
+  {
+   "fieldname": "n11_section",
+   "fieldtype": "Section Break",
+   "label": "N11 Identifiers"
+  },
+  {
+   "fieldname": "n11_product_id",
+   "fieldtype": "Data",
+   "label": "N11 Product ID",
+   "description": "N11 platform product ID"
+  },
+  {
+   "fieldname": "n11_product_seller_code",
+   "fieldtype": "Data",
+   "label": "N11 Seller Code",
+   "description": "Seller product code for N11"
+  },
+  {
+   "fieldname": "column_break_n11_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "n11_category_id",
+   "fieldtype": "Data",
+   "label": "N11 Category ID",
+   "description": "N11 category ID"
+  },
+  {
+   "fieldname": "n11_listing_section",
+   "fieldtype": "Section Break",
+   "label": "N11 Listing"
+  },
+  {
+   "fieldname": "n11_display_price",
+   "fieldtype": "Currency",
+   "label": "N11 Display Price",
+   "description": "Display price for N11"
+  },
+  {
+   "fieldname": "n11_stock_quantity",
+   "fieldtype": "Int",
+   "label": "N11 Stock Quantity",
+   "description": "Stock quantity for N11"
+  },
+  {
+   "fieldname": "compliance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Compliance"
+  },
+  {
+   "fieldname": "compliance_section",
+   "fieldtype": "Section Break",
+   "label": "Origin & Manufacturing"
+  },
+  {
+   "fieldname": "country_of_origin",
+   "fieldtype": "Link",
+   "label": "Country of Origin",
+   "options": "Country",
+   "description": "Country where product was designed/originated"
+  },
+  {
+   "fieldname": "country_of_manufacture",
+   "fieldtype": "Link",
+   "label": "Country of Manufacture",
+   "options": "Country",
+   "description": "Country where product was manufactured"
+  },
+  {
+   "fieldname": "column_break_compliance_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_hazardous",
+   "fieldtype": "Check",
+   "label": "Is Hazardous",
+   "description": "Product contains hazardous materials"
+  },
+  {
+   "fieldname": "hazard_class",
+   "fieldtype": "Select",
+   "label": "Hazard Class",
+   "depends_on": "is_hazardous",
+   "options": "\nClass 1 - Explosives\nClass 2 - Gases\nClass 3 - Flammable Liquids\nClass 4 - Flammable Solids\nClass 5 - Oxidizers\nClass 6 - Toxic/Infectious\nClass 7 - Radioactive\nClass 8 - Corrosives\nClass 9 - Miscellaneous"
+  },
+  {
+   "fieldname": "certifications_section",
+   "fieldtype": "Section Break",
+   "label": "Certifications"
+  },
+  {
+   "fieldname": "certifications",
+   "fieldtype": "Small Text",
+   "label": "Certifications",
+   "description": "List of certifications (comma-separated)"
+  },
+  {
+   "default": "0",
+   "fieldname": "ce_marked",
+   "fieldtype": "Check",
+   "label": "CE Marked",
+   "description": "Product has CE marking"
+  },
+  {
+   "fieldname": "column_break_certs_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "rohs_compliant",
+   "fieldtype": "Check",
+   "label": "RoHS Compliant",
+   "description": "Restriction of Hazardous Substances compliant"
+  },
+  {
+   "default": "0",
+   "fieldname": "reach_compliant",
+   "fieldtype": "Check",
+   "label": "REACH Compliant",
+   "description": "EU REACH regulation compliant"
+  },
+  {
+   "fieldname": "safety_section",
+   "fieldtype": "Section Break",
+   "label": "Safety"
+  },
+  {
+   "fieldname": "safety_warnings",
+   "fieldtype": "Small Text",
+   "label": "Safety Warnings",
+   "description": "Product safety warnings and precautions"
+  },
+  {
+   "fieldname": "age_restriction",
+   "fieldtype": "Select",
+   "label": "Age Restriction",
+   "options": "\nNone\n3+\n6+\n12+\n16+\n18+\n21+"
+  },
+  {
+   "fieldname": "column_break_safety_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_adult_signature",
+   "fieldtype": "Check",
+   "label": "Requires Adult Signature",
+   "description": "Delivery requires adult signature"
+  },
+  {
+   "fieldname": "customs_section",
+   "fieldtype": "Section Break",
+   "label": "Customs & Export",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "customs_tariff_number",
+   "fieldtype": "Data",
+   "label": "Customs Tariff Number",
+   "description": "Full customs tariff classification number"
+  },
+  {
+   "fieldname": "eccn",
+   "fieldtype": "Data",
+   "label": "ECCN",
+   "description": "Export Control Classification Number (US)"
+  },
+  {
+   "fieldname": "column_break_customs_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "export_license_required",
+   "fieldtype": "Check",
+   "label": "Export License Required",
+   "description": "Requires export license for international shipping"
+  },
+  {
+   "fieldname": "import_restrictions",
+   "fieldtype": "Small Text",
+   "label": "Import Restrictions",
+   "description": "Countries with import restrictions"
+  },
+  {
+   "fieldname": "seo_tab",
+   "fieldtype": "Tab Break",
+   "label": "SEO"
+  },
+  {
+   "fieldname": "seo_section",
+   "fieldtype": "Section Break",
+   "label": "Meta Information"
+  },
+  {
+   "fieldname": "meta_title",
+   "fieldtype": "Data",
+   "label": "Meta Title",
+   "description": "SEO meta title (max 60 characters recommended)"
+  },
+  {
+   "fieldname": "meta_description",
+   "fieldtype": "Small Text",
+   "label": "Meta Description",
+   "description": "SEO meta description (max 160 characters recommended)"
+  },
+  {
+   "fieldname": "column_break_seo_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "meta_keywords",
+   "fieldtype": "Small Text",
+   "label": "Meta Keywords",
+   "description": "SEO keywords (comma-separated)"
+  },
+  {
+   "fieldname": "canonical_url",
+   "fieldtype": "Data",
+   "label": "Canonical URL",
+   "description": "Canonical URL for this product"
+  },
+  {
+   "fieldname": "url_section",
+   "fieldtype": "Section Break",
+   "label": "URL Settings"
+  },
+  {
+   "fieldname": "url_slug",
+   "fieldtype": "Data",
+   "label": "URL Slug",
+   "description": "URL-friendly slug (auto-generated from product name)"
+  },
+  {
+   "fieldname": "url_handle",
+   "fieldtype": "Data",
+   "label": "URL Handle",
+   "description": "Custom URL handle override"
+  },
+  {
+   "fieldname": "column_break_url_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "page_title",
+   "fieldtype": "Data",
+   "label": "Page Title",
+   "description": "Custom page title (overrides meta title)"
+  },
+  {
+   "fieldname": "og_image",
+   "fieldtype": "Attach Image",
+   "label": "Open Graph Image",
+   "description": "Image for social media sharing"
+  },
+  {
+   "fieldname": "schema_section",
+   "fieldtype": "Section Break",
+   "label": "Structured Data",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "structured_data",
+   "fieldtype": "Code",
+   "label": "Structured Data",
+   "options": "JSON",
+   "description": "JSON-LD structured data for rich snippets"
+  },
+  {
+   "default": "Product",
+   "fieldname": "schema_type",
+   "fieldtype": "Select",
+   "label": "Schema Type",
+   "options": "Product\nService\nSoftwareApplication\nBook\nEvent\nOffer"
+  },
+  {
+   "fieldname": "completeness_tab",
+   "fieldtype": "Tab Break",
+   "label": "Completeness"
+  },
+  {
+   "fieldname": "completeness_section",
+   "fieldtype": "Section Break",
+   "label": "Product Completeness"
+  },
+  {
+   "default": "0",
+   "fieldname": "completeness_score",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Completeness Score",
+   "read_only": 1,
+   "description": "Overall product data completeness (0-100%)"
+  },
+  {
+   "default": "Incomplete",
+   "fieldname": "completeness_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Completeness Status",
+   "options": "Incomplete\nPartial\nComplete\nEnriched",
+   "read_only": 1,
+   "description": "Completeness level based on score thresholds"
+  },
+  {
+   "fieldname": "column_break_completeness_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "completeness_detail",
+   "fieldtype": "Code",
+   "label": "Completeness Detail",
+   "options": "JSON",
+   "read_only": 1,
+   "description": "Detailed completeness breakdown by category"
+  },
+  {
+   "fieldname": "last_completeness_check",
+   "fieldtype": "Datetime",
+   "label": "Last Check",
+   "read_only": 1,
+   "description": "When completeness was last calculated"
+  },
+  {
+   "fieldname": "channel_completeness_section",
+   "fieldtype": "Section Break",
+   "label": "Channel-Specific Completeness",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "channel_completeness",
+   "fieldtype": "Code",
+   "label": "Channel Completeness",
+   "options": "JSON",
+   "read_only": 1,
+   "description": "Completeness score per sales channel"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "origin_section",
+   "fieldtype": "Section Break",
+   "label": "Migration Origin"
+  },
+  {
+   "fieldname": "magento_product_id",
+   "fieldtype": "Data",
+   "label": "Magento Product ID",
+   "description": "Original Magento product entity_id"
+  },
+  {
+   "fieldname": "magento_sku",
+   "fieldtype": "Data",
+   "label": "Magento SKU",
+   "description": "Original Magento SKU"
+  },
+  {
+   "fieldname": "column_break_origin_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "drupal_product_id",
+   "fieldtype": "Data",
+   "label": "Drupal Product ID",
+   "description": "Original Drupal Commerce product_id"
+  },
+  {
+   "fieldname": "drupal_sku",
+   "fieldtype": "Data",
+   "label": "Drupal SKU",
+   "description": "Original Drupal Commerce SKU"
+  },
+  {
+   "fieldname": "external_ids_section",
+   "fieldtype": "Section Break",
+   "label": "External System IDs"
+  },
+  {
+   "fieldname": "external_source",
+   "fieldtype": "Data",
+   "label": "External Source",
+   "description": "Name of external source system"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "label": "External ID",
+   "description": "ID in external source system"
+  },
+  {
+   "fieldname": "column_break_ext_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "import_batch",
+   "fieldtype": "Data",
+   "label": "Import Batch",
+   "description": "Batch ID for bulk imports"
+  },
+  {
+   "fieldname": "last_sync",
+   "fieldtype": "Datetime",
+   "label": "Last Sync",
+   "description": "Last synchronization with external system"
+  },
+  {
+   "fieldname": "erpnext_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration"
+  },
+  {
+   "fieldname": "erpnext_item_code",
+   "fieldtype": "Link",
+   "label": "ERPNext Item",
+   "options": "Item",
+   "description": "Linked ERPNext Item"
+  },
+  {
+   "fieldname": "erpnext_last_sync",
+   "fieldtype": "Datetime",
+   "label": "ERPNext Last Sync",
+   "description": "Last sync to ERPNext"
+  },
+  {
+   "fieldname": "column_break_erpnext_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sync_to_erpnext",
+   "fieldtype": "Check",
+   "label": "Sync to ERPNext",
+   "description": "Enable automatic sync to ERPNext Item"
+  },
+  {
+   "fieldname": "erpnext_sync_error",
+   "fieldtype": "Small Text",
+   "label": "Sync Error",
+   "read_only": 1,
+   "description": "Last ERPNext sync error message"
+  },
+  {
+   "fieldname": "audit_section",
+   "fieldtype": "Section Break",
+   "label": "Audit Trail"
+  },
+  {
+   "fieldname": "created_by_user",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1,
+   "description": "User who created this product"
+  },
+  {
+   "fieldname": "creation_source",
+   "fieldtype": "Select",
+   "label": "Creation Source",
+   "options": "Manual\nImport\nAPI\nMigration\nDuplicate\nVariant Generation",
+   "read_only": 1,
+   "description": "How this product was created"
+  },
+  {
+   "fieldname": "column_break_audit_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_modified_by_user",
+   "fieldtype": "Link",
+   "label": "Last Modified By",
+   "options": "User",
+   "read_only": 1,
+   "description": "User who last modified this product"
+  },
+  {
+   "default": "1",
+   "fieldname": "version_number",
+   "fieldtype": "Int",
+   "label": "Version",
+   "read_only": 1,
+   "description": "Product data version number"
+  },
+  {
+   "fieldname": "workflow_section",
+   "fieldtype": "Section Break",
+   "label": "Workflow"
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Data",
+   "label": "Workflow State",
+   "read_only": 1,
+   "description": "Current workflow state"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1,
+   "description": "User who approved the product"
+  },
+  {
+   "fieldname": "column_break_workflow_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1,
+   "description": "Approval timestamp"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "description": "Reason for rejection (if rejected)"
+  },
+  {
+   "fieldname": "publish_section",
+   "fieldtype": "Section Break",
+   "label": "Publishing"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Is Published",
+   "description": "Product is live and visible"
+  },
+  {
+   "fieldname": "published_on",
+   "fieldtype": "Datetime",
+   "label": "Published On",
+   "read_only": 1,
+   "description": "When product was published"
+  },
+  {
+   "fieldname": "column_break_publish_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "unpublished_on",
+   "fieldtype": "Datetime",
+   "label": "Unpublished On",
+   "read_only": 1,
+   "description": "When product was unpublished"
+  },
+  {
+   "fieldname": "publish_scheduled",
+   "fieldtype": "Datetime",
+   "label": "Publish Scheduled",
+   "description": "Scheduled publish date/time"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Variants",
+   "link_doctype": "PIM Product Variant",
+   "link_fieldname": "product"
+  }
+ ],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "PIM Product",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "product_name,sku,barcode,brand",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "product_name",
+ "track_changes": 1
+}

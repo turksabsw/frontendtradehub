@@ -1,0 +1,127 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-0\", \"type\": \"card\", \"data\": {\"card_name\": \"Product Catalog\", \"col\": 4}}]",
+ "creation": "2026-02-10 17:29:47.542317",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Product Catalog",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Catalog",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Category",
+   "link_count": 0,
+   "link_to": "Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Category Display Schema",
+   "link_count": 0,
+   "link_to": "Category Display Schema",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Filter Config",
+   "link_count": 0,
+   "link_to": "Filter Config",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Listing",
+   "link_count": 0,
+   "link_to": "Listing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Listing Variant",
+   "link_count": 0,
+   "link_to": "Listing Variant",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "SKU",
+   "link_count": 0,
+   "link_to": "SKU",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "SKU Product",
+   "link_count": 0,
+   "link_to": "SKU Product",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Buy Box Entry",
+   "link_count": 0,
+   "link_to": "Buy Box Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Variant",
+   "link_count": 0,
+   "link_to": "Product Variant",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-13 16:18:26.396339",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Product Catalog",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 3.0,
+ "shortcuts": [],
+ "title": "Product Catalog"
+}

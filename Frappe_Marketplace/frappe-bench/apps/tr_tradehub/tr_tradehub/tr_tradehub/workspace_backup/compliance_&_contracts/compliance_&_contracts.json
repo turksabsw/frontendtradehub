@@ -1,0 +1,68 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-compliance\", \"type\": \"card\", \"data\": {\"card_name\": \"Compliance & Contracts\", \"col\": 12}}]",
+ "creation": "2026-02-12 15:52:38.845599",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Compliance & Contracts",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Compliance & Contracts",
+   "link_count": 0,
+   "link_to": "",
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marketplace Consent Record",
+   "link_count": 0,
+   "link_to": "Marketplace Consent Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marketplace Contract Instance",
+   "link_count": 0,
+   "link_to": "Marketplace Contract Instance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marketplace Contract Template",
+   "link_count": 0,
+   "link_to": "Marketplace Contract Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-13 16:18:26.707433",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Compliance & Contracts",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 16.0,
+ "shortcuts": [],
+ "title": "Compliance & Contracts"
+}

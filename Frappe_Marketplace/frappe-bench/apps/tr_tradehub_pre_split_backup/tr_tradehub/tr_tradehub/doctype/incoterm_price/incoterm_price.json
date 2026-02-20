@@ -1,0 +1,405 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "INC-.#####",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "sku_product",
+    "product_name",
+    "column_break_basic",
+    "product_sku_code",
+    "product_status",
+    "ownership_section",
+    "seller",
+    "seller_name",
+    "column_break_ownership",
+    "tenant",
+    "tenant_name",
+    "incoterm_section",
+    "incoterm",
+    "incoterm_description",
+    "column_break_incoterm",
+    "status",
+    "is_default",
+    "pricing_section",
+    "base_price",
+    "currency",
+    "column_break_pricing",
+    "valid_from",
+    "valid_until",
+    "price_breaks_section",
+    "price_breaks",
+    "shipping_info_section",
+    "origin_port",
+    "destination_port",
+    "column_break_shipping",
+    "estimated_transit_days",
+    "freight_included",
+    "insurance_included",
+    "customs_section",
+    "customs_duties_included",
+    "import_taxes_included",
+    "column_break_customs",
+    "hs_code",
+    "country_of_origin",
+    "notes_section",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Product Information"
+    },
+    {
+      "fieldname": "sku_product",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "SKU Product",
+      "options": "SKU Product",
+      "reqd": 1,
+      "description": "The product this pricing applies to"
+    },
+    {
+      "fetch_from": "sku_product.product_name",
+      "fieldname": "product_name",
+      "fieldtype": "Data",
+      "label": "Product Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "sku_product.sku_code",
+      "fieldname": "product_sku_code",
+      "fieldtype": "Data",
+      "label": "Product SKU Code",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fetch_from": "sku_product.status",
+      "fieldname": "product_status",
+      "fieldtype": "Data",
+      "label": "Product Status",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "ownership_section",
+      "fieldtype": "Section Break",
+      "label": "Ownership"
+    },
+    {
+      "fetch_from": "sku_product.seller",
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "label": "Seller",
+      "options": "Seller Profile",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fetch_from": "sku_product.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "label": "Seller Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "column_break_ownership",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "sku_product.tenant",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from SKU Product - Multi-tenant isolation field"
+    },
+    {
+      "fetch_from": "sku_product.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "incoterm_section",
+      "fieldtype": "Section Break",
+      "label": "Incoterm Details"
+    },
+    {
+      "default": "EXW",
+      "fieldname": "incoterm",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Incoterm",
+      "options": "EXW\nFOB\nCIF\nDDP",
+      "reqd": 1,
+      "description": "International Commercial Term for this pricing"
+    },
+    {
+      "fieldname": "incoterm_description",
+      "fieldtype": "Small Text",
+      "label": "Incoterm Description",
+      "read_only": 1,
+      "description": "Auto-generated description of the selected Incoterm"
+    },
+    {
+      "fieldname": "column_break_incoterm",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nInactive\nExpired",
+      "reqd": 1,
+      "description": "Pricing availability status"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default",
+      "description": "Mark as default pricing for this incoterm"
+    },
+    {
+      "fieldname": "pricing_section",
+      "fieldtype": "Section Break",
+      "label": "Base Pricing"
+    },
+    {
+      "default": "0",
+      "fieldname": "base_price",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Base Price",
+      "reqd": 1,
+      "description": "Base unit price before quantity discounts"
+    },
+    {
+      "default": "USD",
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "reqd": 1,
+      "description": "Pricing currency"
+    },
+    {
+      "fieldname": "column_break_pricing",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "valid_from",
+      "fieldtype": "Date",
+      "label": "Valid From",
+      "description": "Start date for this pricing"
+    },
+    {
+      "fieldname": "valid_until",
+      "fieldtype": "Date",
+      "label": "Valid Until",
+      "description": "End date for this pricing"
+    },
+    {
+      "fieldname": "price_breaks_section",
+      "fieldtype": "Section Break",
+      "label": "Quantity Price Breaks"
+    },
+    {
+      "fieldname": "price_breaks",
+      "fieldtype": "Table",
+      "label": "Price Breaks",
+      "options": "Price Break",
+      "description": "Quantity-based pricing tiers"
+    },
+    {
+      "fieldname": "shipping_info_section",
+      "fieldtype": "Section Break",
+      "label": "Shipping Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "origin_port",
+      "fieldtype": "Data",
+      "label": "Origin Port",
+      "description": "Port of origin for FOB/CIF/DDP terms"
+    },
+    {
+      "fieldname": "destination_port",
+      "fieldtype": "Data",
+      "label": "Destination Port",
+      "description": "Destination port for CIF/DDP terms"
+    },
+    {
+      "fieldname": "column_break_shipping",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "estimated_transit_days",
+      "fieldtype": "Int",
+      "label": "Estimated Transit Days",
+      "description": "Estimated shipping transit time in days"
+    },
+    {
+      "default": "0",
+      "fieldname": "freight_included",
+      "fieldtype": "Check",
+      "label": "Freight Included",
+      "description": "Whether freight cost is included in the price"
+    },
+    {
+      "default": "0",
+      "fieldname": "insurance_included",
+      "fieldtype": "Check",
+      "label": "Insurance Included",
+      "description": "Whether insurance cost is included in the price"
+    },
+    {
+      "fieldname": "customs_section",
+      "fieldtype": "Section Break",
+      "label": "Customs and Duties",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "customs_duties_included",
+      "fieldtype": "Check",
+      "label": "Customs Duties Included",
+      "description": "Whether customs duties are included in the price"
+    },
+    {
+      "default": "0",
+      "fieldname": "import_taxes_included",
+      "fieldtype": "Check",
+      "label": "Import Taxes Included",
+      "description": "Whether import taxes are included in the price"
+    },
+    {
+      "fieldname": "column_break_customs",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "sku_product.hs_code",
+      "fieldname": "hs_code",
+      "fieldtype": "Data",
+      "label": "HS Code",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fetch_from": "sku_product.country_of_origin",
+      "fieldname": "country_of_origin",
+      "fieldtype": "Link",
+      "label": "Country of Origin",
+      "options": "Country",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Additional Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Text",
+      "label": "Notes",
+      "description": "Additional pricing notes or terms"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "SKU Product",
+      "link_fieldname": "sku_product"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Incoterm Price",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 0,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "product_name, product_sku_code, incoterm, seller_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "green",
+      "title": "Active"
+    },
+    {
+      "color": "gray",
+      "title": "Inactive"
+    },
+    {
+      "color": "red",
+      "title": "Expired"
+    }
+  ],
+  "title_field": "product_name",
+  "track_changes": 1
+}

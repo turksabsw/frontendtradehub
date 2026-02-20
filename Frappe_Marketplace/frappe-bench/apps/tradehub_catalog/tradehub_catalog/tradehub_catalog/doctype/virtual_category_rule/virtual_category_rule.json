@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "condition_section",
+  "field",
+  "operator",
+  "column_break_condition",
+  "value",
+  "logic",
+  "settings_section",
+  "is_active",
+  "weight",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "condition_section",
+   "fieldtype": "Section Break",
+   "label": "Condition"
+  },
+  {
+   "description": "Product/Listing field to evaluate for this condition",
+   "fieldname": "field",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Field",
+   "options": "category\nparent_category\nbrand\nseller\nseller_level\nprice\ndiscount_percentage\nstock_qty\nrating\nreview_count\ncreation_date\nlast_modified\nitem_condition\nproduct_type\ntags\nlocation\ncountry\nshipping_type\nhas_variants\nis_featured\nis_bestseller\nis_new_arrival",
+   "reqd": 1
+  },
+  {
+   "description": "Comparison operator",
+   "fieldname": "operator",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Operator",
+   "options": "=\n!=\n>\n<\n>=\n<=\ncontains\nnot contains\nin\nnot in\nstarts with\nends with\nis set\nis not set\nis empty\nis not empty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_condition",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Value to compare against. For 'in' operator, use comma-separated values.",
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value"
+  },
+  {
+   "default": "AND",
+   "description": "Logical operator to combine with next condition",
+   "fieldname": "logic",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Logic",
+   "options": "AND\nOR"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "default": "1",
+   "description": "Enable or disable this condition",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "default": "1",
+   "description": "Weight for scoring when multiple conditions match (higher = more important)",
+   "fieldname": "weight",
+   "fieldtype": "Int",
+   "label": "Weight"
+  },
+  {
+   "description": "Optional notes about this condition",
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Virtual Category Rule",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "field, operator, value",
+ "sort_field": "idx",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

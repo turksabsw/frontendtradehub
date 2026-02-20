@@ -1,0 +1,222 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:industry_code",
+  "creation": "2024-01-28 12:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "industry_code",
+    "industry_name",
+    "column_break_basic",
+    "enabled",
+    "parent_industry",
+    "nace_classification_section",
+    "nace_section",
+    "nace_division",
+    "column_break_nace",
+    "nace_group",
+    "nace_class",
+    "description_section",
+    "description",
+    "ai_context_section",
+    "typical_company_types",
+    "typical_products_services",
+    "column_break_ai",
+    "typical_job_titles",
+    "typical_departments",
+    "faker_hints_section",
+    "faker_locale_hint",
+    "faker_providers"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "description": "Unique identifier for this industry (e.g., NACE code like 'A01' or custom code)",
+      "fieldname": "industry_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Industry Code",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "description": "Human-readable name for this industry",
+      "fieldname": "industry_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Industry Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "description": "Enable or disable this industry for selection",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled"
+    },
+    {
+      "description": "Parent industry for hierarchical classification",
+      "fieldname": "parent_industry",
+      "fieldtype": "Link",
+      "label": "Parent Industry",
+      "options": "Mock Industry"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "nace_classification_section",
+      "fieldtype": "Section Break",
+      "label": "NACE Classification"
+    },
+    {
+      "description": "NACE Section code (A-U single letter)",
+      "fieldname": "nace_section",
+      "fieldtype": "Data",
+      "label": "NACE Section"
+    },
+    {
+      "description": "NACE Division code (2 digits, e.g., '01' for Agriculture)",
+      "fieldname": "nace_division",
+      "fieldtype": "Data",
+      "label": "NACE Division"
+    },
+    {
+      "fieldname": "column_break_nace",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "NACE Group code (3 digits, e.g., '011' for Growing of non-perennial crops)",
+      "fieldname": "nace_group",
+      "fieldtype": "Data",
+      "label": "NACE Group"
+    },
+    {
+      "description": "NACE Class code (4 digits, e.g., '0111' for Growing of cereals)",
+      "fieldname": "nace_class",
+      "fieldtype": "Data",
+      "label": "NACE Class"
+    },
+    {
+      "fieldname": "description_section",
+      "fieldtype": "Section Break",
+      "label": "Description"
+    },
+    {
+      "description": "Detailed description of this industry sector",
+      "fieldname": "description",
+      "fieldtype": "Text",
+      "label": "Description"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "ai_context_section",
+      "fieldtype": "Section Break",
+      "label": "AI Context Hints"
+    },
+    {
+      "description": "Typical company types in this industry (one per line, for AI context)",
+      "fieldname": "typical_company_types",
+      "fieldtype": "Small Text",
+      "label": "Typical Company Types"
+    },
+    {
+      "description": "Typical products or services in this industry (one per line, for AI context)",
+      "fieldname": "typical_products_services",
+      "fieldtype": "Small Text",
+      "label": "Typical Products/Services"
+    },
+    {
+      "fieldname": "column_break_ai",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Typical job titles in this industry (one per line, for AI context)",
+      "fieldname": "typical_job_titles",
+      "fieldtype": "Small Text",
+      "label": "Typical Job Titles"
+    },
+    {
+      "description": "Typical department names in this industry (one per line, for AI context)",
+      "fieldname": "typical_departments",
+      "fieldtype": "Small Text",
+      "label": "Typical Departments"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "faker_hints_section",
+      "fieldtype": "Section Break",
+      "label": "Faker Generation Hints"
+    },
+    {
+      "description": "Preferred Faker locale for this industry (e.g., 'tr_TR' for Turkish companies)",
+      "fieldname": "faker_locale_hint",
+      "fieldtype": "Select",
+      "label": "Preferred Locale",
+      "options": "\ntr_TR\nen_US\nen_GB\nde_DE\nfr_FR\nes_ES\nit_IT\npt_BR\nja_JP\nzh_CN\nar_SA"
+    },
+    {
+      "description": "Comma-separated list of Faker provider hints (e.g., 'company,address,person')",
+      "fieldname": "faker_providers",
+      "fieldtype": "Data",
+      "label": "Faker Providers"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Mock Generation Profile",
+      "link_fieldname": "industry"
+    }
+  ],
+  "modified": "2024-01-28 12:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Mock Data Engine",
+  "name": "Mock Industry",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Administrator",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "industry_name,nace_section,nace_division",
+  "sort_field": "industry_code",
+  "sort_order": "ASC",
+  "title_field": "industry_name",
+  "track_changes": 1
+}

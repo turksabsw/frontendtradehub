@@ -1,0 +1,187 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "creation": "2024-01-28 12:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "doctype_name",
+    "field_name",
+    "generator_type",
+    "column_break_1",
+    "enabled",
+    "section_break_faker",
+    "faker_method",
+    "faker_args",
+    "section_break_fixed",
+    "fixed_value",
+    "section_break_range",
+    "range_min",
+    "range_max",
+    "section_break_pattern",
+    "pattern_template",
+    "section_break_select",
+    "select_options",
+    "section_break_llm",
+    "llm_prompt"
+  ],
+  "fields": [
+    {
+      "description": "The DocType containing the field to override",
+      "fieldname": "doctype_name",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "DocType",
+      "options": "DocType",
+      "reqd": 1
+    },
+    {
+      "description": "The field name to override",
+      "fieldname": "field_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Field Name",
+      "reqd": 1
+    },
+    {
+      "default": "Faker",
+      "description": "How to generate the value for this field",
+      "fieldname": "generator_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Generator Type",
+      "options": "Faker\nFixed Value\nRange\nPattern\nSelect Options\nLLM",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "description": "Enable or disable this field override",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Faker'",
+      "fieldname": "section_break_faker",
+      "fieldtype": "Section Break",
+      "label": "Faker Configuration"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Faker'",
+      "description": "Faker method to call (e.g., 'name', 'email', 'phone_number', 'address')",
+      "fieldname": "faker_method",
+      "fieldtype": "Data",
+      "label": "Faker Method",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Faker'"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Faker'",
+      "description": "JSON arguments to pass to the Faker method (e.g., {\"locale\": \"tr_TR\"})",
+      "fieldname": "faker_args",
+      "fieldtype": "Small Text",
+      "label": "Faker Arguments (JSON)"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Fixed Value'",
+      "fieldname": "section_break_fixed",
+      "fieldtype": "Section Break",
+      "label": "Fixed Value Configuration"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Fixed Value'",
+      "description": "The fixed value to use for this field",
+      "fieldname": "fixed_value",
+      "fieldtype": "Data",
+      "label": "Fixed Value",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Fixed Value'"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Range'",
+      "fieldname": "section_break_range",
+      "fieldtype": "Section Break",
+      "label": "Range Configuration"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Range'",
+      "description": "Minimum value for numeric range",
+      "fieldname": "range_min",
+      "fieldtype": "Float",
+      "label": "Range Min",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Range'"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Range'",
+      "description": "Maximum value for numeric range",
+      "fieldname": "range_max",
+      "fieldtype": "Float",
+      "label": "Range Max",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Range'"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Pattern'",
+      "fieldname": "section_break_pattern",
+      "fieldtype": "Section Break",
+      "label": "Pattern Configuration"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Pattern'",
+      "description": "Pattern template with placeholders (e.g., 'PRD-{####}', 'INV-{YYYY}-{####}')",
+      "fieldname": "pattern_template",
+      "fieldtype": "Data",
+      "label": "Pattern Template",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Pattern'"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Select Options'",
+      "fieldname": "section_break_select",
+      "fieldtype": "Section Break",
+      "label": "Select Options Configuration"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Select Options'",
+      "description": "Options to randomly select from (one per line)",
+      "fieldname": "select_options",
+      "fieldtype": "Small Text",
+      "label": "Select Options",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Select Options'"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'LLM'",
+      "fieldname": "section_break_llm",
+      "fieldtype": "Section Break",
+      "label": "LLM Configuration"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'LLM'",
+      "description": "Prompt template for LLM generation. Use {field_name} placeholders for context.",
+      "fieldname": "llm_prompt",
+      "fieldtype": "Text",
+      "label": "LLM Prompt",
+      "mandatory_depends_on": "eval:doc.generator_type === 'LLM'"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "istable": 1,
+  "links": [],
+  "modified": "2024-01-28 12:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Mock Data Engine",
+  "name": "Mock Profile Field Override",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_changes": 0
+}

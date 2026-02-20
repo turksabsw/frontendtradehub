@@ -1,0 +1,319 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:channel_code",
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "channel_name",
+  "channel_code",
+  "column_break_basic_1",
+  "channel_type",
+  "platform",
+  "status_section",
+  "is_active",
+  "is_default",
+  "column_break_status_1",
+  "priority",
+  "api_credentials_section",
+  "api_credentials",
+  "column_break_api_1",
+  "api_endpoint",
+  "api_version",
+  "localization_section",
+  "default_locale",
+  "column_break_locale_1",
+  "default_currency",
+  "supported_locales",
+  "category_section",
+  "category_tree",
+  "category_mapping_notes",
+  "export_section",
+  "export_schedule",
+  "last_export",
+  "column_break_export_1",
+  "export_batch_size",
+  "export_retry_count",
+  "rate_limiting_section",
+  "requests_per_minute",
+  "column_break_rate_1",
+  "cooldown_seconds",
+  "description_section",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "channel_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Channel Name",
+   "reqd": 1,
+   "description": "Display name for the sales channel"
+  },
+  {
+   "fieldname": "channel_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Channel Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique identifier (lowercase, underscores only)"
+  },
+  {
+   "fieldname": "column_break_basic_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "channel_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Channel Type",
+   "options": "Marketplace\nWebstore\nB2B-Portal\nFeed\nAPI",
+   "reqd": 1,
+   "default": "Marketplace",
+   "description": "Type of sales channel"
+  },
+  {
+   "fieldname": "platform",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Platform",
+   "options": "\nAmazon\neBay\nAlibaba\nTrendyol\nHepsiburada\nN11\nGittiGidiyor\nCicekSepeti\nShopify\nWooCommerce\nMagento\nPrestashop\nOpenCart\nCustom",
+   "description": "Marketplace or e-commerce platform"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active",
+   "description": "Enable/disable this channel"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default",
+   "description": "Set as default channel for exports"
+  },
+  {
+   "fieldname": "column_break_status_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "label": "Priority",
+   "description": "Channel priority for multi-channel exports (higher = more priority)"
+  },
+  {
+   "fieldname": "api_credentials_section",
+   "fieldtype": "Section Break",
+   "label": "API Credentials",
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:['Marketplace', 'API'].includes(doc.channel_type)"
+  },
+  {
+   "fieldname": "api_credentials",
+   "fieldtype": "Code",
+   "label": "API Credentials",
+   "options": "JSON",
+   "description": "JSON object containing API credentials (api_key, api_secret, token, etc.)"
+  },
+  {
+   "fieldname": "column_break_api_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "api_endpoint",
+   "fieldtype": "Data",
+   "label": "API Endpoint",
+   "description": "Base URL for API calls"
+  },
+  {
+   "fieldname": "api_version",
+   "fieldtype": "Data",
+   "label": "API Version",
+   "description": "API version to use (e.g., v1, v2)"
+  },
+  {
+   "fieldname": "localization_section",
+   "fieldtype": "Section Break",
+   "label": "Localization & Currency"
+  },
+  {
+   "fieldname": "default_locale",
+   "fieldtype": "Data",
+   "label": "Default Locale",
+   "default": "en_US",
+   "description": "Default locale for product data (e.g., en_US, tr_TR, de_DE)"
+  },
+  {
+   "fieldname": "column_break_locale_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_currency",
+   "fieldtype": "Link",
+   "label": "Default Currency",
+   "options": "Currency",
+   "description": "Default currency for pricing"
+  },
+  {
+   "fieldname": "supported_locales",
+   "fieldtype": "Small Text",
+   "label": "Supported Locales",
+   "description": "Comma-separated list of supported locales (e.g., en_US,tr_TR,de_DE)"
+  },
+  {
+   "fieldname": "category_section",
+   "fieldtype": "Section Break",
+   "label": "Category Configuration",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "category_tree",
+   "fieldtype": "Code",
+   "label": "Category Tree",
+   "options": "JSON",
+   "description": "JSON representation of channel category hierarchy or category mapping rules"
+  },
+  {
+   "fieldname": "category_mapping_notes",
+   "fieldtype": "Small Text",
+   "label": "Category Mapping Notes",
+   "description": "Notes about category mapping requirements for this channel"
+  },
+  {
+   "fieldname": "export_section",
+   "fieldtype": "Section Break",
+   "label": "Export Schedule"
+  },
+  {
+   "fieldname": "export_schedule",
+   "fieldtype": "Data",
+   "label": "Export Schedule",
+   "default": "0 */6 * * *",
+   "description": "Cron expression for scheduled exports (e.g., '0 */6 * * *' for every 6 hours)"
+  },
+  {
+   "fieldname": "last_export",
+   "fieldtype": "Datetime",
+   "label": "Last Export",
+   "read_only": 1,
+   "description": "Timestamp of last successful export"
+  },
+  {
+   "fieldname": "column_break_export_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "100",
+   "fieldname": "export_batch_size",
+   "fieldtype": "Int",
+   "label": "Export Batch Size",
+   "description": "Number of products per export batch"
+  },
+  {
+   "default": "3",
+   "fieldname": "export_retry_count",
+   "fieldtype": "Int",
+   "label": "Export Retry Count",
+   "description": "Number of retries for failed exports"
+  },
+  {
+   "fieldname": "rate_limiting_section",
+   "fieldtype": "Section Break",
+   "label": "Rate Limiting",
+   "collapsible": 1
+  },
+  {
+   "default": "60",
+   "fieldname": "requests_per_minute",
+   "fieldtype": "Int",
+   "label": "Requests Per Minute",
+   "description": "Maximum API requests per minute"
+  },
+  {
+   "fieldname": "column_break_rate_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "cooldown_seconds",
+   "fieldtype": "Int",
+   "label": "Cooldown Seconds",
+   "description": "Seconds to wait between requests"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Internal notes about this channel"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Sales Channel",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "channel_name",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

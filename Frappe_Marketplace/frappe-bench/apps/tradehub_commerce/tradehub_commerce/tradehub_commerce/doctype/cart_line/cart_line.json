@@ -1,0 +1,318 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "listing",
+  "listing_variant",
+  "seller",
+  "title",
+  "column_break_product",
+  "sku",
+  "primary_image",
+  "stock_uom",
+  "pricing_section",
+  "qty",
+  "unit_price",
+  "compare_at_price",
+  "column_break_pricing",
+  "line_total",
+  "currency",
+  "discount_section",
+  "discount_type",
+  "discount_value",
+  "column_break_discount",
+  "discount_amount",
+  "discounted_price",
+  "tax_section",
+  "tax_rate",
+  "tax_amount",
+  "column_break_tax",
+  "price_includes_tax",
+  "taxable_amount",
+  "shipping_section",
+  "weight",
+  "weight_uom",
+  "column_break_shipping",
+  "is_free_shipping",
+  "shipping_estimate",
+  "stock_section",
+  "stock_reserved",
+  "reserved_at",
+  "column_break_stock",
+  "available_at_add",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "listing",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Listing",
+   "options": "Listing",
+   "reqd": 1
+  },
+  {
+   "fieldname": "listing_variant",
+   "fieldtype": "Link",
+   "label": "Listing Variant",
+   "options": "Listing Variant",
+   "description": "Specific variant if applicable"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "read_only": 1,
+   "description": "Auto-filled from listing"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Product Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_product",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sku",
+   "fieldtype": "Data",
+   "label": "SKU",
+   "read_only": 1
+  },
+  {
+   "fieldname": "primary_image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "read_only": 1
+  },
+  {
+   "default": "Nos",
+   "fieldname": "stock_uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "default": "1",
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "precision": 3,
+   "reqd": 1
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "description": "Original price before discount (for display)",
+   "fieldname": "compare_at_price",
+   "fieldtype": "Currency",
+   "label": "Compare at Price",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "line_total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Line Total",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "discount_section",
+   "fieldtype": "Section Break",
+   "label": "Line Discount"
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "label": "Discount Type",
+   "options": "\nPercentage\nFixed Amount"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_value",
+   "fieldtype": "Float",
+   "label": "Discount Value",
+   "precision": 2
+  },
+  {
+   "fieldname": "column_break_discount",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "discounted_price",
+   "fieldtype": "Currency",
+   "label": "Discounted Unit Price",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "tax_section",
+   "fieldtype": "Section Break",
+   "label": "Tax"
+  },
+  {
+   "default": "18.00",
+   "description": "VAT/KDV rate percentage",
+   "fieldname": "tax_rate",
+   "fieldtype": "Percent",
+   "label": "Tax Rate (%)"
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tax",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "price_includes_tax",
+   "fieldtype": "Check",
+   "label": "Price Includes Tax"
+  },
+  {
+   "default": "0",
+   "fieldname": "taxable_amount",
+   "fieldtype": "Currency",
+   "label": "Taxable Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "shipping_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "default": "Kg",
+   "fieldname": "weight_uom",
+   "fieldtype": "Link",
+   "label": "Weight UOM",
+   "options": "UOM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_shipping",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_free_shipping",
+   "fieldtype": "Check",
+   "label": "Free Shipping"
+  },
+  {
+   "default": "0",
+   "fieldname": "shipping_estimate",
+   "fieldtype": "Currency",
+   "label": "Shipping Estimate",
+   "options": "currency"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "stock_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Reservation"
+  },
+  {
+   "default": "0",
+   "description": "Stock has been reserved for this cart item",
+   "fieldname": "stock_reserved",
+   "fieldtype": "Check",
+   "label": "Stock Reserved"
+  },
+  {
+   "fieldname": "reserved_at",
+   "fieldtype": "Datetime",
+   "label": "Reserved At"
+  },
+  {
+   "fieldname": "column_break_stock",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Available quantity when item was added",
+   "fieldname": "available_at_add",
+   "fieldtype": "Float",
+   "label": "Available When Added",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Cart Line",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

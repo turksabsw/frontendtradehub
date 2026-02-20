@@ -1,0 +1,107 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-0\", \"type\": \"card\", \"data\": {\"card_name\": \"Communication & Moderation\", \"col\": 4}}]",
+ "creation": "2026-02-10 17:29:47.760545",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Communication & Moderation",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Communication & Moderation",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Message",
+   "link_count": 0,
+   "link_to": "Message",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Message Thread",
+   "link_count": 0,
+   "link_to": "Message Thread",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Notification Template",
+   "link_count": 0,
+   "link_to": "Notification Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Moderation Case",
+   "link_count": 0,
+   "link_to": "Moderation Case",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Review",
+   "link_count": 0,
+   "link_to": "Review",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Risk Score",
+   "link_count": 0,
+   "link_to": "Risk Score",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sample Request",
+   "link_count": 0,
+   "link_to": "Sample Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-13 16:18:26.544386",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Communication & Moderation",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 9.0,
+ "shortcuts": [],
+ "title": "Communication & Moderation"
+}

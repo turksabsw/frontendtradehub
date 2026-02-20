@@ -1,0 +1,276 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:category_name",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "category_name",
+    "parent_category",
+    "column_break_1",
+    "is_active",
+    "display_order",
+    "details_section",
+    "description",
+    "image",
+    "column_break_2",
+    "attribute_set",
+    "erpnext_item_group",
+    "tax_section",
+    "tax_rate",
+    "commission_section",
+    "commission_rate",
+    "min_commission",
+    "column_break_3",
+    "max_commission",
+    "fixed_commission",
+    "seo_section",
+    "route",
+    "meta_title",
+    "meta_description",
+    "column_break_4",
+    "meta_keywords",
+    "tree_section",
+    "lft",
+    "rgt",
+    "column_break_5",
+    "old_parent"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "category_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Category Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "parent_category",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Parent Category",
+      "options": "Category"
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Is Active"
+    },
+    {
+      "default": "0",
+      "description": "Lower numbers appear first",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "label": "Display Order"
+    },
+    {
+      "fieldname": "details_section",
+      "fieldtype": "Section Break",
+      "label": "Details"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description"
+    },
+    {
+      "fieldname": "image",
+      "fieldtype": "Attach Image",
+      "label": "Image"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Link to Attribute Set for this category's product specifications",
+      "fieldname": "attribute_set",
+      "fieldtype": "Link",
+      "label": "Attribute Set",
+      "options": "Attribute Set"
+    },
+    {
+      "description": "Link to ERPNext Item Group for inventory sync",
+      "fieldname": "erpnext_item_group",
+      "fieldtype": "Link",
+      "label": "ERPNext Item Group",
+      "options": "Item Group"
+    },
+    {
+      "fieldname": "tax_section",
+      "fieldtype": "Section Break",
+      "label": "Tax Settings"
+    },
+    {
+      "description": "Default tax rate for products in this category. If not set, inherits from parent category or uses system default (18% KDV).",
+      "fieldname": "tax_rate",
+      "fieldtype": "Link",
+      "label": "Tax Rate",
+      "options": "Tax Rate"
+    },
+    {
+      "fieldname": "commission_section",
+      "fieldtype": "Section Break",
+      "label": "Commission Settings"
+    },
+    {
+      "default": "10.00",
+      "description": "Default commission rate percentage for this category",
+      "fieldname": "commission_rate",
+      "fieldtype": "Percent",
+      "label": "Commission Rate (%)"
+    },
+    {
+      "default": "1.00",
+      "description": "Minimum commission amount (in default currency)",
+      "fieldname": "min_commission",
+      "fieldtype": "Currency",
+      "label": "Minimum Commission"
+    },
+    {
+      "fieldname": "column_break_3",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Maximum commission amount (in default currency)",
+      "fieldname": "max_commission",
+      "fieldtype": "Currency",
+      "label": "Maximum Commission"
+    },
+    {
+      "default": "0.00",
+      "description": "Fixed commission per transaction (added to percentage)",
+      "fieldname": "fixed_commission",
+      "fieldtype": "Currency",
+      "label": "Fixed Commission"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "seo_section",
+      "fieldtype": "Section Break",
+      "label": "SEO Settings"
+    },
+    {
+      "description": "URL path for category page (auto-generated if empty)",
+      "fieldname": "route",
+      "fieldtype": "Data",
+      "label": "Route"
+    },
+    {
+      "fieldname": "meta_title",
+      "fieldtype": "Data",
+      "label": "Meta Title"
+    },
+    {
+      "fieldname": "meta_description",
+      "fieldtype": "Small Text",
+      "label": "Meta Description"
+    },
+    {
+      "fieldname": "column_break_4",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "meta_keywords",
+      "fieldtype": "Small Text",
+      "label": "Meta Keywords"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "tree_section",
+      "fieldtype": "Section Break",
+      "hidden": 1,
+      "label": "Tree Fields"
+    },
+    {
+      "fieldname": "lft",
+      "fieldtype": "Int",
+      "hidden": 1,
+      "label": "Left",
+      "no_copy": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "rgt",
+      "fieldtype": "Int",
+      "hidden": 1,
+      "label": "Right",
+      "no_copy": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_5",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "old_parent",
+      "fieldtype": "Link",
+      "hidden": 1,
+      "label": "Old Parent",
+      "no_copy": 1,
+      "options": "Category",
+      "read_only": 1
+    }
+  ],
+  "has_web_view": 1,
+  "index_web_pages_for_search": 1,
+  "is_tree": 1,
+  "links": [],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Category",
+  "naming_rule": "By fieldname",
+  "nsm_parent_field": "parent_category",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "category_name, parent_category",
+  "show_name_in_global_search": 1,
+  "sort_field": "lft",
+  "sort_order": "ASC",
+  "states": [],
+  "title_field": "category_name",
+  "track_changes": 1
+}

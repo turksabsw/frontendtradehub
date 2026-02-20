@@ -1,0 +1,740 @@
+[
+  {
+    "doctype": "Phone Code",
+    "phone_code": "322",
+    "description": "Adana",
+    "city": "01",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "322"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "416",
+    "description": "Adiyaman",
+    "city": "02",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "416"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "272",
+    "description": "Afyonkarahisar",
+    "city": "03",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "272"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "472",
+    "description": "Agri",
+    "city": "04",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "472"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "358",
+    "description": "Amasya",
+    "city": "05",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "358"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "312",
+    "description": "Ankara",
+    "city": "06",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "312"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "242",
+    "description": "Antalya",
+    "city": "07",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "242"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "466",
+    "description": "Artvin",
+    "city": "08",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "466"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "256",
+    "description": "Aydin",
+    "city": "09",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "256"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "266",
+    "description": "Balikesir",
+    "city": "10",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "266"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "228",
+    "description": "Bilecik",
+    "city": "11",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "228"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "426",
+    "description": "Bingol",
+    "city": "12",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "426"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "434",
+    "description": "Bitlis",
+    "city": "13",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "434"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "374",
+    "description": "Bolu",
+    "city": "14",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "374"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "248",
+    "description": "Burdur",
+    "city": "15",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "248"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "224",
+    "description": "Bursa",
+    "city": "16",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "224"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "286",
+    "description": "Canakkale",
+    "city": "17",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "286"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "376",
+    "description": "Cankiri",
+    "city": "18",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "376"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "364",
+    "description": "Corum",
+    "city": "19",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "364"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "258",
+    "description": "Denizli",
+    "city": "20",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "258"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "412",
+    "description": "Diyarbakir",
+    "city": "21",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "412"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "284",
+    "description": "Edirne",
+    "city": "22",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "284"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "424",
+    "description": "Elazig",
+    "city": "23",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "424"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "446",
+    "description": "Erzincan",
+    "city": "24",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "446"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "442",
+    "description": "Erzurum",
+    "city": "25",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "442"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "222",
+    "description": "Eskisehir",
+    "city": "26",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "222"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "342",
+    "description": "Gaziantep",
+    "city": "27",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "342"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "454",
+    "description": "Giresun",
+    "city": "28",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "454"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "456",
+    "description": "Gumushane",
+    "city": "29",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "456"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "438",
+    "description": "Hakkari",
+    "city": "30",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "438"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "326",
+    "description": "Hatay",
+    "city": "31",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "326"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "246",
+    "description": "Isparta",
+    "city": "32",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "246"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "324",
+    "description": "Mersin",
+    "city": "33",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "324"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "212",
+    "description": "Istanbul - Avrupa Yakasi (European Side)",
+    "city": "34",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "212"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "216",
+    "description": "Istanbul - Anadolu Yakasi (Asian Side)",
+    "city": "34",
+    "is_active": 1,
+    "is_primary": 0,
+    "name": "216"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "232",
+    "description": "Izmir",
+    "city": "35",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "232"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "474",
+    "description": "Kars",
+    "city": "36",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "474"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "366",
+    "description": "Kastamonu",
+    "city": "37",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "366"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "352",
+    "description": "Kayseri",
+    "city": "38",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "352"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "288",
+    "description": "Kirklareli",
+    "city": "39",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "288"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "386",
+    "description": "Kirsehir",
+    "city": "40",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "386"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "262",
+    "description": "Kocaeli",
+    "city": "41",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "262"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "332",
+    "description": "Konya",
+    "city": "42",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "332"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "274",
+    "description": "Kutahya",
+    "city": "43",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "274"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "422",
+    "description": "Malatya",
+    "city": "44",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "422"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "236",
+    "description": "Manisa",
+    "city": "45",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "236"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "344",
+    "description": "Kahramanmaras",
+    "city": "46",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "344"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "482",
+    "description": "Mardin",
+    "city": "47",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "482"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "252",
+    "description": "Mugla",
+    "city": "48",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "252"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "436",
+    "description": "Mus",
+    "city": "49",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "436"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "384",
+    "description": "Nevsehir",
+    "city": "50",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "384"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "388",
+    "description": "Nigde",
+    "city": "51",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "388"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "452",
+    "description": "Ordu",
+    "city": "52",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "452"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "464",
+    "description": "Rize",
+    "city": "53",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "464"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "264",
+    "description": "Sakarya",
+    "city": "54",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "264"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "362",
+    "description": "Samsun",
+    "city": "55",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "362"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "484",
+    "description": "Siirt",
+    "city": "56",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "484"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "368",
+    "description": "Sinop",
+    "city": "57",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "368"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "346",
+    "description": "Sivas",
+    "city": "58",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "346"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "282",
+    "description": "Tekirdag",
+    "city": "59",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "282"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "356",
+    "description": "Tokat",
+    "city": "60",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "356"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "462",
+    "description": "Trabzon",
+    "city": "61",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "462"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "428",
+    "description": "Tunceli",
+    "city": "62",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "428"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "414",
+    "description": "Sanliurfa",
+    "city": "63",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "414"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "276",
+    "description": "Usak",
+    "city": "64",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "276"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "432",
+    "description": "Van",
+    "city": "65",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "432"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "354",
+    "description": "Yozgat",
+    "city": "66",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "354"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "372",
+    "description": "Zonguldak",
+    "city": "67",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "372"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "382",
+    "description": "Aksaray",
+    "city": "68",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "382"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "458",
+    "description": "Bayburt",
+    "city": "69",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "458"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "338",
+    "description": "Karaman",
+    "city": "70",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "338"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "318",
+    "description": "Kirikkale",
+    "city": "71",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "318"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "488",
+    "description": "Batman",
+    "city": "72",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "488"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "486",
+    "description": "Sirnak",
+    "city": "73",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "486"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "378",
+    "description": "Bartin",
+    "city": "74",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "378"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "478",
+    "description": "Ardahan",
+    "city": "75",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "478"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "476",
+    "description": "Igdir",
+    "city": "76",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "476"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "226",
+    "description": "Yalova",
+    "city": "77",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "226"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "370",
+    "description": "Karabuk",
+    "city": "78",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "370"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "348",
+    "description": "Kilis",
+    "city": "79",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "348"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "328",
+    "description": "Osmaniye",
+    "city": "80",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "328"
+  },
+  {
+    "doctype": "Phone Code",
+    "phone_code": "380",
+    "description": "Duzce",
+    "city": "81",
+    "is_active": 1,
+    "is_primary": 1,
+    "name": "380"
+  }
+]

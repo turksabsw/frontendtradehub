@@ -1,0 +1,72 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"main-header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Tradehub Ecosystem</span>\",\"col\":12}},{\"id\":\"shortcut-catalog\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"TradeHub Catalog\",\"col\":4}},{\"id\":\"shortcut-marketing\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"TradeHub Marketing\",\"col\":4}},{\"id\":\"shortcut-commerce\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"TradeHub Commerce\",\"col\":4}},{\"id\":\"shortcut-compliance\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"TradeHub Compliance\",\"col\":4}},{\"id\":\"shortcut-logistics\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"TradeHub Logistics\",\"col\":4}},{\"id\":\"shortcut-seller\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"TradeHub Seller\",\"col\":4}},{\"id\":\"shortcut-core\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"TradeHub Core\",\"col\":4}}]",
+ "creation": "2026-02-16 16:18:57.948193",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "arrow-right",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Tradehub",
+ "links": [],
+ "modified": "2026-02-16 17:41:32.891499",
+ "modified_by": "Administrator",
+ "module": "tr_tradehub",
+ "name": "Tradehub",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "doc_view": "",
+   "label": "TradeHub Catalog",
+   "type": "URL",
+   "url": "/app/tradehub-catalog"
+  },
+  {
+   "doc_view": "",
+   "label": "TradeHub Commerce",
+   "type": "URL",
+   "url": "/app/tradehub-commerce"
+  },
+  {
+   "doc_view": "",
+   "label": "TradeHub Compliance",
+   "type": "URL",
+   "url": "/app/tradehub-compliance"
+  },
+  {
+   "doc_view": "",
+   "label": "TradeHub Core",
+   "type": "URL",
+   "url": "/app/tradehub-core"
+  },
+  {
+   "doc_view": "",
+   "label": "TradeHub Logistics",
+   "type": "URL",
+   "url": "/app/tradehub-logistics"
+  },
+  {
+   "doc_view": "",
+   "label": "TradeHub Seller",
+   "type": "URL",
+   "url": "/app/tradehub-seller"
+  },
+  {
+   "doc_view": "",
+   "label": "TradeHub Marketing",
+   "type": "URL",
+   "url": "/app/tradehub-marketing"
+  }
+ ],
+ "title": "Tradehub"
+}

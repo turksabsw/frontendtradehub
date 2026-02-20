@@ -1,0 +1,358 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{reference_doctype}-{reference_name}",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "reference_section",
+  "reference_doctype",
+  "reference_name",
+  "column_break_reference",
+  "reference_title",
+  "enabled",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "meta_tags_section",
+  "meta_title",
+  "meta_description",
+  "column_break_meta",
+  "meta_keywords",
+  "canonical_url",
+  "open_graph_section",
+  "og_title",
+  "og_description",
+  "column_break_og",
+  "og_image",
+  "og_type",
+  "twitter_section",
+  "twitter_card",
+  "twitter_title",
+  "column_break_twitter",
+  "twitter_description",
+  "twitter_image",
+  "robots_section",
+  "robots_index",
+  "robots_follow",
+  "column_break_robots",
+  "robots_additional",
+  "sitemap_section",
+  "include_in_sitemap",
+  "sitemap_priority",
+  "column_break_sitemap",
+  "sitemap_changefreq",
+  "schema_section",
+  "schema_type",
+  "schema_data"
+ ],
+ "fields": [
+  {
+   "fieldname": "reference_section",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference DocType",
+   "options": "DocType",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "The DocType this SEO metadata applies to (e.g., SKU Product, Product Category)"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Document",
+   "options": "reference_doctype",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "The specific document this SEO metadata applies to"
+  },
+  {
+   "fieldname": "column_break_reference",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_title",
+   "fieldtype": "Data",
+   "label": "Reference Title",
+   "read_only": 1,
+   "description": "Auto-filled from reference document"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "in_list_view": 1,
+   "description": "Whether this SEO metadata is active"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "in_standard_filter": 1,
+   "description": "Auto-filled from reference document for tenant isolation"
+  },
+  {
+   "fetch_from": "tenant.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Tenant"
+  },
+  {
+   "fieldname": "meta_tags_section",
+   "fieldtype": "Section Break",
+   "label": "Meta Tags"
+  },
+  {
+   "fieldname": "meta_title",
+   "fieldtype": "Data",
+   "label": "Meta Title",
+   "in_list_view": 1,
+   "description": "Title tag for search engines (recommended: 50-60 characters)"
+  },
+  {
+   "fieldname": "meta_description",
+   "fieldtype": "Small Text",
+   "label": "Meta Description",
+   "description": "Description for search results (recommended: 150-160 characters)"
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "meta_keywords",
+   "fieldtype": "Small Text",
+   "label": "Meta Keywords",
+   "description": "Comma-separated keywords (optional, limited SEO impact)"
+  },
+  {
+   "fieldname": "canonical_url",
+   "fieldtype": "Data",
+   "label": "Canonical URL",
+   "description": "Preferred URL for this page to avoid duplicate content issues"
+  },
+  {
+   "fieldname": "open_graph_section",
+   "fieldtype": "Section Break",
+   "label": "Open Graph (Social Sharing)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "og_title",
+   "fieldtype": "Data",
+   "label": "OG Title",
+   "description": "Title for social media shares (falls back to meta title)"
+  },
+  {
+   "fieldname": "og_description",
+   "fieldtype": "Small Text",
+   "label": "OG Description",
+   "description": "Description for social media shares (falls back to meta description)"
+  },
+  {
+   "fieldname": "column_break_og",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "og_image",
+   "fieldtype": "Attach Image",
+   "label": "OG Image",
+   "description": "Image for social media shares (recommended: 1200x630 pixels)"
+  },
+  {
+   "default": "website",
+   "fieldname": "og_type",
+   "fieldtype": "Select",
+   "label": "OG Type",
+   "options": "website\narticle\nproduct",
+   "description": "Open Graph object type"
+  },
+  {
+   "fieldname": "twitter_section",
+   "fieldtype": "Section Break",
+   "label": "Twitter Card",
+   "collapsible": 1
+  },
+  {
+   "default": "summary_large_image",
+   "fieldname": "twitter_card",
+   "fieldtype": "Select",
+   "label": "Twitter Card Type",
+   "options": "summary\nsummary_large_image\napp\nplayer",
+   "description": "Type of Twitter card to display"
+  },
+  {
+   "fieldname": "twitter_title",
+   "fieldtype": "Data",
+   "label": "Twitter Title",
+   "description": "Title for Twitter cards (falls back to OG title)"
+  },
+  {
+   "fieldname": "column_break_twitter",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "twitter_description",
+   "fieldtype": "Small Text",
+   "label": "Twitter Description",
+   "description": "Description for Twitter cards (falls back to OG description)"
+  },
+  {
+   "fieldname": "twitter_image",
+   "fieldtype": "Attach Image",
+   "label": "Twitter Image",
+   "description": "Image for Twitter cards (falls back to OG image)"
+  },
+  {
+   "fieldname": "robots_section",
+   "fieldtype": "Section Break",
+   "label": "Robots Directives",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "robots_index",
+   "fieldtype": "Check",
+   "label": "Allow Indexing",
+   "description": "Allow search engines to index this page"
+  },
+  {
+   "default": "1",
+   "fieldname": "robots_follow",
+   "fieldtype": "Check",
+   "label": "Allow Follow Links",
+   "description": "Allow search engines to follow links on this page"
+  },
+  {
+   "fieldname": "column_break_robots",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "robots_additional",
+   "fieldtype": "Small Text",
+   "label": "Additional Robots Directives",
+   "description": "Additional directives like noarchive, nosnippet, max-snippet:150"
+  },
+  {
+   "fieldname": "sitemap_section",
+   "fieldtype": "Section Break",
+   "label": "Sitemap Settings",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "include_in_sitemap",
+   "fieldtype": "Check",
+   "label": "Include in Sitemap",
+   "description": "Include this page in XML sitemap"
+  },
+  {
+   "default": "0.5",
+   "fieldname": "sitemap_priority",
+   "fieldtype": "Float",
+   "label": "Sitemap Priority",
+   "description": "Priority hint for search engines (0.0 to 1.0)"
+  },
+  {
+   "fieldname": "column_break_sitemap",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "weekly",
+   "fieldname": "sitemap_changefreq",
+   "fieldtype": "Select",
+   "label": "Change Frequency",
+   "options": "always\nhourly\ndaily\nweekly\nmonthly\nyearly\nnever",
+   "description": "How frequently the page content is likely to change"
+  },
+  {
+   "fieldname": "schema_section",
+   "fieldtype": "Section Break",
+   "label": "Schema.org Structured Data",
+   "collapsible": 1
+  },
+  {
+   "default": "Product",
+   "fieldname": "schema_type",
+   "fieldtype": "Select",
+   "label": "Schema Type",
+   "options": "Product\nOrganization\nBreadcrumbList\nFAQPage\nArticle\nWebPage\nCustom",
+   "description": "Primary Schema.org type for structured data"
+  },
+  {
+   "fieldname": "schema_data",
+   "fieldtype": "Code",
+   "label": "Schema Data (JSON-LD)",
+   "options": "JSON",
+   "description": "Additional Schema.org structured data in JSON-LD format"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "SEO Meta",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 0,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "Buyer",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "reference_doctype, reference_name, meta_title",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "meta_title",
+ "track_changes": 1
+}

@@ -1,0 +1,172 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tier_section",
+  "tier_name",
+  "column_break_tier",
+  "is_active",
+  "quantity_section",
+  "min_qty",
+  "max_qty",
+  "column_break_quantity",
+  "unit_of_measure",
+  "pricing_section",
+  "unit_price",
+  "currency",
+  "column_break_pricing",
+  "discount_percentage",
+  "discount_amount",
+  "additional_section",
+  "valid_from",
+  "valid_until",
+  "column_break_additional",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "tier_section",
+   "fieldtype": "Section Break",
+   "label": "Tier Information"
+  },
+  {
+   "description": "Optional name for this pricing tier (e.g., 'Wholesale', 'Bulk Discount')",
+   "fieldname": "tier_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tier Name"
+  },
+  {
+   "fieldname": "column_break_tier",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Whether this pricing tier is currently active",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "quantity_section",
+   "fieldtype": "Section Break",
+   "label": "Quantity Range"
+  },
+  {
+   "description": "Minimum quantity required to qualify for this tier",
+   "fieldname": "min_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Minimum Quantity",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "description": "Maximum quantity for this tier (leave blank for unlimited)",
+   "fieldname": "max_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Maximum Quantity",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_quantity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Unit of measure for the quantity (optional, inherits from parent if not set)",
+   "fieldname": "unit_of_measure",
+   "fieldtype": "Link",
+   "label": "Unit of Measure",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "description": "Price per unit at this quantity tier",
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Percentage discount from base price (auto-calculated if unit_price differs from base)",
+   "fieldname": "discount_percentage",
+   "fieldtype": "Percent",
+   "label": "Discount %",
+   "read_only": 1
+  },
+  {
+   "description": "Absolute discount amount per unit from base price",
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "additional_section",
+   "fieldtype": "Section Break",
+   "label": "Validity Period"
+  },
+  {
+   "description": "Date from which this tier pricing becomes effective",
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid From"
+  },
+  {
+   "description": "Date until which this tier pricing is effective (leave blank for no expiry)",
+   "fieldname": "valid_until",
+   "fieldtype": "Date",
+   "label": "Valid Until"
+  },
+  {
+   "fieldname": "column_break_additional",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Internal notes about this pricing tier",
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Product Pricing Tier",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "tier_name, min_qty, max_qty, unit_price",
+ "sort_field": "min_qty",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

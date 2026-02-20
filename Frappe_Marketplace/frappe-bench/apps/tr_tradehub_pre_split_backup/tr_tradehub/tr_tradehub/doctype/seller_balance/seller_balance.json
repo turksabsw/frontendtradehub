@@ -1,0 +1,717 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "field:seller",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "seller",
+    "seller_name",
+    "status",
+    "column_break_basic",
+    "tenant",
+    "currency",
+    "last_updated",
+    "balance_section",
+    "available_balance",
+    "pending_balance",
+    "held_balance",
+    "column_break_balance",
+    "reserved_balance",
+    "total_balance",
+    "minimum_payout_threshold",
+    "lifetime_section",
+    "lifetime_earnings",
+    "lifetime_payouts",
+    "lifetime_commissions",
+    "column_break_lifetime",
+    "lifetime_refunds",
+    "lifetime_adjustments",
+    "net_lifetime_earnings",
+    "payout_section",
+    "payout_method",
+    "payout_account_name",
+    "bank_name",
+    "column_break_payout",
+    "iban",
+    "swift_code",
+    "auto_payout_enabled",
+    "payout_schedule_section",
+    "payout_frequency",
+    "next_payout_date",
+    "payout_day",
+    "column_break_schedule",
+    "last_payout_date",
+    "last_payout_amount",
+    "last_payout_reference",
+    "pending_payout_section",
+    "pending_payout_count",
+    "pending_payout_amount",
+    "oldest_pending_since",
+    "column_break_pending",
+    "days_to_next_payout",
+    "estimated_next_payout",
+    "payout_hold_reason",
+    "statistics_section",
+    "total_orders_completed",
+    "total_orders_refunded",
+    "average_order_value",
+    "column_break_stats",
+    "total_commission_paid",
+    "average_commission_rate",
+    "total_payout_count",
+    "transaction_history_section",
+    "recent_transactions",
+    "tax_section",
+    "tax_withholding_rate",
+    "total_tax_withheld",
+    "column_break_tax",
+    "tax_id",
+    "tax_certificate_valid",
+    "tax_certificate_expiry",
+    "alerts_section",
+    "has_payment_issue",
+    "payment_issue_reason",
+    "column_break_alerts",
+    "payout_suspended",
+    "suspension_reason",
+    "suspension_date",
+    "audit_section",
+    "created_at",
+    "created_by",
+    "column_break_audit",
+    "modified_at",
+    "modified_by_user",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Seller Information"
+    },
+    {
+      "description": "The seller this balance belongs to",
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller",
+      "options": "Seller Profile",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "description": "Seller's display name",
+      "fetch_from": "seller.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Seller Name",
+      "read_only": 1
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nPending Verification\nSuspended\nClosed",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Tenant this balance belongs to",
+      "fetch_from": "seller.tenant",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1
+    },
+    {
+      "default": "TRY",
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "reqd": 1
+    },
+    {
+      "description": "Last balance update timestamp",
+      "fieldname": "last_updated",
+      "fieldtype": "Datetime",
+      "label": "Last Updated",
+      "read_only": 1
+    },
+    {
+      "fieldname": "balance_section",
+      "fieldtype": "Section Break",
+      "label": "Current Balance"
+    },
+    {
+      "default": "0",
+      "description": "Funds available for immediate payout",
+      "fieldname": "available_balance",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Available Balance",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Funds awaiting release from escrow",
+      "fieldname": "pending_balance",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Pending Balance",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Funds held due to disputes or reviews",
+      "fieldname": "held_balance",
+      "fieldtype": "Currency",
+      "label": "Held Balance",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_balance",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Funds reserved for pending payouts",
+      "fieldname": "reserved_balance",
+      "fieldtype": "Currency",
+      "label": "Reserved Balance",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total balance (available + pending + held + reserved)",
+      "fieldname": "total_balance",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Total Balance",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "100",
+      "description": "Minimum balance required for payout",
+      "fieldname": "minimum_payout_threshold",
+      "fieldtype": "Currency",
+      "label": "Minimum Payout Threshold",
+      "options": "currency"
+    },
+    {
+      "fieldname": "lifetime_section",
+      "fieldtype": "Section Break",
+      "label": "Lifetime Statistics"
+    },
+    {
+      "default": "0",
+      "description": "Total earnings before deductions",
+      "fieldname": "lifetime_earnings",
+      "fieldtype": "Currency",
+      "label": "Lifetime Earnings",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total payouts made to seller",
+      "fieldname": "lifetime_payouts",
+      "fieldtype": "Currency",
+      "label": "Lifetime Payouts",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total commissions paid to platform",
+      "fieldname": "lifetime_commissions",
+      "fieldtype": "Currency",
+      "label": "Lifetime Commissions",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_lifetime",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Total refunds issued",
+      "fieldname": "lifetime_refunds",
+      "fieldtype": "Currency",
+      "label": "Lifetime Refunds",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total manual adjustments (credits/debits)",
+      "fieldname": "lifetime_adjustments",
+      "fieldtype": "Currency",
+      "label": "Lifetime Adjustments",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Net lifetime earnings after all deductions",
+      "fieldname": "net_lifetime_earnings",
+      "fieldtype": "Currency",
+      "label": "Net Lifetime Earnings",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "payout_section",
+      "fieldtype": "Section Break",
+      "label": "Payout Settings"
+    },
+    {
+      "default": "Bank Transfer",
+      "description": "Preferred payout method",
+      "fieldname": "payout_method",
+      "fieldtype": "Select",
+      "label": "Payout Method",
+      "options": "Bank Transfer\niyzico Payout\nPayTR Payout\nManual"
+    },
+    {
+      "description": "Bank account holder name",
+      "fieldname": "payout_account_name",
+      "fieldtype": "Data",
+      "label": "Account Holder Name"
+    },
+    {
+      "description": "Bank name for bank transfers",
+      "fieldname": "bank_name",
+      "fieldtype": "Data",
+      "label": "Bank Name"
+    },
+    {
+      "fieldname": "column_break_payout",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "IBAN for Turkish bank transfers",
+      "fieldname": "iban",
+      "fieldtype": "Data",
+      "label": "IBAN"
+    },
+    {
+      "description": "SWIFT/BIC code for international transfers",
+      "fieldname": "swift_code",
+      "fieldtype": "Data",
+      "label": "SWIFT Code"
+    },
+    {
+      "default": "1",
+      "description": "Automatically process payouts on schedule",
+      "fieldname": "auto_payout_enabled",
+      "fieldtype": "Check",
+      "label": "Auto Payout Enabled"
+    },
+    {
+      "fieldname": "payout_schedule_section",
+      "fieldtype": "Section Break",
+      "label": "Payout Schedule"
+    },
+    {
+      "default": "Weekly",
+      "description": "How often payouts are processed",
+      "fieldname": "payout_frequency",
+      "fieldtype": "Select",
+      "label": "Payout Frequency",
+      "options": "Daily\nWeekly\nBi-Weekly\nMonthly\nOn Demand"
+    },
+    {
+      "description": "Next scheduled payout date",
+      "fieldname": "next_payout_date",
+      "fieldtype": "Date",
+      "label": "Next Payout Date"
+    },
+    {
+      "default": "1",
+      "description": "Day of week/month for scheduled payouts",
+      "fieldname": "payout_day",
+      "fieldtype": "Int",
+      "label": "Payout Day"
+    },
+    {
+      "fieldname": "column_break_schedule",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Date of last successful payout",
+      "fieldname": "last_payout_date",
+      "fieldtype": "Datetime",
+      "label": "Last Payout Date",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Amount of last payout",
+      "fieldname": "last_payout_amount",
+      "fieldtype": "Currency",
+      "label": "Last Payout Amount",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "description": "Reference of last payout transaction",
+      "fieldname": "last_payout_reference",
+      "fieldtype": "Data",
+      "label": "Last Payout Reference",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "pending_payout_section",
+      "fieldtype": "Section Break",
+      "label": "Pending Payout Info"
+    },
+    {
+      "default": "0",
+      "description": "Number of pending payout transactions",
+      "fieldname": "pending_payout_count",
+      "fieldtype": "Int",
+      "label": "Pending Payout Count",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total amount of pending payouts",
+      "fieldname": "pending_payout_amount",
+      "fieldtype": "Currency",
+      "label": "Pending Payout Amount",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "description": "Date of oldest pending transaction",
+      "fieldname": "oldest_pending_since",
+      "fieldtype": "Datetime",
+      "label": "Oldest Pending Since",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_pending",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Days until next scheduled payout",
+      "fieldname": "days_to_next_payout",
+      "fieldtype": "Int",
+      "label": "Days to Next Payout",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Estimated amount of next payout",
+      "fieldname": "estimated_next_payout",
+      "fieldtype": "Currency",
+      "label": "Estimated Next Payout",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "description": "Reason if payout is being held",
+      "fieldname": "payout_hold_reason",
+      "fieldtype": "Small Text",
+      "label": "Payout Hold Reason"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "statistics_section",
+      "fieldtype": "Section Break",
+      "label": "Order Statistics"
+    },
+    {
+      "default": "0",
+      "description": "Total completed orders",
+      "fieldname": "total_orders_completed",
+      "fieldtype": "Int",
+      "label": "Total Orders Completed",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total orders refunded",
+      "fieldname": "total_orders_refunded",
+      "fieldtype": "Int",
+      "label": "Total Orders Refunded",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Average order value",
+      "fieldname": "average_order_value",
+      "fieldtype": "Currency",
+      "label": "Average Order Value",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_stats",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Total commission paid",
+      "fieldname": "total_commission_paid",
+      "fieldtype": "Currency",
+      "label": "Total Commission Paid",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Average commission rate",
+      "fieldname": "average_commission_rate",
+      "fieldtype": "Percent",
+      "label": "Average Commission Rate",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total number of payouts processed",
+      "fieldname": "total_payout_count",
+      "fieldtype": "Int",
+      "label": "Total Payout Count",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "transaction_history_section",
+      "fieldtype": "Section Break",
+      "label": "Recent Transactions"
+    },
+    {
+      "description": "JSON array of recent balance transactions",
+      "fieldname": "recent_transactions",
+      "fieldtype": "JSON",
+      "label": "Recent Transactions"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "tax_section",
+      "fieldtype": "Section Break",
+      "label": "Tax Information"
+    },
+    {
+      "default": "0",
+      "description": "Tax withholding rate percentage",
+      "fieldname": "tax_withholding_rate",
+      "fieldtype": "Percent",
+      "label": "Tax Withholding Rate"
+    },
+    {
+      "default": "0",
+      "description": "Total tax withheld from payouts",
+      "fieldname": "total_tax_withheld",
+      "fieldtype": "Currency",
+      "label": "Total Tax Withheld",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_tax",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Tax identification number (VKN/TCKN)",
+      "fetch_from": "seller.tax_id",
+      "fieldname": "tax_id",
+      "fieldtype": "Data",
+      "label": "Tax ID",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Tax exemption certificate is valid",
+      "fieldname": "tax_certificate_valid",
+      "fieldtype": "Check",
+      "label": "Tax Certificate Valid"
+    },
+    {
+      "description": "Tax certificate expiry date",
+      "fieldname": "tax_certificate_expiry",
+      "fieldtype": "Date",
+      "label": "Tax Certificate Expiry"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "alerts_section",
+      "fieldtype": "Section Break",
+      "label": "Alerts & Issues"
+    },
+    {
+      "default": "0",
+      "description": "Flag for payment-related issues",
+      "fieldname": "has_payment_issue",
+      "fieldtype": "Check",
+      "label": "Has Payment Issue"
+    },
+    {
+      "depends_on": "eval:doc.has_payment_issue",
+      "description": "Description of payment issue",
+      "fieldname": "payment_issue_reason",
+      "fieldtype": "Small Text",
+      "label": "Payment Issue Reason"
+    },
+    {
+      "fieldname": "column_break_alerts",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Payouts are suspended",
+      "fieldname": "payout_suspended",
+      "fieldtype": "Check",
+      "label": "Payout Suspended"
+    },
+    {
+      "depends_on": "eval:doc.payout_suspended",
+      "description": "Reason for payout suspension",
+      "fieldname": "suspension_reason",
+      "fieldtype": "Small Text",
+      "label": "Suspension Reason"
+    },
+    {
+      "depends_on": "eval:doc.payout_suspended",
+      "description": "Date payouts were suspended",
+      "fieldname": "suspension_date",
+      "fieldtype": "Datetime",
+      "label": "Suspension Date"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "audit_section",
+      "fieldtype": "Section Break",
+      "label": "Audit Trail"
+    },
+    {
+      "fieldname": "created_at",
+      "fieldtype": "Datetime",
+      "label": "Created At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_audit",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "modified_at",
+      "fieldtype": "Datetime",
+      "label": "Modified At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "modified_by_user",
+      "fieldtype": "Link",
+      "label": "Modified By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "description": "Internal notes",
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Seller Profile",
+      "link_fieldname": "seller_balance"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Escrow Account",
+      "link_fieldname": "seller"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Seller Balance",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "seller, seller_name, status",
+  "show_name_in_global_search": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "green",
+      "title": "Active"
+    },
+    {
+      "color": "orange",
+      "title": "Pending Verification"
+    },
+    {
+      "color": "red",
+      "title": "Suspended"
+    },
+    {
+      "color": "gray",
+      "title": "Closed"
+    }
+  ],
+  "title_field": "seller_name",
+  "track_changes": 1
+}

@@ -1,0 +1,95 @@
+{
+  "actions": [],
+  "creation": "2026-02-09 18:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "pim_attribute",
+    "column_break_1",
+    "sort_order",
+    "settings_section",
+    "is_required",
+    "is_variant",
+    "column_break_2",
+    "is_unique_per_family",
+    "is_filterable"
+  ],
+  "fields": [
+    {
+      "fieldname": "pim_attribute",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "PIM Attribute",
+      "options": "PIM Attribute",
+      "reqd": 1,
+      "description": "Link to the PIM Attribute to include in this product family"
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "sort_order",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Sort Order",
+      "description": "Order in which this attribute appears in the product form"
+    },
+    {
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Attribute Settings"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_required",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Is Required",
+      "description": "If checked, this attribute must be filled for products in this family"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_variant",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Is Variant Attribute",
+      "description": "If checked, this attribute can be used to create product variants"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_unique_per_family",
+      "fieldtype": "Check",
+      "label": "Is Unique Per Family",
+      "description": "If checked, attribute value must be unique among products in this family"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_filterable",
+      "fieldtype": "Check",
+      "label": "Is Filterable",
+      "description": "If checked, this attribute can be used for filtering products"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "istable": 1,
+  "links": [],
+  "modified": "2026-02-09 18:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Family Attribute",
+  "naming_rule": "Random",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "sort_order",
+  "sort_order": "ASC",
+  "states": [],
+  "track_changes": 0
+}

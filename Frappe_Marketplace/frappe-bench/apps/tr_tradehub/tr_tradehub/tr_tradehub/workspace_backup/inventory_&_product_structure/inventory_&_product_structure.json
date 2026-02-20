@@ -1,0 +1,179 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"card-break-0\",\"type\":\"card\",\"data\":{\"card_name\":\"Inventory & Product Structure\",\"col\":4}}]",
+ "creation": "2026-02-10 17:29:47.560342",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Inventory & Product Structure",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PIM Product",
+   "link_count": 0,
+   "link_to": "PIM Product",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PIM Product Variant",
+   "link_count": 0,
+   "link_to": "PIM Product Variant",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PIM Attribute",
+   "link_count": 0,
+   "link_to": "PIM Attribute",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PIM Attribute Group",
+   "link_count": 0,
+   "link_to": "PIM Attribute Group",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Class",
+   "link_count": 0,
+   "link_to": "Product Class",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Family",
+   "link_count": 0,
+   "link_to": "Product Family",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Channel",
+   "link_count": 0,
+   "link_to": "Sales Channel",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inventory & Product Structure",
+   "link_count": 7,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product",
+   "link_count": 0,
+   "link_to": "PIM Product",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Variant",
+   "link_count": 0,
+   "link_to": "PIM Product Variant",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Attribute",
+   "link_count": 0,
+   "link_to": "PIM Attribute",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Attribute Group",
+   "link_count": 0,
+   "link_to": "PIM Attribute Group",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Class",
+   "link_count": 0,
+   "link_to": "Product Class",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Family",
+   "link_count": 0,
+   "link_to": "Product Family",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Channel",
+   "link_count": 0,
+   "link_to": "Sales Channel",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-13 16:18:26.446127",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Inventory & Product Structure",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 5.0,
+ "shortcuts": [],
+ "title": "Inventory & Product Structure"
+}

@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:channel_name",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "channel_name",
+  "channel_code",
+  "column_break_basic",
+  "enabled",
+  "display_order",
+  "details_section",
+  "description",
+  "channel_type",
+  "column_break_details",
+  "icon",
+  "color",
+  "settings_section",
+  "requires_verification",
+  "default_retention_years",
+  "column_break_settings",
+  "auto_expire_days",
+  "allow_bulk_consent",
+  "tenant_section",
+  "tenant",
+  "company"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "channel_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Channel Name",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Display name for the consent channel (e.g., 'Website', 'Mobile App')"
+  },
+  {
+   "fieldname": "channel_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Channel Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique code for API/integration use (e.g., 'WEB', 'MOBILE', 'CALL_CENTER')"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled",
+   "description": "Whether this channel is active for collecting consents"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order",
+   "description": "Lower numbers appear first in dropdowns"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Channel Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Description of when this channel is used"
+  },
+  {
+   "fieldname": "channel_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Channel Type",
+   "options": "Digital\nPhysical\nVoice\nPartner\nOther",
+   "default": "Digital",
+   "reqd": 1,
+   "description": "Category of the channel"
+  },
+  {
+   "fieldname": "column_break_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Icon",
+   "description": "Icon class for UI display (e.g., 'fa fa-globe')"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Color",
+   "label": "Color",
+   "description": "Color for UI display"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Channel Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_verification",
+   "fieldtype": "Check",
+   "label": "Requires Verification",
+   "description": "Whether consents from this channel require additional verification (e.g., double opt-in)"
+  },
+  {
+   "default": "5",
+   "fieldname": "default_retention_years",
+   "fieldtype": "Int",
+   "label": "Default Retention (Years)",
+   "description": "Default retention period for consents collected via this channel (KVKK minimum: 5 years)"
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_expire_days",
+   "fieldtype": "Int",
+   "label": "Auto Expire (Days)",
+   "description": "If > 0, consents from this channel will auto-expire after this many days. 0 = no auto-expiry."
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_bulk_consent",
+   "fieldtype": "Check",
+   "label": "Allow Bulk Consent",
+   "description": "Whether this channel allows bulk consent operations"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Multi-Tenant",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "description": "Tenant this channel belongs to (for multi-tenant setups)"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "description": "Company this channel belongs to"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Consent Channel",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 0,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "channel_name, channel_code, channel_type",
+ "show_name_in_global_search": 1,
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "channel_name",
+ "track_changes": 1
+}

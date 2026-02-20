@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "description_type",
+  "column_break_1",
+  "locale",
+  "channel",
+  "content_section",
+  "description",
+  "plain_text",
+  "stats_section",
+  "word_count",
+  "column_break_2",
+  "character_count"
+ ],
+ "fields": [
+  {
+   "default": "Short",
+   "fieldname": "description_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Description Type",
+   "options": "Short\nLong\nMarketing\nTechnical\nBullet Points\nMeta Description\nSEO Text\nCustom",
+   "reqd": 1,
+   "description": "Type of description content"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "locale",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Locale",
+   "description": "Locale code (e.g., en_US, tr_TR, de_DE)"
+  },
+  {
+   "fieldname": "channel",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sales Channel",
+   "options": "Sales Channel",
+   "description": "Target sales channel (empty = all channels)"
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "reqd": 1,
+   "description": "Rich text description content (HTML)"
+  },
+  {
+   "fieldname": "plain_text",
+   "fieldtype": "Long Text",
+   "label": "Plain Text",
+   "description": "Auto-generated plain text version (stripped of HTML)"
+  },
+  {
+   "fieldname": "stats_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "word_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Word Count",
+   "read_only": 1,
+   "description": "Auto-calculated word count"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "character_count",
+   "fieldtype": "Int",
+   "label": "Character Count",
+   "read_only": 1,
+   "description": "Auto-calculated character count"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "PIM Product Description",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

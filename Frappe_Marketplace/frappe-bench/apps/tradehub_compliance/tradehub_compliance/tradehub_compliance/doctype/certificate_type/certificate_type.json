@@ -1,0 +1,366 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:type_code",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "type_name",
+  "type_code",
+  "column_break_basic",
+  "enabled",
+  "is_mandatory",
+  "category_section",
+  "certificate_category",
+  "applicable_to",
+  "column_break_category",
+  "standards_body",
+  "issuing_authority",
+  "branding_section",
+  "icon",
+  "description",
+  "requirements",
+  "validity_section",
+  "default_validity_months",
+  "renewal_reminder_days",
+  "column_break_validity",
+  "requires_physical_audit",
+  "requires_renewal",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "column_break_tenant",
+  "is_global",
+  "additional_info_section",
+  "website",
+  "reference_standard",
+  "column_break_additional",
+  "verification_url",
+  "documentation_url",
+  "display_section",
+  "display_order",
+  "show_in_filters",
+  "column_break_display",
+  "featured",
+  "certificate_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "type_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Certificate Type Name",
+   "reqd": 1,
+   "description": "Display name of the certificate type (e.g., CE Marking, ISO 9001)"
+  },
+  {
+   "fieldname": "type_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique code for the certificate type (e.g., CE, ISO-9001, GOTS, OEKO-TEX)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled",
+   "description": "Whether this certificate type is active and can be used"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_mandatory",
+   "fieldtype": "Check",
+   "label": "Is Mandatory",
+   "description": "Whether this certificate is mandatory for products/sellers in applicable categories"
+  },
+  {
+   "fieldname": "category_section",
+   "fieldtype": "Section Break",
+   "label": "Certificate Category"
+  },
+  {
+   "default": "Compliance",
+   "fieldname": "certificate_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Certificate Category",
+   "options": "Compliance\nQuality\nEnvironmental\nSocial\nSafety\nOrganic\nSustainability\nIndustry Specific\nOther",
+   "reqd": 1,
+   "description": "Category of the certificate for grouping and filtering"
+  },
+  {
+   "default": "Product",
+   "fieldname": "applicable_to",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Applicable To",
+   "options": "Product\nSeller\nBoth",
+   "reqd": 1,
+   "description": "Whether this certificate applies to products, sellers, or both"
+  },
+  {
+   "fieldname": "column_break_category",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "standards_body",
+   "fieldtype": "Data",
+   "label": "Standards Body",
+   "description": "Organization that defines the standard (e.g., ISO, OEKO-TEX Association)"
+  },
+  {
+   "fieldname": "issuing_authority",
+   "fieldtype": "Data",
+   "label": "Issuing Authority",
+   "description": "Authority or organization that issues this certificate"
+  },
+  {
+   "fieldname": "branding_section",
+   "fieldtype": "Section Break",
+   "label": "Display and Description"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Attach Image",
+   "label": "Icon",
+   "description": "Certificate type icon or logo (recommended size: 200x200 pixels)"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "description": "Detailed description of the certificate and what it certifies"
+  },
+  {
+   "fieldname": "requirements",
+   "fieldtype": "Text Editor",
+   "label": "Requirements",
+   "description": "Requirements and criteria for obtaining this certificate"
+  },
+  {
+   "fieldname": "validity_section",
+   "fieldtype": "Section Break",
+   "label": "Validity Settings"
+  },
+  {
+   "default": "12",
+   "fieldname": "default_validity_months",
+   "fieldtype": "Int",
+   "label": "Default Validity (Months)",
+   "description": "Default validity period in months for this certificate type"
+  },
+  {
+   "default": "30",
+   "fieldname": "renewal_reminder_days",
+   "fieldtype": "Int",
+   "label": "Renewal Reminder (Days)",
+   "description": "Days before expiry to send renewal reminder notifications"
+  },
+  {
+   "fieldname": "column_break_validity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_physical_audit",
+   "fieldtype": "Check",
+   "label": "Requires Physical Audit",
+   "description": "Whether obtaining this certificate requires a physical audit"
+  },
+  {
+   "default": "1",
+   "fieldname": "requires_renewal",
+   "fieldtype": "Check",
+   "label": "Requires Renewal",
+   "description": "Whether this certificate needs periodic renewal"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "in_standard_filter": 1,
+   "description": "Tenant for multi-tenant isolation (empty for global certificate types)"
+  },
+  {
+   "fetch_from": "tenant.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Tenant"
+  },
+  {
+   "fieldname": "column_break_tenant",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_global",
+   "fieldtype": "Check",
+   "label": "Is Global",
+   "description": "Global certificate types are visible to all tenants"
+  },
+  {
+   "fieldname": "additional_info_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL",
+   "description": "Official website for more information about this certificate"
+  },
+  {
+   "fieldname": "reference_standard",
+   "fieldtype": "Data",
+   "label": "Reference Standard",
+   "description": "Reference standard number or code (e.g., ISO 9001:2015)"
+  },
+  {
+   "fieldname": "column_break_additional",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "verification_url",
+   "fieldtype": "Data",
+   "label": "Verification URL",
+   "options": "URL",
+   "description": "URL where certificates of this type can be verified online"
+  },
+  {
+   "fieldname": "documentation_url",
+   "fieldtype": "Data",
+   "label": "Documentation URL",
+   "options": "URL",
+   "description": "URL for official documentation and guidelines"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order",
+   "description": "Sort order for display (lower numbers appear first)"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_in_filters",
+   "fieldtype": "Check",
+   "label": "Show in Filters",
+   "description": "Display this certificate type in product/seller filters"
+  },
+  {
+   "fieldname": "column_break_display",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "featured",
+   "fieldtype": "Check",
+   "label": "Featured",
+   "description": "Highlight this certificate type in listings"
+  },
+  {
+   "default": "0",
+   "fieldname": "certificate_count",
+   "fieldtype": "Int",
+   "label": "Certificate Count",
+   "read_only": 1,
+   "description": "Number of active certificates of this type"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Certificates",
+   "link_doctype": "Product Certificate",
+   "link_fieldname": "certificate_type"
+  },
+  {
+   "group": "Certificates",
+   "link_doctype": "Seller Certificate",
+   "link_fieldname": "certificate_type"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Certificate Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Buyer",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "type_name, type_code, certificate_category, applicable_to",
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "title_field": "type_name",
+ "track_changes": 1
+}

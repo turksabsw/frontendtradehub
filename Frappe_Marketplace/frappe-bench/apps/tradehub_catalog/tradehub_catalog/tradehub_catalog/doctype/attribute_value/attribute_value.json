@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "attribute_value",
+  "display_value",
+  "abbreviation",
+  "color_code",
+  "image",
+  "display_order",
+  "is_active"
+ ],
+ "fields": [
+  {
+   "fieldname": "attribute_value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value",
+   "reqd": 1
+  },
+  {
+   "description": "Display label (if different from value)",
+   "fieldname": "display_value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Display Value"
+  },
+  {
+   "description": "Short code for the value (e.g., 'S' for Small)",
+   "fieldname": "abbreviation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Abbreviation"
+  },
+  {
+   "description": "Hex color code for Color type attributes (e.g., #FF0000)",
+   "fieldname": "color_code",
+   "fieldtype": "Color",
+   "label": "Color Code"
+  },
+  {
+   "description": "Image/swatch for this value",
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "default": "0",
+   "description": "Lower numbers appear first",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Display Order"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Attribute Value",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

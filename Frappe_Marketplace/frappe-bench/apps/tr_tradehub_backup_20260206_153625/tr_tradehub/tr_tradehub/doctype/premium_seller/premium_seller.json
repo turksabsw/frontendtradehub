@@ -1,0 +1,933 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "PREM-SELLER-.#####",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "seller_profile",
+    "seller_name",
+    "seller_type",
+    "column_break_basic",
+    "status",
+    "tenant",
+    "tenant_name",
+    "premium_since",
+    "subscription_section",
+    "subscription_plan",
+    "subscription_plan_name",
+    "subscription_status",
+    "column_break_subscription",
+    "subscription_start_date",
+    "subscription_end_date",
+    "auto_renew",
+    "business_section",
+    "company_legal_name",
+    "company_registration_number",
+    "year_established",
+    "column_break_business",
+    "annual_revenue_range",
+    "employee_count_range",
+    "business_type",
+    "factory_section",
+    "has_factory",
+    "factory_name",
+    "factory_address",
+    "column_break_factory",
+    "factory_area_sqm",
+    "production_capacity",
+    "factory_certifications",
+    "factory_images",
+    "manufacturing_section",
+    "main_products",
+    "production_lines",
+    "r_and_d_capability",
+    "column_break_manufacturing",
+    "oem_service",
+    "odm_service",
+    "custom_manufacturing",
+    "minimum_order_quantity",
+    "certifications_section",
+    "certifications",
+    "quality_section",
+    "quality_management_system",
+    "quality_certifications",
+    "inspection_equipment",
+    "column_break_quality",
+    "defect_rate",
+    "return_rate",
+    "quality_guarantee_period",
+    "export_section",
+    "export_percentage",
+    "main_export_markets",
+    "export_experience_years",
+    "column_break_export",
+    "trade_terms_accepted",
+    "payment_terms_offered",
+    "references_section",
+    "key_customers",
+    "customer_testimonials",
+    "awards_recognitions",
+    "column_break_references",
+    "case_studies",
+    "sample_projects",
+    "verification_section",
+    "verification_level",
+    "verified_by_platform",
+    "verified_at",
+    "column_break_verification",
+    "on_site_verified",
+    "on_site_verification_date",
+    "verification_report",
+    "documents_section",
+    "business_license",
+    "tax_registration_certificate",
+    "export_license",
+    "column_break_documents",
+    "product_certifications",
+    "environmental_certificates",
+    "other_documents",
+    "premium_benefits_section",
+    "priority_listing",
+    "featured_placement",
+    "dedicated_account_manager",
+    "column_break_benefits",
+    "reduced_commission_rate",
+    "advanced_analytics",
+    "api_access_level",
+    "showcase_section",
+    "company_video",
+    "virtual_tour_url",
+    "showroom_images",
+    "column_break_showcase",
+    "product_catalog_pdf",
+    "company_brochure",
+    "social_media_section",
+    "linkedin_url",
+    "website_url",
+    "alibaba_url",
+    "column_break_social",
+    "made_in_china_url",
+    "indiamart_url",
+    "other_marketplace_url",
+    "performance_section",
+    "premium_score",
+    "response_rate",
+    "on_time_delivery_rate",
+    "column_break_performance",
+    "repeat_buyer_rate",
+    "inquiry_conversion_rate",
+    "average_response_time_hours",
+    "timestamps_section",
+    "created_at",
+    "modified_at",
+    "column_break_timestamps",
+    "created_by",
+    "modified_by"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "seller_profile",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller Profile",
+      "options": "Seller Profile",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fetch_from": "seller_profile.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller Name",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "seller_profile.seller_type",
+      "fieldname": "seller_type",
+      "fieldtype": "Data",
+      "in_standard_filter": 1,
+      "label": "Seller Type",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Pending",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Pending\nActive\nSuspended\nExpired\nCancelled",
+      "reqd": 1
+    },
+    {
+      "fetch_from": "seller_profile.tenant",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "premium_since",
+      "fieldtype": "Date",
+      "label": "Premium Since",
+      "read_only": 1
+    },
+    {
+      "fieldname": "subscription_section",
+      "fieldtype": "Section Break",
+      "label": "Subscription Details"
+    },
+    {
+      "fieldname": "subscription_plan",
+      "fieldtype": "Link",
+      "label": "Subscription Plan",
+      "options": "Subscription Package",
+      "description": "Current premium subscription plan"
+    },
+    {
+      "fetch_from": "subscription_plan.plan_name",
+      "fieldname": "subscription_plan_name",
+      "fieldtype": "Data",
+      "label": "Plan Name",
+      "read_only": 1
+    },
+    {
+      "default": "Active",
+      "fieldname": "subscription_status",
+      "fieldtype": "Select",
+      "label": "Subscription Status",
+      "options": "Active\nPending Payment\nGrace Period\nExpired\nCancelled"
+    },
+    {
+      "fieldname": "column_break_subscription",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "subscription_start_date",
+      "fieldtype": "Date",
+      "label": "Subscription Start Date"
+    },
+    {
+      "fieldname": "subscription_end_date",
+      "fieldtype": "Date",
+      "label": "Subscription End Date"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_renew",
+      "fieldtype": "Check",
+      "label": "Auto Renew"
+    },
+    {
+      "fieldname": "business_section",
+      "fieldtype": "Section Break",
+      "label": "Business Information"
+    },
+    {
+      "fieldname": "company_legal_name",
+      "fieldtype": "Data",
+      "label": "Company Legal Name",
+      "description": "Official registered company name"
+    },
+    {
+      "fieldname": "company_registration_number",
+      "fieldtype": "Data",
+      "label": "Company Registration Number",
+      "description": "Business registration/incorporation number"
+    },
+    {
+      "fieldname": "year_established",
+      "fieldtype": "Int",
+      "label": "Year Established",
+      "description": "Year the company was founded"
+    },
+    {
+      "fieldname": "column_break_business",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "annual_revenue_range",
+      "fieldtype": "Select",
+      "label": "Annual Revenue Range",
+      "options": "\nBelow $100K\n$100K - $500K\n$500K - $1M\n$1M - $5M\n$5M - $10M\n$10M - $50M\n$50M - $100M\nAbove $100M"
+    },
+    {
+      "fieldname": "employee_count_range",
+      "fieldtype": "Select",
+      "label": "Employee Count",
+      "options": "\n1-10\n11-50\n51-100\n101-500\n501-1000\n1001-5000\nAbove 5000"
+    },
+    {
+      "fieldname": "business_type",
+      "fieldtype": "Select",
+      "label": "Business Type",
+      "options": "\nManufacturer\nTrading Company\nManufacturer & Trading Company\nDistributor/Wholesaler\nAgent\nBuying Office\nService Provider"
+    },
+    {
+      "fieldname": "factory_section",
+      "fieldtype": "Section Break",
+      "label": "Factory Information",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "has_factory",
+      "fieldtype": "Check",
+      "label": "Has Own Factory"
+    },
+    {
+      "depends_on": "eval:doc.has_factory==1",
+      "fieldname": "factory_name",
+      "fieldtype": "Data",
+      "label": "Factory Name"
+    },
+    {
+      "depends_on": "eval:doc.has_factory==1",
+      "fieldname": "factory_address",
+      "fieldtype": "Small Text",
+      "label": "Factory Address"
+    },
+    {
+      "fieldname": "column_break_factory",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.has_factory==1",
+      "fieldname": "factory_area_sqm",
+      "fieldtype": "Float",
+      "label": "Factory Area (sqm)",
+      "precision": 2
+    },
+    {
+      "depends_on": "eval:doc.has_factory==1",
+      "fieldname": "production_capacity",
+      "fieldtype": "Data",
+      "label": "Production Capacity",
+      "description": "E.g., 10,000 units/month"
+    },
+    {
+      "depends_on": "eval:doc.has_factory==1",
+      "fieldname": "factory_certifications",
+      "fieldtype": "Small Text",
+      "label": "Factory Certifications",
+      "description": "ISO, GMP, etc."
+    },
+    {
+      "depends_on": "eval:doc.has_factory==1",
+      "fieldname": "factory_images",
+      "fieldtype": "Attach Image",
+      "label": "Factory Images"
+    },
+    {
+      "fieldname": "manufacturing_section",
+      "fieldtype": "Section Break",
+      "label": "Manufacturing Capabilities",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "main_products",
+      "fieldtype": "Small Text",
+      "label": "Main Products",
+      "description": "Primary product categories manufactured"
+    },
+    {
+      "fieldname": "production_lines",
+      "fieldtype": "Int",
+      "label": "Number of Production Lines"
+    },
+    {
+      "default": "0",
+      "fieldname": "r_and_d_capability",
+      "fieldtype": "Check",
+      "label": "R&D Capability"
+    },
+    {
+      "fieldname": "column_break_manufacturing",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "oem_service",
+      "fieldtype": "Check",
+      "label": "OEM Service Available"
+    },
+    {
+      "default": "0",
+      "fieldname": "odm_service",
+      "fieldtype": "Check",
+      "label": "ODM Service Available"
+    },
+    {
+      "default": "0",
+      "fieldname": "custom_manufacturing",
+      "fieldtype": "Check",
+      "label": "Custom Manufacturing"
+    },
+    {
+      "fieldname": "minimum_order_quantity",
+      "fieldtype": "Data",
+      "label": "Minimum Order Quantity",
+      "description": "Default MOQ for products"
+    },
+    {
+      "fieldname": "certifications_section",
+      "fieldtype": "Section Break",
+      "label": "Certifications & Compliance"
+    },
+    {
+      "description": "Business and product certifications",
+      "fieldname": "certifications",
+      "fieldtype": "Table",
+      "label": "Certifications",
+      "options": "Seller Certification"
+    },
+    {
+      "fieldname": "quality_section",
+      "fieldtype": "Section Break",
+      "label": "Quality Assurance",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "quality_management_system",
+      "fieldtype": "Select",
+      "label": "Quality Management System",
+      "options": "\nISO 9001\nISO 14001\nISO 45001\nISTS 16949\nAS9100\nOther"
+    },
+    {
+      "fieldname": "quality_certifications",
+      "fieldtype": "Small Text",
+      "label": "Quality Certifications",
+      "description": "Additional quality certifications"
+    },
+    {
+      "fieldname": "inspection_equipment",
+      "fieldtype": "Small Text",
+      "label": "Inspection Equipment",
+      "description": "Quality control equipment available"
+    },
+    {
+      "fieldname": "column_break_quality",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "defect_rate",
+      "fieldtype": "Percent",
+      "label": "Defect Rate",
+      "description": "Average defect rate",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "return_rate",
+      "fieldtype": "Percent",
+      "label": "Return Rate",
+      "read_only": 1
+    },
+    {
+      "fieldname": "quality_guarantee_period",
+      "fieldtype": "Int",
+      "label": "Quality Guarantee (months)",
+      "description": "Standard warranty period in months"
+    },
+    {
+      "fieldname": "export_section",
+      "fieldtype": "Section Break",
+      "label": "Export Information",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "export_percentage",
+      "fieldtype": "Percent",
+      "label": "Export Percentage",
+      "description": "Percentage of business from exports"
+    },
+    {
+      "fieldname": "main_export_markets",
+      "fieldtype": "Small Text",
+      "label": "Main Export Markets",
+      "description": "Primary countries/regions for exports"
+    },
+    {
+      "fieldname": "export_experience_years",
+      "fieldtype": "Int",
+      "label": "Export Experience (years)"
+    },
+    {
+      "fieldname": "column_break_export",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "trade_terms_accepted",
+      "fieldtype": "Small Text",
+      "label": "Trade Terms Accepted",
+      "description": "FOB, CIF, EXW, etc."
+    },
+    {
+      "fieldname": "payment_terms_offered",
+      "fieldtype": "Small Text",
+      "label": "Payment Terms Offered",
+      "description": "T/T, L/C, Western Union, etc."
+    },
+    {
+      "fieldname": "references_section",
+      "fieldtype": "Section Break",
+      "label": "References & Testimonials",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "key_customers",
+      "fieldtype": "Small Text",
+      "label": "Key Customers",
+      "description": "Notable customers or brands served"
+    },
+    {
+      "fieldname": "customer_testimonials",
+      "fieldtype": "Text",
+      "label": "Customer Testimonials"
+    },
+    {
+      "fieldname": "awards_recognitions",
+      "fieldtype": "Small Text",
+      "label": "Awards & Recognitions"
+    },
+    {
+      "fieldname": "column_break_references",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "case_studies",
+      "fieldtype": "Attach",
+      "label": "Case Studies",
+      "description": "PDF documents of case studies"
+    },
+    {
+      "fieldname": "sample_projects",
+      "fieldtype": "Small Text",
+      "label": "Sample Projects",
+      "description": "Notable projects completed"
+    },
+    {
+      "fieldname": "verification_section",
+      "fieldtype": "Section Break",
+      "label": "Platform Verification"
+    },
+    {
+      "default": "Basic",
+      "fieldname": "verification_level",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Verification Level",
+      "options": "Basic\nStandard\nAdvanced\nPremium\nEnterprise"
+    },
+    {
+      "default": "0",
+      "fieldname": "verified_by_platform",
+      "fieldtype": "Check",
+      "label": "Verified by Platform"
+    },
+    {
+      "fieldname": "verified_at",
+      "fieldtype": "Datetime",
+      "label": "Verified At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_verification",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "on_site_verified",
+      "fieldtype": "Check",
+      "label": "On-Site Verified",
+      "description": "Physical verification completed"
+    },
+    {
+      "depends_on": "eval:doc.on_site_verified==1",
+      "fieldname": "on_site_verification_date",
+      "fieldtype": "Date",
+      "label": "On-Site Verification Date"
+    },
+    {
+      "depends_on": "eval:doc.on_site_verified==1",
+      "fieldname": "verification_report",
+      "fieldtype": "Attach",
+      "label": "Verification Report"
+    },
+    {
+      "fieldname": "documents_section",
+      "fieldtype": "Section Break",
+      "label": "Documents",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "business_license",
+      "fieldtype": "Attach",
+      "label": "Business License"
+    },
+    {
+      "fieldname": "tax_registration_certificate",
+      "fieldtype": "Attach",
+      "label": "Tax Registration Certificate"
+    },
+    {
+      "fieldname": "export_license",
+      "fieldtype": "Attach",
+      "label": "Export License"
+    },
+    {
+      "fieldname": "column_break_documents",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "product_certifications",
+      "fieldtype": "Attach",
+      "label": "Product Certifications"
+    },
+    {
+      "fieldname": "environmental_certificates",
+      "fieldtype": "Attach",
+      "label": "Environmental Certificates"
+    },
+    {
+      "fieldname": "other_documents",
+      "fieldtype": "Attach",
+      "label": "Other Documents"
+    },
+    {
+      "fieldname": "premium_benefits_section",
+      "fieldtype": "Section Break",
+      "label": "Premium Benefits"
+    },
+    {
+      "default": "1",
+      "fieldname": "priority_listing",
+      "fieldtype": "Check",
+      "label": "Priority Listing",
+      "description": "Products appear higher in search results",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "featured_placement",
+      "fieldtype": "Check",
+      "label": "Featured Placement",
+      "description": "Eligible for featured product slots",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "dedicated_account_manager",
+      "fieldtype": "Check",
+      "label": "Dedicated Account Manager",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_benefits",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "reduced_commission_rate",
+      "fieldtype": "Percent",
+      "label": "Commission Reduction",
+      "description": "Percentage reduction from standard commission",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "advanced_analytics",
+      "fieldtype": "Check",
+      "label": "Advanced Analytics",
+      "description": "Access to advanced analytics dashboard",
+      "read_only": 1
+    },
+    {
+      "default": "Basic",
+      "fieldname": "api_access_level",
+      "fieldtype": "Select",
+      "label": "API Access Level",
+      "options": "None\nBasic\nStandard\nAdvanced\nEnterprise",
+      "read_only": 1
+    },
+    {
+      "fieldname": "showcase_section",
+      "fieldtype": "Section Break",
+      "label": "Showcase & Media",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "company_video",
+      "fieldtype": "Data",
+      "label": "Company Video URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "virtual_tour_url",
+      "fieldtype": "Data",
+      "label": "Virtual Tour URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "showroom_images",
+      "fieldtype": "Attach Image",
+      "label": "Showroom Images"
+    },
+    {
+      "fieldname": "column_break_showcase",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "product_catalog_pdf",
+      "fieldtype": "Attach",
+      "label": "Product Catalog (PDF)"
+    },
+    {
+      "fieldname": "company_brochure",
+      "fieldtype": "Attach",
+      "label": "Company Brochure"
+    },
+    {
+      "fieldname": "social_media_section",
+      "fieldtype": "Section Break",
+      "label": "Online Presence",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "linkedin_url",
+      "fieldtype": "Data",
+      "label": "LinkedIn URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "website_url",
+      "fieldtype": "Data",
+      "label": "Website URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "alibaba_url",
+      "fieldtype": "Data",
+      "label": "Alibaba Store URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "column_break_social",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "made_in_china_url",
+      "fieldtype": "Data",
+      "label": "Made-in-China URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "indiamart_url",
+      "fieldtype": "Data",
+      "label": "IndiaMART URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "other_marketplace_url",
+      "fieldtype": "Data",
+      "label": "Other Marketplace URL",
+      "options": "URL"
+    },
+    {
+      "fieldname": "performance_section",
+      "fieldtype": "Section Break",
+      "label": "Performance Metrics"
+    },
+    {
+      "default": "0",
+      "fieldname": "premium_score",
+      "fieldtype": "Float",
+      "label": "Premium Score",
+      "description": "Overall premium seller score (0-100)",
+      "precision": 2,
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "response_rate",
+      "fieldtype": "Percent",
+      "label": "Response Rate",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "on_time_delivery_rate",
+      "fieldtype": "Percent",
+      "label": "On-Time Delivery Rate",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_performance",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "repeat_buyer_rate",
+      "fieldtype": "Percent",
+      "label": "Repeat Buyer Rate",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "inquiry_conversion_rate",
+      "fieldtype": "Percent",
+      "label": "Inquiry Conversion Rate",
+      "read_only": 1
+    },
+    {
+      "default": "24",
+      "fieldname": "average_response_time_hours",
+      "fieldtype": "Float",
+      "label": "Avg Response Time (hrs)",
+      "precision": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "timestamps_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "created_at",
+      "fieldtype": "Datetime",
+      "label": "Created At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "modified_at",
+      "fieldtype": "Datetime",
+      "label": "Modified At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_timestamps",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "modified_by",
+      "fieldtype": "Link",
+      "label": "Modified By",
+      "options": "User",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Seller Profile",
+      "link_fieldname": "name"
+    },
+    {
+      "group": "Orders",
+      "link_doctype": "Sub Order",
+      "link_fieldname": "seller"
+    },
+    {
+      "group": "Products",
+      "link_doctype": "Listing",
+      "link_fieldname": "seller"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Premium Seller",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 0,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "seller_profile, seller_name, company_legal_name, verification_level",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "yellow",
+      "title": "Pending"
+    },
+    {
+      "color": "green",
+      "title": "Active"
+    },
+    {
+      "color": "red",
+      "title": "Suspended"
+    },
+    {
+      "color": "gray",
+      "title": "Expired"
+    },
+    {
+      "color": "gray",
+      "title": "Cancelled"
+    }
+  ],
+  "title_field": "seller_name",
+  "track_changes": 1
+}

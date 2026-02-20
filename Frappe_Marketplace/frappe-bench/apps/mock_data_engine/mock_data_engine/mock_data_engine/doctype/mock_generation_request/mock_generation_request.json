@@ -1,0 +1,374 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-28 12:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "request_info_section",
+    "naming_series",
+    "status",
+    "column_break_info1",
+    "title",
+    "profile",
+    "target_configuration_section",
+    "generation_mode",
+    "target_doctype",
+    "column_break_target1",
+    "record_count",
+    "selected_doctypes_section",
+    "selected_doctypes",
+    "generation_options_section",
+    "locale",
+    "seed_value",
+    "column_break_options1",
+    "auto_resolve_dependencies",
+    "fail_on_error",
+    "log_generation_details",
+    "use_ai_generation",
+    "progress_section",
+    "progress_percent",
+    "records_created",
+    "records_failed",
+    "column_break_progress1",
+    "current_batch",
+    "total_batches",
+    "timing_section",
+    "queued_at",
+    "started_at",
+    "column_break_timing1",
+    "completed_at",
+    "duration_seconds",
+    "error_section",
+    "error_message",
+    "logs_section",
+    "generation_logs"
+  ],
+  "fields": [
+    {
+      "fieldname": "request_info_section",
+      "fieldtype": "Section Break",
+      "label": "Request Information"
+    },
+    {
+      "default": "MGR-.YYYY.-.#####",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Naming Series",
+      "options": "MGR-.YYYY.-.#####"
+    },
+    {
+      "default": "Draft",
+      "description": "Current status of the generation request",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nQueued\nProcessing\nCompleted\nFailed\nCancelled",
+      "read_only_depends_on": "eval:doc.status !== 'Draft'"
+    },
+    {
+      "fieldname": "column_break_info1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Optional title for this generation request",
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Title"
+    },
+    {
+      "description": "Use a saved generation profile with predefined settings",
+      "fieldname": "profile",
+      "fieldtype": "Link",
+      "label": "Generation Profile",
+      "options": "Mock Generation Profile"
+    },
+    {
+      "fieldname": "target_configuration_section",
+      "fieldtype": "Section Break",
+      "label": "Target Configuration"
+    },
+    {
+      "default": "Single DocType",
+      "description": "Generate data for a single DocType or multiple DocTypes",
+      "fieldname": "generation_mode",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Generation Mode",
+      "options": "Single DocType\nMultiple DocTypes\nFrom Profile",
+      "reqd": 1
+    },
+    {
+      "depends_on": "eval:doc.generation_mode === 'Single DocType'",
+      "description": "The DocType to generate mock data for",
+      "fieldname": "target_doctype",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Target DocType",
+      "mandatory_depends_on": "eval:doc.generation_mode === 'Single DocType'",
+      "options": "DocType"
+    },
+    {
+      "fieldname": "column_break_target1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "10",
+      "depends_on": "eval:doc.generation_mode === 'Single DocType'",
+      "description": "Number of records to generate",
+      "fieldname": "record_count",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Record Count",
+      "mandatory_depends_on": "eval:doc.generation_mode === 'Single DocType'"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generation_mode === 'Multiple DocTypes'",
+      "fieldname": "selected_doctypes_section",
+      "fieldtype": "Section Break",
+      "label": "Selected DocTypes"
+    },
+    {
+      "depends_on": "eval:doc.generation_mode === 'Multiple DocTypes'",
+      "description": "DocTypes to generate with their record counts",
+      "fieldname": "selected_doctypes",
+      "fieldtype": "Table",
+      "label": "Selected DocTypes",
+      "options": "Mock Selected DocType"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "generation_options_section",
+      "fieldtype": "Section Break",
+      "label": "Generation Options"
+    },
+    {
+      "description": "Faker locale for data generation (overrides global setting)",
+      "fieldname": "locale",
+      "fieldtype": "Select",
+      "label": "Locale Override",
+      "options": "\ntr_TR\nen_US\nen_GB\nde_DE\nfr_FR\nes_ES\nit_IT\npt_BR\nja_JP\nzh_CN\nar_SA"
+    },
+    {
+      "description": "Seed value for reproducible generation (overrides global setting)",
+      "fieldname": "seed_value",
+      "fieldtype": "Int",
+      "label": "Seed Value Override"
+    },
+    {
+      "fieldname": "column_break_options1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "description": "Automatically create dependent DocTypes when generating records with Link fields",
+      "fieldname": "auto_resolve_dependencies",
+      "fieldtype": "Check",
+      "label": "Auto-Resolve Dependencies"
+    },
+    {
+      "default": "0",
+      "description": "Stop generation on first error instead of continuing with other records",
+      "fieldname": "fail_on_error",
+      "fieldtype": "Check",
+      "label": "Fail on Error"
+    },
+    {
+      "default": "1",
+      "description": "Create detailed logs for each generated record",
+      "fieldname": "log_generation_details",
+      "fieldtype": "Check",
+      "label": "Log Generation Details"
+    },
+    {
+      "default": "0",
+      "description": "Use AI-powered generation for this request (requires AI API key configured in Mock Engine Settings)",
+      "fieldname": "use_ai_generation",
+      "fieldtype": "Check",
+      "label": "Use AI Generation"
+    },
+    {
+      "fieldname": "progress_section",
+      "fieldtype": "Section Break",
+      "label": "Progress"
+    },
+    {
+      "default": "0",
+      "description": "Percentage of generation completed",
+      "fieldname": "progress_percent",
+      "fieldtype": "Percent",
+      "label": "Progress",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Number of records successfully created",
+      "fieldname": "records_created",
+      "fieldtype": "Int",
+      "label": "Records Created",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Number of records that failed to create",
+      "fieldname": "records_failed",
+      "fieldtype": "Int",
+      "label": "Records Failed",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_progress1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Current batch being processed",
+      "fieldname": "current_batch",
+      "fieldtype": "Int",
+      "label": "Current Batch",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Total number of batches",
+      "fieldname": "total_batches",
+      "fieldtype": "Int",
+      "label": "Total Batches",
+      "read_only": 1
+    },
+    {
+      "fieldname": "timing_section",
+      "fieldtype": "Section Break",
+      "label": "Timing"
+    },
+    {
+      "description": "When the request was queued",
+      "fieldname": "queued_at",
+      "fieldtype": "Datetime",
+      "label": "Queued At",
+      "read_only": 1
+    },
+    {
+      "description": "When processing started",
+      "fieldname": "started_at",
+      "fieldtype": "Datetime",
+      "label": "Started At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_timing1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "When processing completed (or failed)",
+      "fieldname": "completed_at",
+      "fieldtype": "Datetime",
+      "label": "Completed At",
+      "read_only": 1
+    },
+    {
+      "description": "Total duration in seconds",
+      "fieldname": "duration_seconds",
+      "fieldtype": "Float",
+      "label": "Duration (seconds)",
+      "precision": "2",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "collapsible_depends_on": "eval:doc.status !== 'Failed'",
+      "fieldname": "error_section",
+      "fieldtype": "Section Break",
+      "label": "Error Details"
+    },
+    {
+      "description": "Error message if generation failed",
+      "fieldname": "error_message",
+      "fieldtype": "Long Text",
+      "label": "Error Message",
+      "read_only": 1
+    },
+    {
+      "fieldname": "logs_section",
+      "fieldtype": "Section Break",
+      "label": "Generation Logs"
+    },
+    {
+      "description": "Detailed logs of each DocType generation",
+      "fieldname": "generation_logs",
+      "fieldtype": "Table",
+      "label": "Generation Logs",
+      "options": "Mock Generation Log",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-28 12:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Mock Data Engine",
+  "name": "Mock Generation Request",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Administrator",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Draft"
+    },
+    {
+      "color": "orange",
+      "title": "Queued"
+    },
+    {
+      "color": "blue",
+      "title": "Processing"
+    },
+    {
+      "color": "green",
+      "title": "Completed"
+    },
+    {
+      "color": "red",
+      "title": "Failed"
+    },
+    {
+      "color": "gray",
+      "title": "Cancelled"
+    }
+  ],
+  "track_changes": 1
+}

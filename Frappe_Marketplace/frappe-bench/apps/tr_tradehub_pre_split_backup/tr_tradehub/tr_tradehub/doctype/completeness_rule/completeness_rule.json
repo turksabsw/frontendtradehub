@@ -1,0 +1,158 @@
+{
+  "actions": [],
+  "creation": "2026-02-09 18:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "rule_type",
+    "column_break_1",
+    "weight",
+    "is_enabled",
+    "rule_config_section",
+    "target_attribute",
+    "column_break_2",
+    "channel",
+    "locale",
+    "validation_section",
+    "min_value",
+    "max_value",
+    "column_break_3",
+    "min_length",
+    "max_length",
+    "media_section",
+    "min_media_count",
+    "max_media_count"
+  ],
+  "fields": [
+    {
+      "fieldname": "rule_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Rule Type",
+      "options": "Required Attribute\nRequired Description\nMin Description Length\nRequired Media\nMin Media Count\nRequired Image Angle\nAttribute Validation\nCustom",
+      "reqd": 1,
+      "description": "Type of completeness rule to apply"
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "weight",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Weight",
+      "description": "Weight of this rule in completeness calculation (0.0 to 1.0)"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Is Enabled",
+      "description": "If checked, this rule is active for completeness calculation"
+    },
+    {
+      "fieldname": "rule_config_section",
+      "fieldtype": "Section Break",
+      "label": "Rule Configuration"
+    },
+    {
+      "fieldname": "target_attribute",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Target Attribute",
+      "options": "PIM Attribute",
+      "description": "The attribute this rule applies to (for attribute-based rules)",
+      "depends_on": "eval:['Required Attribute', 'Attribute Validation'].includes(doc.rule_type)"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "channel",
+      "fieldtype": "Link",
+      "label": "Channel",
+      "options": "Sales Channel",
+      "description": "Apply rule only for specific channel (leave empty for all channels)"
+    },
+    {
+      "fieldname": "locale",
+      "fieldtype": "Data",
+      "label": "Locale",
+      "description": "Apply rule only for specific locale (e.g., en_US, tr_TR)"
+    },
+    {
+      "fieldname": "validation_section",
+      "fieldtype": "Section Break",
+      "label": "Validation Settings",
+      "collapsible": 1,
+      "depends_on": "eval:doc.rule_type == 'Attribute Validation'"
+    },
+    {
+      "fieldname": "min_value",
+      "fieldtype": "Float",
+      "label": "Min Value",
+      "description": "Minimum numeric value for numeric attributes"
+    },
+    {
+      "fieldname": "max_value",
+      "fieldtype": "Float",
+      "label": "Max Value",
+      "description": "Maximum numeric value for numeric attributes"
+    },
+    {
+      "fieldname": "column_break_3",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "min_length",
+      "fieldtype": "Int",
+      "label": "Min Length",
+      "description": "Minimum string length for text attributes"
+    },
+    {
+      "fieldname": "max_length",
+      "fieldtype": "Int",
+      "label": "Max Length",
+      "description": "Maximum string length for text attributes"
+    },
+    {
+      "fieldname": "media_section",
+      "fieldtype": "Section Break",
+      "label": "Media Settings",
+      "collapsible": 1,
+      "depends_on": "eval:['Required Media', 'Min Media Count'].includes(doc.rule_type)"
+    },
+    {
+      "default": "1",
+      "fieldname": "min_media_count",
+      "fieldtype": "Int",
+      "label": "Min Media Count",
+      "description": "Minimum number of media files required"
+    },
+    {
+      "fieldname": "max_media_count",
+      "fieldtype": "Int",
+      "label": "Max Media Count",
+      "description": "Maximum number of media files allowed"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "istable": 1,
+  "links": [],
+  "modified": "2026-02-09 18:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Completeness Rule",
+  "naming_rule": "Random",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 0
+}

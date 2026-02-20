@@ -1,0 +1,377 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2026-02-12 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "naming_series",
+    "contract_template",
+    "template_name",
+    "column_break_basic",
+    "status",
+    "contract_type",
+    "parties_section",
+    "buyer",
+    "buyer_name",
+    "buyer_company",
+    "column_break_parties",
+    "seller",
+    "seller_name",
+    "seller_company",
+    "context_section",
+    "rfq",
+    "rfq_title",
+    "column_break_context",
+    "related_doctype",
+    "related_document",
+    "content_section",
+    "rendered_content",
+    "signature_section",
+    "signed_by_buyer",
+    "buyer_signature_date",
+    "buyer_ip_address",
+    "column_break_signature",
+    "signed_by_seller",
+    "seller_signature_date",
+    "seller_ip_address",
+    "validity_section",
+    "effective_date",
+    "expiry_date",
+    "column_break_validity",
+    "is_expired",
+    "auto_renewed",
+    "notes_section",
+    "internal_notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Contract Information"
+    },
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "CONTRACT-.YYYY.-.#####",
+      "default": "CONTRACT-.YYYY.-.#####",
+      "reqd": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "contract_template",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Contract Template",
+      "options": "Contract Template",
+      "reqd": 1,
+      "description": "The template used to create this contract instance"
+    },
+    {
+      "fetch_from": "contract_template.template_name",
+      "fieldname": "template_name",
+      "fieldtype": "Data",
+      "label": "Template Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nPending Signature\nActive\nExpired\nTerminated\nRejected",
+      "reqd": 1,
+      "description": "Current status of the contract"
+    },
+    {
+      "fetch_from": "contract_template.contract_type",
+      "fieldname": "contract_type",
+      "fieldtype": "Data",
+      "in_standard_filter": 1,
+      "label": "Contract Type",
+      "read_only": 1
+    },
+    {
+      "fieldname": "parties_section",
+      "fieldtype": "Section Break",
+      "label": "Parties"
+    },
+    {
+      "fieldname": "buyer",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Buyer",
+      "options": "Buyer Profile",
+      "description": "The buyer party to this contract"
+    },
+    {
+      "fetch_from": "buyer.full_name",
+      "fieldname": "buyer_name",
+      "fieldtype": "Data",
+      "label": "Buyer Name",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "buyer.company_name",
+      "fieldname": "buyer_company",
+      "fieldtype": "Data",
+      "label": "Buyer Company",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_parties",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller",
+      "options": "Seller Profile",
+      "description": "The seller party to this contract"
+    },
+    {
+      "fetch_from": "seller.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "label": "Seller Name",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "seller.company_name",
+      "fieldname": "seller_company",
+      "fieldtype": "Data",
+      "label": "Seller Company",
+      "read_only": 1
+    },
+    {
+      "fieldname": "context_section",
+      "fieldtype": "Section Break",
+      "label": "Related Context",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "rfq",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "RFQ",
+      "options": "RFQ",
+      "description": "The RFQ this contract is associated with (if applicable)"
+    },
+    {
+      "fetch_from": "rfq.title",
+      "fieldname": "rfq_title",
+      "fieldtype": "Data",
+      "label": "RFQ Title",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_context",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "related_doctype",
+      "fieldtype": "Link",
+      "label": "Related DocType",
+      "options": "DocType",
+      "description": "Type of related document (if not RFQ)"
+    },
+    {
+      "fieldname": "related_document",
+      "fieldtype": "Dynamic Link",
+      "label": "Related Document",
+      "options": "related_doctype",
+      "description": "Reference to the related document"
+    },
+    {
+      "fieldname": "content_section",
+      "fieldtype": "Section Break",
+      "label": "Contract Content"
+    },
+    {
+      "fieldname": "rendered_content",
+      "fieldtype": "Text Editor",
+      "label": "Contract Content",
+      "description": "The rendered contract content (generated from template)",
+      "read_only": 1
+    },
+    {
+      "fieldname": "signature_section",
+      "fieldtype": "Section Break",
+      "label": "Signatures"
+    },
+    {
+      "default": "0",
+      "fieldname": "signed_by_buyer",
+      "fieldtype": "Check",
+      "label": "Signed by Buyer",
+      "description": "Whether the buyer has signed this contract"
+    },
+    {
+      "fieldname": "buyer_signature_date",
+      "fieldtype": "Datetime",
+      "label": "Buyer Signature Date",
+      "depends_on": "eval:doc.signed_by_buyer",
+      "read_only": 1
+    },
+    {
+      "fieldname": "buyer_ip_address",
+      "fieldtype": "Data",
+      "label": "Buyer IP Address",
+      "depends_on": "eval:doc.signed_by_buyer",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_signature",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "signed_by_seller",
+      "fieldtype": "Check",
+      "label": "Signed by Seller",
+      "description": "Whether the seller has signed this contract"
+    },
+    {
+      "fieldname": "seller_signature_date",
+      "fieldtype": "Datetime",
+      "label": "Seller Signature Date",
+      "depends_on": "eval:doc.signed_by_seller",
+      "read_only": 1
+    },
+    {
+      "fieldname": "seller_ip_address",
+      "fieldtype": "Data",
+      "label": "Seller IP Address",
+      "depends_on": "eval:doc.signed_by_seller",
+      "read_only": 1
+    },
+    {
+      "fieldname": "validity_section",
+      "fieldtype": "Section Break",
+      "label": "Validity Period"
+    },
+    {
+      "fieldname": "effective_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Effective Date",
+      "description": "Date when the contract becomes effective"
+    },
+    {
+      "fieldname": "expiry_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Expiry Date",
+      "description": "Date when the contract expires"
+    },
+    {
+      "fieldname": "column_break_validity",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_expired",
+      "fieldtype": "Check",
+      "label": "Is Expired",
+      "read_only": 1,
+      "description": "Whether this contract has expired"
+    },
+    {
+      "default": "0",
+      "fieldname": "auto_renewed",
+      "fieldtype": "Check",
+      "label": "Auto Renewed",
+      "read_only": 1,
+      "description": "Whether this contract was auto-renewed"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text",
+      "label": "Internal Notes",
+      "description": "Internal notes for administrators"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "RFQ",
+      "link_fieldname": "rfq"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "RFQ NDA Link",
+      "link_fieldname": "contract_instance"
+    }
+  ],
+  "modified": "2026-02-12 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Marketplace Contract Instance",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "Seller",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "contract_template, buyer_name, seller_name, rfq_title, status",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "template_name",
+  "track_changes": 1
+}

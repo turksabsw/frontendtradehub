@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "min_qty",
+  "max_qty",
+  "column_break_qty",
+  "unit_price",
+  "discount_percent"
+ ],
+ "fields": [
+  {
+   "fieldname": "min_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Min Quantity",
+   "reqd": 1,
+   "description": "Minimum quantity for this price break",
+   "default": "1",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "max_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Max Quantity",
+   "description": "Maximum quantity for this price break (0 or empty = unlimited)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_qty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "reqd": 1,
+   "description": "Price per unit for this quantity range",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "discount_percent",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Discount %",
+   "description": "Discount percentage from base price (calculated)",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Price Break",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "min_qty",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

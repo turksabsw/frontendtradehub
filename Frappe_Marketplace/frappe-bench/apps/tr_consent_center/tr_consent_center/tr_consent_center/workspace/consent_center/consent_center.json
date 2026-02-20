@@ -1,0 +1,109 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-0\", \"type\": \"card\", \"data\": {\"card_name\": \"Consent Management\", \"col\": 4}}, {\"id\": \"link-1\", \"type\": \"link\", \"data\": {\"link_to\": \"Consent Topic\", \"link_type\": \"DocType\", \"label\": \"Consent Topic\"}}, {\"id\": \"link-2\", \"type\": \"link\", \"data\": {\"link_to\": \"Consent Text\", \"link_type\": \"DocType\", \"label\": \"Consent Text\"}}, {\"id\": \"link-3\", \"type\": \"link\", \"data\": {\"link_to\": \"Consent Record\", \"link_type\": \"DocType\", \"label\": \"Consent Record\"}}, {\"id\": \"link-4\", \"type\": \"link\", \"data\": {\"link_to\": \"Consent Audit Log\", \"link_type\": \"DocType\", \"label\": \"Consent Audit Log\"}}, {\"id\": \"card-break-5\", \"type\": \"card\", \"data\": {\"card_name\": \"Settings\", \"col\": 4}}, {\"id\": \"link-6\", \"type\": \"link\", \"data\": {\"link_to\": \"Consent Method\", \"link_type\": \"DocType\", \"label\": \"Consent Method\"}}, {\"id\": \"link-7\", \"type\": \"link\", \"data\": {\"link_to\": \"Consent Channel\", \"link_type\": \"DocType\", \"label\": \"Consent Channel\"}}]",
+ "creation": "2024-01-23 00:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "small-file",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Consent Center",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Management",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Topic",
+   "link_count": 0,
+   "link_to": "Consent Topic",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Text",
+   "link_count": 0,
+   "link_to": "Consent Text",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Record",
+   "link_count": 0,
+   "link_to": "Consent Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Audit Log",
+   "link_count": 0,
+   "link_to": "Consent Audit Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Method",
+   "link_count": 0,
+   "link_to": "Consent Method",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Channel",
+   "link_count": 0,
+   "link_to": "Consent Channel",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-16 16:22:50.329967",
+ "modified_by": "Administrator",
+ "module": "TR Consent Center",
+ "name": "Consent Center",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 10.0,
+ "shortcuts": [],
+ "title": "Consent Center"
+}

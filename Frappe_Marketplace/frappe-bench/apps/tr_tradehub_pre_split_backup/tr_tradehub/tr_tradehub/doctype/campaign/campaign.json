@@ -1,0 +1,706 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:campaign_name",
+  "creation": "2026-02-12 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "campaign_name",
+    "campaign_type",
+    "column_break_basic",
+    "status",
+    "priority",
+    "is_featured",
+    "description_section",
+    "description",
+    "banner_image",
+    "validity_section",
+    "start_date",
+    "end_date",
+    "column_break_validity",
+    "timezone",
+    "auto_activate",
+    "auto_deactivate",
+    "discount_section",
+    "discount_type",
+    "discount_value",
+    "column_break_discount",
+    "max_discount_amount",
+    "min_order_amount",
+    "applicability_section",
+    "applies_to",
+    "applicable_categories",
+    "applicable_sellers",
+    "column_break_applicability",
+    "applicable_products",
+    "excluded_products",
+    "coupon_section",
+    "auto_generate_coupon",
+    "coupon_prefix",
+    "coupon_quantity",
+    "column_break_coupon",
+    "linked_coupons",
+    "budget_section",
+    "budget_enabled",
+    "total_budget",
+    "column_break_budget",
+    "spent_amount",
+    "remaining_budget",
+    "usage_section",
+    "usage_limit",
+    "usage_per_customer",
+    "column_break_usage",
+    "total_usage",
+    "unique_users",
+    "targeting_section",
+    "target_audience",
+    "buyer_levels",
+    "new_customers_only",
+    "column_break_targeting",
+    "min_previous_orders",
+    "max_previous_orders",
+    "geographic_regions",
+    "display_section",
+    "show_on_homepage",
+    "show_in_category",
+    "show_countdown",
+    "column_break_display",
+    "display_order",
+    "highlight_color",
+    "highlight_text",
+    "tenant_section",
+    "seller",
+    "seller_name",
+    "column_break_tenant",
+    "tenant",
+    "tenant_name",
+    "analytics_section",
+    "views_count",
+    "clicks_count",
+    "column_break_analytics",
+    "orders_count",
+    "revenue_generated",
+    "notes_section",
+    "internal_notes",
+    "terms_and_conditions"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Campaign Information"
+    },
+    {
+      "fieldname": "campaign_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Campaign Name",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique name for this campaign"
+    },
+    {
+      "default": "Discount",
+      "fieldname": "campaign_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Campaign Type",
+      "options": "Discount\nFlash Sale\nSeasonal\nClearance\nBuy X Get Y\nFree Shipping\nBundle Deal\nLoyalty\nReferral\nNew Customer\nHoliday\nOther",
+      "reqd": 1,
+      "description": "Type of promotional campaign"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nScheduled\nActive\nPaused\nEnded\nCancelled",
+      "reqd": 1,
+      "description": "Current status of the campaign"
+    },
+    {
+      "default": "10",
+      "fieldname": "priority",
+      "fieldtype": "Int",
+      "label": "Priority",
+      "description": "Higher priority campaigns are applied first (1-100)"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_featured",
+      "fieldtype": "Check",
+      "label": "Is Featured",
+      "description": "Feature this campaign prominently on the marketplace"
+    },
+    {
+      "fieldname": "description_section",
+      "fieldtype": "Section Break",
+      "label": "Description"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description",
+      "description": "Public description of the campaign shown to customers"
+    },
+    {
+      "fieldname": "banner_image",
+      "fieldtype": "Attach Image",
+      "label": "Banner Image",
+      "description": "Campaign banner image for display"
+    },
+    {
+      "fieldname": "validity_section",
+      "fieldtype": "Section Break",
+      "label": "Validity Period"
+    },
+    {
+      "fieldname": "start_date",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "Start Date",
+      "reqd": 1,
+      "description": "When the campaign begins"
+    },
+    {
+      "fieldname": "end_date",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "End Date",
+      "reqd": 1,
+      "description": "When the campaign ends"
+    },
+    {
+      "fieldname": "column_break_validity",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Europe/Istanbul",
+      "fieldname": "timezone",
+      "fieldtype": "Data",
+      "label": "Timezone",
+      "description": "Timezone for campaign dates"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_activate",
+      "fieldtype": "Check",
+      "label": "Auto Activate",
+      "description": "Automatically activate when start date is reached"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_deactivate",
+      "fieldtype": "Check",
+      "label": "Auto Deactivate",
+      "description": "Automatically end when end date is reached"
+    },
+    {
+      "fieldname": "discount_section",
+      "fieldtype": "Section Break",
+      "label": "Discount Configuration"
+    },
+    {
+      "default": "Percentage",
+      "fieldname": "discount_type",
+      "fieldtype": "Select",
+      "label": "Discount Type",
+      "options": "Percentage\nFixed Amount\nFree Shipping\nBuy X Get Y\nBundle Price\nNo Discount",
+      "description": "Type of discount for this campaign"
+    },
+    {
+      "default": "0",
+      "fieldname": "discount_value",
+      "fieldtype": "Float",
+      "label": "Discount Value",
+      "precision": 2,
+      "depends_on": "eval:!['Free Shipping', 'No Discount'].includes(doc.discount_type)",
+      "description": "Discount percentage or fixed amount"
+    },
+    {
+      "fieldname": "column_break_discount",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "max_discount_amount",
+      "fieldtype": "Currency",
+      "label": "Max Discount Amount",
+      "depends_on": "eval:doc.discount_type=='Percentage'",
+      "description": "Maximum discount cap for percentage discounts"
+    },
+    {
+      "default": "0",
+      "fieldname": "min_order_amount",
+      "fieldtype": "Currency",
+      "label": "Min Order Amount",
+      "description": "Minimum order value required for this campaign"
+    },
+    {
+      "fieldname": "applicability_section",
+      "fieldtype": "Section Break",
+      "label": "Applicability"
+    },
+    {
+      "default": "All Products",
+      "fieldname": "applies_to",
+      "fieldtype": "Select",
+      "label": "Applies To",
+      "options": "All Products\nSpecific Categories\nSpecific Sellers\nSpecific Products",
+      "description": "What products this campaign applies to"
+    },
+    {
+      "depends_on": "eval:doc.applies_to=='Specific Categories'",
+      "fieldname": "applicable_categories",
+      "fieldtype": "Small Text",
+      "label": "Applicable Categories",
+      "description": "Comma-separated list of category names"
+    },
+    {
+      "depends_on": "eval:doc.applies_to=='Specific Sellers'",
+      "fieldname": "applicable_sellers",
+      "fieldtype": "Small Text",
+      "label": "Applicable Sellers",
+      "description": "Comma-separated list of seller names"
+    },
+    {
+      "fieldname": "column_break_applicability",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.applies_to=='Specific Products'",
+      "fieldname": "applicable_products",
+      "fieldtype": "Small Text",
+      "label": "Applicable Products",
+      "description": "Comma-separated list of listing codes"
+    },
+    {
+      "fieldname": "excluded_products",
+      "fieldtype": "Small Text",
+      "label": "Excluded Products",
+      "description": "Comma-separated list of excluded listing codes"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "coupon_section",
+      "fieldtype": "Section Break",
+      "label": "Coupon Integration"
+    },
+    {
+      "default": "0",
+      "fieldname": "auto_generate_coupon",
+      "fieldtype": "Check",
+      "label": "Auto Generate Coupon",
+      "description": "Automatically generate coupon codes for this campaign"
+    },
+    {
+      "depends_on": "eval:doc.auto_generate_coupon",
+      "fieldname": "coupon_prefix",
+      "fieldtype": "Data",
+      "label": "Coupon Prefix",
+      "description": "Prefix for auto-generated coupon codes"
+    },
+    {
+      "default": "1",
+      "depends_on": "eval:doc.auto_generate_coupon",
+      "fieldname": "coupon_quantity",
+      "fieldtype": "Int",
+      "label": "Coupon Quantity",
+      "description": "Number of unique coupon codes to generate"
+    },
+    {
+      "fieldname": "column_break_coupon",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "linked_coupons",
+      "fieldtype": "Small Text",
+      "label": "Linked Coupons",
+      "read_only": 1,
+      "description": "Coupon codes linked to this campaign"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "budget_section",
+      "fieldtype": "Section Break",
+      "label": "Budget Management"
+    },
+    {
+      "default": "0",
+      "fieldname": "budget_enabled",
+      "fieldtype": "Check",
+      "label": "Budget Enabled",
+      "description": "Enable budget limits for this campaign"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.budget_enabled",
+      "fieldname": "total_budget",
+      "fieldtype": "Currency",
+      "label": "Total Budget",
+      "description": "Maximum total discount amount for this campaign"
+    },
+    {
+      "fieldname": "column_break_budget",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "spent_amount",
+      "fieldtype": "Currency",
+      "label": "Spent Amount",
+      "read_only": 1,
+      "description": "Total discount amount spent so far"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.budget_enabled",
+      "fieldname": "remaining_budget",
+      "fieldtype": "Currency",
+      "label": "Remaining Budget",
+      "read_only": 1,
+      "description": "Remaining budget available"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "usage_section",
+      "fieldtype": "Section Break",
+      "label": "Usage Limits"
+    },
+    {
+      "default": "0",
+      "fieldname": "usage_limit",
+      "fieldtype": "Int",
+      "label": "Total Usage Limit",
+      "description": "Maximum total uses (0 = unlimited)"
+    },
+    {
+      "default": "0",
+      "fieldname": "usage_per_customer",
+      "fieldtype": "Int",
+      "label": "Usage Per Customer",
+      "description": "Maximum uses per customer (0 = unlimited)"
+    },
+    {
+      "fieldname": "column_break_usage",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_usage",
+      "fieldtype": "Int",
+      "label": "Total Usage",
+      "read_only": 1,
+      "description": "Number of times this campaign has been used"
+    },
+    {
+      "default": "0",
+      "fieldname": "unique_users",
+      "fieldtype": "Int",
+      "label": "Unique Users",
+      "read_only": 1,
+      "description": "Number of unique customers who used this campaign"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "targeting_section",
+      "fieldtype": "Section Break",
+      "label": "Customer Targeting"
+    },
+    {
+      "default": "All Customers",
+      "fieldname": "target_audience",
+      "fieldtype": "Select",
+      "label": "Target Audience",
+      "options": "All Customers\nNew Customers\nReturning Customers\nVIP Customers\nInactive Customers\nSpecific Levels",
+      "description": "Target customer segment for this campaign"
+    },
+    {
+      "depends_on": "eval:doc.target_audience=='Specific Levels'",
+      "fieldname": "buyer_levels",
+      "fieldtype": "Small Text",
+      "label": "Buyer Levels",
+      "description": "Comma-separated list of buyer level names"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.target_audience=='New Customers'",
+      "fieldname": "new_customers_only",
+      "fieldtype": "Check",
+      "label": "New Customers Only"
+    },
+    {
+      "fieldname": "column_break_targeting",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "min_previous_orders",
+      "fieldtype": "Int",
+      "label": "Min Previous Orders",
+      "description": "Minimum number of previous orders required"
+    },
+    {
+      "default": "0",
+      "fieldname": "max_previous_orders",
+      "fieldtype": "Int",
+      "label": "Max Previous Orders",
+      "description": "Maximum number of previous orders (0 = no limit)"
+    },
+    {
+      "fieldname": "geographic_regions",
+      "fieldtype": "Small Text",
+      "label": "Geographic Regions",
+      "description": "Comma-separated list of cities/regions (leave empty for all)"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "display_section",
+      "fieldtype": "Section Break",
+      "label": "Display Settings"
+    },
+    {
+      "default": "0",
+      "fieldname": "show_on_homepage",
+      "fieldtype": "Check",
+      "label": "Show on Homepage",
+      "description": "Display campaign banner on homepage"
+    },
+    {
+      "default": "0",
+      "fieldname": "show_in_category",
+      "fieldtype": "Check",
+      "label": "Show in Category",
+      "description": "Display campaign in applicable category pages"
+    },
+    {
+      "default": "0",
+      "fieldname": "show_countdown",
+      "fieldtype": "Check",
+      "label": "Show Countdown",
+      "description": "Show countdown timer for campaign end"
+    },
+    {
+      "fieldname": "column_break_display",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "label": "Display Order",
+      "description": "Order for display (lower = higher priority)"
+    },
+    {
+      "fieldname": "highlight_color",
+      "fieldtype": "Color",
+      "label": "Highlight Color",
+      "description": "Color for campaign highlights"
+    },
+    {
+      "fieldname": "highlight_text",
+      "fieldtype": "Data",
+      "label": "Highlight Text",
+      "description": "Short text for badges (e.g., '50% OFF', 'FLASH SALE')"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Seller & Tenant"
+    },
+    {
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Seller",
+      "options": "Seller Profile",
+      "description": "Seller running this campaign (blank = platform-wide)"
+    },
+    {
+      "fetch_from": "seller.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "label": "Seller Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_tenant",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "seller.tenant",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "analytics_section",
+      "fieldtype": "Section Break",
+      "label": "Analytics"
+    },
+    {
+      "default": "0",
+      "fieldname": "views_count",
+      "fieldtype": "Int",
+      "label": "Views",
+      "read_only": 1,
+      "description": "Number of times campaign was viewed"
+    },
+    {
+      "default": "0",
+      "fieldname": "clicks_count",
+      "fieldtype": "Int",
+      "label": "Clicks",
+      "read_only": 1,
+      "description": "Number of clicks on campaign"
+    },
+    {
+      "fieldname": "column_break_analytics",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "orders_count",
+      "fieldtype": "Int",
+      "label": "Orders",
+      "read_only": 1,
+      "description": "Number of orders using this campaign"
+    },
+    {
+      "default": "0",
+      "fieldname": "revenue_generated",
+      "fieldtype": "Currency",
+      "label": "Revenue Generated",
+      "read_only": 1,
+      "description": "Total revenue from campaign orders"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes & Terms"
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text",
+      "label": "Internal Notes",
+      "description": "Internal notes (not visible to customers)"
+    },
+    {
+      "fieldname": "terms_and_conditions",
+      "fieldtype": "Text Editor",
+      "label": "Terms and Conditions",
+      "description": "Campaign terms and conditions"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Coupon",
+      "link_fieldname": "linked_coupons"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Seller Profile",
+      "link_fieldname": "seller"
+    }
+  ],
+  "modified": "2026-02-12 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Campaign",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 0,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 0,
+      "read": 1,
+      "report": 0,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "campaign_name, campaign_type, status, seller",
+  "sort_field": "priority",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Draft"
+    },
+    {
+      "color": "blue",
+      "title": "Scheduled"
+    },
+    {
+      "color": "green",
+      "title": "Active"
+    },
+    {
+      "color": "yellow",
+      "title": "Paused"
+    },
+    {
+      "color": "red",
+      "title": "Ended"
+    },
+    {
+      "color": "red",
+      "title": "Cancelled"
+    }
+  ],
+  "title_field": "campaign_name",
+  "track_changes": 1
+}

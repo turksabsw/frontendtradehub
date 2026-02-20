@@ -1,0 +1,567 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "CONSENT-.#####",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "user",
+    "user_full_name",
+    "consent_type",
+    "column_break_basic",
+    "status",
+    "tenant",
+    "kyc_profile",
+    "consent_details_section",
+    "purpose",
+    "purpose_description",
+    "legal_basis",
+    "column_break_details",
+    "data_categories",
+    "processing_description",
+    "retention_period",
+    "consent_version_section",
+    "consent_version",
+    "consent_text",
+    "column_break_version",
+    "privacy_policy_version",
+    "terms_version",
+    "consent_given_section",
+    "is_given",
+    "given_at",
+    "given_via",
+    "column_break_given",
+    "given_ip_address",
+    "given_user_agent",
+    "given_source",
+    "withdrawal_section",
+    "is_withdrawn",
+    "withdrawn_at",
+    "withdrawn_via",
+    "column_break_withdrawal",
+    "withdrawn_ip_address",
+    "withdrawal_reason",
+    "data_deletion_requested",
+    "third_party_section",
+    "involves_third_party",
+    "third_party_name",
+    "third_party_country",
+    "column_break_third_party",
+    "transfer_safeguards",
+    "third_party_purpose",
+    "expiry_section",
+    "has_expiry",
+    "expiry_date",
+    "column_break_expiry",
+    "auto_renew",
+    "renewal_reminder_sent",
+    "verification_section",
+    "is_verified",
+    "verified_at",
+    "verification_method",
+    "column_break_verification",
+    "verified_by",
+    "verification_reference",
+    "double_opt_in_completed",
+    "audit_section",
+    "created_by",
+    "column_break_audit",
+    "modified_by",
+    "amendment_section",
+    "amended_from",
+    "amendment_reason",
+    "notes_section",
+    "internal_notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "User",
+      "options": "User",
+      "reqd": 1,
+      "description": "The user who provided consent"
+    },
+    {
+      "fieldname": "user_full_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "User Full Name",
+      "read_only": 1,
+      "fetch_from": "user.full_name",
+      "description": "Auto-fetched from user"
+    },
+    {
+      "fieldname": "consent_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Consent Type",
+      "options": "Data Processing\nMarketing Communications\nThird Party Sharing\nInternational Transfer\nProfiling\nAutomated Decision Making\nCookies\nAnalytics\nNewsletter\nSMS Notifications\nPush Notifications\nEmail Notifications\nPhone Calls\nLocation Tracking\nBiometric Data\nHealth Data\nFinancial Data\nKYC Verification\nPayment Processing\nOther",
+      "reqd": 1,
+      "description": "Type of consent being recorded"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Pending Verification\nActive\nWithdrawn\nExpired\nSuperseded\nInvalid",
+      "reqd": 1,
+      "description": "Current status of the consent"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "description": "The tenant this consent belongs to"
+    },
+    {
+      "fieldname": "kyc_profile",
+      "fieldtype": "Link",
+      "label": "KYC Profile",
+      "options": "KYC Profile",
+      "description": "Associated KYC profile if applicable"
+    },
+    {
+      "fieldname": "consent_details_section",
+      "fieldtype": "Section Break",
+      "label": "Consent Details"
+    },
+    {
+      "fieldname": "purpose",
+      "fieldtype": "Data",
+      "label": "Purpose",
+      "reqd": 1,
+      "description": "Brief purpose for data processing (e.g., 'Order Processing')"
+    },
+    {
+      "fieldname": "purpose_description",
+      "fieldtype": "Text",
+      "label": "Purpose Description",
+      "description": "Detailed description of why consent is needed"
+    },
+    {
+      "fieldname": "legal_basis",
+      "fieldtype": "Select",
+      "label": "Legal Basis",
+      "options": "Consent\nContract Performance\nLegal Obligation\nVital Interests\nPublic Interest\nLegitimate Interest",
+      "default": "Consent",
+      "reqd": 1,
+      "description": "KVKK Article 5/Article 6 legal basis"
+    },
+    {
+      "fieldname": "column_break_details",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "data_categories",
+      "fieldtype": "Small Text",
+      "label": "Data Categories",
+      "description": "Categories of personal data processed (e.g., Name, Email, Phone)"
+    },
+    {
+      "fieldname": "processing_description",
+      "fieldtype": "Small Text",
+      "label": "Processing Description",
+      "description": "Description of how data will be processed"
+    },
+    {
+      "fieldname": "retention_period",
+      "fieldtype": "Data",
+      "label": "Retention Period",
+      "description": "How long data will be retained (e.g., '2 years', 'Until account deletion')"
+    },
+    {
+      "fieldname": "consent_version_section",
+      "fieldtype": "Section Break",
+      "label": "Consent Version & Text"
+    },
+    {
+      "fieldname": "consent_version",
+      "fieldtype": "Data",
+      "label": "Consent Version",
+      "description": "Version of the consent form (e.g., 'v1.2')"
+    },
+    {
+      "fieldname": "consent_text",
+      "fieldtype": "Text Editor",
+      "label": "Consent Text",
+      "description": "Exact text that was presented to the user"
+    },
+    {
+      "fieldname": "column_break_version",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "privacy_policy_version",
+      "fieldtype": "Data",
+      "label": "Privacy Policy Version",
+      "description": "Version of privacy policy at time of consent"
+    },
+    {
+      "fieldname": "terms_version",
+      "fieldtype": "Data",
+      "label": "Terms of Service Version",
+      "description": "Version of terms of service at time of consent"
+    },
+    {
+      "fieldname": "consent_given_section",
+      "fieldtype": "Section Break",
+      "label": "Consent Given"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_given",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Consent Given",
+      "description": "Whether consent has been given"
+    },
+    {
+      "fieldname": "given_at",
+      "fieldtype": "Datetime",
+      "label": "Given At",
+      "description": "Timestamp when consent was given"
+    },
+    {
+      "fieldname": "given_via",
+      "fieldtype": "Select",
+      "label": "Given Via",
+      "options": "\nWeb Form\nMobile App\nAPI\nCheckbox\nVerbal\nWritten Document\nEmail Confirmation\nSMS Confirmation\nDouble Opt-in\nImplicit\nOther",
+      "description": "Method used to collect consent"
+    },
+    {
+      "fieldname": "column_break_given",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "given_ip_address",
+      "fieldtype": "Data",
+      "label": "IP Address",
+      "description": "IP address of user when consent was given"
+    },
+    {
+      "fieldname": "given_user_agent",
+      "fieldtype": "Small Text",
+      "label": "User Agent",
+      "description": "Browser/device user agent string"
+    },
+    {
+      "fieldname": "given_source",
+      "fieldtype": "Data",
+      "label": "Source",
+      "description": "Page or location where consent was collected"
+    },
+    {
+      "fieldname": "withdrawal_section",
+      "fieldtype": "Section Break",
+      "label": "Withdrawal Details",
+      "collapsible": 1,
+      "depends_on": "eval:doc.status=='Withdrawn'"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_withdrawn",
+      "fieldtype": "Check",
+      "label": "Consent Withdrawn",
+      "description": "Whether consent has been withdrawn"
+    },
+    {
+      "fieldname": "withdrawn_at",
+      "fieldtype": "Datetime",
+      "label": "Withdrawn At",
+      "description": "Timestamp when consent was withdrawn"
+    },
+    {
+      "fieldname": "withdrawn_via",
+      "fieldtype": "Select",
+      "label": "Withdrawn Via",
+      "options": "\nPreferences Page\nEmail Request\nSupport Ticket\nAPI Request\nVerbal Request\nWritten Request\nAccount Deletion\nData Subject Request\nOther",
+      "description": "Method used to withdraw consent"
+    },
+    {
+      "fieldname": "column_break_withdrawal",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "withdrawn_ip_address",
+      "fieldtype": "Data",
+      "label": "Withdrawal IP Address",
+      "description": "IP address when consent was withdrawn"
+    },
+    {
+      "fieldname": "withdrawal_reason",
+      "fieldtype": "Small Text",
+      "label": "Withdrawal Reason",
+      "description": "Reason provided for withdrawing consent"
+    },
+    {
+      "default": "0",
+      "fieldname": "data_deletion_requested",
+      "fieldtype": "Check",
+      "label": "Data Deletion Requested",
+      "description": "Whether user requested deletion of associated data"
+    },
+    {
+      "fieldname": "third_party_section",
+      "fieldtype": "Section Break",
+      "label": "Third Party Sharing",
+      "collapsible": 1,
+      "depends_on": "eval:doc.consent_type=='Third Party Sharing' || doc.consent_type=='International Transfer' || doc.involves_third_party"
+    },
+    {
+      "default": "0",
+      "fieldname": "involves_third_party",
+      "fieldtype": "Check",
+      "label": "Involves Third Party",
+      "description": "Whether this consent involves third party data sharing"
+    },
+    {
+      "fieldname": "third_party_name",
+      "fieldtype": "Data",
+      "label": "Third Party Name",
+      "description": "Name of the third party receiving data"
+    },
+    {
+      "fieldname": "third_party_country",
+      "fieldtype": "Link",
+      "label": "Third Party Country",
+      "options": "Country",
+      "description": "Country where third party is located"
+    },
+    {
+      "fieldname": "column_break_third_party",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "transfer_safeguards",
+      "fieldtype": "Select",
+      "label": "Transfer Safeguards",
+      "options": "\nAdequacy Decision\nStandard Contractual Clauses\nBinding Corporate Rules\nExplicit Consent\nNecessary for Contract\nPublic Interest\nLegal Claims\nVital Interests\nPublic Register",
+      "description": "Legal mechanism for international data transfer"
+    },
+    {
+      "fieldname": "third_party_purpose",
+      "fieldtype": "Small Text",
+      "label": "Third Party Purpose",
+      "description": "Purpose for sharing data with third party"
+    },
+    {
+      "fieldname": "expiry_section",
+      "fieldtype": "Section Break",
+      "label": "Consent Expiry",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "has_expiry",
+      "fieldtype": "Check",
+      "label": "Has Expiry Date",
+      "description": "Whether this consent has an expiry date"
+    },
+    {
+      "fieldname": "expiry_date",
+      "fieldtype": "Date",
+      "label": "Expiry Date",
+      "depends_on": "has_expiry",
+      "description": "Date when consent expires"
+    },
+    {
+      "fieldname": "column_break_expiry",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "auto_renew",
+      "fieldtype": "Check",
+      "label": "Auto Renew",
+      "depends_on": "has_expiry",
+      "description": "Whether consent should be auto-renewed before expiry"
+    },
+    {
+      "default": "0",
+      "fieldname": "renewal_reminder_sent",
+      "fieldtype": "Check",
+      "label": "Renewal Reminder Sent",
+      "read_only": 1,
+      "description": "Whether reminder was sent before expiry"
+    },
+    {
+      "fieldname": "verification_section",
+      "fieldtype": "Section Break",
+      "label": "Verification",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "is_verified",
+      "fieldtype": "Check",
+      "label": "Consent Verified",
+      "description": "Whether consent has been verified (e.g., double opt-in)"
+    },
+    {
+      "fieldname": "verified_at",
+      "fieldtype": "Datetime",
+      "label": "Verified At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "verification_method",
+      "fieldtype": "Select",
+      "label": "Verification Method",
+      "options": "\nEmail Link\nSMS Code\nPhone Call\nManual Review\nAutomatic\nNot Required"
+    },
+    {
+      "fieldname": "column_break_verification",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "verified_by",
+      "fieldtype": "Link",
+      "label": "Verified By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "verification_reference",
+      "fieldtype": "Data",
+      "label": "Verification Reference",
+      "description": "External reference for verification (e.g., confirmation token)"
+    },
+    {
+      "default": "0",
+      "fieldname": "double_opt_in_completed",
+      "fieldtype": "Check",
+      "label": "Double Opt-in Completed",
+      "read_only": 1,
+      "description": "Whether double opt-in process was completed"
+    },
+    {
+      "fieldname": "audit_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_audit",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "modified_by",
+      "fieldtype": "Link",
+      "label": "Modified By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "amendment_section",
+      "fieldtype": "Section Break",
+      "label": "Amendment",
+      "collapsible": 1,
+      "depends_on": "amended_from"
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "options": "Consent Record",
+      "read_only": 1,
+      "description": "Previous consent record this supersedes"
+    },
+    {
+      "fieldname": "amendment_reason",
+      "fieldtype": "Small Text",
+      "label": "Amendment Reason",
+      "description": "Reason for amending/superseding previous consent"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Internal Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text Editor",
+      "label": "Internal Notes",
+      "description": "Notes visible only to administrators"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "KYC Profile",
+      "link_fieldname": "user"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "User",
+      "link_fieldname": "email"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Consent Record",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "user, user_full_name, consent_type, purpose",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "purpose",
+  "track_changes": 1
+}

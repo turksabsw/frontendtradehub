@@ -1,0 +1,41 @@
+# Virtual Environment
+env/
+env_backup/
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Frappe/Bench
+*.pid
+logs/
+config/pids/
+sites/*/private/
+sites/*/public/files/
+sites/*/error-snapshots/
+sites/*/locks/
+sites/common_site_config.json
+
+# Node
+node_modules/
+package-lock.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+*.tmp
+*.temp
+*.bak
+*.backup

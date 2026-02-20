@@ -1,0 +1,272 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:profile_name",
+  "creation": "2024-01-28 12:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "profile_info_section",
+    "profile_name",
+    "enabled",
+    "column_break_info1",
+    "description",
+    "industry",
+    "target_configuration_section",
+    "target_mode",
+    "column_break_target1",
+    "target_app",
+    "target_apps_section",
+    "target_apps",
+    "doctype_quantities_section",
+    "doctype_quantities",
+    "generation_options_section",
+    "locale",
+    "seed_value",
+    "column_break_options1",
+    "auto_resolve_dependencies",
+    "fail_on_error",
+    "log_generation_details",
+    "ai_settings_section",
+    "use_ai_generation",
+    "ai_provider_override",
+    "column_break_ai1",
+    "ai_temperature",
+    "field_overrides_section",
+    "field_overrides"
+  ],
+  "fields": [
+    {
+      "fieldname": "profile_info_section",
+      "fieldtype": "Section Break",
+      "label": "Profile Information"
+    },
+    {
+      "fieldname": "profile_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Profile Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "default": "1",
+      "description": "Enable or disable this profile",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled"
+    },
+    {
+      "fieldname": "column_break_info1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Description of what this profile is for",
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "description": "Industry context for AI-generated data (optional)",
+      "fieldname": "industry",
+      "fieldtype": "Link",
+      "label": "Industry",
+      "options": "Mock Industry"
+    },
+    {
+      "fieldname": "target_configuration_section",
+      "fieldtype": "Section Break",
+      "label": "Target Configuration"
+    },
+    {
+      "default": "Specific DocTypes",
+      "description": "Choose how to select target DocTypes for generation",
+      "fieldname": "target_mode",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Target Mode",
+      "options": "Specific DocTypes\nAll DocTypes in App\nAll DocTypes in Apps",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_target1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.target_mode === 'All DocTypes in App'",
+      "description": "Generate data for all DocTypes in this app",
+      "fieldname": "target_app",
+      "fieldtype": "Data",
+      "label": "Target App",
+      "mandatory_depends_on": "eval:doc.target_mode === 'All DocTypes in App'"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.target_mode === 'All DocTypes in Apps'",
+      "fieldname": "target_apps_section",
+      "fieldtype": "Section Break",
+      "label": "Target Apps"
+    },
+    {
+      "depends_on": "eval:doc.target_mode === 'All DocTypes in Apps'",
+      "description": "Apps to generate data for",
+      "fieldname": "target_apps",
+      "fieldtype": "Table",
+      "label": "Target Apps",
+      "options": "Mock Profile Target App"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.target_mode === 'Specific DocTypes'",
+      "fieldname": "doctype_quantities_section",
+      "fieldtype": "Section Break",
+      "label": "DocType Quantities"
+    },
+    {
+      "depends_on": "eval:doc.target_mode === 'Specific DocTypes'",
+      "description": "Specify DocTypes and how many records to generate for each",
+      "fieldname": "doctype_quantities",
+      "fieldtype": "Table",
+      "label": "DocType Quantities",
+      "options": "Mock Profile DocType Quantity"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "generation_options_section",
+      "fieldtype": "Section Break",
+      "label": "Generation Options"
+    },
+    {
+      "description": "Faker locale for data generation (overrides global setting)",
+      "fieldname": "locale",
+      "fieldtype": "Select",
+      "label": "Locale Override",
+      "options": "\ntr_TR\nen_US\nen_GB\nde_DE\nfr_FR\nes_ES\nit_IT\npt_BR\nja_JP\nzh_CN\nar_SA"
+    },
+    {
+      "description": "Seed value for reproducible generation (overrides global setting)",
+      "fieldname": "seed_value",
+      "fieldtype": "Int",
+      "label": "Seed Value Override"
+    },
+    {
+      "fieldname": "column_break_options1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "description": "Automatically create dependent DocTypes when generating records with Link fields",
+      "fieldname": "auto_resolve_dependencies",
+      "fieldtype": "Check",
+      "label": "Auto-Resolve Dependencies"
+    },
+    {
+      "default": "0",
+      "description": "Stop generation on first error instead of continuing with other records",
+      "fieldname": "fail_on_error",
+      "fieldtype": "Check",
+      "label": "Fail on Error"
+    },
+    {
+      "default": "1",
+      "description": "Create detailed logs for each generated record",
+      "fieldname": "log_generation_details",
+      "fieldtype": "Check",
+      "label": "Log Generation Details"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "ai_settings_section",
+      "fieldtype": "Section Break",
+      "label": "AI Settings"
+    },
+    {
+      "default": "0",
+      "description": "Use AI/LLM for generating contextual data (slower but higher quality)",
+      "fieldname": "use_ai_generation",
+      "fieldtype": "Check",
+      "label": "Use AI Generation"
+    },
+    {
+      "depends_on": "eval:doc.use_ai_generation",
+      "description": "Override the default AI provider for this profile",
+      "fieldname": "ai_provider_override",
+      "fieldtype": "Select",
+      "label": "AI Provider Override",
+      "options": "\nGemini\nOpenAI\nAnthropic\nOllama"
+    },
+    {
+      "fieldname": "column_break_ai1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0.7",
+      "depends_on": "eval:doc.use_ai_generation",
+      "description": "Temperature for AI generation (0 = deterministic, 1 = creative)",
+      "fieldname": "ai_temperature",
+      "fieldtype": "Float",
+      "label": "AI Temperature",
+      "precision": "2"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "field_overrides_section",
+      "fieldtype": "Section Break",
+      "label": "Field Overrides"
+    },
+    {
+      "description": "Custom generation rules for specific fields",
+      "fieldname": "field_overrides",
+      "fieldtype": "Table",
+      "label": "Field Overrides",
+      "options": "Mock Profile Field Override"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Mock Generation Request",
+      "link_fieldname": "profile"
+    }
+  ],
+  "modified": "2024-01-28 12:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Mock Data Engine",
+  "name": "Mock Generation Profile",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Administrator",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "profile_name,description,industry",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "title_field": "profile_name",
+  "track_changes": 1
+}

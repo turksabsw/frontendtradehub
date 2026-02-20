@@ -1,0 +1,201 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-23 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "naming_series",
+    "rule_name",
+    "target_tag",
+    "column_break_basic",
+    "enabled",
+    "priority",
+    "evaluation_schedule",
+    "rule_section",
+    "rule_json",
+    "rule_description",
+    "evaluation_section",
+    "last_evaluated",
+    "last_evaluation_result",
+    "column_break_eval",
+    "total_assignments",
+    "last_assignment_change",
+    "timestamps_section",
+    "created_by",
+    "created_at"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Rule Information"
+    },
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "TAGRULE-.YYYY.-.#####",
+      "default": "TAGRULE-.YYYY.-.#####",
+      "reqd": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "rule_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Rule Name",
+      "reqd": 1,
+      "description": "Descriptive name for this rule (e.g., Trusted Seller Rule)"
+    },
+    {
+      "fieldname": "target_tag",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Target Tag",
+      "options": "Seller Tag",
+      "reqd": 1,
+      "description": "Tag to assign when rule conditions are met"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled",
+      "description": "Enable/disable this rule"
+    },
+    {
+      "default": "10",
+      "fieldname": "priority",
+      "fieldtype": "Int",
+      "label": "Priority",
+      "description": "Lower number = higher priority (evaluated first)"
+    },
+    {
+      "default": "Daily",
+      "fieldname": "evaluation_schedule",
+      "fieldtype": "Select",
+      "label": "Evaluation Schedule",
+      "options": "Hourly\nDaily\nWeekly\nManual",
+      "description": "How often to evaluate this rule"
+    },
+    {
+      "fieldname": "rule_section",
+      "fieldtype": "Section Break",
+      "label": "Rule Definition"
+    },
+    {
+      "fieldname": "rule_json",
+      "fieldtype": "JSON",
+      "label": "Rule JSON",
+      "reqd": 1,
+      "description": "JSON structure defining AND/OR conditions. See documentation for format."
+    },
+    {
+      "fieldname": "rule_description",
+      "fieldtype": "Small Text",
+      "label": "Rule Description",
+      "description": "Human-readable description of what this rule does"
+    },
+    {
+      "fieldname": "evaluation_section",
+      "fieldtype": "Section Break",
+      "label": "Evaluation Statistics",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "last_evaluated",
+      "fieldtype": "Datetime",
+      "label": "Last Evaluated",
+      "read_only": 1
+    },
+    {
+      "fieldname": "last_evaluation_result",
+      "fieldtype": "Small Text",
+      "label": "Last Evaluation Result",
+      "read_only": 1,
+      "description": "Summary of last evaluation run"
+    },
+    {
+      "fieldname": "column_break_eval",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_assignments",
+      "fieldtype": "Int",
+      "label": "Total Assignments",
+      "read_only": 1,
+      "description": "Current number of sellers with this tag from this rule"
+    },
+    {
+      "fieldname": "last_assignment_change",
+      "fieldtype": "Datetime",
+      "label": "Last Assignment Change",
+      "read_only": 1
+    },
+    {
+      "fieldname": "timestamps_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "created_at",
+      "fieldtype": "Datetime",
+      "label": "Created At",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Seller Tag",
+      "link_fieldname": "name"
+    }
+  ],
+  "modified": "2024-01-23 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Seller Tag Rule",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "rule_name, target_tag, enabled",
+  "sort_field": "priority",
+  "sort_order": "ASC",
+  "states": [],
+  "title_field": "rule_name",
+  "track_changes": 1
+}

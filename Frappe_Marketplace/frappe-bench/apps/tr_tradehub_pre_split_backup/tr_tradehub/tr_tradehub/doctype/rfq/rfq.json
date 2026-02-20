@@ -1,0 +1,411 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "naming_series",
+  "rfq_code",
+  "title",
+  "buyer",
+  "column_break_basic",
+  "status",
+  "category",
+  "published_at",
+  "description_section",
+  "description",
+  "items_section",
+  "items",
+  "targeting_section",
+  "target_type",
+  "target_sellers",
+  "target_categories",
+  "requirements_section",
+  "deadline",
+  "quantity",
+  "unit",
+  "column_break_req",
+  "budget_min",
+  "budget_max",
+  "delivery_section",
+  "delivery_date",
+  "delivery_location",
+  "nda_section",
+  "requires_nda",
+  "nda_template",
+  "attachments_section",
+  "attachments",
+  "outcome_section",
+  "accepted_quote",
+  "column_break_outcome",
+  "closed_at",
+  "closed_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "RFQ-.YYYY.-.#####",
+   "default": "RFQ-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "rfq_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "RFQ Code",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer",
+   "options": "Buyer Profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPublished\nQuoting\nNegotiation\nAccepted\nOrdered\nClosed\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "published_at",
+   "fieldtype": "Datetime",
+   "label": "Published At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Requested Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "RFQ Item"
+  },
+  {
+   "fieldname": "targeting_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Targeting"
+  },
+  {
+   "default": "Public",
+   "fieldname": "target_type",
+   "fieldtype": "Select",
+   "label": "Target Type",
+   "options": "Public\nCategory\nSelected",
+   "description": "Public: All sellers. Category: Sellers in specific categories. Selected: Specific sellers only."
+  },
+  {
+   "depends_on": "eval:doc.target_type=='Selected'",
+   "fieldname": "target_sellers",
+   "fieldtype": "Table",
+   "label": "Target Sellers",
+   "options": "RFQ Target Seller"
+  },
+  {
+   "depends_on": "eval:doc.target_type=='Category'",
+   "fieldname": "target_categories",
+   "fieldtype": "Table",
+   "label": "Target Categories",
+   "options": "RFQ Target Category"
+  },
+  {
+   "fieldname": "requirements_section",
+   "fieldtype": "Section Break",
+   "label": "Requirements"
+  },
+  {
+   "fieldname": "deadline",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Quote Deadline",
+   "description": "Deadline for sellers to submit quotes"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Link",
+   "label": "Unit",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "column_break_req",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "budget_min",
+   "fieldtype": "Currency",
+   "label": "Budget Min",
+   "description": "Minimum budget"
+  },
+  {
+   "fieldname": "budget_max",
+   "fieldtype": "Currency",
+   "label": "Budget Max",
+   "description": "Maximum budget"
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Expected Delivery Date"
+  },
+  {
+   "fieldname": "delivery_location",
+   "fieldtype": "Data",
+   "label": "Delivery Location"
+  },
+  {
+   "fieldname": "nda_section",
+   "fieldtype": "Section Break",
+   "label": "NDA Requirements"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_nda",
+   "fieldtype": "Check",
+   "label": "Requires NDA",
+   "description": "Sellers must sign NDA before viewing details and submitting quotes"
+  },
+  {
+   "depends_on": "eval:doc.requires_nda",
+   "fieldname": "nda_template",
+   "fieldtype": "Link",
+   "label": "NDA Template",
+   "options": "Contract Template",
+   "mandatory_depends_on": "eval:doc.requires_nda"
+  },
+  {
+   "fieldname": "attachments_section",
+   "fieldtype": "Section Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "attachments",
+   "fieldtype": "Table",
+   "label": "Attachments",
+   "options": "RFQ Attachment"
+  },
+  {
+   "fieldname": "outcome_section",
+   "fieldtype": "Section Break",
+   "label": "Outcome",
+   "collapsible": 1,
+   "depends_on": "eval:doc.status=='Accepted' || doc.status=='Ordered' || doc.status=='Closed'"
+  },
+  {
+   "fieldname": "accepted_quote",
+   "fieldtype": "Link",
+   "label": "Accepted Quote",
+   "options": "RFQ Quote",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_outcome",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "closed_at",
+   "fieldtype": "Datetime",
+   "label": "Closed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "closed_reason",
+   "fieldtype": "Data",
+   "label": "Closed Reason"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "in_list_view": 0,
+   "options": "Organization"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "in_list_view": 0,
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "in_list_view": 0,
+   "options": "Currency"
+  },
+  {
+   "fieldname": "submission_deadline",
+   "fieldtype": "Datetime",
+   "label": "Submission Deadline",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "created_date",
+   "fieldtype": "Date",
+   "label": "Created Date",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "allow_partial_quotes",
+   "fieldtype": "Check",
+   "label": "Allow Partial Quotes",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "require_all_items",
+   "fieldtype": "Check",
+   "label": "Require All Items",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "is_view_limited",
+   "fieldtype": "Check",
+   "label": "Is View Limited",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "max_views",
+   "fieldtype": "Int",
+   "label": "Max Views",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "current_views",
+   "fieldtype": "Int",
+   "label": "Current Views",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "views_remaining",
+   "fieldtype": "Int",
+   "label": "Views Remaining",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "quote_count",
+   "fieldtype": "Int",
+   "label": "Quote Count",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "label": "Quantity",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "in_list_view": 0,
+   "options": "UOM"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "RFQ Quote",
+   "link_fieldname": "rfq"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "RFQ Message Thread",
+   "link_fieldname": "rfq"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "RFQ NDA Link",
+   "link_fieldname": "rfq"
+  }
+ ],
+ "modified": "2026-02-12 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "RFQ",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "title, rfq_code, buyer, status, category",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

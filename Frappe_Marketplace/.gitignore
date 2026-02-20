@@ -1,0 +1,32 @@
+# Frappe Bench
+frappe-bench/sites/*/site_config.json
+frappe-bench/sites/*/private/
+frappe-bench/sites/*/public/files/
+frappe-bench/env/
+frappe-bench/logs/
+frappe-bench/config/
+frappe-bench/archived/
+frappe-bench/sites/assets/
+
+# Python
+*.pyc
+__pycache__/
+*.egg-info/
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Worktrees (bunlar local kalmalı)
+.worktrees/

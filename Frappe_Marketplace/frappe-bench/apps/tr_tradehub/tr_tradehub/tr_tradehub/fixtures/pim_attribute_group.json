@@ -1,0 +1,102 @@
+[
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "General",
+    "group_code": "general",
+    "description": "Basic product information including name, description, brand, and identification codes",
+    "sort_order": 10,
+    "icon": "fa fa-info-circle",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Technical Specifications",
+    "group_code": "technical_specifications",
+    "description": "Technical details, performance metrics, compatibility information, and system requirements",
+    "sort_order": 20,
+    "icon": "fa fa-cogs",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Physical Properties",
+    "group_code": "physical_properties",
+    "description": "Dimensions, weight, color, material, and other physical characteristics",
+    "sort_order": 30,
+    "icon": "fa fa-cube",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Packaging & Shipping",
+    "group_code": "packaging_shipping",
+    "description": "Packaging dimensions, shipping weight, handling requirements, and logistics information",
+    "sort_order": 40,
+    "icon": "fa fa-truck",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Marketing",
+    "group_code": "marketing",
+    "description": "Marketing content, promotional text, features highlights, and selling points",
+    "sort_order": 50,
+    "icon": "fa fa-bullhorn",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Compliance & Safety",
+    "group_code": "compliance_safety",
+    "description": "Certifications, safety standards, regulatory compliance, and warning labels",
+    "sort_order": 60,
+    "icon": "fa fa-shield",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Trade Terms",
+    "group_code": "trade_terms",
+    "description": "B2B pricing tiers, MOQ, lead times, payment terms, and trade conditions",
+    "sort_order": 70,
+    "icon": "fa fa-handshake-o",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Marketplace Specific",
+    "group_code": "marketplace_specific",
+    "description": "Platform-specific attributes for Amazon, eBay, Alibaba, Trendyol, and other marketplaces",
+    "sort_order": 80,
+    "icon": "fa fa-shopping-cart",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Digital Assets",
+    "group_code": "digital_assets",
+    "description": "Images, videos, documents, CAD files, and other digital media assets",
+    "sort_order": 90,
+    "icon": "fa fa-file-image-o",
+    "is_collapsible": 1,
+    "is_active": 1
+  },
+  {
+    "doctype": "PIM Attribute Group",
+    "group_name": "Warranty & Support",
+    "group_code": "warranty_support",
+    "description": "Warranty terms, support information, maintenance requirements, and after-sales service",
+    "sort_order": 100,
+    "icon": "fa fa-life-ring",
+    "is_collapsible": 1,
+    "is_active": 1
+  }
+]

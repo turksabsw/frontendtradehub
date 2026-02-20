@@ -1,0 +1,124 @@
+{
+  "actions": [],
+  "creation": "2026-02-09 18:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "pim_attribute",
+    "channel",
+    "column_break_1",
+    "target_field_name",
+    "target_field_code",
+    "transform_section",
+    "transform_type",
+    "column_break_2",
+    "transform_config",
+    "settings_section",
+    "is_required_for_channel",
+    "column_break_3",
+    "sort_order"
+  ],
+  "fields": [
+    {
+      "fieldname": "pim_attribute",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "PIM Attribute",
+      "options": "PIM Attribute",
+      "reqd": 1,
+      "description": "The source PIM attribute to map"
+    },
+    {
+      "fieldname": "channel",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Sales Channel",
+      "options": "Sales Channel",
+      "reqd": 1,
+      "description": "The target sales channel for this mapping"
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "target_field_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Target Field Name",
+      "reqd": 1,
+      "description": "The field name on the channel (e.g., product_title, item_specifics)"
+    },
+    {
+      "fieldname": "target_field_code",
+      "fieldtype": "Data",
+      "label": "Target Field Code",
+      "description": "Channel-specific field code/ID if required (e.g., Amazon attribute ID)"
+    },
+    {
+      "fieldname": "transform_section",
+      "fieldtype": "Section Break",
+      "label": "Transform Settings"
+    },
+    {
+      "default": "None",
+      "fieldname": "transform_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Transform Type",
+      "options": "None\nMap\nConcat\nSplit\nLookup\nFormat\nCustom",
+      "description": "How to transform the attribute value for this channel"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "transform_config",
+      "fieldtype": "Code",
+      "label": "Transform Config",
+      "options": "JSON",
+      "description": "JSON configuration for the transform (varies by transform_type)"
+    },
+    {
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Additional Settings"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_required_for_channel",
+      "fieldtype": "Check",
+      "label": "Is Required for Channel",
+      "description": "If checked, this mapping is required for channel export"
+    },
+    {
+      "fieldname": "column_break_3",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "sort_order",
+      "fieldtype": "Int",
+      "label": "Sort Order",
+      "description": "Order in which mappings are processed during export"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "istable": 1,
+  "links": [],
+  "modified": "2026-02-09 18:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Channel Field Mapping",
+  "naming_rule": "Random",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "sort_order",
+  "sort_order": "ASC",
+  "states": [],
+  "track_changes": 0
+}

@@ -1,0 +1,335 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "LT-.#####",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "sku_product",
+    "product_name",
+    "column_break_basic",
+    "product_sku_code",
+    "product_status",
+    "ownership_section",
+    "seller",
+    "seller_name",
+    "column_break_ownership",
+    "tenant",
+    "tenant_name",
+    "lead_time_section",
+    "lead_time_type",
+    "lead_time_days",
+    "column_break_lead_time",
+    "status",
+    "is_default",
+    "quantity_section",
+    "min_order_quantity",
+    "max_order_quantity",
+    "column_break_quantity",
+    "production_capacity",
+    "capacity_period",
+    "validity_section",
+    "valid_from",
+    "valid_until",
+    "additional_section",
+    "priority",
+    "applies_to_region",
+    "column_break_additional",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Product Information"
+    },
+    {
+      "fieldname": "sku_product",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "SKU Product",
+      "options": "SKU Product",
+      "reqd": 1,
+      "description": "The product this lead time applies to"
+    },
+    {
+      "fetch_from": "sku_product.product_name",
+      "fieldname": "product_name",
+      "fieldtype": "Data",
+      "label": "Product Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "sku_product.sku_code",
+      "fieldname": "product_sku_code",
+      "fieldtype": "Data",
+      "label": "Product SKU Code",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fetch_from": "sku_product.status",
+      "fieldname": "product_status",
+      "fieldtype": "Data",
+      "label": "Product Status",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "ownership_section",
+      "fieldtype": "Section Break",
+      "label": "Ownership"
+    },
+    {
+      "fetch_from": "sku_product.seller",
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "label": "Seller",
+      "options": "Seller Profile",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fetch_from": "sku_product.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "label": "Seller Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "column_break_ownership",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "sku_product.tenant",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from SKU Product - Multi-tenant isolation field"
+    },
+    {
+      "fetch_from": "sku_product.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from SKU Product"
+    },
+    {
+      "fieldname": "lead_time_section",
+      "fieldtype": "Section Break",
+      "label": "Lead Time Configuration"
+    },
+    {
+      "default": "Production",
+      "fieldname": "lead_time_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Lead Time Type",
+      "options": "Production\nDelivery\nProduction + Delivery\nCustom",
+      "reqd": 1,
+      "description": "Type of lead time - Production only, Delivery only, Combined, or Custom"
+    },
+    {
+      "default": "7",
+      "fieldname": "lead_time_days",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Lead Time (Days)",
+      "reqd": 1,
+      "description": "Number of days required for production/delivery"
+    },
+    {
+      "fieldname": "column_break_lead_time",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nInactive\nExpired",
+      "reqd": 1,
+      "description": "Lead time configuration status"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default",
+      "description": "Mark as default lead time for this product"
+    },
+    {
+      "fieldname": "quantity_section",
+      "fieldtype": "Section Break",
+      "label": "Quantity Configuration"
+    },
+    {
+      "default": "1",
+      "fieldname": "min_order_quantity",
+      "fieldtype": "Float",
+      "label": "Min Order Quantity",
+      "description": "Minimum order quantity for this lead time to apply"
+    },
+    {
+      "fieldname": "max_order_quantity",
+      "fieldtype": "Float",
+      "label": "Max Order Quantity",
+      "description": "Maximum order quantity for this lead time (0 or empty = unlimited)"
+    },
+    {
+      "fieldname": "column_break_quantity",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "production_capacity",
+      "fieldtype": "Int",
+      "label": "Production Capacity",
+      "description": "Maximum units that can be produced in the capacity period"
+    },
+    {
+      "default": "Month",
+      "fieldname": "capacity_period",
+      "fieldtype": "Select",
+      "label": "Capacity Period",
+      "options": "Day\nWeek\nMonth",
+      "description": "Time period for production capacity measurement"
+    },
+    {
+      "fieldname": "validity_section",
+      "fieldtype": "Section Break",
+      "label": "Validity Period",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "valid_from",
+      "fieldtype": "Date",
+      "label": "Valid From",
+      "description": "Start date for this lead time configuration"
+    },
+    {
+      "fieldname": "valid_until",
+      "fieldtype": "Date",
+      "label": "Valid Until",
+      "description": "End date for this lead time configuration"
+    },
+    {
+      "fieldname": "additional_section",
+      "fieldtype": "Section Break",
+      "label": "Additional Configuration",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "priority",
+      "fieldtype": "Int",
+      "label": "Priority",
+      "description": "Priority order when multiple lead times apply (lower = higher priority)"
+    },
+    {
+      "fieldname": "applies_to_region",
+      "fieldtype": "Data",
+      "label": "Applies to Region",
+      "description": "Comma-separated region codes where this lead time applies (empty = all regions)"
+    },
+    {
+      "fieldname": "column_break_additional",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes",
+      "description": "Additional notes about this lead time configuration"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "SKU Product",
+      "link_fieldname": "sku_product"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Lead Time",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 0,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "product_name, product_sku_code, lead_time_type, seller_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "green",
+      "title": "Active"
+    },
+    {
+      "color": "gray",
+      "title": "Inactive"
+    },
+    {
+      "color": "red",
+      "title": "Expired"
+    }
+  ],
+  "title_field": "product_name",
+  "track_changes": 1
+}

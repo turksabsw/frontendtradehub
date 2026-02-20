@@ -1,0 +1,826 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "KYC-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "user",
+  "full_name",
+  "profile_type",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "risk_level",
+  "personal_info_section",
+  "first_name",
+  "middle_name",
+  "last_name",
+  "column_break_personal_1",
+  "date_of_birth",
+  "gender",
+  "nationality",
+  "column_break_personal_2",
+  "place_of_birth",
+  "mother_maiden_name",
+  "father_name",
+  "identity_section",
+  "id_type",
+  "id_number",
+  "id_expiry_date",
+  "column_break_identity_1",
+  "tckn",
+  "tax_id_individual",
+  "passport_number",
+  "column_break_identity_2",
+  "id_front_image",
+  "id_back_image",
+  "selfie_image",
+  "contact_section",
+  "email",
+  "phone",
+  "column_break_contact",
+  "mobile",
+  "alternative_email",
+  "address_section",
+  "address_line_1",
+  "address_line_2",
+  "city",
+  "column_break_address_1",
+  "district",
+  "state",
+  "postal_code",
+  "column_break_address_2",
+  "country",
+  "address_proof_type",
+  "address_proof_document",
+  "verification_section",
+  "verification_status",
+  "verification_method",
+  "verified_at",
+  "column_break_verification_1",
+  "verified_by",
+  "verification_provider",
+  "verification_reference",
+  "column_break_verification_2",
+  "id_verified",
+  "address_verified",
+  "liveness_verified",
+  "aml_section",
+  "aml_check_status",
+  "aml_check_date",
+  "aml_provider",
+  "column_break_aml",
+  "aml_reference",
+  "pep_status",
+  "sanctions_status",
+  "adverse_media_status",
+  "risk_assessment_section",
+  "risk_score",
+  "risk_factors",
+  "column_break_risk",
+  "last_risk_assessment",
+  "next_review_date",
+  "kvkk_section",
+  "kvkk_consent_given",
+  "kvkk_consent_date",
+  "kvkk_consent_version",
+  "column_break_kvkk",
+  "data_processing_consent",
+  "marketing_consent",
+  "third_party_sharing_consent",
+  "rejection_section",
+  "rejection_reason",
+  "rejection_notes",
+  "rejection_date",
+  "column_break_rejection",
+  "can_reapply",
+  "reapply_after",
+  "audit_section",
+  "created_by",
+  "column_break_audit",
+  "modified_by",
+  "notes_section",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "unique": 1,
+   "description": "The user account this KYC profile belongs to"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "read_only": 1,
+   "description": "Auto-populated from personal info"
+  },
+  {
+   "default": "Individual",
+   "fieldname": "profile_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Profile Type",
+   "options": "Individual\nSole Proprietor\nFreelancer",
+   "reqd": 1,
+   "description": "Type of KYC profile"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending Review\nIn Review\nDocuments Required\nVerified\nRejected\nExpired\nSuspended",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "description": "The tenant this KYC profile belongs to"
+  },
+  {
+   "default": "Not Assessed",
+   "fieldname": "risk_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Risk Level",
+   "options": "Not Assessed\nLow\nMedium\nHigh\nVery High",
+   "description": "KYC risk classification"
+  },
+  {
+   "fieldname": "personal_info_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Information"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_personal_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth",
+   "reqd": 1,
+   "description": "Must be 18 years or older"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "\nMale\nFemale\nOther\nPrefer Not to Say"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "label": "Nationality",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_personal_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "place_of_birth",
+   "fieldtype": "Data",
+   "label": "Place of Birth"
+  },
+  {
+   "fieldname": "mother_maiden_name",
+   "fieldtype": "Data",
+   "label": "Mother's Maiden Name",
+   "description": "Required for Turkish ID verification"
+  },
+  {
+   "fieldname": "father_name",
+   "fieldtype": "Data",
+   "label": "Father's Name",
+   "description": "Required for Turkish ID verification"
+  },
+  {
+   "fieldname": "identity_section",
+   "fieldtype": "Section Break",
+   "label": "Identity Documents"
+  },
+  {
+   "default": "National ID",
+   "fieldname": "id_type",
+   "fieldtype": "Select",
+   "label": "ID Type",
+   "options": "National ID\nPassport\nDriver's License\nResidence Permit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "id_number",
+   "fieldtype": "Data",
+   "label": "ID Number",
+   "description": "Government-issued ID number"
+  },
+  {
+   "fieldname": "id_expiry_date",
+   "fieldtype": "Date",
+   "label": "ID Expiry Date",
+   "description": "Document must not be expired"
+  },
+  {
+   "fieldname": "column_break_identity_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tckn",
+   "fieldtype": "Data",
+   "label": "TCKN",
+   "description": "Turkish Citizenship Number (11 digits) - Required for Turkish citizens"
+  },
+  {
+   "fieldname": "tax_id_individual",
+   "fieldtype": "Data",
+   "label": "Individual Tax ID",
+   "description": "Personal Tax ID for sole proprietors/freelancers"
+  },
+  {
+   "fieldname": "passport_number",
+   "fieldtype": "Data",
+   "label": "Passport Number",
+   "description": "Required for foreign nationals"
+  },
+  {
+   "fieldname": "column_break_identity_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "id_front_image",
+   "fieldtype": "Attach Image",
+   "label": "ID Front Image",
+   "description": "Clear photo of the front of ID document"
+  },
+  {
+   "fieldname": "id_back_image",
+   "fieldtype": "Attach Image",
+   "label": "ID Back Image",
+   "description": "Clear photo of the back of ID document"
+  },
+  {
+   "fieldname": "selfie_image",
+   "fieldtype": "Attach Image",
+   "label": "Selfie with ID",
+   "description": "Photo holding ID next to face for verification"
+  },
+  {
+   "fieldname": "contact_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile",
+   "options": "Phone",
+   "reqd": 1,
+   "description": "Primary contact number for verification"
+  },
+  {
+   "fieldname": "alternative_email",
+   "fieldtype": "Data",
+   "label": "Alternative Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Residential Address"
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_address_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "label": "District",
+   "description": "Ilce (District) for Turkish addresses"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "fieldname": "column_break_address_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address_proof_type",
+   "fieldtype": "Select",
+   "label": "Address Proof Type",
+   "options": "\nUtility Bill\nBank Statement\nGovernment Letter\nLease Agreement\nTax Document"
+  },
+  {
+   "fieldname": "address_proof_document",
+   "fieldtype": "Attach",
+   "label": "Address Proof Document",
+   "description": "Document proving current address (not older than 3 months)"
+  },
+  {
+   "fieldname": "verification_section",
+   "fieldtype": "Section Break",
+   "label": "Verification Details"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "verification_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Verification Status",
+   "options": "Pending\nIn Progress\nCompleted\nFailed\nManual Review Required",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verification_method",
+   "fieldtype": "Select",
+   "label": "Verification Method",
+   "options": "\nManual\nAutomatic\nHybrid\nThird Party"
+  },
+  {
+   "fieldname": "verified_at",
+   "fieldtype": "Datetime",
+   "label": "Verified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_verification_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verification_provider",
+   "fieldtype": "Data",
+   "label": "Verification Provider",
+   "description": "Third-party KYC provider used",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verification_reference",
+   "fieldtype": "Data",
+   "label": "Verification Reference",
+   "description": "External reference ID from verification provider",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_verification_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "id_verified",
+   "fieldtype": "Check",
+   "label": "ID Verified",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "address_verified",
+   "fieldtype": "Check",
+   "label": "Address Verified",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "liveness_verified",
+   "fieldtype": "Check",
+   "label": "Liveness Verified",
+   "description": "Selfie verification passed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "aml_section",
+   "fieldtype": "Section Break",
+   "label": "AML/Sanctions Screening"
+  },
+  {
+   "default": "Not Checked",
+   "fieldname": "aml_check_status",
+   "fieldtype": "Select",
+   "label": "AML Check Status",
+   "options": "Not Checked\nPending\nCleared\nHit Found\nManual Review",
+   "read_only": 1
+  },
+  {
+   "fieldname": "aml_check_date",
+   "fieldtype": "Datetime",
+   "label": "Last AML Check",
+   "read_only": 1
+  },
+  {
+   "fieldname": "aml_provider",
+   "fieldtype": "Data",
+   "label": "AML Provider",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_aml",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "aml_reference",
+   "fieldtype": "Data",
+   "label": "AML Reference",
+   "description": "External reference from AML provider",
+   "read_only": 1
+  },
+  {
+   "default": "Unknown",
+   "fieldname": "pep_status",
+   "fieldtype": "Select",
+   "label": "PEP Status",
+   "options": "Unknown\nNot PEP\nPEP\nPEP Relative/Associate",
+   "description": "Politically Exposed Person status"
+  },
+  {
+   "default": "Not Checked",
+   "fieldname": "sanctions_status",
+   "fieldtype": "Select",
+   "label": "Sanctions Status",
+   "options": "Not Checked\nCleared\nMatch Found\nPending Review",
+   "read_only": 1
+  },
+  {
+   "default": "Not Checked",
+   "fieldname": "adverse_media_status",
+   "fieldtype": "Select",
+   "label": "Adverse Media",
+   "options": "Not Checked\nCleared\nMatch Found\nPending Review",
+   "read_only": 1
+  },
+  {
+   "fieldname": "risk_assessment_section",
+   "fieldtype": "Section Break",
+   "label": "Risk Assessment"
+  },
+  {
+   "default": "0",
+   "fieldname": "risk_score",
+   "fieldtype": "Int",
+   "label": "Risk Score",
+   "description": "0-100 score, higher = more risk",
+   "read_only": 1
+  },
+  {
+   "fieldname": "risk_factors",
+   "fieldtype": "Small Text",
+   "label": "Risk Factors",
+   "description": "Identified risk factors",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_risk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_risk_assessment",
+   "fieldtype": "Datetime",
+   "label": "Last Risk Assessment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_review_date",
+   "fieldtype": "Date",
+   "label": "Next Review Date",
+   "description": "When KYC should be reviewed again"
+  },
+  {
+   "fieldname": "kvkk_section",
+   "fieldtype": "Section Break",
+   "label": "KVKK Compliance"
+  },
+  {
+   "default": "0",
+   "fieldname": "kvkk_consent_given",
+   "fieldtype": "Check",
+   "label": "KVKK Consent Given",
+   "description": "Turkish Personal Data Protection Law consent"
+  },
+  {
+   "fieldname": "kvkk_consent_date",
+   "fieldtype": "Datetime",
+   "label": "Consent Date"
+  },
+  {
+   "fieldname": "kvkk_consent_version",
+   "fieldtype": "Data",
+   "label": "Consent Version",
+   "description": "Version of privacy policy consented to"
+  },
+  {
+   "fieldname": "column_break_kvkk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "data_processing_consent",
+   "fieldtype": "Check",
+   "label": "Data Processing Consent"
+  },
+  {
+   "default": "0",
+   "fieldname": "marketing_consent",
+   "fieldtype": "Check",
+   "label": "Marketing Consent"
+  },
+  {
+   "default": "0",
+   "fieldname": "third_party_sharing_consent",
+   "fieldtype": "Check",
+   "label": "Third Party Sharing Consent"
+  },
+  {
+   "fieldname": "rejection_section",
+   "fieldtype": "Section Break",
+   "label": "Rejection Details",
+   "collapsible": 1,
+   "depends_on": "eval:doc.status=='Rejected'"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Select",
+   "label": "Rejection Reason",
+   "options": "\nInvalid ID Document\nExpired Document\nPoor Image Quality\nInformation Mismatch\nFraud Suspected\nUnderage\nSanctions Match\nPEP - High Risk\nIncomplete Information\nFailed Liveness Check\nOther"
+  },
+  {
+   "fieldname": "rejection_notes",
+   "fieldtype": "Small Text",
+   "label": "Rejection Notes"
+  },
+  {
+   "fieldname": "rejection_date",
+   "fieldtype": "Datetime",
+   "label": "Rejection Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rejection",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "can_reapply",
+   "fieldtype": "Check",
+   "label": "Can Reapply"
+  },
+  {
+   "fieldname": "reapply_after",
+   "fieldtype": "Date",
+   "label": "Reapply After",
+   "description": "Date after which user can submit new application"
+  },
+  {
+   "fieldname": "audit_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_audit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "modified_by",
+   "fieldtype": "Link",
+   "label": "Modified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Internal Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text Editor",
+   "label": "Internal Notes",
+   "description": "Notes visible only to administrators"
+  },
+  {
+   "fieldname": "buyer_profile",
+   "fieldtype": "Link",
+   "label": "Buyer Profile",
+   "in_list_view": 0,
+   "options": "Buyer Profile"
+  },
+  {
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "seller_profile",
+   "fieldtype": "Link",
+   "label": "Seller Profile",
+   "in_list_view": 0,
+   "options": "Seller Profile"
+  },
+  {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "tax_id_type",
+   "fieldtype": "Select",
+   "label": "Tax ID Type",
+   "in_list_view": 0,
+   "options": "\nTC Kimlik No\nVergi No\nPassport"
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Data",
+   "label": "Document Name",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "verification_steps_html",
+   "fieldtype": "HTML",
+   "label": "Verification Steps",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "ai_audit_enabled",
+   "fieldtype": "Check",
+   "label": "AI Audit Enabled",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "ai_audit_status",
+   "fieldtype": "Select",
+   "label": "AI Audit Status",
+   "in_list_view": 0,
+   "options": "\nPending\nIn Progress\nCompleted\nFailed"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Consent Record",
+   "link_fieldname": "kyc_profile"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "kyc_profile"
+  }
+ ],
+ "modified": "2026-02-12 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "KYC Profile",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "full_name, tckn, email, mobile",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name",
+ "track_changes": 1
+}

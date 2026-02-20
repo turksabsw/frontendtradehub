@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "price_type",
+  "price",
+  "currency",
+  "column_break_1",
+  "channel",
+  "locale",
+  "validity_section",
+  "valid_from",
+  "column_break_2",
+  "valid_to",
+  "quantity_section",
+  "min_qty",
+  "max_qty",
+  "column_break_3",
+  "price_tier",
+  "customer_group"
+ ],
+ "fields": [
+  {
+   "default": "Standard",
+   "fieldname": "price_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Price Type",
+   "options": "Standard\nSale\nMSRP\nMAP\nWholesale\nDistributor\nCost\nPromotion\nBundle\nCustom",
+   "reqd": 1,
+   "description": "Type of price (Standard, Sale, MSRP, Wholesale, etc.)"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price",
+   "reqd": 1,
+   "options": "currency",
+   "description": "Price amount"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1,
+   "description": "Currency code (e.g., TRY, USD, EUR)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "channel",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sales Channel",
+   "options": "Sales Channel",
+   "description": "Channel-specific price (empty = all channels)"
+  },
+  {
+   "fieldname": "locale",
+   "fieldtype": "Data",
+   "label": "Locale",
+   "description": "Locale code for locale-specific pricing (e.g., tr_TR)"
+  },
+  {
+   "fieldname": "validity_section",
+   "fieldtype": "Section Break",
+   "label": "Validity Period",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "valid_from",
+   "fieldtype": "Datetime",
+   "label": "Valid From",
+   "description": "Start date/time for this price (empty = immediately)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valid_to",
+   "fieldtype": "Datetime",
+   "label": "Valid To",
+   "description": "End date/time for this price (empty = no expiry)"
+  },
+  {
+   "fieldname": "quantity_section",
+   "fieldtype": "Section Break",
+   "label": "Quantity Tiers",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "min_qty",
+   "fieldtype": "Float",
+   "label": "Minimum Quantity",
+   "description": "Minimum quantity for this price tier"
+  },
+  {
+   "fieldname": "max_qty",
+   "fieldtype": "Float",
+   "label": "Maximum Quantity",
+   "description": "Maximum quantity for this price tier (empty = unlimited)"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price_tier",
+   "fieldtype": "Data",
+   "label": "Price Tier",
+   "description": "Named price tier (e.g., Tier1, Tier2, VIP)"
+  },
+  {
+   "fieldname": "customer_group",
+   "fieldtype": "Link",
+   "label": "Customer Group",
+   "options": "Customer Group",
+   "description": "Customer group for group-specific pricing"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "PIM Product Price",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

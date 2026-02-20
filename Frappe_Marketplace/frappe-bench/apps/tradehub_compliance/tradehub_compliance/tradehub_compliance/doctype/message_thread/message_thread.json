@@ -1,0 +1,557 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "THREAD-.#####",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "thread_info_section",
+  "subject",
+  "status",
+  "thread_type",
+  "column_break_thread_info",
+  "priority",
+  "is_starred",
+  "unread_count",
+  "participants_section",
+  "initiator_type",
+  "column_break_participants",
+  "recipient_type",
+  "buyer_section",
+  "buyer",
+  "buyer_name",
+  "buyer_company",
+  "column_break_buyer",
+  "buyer_email",
+  "seller_section",
+  "seller",
+  "seller_name",
+  "seller_company",
+  "column_break_seller",
+  "seller_email",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "related_documents_section",
+  "reference_doctype",
+  "reference_name",
+  "column_break_related",
+  "rfq",
+  "rfq_title",
+  "order",
+  "order_status",
+  "sample_request",
+  "quotation",
+  "activity_section",
+  "message_count",
+  "last_message_date",
+  "column_break_activity",
+  "last_message_by",
+  "last_message_preview",
+  "settings_section",
+  "allow_attachments",
+  "auto_close_days",
+  "column_break_settings",
+  "notification_enabled",
+  "email_notifications",
+  "dates_section",
+  "created_date",
+  "column_break_dates",
+  "closed_date",
+  "archived_date",
+  "notes_section",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "thread_info_section",
+   "fieldtype": "Section Break",
+   "label": "Thread Information"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1,
+   "description": "Brief subject line for the conversation thread"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nPending\nClosed\nArchived",
+   "reqd": 1,
+   "description": "Current status of the message thread"
+  },
+  {
+   "default": "General",
+   "fieldname": "thread_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Thread Type",
+   "options": "General\nRFQ Discussion\nOrder Inquiry\nSample Discussion\nQuotation Discussion\nSupport\nNegotiation\nComplaint\nFeedback",
+   "reqd": 1,
+   "description": "Type of conversation thread"
+  },
+  {
+   "fieldname": "column_break_thread_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Normal",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Priority",
+   "options": "Low\nNormal\nHigh\nUrgent",
+   "description": "Priority level of this thread"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_starred",
+   "fieldtype": "Check",
+   "label": "Starred",
+   "description": "Mark as important/starred"
+  },
+  {
+   "default": "0",
+   "fieldname": "unread_count",
+   "fieldtype": "Int",
+   "label": "Unread Messages",
+   "read_only": 1,
+   "description": "Number of unread messages in this thread"
+  },
+  {
+   "fieldname": "participants_section",
+   "fieldtype": "Section Break",
+   "label": "Participants"
+  },
+  {
+   "default": "Buyer",
+   "fieldname": "initiator_type",
+   "fieldtype": "Select",
+   "label": "Initiated By",
+   "options": "Buyer\nSeller\nSystem",
+   "reqd": 1,
+   "description": "Who started this conversation"
+  },
+  {
+   "fieldname": "column_break_participants",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Seller",
+   "fieldname": "recipient_type",
+   "fieldtype": "Select",
+   "label": "Recipient Type",
+   "options": "Buyer\nSeller\nSupport",
+   "reqd": 1,
+   "description": "Primary recipient of the conversation"
+  },
+  {
+   "fieldname": "buyer_section",
+   "fieldtype": "Section Break",
+   "label": "Buyer Information"
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer",
+   "options": "Buyer Profile",
+   "description": "The buyer participant in this conversation"
+  },
+  {
+   "fetch_from": "buyer.buyer_name",
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fetch_from": "buyer.company_name",
+   "fieldname": "buyer_company",
+   "fieldtype": "Data",
+   "label": "Buyer Company",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fieldname": "column_break_buyer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "buyer.email",
+   "fieldname": "buyer_email",
+   "fieldtype": "Data",
+   "label": "Buyer Email",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fieldname": "seller_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Information"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "description": "The seller participant in this conversation"
+  },
+  {
+   "fetch_from": "seller.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.company_name",
+   "fieldname": "seller_company",
+   "fieldtype": "Data",
+   "label": "Seller Company",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "column_break_seller",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "seller.email",
+   "fieldname": "seller_email",
+   "fieldtype": "Data",
+   "label": "Seller Email",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information",
+   "collapsible": 1
+  },
+  {
+   "fetch_from": "buyer.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "Auto-filled from Buyer Profile - Multi-tenant isolation field"
+  },
+  {
+   "fetch_from": "buyer.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fieldname": "related_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Related Documents",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference DocType",
+   "options": "DocType",
+   "description": "Type of related document"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Document",
+   "options": "reference_doctype",
+   "description": "Linked document for this conversation"
+  },
+  {
+   "fieldname": "column_break_related",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rfq",
+   "fieldtype": "Link",
+   "label": "RFQ",
+   "options": "RFQ",
+   "description": "Related RFQ if this is an RFQ discussion"
+  },
+  {
+   "fetch_from": "rfq.title",
+   "fieldname": "rfq_title",
+   "fieldtype": "Data",
+   "label": "RFQ Title",
+   "read_only": 1,
+   "description": "Auto-filled from RFQ"
+  },
+  {
+   "fieldname": "order",
+   "fieldtype": "Link",
+   "label": "Order",
+   "options": "Order",
+   "description": "Related order if this is an order discussion"
+  },
+  {
+   "fetch_from": "order.status",
+   "fieldname": "order_status",
+   "fieldtype": "Data",
+   "label": "Order Status",
+   "read_only": 1,
+   "description": "Auto-filled from Order"
+  },
+  {
+   "fieldname": "sample_request",
+   "fieldtype": "Link",
+   "label": "Sample Request",
+   "options": "Sample Request",
+   "description": "Related sample request if this is a sample discussion"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation",
+   "description": "Related quotation if this is a quotation discussion"
+  },
+  {
+   "fieldname": "activity_section",
+   "fieldtype": "Section Break",
+   "label": "Activity Tracking"
+  },
+  {
+   "default": "0",
+   "fieldname": "message_count",
+   "fieldtype": "Int",
+   "label": "Total Messages",
+   "read_only": 1,
+   "description": "Total number of messages in this thread"
+  },
+  {
+   "fieldname": "last_message_date",
+   "fieldtype": "Datetime",
+   "label": "Last Message Date",
+   "read_only": 1,
+   "description": "Date and time of the last message"
+  },
+  {
+   "fieldname": "column_break_activity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_message_by",
+   "fieldtype": "Data",
+   "label": "Last Message By",
+   "read_only": 1,
+   "description": "Who sent the last message"
+  },
+  {
+   "fieldname": "last_message_preview",
+   "fieldtype": "Small Text",
+   "label": "Last Message Preview",
+   "read_only": 1,
+   "description": "Preview of the last message content"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Thread Settings",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_attachments",
+   "fieldtype": "Check",
+   "label": "Allow Attachments",
+   "description": "Allow file attachments in this thread"
+  },
+  {
+   "default": "30",
+   "fieldname": "auto_close_days",
+   "fieldtype": "Int",
+   "label": "Auto-Close After (Days)",
+   "description": "Automatically close thread after this many days of inactivity (0 to disable)"
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "notification_enabled",
+   "fieldtype": "Check",
+   "label": "Notifications Enabled",
+   "description": "Send notifications for new messages"
+  },
+  {
+   "default": "1",
+   "fieldname": "email_notifications",
+   "fieldtype": "Check",
+   "label": "Email Notifications",
+   "description": "Send email notifications for new messages"
+  },
+  {
+   "fieldname": "dates_section",
+   "fieldtype": "Section Break",
+   "label": "Key Dates",
+   "collapsible": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "created_date",
+   "fieldtype": "Date",
+   "label": "Created Date",
+   "read_only": 1,
+   "description": "Date when thread was created"
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "closed_date",
+   "fieldtype": "Date",
+   "label": "Closed Date",
+   "read_only": 1,
+   "description": "Date when thread was closed"
+  },
+  {
+   "fieldname": "archived_date",
+   "fieldtype": "Date",
+   "label": "Archived Date",
+   "read_only": 1,
+   "description": "Date when thread was archived"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text",
+   "label": "Internal Notes",
+   "description": "Internal notes (not visible to participants)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Participants",
+   "link_doctype": "Buyer Profile",
+   "link_fieldname": "buyer"
+  },
+  {
+   "group": "Participants",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "seller"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "RFQ",
+   "link_fieldname": "rfq"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Order",
+   "link_fieldname": "order"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Sample Request",
+   "link_fieldname": "sample_request"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Quotation",
+   "link_fieldname": "quotation"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Message Thread",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Buyer",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "subject, buyer_name, seller_name, buyer_company, seller_company",
+ "sort_field": "last_message_date",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "blue",
+   "title": "Active"
+  },
+  {
+   "color": "yellow",
+   "title": "Pending"
+  },
+  {
+   "color": "green",
+   "title": "Closed"
+  },
+  {
+   "color": "gray",
+   "title": "Archived"
+  }
+ ],
+ "title_field": "subject",
+ "track_changes": 1
+}

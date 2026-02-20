@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "category",
+  "commission_rate",
+  "minimum_commission",
+  "maximum_commission",
+  "column_break_rate",
+  "fixed_amount",
+  "effective_from",
+  "effective_until",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Category",
+   "options": "Category",
+   "reqd": 1,
+   "description": "Product category for this rate"
+  },
+  {
+   "fieldname": "commission_rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Commission Rate (%)",
+   "reqd": 1,
+   "description": "Commission rate for this category"
+  },
+  {
+   "default": "0",
+   "fieldname": "minimum_commission",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Min Commission",
+   "description": "Minimum commission for this category"
+  },
+  {
+   "default": "0",
+   "fieldname": "maximum_commission",
+   "fieldtype": "Currency",
+   "label": "Max Commission",
+   "description": "Maximum commission for this category (0 = no limit)"
+  },
+  {
+   "fieldname": "column_break_rate",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "fixed_amount",
+   "fieldtype": "Currency",
+   "label": "Fixed Amount",
+   "description": "Fixed amount added to percentage commission"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "description": "Date from which this rate is effective"
+  },
+  {
+   "fieldname": "effective_until",
+   "fieldtype": "Date",
+   "label": "Effective Until",
+   "description": "Date until which this rate is effective"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes",
+   "description": "Additional notes about this category rate"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Commission Plan Rate",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

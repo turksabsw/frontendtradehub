@@ -1,0 +1,625 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "COMPLAN-.#####",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "plan_name",
+    "plan_code",
+    "plan_type",
+    "column_break_basic",
+    "status",
+    "tenant",
+    "is_default",
+    "description_section",
+    "short_description",
+    "full_description",
+    "commission_rates_section",
+    "base_commission_rate",
+    "minimum_commission",
+    "maximum_commission",
+    "column_break_rates",
+    "fixed_commission_amount",
+    "commission_calculation_type",
+    "commission_currency",
+    "category_rates_section",
+    "enable_category_rates",
+    "category_rates",
+    "volume_tiers_section",
+    "enable_volume_tiers",
+    "tier_calculation_basis",
+    "tier_calculation_period",
+    "column_break_tiers",
+    "volume_tier_1_threshold",
+    "volume_tier_1_rate",
+    "volume_tier_2_threshold",
+    "volume_tier_2_rate",
+    "volume_tier_3_threshold",
+    "volume_tier_3_rate",
+    "payment_terms_section",
+    "payment_frequency",
+    "payment_day",
+    "minimum_payout_amount",
+    "column_break_payment",
+    "payout_hold_days",
+    "auto_payout",
+    "deduct_shipping_from_commission",
+    "validity_section",
+    "effective_from",
+    "effective_until",
+    "is_perpetual",
+    "column_break_validity",
+    "auto_renew",
+    "renewal_period_months",
+    "notice_period_days",
+    "restrictions_section",
+    "seller_type_restriction",
+    "min_seller_tier",
+    "required_verification_level",
+    "column_break_restrictions",
+    "max_sellers",
+    "current_seller_count",
+    "is_invite_only",
+    "special_terms_section",
+    "special_terms",
+    "contract_template",
+    "requires_signature",
+    "stats_section",
+    "total_sellers",
+    "total_gmv_processed",
+    "total_commission_earned",
+    "column_break_stats",
+    "average_commission_rate",
+    "last_calculation_date",
+    "timestamps_section",
+    "created_by",
+    "created_at",
+    "column_break_timestamps",
+    "modified_by",
+    "modified_at"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "plan_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Plan Name",
+      "reqd": 1,
+      "description": "Display name for this commission plan"
+    },
+    {
+      "fieldname": "plan_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Plan Code",
+      "unique": 1,
+      "description": "Unique identifier code for this plan (e.g., STANDARD, PREMIUM, ENTERPRISE)"
+    },
+    {
+      "default": "Standard",
+      "fieldname": "plan_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Plan Type",
+      "options": "Standard\nPremium\nEnterprise\nCustom\nPromotional\nNew Seller",
+      "reqd": 1,
+      "description": "Type of commission plan"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nActive\nSuspended\nExpired\nArchived",
+      "reqd": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "description": "The tenant this commission plan belongs to (leave blank for platform-wide)"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default Plan",
+      "description": "Set as default plan for new sellers"
+    },
+    {
+      "fieldname": "description_section",
+      "fieldtype": "Section Break",
+      "label": "Description"
+    },
+    {
+      "fieldname": "short_description",
+      "fieldtype": "Small Text",
+      "label": "Short Description",
+      "description": "Brief description of the plan (max 250 characters)"
+    },
+    {
+      "fieldname": "full_description",
+      "fieldtype": "Text Editor",
+      "label": "Full Description",
+      "description": "Detailed description of the plan with terms and conditions"
+    },
+    {
+      "fieldname": "commission_rates_section",
+      "fieldtype": "Section Break",
+      "label": "Commission Rates"
+    },
+    {
+      "default": "10",
+      "fieldname": "base_commission_rate",
+      "fieldtype": "Percent",
+      "in_list_view": 1,
+      "label": "Base Commission Rate (%)",
+      "reqd": 1,
+      "description": "Default commission rate as percentage of order value"
+    },
+    {
+      "default": "0",
+      "fieldname": "minimum_commission",
+      "fieldtype": "Currency",
+      "label": "Minimum Commission",
+      "description": "Minimum commission amount per transaction"
+    },
+    {
+      "default": "0",
+      "fieldname": "maximum_commission",
+      "fieldtype": "Currency",
+      "label": "Maximum Commission",
+      "description": "Maximum commission amount per transaction (0 = no limit)"
+    },
+    {
+      "fieldname": "column_break_rates",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "fixed_commission_amount",
+      "fieldtype": "Currency",
+      "label": "Fixed Commission Amount",
+      "description": "Fixed amount added to each transaction (in addition to percentage)"
+    },
+    {
+      "default": "Percentage",
+      "fieldname": "commission_calculation_type",
+      "fieldtype": "Select",
+      "label": "Calculation Type",
+      "options": "Percentage\nFixed\nPercentage + Fixed\nTiered Percentage",
+      "description": "How commission is calculated"
+    },
+    {
+      "default": "TRY",
+      "fieldname": "commission_currency",
+      "fieldtype": "Link",
+      "label": "Commission Currency",
+      "options": "Currency",
+      "description": "Currency for commission calculations"
+    },
+    {
+      "fieldname": "category_rates_section",
+      "fieldtype": "Section Break",
+      "label": "Category-Specific Rates"
+    },
+    {
+      "default": "0",
+      "fieldname": "enable_category_rates",
+      "fieldtype": "Check",
+      "label": "Enable Category Rates",
+      "description": "Override base rate for specific categories"
+    },
+    {
+      "depends_on": "eval:doc.enable_category_rates==1",
+      "fieldname": "category_rates",
+      "fieldtype": "Table",
+      "label": "Category Commission Rates",
+      "options": "Commission Plan Rate",
+      "description": "Category-specific commission rates"
+    },
+    {
+      "fieldname": "volume_tiers_section",
+      "fieldtype": "Section Break",
+      "label": "Volume-Based Tiers",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "enable_volume_tiers",
+      "fieldtype": "Check",
+      "label": "Enable Volume Tiers",
+      "description": "Enable reduced rates based on sales volume"
+    },
+    {
+      "depends_on": "eval:doc.enable_volume_tiers==1",
+      "default": "GMV",
+      "fieldname": "tier_calculation_basis",
+      "fieldtype": "Select",
+      "label": "Tier Calculation Basis",
+      "options": "GMV\nOrder Count\nMonthly GMV\nMonthly Orders",
+      "description": "What metric to use for tier calculation"
+    },
+    {
+      "depends_on": "eval:doc.enable_volume_tiers==1",
+      "default": "Monthly",
+      "fieldname": "tier_calculation_period",
+      "fieldtype": "Select",
+      "label": "Calculation Period",
+      "options": "Monthly\nQuarterly\nYearly\nLifetime",
+      "description": "Time period for calculating volume"
+    },
+    {
+      "fieldname": "column_break_tiers",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.enable_volume_tiers==1",
+      "fieldname": "volume_tier_1_threshold",
+      "fieldtype": "Currency",
+      "label": "Tier 1 Threshold",
+      "description": "Minimum volume for Tier 1 discount"
+    },
+    {
+      "depends_on": "eval:doc.enable_volume_tiers==1",
+      "fieldname": "volume_tier_1_rate",
+      "fieldtype": "Percent",
+      "label": "Tier 1 Rate (%)",
+      "description": "Commission rate after reaching Tier 1"
+    },
+    {
+      "depends_on": "eval:doc.enable_volume_tiers==1",
+      "fieldname": "volume_tier_2_threshold",
+      "fieldtype": "Currency",
+      "label": "Tier 2 Threshold",
+      "description": "Minimum volume for Tier 2 discount"
+    },
+    {
+      "depends_on": "eval:doc.enable_volume_tiers==1",
+      "fieldname": "volume_tier_2_rate",
+      "fieldtype": "Percent",
+      "label": "Tier 2 Rate (%)",
+      "description": "Commission rate after reaching Tier 2"
+    },
+    {
+      "depends_on": "eval:doc.enable_volume_tiers==1",
+      "fieldname": "volume_tier_3_threshold",
+      "fieldtype": "Currency",
+      "label": "Tier 3 Threshold",
+      "description": "Minimum volume for Tier 3 discount"
+    },
+    {
+      "depends_on": "eval:doc.enable_volume_tiers==1",
+      "fieldname": "volume_tier_3_rate",
+      "fieldtype": "Percent",
+      "label": "Tier 3 Rate (%)",
+      "description": "Commission rate after reaching Tier 3"
+    },
+    {
+      "fieldname": "payment_terms_section",
+      "fieldtype": "Section Break",
+      "label": "Payment Terms"
+    },
+    {
+      "default": "Weekly",
+      "fieldname": "payment_frequency",
+      "fieldtype": "Select",
+      "label": "Payment Frequency",
+      "options": "Daily\nWeekly\nBi-Weekly\nMonthly",
+      "description": "How often seller payouts are processed"
+    },
+    {
+      "default": "1",
+      "fieldname": "payment_day",
+      "fieldtype": "Int",
+      "label": "Payment Day",
+      "description": "Day of week/month for payouts (1-7 for weekly, 1-28 for monthly)"
+    },
+    {
+      "default": "100",
+      "fieldname": "minimum_payout_amount",
+      "fieldtype": "Currency",
+      "label": "Minimum Payout Amount",
+      "description": "Minimum balance required for payout"
+    },
+    {
+      "fieldname": "column_break_payment",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "14",
+      "fieldname": "payout_hold_days",
+      "fieldtype": "Int",
+      "label": "Payout Hold Days",
+      "description": "Days to hold funds after order completion before payout"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_payout",
+      "fieldtype": "Check",
+      "label": "Auto Payout",
+      "description": "Automatically process payouts on schedule"
+    },
+    {
+      "default": "0",
+      "fieldname": "deduct_shipping_from_commission",
+      "fieldtype": "Check",
+      "label": "Deduct Shipping from Commission Base",
+      "description": "Calculate commission on order value minus shipping"
+    },
+    {
+      "fieldname": "validity_section",
+      "fieldtype": "Section Break",
+      "label": "Validity Period"
+    },
+    {
+      "fieldname": "effective_from",
+      "fieldtype": "Date",
+      "label": "Effective From",
+      "reqd": 1,
+      "description": "Date from which this plan is effective"
+    },
+    {
+      "fieldname": "effective_until",
+      "fieldtype": "Date",
+      "label": "Effective Until",
+      "description": "Date until which this plan is effective (leave blank for perpetual)"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_perpetual",
+      "fieldtype": "Check",
+      "label": "Is Perpetual",
+      "description": "Plan has no end date"
+    },
+    {
+      "fieldname": "column_break_validity",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "depends_on": "eval:doc.is_perpetual==0",
+      "fieldname": "auto_renew",
+      "fieldtype": "Check",
+      "label": "Auto Renew",
+      "description": "Automatically renew plan when it expires"
+    },
+    {
+      "default": "12",
+      "depends_on": "eval:doc.auto_renew==1",
+      "fieldname": "renewal_period_months",
+      "fieldtype": "Int",
+      "label": "Renewal Period (Months)",
+      "description": "Number of months for each renewal period"
+    },
+    {
+      "default": "30",
+      "fieldname": "notice_period_days",
+      "fieldtype": "Int",
+      "label": "Notice Period (Days)",
+      "description": "Days notice required to cancel or change plan"
+    },
+    {
+      "fieldname": "restrictions_section",
+      "fieldtype": "Section Break",
+      "label": "Eligibility Restrictions",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "seller_type_restriction",
+      "fieldtype": "Select",
+      "label": "Seller Type Restriction",
+      "options": "\nIndividual\nBusiness\nEnterprise",
+      "description": "Restrict plan to specific seller types (blank = all)"
+    },
+    {
+      "fieldname": "min_seller_tier",
+      "fieldtype": "Link",
+      "label": "Minimum Seller Tier",
+      "options": "Seller Tier",
+      "description": "Minimum seller tier required for this plan"
+    },
+    {
+      "default": "None",
+      "fieldname": "required_verification_level",
+      "fieldtype": "Select",
+      "label": "Required Verification Level",
+      "options": "None\nBasic\nIdentity\nBusiness\nFull",
+      "description": "Minimum verification level required"
+    },
+    {
+      "fieldname": "column_break_restrictions",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "max_sellers",
+      "fieldtype": "Int",
+      "label": "Max Sellers",
+      "description": "Maximum number of sellers on this plan (0 = unlimited)"
+    },
+    {
+      "default": "0",
+      "fieldname": "current_seller_count",
+      "fieldtype": "Int",
+      "label": "Current Seller Count",
+      "read_only": 1,
+      "description": "Number of sellers currently on this plan"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_invite_only",
+      "fieldtype": "Check",
+      "label": "Invite Only",
+      "description": "Plan requires invitation/approval to join"
+    },
+    {
+      "fieldname": "special_terms_section",
+      "fieldtype": "Section Break",
+      "label": "Special Terms & Contract",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "special_terms",
+      "fieldtype": "Text Editor",
+      "label": "Special Terms",
+      "description": "Any special terms and conditions for this plan"
+    },
+    {
+      "fieldname": "contract_template",
+      "fieldtype": "Attach",
+      "label": "Contract Template",
+      "description": "Template document for seller agreements"
+    },
+    {
+      "default": "0",
+      "fieldname": "requires_signature",
+      "fieldtype": "Check",
+      "label": "Requires Signature",
+      "description": "Seller must sign agreement to enroll"
+    },
+    {
+      "fieldname": "stats_section",
+      "fieldtype": "Section Break",
+      "label": "Statistics",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "total_sellers",
+      "fieldtype": "Int",
+      "label": "Total Sellers",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "total_gmv_processed",
+      "fieldtype": "Currency",
+      "label": "Total GMV Processed",
+      "read_only": 1,
+      "description": "Total gross merchandise value processed under this plan"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_commission_earned",
+      "fieldtype": "Currency",
+      "label": "Total Commission Earned",
+      "read_only": 1,
+      "description": "Total commission earned under this plan"
+    },
+    {
+      "fieldname": "column_break_stats",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "average_commission_rate",
+      "fieldtype": "Percent",
+      "label": "Avg Commission Rate",
+      "read_only": 1,
+      "description": "Average effective commission rate"
+    },
+    {
+      "fieldname": "last_calculation_date",
+      "fieldtype": "Date",
+      "label": "Last Calculation Date",
+      "read_only": 1
+    },
+    {
+      "fieldname": "timestamps_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "created_at",
+      "fieldtype": "Datetime",
+      "label": "Created At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_timestamps",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "modified_by",
+      "fieldtype": "Link",
+      "label": "Modified By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "modified_at",
+      "fieldtype": "Datetime",
+      "label": "Modified At",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Commission Plan",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "plan_name, plan_code, plan_type, status",
+  "show_name_in_global_search": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "plan_name",
+  "track_changes": 1
+}

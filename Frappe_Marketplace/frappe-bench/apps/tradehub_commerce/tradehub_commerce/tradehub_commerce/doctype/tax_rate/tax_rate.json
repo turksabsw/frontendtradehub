@@ -1,0 +1,217 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:tax_name",
+ "creation": "2026-02-12 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "tax_name",
+  "tax_code",
+  "column_break_1",
+  "is_active",
+  "is_default",
+  "rate_section",
+  "rate",
+  "rate_type",
+  "column_break_2",
+  "tax_type",
+  "country",
+  "description_section",
+  "description",
+  "applicable_categories",
+  "settings_section",
+  "apply_to_shipping",
+  "is_compound",
+  "column_break_3",
+  "effective_from",
+  "effective_to"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "tax_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tax Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "Short code for the tax rate (e.g., KDV18, KDV8)",
+   "fieldname": "tax_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tax Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "default": "0",
+   "description": "Mark as default tax rate for new listings",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default"
+  },
+  {
+   "fieldname": "rate_section",
+   "fieldtype": "Section Break",
+   "label": "Tax Rate"
+  },
+  {
+   "default": "18",
+   "description": "Tax rate percentage",
+   "fieldname": "rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Rate (%)",
+   "reqd": 1
+  },
+  {
+   "default": "Percentage",
+   "fieldname": "rate_type",
+   "fieldtype": "Select",
+   "label": "Rate Type",
+   "options": "Percentage\nFixed Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "VAT",
+   "description": "Type of tax (VAT/KDV, Sales Tax, etc.)",
+   "fieldname": "tax_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Tax Type",
+   "options": "VAT\nSales Tax\nService Tax\nCustoms Duty\nExcise\nWithholding\nOther",
+   "reqd": 1
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "description": "Categories to which this tax rate applies (leave empty for all)",
+   "fieldname": "applicable_categories",
+   "fieldtype": "Table MultiSelect",
+   "label": "Applicable Categories",
+   "options": "Tax Rate Category"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "default": "0",
+   "description": "Apply this tax rate to shipping charges",
+   "fieldname": "apply_to_shipping",
+   "fieldtype": "Check",
+   "label": "Apply to Shipping"
+  },
+  {
+   "default": "0",
+   "description": "Calculate this tax on top of other taxes",
+   "fieldname": "is_compound",
+   "fieldtype": "Check",
+   "label": "Is Compound Tax"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From"
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Tax Rate",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Satici Admin",
+   "share": 0
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Alici Admin",
+   "share": 0
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "tax_code, tax_type, rate",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "tax_name",
+ "track_changes": 1
+}

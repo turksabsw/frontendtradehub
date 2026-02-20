@@ -1,0 +1,28 @@
+[
+  {
+    "doctype": "ESign Provider",
+    "provider_name": "Turkcell E-Sign",
+    "provider_type": "turkcell_esign",
+    "enabled": 1,
+    "is_default": 1,
+    "api_url": "https://api.turkcell.com.tr/esign/v1",
+    "callback_url": "/api/method/tr_contract_center.api.esign_callback",
+    "timeout_seconds": 30,
+    "retry_count": 3,
+    "sandbox_mode": 1,
+    "debug_mode": 0
+  },
+  {
+    "doctype": "ESign Provider",
+    "provider_name": "Generic Test Provider",
+    "provider_type": "generic",
+    "enabled": 1,
+    "is_default": 0,
+    "api_url": "http://localhost:8080/esign",
+    "callback_url": "/api/method/tr_contract_center.api.esign_callback",
+    "timeout_seconds": 30,
+    "retry_count": 3,
+    "sandbox_mode": 1,
+    "debug_mode": 1
+  }
+]

@@ -1,0 +1,471 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "escrow_account",
+    "event_type",
+    "event_category",
+    "column_break_basic",
+    "timestamp",
+    "severity",
+    "is_system_event",
+    "description_section",
+    "description",
+    "status_section",
+    "previous_status",
+    "new_status",
+    "column_break_status",
+    "status_reason",
+    "amount_section",
+    "amount",
+    "amount_type",
+    "column_break_amount",
+    "currency",
+    "running_balance",
+    "actor_section",
+    "actor_type",
+    "user",
+    "column_break_actor",
+    "seller",
+    "buyer",
+    "order_section",
+    "marketplace_order",
+    "sub_order",
+    "column_break_order_ref",
+    "payment_intent",
+    "dispute_case",
+    "payout_section",
+    "payout_reference",
+    "payout_method",
+    "column_break_payout",
+    "payout_status",
+    "payout_error",
+    "request_section",
+    "ip_address",
+    "user_agent",
+    "column_break_request",
+    "request_id",
+    "api_endpoint",
+    "metadata_section",
+    "event_data",
+    "notes",
+    "column_break_metadata",
+    "internal_notes",
+    "related_events",
+    "notification_section",
+    "notification_sent",
+    "notification_type",
+    "column_break_notification",
+    "notification_recipients",
+    "notification_sent_at",
+    "system_section",
+    "naming_series"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Event Information"
+    },
+    {
+      "fieldname": "escrow_account",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Escrow Account",
+      "options": "Escrow Account",
+      "reqd": 1
+    },
+    {
+      "default": "General",
+      "fieldname": "event_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Event Type",
+      "options": "General\nCreated\nFunds Held\nPartially Released\nFully Released\nRefund Initiated\nRefund Completed\nPartially Refunded\nDelivery Confirmed\nRelease Scheduled\nRelease Approved\nAuto Released\nDispute Opened\nDispute Updated\nDispute Escalated\nDispute Resolved\nHold Extended\nPayout Scheduled\nPayout Processing\nPayout Completed\nPayout Failed\nStatus Change\nAmount Updated\nFee Calculated\nERPNext Synced\nNotification Sent\nComment Added\nAdmin Action\nSystem Event\nExpired\nCancelled",
+      "reqd": 1
+    },
+    {
+      "description": "Category grouping for event types",
+      "fieldname": "event_category",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Event Category",
+      "options": "\nLifecycle\nFunds Movement\nDispute\nPayout\nNotification\nIntegration\nAdmin\nSystem"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Now",
+      "fieldname": "timestamp",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "Timestamp",
+      "read_only": 1
+    },
+    {
+      "default": "Info",
+      "fieldname": "severity",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Severity",
+      "options": "Debug\nInfo\nWarning\nError\nCritical"
+    },
+    {
+      "default": "0",
+      "description": "Event was generated automatically by the system",
+      "fieldname": "is_system_event",
+      "fieldtype": "Check",
+      "label": "Is System Event"
+    },
+    {
+      "fieldname": "description_section",
+      "fieldtype": "Section Break",
+      "label": "Description"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "in_list_view": 1,
+      "label": "Description",
+      "reqd": 1
+    },
+    {
+      "fieldname": "status_section",
+      "fieldtype": "Section Break",
+      "label": "Status Change"
+    },
+    {
+      "fieldname": "previous_status",
+      "fieldtype": "Data",
+      "label": "Previous Status"
+    },
+    {
+      "fieldname": "new_status",
+      "fieldtype": "Data",
+      "label": "New Status"
+    },
+    {
+      "fieldname": "column_break_status",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "status_reason",
+      "fieldtype": "Small Text",
+      "label": "Status Change Reason"
+    },
+    {
+      "fieldname": "amount_section",
+      "fieldtype": "Section Break",
+      "label": "Amount Details"
+    },
+    {
+      "default": "0",
+      "description": "Amount involved in this event",
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "label": "Amount",
+      "options": "currency"
+    },
+    {
+      "fieldname": "amount_type",
+      "fieldtype": "Select",
+      "label": "Amount Type",
+      "options": "\nHold\nRelease\nRefund\nFee\nCommission\nPayout"
+    },
+    {
+      "fieldname": "column_break_amount",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "TRY",
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency"
+    },
+    {
+      "default": "0",
+      "description": "Running balance in escrow after this event",
+      "fieldname": "running_balance",
+      "fieldtype": "Currency",
+      "label": "Running Balance",
+      "options": "currency"
+    },
+    {
+      "fieldname": "actor_section",
+      "fieldtype": "Section Break",
+      "label": "Actor"
+    },
+    {
+      "default": "System",
+      "description": "Who or what triggered this event",
+      "fieldname": "actor_type",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Actor Type",
+      "options": "Buyer\nSeller\nAdmin\nSystem\nAPI\nScheduler\nSupport\nDispute Agent"
+    },
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "label": "User",
+      "options": "User"
+    },
+    {
+      "fieldname": "column_break_actor",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "label": "Seller",
+      "options": "Seller Profile"
+    },
+    {
+      "fieldname": "buyer",
+      "fieldtype": "Link",
+      "label": "Buyer",
+      "options": "User"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "order_section",
+      "fieldtype": "Section Break",
+      "label": "Related References"
+    },
+    {
+      "fieldname": "marketplace_order",
+      "fieldtype": "Link",
+      "label": "Marketplace Order",
+      "options": "Marketplace Order"
+    },
+    {
+      "fieldname": "sub_order",
+      "fieldtype": "Link",
+      "label": "Sub Order",
+      "options": "Sub Order"
+    },
+    {
+      "fieldname": "column_break_order_ref",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "payment_intent",
+      "fieldtype": "Link",
+      "label": "Payment Intent",
+      "options": "Payment Intent"
+    },
+    {
+      "fieldname": "dispute_case",
+      "fieldtype": "Link",
+      "label": "Dispute Case",
+      "options": "Moderation Case"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "payout_section",
+      "fieldtype": "Section Break",
+      "label": "Payout Details"
+    },
+    {
+      "fieldname": "payout_reference",
+      "fieldtype": "Data",
+      "label": "Payout Reference"
+    },
+    {
+      "fieldname": "payout_method",
+      "fieldtype": "Select",
+      "label": "Payout Method",
+      "options": "\nBank Transfer\niyzico Payout\nPayTR Payout\nManual"
+    },
+    {
+      "fieldname": "column_break_payout",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "payout_status",
+      "fieldtype": "Data",
+      "label": "Payout Status"
+    },
+    {
+      "fieldname": "payout_error",
+      "fieldtype": "Small Text",
+      "label": "Payout Error"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "request_section",
+      "fieldtype": "Section Break",
+      "label": "Request Metadata"
+    },
+    {
+      "fieldname": "ip_address",
+      "fieldtype": "Data",
+      "label": "IP Address"
+    },
+    {
+      "fieldname": "user_agent",
+      "fieldtype": "Small Text",
+      "label": "User Agent"
+    },
+    {
+      "fieldname": "column_break_request",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Unique request ID for tracing",
+      "fieldname": "request_id",
+      "fieldtype": "Data",
+      "label": "Request ID"
+    },
+    {
+      "description": "API endpoint that triggered this event",
+      "fieldname": "api_endpoint",
+      "fieldtype": "Data",
+      "label": "API Endpoint"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "metadata_section",
+      "fieldtype": "Section Break",
+      "label": "Metadata"
+    },
+    {
+      "description": "Additional event data in JSON format",
+      "fieldname": "event_data",
+      "fieldtype": "JSON",
+      "label": "Event Data"
+    },
+    {
+      "description": "Public notes",
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    },
+    {
+      "fieldname": "column_break_metadata",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Internal notes (admin only)",
+      "fieldname": "internal_notes",
+      "fieldtype": "Small Text",
+      "label": "Internal Notes"
+    },
+    {
+      "description": "JSON array of related event names",
+      "fieldname": "related_events",
+      "fieldtype": "JSON",
+      "label": "Related Events"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "notification_section",
+      "fieldtype": "Section Break",
+      "label": "Notification"
+    },
+    {
+      "default": "0",
+      "fieldname": "notification_sent",
+      "fieldtype": "Check",
+      "label": "Notification Sent"
+    },
+    {
+      "depends_on": "eval:doc.notification_sent",
+      "fieldname": "notification_type",
+      "fieldtype": "Select",
+      "label": "Notification Type",
+      "options": "\nEmail\nSMS\nPush\nIn-App\nWebhook"
+    },
+    {
+      "fieldname": "column_break_notification",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.notification_sent",
+      "description": "Comma-separated list of recipients",
+      "fieldname": "notification_recipients",
+      "fieldtype": "Small Text",
+      "label": "Notification Recipients"
+    },
+    {
+      "depends_on": "eval:doc.notification_sent",
+      "fieldname": "notification_sent_at",
+      "fieldtype": "Datetime",
+      "label": "Notification Sent At"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "system_section",
+      "fieldtype": "Section Break",
+      "label": "System"
+    },
+    {
+      "default": "EEV-.YYYY.-.######",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Naming Series",
+      "options": "EEV-.YYYY.-.######\nEEV-.######"
+    }
+  ],
+  "has_web_view": 0,
+  "index_web_pages_for_search": 0,
+  "is_submittable": 0,
+  "links": [
+    {
+      "group": "Parent",
+      "link_doctype": "Escrow Account",
+      "link_fieldname": "escrow_account"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Escrow Event",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 0,
+      "read": 1,
+      "report": 1,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "escrow_account, event_type, description, user",
+  "show_name_in_global_search": 0,
+  "sort_field": "timestamp",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "event_type",
+  "track_changes": 0
+}

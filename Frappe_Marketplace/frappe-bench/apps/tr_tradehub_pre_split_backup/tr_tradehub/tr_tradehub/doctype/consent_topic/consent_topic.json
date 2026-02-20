@@ -1,0 +1,240 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:topic_name",
+  "creation": "2024-01-23 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "topic_name",
+    "topic_code",
+    "column_break_basic",
+    "enabled",
+    "display_order",
+    "details_section",
+    "description",
+    "category",
+    "column_break_details",
+    "icon",
+    "color",
+    "legal_section",
+    "legal_basis",
+    "requires_explicit_consent",
+    "column_break_legal",
+    "data_categories",
+    "processing_purposes",
+    "settings_section",
+    "mandatory",
+    "default_enabled",
+    "column_break_settings",
+    "allow_partial_consent",
+    "requires_separate_consent",
+    "tenant_section",
+    "tenant",
+    "company"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "topic_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Topic Name",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Display name (e.g., 'Marketing Campaigns', 'Newsletter', 'Product Updates')"
+    },
+    {
+      "fieldname": "topic_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Topic Code",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique code for API use (e.g., 'MARKETING', 'NEWSLETTER')"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled"
+    },
+    {
+      "default": "0",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "label": "Display Order"
+    },
+    {
+      "fieldname": "details_section",
+      "fieldtype": "Section Break",
+      "label": "Topic Details"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "User-facing description of what this consent covers"
+    },
+    {
+      "fieldname": "category",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Category",
+      "options": "Marketing\nCommunication\nData Processing\nThird Party\nAnalytics\nPersonalization\nLegal\nOther",
+      "default": "Communication",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_details",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "icon",
+      "fieldtype": "Data",
+      "label": "Icon"
+    },
+    {
+      "fieldname": "color",
+      "fieldtype": "Color",
+      "label": "Color"
+    },
+    {
+      "fieldname": "legal_section",
+      "fieldtype": "Section Break",
+      "label": "Legal Requirements"
+    },
+    {
+      "fieldname": "legal_basis",
+      "fieldtype": "Select",
+      "label": "Legal Basis",
+      "options": "Consent\nContract Performance\nLegal Obligation\nVital Interests\nPublic Interest\nLegitimate Interest",
+      "default": "Consent",
+      "reqd": 1,
+      "description": "KVKK Article 5 legal basis for processing"
+    },
+    {
+      "default": "1",
+      "fieldname": "requires_explicit_consent",
+      "fieldtype": "Check",
+      "label": "Requires Explicit Consent",
+      "description": "Per KVKK, explicit consent required for sensitive data or marketing"
+    },
+    {
+      "fieldname": "column_break_legal",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "data_categories",
+      "fieldtype": "Small Text",
+      "label": "Data Categories",
+      "description": "Categories of personal data processed (e.g., 'Email, Name, Phone')"
+    },
+    {
+      "fieldname": "processing_purposes",
+      "fieldtype": "Small Text",
+      "label": "Processing Purposes",
+      "description": "Specific purposes for data processing"
+    },
+    {
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Consent Settings"
+    },
+    {
+      "default": "0",
+      "fieldname": "mandatory",
+      "fieldtype": "Check",
+      "label": "Mandatory",
+      "description": "If checked, this consent is required for service use"
+    },
+    {
+      "default": "0",
+      "fieldname": "default_enabled",
+      "fieldtype": "Check",
+      "label": "Default Enabled",
+      "description": "If checked, consent is pre-selected (use carefully per KVKK)"
+    },
+    {
+      "fieldname": "column_break_settings",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "allow_partial_consent",
+      "fieldtype": "Check",
+      "label": "Allow Partial Consent",
+      "description": "Allow user to consent to some methods but not others"
+    },
+    {
+      "default": "0",
+      "fieldname": "requires_separate_consent",
+      "fieldtype": "Check",
+      "label": "Requires Separate Consent",
+      "description": "Must be consented separately, cannot be bundled"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Multi-Tenant",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant"
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-23 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR Tradehub",
+  "name": "Consent Topic",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "read": 1,
+      "role": "All"
+    }
+  ],
+  "quick_entry": 1,
+  "search_fields": "topic_name, topic_code, category",
+  "show_name_in_global_search": 1,
+  "sort_field": "display_order",
+  "sort_order": "ASC",
+  "states": [],
+  "title_field": "topic_name",
+  "track_changes": 1
+}

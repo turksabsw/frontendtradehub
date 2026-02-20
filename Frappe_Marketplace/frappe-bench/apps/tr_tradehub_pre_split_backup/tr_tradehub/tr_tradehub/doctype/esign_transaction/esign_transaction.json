@@ -1,0 +1,226 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-23 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "naming_series",
+    "provider",
+    "contract_instance",
+    "column_break_basic",
+    "status",
+    "external_id",
+    "signer_section",
+    "signer_name",
+    "signer_email",
+    "column_break_signer",
+    "signer_phone",
+    "signer_tckn",
+    "document_section",
+    "document_hash",
+    "signing_url",
+    "column_break_doc",
+    "signed_pdf",
+    "signed_at",
+    "timestamps_section",
+    "initiated_at",
+    "expires_at",
+    "column_break_time",
+    "completed_at",
+    "error_section",
+    "error_message",
+    "error_code"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Transaction Information"
+    },
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "ESIGN-.YYYY.-.#####",
+      "default": "ESIGN-.YYYY.-.#####",
+      "reqd": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "provider",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Provider",
+      "options": "ESign Provider",
+      "reqd": 1
+    },
+    {
+      "fieldname": "contract_instance",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Contract Instance",
+      "options": "Contract Instance",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Initiated",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Initiated\nPending\nCompleted\nRejected\nExpired\nFailed",
+      "reqd": 1
+    },
+    {
+      "fieldname": "external_id",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "External ID",
+      "read_only": 1,
+      "description": "Provider's transaction ID"
+    },
+    {
+      "fieldname": "signer_section",
+      "fieldtype": "Section Break",
+      "label": "Signer Information"
+    },
+    {
+      "fieldname": "signer_name",
+      "fieldtype": "Data",
+      "label": "Signer Name"
+    },
+    {
+      "fieldname": "signer_email",
+      "fieldtype": "Data",
+      "label": "Signer Email"
+    },
+    {
+      "fieldname": "column_break_signer",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "signer_phone",
+      "fieldtype": "Data",
+      "label": "Signer Phone"
+    },
+    {
+      "fieldname": "signer_tckn",
+      "fieldtype": "Data",
+      "label": "Signer TCKN",
+      "description": "Turkish Citizen ID Number (masked)"
+    },
+    {
+      "fieldname": "document_section",
+      "fieldtype": "Section Break",
+      "label": "Document"
+    },
+    {
+      "fieldname": "document_hash",
+      "fieldtype": "Data",
+      "label": "Document Hash",
+      "read_only": 1,
+      "description": "SHA256 hash of the document"
+    },
+    {
+      "fieldname": "signing_url",
+      "fieldtype": "Data",
+      "label": "Signing URL",
+      "read_only": 1,
+      "description": "URL for signer to complete signature"
+    },
+    {
+      "fieldname": "column_break_doc",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "signed_pdf",
+      "fieldtype": "Attach",
+      "label": "Signed PDF",
+      "description": "Signed document from provider"
+    },
+    {
+      "fieldname": "signed_at",
+      "fieldtype": "Datetime",
+      "label": "Signed At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "timestamps_section",
+      "fieldtype": "Section Break",
+      "label": "Timestamps"
+    },
+    {
+      "fieldname": "initiated_at",
+      "fieldtype": "Datetime",
+      "label": "Initiated At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "expires_at",
+      "fieldtype": "Datetime",
+      "label": "Expires At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_time",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "completed_at",
+      "fieldtype": "Datetime",
+      "label": "Completed At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "error_section",
+      "fieldtype": "Section Break",
+      "label": "Error Information",
+      "collapsible": 1,
+      "depends_on": "eval:doc.status=='Failed'"
+    },
+    {
+      "fieldname": "error_message",
+      "fieldtype": "Small Text",
+      "label": "Error Message",
+      "read_only": 1
+    },
+    {
+      "fieldname": "error_code",
+      "fieldtype": "Data",
+      "label": "Error Code",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-23 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR Tradehub",
+  "name": "ESign Transaction",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "provider, contract_instance, external_id, status",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

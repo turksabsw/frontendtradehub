@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pim_attribute",
+  "column_break_1",
+  "custom_label",
+  "settings_section",
+  "locale",
+  "column_break_2",
+  "custom_description",
+  "custom_placeholder"
+ ],
+ "fields": [
+  {
+   "fieldname": "pim_attribute",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PIM Attribute",
+   "options": "PIM Attribute",
+   "reqd": 1,
+   "description": "The attribute to override the label for"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Custom Label",
+   "reqd": 1,
+   "description": "The custom label to display instead of the attribute's default label"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Overrides"
+  },
+  {
+   "fieldname": "locale",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Locale",
+   "description": "Apply this override only for specific locale (leave empty for all locales)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_description",
+   "fieldtype": "Small Text",
+   "label": "Custom Description",
+   "description": "Override the help text shown below the field"
+  },
+  {
+   "fieldname": "custom_placeholder",
+   "fieldtype": "Data",
+   "label": "Custom Placeholder",
+   "description": "Override the placeholder text shown in the input field"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Attribute Label Override",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

@@ -1,0 +1,148 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "field_name",
+  "field_label",
+  "column_break_1",
+  "search_type",
+  "is_enabled",
+  "config_section",
+  "is_filterable",
+  "is_sortable",
+  "column_break_2",
+  "is_faceted",
+  "boost_weight",
+  "display_section",
+  "filter_widget",
+  "column_break_3",
+  "sort_order",
+  "default_sort_direction"
+ ],
+ "fields": [
+  {
+   "fieldname": "field_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Field Name",
+   "reqd": 1,
+   "description": "Name of the field to include in search configuration"
+  },
+  {
+   "fieldname": "field_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Display Label",
+   "description": "Custom label for search/filter UI (optional)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "search_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Search Type",
+   "options": "Full Text\nExact Match\nPrefix\nFuzzy\nRange\nNone",
+   "default": "Full Text",
+   "description": "How this field should be searched"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Enabled",
+   "description": "If unchecked, this field is excluded from search"
+  },
+  {
+   "fieldname": "config_section",
+   "fieldtype": "Section Break",
+   "label": "Search Behavior"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_filterable",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Filterable",
+   "description": "If checked, show as a filter option in search UI"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_sortable",
+   "fieldtype": "Check",
+   "label": "Is Sortable",
+   "description": "If checked, allow sorting by this field"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_faceted",
+   "fieldtype": "Check",
+   "label": "Is Faceted",
+   "description": "If checked, show facet counts in search results"
+  },
+  {
+   "default": "1.0",
+   "fieldname": "boost_weight",
+   "fieldtype": "Float",
+   "label": "Boost Weight",
+   "description": "Search relevance weight (1.0 = normal, higher = more important)"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "filter_widget",
+   "fieldtype": "Select",
+   "label": "Filter Widget",
+   "options": "Text Input\nDropdown\nCheckbox List\nRange Slider\nDate Picker\nColor Picker\nAuto",
+   "default": "Auto",
+   "description": "UI widget type for filtering (Auto = inferred from field type)"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Sort Order",
+   "description": "Order in which this filter appears in the UI"
+  },
+  {
+   "fieldname": "default_sort_direction",
+   "fieldtype": "Select",
+   "label": "Default Sort Direction",
+   "options": "\nASC\nDESC",
+   "description": "Default sort direction when sorting by this field"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Product Class Search Config",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

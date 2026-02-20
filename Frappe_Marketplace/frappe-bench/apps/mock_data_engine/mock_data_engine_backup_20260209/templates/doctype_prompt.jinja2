@@ -1,0 +1,137 @@
+{#
+  DocType Record Generation Prompt Template
+
+  This template generates prompts for AI to create multiple realistic records
+  for a Frappe DocType. The AI should return a JSON array of record objects.
+
+  Expected Variables:
+    - doctype: str - The DocType name (e.g., "Customer", "Sales Order")
+    - count: int - Number of records to generate
+    - fields: List[dict] - Field definitions with fieldname, fieldtype, options, etc.
+    - locale: str - Locale for data generation (e.g., "tr_TR", "en_US")
+    - industry: str (optional) - Industry context (e.g., "Technology", "Retail")
+    - existing_links: dict (optional) - Pre-resolved link field values
+    - constraints: dict (optional) - Field-specific constraints
+    - seed: int (optional) - Random seed for reproducibility hint
+
+  Returns:
+    AI should return a JSON array of record objects.
+#}
+You are a data generation assistant for Frappe Framework. Your task is to generate realistic mock data for the "{{ doctype }}" DocType.
+
+## Generation Requirements
+
+Generate exactly {{ count }} unique record(s) in JSON array format.
+
+{% if locale %}
+### Locale
+Generate data appropriate for locale: **{{ locale }}**
+{% if locale.startswith('tr') %}
+- Use Turkish names, addresses, and conventions
+- Phone numbers should be in Turkish format (+90 xxx xxx xx xx)
+- Currency values should be in Turkish Lira (TRY) when applicable
+{% elif locale.startswith('en_US') %}
+- Use American names, addresses, and conventions
+- Phone numbers should be in US format
+- Currency values should be in USD when applicable
+{% elif locale.startswith('de') %}
+- Use German names, addresses, and conventions
+- Phone numbers should be in German format
+- Currency values should be in EUR when applicable
+{% endif %}
+{% endif %}
+
+{% if industry %}
+### Industry Context
+Generate data relevant to the **{{ industry }}** industry sector.
+{% endif %}
+
+### DocType Schema: {{ doctype }}
+
+The following fields need values:
+
+| Field Name | Field Type | Required | Constraints |
+|------------|------------|----------|-------------|
+{% for field in fields %}
+{% if not field.hidden and not field.read_only %}
+| {{ field.fieldname }} | {{ field.fieldtype }} | {{ "Yes" if field.reqd else "No" }} | {% if field.options %}Options: {{ field.options[:100] }}{% endif %}{% if field.length %} Max Length: {{ field.length }}{% endif %}{% if field.unique %} UNIQUE{% endif %} |
+{% endif %}
+{% endfor %}
+
+### Field Generation Guidelines
+
+{% for field in fields %}
+{% if not field.hidden and not field.read_only %}
+{% if field.fieldtype == "Data" %}
+- **{{ field.fieldname }}**: Generate realistic {{ field.label or field.fieldname }} text{% if field.length %} (max {{ field.length }} chars){% endif %}
+{% elif field.fieldtype == "Int" %}
+- **{{ field.fieldname }}**: Generate an integer{% if field.options %} ({{ field.options }}){% endif %}
+{% elif field.fieldtype in ["Float", "Currency", "Percent"] %}
+- **{{ field.fieldname }}**: Generate a decimal number{% if field.fieldtype == "Percent" %} between 0-100{% endif %}
+{% elif field.fieldtype == "Select" %}
+- **{{ field.fieldname }}**: Choose from: [{{ field.options | replace("\n", ", ") }}]
+{% elif field.fieldtype == "Check" %}
+- **{{ field.fieldname }}**: Use 0 or 1 (boolean)
+{% elif field.fieldtype == "Date" %}
+- **{{ field.fieldname }}**: Use format YYYY-MM-DD (e.g., 2024-01-15)
+{% elif field.fieldtype == "Datetime" %}
+- **{{ field.fieldname }}**: Use format YYYY-MM-DD HH:MM:SS
+{% elif field.fieldtype == "Time" %}
+- **{{ field.fieldname }}**: Use format HH:MM:SS
+{% elif field.fieldtype in ["Small Text", "Text", "Long Text", "Text Editor"] %}
+- **{{ field.fieldname }}**: Generate appropriate text content for {{ field.label or field.fieldname }}
+{% elif field.fieldtype == "Link" %}
+{% if existing_links and field.fieldname in existing_links %}
+- **{{ field.fieldname }}**: Use one of these existing {{ field.options }} names: {{ existing_links[field.fieldname] | join(", ") }}
+{% else %}
+- **{{ field.fieldname }}**: Reference to {{ field.options }} DocType (skip if not provided)
+{% endif %}
+{% elif field.fieldtype == "Color" %}
+- **{{ field.fieldname }}**: Use hex color format (e.g., #FF5733)
+{% elif field.fieldtype == "Rating" %}
+- **{{ field.fieldname }}**: Use decimal between 0-5 (e.g., 4.5)
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% if constraints %}
+### Additional Constraints
+{% for fieldname, constraint in constraints.items() %}
+- **{{ fieldname }}**: {{ constraint }}
+{% endfor %}
+{% endif %}
+
+{% if seed %}
+### Reproducibility Note
+Use seed hint: {{ seed }} for consistent generation patterns.
+{% endif %}
+
+### Output Format
+
+Return ONLY a valid JSON array containing {{ count }} objects. Each object should have the field names as keys.
+
+Example structure:
+```json
+[
+  {
+{% for field in fields[:5] %}
+{% if not field.hidden and not field.read_only %}
+    "{{ field.fieldname }}": "<generated_value>"{% if not loop.last %},{% endif %}
+
+{% endif %}
+{% endfor %}
+  }
+]
+```
+
+### Important Rules
+1. Return ONLY the JSON array - no additional text or explanation
+2. Each record must be unique
+3. Ensure all required fields have values
+4. Follow the exact field names provided
+5. Respect field type constraints (dates as strings, numbers as numbers)
+6. Do NOT include Link fields unless their values are explicitly provided above
+7. Do NOT include Table/child table fields - they will be handled separately
+8. Skip read-only and hidden fields
+
+Generate the JSON array now:

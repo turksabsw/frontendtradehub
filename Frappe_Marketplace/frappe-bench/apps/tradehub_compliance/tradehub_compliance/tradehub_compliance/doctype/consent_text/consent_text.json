@@ -1,0 +1,293 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "naming_series",
+  "title",
+  "consent_topic",
+  "column_break_basic",
+  "status",
+  "language",
+  "effective_date",
+  "content_section",
+  "content",
+  "content_summary",
+  "version_section",
+  "version",
+  "content_hash",
+  "column_break_version",
+  "previous_version",
+  "change_summary",
+  "legal_section",
+  "legal_references",
+  "data_categories_covered",
+  "column_break_legal",
+  "processing_purposes",
+  "third_party_disclosures",
+  "metadata_section",
+  "created_by",
+  "approved_by",
+  "approved_at",
+  "column_break_meta",
+  "is_current",
+  "superseded_by",
+  "tenant_section",
+  "tenant",
+  "company"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CONSENT-TEXT-.YYYY.-.#####",
+   "default": "CONSENT-TEXT-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "reqd": 1,
+   "description": "Title of this consent text (e.g., 'Marketing Consent v1.2')"
+  },
+  {
+   "fieldname": "consent_topic",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Consent Topic",
+   "options": "Consent Topic",
+   "reqd": 1,
+   "description": "The topic this consent text is for"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending Approval\nActive\nSuperseded\nArchived",
+   "reqd": 1
+  },
+  {
+   "default": "tr",
+   "fieldname": "language",
+   "fieldtype": "Link",
+   "label": "Language",
+   "options": "Language",
+   "description": "Language of the consent text (default: Turkish)"
+  },
+  {
+   "fieldname": "effective_date",
+   "fieldtype": "Date",
+   "label": "Effective Date",
+   "description": "Date from which this text version is effective"
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Consent Text Content"
+  },
+  {
+   "fieldname": "content",
+   "fieldtype": "Text Editor",
+   "label": "Content",
+   "reqd": 1,
+   "description": "The full consent text presented to users. Changes trigger version increment."
+  },
+  {
+   "fieldname": "content_summary",
+   "fieldtype": "Small Text",
+   "label": "Content Summary",
+   "description": "Brief summary of what the user is consenting to"
+  },
+  {
+   "fieldname": "version_section",
+   "fieldtype": "Section Break",
+   "label": "Version Information"
+  },
+  {
+   "default": "1",
+   "fieldname": "version",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Version",
+   "read_only": 1,
+   "description": "Version number (auto-incremented on content change)"
+  },
+  {
+   "fieldname": "content_hash",
+   "fieldtype": "Data",
+   "label": "Content Hash (SHA256)",
+   "read_only": 1,
+   "description": "SHA256 hash of the content for integrity verification"
+  },
+  {
+   "fieldname": "column_break_version",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "previous_version",
+   "fieldtype": "Link",
+   "label": "Previous Version",
+   "options": "Consent Text",
+   "read_only": 1,
+   "description": "Link to the previous version of this consent text"
+  },
+  {
+   "fieldname": "change_summary",
+   "fieldtype": "Small Text",
+   "label": "Change Summary",
+   "description": "Summary of changes from previous version"
+  },
+  {
+   "fieldname": "legal_section",
+   "fieldtype": "Section Break",
+   "label": "Legal Information"
+  },
+  {
+   "fieldname": "legal_references",
+   "fieldtype": "Small Text",
+   "label": "Legal References",
+   "description": "References to relevant KVKK/GDPR articles"
+  },
+  {
+   "fieldname": "data_categories_covered",
+   "fieldtype": "Small Text",
+   "label": "Data Categories Covered",
+   "description": "Categories of personal data covered by this consent"
+  },
+  {
+   "fieldname": "column_break_legal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "processing_purposes",
+   "fieldtype": "Small Text",
+   "label": "Processing Purposes",
+   "description": "Specific purposes for which data will be processed"
+  },
+  {
+   "fieldname": "third_party_disclosures",
+   "fieldtype": "Small Text",
+   "label": "Third Party Disclosures",
+   "description": "Any third parties data may be shared with"
+  },
+  {
+   "fieldname": "metadata_section",
+   "fieldtype": "Section Break",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "description": "User who approved this consent text"
+  },
+  {
+   "fieldname": "approved_at",
+   "fieldtype": "Datetime",
+   "label": "Approved At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_current",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Current Version",
+   "description": "Whether this is the current active version for its topic"
+  },
+  {
+   "fieldname": "superseded_by",
+   "fieldtype": "Link",
+   "label": "Superseded By",
+   "options": "Consent Text",
+   "read_only": 1,
+   "description": "Newer version that superseded this one"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Multi-Tenant",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Consent Text",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "All"
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "title, consent_topic, version, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

@@ -1,0 +1,622 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "BUYER-.#####",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "buyer_name",
+  "user",
+  "buyer_type",
+  "buyer_category",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "organization",
+  "contact_section",
+  "display_name",
+  "contact_email",
+  "contact_phone",
+  "column_break_contact",
+  "mobile",
+  "whatsapp",
+  "address_section",
+  "addresses",
+  "deprecated_address_section",
+  "default_address",
+  "address_line_1",
+  "address_line_2",
+  "city",
+  "column_break_address",
+  "state",
+  "country",
+  "postal_code",
+  "tax_section",
+  "tax_id",
+  "tax_id_type",
+  "column_break_tax",
+  "wants_e_invoice",
+  "company_name",
+  "verification_section",
+  "email_verified",
+  "phone_verified",
+  "column_break_verification",
+  "kyc_profile",
+  "identity_verified",
+  "statistics_section",
+  "total_orders",
+  "total_spent",
+  "column_break_stats",
+  "average_order_value",
+  "last_order_date",
+  "group_buy_section",
+  "total_group_buys",
+  "total_commitments",
+  "column_break_gb",
+  "total_commitment_amount",
+  "successful_group_buys",
+  "preferences_section",
+  "preferred_payment_method",
+  "preferred_language",
+  "column_break_prefs",
+  "receives_marketing",
+  "receives_notifications",
+  "interest_section",
+  "interest_categories",
+  "timestamps_section",
+  "joined_at",
+  "last_active_at",
+  "column_break_timestamps",
+  "created_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "Individual",
+   "fieldname": "buyer_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer Type",
+   "options": "Individual\nBusiness\nWholesaler",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer_category",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Buyer Category",
+   "options": "Buyer Category",
+   "description": "Classification of buyer (e.g., Retailer, Wholesaler, Distributor)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nSuspended\nBlocked",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "description": "The tenant this buyer belongs to"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization",
+   "description": "Business organization for this buyer (if applicable)"
+  },
+  {
+   "fieldname": "contact_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "display_name",
+   "fieldtype": "Data",
+   "label": "Display Name",
+   "description": "Public display name"
+  },
+  {
+   "fieldname": "contact_email",
+   "fieldtype": "Data",
+   "label": "Contact Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Contact Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "whatsapp",
+   "fieldtype": "Data",
+   "label": "WhatsApp",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Addresses"
+  },
+  {
+   "fieldname": "addresses",
+   "fieldtype": "Table",
+   "label": "Addresses",
+   "options": "Address Item",
+   "description": "Buyer addresses (billing, shipping)"
+  },
+  {
+   "fieldname": "deprecated_address_section",
+   "fieldtype": "Section Break",
+   "label": "[DEPRECATED] Legacy Address Fields",
+   "collapsible": 1,
+   "hidden": 1,
+   "description": "These fields are deprecated. Use the addresses table above."
+  },
+  {
+   "fieldname": "default_address",
+   "fieldtype": "Link",
+   "label": "Default Address",
+   "options": "Address",
+   "description": "[DEPRECATED] Use addresses table instead",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1",
+   "description": "[DEPRECATED] Use addresses table instead",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2",
+   "description": "[DEPRECATED] Use addresses table instead",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "City",
+   "description": "[DEPRECATED] Use addresses table instead",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_address",
+   "fieldtype": "Column Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State/Province",
+   "description": "[DEPRECATED] Use addresses table instead",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "description": "[DEPRECATED] Use addresses table instead",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code",
+   "description": "[DEPRECATED] Use addresses table instead",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "tax_section",
+   "fieldtype": "Section Break",
+   "label": "Tax Information (for B2B)"
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID",
+   "description": "VKN or TCKN for invoicing"
+  },
+  {
+   "default": "TCKN",
+   "fieldname": "tax_id_type",
+   "fieldtype": "Select",
+   "label": "Tax ID Type",
+   "options": "TCKN\nVKN"
+  },
+  {
+   "fieldname": "column_break_tax",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "wants_e_invoice",
+   "fieldtype": "Check",
+   "label": "Wants E-Invoice",
+   "description": "Buyer prefers electronic invoice"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name",
+   "description": "For B2B buyers"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "verification_section",
+   "fieldtype": "Section Break",
+   "label": "Verification"
+  },
+  {
+   "default": "0",
+   "fieldname": "email_verified",
+   "fieldtype": "Check",
+   "label": "Email Verified"
+  },
+  {
+   "default": "0",
+   "fieldname": "phone_verified",
+   "fieldtype": "Check",
+   "label": "Phone Verified"
+  },
+  {
+   "fieldname": "column_break_verification",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "kyc_profile",
+   "fieldtype": "Link",
+   "label": "KYC Profile",
+   "options": "KYC Profile"
+  },
+  {
+   "default": "0",
+   "fieldname": "identity_verified",
+   "fieldtype": "Check",
+   "label": "Identity Verified"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_orders",
+   "fieldtype": "Int",
+   "label": "Total Orders",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_spent",
+   "fieldtype": "Currency",
+   "label": "Total Spent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "average_order_value",
+   "fieldtype": "Currency",
+   "label": "Avg Order Value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_order_date",
+   "fieldtype": "Date",
+   "label": "Last Order Date",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "group_buy_section",
+   "fieldtype": "Section Break",
+   "label": "Group Buy Statistics"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_group_buys",
+   "fieldtype": "Int",
+   "label": "Total Group Buys",
+   "read_only": 1,
+   "description": "Number of group buys participated in"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_commitments",
+   "fieldtype": "Int",
+   "label": "Total Commitments",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_gb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_commitment_amount",
+   "fieldtype": "Currency",
+   "label": "Total Commitment Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "successful_group_buys",
+   "fieldtype": "Int",
+   "label": "Successful Group Buys",
+   "read_only": 1,
+   "description": "Group buys that reached target"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "preferences_section",
+   "fieldtype": "Section Break",
+   "label": "Preferences"
+  },
+  {
+   "default": "Credit Card",
+   "fieldname": "preferred_payment_method",
+   "fieldtype": "Select",
+   "label": "Preferred Payment Method",
+   "options": "Credit Card\nDebit Card\nBank Transfer\nDigital Wallet\nCash on Delivery"
+  },
+  {
+   "default": "tr",
+   "fieldname": "preferred_language",
+   "fieldtype": "Link",
+   "label": "Preferred Language",
+   "options": "Language"
+  },
+  {
+   "fieldname": "column_break_prefs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "receives_marketing",
+   "fieldtype": "Check",
+   "label": "Receives Marketing"
+  },
+  {
+   "default": "1",
+   "fieldname": "receives_notifications",
+   "fieldtype": "Check",
+   "label": "Receives Notifications"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "interest_section",
+   "fieldtype": "Section Break",
+   "label": "Interest Categories"
+  },
+  {
+   "fieldname": "interest_categories",
+   "fieldtype": "Table",
+   "label": "Interest Categories",
+   "options": "Buyer Interest Category",
+   "description": "Product categories the buyer is interested in"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information"
+  },
+  {
+   "fieldname": "joined_at",
+   "fieldtype": "Datetime",
+   "label": "Joined At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_active_at",
+   "fieldtype": "Datetime",
+   "label": "Last Active At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "billing_same_as_shipping",
+   "fieldtype": "Check",
+   "label": "Billing Same as Shipping",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "billing_address_line_1",
+   "fieldtype": "Data",
+   "label": "Billing Address Line 1",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "billing_address_line_2",
+   "fieldtype": "Data",
+   "label": "Billing Address Line 2",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "billing_city",
+   "fieldtype": "Data",
+   "label": "Billing City",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "billing_state",
+   "fieldtype": "Data",
+   "label": "Billing State",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "billing_postal_code",
+   "fieldtype": "Data",
+   "label": "Billing Postal Code",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "billing_country",
+   "fieldtype": "Link",
+   "label": "Billing Country",
+   "in_list_view": 0,
+   "options": "Country"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "in_list_view": 0,
+   "options": "Currency"
+  },
+  {
+   "fieldname": "segment",
+   "fieldtype": "Data",
+   "label": "Segment",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "verification_status",
+   "fieldtype": "Select",
+   "label": "Verification Status",
+   "in_list_view": 0,
+   "options": "\nPending\nVerified\nRejected\nSuspended"
+  },
+  {
+   "fieldname": "total_purchase_value",
+   "fieldtype": "Currency",
+   "label": "Total Purchase Value",
+   "in_list_view": 0,
+   "options": "currency"
+  },
+  {
+   "fieldname": "payment_on_time_rate",
+   "fieldtype": "Percent",
+   "label": "Payment On Time Rate",
+   "in_list_view": 0
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Group Buy Commitment",
+   "link_fieldname": "buyer"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Marketplace Order",
+   "link_fieldname": "buyer"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Cart",
+   "link_fieldname": "buyer"
+  }
+ ],
+ "modified": "2026-02-12 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Buyer Profile",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "role": "All"
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "buyer_name, user, contact_email, city",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "buyer_name",
+ "track_changes": 1
+}

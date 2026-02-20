@@ -1,0 +1,318 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "creation": "2024-01-28 12:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "llm_providers_section",
+    "enable_ai_generation",
+    "primary_llm_provider",
+    "column_break_llm1",
+    "fallback_to_faker",
+    "gemini_section",
+    "gemini_api_key",
+    "gemini_model",
+    "openai_section",
+    "openai_api_key",
+    "openai_model",
+    "anthropic_section",
+    "anthropic_api_key",
+    "anthropic_model",
+    "ollama_section",
+    "ollama_enabled",
+    "ollama_host",
+    "column_break_ollama",
+    "ollama_model",
+    "image_services_section",
+    "unsplash_access_key",
+    "unsplash_default_query",
+    "generation_defaults_section",
+    "default_locale",
+    "default_batch_size",
+    "column_break_defaults",
+    "default_record_count",
+    "seed_value",
+    "generation_options_section",
+    "auto_resolve_dependencies",
+    "fail_on_error",
+    "column_break_options",
+    "log_generation_details",
+    "production_protection",
+    "exclusions_section",
+    "excluded_apps",
+    "excluded_doctypes"
+  ],
+  "fields": [
+    {
+      "fieldname": "llm_providers_section",
+      "fieldtype": "Section Break",
+      "label": "LLM Providers"
+    },
+    {
+      "default": "0",
+      "description": "Enable AI-powered generation using LLM providers for contextual data",
+      "fieldname": "enable_ai_generation",
+      "fieldtype": "Check",
+      "label": "Enable AI Generation"
+    },
+    {
+      "depends_on": "eval:doc.enable_ai_generation",
+      "description": "Select the primary LLM provider for AI-powered generation",
+      "fieldname": "primary_llm_provider",
+      "fieldtype": "Select",
+      "label": "Primary LLM Provider",
+      "options": "\nGemini\nOpenAI\nAnthropic\nOllama"
+    },
+    {
+      "fieldname": "column_break_llm1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "description": "Fall back to Faker-based generation if LLM fails",
+      "fieldname": "fallback_to_faker",
+      "fieldtype": "Check",
+      "label": "Fallback to Faker on Error"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.enable_ai_generation",
+      "fieldname": "gemini_section",
+      "fieldtype": "Section Break",
+      "label": "Google Gemini"
+    },
+    {
+      "description": "Google Gemini API key (stored securely encrypted)",
+      "fieldname": "gemini_api_key",
+      "fieldtype": "Password",
+      "label": "Gemini API Key"
+    },
+    {
+      "default": "gemini-2.0-flash",
+      "description": "Gemini model to use for generation",
+      "fieldname": "gemini_model",
+      "fieldtype": "Data",
+      "label": "Gemini Model"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.enable_ai_generation",
+      "fieldname": "openai_section",
+      "fieldtype": "Section Break",
+      "label": "OpenAI"
+    },
+    {
+      "description": "OpenAI API key (stored securely encrypted)",
+      "fieldname": "openai_api_key",
+      "fieldtype": "Password",
+      "label": "OpenAI API Key"
+    },
+    {
+      "default": "gpt-4o-mini",
+      "description": "OpenAI model to use for generation",
+      "fieldname": "openai_model",
+      "fieldtype": "Data",
+      "label": "OpenAI Model"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.enable_ai_generation",
+      "fieldname": "anthropic_section",
+      "fieldtype": "Section Break",
+      "label": "Anthropic"
+    },
+    {
+      "description": "Anthropic API key (stored securely encrypted)",
+      "fieldname": "anthropic_api_key",
+      "fieldtype": "Password",
+      "label": "Anthropic API Key"
+    },
+    {
+      "default": "claude-sonnet-4-5",
+      "description": "Anthropic Claude model to use for generation",
+      "fieldname": "anthropic_model",
+      "fieldtype": "Data",
+      "label": "Anthropic Model"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.enable_ai_generation",
+      "fieldname": "ollama_section",
+      "fieldtype": "Section Break",
+      "label": "Ollama (Local LLM)"
+    },
+    {
+      "default": "0",
+      "description": "Enable Ollama for local LLM execution (requires Ollama server running)",
+      "fieldname": "ollama_enabled",
+      "fieldtype": "Check",
+      "label": "Enable Ollama"
+    },
+    {
+      "default": "http://localhost:11434",
+      "depends_on": "eval:doc.ollama_enabled",
+      "description": "Ollama server URL",
+      "fieldname": "ollama_host",
+      "fieldtype": "Data",
+      "label": "Ollama Host"
+    },
+    {
+      "fieldname": "column_break_ollama",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "gemma3",
+      "depends_on": "eval:doc.ollama_enabled",
+      "description": "Ollama model to use (must be pre-pulled)",
+      "fieldname": "ollama_model",
+      "fieldtype": "Data",
+      "label": "Ollama Model"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "image_services_section",
+      "fieldtype": "Section Break",
+      "label": "Image Services"
+    },
+    {
+      "description": "Unsplash API access key for contextual image generation",
+      "fieldname": "unsplash_access_key",
+      "fieldtype": "Password",
+      "label": "Unsplash Access Key"
+    },
+    {
+      "default": "business",
+      "description": "Default search query for Unsplash images",
+      "fieldname": "unsplash_default_query",
+      "fieldtype": "Data",
+      "label": "Default Image Query"
+    },
+    {
+      "fieldname": "generation_defaults_section",
+      "fieldtype": "Section Break",
+      "label": "Generation Defaults"
+    },
+    {
+      "default": "tr_TR",
+      "description": "Default Faker locale for data generation",
+      "fieldname": "default_locale",
+      "fieldtype": "Select",
+      "label": "Default Locale",
+      "options": "tr_TR\nen_US\nen_GB\nde_DE\nfr_FR\nes_ES\nit_IT\npt_BR\nja_JP\nzh_CN\nar_SA"
+    },
+    {
+      "default": "100",
+      "description": "Number of records to process in each batch (for large generations)",
+      "fieldname": "default_batch_size",
+      "fieldtype": "Int",
+      "label": "Default Batch Size"
+    },
+    {
+      "fieldname": "column_break_defaults",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "10",
+      "description": "Default number of records to generate per DocType",
+      "fieldname": "default_record_count",
+      "fieldtype": "Int",
+      "label": "Default Record Count"
+    },
+    {
+      "description": "Optional seed value for reproducible random generation (leave empty for random seed)",
+      "fieldname": "seed_value",
+      "fieldtype": "Int",
+      "label": "Seed Value"
+    },
+    {
+      "fieldname": "generation_options_section",
+      "fieldtype": "Section Break",
+      "label": "Generation Options"
+    },
+    {
+      "default": "1",
+      "description": "Automatically create dependent DocTypes when generating records with Link fields",
+      "fieldname": "auto_resolve_dependencies",
+      "fieldtype": "Check",
+      "label": "Auto-Resolve Dependencies"
+    },
+    {
+      "default": "0",
+      "description": "Stop generation on first error instead of continuing with other records",
+      "fieldname": "fail_on_error",
+      "fieldtype": "Check",
+      "label": "Fail on Error"
+    },
+    {
+      "fieldname": "column_break_options",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "description": "Log detailed generation information for each record",
+      "fieldname": "log_generation_details",
+      "fieldtype": "Check",
+      "label": "Log Generation Details"
+    },
+    {
+      "default": "1",
+      "description": "Block generation in production environments (recommended)",
+      "fieldname": "production_protection",
+      "fieldtype": "Check",
+      "label": "Production Protection"
+    },
+    {
+      "fieldname": "exclusions_section",
+      "fieldtype": "Section Break",
+      "label": "Exclusions"
+    },
+    {
+      "description": "Apps to exclude from mock data generation",
+      "fieldname": "excluded_apps",
+      "fieldtype": "Table",
+      "label": "Excluded Apps",
+      "options": "Mock Excluded App"
+    },
+    {
+      "description": "DocTypes to exclude from mock data generation",
+      "fieldname": "excluded_doctypes",
+      "fieldtype": "Table",
+      "label": "Excluded DocTypes",
+      "options": "Mock Excluded DocType"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "issingle": 1,
+  "links": [],
+  "modified": "2024-01-28 12:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Mock Data Engine",
+  "name": "Mock Engine Settings",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "print": 1,
+      "read": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "print": 1,
+      "read": 1,
+      "role": "Administrator",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "track_changes": 1
+}

@@ -1,0 +1,936 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "shipment_id",
+  "sub_order",
+  "seller",
+  "column_break_basic",
+  "status",
+  "shipment_type",
+  "tenant",
+  "carrier_section",
+  "carrier",
+  "carrier_account",
+  "service_type",
+  "column_break_carrier",
+  "tracking_number",
+  "tracking_url",
+  "awb_number",
+  "origin_section",
+  "sender_name",
+  "sender_phone",
+  "origin_address_line1",
+  "origin_address_line2",
+  "column_break_origin",
+  "origin_city",
+  "origin_state",
+  "origin_postal_code",
+  "origin_country",
+  "destination_section",
+  "recipient_name",
+  "recipient_phone",
+  "destination_address_line1",
+  "destination_address_line2",
+  "column_break_dest",
+  "destination_city",
+  "destination_state",
+  "destination_postal_code",
+  "destination_country",
+  "package_section",
+  "package_count",
+  "total_weight",
+  "weight_unit",
+  "column_break_package",
+  "total_length",
+  "total_width",
+  "total_height",
+  "dimension_unit",
+  "volumetric_weight",
+  "contents_section",
+  "description",
+  "declared_value",
+  "column_break_contents",
+  "currency",
+  "contains_fragile",
+  "contains_hazmat",
+  "requires_signature",
+  "cost_section",
+  "shipping_cost",
+  "insurance_cost",
+  "handling_cost",
+  "column_break_cost",
+  "additional_charges",
+  "total_cost",
+  "cost_currency",
+  "schedule_section",
+  "pickup_date",
+  "pickup_time_from",
+  "pickup_time_to",
+  "column_break_schedule",
+  "expected_delivery_date",
+  "actual_delivery_date",
+  "delivery_time",
+  "delivery_section",
+  "delivery_status",
+  "delivery_attempts",
+  "delivered_to",
+  "column_break_delivery",
+  "delivery_signature",
+  "proof_of_delivery",
+  "delivery_notes",
+  "timestamps_section",
+  "created_at",
+  "picked_up_at",
+  "in_transit_at",
+  "column_break_timestamps",
+  "out_for_delivery_at",
+  "delivered_at",
+  "exception_at",
+  "return_section",
+  "is_return",
+  "return_reason",
+  "original_shipment",
+  "column_break_return",
+  "return_status",
+  "return_tracking_number",
+  "label_section",
+  "label_generated",
+  "label_url",
+  "label_format",
+  "column_break_label",
+  "manifest_id",
+  "batch_id",
+  "notes_section",
+  "seller_notes",
+  "internal_notes",
+  "carrier_notes",
+  "system_section",
+  "naming_series",
+  "carrier_response",
+  "last_sync_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Shipment Information"
+  },
+  {
+   "description": "Unique shipment identifier",
+   "fieldname": "shipment_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Shipment ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "sub_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sub Order",
+   "options": "Sub Order",
+   "reqd": 1
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nLabel Generated\nPickup Scheduled\nPicked Up\nIn Transit\nOut for Delivery\nDelivered\nFailed Delivery\nReturning\nReturned\nException\nCancelled",
+   "reqd": 1
+  },
+  {
+   "default": "Standard",
+   "fieldname": "shipment_type",
+   "fieldtype": "Select",
+   "label": "Shipment Type",
+   "options": "Standard\nExpress\nSame Day\nNext Day\nEconomy\nInternational"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "carrier_section",
+   "fieldtype": "Section Break",
+   "label": "Carrier Information"
+  },
+  {
+   "fieldname": "carrier",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Carrier",
+   "options": "\nYurtici Kargo\nAras Kargo\nMNG Kargo\nSuratKargo\nPTT Kargo\nUPS\nDHL\nFedEx\nTrendyol Express\nHepsiJet\nOther",
+   "reqd": 1
+  },
+  {
+   "description": "Carrier account ID for API integration",
+   "fieldname": "carrier_account",
+   "fieldtype": "Data",
+   "label": "Carrier Account"
+  },
+  {
+   "description": "Service type offered by carrier",
+   "fieldname": "service_type",
+   "fieldtype": "Data",
+   "label": "Service Type"
+  },
+  {
+   "fieldname": "column_break_carrier",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tracking_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tracking Number"
+  },
+  {
+   "fieldname": "tracking_url",
+   "fieldtype": "Data",
+   "label": "Tracking URL"
+  },
+  {
+   "description": "Air Waybill Number (for air shipments)",
+   "fieldname": "awb_number",
+   "fieldtype": "Data",
+   "label": "AWB Number"
+  },
+  {
+   "fieldname": "origin_section",
+   "fieldtype": "Section Break",
+   "label": "Origin Address"
+  },
+  {
+   "fieldname": "sender_name",
+   "fieldtype": "Data",
+   "label": "Sender Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sender_phone",
+   "fieldtype": "Data",
+   "label": "Sender Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "origin_address_line1",
+   "fieldtype": "Data",
+   "label": "Address Line 1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "origin_address_line2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "column_break_origin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "origin_city",
+   "fieldtype": "Data",
+   "label": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "origin_state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "origin_postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "origin_country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "destination_section",
+   "fieldtype": "Section Break",
+   "label": "Destination Address"
+  },
+  {
+   "fieldname": "recipient_name",
+   "fieldtype": "Data",
+   "label": "Recipient Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "recipient_phone",
+   "fieldtype": "Data",
+   "label": "Recipient Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "destination_address_line1",
+   "fieldtype": "Data",
+   "label": "Address Line 1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "destination_address_line2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "column_break_dest",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "destination_city",
+   "fieldtype": "Data",
+   "label": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "destination_state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "destination_postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "destination_country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "package_section",
+   "fieldtype": "Section Break",
+   "label": "Package Details"
+  },
+  {
+   "default": "1",
+   "fieldname": "package_count",
+   "fieldtype": "Int",
+   "label": "Package Count"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "label": "Total Weight"
+  },
+  {
+   "default": "kg",
+   "fieldname": "weight_unit",
+   "fieldtype": "Select",
+   "label": "Weight Unit",
+   "options": "kg\nlb\ng"
+  },
+  {
+   "fieldname": "column_break_package",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_length",
+   "fieldtype": "Float",
+   "label": "Length"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_width",
+   "fieldtype": "Float",
+   "label": "Width"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_height",
+   "fieldtype": "Float",
+   "label": "Height"
+  },
+  {
+   "default": "cm",
+   "fieldname": "dimension_unit",
+   "fieldtype": "Select",
+   "label": "Dimension Unit",
+   "options": "cm\nin\nm"
+  },
+  {
+   "default": "0",
+   "description": "Calculated volumetric weight",
+   "fieldname": "volumetric_weight",
+   "fieldtype": "Float",
+   "label": "Volumetric Weight",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "contents_section",
+   "fieldtype": "Section Break",
+   "label": "Contents & Value"
+  },
+  {
+   "description": "Description of package contents",
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Contents Description"
+  },
+  {
+   "default": "0",
+   "description": "Declared value for customs/insurance",
+   "fieldname": "declared_value",
+   "fieldtype": "Currency",
+   "label": "Declared Value",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_contents",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "contains_fragile",
+   "fieldtype": "Check",
+   "label": "Contains Fragile Items"
+  },
+  {
+   "default": "0",
+   "fieldname": "contains_hazmat",
+   "fieldtype": "Check",
+   "label": "Contains Hazardous Materials"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_signature",
+   "fieldtype": "Check",
+   "label": "Requires Signature"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "cost_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping Costs"
+  },
+  {
+   "default": "0",
+   "fieldname": "shipping_cost",
+   "fieldtype": "Currency",
+   "label": "Shipping Cost",
+   "options": "cost_currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "insurance_cost",
+   "fieldtype": "Currency",
+   "label": "Insurance Cost",
+   "options": "cost_currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "handling_cost",
+   "fieldtype": "Currency",
+   "label": "Handling Cost",
+   "options": "cost_currency"
+  },
+  {
+   "fieldname": "column_break_cost",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Any additional charges",
+   "fieldname": "additional_charges",
+   "fieldtype": "Currency",
+   "label": "Additional Charges",
+   "options": "cost_currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost",
+   "options": "cost_currency",
+   "read_only": 1
+  },
+  {
+   "default": "TRY",
+   "fieldname": "cost_currency",
+   "fieldtype": "Link",
+   "label": "Cost Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule & Delivery"
+  },
+  {
+   "fieldname": "pickup_date",
+   "fieldtype": "Date",
+   "label": "Pickup Date"
+  },
+  {
+   "description": "Pickup time window start",
+   "fieldname": "pickup_time_from",
+   "fieldtype": "Time",
+   "label": "Pickup Time From"
+  },
+  {
+   "description": "Pickup time window end",
+   "fieldname": "pickup_time_to",
+   "fieldtype": "Time",
+   "label": "Pickup Time To"
+  },
+  {
+   "fieldname": "column_break_schedule",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expected_delivery_date",
+   "fieldtype": "Date",
+   "label": "Expected Delivery Date"
+  },
+  {
+   "fieldname": "actual_delivery_date",
+   "fieldtype": "Date",
+   "label": "Actual Delivery Date"
+  },
+  {
+   "fieldname": "delivery_time",
+   "fieldtype": "Time",
+   "label": "Delivery Time"
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Details"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "delivery_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Delivery Status",
+   "options": "Pending\nAttempted\nDelivered\nFailed\nRefused\nReturning\nReturned"
+  },
+  {
+   "default": "0",
+   "fieldname": "delivery_attempts",
+   "fieldtype": "Int",
+   "label": "Delivery Attempts"
+  },
+  {
+   "description": "Name of person who received delivery",
+   "fieldname": "delivered_to",
+   "fieldtype": "Data",
+   "label": "Delivered To"
+  },
+  {
+   "fieldname": "column_break_delivery",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Digital signature image",
+   "fieldname": "delivery_signature",
+   "fieldtype": "Attach Image",
+   "label": "Delivery Signature"
+  },
+  {
+   "description": "Photo proof of delivery",
+   "fieldname": "proof_of_delivery",
+   "fieldtype": "Attach Image",
+   "label": "Proof of Delivery"
+  },
+  {
+   "description": "Notes about delivery",
+   "fieldname": "delivery_notes",
+   "fieldtype": "Small Text",
+   "label": "Delivery Notes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "Timestamps"
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "picked_up_at",
+   "fieldtype": "Datetime",
+   "label": "Picked Up At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "in_transit_at",
+   "fieldtype": "Datetime",
+   "label": "In Transit At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "out_for_delivery_at",
+   "fieldtype": "Datetime",
+   "label": "Out for Delivery At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivered_at",
+   "fieldtype": "Datetime",
+   "label": "Delivered At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "exception_at",
+   "fieldtype": "Datetime",
+   "label": "Exception At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "return_section",
+   "fieldtype": "Section Break",
+   "label": "Return Information"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_return",
+   "fieldtype": "Check",
+   "label": "Is Return Shipment"
+  },
+  {
+   "depends_on": "eval:doc.is_return",
+   "fieldname": "return_reason",
+   "fieldtype": "Select",
+   "label": "Return Reason",
+   "options": "\nCustomer Request\nWrong Item\nDamaged Item\nDefective Item\nRefused Delivery\nAddress Issue\nOther"
+  },
+  {
+   "depends_on": "eval:doc.is_return",
+   "description": "Link to original outbound shipment",
+   "fieldname": "original_shipment",
+   "fieldtype": "Link",
+   "label": "Original Shipment",
+   "options": "Marketplace Shipment"
+  },
+  {
+   "fieldname": "column_break_return",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_return || doc.status=='Returning' || doc.status=='Returned'",
+   "fieldname": "return_status",
+   "fieldtype": "Select",
+   "label": "Return Status",
+   "options": "\nPending\nIn Transit\nReceived\nProcessing\nCompleted"
+  },
+  {
+   "depends_on": "eval:doc.is_return || doc.status=='Returning'",
+   "fieldname": "return_tracking_number",
+   "fieldtype": "Data",
+   "label": "Return Tracking Number"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "label_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping Label"
+  },
+  {
+   "default": "0",
+   "fieldname": "label_generated",
+   "fieldtype": "Check",
+   "label": "Label Generated"
+  },
+  {
+   "depends_on": "eval:doc.label_generated",
+   "fieldname": "label_url",
+   "fieldtype": "Data",
+   "label": "Label URL"
+  },
+  {
+   "default": "PDF",
+   "depends_on": "eval:doc.label_generated",
+   "fieldname": "label_format",
+   "fieldtype": "Select",
+   "label": "Label Format",
+   "options": "PDF\nZPL\nPNG\nGIF"
+  },
+  {
+   "fieldname": "column_break_label",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Carrier manifest ID",
+   "fieldname": "manifest_id",
+   "fieldtype": "Data",
+   "label": "Manifest ID"
+  },
+  {
+   "description": "Batch ID for bulk shipments",
+   "fieldname": "batch_id",
+   "fieldtype": "Data",
+   "label": "Batch ID"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "description": "Notes from seller",
+   "fieldname": "seller_notes",
+   "fieldtype": "Small Text",
+   "label": "Seller Notes"
+  },
+  {
+   "description": "Internal platform notes",
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "description": "Notes from carrier",
+   "fieldname": "carrier_notes",
+   "fieldtype": "Small Text",
+   "label": "Carrier Notes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System"
+  },
+  {
+   "default": "SHP-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "SHP-.YYYY.-.#####\nSHIP-.#####"
+  },
+  {
+   "description": "Raw response from carrier API",
+   "fieldname": "carrier_response",
+   "fieldtype": "Code",
+   "label": "Carrier Response",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "description": "Last time tracking was synced from carrier",
+   "fieldname": "last_sync_at",
+   "fieldtype": "Datetime",
+   "label": "Last Sync At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "logistics_provider",
+   "fieldtype": "Link",
+   "label": "Logistics Provider",
+   "in_list_view": 0,
+   "options": "Logistics Provider"
+  },
+  {
+   "fieldname": "package_length",
+   "fieldtype": "Float",
+   "label": "Package Length (cm)",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "package_width",
+   "fieldtype": "Float",
+   "label": "Package Width (cm)",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "package_height",
+   "fieldtype": "Float",
+   "label": "Package Height (cm)",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "total_volume",
+   "fieldtype": "Float",
+   "label": "Total Volume",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "pod_verified",
+   "fieldtype": "Check",
+   "label": "POD Verified",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "received_by",
+   "fieldtype": "Data",
+   "label": "Received By",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "receiver_signature",
+   "fieldtype": "Attach Image",
+   "label": "Receiver Signature",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "signature_captured_at",
+   "fieldtype": "Datetime",
+   "label": "Signature Captured At",
+   "in_list_view": 0
+  }
+ ],
+ "has_web_view": 0,
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Sub Order",
+   "link_fieldname": "sub_order"
+  },
+  {
+   "group": "Tracking",
+   "link_doctype": "Tracking Event",
+   "link_fieldname": "shipment"
+  }
+ ],
+ "modified": "2026-02-12 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Marketplace Shipment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "shipment_id, tracking_number, carrier, sub_order, recipient_name",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Pending"
+  },
+  {
+   "color": "blue",
+   "title": "Label Generated"
+  },
+  {
+   "color": "blue",
+   "title": "Pickup Scheduled"
+  },
+  {
+   "color": "yellow",
+   "title": "Picked Up"
+  },
+  {
+   "color": "purple",
+   "title": "In Transit"
+  },
+  {
+   "color": "blue",
+   "title": "Out for Delivery"
+  },
+  {
+   "color": "green",
+   "title": "Delivered"
+  },
+  {
+   "color": "red",
+   "title": "Failed Delivery"
+  },
+  {
+   "color": "orange",
+   "title": "Returning"
+  },
+  {
+   "color": "red",
+   "title": "Returned"
+  },
+  {
+   "color": "red",
+   "title": "Exception"
+  },
+  {
+   "color": "red",
+   "title": "Cancelled"
+  }
+ ],
+ "title_field": "shipment_id",
+ "track_changes": 1
+}

@@ -1,0 +1,235 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:attribute_name",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "attribute_name",
+    "attribute_label",
+    "column_break_1",
+    "attribute_type",
+    "is_active",
+    "settings_section",
+    "is_required",
+    "is_variant",
+    "column_break_2",
+    "is_filterable",
+    "is_comparable",
+    "display_section",
+    "display_order",
+    "column_break_3",
+    "icon",
+    "description",
+    "values_section",
+    "attribute_values",
+    "numeric_section",
+    "numeric_min",
+    "numeric_max",
+    "column_break_4",
+    "numeric_step",
+    "numeric_unit"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "attribute_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Attribute Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "description": "Display label for the attribute (can be different from name)",
+      "fieldname": "attribute_label",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Attribute Label"
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Select",
+      "fieldname": "attribute_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Attribute Type",
+      "options": "Select\nText\nNumeric\nBoolean\nDate\nColor",
+      "reqd": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Is Active"
+    },
+    {
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Settings"
+    },
+    {
+      "default": "0",
+      "description": "If checked, this attribute must be provided for products in categories using this attribute",
+      "fieldname": "is_required",
+      "fieldtype": "Check",
+      "label": "Is Required"
+    },
+    {
+      "default": "0",
+      "description": "If checked, this attribute can be used to create product variants (e.g., Size, Color)",
+      "fieldname": "is_variant",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Is Variant"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "description": "If checked, this attribute will appear in product filters",
+      "fieldname": "is_filterable",
+      "fieldtype": "Check",
+      "label": "Is Filterable"
+    },
+    {
+      "default": "0",
+      "description": "If checked, this attribute will be used in product comparisons",
+      "fieldname": "is_comparable",
+      "fieldtype": "Check",
+      "label": "Is Comparable"
+    },
+    {
+      "fieldname": "display_section",
+      "fieldtype": "Section Break",
+      "label": "Display Settings"
+    },
+    {
+      "default": "0",
+      "description": "Lower numbers appear first",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "label": "Display Order"
+    },
+    {
+      "fieldname": "column_break_3",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Icon to display alongside attribute (e.g., 'fa fa-palette')",
+      "fieldname": "icon",
+      "fieldtype": "Data",
+      "label": "Icon"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "depends_on": "eval:doc.attribute_type=='Select' || doc.attribute_type=='Color'",
+      "fieldname": "values_section",
+      "fieldtype": "Section Break",
+      "label": "Attribute Values"
+    },
+    {
+      "depends_on": "eval:doc.attribute_type=='Select' || doc.attribute_type=='Color'",
+      "fieldname": "attribute_values",
+      "fieldtype": "Table",
+      "label": "Attribute Values",
+      "options": "Attribute Value"
+    },
+    {
+      "depends_on": "eval:doc.attribute_type=='Numeric'",
+      "fieldname": "numeric_section",
+      "fieldtype": "Section Break",
+      "label": "Numeric Settings"
+    },
+    {
+      "depends_on": "eval:doc.attribute_type=='Numeric'",
+      "fieldname": "numeric_min",
+      "fieldtype": "Float",
+      "label": "Minimum Value"
+    },
+    {
+      "depends_on": "eval:doc.attribute_type=='Numeric'",
+      "fieldname": "numeric_max",
+      "fieldtype": "Float",
+      "label": "Maximum Value"
+    },
+    {
+      "fieldname": "column_break_4",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "depends_on": "eval:doc.attribute_type=='Numeric'",
+      "fieldname": "numeric_step",
+      "fieldtype": "Float",
+      "label": "Step Value"
+    },
+    {
+      "depends_on": "eval:doc.attribute_type=='Numeric'",
+      "description": "Unit of measurement (e.g., cm, kg, GB)",
+      "fieldname": "numeric_unit",
+      "fieldtype": "Data",
+      "label": "Unit"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Attribute",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "attribute_name, attribute_label, attribute_type",
+  "show_name_in_global_search": 1,
+  "sort_field": "display_order",
+  "sort_order": "ASC",
+  "states": [],
+  "title_field": "attribute_name",
+  "track_changes": 1
+}

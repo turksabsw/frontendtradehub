@@ -1,0 +1,997 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "sub_order_id",
+  "marketplace_order",
+  "order_date",
+  "column_break_basic",
+  "seller",
+  "status",
+  "tenant",
+  "buyer_section",
+  "buyer",
+  "buyer_name",
+  "buyer_email",
+  "column_break_buyer",
+  "buyer_phone",
+  "buyer_tax_id",
+  "items_section",
+  "items",
+  "totals_section",
+  "currency",
+  "subtotal",
+  "discount_amount",
+  "column_break_totals",
+  "shipping_amount",
+  "tax_amount",
+  "grand_total",
+  "commission_section",
+  "commission_rate",
+  "commission_amount",
+  "column_break_commission",
+  "seller_payout",
+  "payout_status",
+  "payout_reference",
+  "payment_section",
+  "payment_status",
+  "paid_at",
+  "column_break_payment",
+  "escrow_status",
+  "escrow_release_date",
+  "escrow_released_at",
+  "fulfillment_section",
+  "fulfillment_status",
+  "items_packed",
+  "items_shipped",
+  "column_break_fulfillment",
+  "items_delivered",
+  "items_returned",
+  "fully_fulfilled",
+  "shipping_address_section",
+  "shipping_address_name",
+  "shipping_address_line1",
+  "shipping_address_line2",
+  "column_break_shipping_addr",
+  "shipping_city",
+  "shipping_state",
+  "shipping_postal_code",
+  "shipping_country",
+  "shipping_phone",
+  "shipment_section",
+  "carrier",
+  "tracking_number",
+  "tracking_url",
+  "column_break_shipment",
+  "shipment",
+  "shipped_at",
+  "estimated_delivery_date",
+  "actual_delivery_date",
+  "invoice_section",
+  "requires_invoice",
+  "invoice_type",
+  "e_invoice_enabled",
+  "column_break_invoice",
+  "e_invoice_status",
+  "e_invoice_uuid",
+  "e_invoice_number",
+  "e_invoice_date",
+  "e_invoice_pdf",
+  "erpnext_section",
+  "erpnext_sales_order",
+  "erpnext_delivery_note",
+  "column_break_erpnext",
+  "erpnext_sales_invoice",
+  "erpnext_payment_entry",
+  "cancellation_section",
+  "cancellation_requested",
+  "cancellation_reason",
+  "cancellation_requested_at",
+  "column_break_cancellation",
+  "cancellation_approved",
+  "cancellation_approved_by",
+  "cancelled_at",
+  "refund_section",
+  "refund_requested",
+  "refund_amount",
+  "refund_reason",
+  "column_break_refund",
+  "refund_status",
+  "refund_reference",
+  "refunded_at",
+  "return_section",
+  "return_requested",
+  "return_reason",
+  "return_requested_at",
+  "column_break_return",
+  "return_status",
+  "return_tracking_number",
+  "return_received_at",
+  "notes_section",
+  "seller_notes",
+  "buyer_notes",
+  "internal_notes",
+  "timestamps_section",
+  "accepted_at",
+  "processing_started_at",
+  "packed_at",
+  "column_break_timestamps",
+  "delivered_at",
+  "completed_at",
+  "system_section",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Sub Order Information"
+  },
+  {
+   "description": "Unique sub-order identifier for tracking",
+   "fieldname": "sub_order_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sub Order ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "marketplace_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Marketplace Order",
+   "options": "Marketplace Order",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "order_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Order Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nAccepted\nProcessing\nPacked\nShipped\nIn Transit\nOut for Delivery\nDelivered\nCompleted\nCancelled\nRefunded\nOn Hold\nDisputed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "buyer_section",
+   "fieldtype": "Section Break",
+   "label": "Buyer Information"
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "label": "Buyer",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "buyer_email",
+   "fieldtype": "Data",
+   "label": "Buyer Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_buyer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "buyer_phone",
+   "fieldtype": "Data",
+   "label": "Buyer Phone",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "description": "VKN or TCKN for invoicing",
+   "fieldname": "buyer_tax_id",
+   "fieldtype": "Data",
+   "label": "Buyer Tax ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Order Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Sub Order Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Order Totals"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "subtotal",
+   "fieldtype": "Currency",
+   "label": "Subtotal",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_totals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "shipping_amount",
+   "fieldtype": "Currency",
+   "label": "Shipping Amount",
+   "options": "currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Grand Total",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "commission_section",
+   "fieldtype": "Section Break",
+   "label": "Commission & Payout"
+  },
+  {
+   "default": "0",
+   "description": "Commission rate for this sub order",
+   "fieldname": "commission_rate",
+   "fieldtype": "Percent",
+   "label": "Commission Rate (%)"
+  },
+  {
+   "default": "0",
+   "description": "Commission amount deducted from seller",
+   "fieldname": "commission_amount",
+   "fieldtype": "Currency",
+   "label": "Commission Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_commission",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Amount to be paid to seller (grand_total - commission)",
+   "fieldname": "seller_payout",
+   "fieldtype": "Currency",
+   "label": "Seller Payout",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "payout_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payout Status",
+   "options": "Pending\nScheduled\nProcessing\nPaid\nFailed\nHeld\nCancelled"
+  },
+  {
+   "fieldname": "payout_reference",
+   "fieldtype": "Data",
+   "label": "Payout Reference"
+  },
+  {
+   "fieldname": "payment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment & Escrow"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payment Status",
+   "options": "Pending\nPaid\nPartially Paid\nRefunded\nPartially Refunded\nCancelled\nDisputed"
+  },
+  {
+   "fieldname": "paid_at",
+   "fieldtype": "Datetime",
+   "label": "Paid At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_payment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Not Required",
+   "fieldname": "escrow_status",
+   "fieldtype": "Select",
+   "label": "Escrow Status",
+   "options": "Not Required\nPending\nHeld\nPartially Released\nReleased\nDisputed\nRefunded"
+  },
+  {
+   "description": "Scheduled date for escrow release",
+   "fieldname": "escrow_release_date",
+   "fieldtype": "Date",
+   "label": "Escrow Release Date"
+  },
+  {
+   "fieldname": "escrow_released_at",
+   "fieldtype": "Datetime",
+   "label": "Escrow Released At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fulfillment_section",
+   "fieldtype": "Section Break",
+   "label": "Fulfillment"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "fulfillment_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Fulfillment Status",
+   "options": "Pending\nAccepted\nProcessing\nPacked\nShipped\nIn Transit\nOut for Delivery\nPartially Delivered\nDelivered\nReturned\nCancelled"
+  },
+  {
+   "default": "0",
+   "fieldname": "items_packed",
+   "fieldtype": "Int",
+   "label": "Items Packed",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "items_shipped",
+   "fieldtype": "Int",
+   "label": "Items Shipped",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fulfillment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "items_delivered",
+   "fieldtype": "Int",
+   "label": "Items Delivered",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "items_returned",
+   "fieldtype": "Int",
+   "label": "Items Returned",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "fully_fulfilled",
+   "fieldtype": "Check",
+   "label": "Fully Fulfilled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shipping_address_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping Address"
+  },
+  {
+   "fieldname": "shipping_address_name",
+   "fieldtype": "Data",
+   "label": "Recipient Name"
+  },
+  {
+   "fieldname": "shipping_address_line1",
+   "fieldtype": "Data",
+   "label": "Address Line 1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shipping_address_line2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "column_break_shipping_addr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipping_city",
+   "fieldtype": "Data",
+   "label": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shipping_state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "shipping_postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "shipping_country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shipping_phone",
+   "fieldtype": "Data",
+   "label": "Contact Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "shipment_section",
+   "fieldtype": "Section Break",
+   "label": "Shipment & Tracking"
+  },
+  {
+   "description": "Shipping carrier",
+   "fieldname": "carrier",
+   "fieldtype": "Select",
+   "label": "Carrier",
+   "options": "\nYurtici Kargo\nAras Kargo\nMNG Kargo\nSuratKargo\nPTT Kargo\nUPS\nDHL\nFedEx\nOther"
+  },
+  {
+   "fieldname": "tracking_number",
+   "fieldtype": "Data",
+   "label": "Tracking Number"
+  },
+  {
+   "fieldname": "tracking_url",
+   "fieldtype": "Data",
+   "label": "Tracking URL"
+  },
+  {
+   "fieldname": "column_break_shipment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipment",
+   "fieldtype": "Link",
+   "label": "Shipment",
+   "options": "Marketplace Shipment"
+  },
+  {
+   "fieldname": "shipped_at",
+   "fieldtype": "Datetime",
+   "label": "Shipped At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "estimated_delivery_date",
+   "fieldtype": "Date",
+   "label": "Estimated Delivery Date"
+  },
+  {
+   "fieldname": "actual_delivery_date",
+   "fieldtype": "Date",
+   "label": "Actual Delivery Date"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "invoice_section",
+   "fieldtype": "Section Break",
+   "label": "Invoice & E-Invoice"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_invoice",
+   "fieldtype": "Check",
+   "label": "Requires Invoice"
+  },
+  {
+   "depends_on": "eval:doc.requires_invoice",
+   "fieldname": "invoice_type",
+   "fieldtype": "Select",
+   "label": "Invoice Type",
+   "options": "\nE-Invoice (E-Fatura)\nE-Archive (E-Arsiv)\nPaper Invoice"
+  },
+  {
+   "default": "0",
+   "fieldname": "e_invoice_enabled",
+   "fieldtype": "Check",
+   "label": "E-Invoice Enabled"
+  },
+  {
+   "fieldname": "column_break_invoice",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.e_invoice_enabled",
+   "fieldname": "e_invoice_status",
+   "fieldtype": "Select",
+   "label": "E-Invoice Status",
+   "options": "\nPending\nQueued\nSent\nAccepted\nRejected\nCancelled\nError"
+  },
+  {
+   "depends_on": "eval:doc.e_invoice_enabled",
+   "fieldname": "e_invoice_uuid",
+   "fieldtype": "Data",
+   "label": "E-Invoice UUID",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.e_invoice_enabled",
+   "fieldname": "e_invoice_number",
+   "fieldtype": "Data",
+   "label": "E-Invoice Number",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.e_invoice_enabled",
+   "fieldname": "e_invoice_date",
+   "fieldtype": "Date",
+   "label": "E-Invoice Date",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.e_invoice_enabled",
+   "fieldname": "e_invoice_pdf",
+   "fieldtype": "Attach",
+   "label": "E-Invoice PDF"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "erpnext_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration"
+  },
+  {
+   "description": "Linked ERPNext Sales Order",
+   "fieldname": "erpnext_sales_order",
+   "fieldtype": "Link",
+   "label": "ERPNext Sales Order",
+   "options": "Sales Order",
+   "read_only": 1
+  },
+  {
+   "description": "Linked ERPNext Delivery Note",
+   "fieldname": "erpnext_delivery_note",
+   "fieldtype": "Link",
+   "label": "ERPNext Delivery Note",
+   "options": "Delivery Note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_erpnext",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Linked ERPNext Sales Invoice",
+   "fieldname": "erpnext_sales_invoice",
+   "fieldtype": "Link",
+   "label": "ERPNext Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "erpnext_payment_entry",
+   "fieldtype": "Link",
+   "label": "ERPNext Payment Entry",
+   "options": "Payment Entry",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "cancellation_section",
+   "fieldtype": "Section Break",
+   "label": "Cancellation"
+  },
+  {
+   "default": "0",
+   "fieldname": "cancellation_requested",
+   "fieldtype": "Check",
+   "label": "Cancellation Requested"
+  },
+  {
+   "depends_on": "eval:doc.cancellation_requested",
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Select",
+   "label": "Cancellation Reason",
+   "options": "\nOut of Stock\nCannot Fulfill\nBuyer Request\nAddress Issue\nPayment Issue\nSeller Request\nFraud Suspected\nOther"
+  },
+  {
+   "depends_on": "eval:doc.cancellation_requested",
+   "fieldname": "cancellation_requested_at",
+   "fieldtype": "Datetime",
+   "label": "Cancellation Requested At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cancellation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "cancellation_approved",
+   "fieldtype": "Check",
+   "label": "Cancellation Approved"
+  },
+  {
+   "depends_on": "eval:doc.cancellation_approved",
+   "fieldname": "cancellation_approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.status=='Cancelled'",
+   "fieldname": "cancelled_at",
+   "fieldtype": "Datetime",
+   "label": "Cancelled At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "refund_section",
+   "fieldtype": "Section Break",
+   "label": "Refund"
+  },
+  {
+   "default": "0",
+   "fieldname": "refund_requested",
+   "fieldtype": "Check",
+   "label": "Refund Requested"
+  },
+  {
+   "depends_on": "eval:doc.refund_requested",
+   "fieldname": "refund_amount",
+   "fieldtype": "Currency",
+   "label": "Refund Amount",
+   "options": "currency"
+  },
+  {
+   "depends_on": "eval:doc.refund_requested",
+   "fieldname": "refund_reason",
+   "fieldtype": "Select",
+   "label": "Refund Reason",
+   "options": "\nOrder Cancelled\nItem Returned\nDefective Product\nWrong Item\nNot as Described\nPartial Fulfillment\nOther"
+  },
+  {
+   "fieldname": "column_break_refund",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.refund_requested",
+   "fieldname": "refund_status",
+   "fieldtype": "Select",
+   "label": "Refund Status",
+   "options": "\nPending\nApproved\nProcessing\nRefunded\nRejected"
+  },
+  {
+   "depends_on": "eval:doc.refund_status=='Refunded'",
+   "fieldname": "refund_reference",
+   "fieldtype": "Data",
+   "label": "Refund Reference"
+  },
+  {
+   "depends_on": "eval:doc.refund_status=='Refunded'",
+   "fieldname": "refunded_at",
+   "fieldtype": "Datetime",
+   "label": "Refunded At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "return_section",
+   "fieldtype": "Section Break",
+   "label": "Returns"
+  },
+  {
+   "default": "0",
+   "fieldname": "return_requested",
+   "fieldtype": "Check",
+   "label": "Return Requested"
+  },
+  {
+   "depends_on": "eval:doc.return_requested",
+   "fieldname": "return_reason",
+   "fieldtype": "Select",
+   "label": "Return Reason",
+   "options": "\nChanged Mind\nDefective Product\nWrong Item\nNot as Described\nDamaged in Transit\nOther"
+  },
+  {
+   "depends_on": "eval:doc.return_requested",
+   "fieldname": "return_requested_at",
+   "fieldtype": "Datetime",
+   "label": "Return Requested At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_return",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.return_requested",
+   "fieldname": "return_status",
+   "fieldtype": "Select",
+   "label": "Return Status",
+   "options": "\nPending\nApproved\nShipped Back\nReceived\nRejected\nCompleted"
+  },
+  {
+   "depends_on": "eval:doc.return_status=='Shipped Back'",
+   "fieldname": "return_tracking_number",
+   "fieldtype": "Data",
+   "label": "Return Tracking Number"
+  },
+  {
+   "depends_on": "eval:doc.return_status=='Received'",
+   "fieldname": "return_received_at",
+   "fieldtype": "Datetime",
+   "label": "Return Received At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "description": "Notes from seller to buyer",
+   "fieldname": "seller_notes",
+   "fieldtype": "Small Text",
+   "label": "Seller Notes"
+  },
+  {
+   "description": "Notes from buyer",
+   "fieldname": "buyer_notes",
+   "fieldtype": "Small Text",
+   "label": "Buyer Notes"
+  },
+  {
+   "description": "Internal notes (not visible to buyer/seller)",
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "Timestamps"
+  },
+  {
+   "fieldname": "accepted_at",
+   "fieldtype": "Datetime",
+   "label": "Accepted At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "processing_started_at",
+   "fieldtype": "Datetime",
+   "label": "Processing Started At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "packed_at",
+   "fieldtype": "Datetime",
+   "label": "Packed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivered_at",
+   "fieldtype": "Datetime",
+   "label": "Delivered At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System"
+  },
+  {
+   "default": "SO-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "SO-.YYYY.-.#####\nSUB-.#####"
+  },
+  {
+   "fieldname": "parent_order_id",
+   "fieldtype": "Data",
+   "label": "Parent Order ID",
+   "in_list_view": 0
+  }
+ ],
+ "has_web_view": 0,
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Marketplace Order",
+   "link_fieldname": "marketplace_order"
+  },
+  {
+   "group": "Fulfillment",
+   "link_doctype": "Marketplace Shipment",
+   "link_fieldname": "sub_order"
+  }
+ ],
+ "modified": "2026-02-12 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Sub Order",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "sub_order_id, marketplace_order, seller, buyer, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Pending"
+  },
+  {
+   "color": "blue",
+   "title": "Accepted"
+  },
+  {
+   "color": "yellow",
+   "title": "Processing"
+  },
+  {
+   "color": "yellow",
+   "title": "Packed"
+  },
+  {
+   "color": "purple",
+   "title": "Shipped"
+  },
+  {
+   "color": "purple",
+   "title": "In Transit"
+  },
+  {
+   "color": "blue",
+   "title": "Out for Delivery"
+  },
+  {
+   "color": "green",
+   "title": "Delivered"
+  },
+  {
+   "color": "green",
+   "title": "Completed"
+  },
+  {
+   "color": "red",
+   "title": "Cancelled"
+  },
+  {
+   "color": "red",
+   "title": "Refunded"
+  },
+  {
+   "color": "orange",
+   "title": "On Hold"
+  },
+  {
+   "color": "red",
+   "title": "Disputed"
+  }
+ ],
+ "title_field": "sub_order_id",
+ "track_changes": 1
+}

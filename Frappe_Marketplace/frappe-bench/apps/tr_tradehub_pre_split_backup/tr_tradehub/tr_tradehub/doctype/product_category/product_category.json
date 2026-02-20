@@ -1,0 +1,354 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:category_name",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "is_tree": 1,
+  "nsm_parent_field": "parent_product_category",
+  "field_order": [
+    "basic_info_section",
+    "category_name",
+    "category_code",
+    "column_break_basic",
+    "is_group",
+    "enabled",
+    "parent_category_section",
+    "parent_product_category",
+    "parent_category_name",
+    "column_break_parent",
+    "level",
+    "full_path",
+    "tenant_section",
+    "tenant",
+    "tenant_name",
+    "column_break_tenant",
+    "is_global",
+    "description_section",
+    "description",
+    "image",
+    "seo_section",
+    "seo_title",
+    "seo_description",
+    "column_break_seo",
+    "seo_keywords",
+    "url_slug",
+    "display_section",
+    "display_order",
+    "show_in_menu",
+    "column_break_display",
+    "show_in_filters",
+    "featured",
+    "tree_fields_section",
+    "lft",
+    "rgt",
+    "old_parent"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "category_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Category Name",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Display name of the category"
+    },
+    {
+      "fieldname": "category_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Category Code",
+      "description": "Unique code for internal reference (optional)"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_group",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Is Group",
+      "description": "Check if this category has sub-categories"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled",
+      "description": "Whether category is active and visible"
+    },
+    {
+      "fieldname": "parent_category_section",
+      "fieldtype": "Section Break",
+      "label": "Parent Category"
+    },
+    {
+      "fieldname": "parent_product_category",
+      "fieldtype": "Link",
+      "ignore_user_permissions": 1,
+      "label": "Parent Category",
+      "options": "Product Category",
+      "description": "Parent category for hierarchy"
+    },
+    {
+      "fetch_from": "parent_product_category.category_name",
+      "fieldname": "parent_category_name",
+      "fieldtype": "Data",
+      "label": "Parent Category Name",
+      "read_only": 1,
+      "description": "Auto-filled from Parent Category"
+    },
+    {
+      "fieldname": "column_break_parent",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "level",
+      "fieldtype": "Int",
+      "label": "Level",
+      "read_only": 1,
+      "description": "Depth level in category tree (0 = root)"
+    },
+    {
+      "fieldname": "full_path",
+      "fieldtype": "Data",
+      "label": "Full Path",
+      "read_only": 1,
+      "description": "Complete path from root to this category"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Tenant Information"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "in_standard_filter": 1,
+      "description": "Tenant for multi-tenant isolation (empty for global categories)"
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Tenant"
+    },
+    {
+      "fieldname": "column_break_tenant",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_global",
+      "fieldtype": "Check",
+      "label": "Is Global",
+      "description": "Global categories are visible to all tenants"
+    },
+    {
+      "fieldname": "description_section",
+      "fieldtype": "Section Break",
+      "label": "Description"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description",
+      "description": "Category description for product listings"
+    },
+    {
+      "fieldname": "image",
+      "fieldtype": "Attach Image",
+      "label": "Category Image",
+      "description": "Category image for display"
+    },
+    {
+      "fieldname": "seo_section",
+      "fieldtype": "Section Break",
+      "label": "SEO",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "seo_title",
+      "fieldtype": "Data",
+      "label": "SEO Title",
+      "description": "Meta title for search engines (max 60 chars)"
+    },
+    {
+      "fieldname": "seo_description",
+      "fieldtype": "Small Text",
+      "label": "SEO Description",
+      "description": "Meta description for search engines (max 160 chars)"
+    },
+    {
+      "fieldname": "column_break_seo",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "seo_keywords",
+      "fieldtype": "Data",
+      "label": "SEO Keywords",
+      "description": "Comma-separated keywords for search"
+    },
+    {
+      "fieldname": "url_slug",
+      "fieldtype": "Data",
+      "label": "URL Slug",
+      "unique": 1,
+      "description": "SEO-friendly URL path (auto-generated from category name)"
+    },
+    {
+      "fieldname": "display_section",
+      "fieldtype": "Section Break",
+      "label": "Display Settings",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "label": "Display Order",
+      "description": "Sort order for display (lower numbers appear first)"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_in_menu",
+      "fieldtype": "Check",
+      "label": "Show in Menu",
+      "description": "Display category in navigation menu"
+    },
+    {
+      "fieldname": "column_break_display",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_in_filters",
+      "fieldtype": "Check",
+      "label": "Show in Filters",
+      "description": "Display category in product filters"
+    },
+    {
+      "default": "0",
+      "fieldname": "featured",
+      "fieldtype": "Check",
+      "label": "Featured",
+      "description": "Highlight category on homepage"
+    },
+    {
+      "fieldname": "tree_fields_section",
+      "fieldtype": "Section Break",
+      "label": "Tree Fields",
+      "collapsible": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "lft",
+      "fieldtype": "Int",
+      "hidden": 1,
+      "label": "Left",
+      "no_copy": 1,
+      "read_only": 1,
+      "search_index": 1,
+      "description": "Nested Set Model - Left value"
+    },
+    {
+      "fieldname": "rgt",
+      "fieldtype": "Int",
+      "hidden": 1,
+      "label": "Right",
+      "no_copy": 1,
+      "read_only": 1,
+      "search_index": 1,
+      "description": "Nested Set Model - Right value"
+    },
+    {
+      "fieldname": "old_parent",
+      "fieldtype": "Link",
+      "hidden": 1,
+      "ignore_user_permissions": 1,
+      "label": "Old Parent",
+      "no_copy": 1,
+      "options": "Product Category",
+      "read_only": 1,
+      "description": "Previous parent for tree rebuild"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Products",
+      "link_doctype": "SKU Product",
+      "link_fieldname": "category"
+    },
+    {
+      "group": "Sub-Categories",
+      "link_doctype": "Product Category",
+      "link_fieldname": "parent_product_category"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Product Category",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 0,
+      "write": 0
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "category_name, category_code, parent_category_name",
+  "sort_field": "lft",
+  "sort_order": "ASC",
+  "title_field": "category_name",
+  "track_changes": 1
+}

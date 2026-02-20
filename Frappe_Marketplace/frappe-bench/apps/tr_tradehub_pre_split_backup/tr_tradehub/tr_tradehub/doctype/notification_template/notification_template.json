@@ -1,0 +1,474 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "field:template_code",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "template_code",
+    "template_name",
+    "column_break_basic",
+    "enabled",
+    "is_default",
+    "channel_section",
+    "notification_channel",
+    "event_type",
+    "column_break_channel",
+    "priority",
+    "retry_count",
+    "content_section",
+    "subject",
+    "body",
+    "plain_text_body",
+    "variables_section",
+    "available_variables",
+    "example_data",
+    "tenant_section",
+    "tenant",
+    "tenant_name",
+    "column_break_tenant",
+    "is_global",
+    "settings_section",
+    "sender_email",
+    "sender_name",
+    "column_break_settings",
+    "reply_to_email",
+    "cc_list",
+    "bcc_list",
+    "push_settings_section",
+    "push_icon",
+    "push_image",
+    "column_break_push",
+    "push_click_action",
+    "push_sound",
+    "sms_settings_section",
+    "sms_sender_id",
+    "column_break_sms",
+    "sms_max_length",
+    "scheduling_section",
+    "schedule_type",
+    "delay_minutes",
+    "column_break_schedule",
+    "active_from",
+    "active_to",
+    "tracking_section",
+    "sent_count",
+    "delivered_count",
+    "column_break_tracking",
+    "failed_count",
+    "last_sent_at",
+    "notes_section",
+    "description",
+    "internal_notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Template Information"
+    },
+    {
+      "fieldname": "template_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Template Code",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique identifier for the template (e.g., ORDER_CONFIRMATION_EMAIL)"
+    },
+    {
+      "fieldname": "template_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Template Name",
+      "reqd": 1,
+      "description": "Human-readable name for the template"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled",
+      "description": "Whether this template is active and can be used for sending notifications"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default",
+      "description": "Set as default template for this event type and channel"
+    },
+    {
+      "fieldname": "channel_section",
+      "fieldtype": "Section Break",
+      "label": "Channel and Event"
+    },
+    {
+      "default": "Email",
+      "fieldname": "notification_channel",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Notification Channel",
+      "options": "Email\nPush Notification\nSMS\nIn-App\nWebhook",
+      "reqd": 1,
+      "description": "The delivery channel for this notification"
+    },
+    {
+      "default": "General",
+      "fieldname": "event_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Event Type",
+      "options": "General\nOrder Created\nOrder Confirmed\nOrder Shipped\nOrder Delivered\nOrder Cancelled\nPayment Received\nPayment Failed\nPayment Reminder\nRFQ Created\nRFQ Response Received\nRFQ Expired\nQuotation Received\nQuotation Accepted\nQuotation Rejected\nSample Request Created\nSample Request Approved\nSample Request Rejected\nSample Shipped\nMessage Received\nSeller Verification\nBuyer Verification\nCertificate Expiring\nCertificate Expired\nLow Stock Alert\nPrice Change Alert\nNew Product Alert\nWelcome Email\nPassword Reset\nAccount Deactivated",
+      "reqd": 1,
+      "description": "The triggering event for this notification"
+    },
+    {
+      "fieldname": "column_break_channel",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Normal",
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Priority",
+      "options": "Low\nNormal\nHigh\nUrgent",
+      "description": "Priority level affects delivery order and retry behavior"
+    },
+    {
+      "default": "3",
+      "fieldname": "retry_count",
+      "fieldtype": "Int",
+      "label": "Max Retry Count",
+      "description": "Number of times to retry if delivery fails (0 to disable)"
+    },
+    {
+      "fieldname": "content_section",
+      "fieldtype": "Section Break",
+      "label": "Template Content"
+    },
+    {
+      "fieldname": "subject",
+      "fieldtype": "Data",
+      "label": "Subject",
+      "description": "Subject line for email/push notifications (supports Jinja variables)",
+      "mandatory_depends_on": "eval:['Email', 'Push Notification'].includes(doc.notification_channel)"
+    },
+    {
+      "fieldname": "body",
+      "fieldtype": "Text Editor",
+      "label": "Body (HTML)",
+      "description": "Rich text body content (supports Jinja templating with variables like {{ buyer_name }})"
+    },
+    {
+      "fieldname": "plain_text_body",
+      "fieldtype": "Long Text",
+      "label": "Plain Text Body",
+      "description": "Plain text version for email fallback and SMS (supports Jinja variables)"
+    },
+    {
+      "fieldname": "variables_section",
+      "fieldtype": "Section Break",
+      "label": "Template Variables",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "available_variables",
+      "fieldtype": "JSON",
+      "label": "Available Variables",
+      "description": "JSON list of variable names available in this template (e.g., [\"buyer_name\", \"order_id\", \"total_amount\"])"
+    },
+    {
+      "fieldname": "example_data",
+      "fieldtype": "JSON",
+      "label": "Example Data",
+      "description": "Sample data for template preview (JSON object with variable values)"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Tenant Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "in_standard_filter": 1,
+      "description": "Tenant this template belongs to (leave empty for global templates)"
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Tenant"
+    },
+    {
+      "fieldname": "column_break_tenant",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_global",
+      "fieldtype": "Check",
+      "label": "Is Global",
+      "description": "Global templates are available to all tenants"
+    },
+    {
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Email Settings",
+      "collapsible": 1,
+      "depends_on": "eval:doc.notification_channel === 'Email'"
+    },
+    {
+      "fieldname": "sender_email",
+      "fieldtype": "Data",
+      "label": "Sender Email",
+      "options": "Email",
+      "description": "Override default sender email address"
+    },
+    {
+      "fieldname": "sender_name",
+      "fieldtype": "Data",
+      "label": "Sender Name",
+      "description": "Display name for the sender"
+    },
+    {
+      "fieldname": "column_break_settings",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "reply_to_email",
+      "fieldtype": "Data",
+      "label": "Reply-To Email",
+      "options": "Email",
+      "description": "Override default reply-to address"
+    },
+    {
+      "fieldname": "cc_list",
+      "fieldtype": "Small Text",
+      "label": "CC List",
+      "description": "Comma-separated list of CC email addresses"
+    },
+    {
+      "fieldname": "bcc_list",
+      "fieldtype": "Small Text",
+      "label": "BCC List",
+      "description": "Comma-separated list of BCC email addresses"
+    },
+    {
+      "fieldname": "push_settings_section",
+      "fieldtype": "Section Break",
+      "label": "Push Notification Settings",
+      "collapsible": 1,
+      "depends_on": "eval:doc.notification_channel === 'Push Notification'"
+    },
+    {
+      "fieldname": "push_icon",
+      "fieldtype": "Attach Image",
+      "label": "Push Icon",
+      "description": "Icon to display with push notification"
+    },
+    {
+      "fieldname": "push_image",
+      "fieldtype": "Attach Image",
+      "label": "Push Image",
+      "description": "Large image for expanded push notification"
+    },
+    {
+      "fieldname": "column_break_push",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "push_click_action",
+      "fieldtype": "Data",
+      "label": "Click Action URL",
+      "description": "URL to open when notification is clicked (supports Jinja variables)"
+    },
+    {
+      "default": "default",
+      "fieldname": "push_sound",
+      "fieldtype": "Data",
+      "label": "Notification Sound",
+      "description": "Sound to play (default, silent, or custom sound name)"
+    },
+    {
+      "fieldname": "sms_settings_section",
+      "fieldtype": "Section Break",
+      "label": "SMS Settings",
+      "collapsible": 1,
+      "depends_on": "eval:doc.notification_channel === 'SMS'"
+    },
+    {
+      "fieldname": "sms_sender_id",
+      "fieldtype": "Data",
+      "label": "SMS Sender ID",
+      "description": "Sender ID for SMS (alphanumeric, max 11 characters)"
+    },
+    {
+      "fieldname": "column_break_sms",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "160",
+      "fieldname": "sms_max_length",
+      "fieldtype": "Int",
+      "label": "Max SMS Length",
+      "description": "Maximum character length for SMS (default 160)"
+    },
+    {
+      "fieldname": "scheduling_section",
+      "fieldtype": "Section Break",
+      "label": "Scheduling",
+      "collapsible": 1
+    },
+    {
+      "default": "Immediate",
+      "fieldname": "schedule_type",
+      "fieldtype": "Select",
+      "label": "Schedule Type",
+      "options": "Immediate\nDelayed\nScheduled Window",
+      "description": "When to send notifications using this template"
+    },
+    {
+      "default": "0",
+      "fieldname": "delay_minutes",
+      "fieldtype": "Int",
+      "label": "Delay Minutes",
+      "depends_on": "eval:doc.schedule_type === 'Delayed'",
+      "description": "Minutes to wait before sending (for batching or review time)"
+    },
+    {
+      "fieldname": "column_break_schedule",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "active_from",
+      "fieldtype": "Time",
+      "label": "Active From",
+      "depends_on": "eval:doc.schedule_type === 'Scheduled Window'",
+      "description": "Start time of sending window (e.g., 09:00)"
+    },
+    {
+      "fieldname": "active_to",
+      "fieldtype": "Time",
+      "label": "Active To",
+      "depends_on": "eval:doc.schedule_type === 'Scheduled Window'",
+      "description": "End time of sending window (e.g., 18:00)"
+    },
+    {
+      "fieldname": "tracking_section",
+      "fieldtype": "Section Break",
+      "label": "Delivery Statistics",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "sent_count",
+      "fieldtype": "Int",
+      "label": "Total Sent",
+      "read_only": 1,
+      "description": "Total number of notifications sent using this template"
+    },
+    {
+      "default": "0",
+      "fieldname": "delivered_count",
+      "fieldtype": "Int",
+      "label": "Delivered",
+      "read_only": 1,
+      "description": "Number of notifications successfully delivered"
+    },
+    {
+      "fieldname": "column_break_tracking",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "failed_count",
+      "fieldtype": "Int",
+      "label": "Failed",
+      "read_only": 1,
+      "description": "Number of failed delivery attempts"
+    },
+    {
+      "fieldname": "last_sent_at",
+      "fieldtype": "Datetime",
+      "label": "Last Sent At",
+      "read_only": 1,
+      "description": "Timestamp of the last notification sent"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "Brief description of when and why this template is used"
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text",
+      "label": "Internal Notes",
+      "description": "Internal notes for administrators (not visible to end users)"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Notification Template",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 1,
+      "print": 0,
+      "read": 1,
+      "report": 1,
+      "role": "Tenant Admin",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "template_name, event_type, notification_channel",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "template_name",
+  "track_changes": 1
+}

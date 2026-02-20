@@ -1,0 +1,348 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-23 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "group_buy",
+    "commitment",
+    "buyer",
+    "column_break_basic",
+    "status",
+    "payment_date",
+    "amount_section",
+    "currency",
+    "amount",
+    "platform_fee",
+    "column_break_amount",
+    "net_amount",
+    "exchange_rate",
+    "payment_method_section",
+    "payment_method",
+    "payment_gateway",
+    "gateway_transaction_id",
+    "column_break_payment",
+    "payment_reference",
+    "payment_proof",
+    "processing_section",
+    "processed_by",
+    "processed_at",
+    "column_break_processing",
+    "settlement_reference",
+    "settled_at",
+    "refund_section",
+    "refund_status",
+    "refund_amount",
+    "refund_reason",
+    "column_break_refund",
+    "refunded_at",
+    "refund_reference",
+    "system_section",
+    "naming_series",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Payment Information"
+    },
+    {
+      "fieldname": "group_buy",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Group Buy",
+      "options": "Group Buy",
+      "reqd": 1
+    },
+    {
+      "fieldname": "commitment",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Commitment",
+      "options": "Group Buy Commitment",
+      "reqd": 1
+    },
+    {
+      "fieldname": "buyer",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Buyer",
+      "options": "Buyer Profile",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Pending",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Pending\nProcessing\nCompleted\nFailed\nRefunded\nPartially Refunded\nCancelled",
+      "reqd": 1
+    },
+    {
+      "fieldname": "payment_date",
+      "fieldtype": "Datetime",
+      "label": "Payment Date",
+      "read_only": 1
+    },
+    {
+      "fieldname": "amount_section",
+      "fieldtype": "Section Break",
+      "label": "Amount Details"
+    },
+    {
+      "default": "TRY",
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "reqd": 1
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Amount",
+      "options": "currency",
+      "reqd": 1,
+      "description": "Total payment amount"
+    },
+    {
+      "default": "0",
+      "fieldname": "platform_fee",
+      "fieldtype": "Currency",
+      "label": "Platform Fee",
+      "options": "currency",
+      "read_only": 1,
+      "description": "Platform commission/fee"
+    },
+    {
+      "fieldname": "column_break_amount",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "net_amount",
+      "fieldtype": "Currency",
+      "label": "Net Amount",
+      "options": "currency",
+      "read_only": 1,
+      "description": "Amount after fees"
+    },
+    {
+      "default": "1.0",
+      "fieldname": "exchange_rate",
+      "fieldtype": "Float",
+      "label": "Exchange Rate",
+      "precision": 6
+    },
+    {
+      "fieldname": "payment_method_section",
+      "fieldtype": "Section Break",
+      "label": "Payment Method"
+    },
+    {
+      "default": "Credit Card",
+      "fieldname": "payment_method",
+      "fieldtype": "Select",
+      "label": "Payment Method",
+      "options": "Credit Card\nDebit Card\nBank Transfer\nDigital Wallet\nCash on Delivery\nOther",
+      "reqd": 1
+    },
+    {
+      "fieldname": "payment_gateway",
+      "fieldtype": "Data",
+      "label": "Payment Gateway",
+      "description": "e.g., iyzico, PayTR, Stripe"
+    },
+    {
+      "fieldname": "gateway_transaction_id",
+      "fieldtype": "Data",
+      "label": "Gateway Transaction ID",
+      "description": "Transaction ID from payment gateway"
+    },
+    {
+      "fieldname": "column_break_payment",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "payment_reference",
+      "fieldtype": "Data",
+      "label": "Payment Reference",
+      "description": "Internal payment reference"
+    },
+    {
+      "fieldname": "payment_proof",
+      "fieldtype": "Attach",
+      "label": "Payment Proof",
+      "description": "Upload payment receipt or screenshot"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "processing_section",
+      "fieldtype": "Section Break",
+      "label": "Processing & Settlement"
+    },
+    {
+      "fieldname": "processed_by",
+      "fieldtype": "Link",
+      "label": "Processed By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "processed_at",
+      "fieldtype": "Datetime",
+      "label": "Processed At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_processing",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "settlement_reference",
+      "fieldtype": "Data",
+      "label": "Settlement Reference",
+      "read_only": 1
+    },
+    {
+      "fieldname": "settled_at",
+      "fieldtype": "Datetime",
+      "label": "Settled At",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "refund_section",
+      "fieldtype": "Section Break",
+      "label": "Refund Information",
+      "depends_on": "eval:['Refunded', 'Partially Refunded'].includes(doc.status)"
+    },
+    {
+      "default": "None",
+      "fieldname": "refund_status",
+      "fieldtype": "Select",
+      "label": "Refund Status",
+      "options": "None\nRequested\nProcessing\nCompleted\nFailed"
+    },
+    {
+      "fieldname": "refund_amount",
+      "fieldtype": "Currency",
+      "label": "Refund Amount",
+      "options": "currency"
+    },
+    {
+      "fieldname": "refund_reason",
+      "fieldtype": "Small Text",
+      "label": "Refund Reason"
+    },
+    {
+      "fieldname": "column_break_refund",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "refunded_at",
+      "fieldtype": "Datetime",
+      "label": "Refunded At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "refund_reference",
+      "fieldtype": "Data",
+      "label": "Refund Reference",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "system_section",
+      "fieldtype": "Section Break",
+      "label": "System Information"
+    },
+    {
+      "default": "GBP-.#####",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Naming Series",
+      "options": "GBP-.#####"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-23 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Group Buy Payment",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "read": 1,
+      "role": "All"
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "group_buy, commitment, buyer, status, payment_method",
+  "sort_field": "payment_date",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "orange",
+      "title": "Pending"
+    },
+    {
+      "color": "blue",
+      "title": "Processing"
+    },
+    {
+      "color": "green",
+      "title": "Completed"
+    },
+    {
+      "color": "red",
+      "title": "Failed"
+    },
+    {
+      "color": "purple",
+      "title": "Refunded"
+    },
+    {
+      "color": "yellow",
+      "title": "Partially Refunded"
+    },
+    {
+      "color": "gray",
+      "title": "Cancelled"
+    }
+  ],
+  "track_changes": 1
+}

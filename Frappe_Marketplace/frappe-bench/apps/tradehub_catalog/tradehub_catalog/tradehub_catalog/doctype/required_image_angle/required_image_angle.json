@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "angle_name",
+  "angle_code",
+  "column_break_1",
+  "sort_order",
+  "is_required",
+  "settings_section",
+  "description",
+  "column_break_2",
+  "min_width",
+  "min_height",
+  "channel",
+  "example_section",
+  "example_image"
+ ],
+ "fields": [
+  {
+   "fieldname": "angle_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Angle Name",
+   "reqd": 1,
+   "description": "Display name for this image angle (e.g., Front View, Side View)"
+  },
+  {
+   "fieldname": "angle_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Angle Code",
+   "reqd": 1,
+   "description": "Internal code for this angle (e.g., front, side, back, detail)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Sort Order",
+   "description": "Order in which this angle appears in the product gallery"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Required",
+   "description": "If checked, this image angle is required for completeness"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Image Requirements"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Guidelines for capturing this image angle"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "800",
+   "fieldname": "min_width",
+   "fieldtype": "Int",
+   "label": "Min Width (px)",
+   "description": "Minimum image width in pixels"
+  },
+  {
+   "default": "800",
+   "fieldname": "min_height",
+   "fieldtype": "Int",
+   "label": "Min Height (px)",
+   "description": "Minimum image height in pixels"
+  },
+  {
+   "fieldname": "channel",
+   "fieldtype": "Link",
+   "label": "Channel",
+   "options": "Sales Channel",
+   "description": "Apply requirement only for specific channel (leave empty for all)"
+  },
+  {
+   "fieldname": "example_section",
+   "fieldtype": "Section Break",
+   "label": "Example",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "example_image",
+   "fieldtype": "Attach Image",
+   "label": "Example Image",
+   "description": "Example image showing the correct angle"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Required Image Angle",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

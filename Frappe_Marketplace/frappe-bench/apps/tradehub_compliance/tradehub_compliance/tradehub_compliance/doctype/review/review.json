@@ -1,0 +1,698 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "review_id",
+  "review_type",
+  "status",
+  "column_break_basic",
+  "rating",
+  "title",
+  "tenant",
+  "reviewer_section",
+  "reviewer",
+  "reviewer_name",
+  "reviewer_type",
+  "column_break_reviewer",
+  "organization",
+  "is_anonymous",
+  "display_name",
+  "target_section",
+  "listing",
+  "listing_title",
+  "column_break_target",
+  "seller",
+  "seller_name",
+  "category",
+  "order_verification_section",
+  "is_verified_purchase",
+  "marketplace_order",
+  "sub_order",
+  "column_break_order",
+  "order_item",
+  "purchase_date",
+  "verification_date",
+  "review_content_section",
+  "review_text",
+  "pros",
+  "cons",
+  "media_section",
+  "images",
+  "video_url",
+  "rating_details_section",
+  "product_quality_rating",
+  "value_for_money_rating",
+  "column_break_ratings",
+  "shipping_rating",
+  "seller_communication_rating",
+  "accuracy_rating",
+  "helpfulness_section",
+  "helpful_count",
+  "unhelpful_count",
+  "helpfulness_score",
+  "column_break_helpfulness",
+  "report_count",
+  "is_featured",
+  "is_pinned",
+  "seller_response_section",
+  "has_seller_response",
+  "seller_response",
+  "seller_response_by",
+  "column_break_response",
+  "seller_response_at",
+  "response_helpful_count",
+  "moderation_section",
+  "moderation_status",
+  "moderated_by",
+  "moderated_at",
+  "column_break_moderation",
+  "rejection_reason",
+  "moderation_notes",
+  "flags",
+  "system_section",
+  "submitted_at",
+  "published_at",
+  "last_edited_at",
+  "column_break_system",
+  "edit_count",
+  "ip_address",
+  "user_agent",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "description": "Auto-generated unique review identifier",
+   "fieldname": "review_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Review ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "default": "Product",
+   "fieldname": "review_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Review Type",
+   "options": "Product\nSeller\nOrder Experience",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending Review\nPublished\nRejected\nHidden\nRemoved",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "5",
+   "description": "Rating from 1 to 5 stars",
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Rating",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Review Title",
+   "length": 200
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "reviewer_section",
+   "fieldtype": "Section Break",
+   "label": "Reviewer Information"
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Reviewer",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "reviewer.full_name",
+   "fieldname": "reviewer_name",
+   "fieldtype": "Data",
+   "label": "Reviewer Name",
+   "read_only": 1
+  },
+  {
+   "default": "Individual",
+   "fieldname": "reviewer_type",
+   "fieldtype": "Select",
+   "label": "Reviewer Type",
+   "options": "Individual\nBusiness\nOrganization"
+  },
+  {
+   "fieldname": "column_break_reviewer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.reviewer_type=='Organization'",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization"
+  },
+  {
+   "default": "0",
+   "description": "Hide reviewer identity from public view",
+   "fieldname": "is_anonymous",
+   "fieldtype": "Check",
+   "label": "Anonymous Review"
+  },
+  {
+   "description": "Name displayed publicly (can be masked for privacy)",
+   "fieldname": "display_name",
+   "fieldtype": "Data",
+   "label": "Display Name"
+  },
+  {
+   "fieldname": "target_section",
+   "fieldtype": "Section Break",
+   "label": "Review Target"
+  },
+  {
+   "depends_on": "eval:doc.review_type=='Product'",
+   "fieldname": "listing",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Listing",
+   "mandatory_depends_on": "eval:doc.review_type=='Product'",
+   "options": "Listing"
+  },
+  {
+   "fetch_from": "listing.title",
+   "fieldname": "listing_title",
+   "fieldtype": "Data",
+   "label": "Listing Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_target",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "mandatory_depends_on": "eval:doc.review_type=='Seller'",
+   "options": "Seller Profile"
+  },
+  {
+   "fetch_from": "seller.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "read_only": 1
+  },
+  {
+   "description": "Product category (auto-populated from listing)",
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category",
+   "read_only": 1
+  },
+  {
+   "fieldname": "order_verification_section",
+   "fieldtype": "Section Break",
+   "label": "Order Verification"
+  },
+  {
+   "default": "0",
+   "description": "Review from verified purchase",
+   "fieldname": "is_verified_purchase",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Verified Purchase",
+   "read_only": 1
+  },
+  {
+   "fieldname": "marketplace_order",
+   "fieldtype": "Link",
+   "label": "Marketplace Order",
+   "options": "Marketplace Order"
+  },
+  {
+   "fieldname": "sub_order",
+   "fieldtype": "Link",
+   "label": "Sub Order",
+   "options": "Sub Order"
+  },
+  {
+   "fieldname": "column_break_order",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Specific order item being reviewed",
+   "fieldname": "order_item",
+   "fieldtype": "Data",
+   "label": "Order Item"
+  },
+  {
+   "description": "Date of original purchase",
+   "fieldname": "purchase_date",
+   "fieldtype": "Date",
+   "label": "Purchase Date",
+   "read_only": 1
+  },
+  {
+   "description": "Date order was verified for review eligibility",
+   "fieldname": "verification_date",
+   "fieldtype": "Datetime",
+   "label": "Verification Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_content_section",
+   "fieldtype": "Section Break",
+   "label": "Review Content"
+  },
+  {
+   "description": "Detailed review text (min 20 characters)",
+   "fieldname": "review_text",
+   "fieldtype": "Text Editor",
+   "label": "Review",
+   "reqd": 1
+  },
+  {
+   "description": "Positive aspects (one per line)",
+   "fieldname": "pros",
+   "fieldtype": "Small Text",
+   "label": "Pros"
+  },
+  {
+   "description": "Negative aspects (one per line)",
+   "fieldname": "cons",
+   "fieldtype": "Small Text",
+   "label": "Cons"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "media_section",
+   "fieldtype": "Section Break",
+   "label": "Media"
+  },
+  {
+   "description": "Upload review photos (max 5 images)",
+   "fieldname": "images",
+   "fieldtype": "JSON",
+   "label": "Images"
+  },
+  {
+   "description": "Link to video review",
+   "fieldname": "video_url",
+   "fieldtype": "Data",
+   "label": "Video URL",
+   "options": "URL"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "rating_details_section",
+   "fieldtype": "Section Break",
+   "label": "Detailed Ratings"
+  },
+  {
+   "default": "0",
+   "description": "Quality of the product (1-5)",
+   "fieldname": "product_quality_rating",
+   "fieldtype": "Int",
+   "label": "Product Quality"
+  },
+  {
+   "default": "0",
+   "description": "Value compared to price (1-5)",
+   "fieldname": "value_for_money_rating",
+   "fieldtype": "Int",
+   "label": "Value for Money"
+  },
+  {
+   "fieldname": "column_break_ratings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Shipping speed and quality (1-5)",
+   "fieldname": "shipping_rating",
+   "fieldtype": "Int",
+   "label": "Shipping"
+  },
+  {
+   "default": "0",
+   "description": "Seller responsiveness (1-5)",
+   "fieldname": "seller_communication_rating",
+   "fieldtype": "Int",
+   "label": "Seller Communication"
+  },
+  {
+   "default": "0",
+   "description": "Product matches description (1-5)",
+   "fieldname": "accuracy_rating",
+   "fieldtype": "Int",
+   "label": "Accuracy"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "helpfulness_section",
+   "fieldtype": "Section Break",
+   "label": "Helpfulness & Engagement"
+  },
+  {
+   "default": "0",
+   "description": "Number of users who found this helpful",
+   "fieldname": "helpful_count",
+   "fieldtype": "Int",
+   "label": "Helpful Votes",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Number of users who found this unhelpful",
+   "fieldname": "unhelpful_count",
+   "fieldtype": "Int",
+   "label": "Unhelpful Votes",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Calculated helpfulness score",
+   "fieldname": "helpfulness_score",
+   "fieldtype": "Float",
+   "label": "Helpfulness Score",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_helpfulness",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Number of times reported as inappropriate",
+   "fieldname": "report_count",
+   "fieldtype": "Int",
+   "label": "Report Count",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Featured on product page",
+   "fieldname": "is_featured",
+   "fieldtype": "Check",
+   "label": "Featured Review"
+  },
+  {
+   "default": "0",
+   "description": "Pinned to top of reviews",
+   "fieldname": "is_pinned",
+   "fieldtype": "Check",
+   "label": "Pinned"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "seller_response_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Response"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_seller_response",
+   "fieldtype": "Check",
+   "label": "Has Seller Response",
+   "read_only": 1
+  },
+  {
+   "depends_on": "has_seller_response",
+   "fieldname": "seller_response",
+   "fieldtype": "Text Editor",
+   "label": "Seller Response"
+  },
+  {
+   "depends_on": "has_seller_response",
+   "fieldname": "seller_response_by",
+   "fieldtype": "Link",
+   "label": "Response By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_response",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "has_seller_response",
+   "fieldname": "seller_response_at",
+   "fieldtype": "Datetime",
+   "label": "Response Date",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "has_seller_response",
+   "fieldname": "response_helpful_count",
+   "fieldtype": "Int",
+   "label": "Response Helpful Votes",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "moderation_section",
+   "fieldtype": "Section Break",
+   "label": "Moderation"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "moderation_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Moderation Status",
+   "options": "Pending\nApproved\nRejected\nFlagged\nUnder Review"
+  },
+  {
+   "fieldname": "moderated_by",
+   "fieldtype": "Link",
+   "label": "Moderated By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "moderated_at",
+   "fieldtype": "Datetime",
+   "label": "Moderated At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_moderation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.moderation_status=='Rejected'",
+   "fieldname": "rejection_reason",
+   "fieldtype": "Select",
+   "label": "Rejection Reason",
+   "options": "\nSpam\nInappropriate Content\nFake Review\nOff-topic\nViolates Guidelines\nSeller Manipulation\nConflict of Interest\nOther"
+  },
+  {
+   "fieldname": "moderation_notes",
+   "fieldtype": "Small Text",
+   "label": "Moderation Notes"
+  },
+  {
+   "description": "JSON array of flagged issues",
+   "fieldname": "flags",
+   "fieldtype": "JSON",
+   "label": "Flags"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "submitted_at",
+   "fieldtype": "Datetime",
+   "label": "Submitted At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "published_at",
+   "fieldtype": "Datetime",
+   "label": "Published At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_edited_at",
+   "fieldtype": "Datetime",
+   "label": "Last Edited At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_system",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "edit_count",
+   "fieldtype": "Int",
+   "label": "Edit Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user_agent",
+   "fieldtype": "Small Text",
+   "label": "User Agent",
+   "read_only": 1
+  },
+  {
+   "default": "REV-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "REV-.YYYY.-.#####\nRVW-.#####"
+  },
+  {
+   "fieldname": "listing_image",
+   "fieldtype": "Attach Image",
+   "label": "Listing Image",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "response_date",
+   "fieldtype": "Date",
+   "label": "Response Date",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "in_list_view": 0
+  }
+ ],
+ "has_web_view": 0,
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Listing",
+   "link_fieldname": "listing"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "seller"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Marketplace Order",
+   "link_fieldname": "marketplace_order"
+  }
+ ],
+ "modified": "2026-02-12 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Review",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "review_id, reviewer, listing, seller, rating, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Draft"
+  },
+  {
+   "color": "orange",
+   "title": "Pending Review"
+  },
+  {
+   "color": "green",
+   "title": "Published"
+  },
+  {
+   "color": "red",
+   "title": "Rejected"
+  },
+  {
+   "color": "yellow",
+   "title": "Hidden"
+  },
+  {
+   "color": "red",
+   "title": "Removed"
+  }
+ ],
+ "title_field": "title",
+ "track_changes": 1
+}

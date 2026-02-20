@@ -1,0 +1,634 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "RISK-.######",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "profile_type",
+    "seller_profile",
+    "seller_name",
+    "buyer_profile",
+    "buyer_name",
+    "column_break_basic",
+    "status",
+    "tenant",
+    "tenant_name",
+    "kyc_profile_link",
+    "score_section",
+    "risk_score",
+    "risk_level",
+    "risk_category",
+    "column_break_score",
+    "previous_score",
+    "score_change",
+    "score_trend",
+    "factors_section",
+    "scoring_factors",
+    "score_summary_section",
+    "total_weight",
+    "weighted_average",
+    "positive_factors_count",
+    "column_break_summary",
+    "negative_factors_count",
+    "critical_factors_count",
+    "confidence_level",
+    "credit_decision_section",
+    "credit_decision",
+    "credit_decision_reason",
+    "credit_limit",
+    "column_break_credit",
+    "credit_limit_currency",
+    "recommended_payment_methods",
+    "restricted_payment_methods",
+    "decision_details_section",
+    "auto_decision",
+    "manual_override",
+    "override_by",
+    "override_at",
+    "column_break_decision_details",
+    "override_reason",
+    "override_expiry",
+    "validity_section",
+    "effective_from",
+    "effective_until",
+    "next_review_date",
+    "column_break_validity",
+    "review_frequency",
+    "auto_recalculate",
+    "last_calculated_at",
+    "history_section",
+    "calculation_history",
+    "alerts_section",
+    "has_alerts",
+    "alert_count",
+    "column_break_alerts",
+    "last_alert_at",
+    "alert_summary",
+    "notes_section",
+    "internal_notes",
+    "external_notes",
+    "timestamps_section",
+    "created_at",
+    "created_by",
+    "column_break_timestamps",
+    "modified_at",
+    "modified_by_user"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Profile Information"
+    },
+    {
+      "default": "Seller",
+      "fieldname": "profile_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Profile Type",
+      "options": "Seller\nBuyer",
+      "reqd": 1
+    },
+    {
+      "depends_on": "eval:doc.profile_type === 'Seller'",
+      "fieldname": "seller_profile",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller Profile",
+      "mandatory_depends_on": "eval:doc.profile_type === 'Seller'",
+      "options": "Seller Profile"
+    },
+    {
+      "depends_on": "eval:doc.profile_type === 'Seller'",
+      "fetch_from": "seller_profile.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Seller Name",
+      "read_only": 1
+    },
+    {
+      "depends_on": "eval:doc.profile_type === 'Buyer'",
+      "fieldname": "buyer_profile",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Buyer Profile",
+      "mandatory_depends_on": "eval:doc.profile_type === 'Buyer'",
+      "options": "User"
+    },
+    {
+      "depends_on": "eval:doc.profile_type === 'Buyer'",
+      "fetch_from": "buyer_profile.full_name",
+      "fieldname": "buyer_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Buyer Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nActive\nExpired\nSuspended\nUnder Review",
+      "reqd": 1
+    },
+    {
+      "description": "Tenant for this risk score (auto-populated from profile)",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1
+    },
+    {
+      "description": "Link to associated KYC Profile",
+      "fieldname": "kyc_profile_link",
+      "fieldtype": "Link",
+      "label": "KYC Profile",
+      "options": "KYC Profile"
+    },
+    {
+      "fieldname": "score_section",
+      "fieldtype": "Section Break",
+      "label": "Risk Assessment"
+    },
+    {
+      "default": "0",
+      "description": "Overall risk score (0-100, where 0 is lowest risk and 100 is highest risk)",
+      "fieldname": "risk_score",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Risk Score",
+      "precision": 2,
+      "reqd": 1
+    },
+    {
+      "default": "Medium",
+      "description": "Risk level category based on score",
+      "fieldname": "risk_level",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Risk Level",
+      "options": "Very Low\nLow\nMedium\nHigh\nVery High\nCritical",
+      "reqd": 1
+    },
+    {
+      "description": "Primary risk category",
+      "fieldname": "risk_category",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Risk Category",
+      "options": "\nFinancial\nFraud\nCompliance\nOperational\nCredit\nReputation\nIdentity\nTransaction\nMixed"
+    },
+    {
+      "fieldname": "column_break_score",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Previous risk score for comparison",
+      "fieldname": "previous_score",
+      "fieldtype": "Float",
+      "label": "Previous Score",
+      "precision": 2,
+      "read_only": 1
+    },
+    {
+      "description": "Change from previous score",
+      "fieldname": "score_change",
+      "fieldtype": "Float",
+      "label": "Score Change",
+      "precision": 2,
+      "read_only": 1
+    },
+    {
+      "default": "Stable",
+      "description": "Trend direction compared to previous assessment",
+      "fieldname": "score_trend",
+      "fieldtype": "Select",
+      "label": "Score Trend",
+      "options": "Improving\nStable\nWorsening",
+      "read_only": 1
+    },
+    {
+      "fieldname": "factors_section",
+      "fieldtype": "Section Break",
+      "label": "Scoring Factors"
+    },
+    {
+      "description": "Individual risk factors contributing to overall score",
+      "fieldname": "scoring_factors",
+      "fieldtype": "Table",
+      "label": "Scoring Factors",
+      "options": "Risk Score Factor"
+    },
+    {
+      "fieldname": "score_summary_section",
+      "fieldtype": "Section Break",
+      "label": "Score Summary",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "description": "Sum of all factor weights",
+      "fieldname": "total_weight",
+      "fieldtype": "Float",
+      "label": "Total Weight",
+      "precision": 2,
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Weighted average of all factor scores",
+      "fieldname": "weighted_average",
+      "fieldtype": "Float",
+      "label": "Weighted Average",
+      "precision": 2,
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "positive_factors_count",
+      "fieldtype": "Int",
+      "label": "Positive Factors",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_summary",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "negative_factors_count",
+      "fieldtype": "Int",
+      "label": "Negative Factors",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "critical_factors_count",
+      "fieldtype": "Int",
+      "label": "Critical Factors",
+      "read_only": 1
+    },
+    {
+      "default": "Medium",
+      "description": "Confidence level in the risk assessment",
+      "fieldname": "confidence_level",
+      "fieldtype": "Select",
+      "label": "Confidence Level",
+      "options": "Very Low\nLow\nMedium\nHigh\nVery High",
+      "read_only": 1
+    },
+    {
+      "fieldname": "credit_decision_section",
+      "fieldtype": "Section Break",
+      "label": "Credit Decision"
+    },
+    {
+      "default": "Review",
+      "description": "Credit decision based on risk assessment",
+      "fieldname": "credit_decision",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Credit Decision",
+      "options": "Auto Approve\nApprove\nApprove with Conditions\nReview\nReview with Caution\nReject\nSuspend",
+      "reqd": 1
+    },
+    {
+      "description": "Reason for the credit decision",
+      "fieldname": "credit_decision_reason",
+      "fieldtype": "Small Text",
+      "label": "Decision Reason"
+    },
+    {
+      "description": "Recommended credit limit based on risk",
+      "fieldname": "credit_limit",
+      "fieldtype": "Currency",
+      "label": "Credit Limit"
+    },
+    {
+      "fieldname": "column_break_credit",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "TRY",
+      "fieldname": "credit_limit_currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency"
+    },
+    {
+      "description": "Payment methods allowed based on risk level",
+      "fieldname": "recommended_payment_methods",
+      "fieldtype": "Small Text",
+      "label": "Recommended Payment Methods"
+    },
+    {
+      "description": "Payment methods restricted due to risk",
+      "fieldname": "restricted_payment_methods",
+      "fieldtype": "Small Text",
+      "label": "Restricted Payment Methods"
+    },
+    {
+      "fieldname": "decision_details_section",
+      "fieldtype": "Section Break",
+      "label": "Decision Details",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "description": "Whether decision was made automatically",
+      "fieldname": "auto_decision",
+      "fieldtype": "Check",
+      "label": "Auto Decision",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Manual override applied to auto decision",
+      "fieldname": "manual_override",
+      "fieldtype": "Check",
+      "label": "Manual Override"
+    },
+    {
+      "depends_on": "eval:doc.manual_override",
+      "fieldname": "override_by",
+      "fieldtype": "Link",
+      "label": "Override By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "depends_on": "eval:doc.manual_override",
+      "fieldname": "override_at",
+      "fieldtype": "Datetime",
+      "label": "Override At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_decision_details",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.manual_override",
+      "fieldname": "override_reason",
+      "fieldtype": "Small Text",
+      "label": "Override Reason",
+      "mandatory_depends_on": "eval:doc.manual_override"
+    },
+    {
+      "depends_on": "eval:doc.manual_override",
+      "description": "When the override expires and auto decision resumes",
+      "fieldname": "override_expiry",
+      "fieldtype": "Date",
+      "label": "Override Expiry"
+    },
+    {
+      "fieldname": "validity_section",
+      "fieldtype": "Section Break",
+      "label": "Validity & Review"
+    },
+    {
+      "fieldname": "effective_from",
+      "fieldtype": "Date",
+      "label": "Effective From",
+      "reqd": 1
+    },
+    {
+      "fieldname": "effective_until",
+      "fieldtype": "Date",
+      "label": "Effective Until"
+    },
+    {
+      "description": "Next scheduled review date",
+      "fieldname": "next_review_date",
+      "fieldtype": "Date",
+      "label": "Next Review Date"
+    },
+    {
+      "fieldname": "column_break_validity",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Monthly",
+      "fieldname": "review_frequency",
+      "fieldtype": "Select",
+      "label": "Review Frequency",
+      "options": "Weekly\nBi-Weekly\nMonthly\nQuarterly\nSemi-Annually\nAnnually\nOn Event"
+    },
+    {
+      "default": "1",
+      "description": "Automatically recalculate score on trigger events",
+      "fieldname": "auto_recalculate",
+      "fieldtype": "Check",
+      "label": "Auto Recalculate"
+    },
+    {
+      "fieldname": "last_calculated_at",
+      "fieldtype": "Datetime",
+      "label": "Last Calculated At",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "history_section",
+      "fieldtype": "Section Break",
+      "label": "Calculation History"
+    },
+    {
+      "description": "JSON log of previous calculations",
+      "fieldname": "calculation_history",
+      "fieldtype": "Code",
+      "label": "Calculation History",
+      "options": "JSON",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "alerts_section",
+      "fieldtype": "Section Break",
+      "label": "Risk Alerts"
+    },
+    {
+      "default": "0",
+      "fieldname": "has_alerts",
+      "fieldtype": "Check",
+      "label": "Has Active Alerts",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "alert_count",
+      "fieldtype": "Int",
+      "label": "Alert Count",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_alerts",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "last_alert_at",
+      "fieldtype": "Datetime",
+      "label": "Last Alert At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "alert_summary",
+      "fieldtype": "Small Text",
+      "label": "Alert Summary",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes"
+    },
+    {
+      "description": "Internal notes (not visible to profile owner)",
+      "fieldname": "internal_notes",
+      "fieldtype": "Text Editor",
+      "label": "Internal Notes"
+    },
+    {
+      "description": "Notes visible to profile owner",
+      "fieldname": "external_notes",
+      "fieldtype": "Text Editor",
+      "label": "External Notes"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "timestamps_section",
+      "fieldtype": "Section Break",
+      "label": "System Information"
+    },
+    {
+      "default": "now",
+      "fieldname": "created_at",
+      "fieldtype": "Datetime",
+      "label": "Created At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_timestamps",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "modified_at",
+      "fieldtype": "Datetime",
+      "label": "Modified At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "modified_by_user",
+      "fieldtype": "Link",
+      "label": "Modified By",
+      "options": "User",
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Profile",
+      "link_doctype": "Seller Profile",
+      "link_fieldname": "seller_profile"
+    },
+    {
+      "group": "Verification",
+      "link_doctype": "KYC Profile",
+      "link_fieldname": "kyc_profile_link"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Risk Score",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "seller_name, buyer_name, risk_level, credit_decision, status",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Draft"
+    },
+    {
+      "color": "green",
+      "title": "Active"
+    },
+    {
+      "color": "darkgray",
+      "title": "Expired"
+    },
+    {
+      "color": "red",
+      "title": "Suspended"
+    },
+    {
+      "color": "orange",
+      "title": "Under Review"
+    }
+  ],
+  "title_field": "risk_level",
+  "track_changes": 1
+}

@@ -1,0 +1,180 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "hash",
+  "creation": "2024-01-23 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "seller",
+    "tag",
+    "column_break_basic",
+    "source",
+    "override_state",
+    "assignment_section",
+    "assigned_at",
+    "assigned_by",
+    "column_break_assign",
+    "expires_at",
+    "rule",
+    "evaluation_section",
+    "last_evaluated",
+    "evaluation_passed",
+    "notes_section",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Assignment"
+    },
+    {
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller",
+      "options": "Seller Profile",
+      "reqd": 1,
+      "description": "Seller this tag is assigned to"
+    },
+    {
+      "fieldname": "tag",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Tag",
+      "options": "Seller Tag",
+      "reqd": 1,
+      "description": "Tag assigned to the seller"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Rule",
+      "fieldname": "source",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Source",
+      "options": "Manual\nRule",
+      "reqd": 1,
+      "description": "How this tag was assigned"
+    },
+    {
+      "default": "None",
+      "fieldname": "override_state",
+      "fieldtype": "Select",
+      "label": "Override State",
+      "options": "None\nForcedOn\nForcedOff",
+      "description": "Manual override for rule-based assignments"
+    },
+    {
+      "fieldname": "assignment_section",
+      "fieldtype": "Section Break",
+      "label": "Assignment Details"
+    },
+    {
+      "fieldname": "assigned_at",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "label": "Assigned At",
+      "description": "When the tag was first assigned"
+    },
+    {
+      "fieldname": "assigned_by",
+      "fieldtype": "Link",
+      "label": "Assigned By",
+      "options": "User",
+      "description": "User who made the assignment (for manual)"
+    },
+    {
+      "fieldname": "column_break_assign",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "expires_at",
+      "fieldtype": "Datetime",
+      "label": "Expires At",
+      "description": "When this assignment expires (optional)"
+    },
+    {
+      "fieldname": "rule",
+      "fieldtype": "Link",
+      "label": "Rule",
+      "options": "Seller Tag Rule",
+      "depends_on": "eval:doc.source=='Rule'",
+      "description": "Rule that assigned this tag"
+    },
+    {
+      "fieldname": "evaluation_section",
+      "fieldtype": "Section Break",
+      "label": "Rule Evaluation",
+      "collapsible": 1,
+      "depends_on": "eval:doc.source=='Rule'"
+    },
+    {
+      "fieldname": "last_evaluated",
+      "fieldtype": "Datetime",
+      "label": "Last Evaluated",
+      "read_only": 1,
+      "description": "Last time rule conditions were checked"
+    },
+    {
+      "default": "1",
+      "fieldname": "evaluation_passed",
+      "fieldtype": "Check",
+      "label": "Evaluation Passed",
+      "read_only": 1,
+      "description": "Whether seller still qualifies for this tag"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes",
+      "description": "Additional notes about this assignment"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-23 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Seller Tag Assignment",
+  "naming_rule": "Random",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "read": 1,
+      "role": "All"
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "seller, tag, source",
+  "sort_field": "assigned_at",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

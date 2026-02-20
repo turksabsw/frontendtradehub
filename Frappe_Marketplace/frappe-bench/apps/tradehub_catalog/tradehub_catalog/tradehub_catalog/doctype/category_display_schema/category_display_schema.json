@@ -1,0 +1,567 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:schema_name",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "schema_name",
+  "description",
+  "column_break_basic",
+  "is_active",
+  "is_default",
+  "priority",
+  "view_settings_section",
+  "view_type",
+  "template",
+  "column_break_view",
+  "items_per_page",
+  "enable_pagination",
+  "infinite_scroll",
+  "grid_layout_section",
+  "desktop_columns",
+  "tablet_columns",
+  "column_break_grid",
+  "mobile_columns",
+  "grid_gap",
+  "card_style",
+  "display_options_section",
+  "show_image",
+  "image_position",
+  "image_aspect_ratio",
+  "column_break_display1",
+  "show_title",
+  "show_description",
+  "description_lines",
+  "column_break_display2",
+  "show_price",
+  "show_original_price",
+  "show_discount_badge",
+  "column_break_display3",
+  "show_seller",
+  "show_rating",
+  "show_stock_status",
+  "additional_display_section",
+  "show_category_badge",
+  "show_quick_view",
+  "show_add_to_cart",
+  "column_break_additional",
+  "show_wishlist",
+  "show_compare",
+  "show_sku",
+  "filter_settings_section",
+  "show_filters",
+  "filter_position",
+  "collapsible_filters",
+  "column_break_filter",
+  "available_filters",
+  "max_filter_options",
+  "sort_settings_section",
+  "show_sort",
+  "default_sort_field",
+  "column_break_sort",
+  "default_sort_order",
+  "available_sort_options",
+  "category_specific_section",
+  "apply_to_all_categories",
+  "specific_categories",
+  "column_break_category",
+  "inherit_to_children",
+  "override_parent",
+  "custom_css_section",
+  "custom_css",
+  "custom_js"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "schema_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Schema Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active"
+  },
+  {
+   "default": "0",
+   "description": "Mark as default schema for categories without specific schema",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Default"
+  },
+  {
+   "default": "0",
+   "description": "Higher priority schemas override lower priority ones",
+   "fieldname": "priority",
+   "fieldtype": "Int",
+   "label": "Priority"
+  },
+  {
+   "fieldname": "view_settings_section",
+   "fieldtype": "Section Break",
+   "label": "View Settings"
+  },
+  {
+   "default": "Grid",
+   "description": "How products are displayed in the category listing",
+   "fieldname": "view_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "View Type",
+   "options": "Grid\nList\nCard\nCompact\nTable\nMasonry",
+   "reqd": 1
+  },
+  {
+   "description": "Custom template name for advanced layouts",
+   "fieldname": "template",
+   "fieldtype": "Data",
+   "label": "Custom Template"
+  },
+  {
+   "fieldname": "column_break_view",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "24",
+   "description": "Number of products per page",
+   "fieldname": "items_per_page",
+   "fieldtype": "Int",
+   "label": "Items Per Page",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_pagination",
+   "fieldtype": "Check",
+   "label": "Enable Pagination"
+  },
+  {
+   "default": "0",
+   "description": "Load more items on scroll instead of pagination",
+   "fieldname": "infinite_scroll",
+   "fieldtype": "Check",
+   "label": "Infinite Scroll"
+  },
+  {
+   "depends_on": "eval:['Grid', 'Card', 'Masonry'].includes(doc.view_type)",
+   "fieldname": "grid_layout_section",
+   "fieldtype": "Section Break",
+   "label": "Grid Layout"
+  },
+  {
+   "default": "4",
+   "description": "Number of columns on desktop (>= 1024px)",
+   "fieldname": "desktop_columns",
+   "fieldtype": "Select",
+   "label": "Desktop Columns",
+   "options": "2\n3\n4\n5\n6"
+  },
+  {
+   "default": "3",
+   "description": "Number of columns on tablet (768px - 1023px)",
+   "fieldname": "tablet_columns",
+   "fieldtype": "Select",
+   "label": "Tablet Columns",
+   "options": "2\n3\n4"
+  },
+  {
+   "fieldname": "column_break_grid",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "2",
+   "description": "Number of columns on mobile (< 768px)",
+   "fieldname": "mobile_columns",
+   "fieldtype": "Select",
+   "label": "Mobile Columns",
+   "options": "1\n2\n3"
+  },
+  {
+   "default": "16",
+   "description": "Gap between grid items in pixels",
+   "fieldname": "grid_gap",
+   "fieldtype": "Int",
+   "label": "Grid Gap (px)"
+  },
+  {
+   "default": "Shadow",
+   "description": "Card style for grid items",
+   "fieldname": "card_style",
+   "fieldtype": "Select",
+   "label": "Card Style",
+   "options": "Shadow\nBorder\nFlat\nElevated\nMinimal"
+  },
+  {
+   "fieldname": "display_options_section",
+   "fieldtype": "Section Break",
+   "label": "Display Options"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_image",
+   "fieldtype": "Check",
+   "label": "Show Image"
+  },
+  {
+   "default": "Top",
+   "depends_on": "show_image",
+   "fieldname": "image_position",
+   "fieldtype": "Select",
+   "label": "Image Position",
+   "options": "Top\nLeft\nRight\nBackground"
+  },
+  {
+   "default": "1:1",
+   "depends_on": "show_image",
+   "description": "Aspect ratio for product images",
+   "fieldname": "image_aspect_ratio",
+   "fieldtype": "Select",
+   "label": "Image Aspect Ratio",
+   "options": "1:1\n4:3\n16:9\n3:4\nAuto"
+  },
+  {
+   "fieldname": "column_break_display1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_title",
+   "fieldtype": "Check",
+   "label": "Show Title"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_description",
+   "fieldtype": "Check",
+   "label": "Show Description"
+  },
+  {
+   "default": "2",
+   "depends_on": "show_description",
+   "description": "Max lines to show (0 = unlimited)",
+   "fieldname": "description_lines",
+   "fieldtype": "Int",
+   "label": "Description Lines"
+  },
+  {
+   "fieldname": "column_break_display2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_price",
+   "fieldtype": "Check",
+   "label": "Show Price"
+  },
+  {
+   "default": "1",
+   "depends_on": "show_price",
+   "description": "Show crossed-out original price when discounted",
+   "fieldname": "show_original_price",
+   "fieldtype": "Check",
+   "label": "Show Original Price"
+  },
+  {
+   "default": "1",
+   "depends_on": "show_price",
+   "fieldname": "show_discount_badge",
+   "fieldtype": "Check",
+   "label": "Show Discount Badge"
+  },
+  {
+   "fieldname": "column_break_display3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_seller",
+   "fieldtype": "Check",
+   "label": "Show Seller"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_rating",
+   "fieldtype": "Check",
+   "label": "Show Rating"
+  },
+  {
+   "default": "1",
+   "description": "Show In Stock / Out of Stock indicator",
+   "fieldname": "show_stock_status",
+   "fieldtype": "Check",
+   "label": "Show Stock Status"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "additional_display_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Display Options"
+  },
+  {
+   "default": "0",
+   "description": "Show category badge on product cards",
+   "fieldname": "show_category_badge",
+   "fieldtype": "Check",
+   "label": "Show Category Badge"
+  },
+  {
+   "default": "1",
+   "description": "Show quick view button on hover",
+   "fieldname": "show_quick_view",
+   "fieldtype": "Check",
+   "label": "Show Quick View"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_add_to_cart",
+   "fieldtype": "Check",
+   "label": "Show Add to Cart"
+  },
+  {
+   "fieldname": "column_break_additional",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_wishlist",
+   "fieldtype": "Check",
+   "label": "Show Wishlist Button"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_compare",
+   "fieldtype": "Check",
+   "label": "Show Compare Button"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_sku",
+   "fieldtype": "Check",
+   "label": "Show SKU"
+  },
+  {
+   "fieldname": "filter_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Filter Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_filters",
+   "fieldtype": "Check",
+   "label": "Show Filters"
+  },
+  {
+   "default": "Left",
+   "depends_on": "show_filters",
+   "fieldname": "filter_position",
+   "fieldtype": "Select",
+   "label": "Filter Position",
+   "options": "Left\nTop\nRight\nModal"
+  },
+  {
+   "default": "1",
+   "depends_on": "show_filters",
+   "description": "Allow filters to be collapsed/expanded",
+   "fieldname": "collapsible_filters",
+   "fieldtype": "Check",
+   "label": "Collapsible Filters"
+  },
+  {
+   "fieldname": "column_break_filter",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "show_filters",
+   "description": "Comma-separated list of filter fields (e.g., price,brand,color,size)",
+   "fieldname": "available_filters",
+   "fieldtype": "Small Text",
+   "label": "Available Filters"
+  },
+  {
+   "default": "10",
+   "depends_on": "show_filters",
+   "description": "Maximum options to show per filter before 'Show More'",
+   "fieldname": "max_filter_options",
+   "fieldtype": "Int",
+   "label": "Max Filter Options"
+  },
+  {
+   "fieldname": "sort_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Sort Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_sort",
+   "fieldtype": "Check",
+   "label": "Show Sort Options"
+  },
+  {
+   "default": "relevance",
+   "depends_on": "show_sort",
+   "fieldname": "default_sort_field",
+   "fieldtype": "Select",
+   "label": "Default Sort Field",
+   "options": "relevance\nprice_low\nprice_high\nnewest\nrating\nbest_selling\nname_asc\nname_desc"
+  },
+  {
+   "fieldname": "column_break_sort",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "DESC",
+   "depends_on": "show_sort",
+   "fieldname": "default_sort_order",
+   "fieldtype": "Select",
+   "label": "Default Sort Order",
+   "options": "ASC\nDESC"
+  },
+  {
+   "depends_on": "show_sort",
+   "description": "Comma-separated list of sort options (e.g., relevance,price_low,price_high,newest)",
+   "fieldname": "available_sort_options",
+   "fieldtype": "Small Text",
+   "label": "Available Sort Options"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "category_specific_section",
+   "fieldtype": "Section Break",
+   "label": "Category Assignment"
+  },
+  {
+   "default": "0",
+   "description": "Apply this schema to all categories (ignores specific_categories)",
+   "fieldname": "apply_to_all_categories",
+   "fieldtype": "Check",
+   "label": "Apply to All Categories"
+  },
+  {
+   "depends_on": "eval:!doc.apply_to_all_categories",
+   "description": "Comma-separated list of category names to apply this schema",
+   "fieldname": "specific_categories",
+   "fieldtype": "Small Text",
+   "label": "Specific Categories"
+  },
+  {
+   "fieldname": "column_break_category",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Apply schema to child categories as well",
+   "fieldname": "inherit_to_children",
+   "fieldtype": "Check",
+   "label": "Inherit to Children"
+  },
+  {
+   "default": "0",
+   "description": "Override parent category's display schema",
+   "fieldname": "override_parent",
+   "fieldtype": "Check",
+   "label": "Override Parent Schema"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "custom_css_section",
+   "fieldtype": "Section Break",
+   "label": "Custom Styling"
+  },
+  {
+   "description": "Custom CSS for this display schema",
+   "fieldname": "custom_css",
+   "fieldtype": "Code",
+   "label": "Custom CSS",
+   "options": "CSS"
+  },
+  {
+   "description": "Custom JavaScript for this display schema",
+   "fieldname": "custom_js",
+   "fieldtype": "Code",
+   "label": "Custom JavaScript",
+   "options": "JavaScript"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Category",
+   "link_fieldname": "display_schema"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Category Display Schema",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "schema_name, view_type",
+ "sort_field": "priority",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "gray",
+   "title": "Inactive"
+  }
+ ],
+ "title_field": "schema_name",
+ "track_changes": 1
+}

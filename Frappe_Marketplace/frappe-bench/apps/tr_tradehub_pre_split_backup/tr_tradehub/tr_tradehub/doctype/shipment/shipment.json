@@ -1,0 +1,1398 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "SHIP-.#####",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "shipment_info_section",
+    "shipment_number",
+    "status",
+    "column_break_shipment_info",
+    "shipment_date",
+    "shipment_type",
+    "priority",
+    "order_section",
+    "order",
+    "order_number",
+    "order_status",
+    "column_break_order",
+    "order_type",
+    "order_total",
+    "sub_order_section",
+    "sub_order",
+    "sub_order_id",
+    "column_break_sub_order",
+    "sub_order_status",
+    "sub_order_total",
+    "buyer_section",
+    "buyer",
+    "buyer_name",
+    "buyer_company",
+    "column_break_buyer",
+    "buyer_email",
+    "buyer_phone",
+    "seller_section",
+    "seller",
+    "seller_name",
+    "seller_company",
+    "column_break_seller",
+    "seller_email",
+    "seller_phone",
+    "tenant_section",
+    "tenant",
+    "tenant_name",
+    "carrier_section",
+    "carrier",
+    "carrier_name",
+    "carrier_account_number",
+    "column_break_carrier",
+    "shipping_method",
+    "service_type",
+    "carrier_reference",
+    "tracking_section",
+    "tracking_number",
+    "tracking_url",
+    "column_break_tracking",
+    "tracking_status",
+    "last_tracking_update",
+    "tracking_events",
+    "label_section",
+    "label_generated",
+    "label_url",
+    "column_break_label",
+    "label_data",
+    "carrier_shipment_id",
+    "origin_section",
+    "origin_address",
+    "origin_city",
+    "origin_state",
+    "column_break_origin",
+    "origin_country",
+    "origin_postal_code",
+    "origin_contact_person",
+    "origin_phone",
+    "destination_section",
+    "destination_address",
+    "destination_city",
+    "destination_state",
+    "column_break_destination",
+    "destination_country",
+    "destination_postal_code",
+    "destination_contact_person",
+    "destination_phone",
+    "package_section",
+    "package_count",
+    "total_weight",
+    "weight_uom",
+    "column_break_package",
+    "total_volume",
+    "volume_uom",
+    "package_description",
+    "dimensions_section",
+    "length",
+    "width",
+    "height",
+    "column_break_dimensions",
+    "dimension_uom",
+    "dimensional_weight",
+    "customs_section",
+    "requires_customs",
+    "customs_status",
+    "column_break_customs",
+    "customs_value",
+    "customs_currency",
+    "customs_documents_section",
+    "hs_code",
+    "country_of_origin",
+    "column_break_customs_docs",
+    "commercial_invoice_number",
+    "export_declaration_number",
+    "customs_items_section",
+    "customs_item_description",
+    "customs_item_quantity",
+    "customs_item_value",
+    "column_break_customs_items",
+    "customs_duty_amount",
+    "customs_tax_amount",
+    "customs_clearance_date",
+    "insurance_section",
+    "is_insured",
+    "insurance_value",
+    "column_break_insurance",
+    "insurance_provider",
+    "insurance_policy_number",
+    "incoterm_section",
+    "incoterm",
+    "incoterm_description",
+    "column_break_incoterm",
+    "freight_cost",
+    "insurance_cost",
+    "total_shipping_cost",
+    "dates_section",
+    "pickup_date",
+    "pickup_time",
+    "column_break_dates",
+    "estimated_delivery_date",
+    "actual_delivery_date",
+    "delivery_time",
+    "milestone_dates_section",
+    "in_transit_date",
+    "customs_clearance_start",
+    "column_break_milestones",
+    "out_for_delivery_date",
+    "exception_date",
+    "proof_of_delivery_section",
+    "pod_received",
+    "pod_signature",
+    "column_break_pod",
+    "pod_image",
+    "pod_notes",
+    "special_instructions_section",
+    "special_handling",
+    "delivery_instructions",
+    "column_break_special",
+    "is_hazardous",
+    "hazmat_class",
+    "linked_documents_section",
+    "linked_delivery_note",
+    "linked_sales_order",
+    "column_break_linked",
+    "linked_packing_slip",
+    "linked_bill_of_lading",
+    "notes_section",
+    "internal_notes",
+    "column_break_notes",
+    "carrier_notes",
+    "customer_notes",
+    "exception_section",
+    "has_exception",
+    "exception_type",
+    "column_break_exception",
+    "exception_description",
+    "exception_resolved",
+    "exception_resolution_date"
+  ],
+  "fields": [
+    {
+      "fieldname": "shipment_info_section",
+      "fieldtype": "Section Break",
+      "label": "Shipment Information"
+    },
+    {
+      "fieldname": "shipment_number",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Shipment Number",
+      "read_only": 1,
+      "description": "Auto-generated shipment reference number"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nPending Pickup\nPicked Up\nIn Transit\nAt Customs\nCustoms Cleared\nOut for Delivery\nDelivered\nException\nReturned\nCancelled",
+      "reqd": 1,
+      "description": "Current status of the shipment"
+    },
+    {
+      "fieldname": "column_break_shipment_info",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Today",
+      "fieldname": "shipment_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Shipment Date",
+      "reqd": 1,
+      "description": "Date when the shipment was created"
+    },
+    {
+      "default": "Standard",
+      "fieldname": "shipment_type",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Shipment Type",
+      "options": "Standard\nExpress\nOvernight\nEconomy\nFreight\nSea Freight\nAir Freight\nRail Freight",
+      "reqd": 1,
+      "description": "Type of shipment - Standard, Express, Freight, etc."
+    },
+    {
+      "default": "Normal",
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "label": "Priority",
+      "options": "Low\nNormal\nHigh\nUrgent",
+      "description": "Priority level for this shipment"
+    },
+    {
+      "fieldname": "order_section",
+      "fieldtype": "Section Break",
+      "label": "Order Information"
+    },
+    {
+      "fieldname": "order",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Order",
+      "options": "Order",
+      "reqd": 1,
+      "description": "The order being shipped"
+    },
+    {
+      "fetch_from": "order.order_number",
+      "fieldname": "order_number",
+      "fieldtype": "Data",
+      "label": "Order Number",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fetch_from": "order.status",
+      "fieldname": "order_status",
+      "fieldtype": "Data",
+      "label": "Order Status",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fieldname": "column_break_order",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "order.order_type",
+      "fieldname": "order_type",
+      "fieldtype": "Data",
+      "label": "Order Type",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fetch_from": "order.total_amount",
+      "fieldname": "order_total",
+      "fieldtype": "Currency",
+      "label": "Order Total",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fieldname": "sub_order_section",
+      "fieldtype": "Section Break",
+      "label": "Sub Order Information (Marketplace)",
+      "description": "For marketplace orders, shipments are linked to Sub Orders (seller-specific)"
+    },
+    {
+      "fieldname": "sub_order",
+      "fieldtype": "Link",
+      "label": "Sub Order",
+      "options": "Sub Order",
+      "in_standard_filter": 1,
+      "description": "The marketplace sub order being shipped"
+    },
+    {
+      "fetch_from": "sub_order.sub_order_id",
+      "fieldname": "sub_order_id",
+      "fieldtype": "Data",
+      "label": "Sub Order ID",
+      "read_only": 1,
+      "description": "Auto-filled from Sub Order"
+    },
+    {
+      "fieldname": "column_break_sub_order",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "sub_order.status",
+      "fieldname": "sub_order_status",
+      "fieldtype": "Data",
+      "label": "Sub Order Status",
+      "read_only": 1,
+      "description": "Auto-filled from Sub Order"
+    },
+    {
+      "fetch_from": "sub_order.grand_total",
+      "fieldname": "sub_order_total",
+      "fieldtype": "Currency",
+      "label": "Sub Order Total",
+      "read_only": 1,
+      "description": "Auto-filled from Sub Order"
+    },
+    {
+      "fieldname": "buyer_section",
+      "fieldtype": "Section Break",
+      "label": "Buyer Information"
+    },
+    {
+      "fetch_from": "order.buyer",
+      "fieldname": "buyer",
+      "fieldtype": "Link",
+      "label": "Buyer",
+      "options": "Buyer Profile",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fetch_from": "order.buyer_name",
+      "fieldname": "buyer_name",
+      "fieldtype": "Data",
+      "label": "Buyer Name",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fetch_from": "order.buyer_company",
+      "fieldname": "buyer_company",
+      "fieldtype": "Data",
+      "label": "Company Name",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fieldname": "column_break_buyer",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "order.buyer_email",
+      "fieldname": "buyer_email",
+      "fieldtype": "Data",
+      "label": "Buyer Email",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fetch_from": "order.buyer_phone",
+      "fieldname": "buyer_phone",
+      "fieldtype": "Data",
+      "label": "Buyer Phone",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fieldname": "seller_section",
+      "fieldtype": "Section Break",
+      "label": "Seller Information"
+    },
+    {
+      "fetch_from": "order.seller",
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "label": "Seller",
+      "options": "Seller Profile",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fetch_from": "order.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "label": "Seller Name",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fetch_from": "order.seller_company",
+      "fieldname": "seller_company",
+      "fieldtype": "Data",
+      "label": "Company Name",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fieldname": "column_break_seller",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "order.seller_email",
+      "fieldname": "seller_email",
+      "fieldtype": "Data",
+      "label": "Seller Email",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fetch_from": "order.seller_phone",
+      "fieldname": "seller_phone",
+      "fieldtype": "Data",
+      "label": "Seller Phone",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Tenant Information",
+      "collapsible": 1
+    },
+    {
+      "fetch_from": "order.tenant",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from Order - Multi-tenant isolation field"
+    },
+    {
+      "fetch_from": "order.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Order"
+    },
+    {
+      "fieldname": "carrier_section",
+      "fieldtype": "Section Break",
+      "label": "Carrier Information"
+    },
+    {
+      "fieldname": "carrier",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Carrier",
+      "options": "Carrier",
+      "description": "The shipping carrier for this shipment"
+    },
+    {
+      "fetch_from": "carrier.carrier_name",
+      "fieldname": "carrier_name",
+      "fieldtype": "Data",
+      "label": "Carrier Name",
+      "read_only": 1,
+      "description": "Auto-filled from Carrier"
+    },
+    {
+      "fieldname": "carrier_account_number",
+      "fieldtype": "Data",
+      "label": "Carrier Account Number",
+      "description": "Account number with the carrier"
+    },
+    {
+      "fieldname": "column_break_carrier",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "shipping_method",
+      "fieldtype": "Select",
+      "label": "Shipping Method",
+      "options": "\nGround\nAir\nSea\nRail\nMulti-Modal\nCourier\nLTL\nFTL",
+      "description": "Method of transportation"
+    },
+    {
+      "fieldname": "service_type",
+      "fieldtype": "Data",
+      "label": "Service Type",
+      "description": "Specific service type offered by carrier (e.g., FedEx Priority, UPS Ground)"
+    },
+    {
+      "fieldname": "carrier_reference",
+      "fieldtype": "Data",
+      "label": "Carrier Reference",
+      "description": "Carrier's internal reference number"
+    },
+    {
+      "fieldname": "tracking_section",
+      "fieldtype": "Section Break",
+      "label": "Tracking Information"
+    },
+    {
+      "fieldname": "tracking_number",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Tracking Number",
+      "description": "Primary tracking number for this shipment"
+    },
+    {
+      "fieldname": "tracking_url",
+      "fieldtype": "Data",
+      "label": "Tracking URL",
+      "description": "URL to track the shipment"
+    },
+    {
+      "fieldname": "column_break_tracking",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Pending",
+      "fieldname": "tracking_status",
+      "fieldtype": "Select",
+      "label": "Tracking Status",
+      "options": "Pending\nLabel Created\nPicked Up\nIn Transit\nAt Hub\nAt Customs\nOut for Delivery\nDelivered\nException\nReturned",
+      "description": "Current tracking status from carrier"
+    },
+    {
+      "fieldname": "last_tracking_update",
+      "fieldtype": "Datetime",
+      "label": "Last Tracking Update",
+      "read_only": 1,
+      "description": "Timestamp of last tracking status update"
+    },
+    {
+      "fieldname": "tracking_events",
+      "fieldtype": "Text",
+      "label": "Tracking Events",
+      "read_only": 1,
+      "description": "JSON array of tracking events (managed via UI component)"
+    },
+    {
+      "fieldname": "label_section",
+      "fieldtype": "Section Break",
+      "label": "Shipping Label",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "label_generated",
+      "fieldtype": "Check",
+      "label": "Label Generated",
+      "read_only": 1,
+      "description": "Whether a shipping label has been generated via carrier API"
+    },
+    {
+      "fieldname": "label_url",
+      "fieldtype": "Data",
+      "label": "Label URL",
+      "read_only": 1,
+      "description": "URL to download shipping label"
+    },
+    {
+      "fieldname": "column_break_label",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "label_data",
+      "fieldtype": "Attach",
+      "label": "Label File",
+      "description": "Generated shipping label file (PDF/ZPL)"
+    },
+    {
+      "fieldname": "carrier_shipment_id",
+      "fieldtype": "Data",
+      "label": "Carrier Shipment ID",
+      "read_only": 1,
+      "description": "Carrier's internal shipment/tracking ID"
+    },
+    {
+      "fieldname": "origin_section",
+      "fieldtype": "Section Break",
+      "label": "Origin Address"
+    },
+    {
+      "fieldname": "origin_address",
+      "fieldtype": "Small Text",
+      "label": "Origin Address",
+      "description": "Complete origin/pickup address"
+    },
+    {
+      "fieldname": "origin_city",
+      "fieldtype": "Data",
+      "label": "City",
+      "description": "Origin city"
+    },
+    {
+      "fieldname": "origin_state",
+      "fieldtype": "Data",
+      "label": "State/Province",
+      "description": "Origin state or province"
+    },
+    {
+      "fieldname": "column_break_origin",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "origin_country",
+      "fieldtype": "Link",
+      "label": "Country",
+      "options": "Country",
+      "description": "Origin country"
+    },
+    {
+      "fieldname": "origin_postal_code",
+      "fieldtype": "Data",
+      "label": "Postal Code",
+      "description": "Origin postal/zip code"
+    },
+    {
+      "fieldname": "origin_contact_person",
+      "fieldtype": "Data",
+      "label": "Contact Person",
+      "description": "Contact person at origin address"
+    },
+    {
+      "fieldname": "origin_phone",
+      "fieldtype": "Data",
+      "label": "Phone",
+      "description": "Contact phone at origin"
+    },
+    {
+      "fieldname": "destination_section",
+      "fieldtype": "Section Break",
+      "label": "Destination Address"
+    },
+    {
+      "fieldname": "destination_address",
+      "fieldtype": "Small Text",
+      "label": "Destination Address",
+      "description": "Complete destination/delivery address"
+    },
+    {
+      "fieldname": "destination_city",
+      "fieldtype": "Data",
+      "label": "City",
+      "description": "Destination city"
+    },
+    {
+      "fieldname": "destination_state",
+      "fieldtype": "Data",
+      "label": "State/Province",
+      "description": "Destination state or province"
+    },
+    {
+      "fieldname": "column_break_destination",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "destination_country",
+      "fieldtype": "Link",
+      "label": "Country",
+      "options": "Country",
+      "description": "Destination country"
+    },
+    {
+      "fieldname": "destination_postal_code",
+      "fieldtype": "Data",
+      "label": "Postal Code",
+      "description": "Destination postal/zip code"
+    },
+    {
+      "fieldname": "destination_contact_person",
+      "fieldtype": "Data",
+      "label": "Contact Person",
+      "description": "Contact person at destination address"
+    },
+    {
+      "fieldname": "destination_phone",
+      "fieldtype": "Data",
+      "label": "Phone",
+      "description": "Contact phone at destination"
+    },
+    {
+      "fieldname": "package_section",
+      "fieldtype": "Section Break",
+      "label": "Package Information"
+    },
+    {
+      "default": "1",
+      "fieldname": "package_count",
+      "fieldtype": "Int",
+      "label": "Package Count",
+      "description": "Number of packages in this shipment"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_weight",
+      "fieldtype": "Float",
+      "label": "Total Weight",
+      "precision": 3,
+      "description": "Total weight of all packages"
+    },
+    {
+      "default": "kg",
+      "fieldname": "weight_uom",
+      "fieldtype": "Link",
+      "label": "Weight UOM",
+      "options": "UOM",
+      "description": "Unit of measure for weight"
+    },
+    {
+      "fieldname": "column_break_package",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_volume",
+      "fieldtype": "Float",
+      "label": "Total Volume",
+      "precision": 3,
+      "description": "Total volume of all packages"
+    },
+    {
+      "default": "cbm",
+      "fieldname": "volume_uom",
+      "fieldtype": "Data",
+      "label": "Volume UOM",
+      "description": "Unit of measure for volume (cbm, cft, etc.)"
+    },
+    {
+      "fieldname": "package_description",
+      "fieldtype": "Small Text",
+      "label": "Package Description",
+      "description": "Description of package contents"
+    },
+    {
+      "fieldname": "dimensions_section",
+      "fieldtype": "Section Break",
+      "label": "Dimensions",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "length",
+      "fieldtype": "Float",
+      "label": "Length",
+      "precision": 2,
+      "description": "Package length"
+    },
+    {
+      "default": "0",
+      "fieldname": "width",
+      "fieldtype": "Float",
+      "label": "Width",
+      "precision": 2,
+      "description": "Package width"
+    },
+    {
+      "default": "0",
+      "fieldname": "height",
+      "fieldtype": "Float",
+      "label": "Height",
+      "precision": 2,
+      "description": "Package height"
+    },
+    {
+      "fieldname": "column_break_dimensions",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "cm",
+      "fieldname": "dimension_uom",
+      "fieldtype": "Link",
+      "label": "Dimension UOM",
+      "options": "UOM",
+      "description": "Unit of measure for dimensions"
+    },
+    {
+      "default": "0",
+      "fieldname": "dimensional_weight",
+      "fieldtype": "Float",
+      "label": "Dimensional Weight",
+      "precision": 3,
+      "read_only": 1,
+      "description": "Calculated dimensional weight (L x W x H / divisor)"
+    },
+    {
+      "fieldname": "customs_section",
+      "fieldtype": "Section Break",
+      "label": "Customs Information"
+    },
+    {
+      "default": "0",
+      "fieldname": "requires_customs",
+      "fieldtype": "Check",
+      "label": "Requires Customs Clearance",
+      "description": "Whether this shipment requires customs clearance"
+    },
+    {
+      "fieldname": "customs_status",
+      "fieldtype": "Select",
+      "label": "Customs Status",
+      "options": "\nNot Applicable\nPending Declaration\nDocuments Submitted\nUnder Review\nCleared\nHeld\nReleased",
+      "depends_on": "requires_customs",
+      "description": "Current customs clearance status"
+    },
+    {
+      "fieldname": "column_break_customs",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "customs_value",
+      "fieldtype": "Currency",
+      "label": "Customs Value",
+      "depends_on": "requires_customs",
+      "description": "Declared value for customs purposes"
+    },
+    {
+      "default": "USD",
+      "fieldname": "customs_currency",
+      "fieldtype": "Link",
+      "label": "Customs Currency",
+      "options": "Currency",
+      "depends_on": "requires_customs",
+      "description": "Currency for customs value"
+    },
+    {
+      "fieldname": "customs_documents_section",
+      "fieldtype": "Section Break",
+      "label": "Customs Documents",
+      "depends_on": "requires_customs",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "hs_code",
+      "fieldtype": "Data",
+      "label": "HS Code",
+      "description": "Harmonized System code for goods classification"
+    },
+    {
+      "fieldname": "country_of_origin",
+      "fieldtype": "Link",
+      "label": "Country of Origin",
+      "options": "Country",
+      "description": "Country where goods were manufactured"
+    },
+    {
+      "fieldname": "column_break_customs_docs",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "commercial_invoice_number",
+      "fieldtype": "Data",
+      "label": "Commercial Invoice Number",
+      "description": "Commercial invoice reference number"
+    },
+    {
+      "fieldname": "export_declaration_number",
+      "fieldtype": "Data",
+      "label": "Export Declaration Number",
+      "description": "Export declaration/license number"
+    },
+    {
+      "fieldname": "customs_items_section",
+      "fieldtype": "Section Break",
+      "label": "Customs Item Details",
+      "depends_on": "requires_customs",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "customs_item_description",
+      "fieldtype": "Small Text",
+      "label": "Item Description",
+      "description": "Detailed description of goods for customs"
+    },
+    {
+      "fieldname": "customs_item_quantity",
+      "fieldtype": "Int",
+      "label": "Item Quantity",
+      "description": "Number of items for customs declaration"
+    },
+    {
+      "fieldname": "customs_item_value",
+      "fieldtype": "Currency",
+      "label": "Item Value",
+      "description": "Value of items for customs"
+    },
+    {
+      "fieldname": "column_break_customs_items",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "customs_duty_amount",
+      "fieldtype": "Currency",
+      "label": "Customs Duty Amount",
+      "description": "Amount of customs duty charged"
+    },
+    {
+      "default": "0",
+      "fieldname": "customs_tax_amount",
+      "fieldtype": "Currency",
+      "label": "Customs Tax Amount",
+      "description": "Amount of customs tax charged"
+    },
+    {
+      "fieldname": "customs_clearance_date",
+      "fieldtype": "Date",
+      "label": "Customs Clearance Date",
+      "read_only": 1,
+      "description": "Date when customs clearance was completed"
+    },
+    {
+      "fieldname": "insurance_section",
+      "fieldtype": "Section Break",
+      "label": "Insurance",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "is_insured",
+      "fieldtype": "Check",
+      "label": "Is Insured",
+      "description": "Whether the shipment is insured"
+    },
+    {
+      "default": "0",
+      "fieldname": "insurance_value",
+      "fieldtype": "Currency",
+      "label": "Insurance Value",
+      "depends_on": "is_insured",
+      "description": "Insured value of the shipment"
+    },
+    {
+      "fieldname": "column_break_insurance",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "insurance_provider",
+      "fieldtype": "Data",
+      "label": "Insurance Provider",
+      "depends_on": "is_insured",
+      "description": "Name of insurance provider"
+    },
+    {
+      "fieldname": "insurance_policy_number",
+      "fieldtype": "Data",
+      "label": "Insurance Policy Number",
+      "depends_on": "is_insured",
+      "description": "Insurance policy reference number"
+    },
+    {
+      "fieldname": "incoterm_section",
+      "fieldtype": "Section Break",
+      "label": "Shipping Terms and Costs"
+    },
+    {
+      "default": "EXW",
+      "fieldname": "incoterm",
+      "fieldtype": "Select",
+      "label": "Incoterm",
+      "options": "EXW\nFOB\nCIF\nDDP\nDAP\nFCA\nCPT\nCIP\nDAT\nDPU",
+      "description": "International Commercial Terms"
+    },
+    {
+      "fieldname": "incoterm_description",
+      "fieldtype": "Data",
+      "label": "Incoterm Description",
+      "read_only": 1,
+      "description": "Auto-generated description of the Incoterm"
+    },
+    {
+      "fieldname": "column_break_incoterm",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "freight_cost",
+      "fieldtype": "Currency",
+      "label": "Freight Cost",
+      "description": "Cost of freight/shipping"
+    },
+    {
+      "default": "0",
+      "fieldname": "insurance_cost",
+      "fieldtype": "Currency",
+      "label": "Insurance Cost",
+      "description": "Cost of insurance"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_shipping_cost",
+      "fieldtype": "Currency",
+      "label": "Total Shipping Cost",
+      "read_only": 1,
+      "description": "Total cost (freight + insurance + customs duties)"
+    },
+    {
+      "fieldname": "dates_section",
+      "fieldtype": "Section Break",
+      "label": "Shipping Dates"
+    },
+    {
+      "fieldname": "pickup_date",
+      "fieldtype": "Date",
+      "label": "Pickup Date",
+      "description": "Scheduled pickup date"
+    },
+    {
+      "fieldname": "pickup_time",
+      "fieldtype": "Time",
+      "label": "Pickup Time",
+      "description": "Scheduled pickup time"
+    },
+    {
+      "fieldname": "column_break_dates",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "estimated_delivery_date",
+      "fieldtype": "Date",
+      "label": "Estimated Delivery Date",
+      "description": "Expected delivery date"
+    },
+    {
+      "fieldname": "actual_delivery_date",
+      "fieldtype": "Date",
+      "label": "Actual Delivery Date",
+      "read_only": 1,
+      "description": "Actual date of delivery"
+    },
+    {
+      "fieldname": "delivery_time",
+      "fieldtype": "Time",
+      "label": "Delivery Time",
+      "read_only": 1,
+      "description": "Actual time of delivery"
+    },
+    {
+      "fieldname": "milestone_dates_section",
+      "fieldtype": "Section Break",
+      "label": "Milestone Dates",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "in_transit_date",
+      "fieldtype": "Datetime",
+      "label": "In Transit Date",
+      "read_only": 1,
+      "description": "When shipment went in transit"
+    },
+    {
+      "fieldname": "customs_clearance_start",
+      "fieldtype": "Datetime",
+      "label": "Customs Clearance Start",
+      "read_only": 1,
+      "description": "When customs clearance began"
+    },
+    {
+      "fieldname": "column_break_milestones",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "out_for_delivery_date",
+      "fieldtype": "Datetime",
+      "label": "Out for Delivery Date",
+      "read_only": 1,
+      "description": "When shipment went out for delivery"
+    },
+    {
+      "fieldname": "exception_date",
+      "fieldtype": "Datetime",
+      "label": "Exception Date",
+      "read_only": 1,
+      "description": "When an exception was reported"
+    },
+    {
+      "fieldname": "proof_of_delivery_section",
+      "fieldtype": "Section Break",
+      "label": "Proof of Delivery",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "pod_received",
+      "fieldtype": "Check",
+      "label": "POD Received",
+      "description": "Whether proof of delivery has been received"
+    },
+    {
+      "fieldname": "pod_signature",
+      "fieldtype": "Data",
+      "label": "Signature Name",
+      "depends_on": "pod_received",
+      "description": "Name of person who signed for delivery"
+    },
+    {
+      "fieldname": "column_break_pod",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "pod_image",
+      "fieldtype": "Attach Image",
+      "label": "POD Image",
+      "depends_on": "pod_received",
+      "description": "Image/scan of proof of delivery"
+    },
+    {
+      "fieldname": "pod_notes",
+      "fieldtype": "Small Text",
+      "label": "POD Notes",
+      "depends_on": "pod_received",
+      "description": "Additional notes about the delivery"
+    },
+    {
+      "fieldname": "special_instructions_section",
+      "fieldtype": "Section Break",
+      "label": "Special Instructions",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "special_handling",
+      "fieldtype": "Small Text",
+      "label": "Special Handling Instructions",
+      "description": "Special handling requirements (fragile, temperature sensitive, etc.)"
+    },
+    {
+      "fieldname": "delivery_instructions",
+      "fieldtype": "Small Text",
+      "label": "Delivery Instructions",
+      "description": "Specific delivery instructions for carrier"
+    },
+    {
+      "fieldname": "column_break_special",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_hazardous",
+      "fieldtype": "Check",
+      "label": "Hazardous Materials",
+      "description": "Whether shipment contains hazardous materials"
+    },
+    {
+      "fieldname": "hazmat_class",
+      "fieldtype": "Data",
+      "label": "Hazmat Class",
+      "depends_on": "is_hazardous",
+      "description": "Hazardous materials classification"
+    },
+    {
+      "fieldname": "linked_documents_section",
+      "fieldtype": "Section Break",
+      "label": "Linked Documents",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "linked_delivery_note",
+      "fieldtype": "Data",
+      "label": "ERPNext Delivery Note",
+      "read_only": 1,
+      "description": "Linked ERPNext Delivery Note (if sync enabled)"
+    },
+    {
+      "fieldname": "linked_sales_order",
+      "fieldtype": "Data",
+      "label": "ERPNext Sales Order",
+      "read_only": 1,
+      "description": "Linked ERPNext Sales Order (if sync enabled)"
+    },
+    {
+      "fieldname": "column_break_linked",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "linked_packing_slip",
+      "fieldtype": "Data",
+      "label": "Packing Slip",
+      "description": "Packing slip reference number"
+    },
+    {
+      "fieldname": "linked_bill_of_lading",
+      "fieldtype": "Data",
+      "label": "Bill of Lading",
+      "description": "Bill of lading reference number"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text",
+      "label": "Internal Notes",
+      "description": "Internal notes (not visible to buyer)"
+    },
+    {
+      "fieldname": "column_break_notes",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "carrier_notes",
+      "fieldtype": "Text",
+      "label": "Carrier Notes",
+      "description": "Notes from/for carrier"
+    },
+    {
+      "fieldname": "customer_notes",
+      "fieldtype": "Text",
+      "label": "Customer Notes",
+      "description": "Notes for customer/buyer"
+    },
+    {
+      "fieldname": "exception_section",
+      "fieldtype": "Section Break",
+      "label": "Exception Handling",
+      "collapsible": 1,
+      "depends_on": "has_exception"
+    },
+    {
+      "default": "0",
+      "fieldname": "has_exception",
+      "fieldtype": "Check",
+      "label": "Has Exception",
+      "description": "Whether there is an exception with this shipment"
+    },
+    {
+      "fieldname": "exception_type",
+      "fieldtype": "Select",
+      "label": "Exception Type",
+      "options": "\nDelay\nDamage\nLost\nAddress Issue\nCustoms Hold\nWeather\nRecipient Unavailable\nRefused\nOther",
+      "depends_on": "has_exception",
+      "description": "Type of exception"
+    },
+    {
+      "fieldname": "column_break_exception",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "exception_description",
+      "fieldtype": "Small Text",
+      "label": "Exception Description",
+      "depends_on": "has_exception",
+      "description": "Detailed description of the exception"
+    },
+    {
+      "default": "0",
+      "fieldname": "exception_resolved",
+      "fieldtype": "Check",
+      "label": "Exception Resolved",
+      "depends_on": "has_exception",
+      "description": "Whether the exception has been resolved"
+    },
+    {
+      "fieldname": "exception_resolution_date",
+      "fieldtype": "Datetime",
+      "label": "Resolution Date",
+      "depends_on": "exception_resolved",
+      "read_only": 1,
+      "description": "When the exception was resolved"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Order",
+      "link_fieldname": "order"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Sub Order",
+      "link_fieldname": "sub_order"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Buyer Profile",
+      "link_fieldname": "buyer"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Seller Profile",
+      "link_fieldname": "seller"
+    },
+    {
+      "group": "Carrier",
+      "link_doctype": "Carrier",
+      "link_fieldname": "carrier"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Shipment",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "if_owner": 0,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "if_owner": 0,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "shipment_number, tracking_number, order_number, buyer_name, seller_name, carrier_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Draft"
+    },
+    {
+      "color": "blue",
+      "title": "Pending Pickup"
+    },
+    {
+      "color": "cyan",
+      "title": "Picked Up"
+    },
+    {
+      "color": "orange",
+      "title": "In Transit"
+    },
+    {
+      "color": "yellow",
+      "title": "At Customs"
+    },
+    {
+      "color": "purple",
+      "title": "Customs Cleared"
+    },
+    {
+      "color": "blue",
+      "title": "Out for Delivery"
+    },
+    {
+      "color": "green",
+      "title": "Delivered"
+    },
+    {
+      "color": "red",
+      "title": "Exception"
+    },
+    {
+      "color": "red",
+      "title": "Returned"
+    },
+    {
+      "color": "gray",
+      "title": "Cancelled"
+    }
+  ],
+  "title_field": "shipment_number",
+  "track_changes": 1
+}

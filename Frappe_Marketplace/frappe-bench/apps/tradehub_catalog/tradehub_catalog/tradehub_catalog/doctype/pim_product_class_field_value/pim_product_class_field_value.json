@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "field_code",
+  "field_label",
+  "column_break_1",
+  "field_type",
+  "value_section",
+  "value_text",
+  "value_long_text",
+  "column_break_2",
+  "value_int",
+  "value_float",
+  "value_check",
+  "column_break_3",
+  "value_date",
+  "value_datetime",
+  "value_link",
+  "value_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "field_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Field Code",
+   "reqd": 1,
+   "description": "Code of the Product Class custom field"
+  },
+  {
+   "fieldname": "field_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Field Label",
+   "description": "Display label for the field"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "field_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Field Type",
+   "options": "Data\nInt\nFloat\nCurrency\nPercent\nCheck\nSelect\nLink\nDate\nDatetime\nText\nText Editor\nCode\nAttach\nAttach Image\nColor\nRating",
+   "description": "Data type of the field value"
+  },
+  {
+   "fieldname": "value_section",
+   "fieldtype": "Section Break",
+   "label": "Value"
+  },
+  {
+   "fieldname": "value_text",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Text Value",
+   "description": "Used for Data, Select, Link, Color, Attach types"
+  },
+  {
+   "fieldname": "value_long_text",
+   "fieldtype": "Text",
+   "label": "Long Text Value",
+   "description": "Used for Text, Text Editor, Code types"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "value_int",
+   "fieldtype": "Int",
+   "label": "Integer Value",
+   "description": "Used for Int type"
+  },
+  {
+   "fieldname": "value_float",
+   "fieldtype": "Float",
+   "label": "Float Value",
+   "description": "Used for Float, Currency, Percent, Rating types"
+  },
+  {
+   "fieldname": "value_check",
+   "fieldtype": "Check",
+   "label": "Checkbox Value",
+   "description": "Used for Check type"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "value_date",
+   "fieldtype": "Date",
+   "label": "Date Value",
+   "description": "Used for Date type"
+  },
+  {
+   "fieldname": "value_datetime",
+   "fieldtype": "Datetime",
+   "label": "Datetime Value",
+   "description": "Used for Datetime type"
+  },
+  {
+   "fieldname": "value_link",
+   "fieldtype": "Data",
+   "label": "Link Value",
+   "description": "Used for Link type - stores the linked document name"
+  },
+  {
+   "fieldname": "value_json",
+   "fieldtype": "Code",
+   "label": "JSON Value",
+   "options": "JSON",
+   "description": "Used for complex/structured data"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "PIM Product Class Field Value",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

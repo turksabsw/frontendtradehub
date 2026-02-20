@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "category",
+  "category_name",
+  "column_break_1",
+  "is_primary",
+  "sort_order",
+  "scope_section",
+  "channel",
+  "column_break_2",
+  "external_category_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "Category",
+   "reqd": 1,
+   "description": "Link to the category this product belongs to"
+  },
+  {
+   "fieldname": "category_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Category Name",
+   "read_only": 1,
+   "fetch_from": "category.category_name",
+   "description": "Auto-fetched category name"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_primary",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Primary Category",
+   "description": "If checked, this is the main category for the product"
+  },
+  {
+   "default": "0",
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Sort Order",
+   "description": "Display order of categories"
+  },
+  {
+   "fieldname": "scope_section",
+   "fieldtype": "Section Break",
+   "label": "Scope",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "channel",
+   "fieldtype": "Link",
+   "label": "Sales Channel",
+   "options": "Sales Channel",
+   "description": "Channel-specific category assignment (empty = all channels)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "external_category_id",
+   "fieldtype": "Data",
+   "label": "External Category ID",
+   "description": "Channel-specific category ID (e.g., Amazon Browse Node, eBay Category ID)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "PIM Product Category Link",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

@@ -1,0 +1,413 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "rule_name",
+    "contract_template",
+    "column_break_basic",
+    "status",
+    "priority",
+    "tenant",
+    "trigger_section",
+    "trigger_point",
+    "trigger_doctype",
+    "column_break_trigger",
+    "trigger_event",
+    "blocking_action",
+    "conditions_section",
+    "match_type",
+    "conditions",
+    "target_section",
+    "apply_to",
+    "target_user_type",
+    "column_break_target",
+    "target_seller_level",
+    "target_buyer_level",
+    "validity_section",
+    "valid_from",
+    "valid_until",
+    "column_break_validity",
+    "auto_expire",
+    "expire_after_days",
+    "notification_section",
+    "send_notification",
+    "notification_template",
+    "column_break_notification",
+    "reminder_days_before",
+    "escalation_days",
+    "execution_section",
+    "last_triggered_at",
+    "trigger_count",
+    "column_break_execution",
+    "acceptance_count",
+    "rejection_count",
+    "system_section",
+    "naming_series",
+    "description",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "rule_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Rule Name",
+      "reqd": 1
+    },
+    {
+      "description": "Contract template to be presented when rule conditions are met",
+      "fieldname": "contract_template",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Contract Template",
+      "options": "Contract Template",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nInactive\nDraft\nArchived",
+      "reqd": 1
+    },
+    {
+      "default": "1",
+      "description": "Higher priority rules are evaluated first (1-100)",
+      "fieldname": "priority",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Priority"
+    },
+    {
+      "description": "Tenant this rule belongs to (empty for global rules)",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant"
+    },
+    {
+      "fieldname": "trigger_section",
+      "fieldtype": "Section Break",
+      "label": "Trigger Configuration"
+    },
+    {
+      "description": "When this contract rule should be triggered",
+      "fieldname": "trigger_point",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Trigger Point",
+      "options": "Registration\nFirst Order\nFirst Sale\nProfile Update\nSubscription Change\nLevel Upgrade\nVerification Complete\nDocument Upload\nPayment Method Add\nManual",
+      "reqd": 1
+    },
+    {
+      "depends_on": "eval:['First Order', 'First Sale', 'Profile Update', 'Document Upload'].includes(doc.trigger_point)",
+      "description": "DocType that triggers this rule",
+      "fieldname": "trigger_doctype",
+      "fieldtype": "Link",
+      "label": "Trigger DocType",
+      "options": "DocType"
+    },
+    {
+      "fieldname": "column_break_trigger",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "on_submit",
+      "depends_on": "trigger_doctype",
+      "description": "Document event that triggers this rule",
+      "fieldname": "trigger_event",
+      "fieldtype": "Select",
+      "label": "Trigger Event",
+      "options": "on_submit\nafter_insert\nbefore_save\nafter_save"
+    },
+    {
+      "default": "1",
+      "description": "If enabled, the triggering action will be blocked until contract is accepted",
+      "fieldname": "blocking_action",
+      "fieldtype": "Check",
+      "label": "Blocking Action"
+    },
+    {
+      "fieldname": "conditions_section",
+      "fieldtype": "Section Break",
+      "label": "Conditions"
+    },
+    {
+      "default": "All",
+      "description": "How to combine multiple conditions",
+      "fieldname": "match_type",
+      "fieldtype": "Select",
+      "label": "Match Type",
+      "options": "All\nAny"
+    },
+    {
+      "description": "Conditions that must be met for this rule to apply",
+      "fieldname": "conditions",
+      "fieldtype": "Table",
+      "label": "Conditions",
+      "options": "Contract Rule Condition"
+    },
+    {
+      "fieldname": "target_section",
+      "fieldtype": "Section Break",
+      "label": "Target Filters"
+    },
+    {
+      "default": "All Users",
+      "description": "Which users this rule should evaluate",
+      "fieldname": "apply_to",
+      "fieldtype": "Select",
+      "label": "Apply To",
+      "options": "All Users\nSellers Only\nBuyers Only\nSpecific User Type\nSpecific Level"
+    },
+    {
+      "depends_on": "eval:doc.apply_to=='Specific User Type'",
+      "fieldname": "target_user_type",
+      "fieldtype": "Select",
+      "label": "Target User Type",
+      "options": "\nIndividual\nBusiness\nEnterprise"
+    },
+    {
+      "fieldname": "column_break_target",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.apply_to=='Specific Level' && ['All Users', 'Sellers Only'].includes(doc.apply_to)",
+      "fieldname": "target_seller_level",
+      "fieldtype": "Link",
+      "label": "Target Seller Level",
+      "options": "Seller Level"
+    },
+    {
+      "depends_on": "eval:doc.apply_to=='Specific Level' && ['All Users', 'Buyers Only'].includes(doc.apply_to)",
+      "fieldname": "target_buyer_level",
+      "fieldtype": "Link",
+      "label": "Target Buyer Level",
+      "options": "Buyer Level"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "validity_section",
+      "fieldtype": "Section Break",
+      "label": "Validity Period"
+    },
+    {
+      "description": "Rule is only active from this date",
+      "fieldname": "valid_from",
+      "fieldtype": "Date",
+      "label": "Valid From"
+    },
+    {
+      "description": "Rule expires after this date",
+      "fieldname": "valid_until",
+      "fieldtype": "Date",
+      "label": "Valid Until"
+    },
+    {
+      "fieldname": "column_break_validity",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Automatically expire contract acceptance after specified days",
+      "fieldname": "auto_expire",
+      "fieldtype": "Check",
+      "label": "Auto Expire Acceptance"
+    },
+    {
+      "depends_on": "eval:doc.auto_expire==1",
+      "description": "Number of days after which the acceptance expires (requires re-acceptance)",
+      "fieldname": "expire_after_days",
+      "fieldtype": "Int",
+      "label": "Expire After (Days)"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "notification_section",
+      "fieldtype": "Section Break",
+      "label": "Notification Settings"
+    },
+    {
+      "default": "1",
+      "description": "Send notification when contract is triggered",
+      "fieldname": "send_notification",
+      "fieldtype": "Check",
+      "label": "Send Notification"
+    },
+    {
+      "depends_on": "eval:doc.send_notification==1",
+      "description": "Email template to use for notification",
+      "fieldname": "notification_template",
+      "fieldtype": "Link",
+      "label": "Notification Template",
+      "options": "Email Template"
+    },
+    {
+      "fieldname": "column_break_notification",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "7",
+      "depends_on": "eval:doc.auto_expire==1",
+      "description": "Days before expiry to send reminder",
+      "fieldname": "reminder_days_before",
+      "fieldtype": "Int",
+      "label": "Reminder Days Before"
+    },
+    {
+      "default": "3",
+      "description": "Days to wait before escalating unsigned contracts",
+      "fieldname": "escalation_days",
+      "fieldtype": "Int",
+      "label": "Escalation Days"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "execution_section",
+      "fieldtype": "Section Break",
+      "label": "Execution Statistics"
+    },
+    {
+      "fieldname": "last_triggered_at",
+      "fieldtype": "Datetime",
+      "label": "Last Triggered At",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "trigger_count",
+      "fieldtype": "Int",
+      "label": "Trigger Count",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_execution",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Number of contracts accepted based on this rule",
+      "fieldname": "acceptance_count",
+      "fieldtype": "Int",
+      "label": "Acceptance Count",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "Number of contracts rejected based on this rule",
+      "fieldname": "rejection_count",
+      "fieldtype": "Int",
+      "label": "Rejection Count",
+      "read_only": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "system_section",
+      "fieldtype": "Section Break",
+      "label": "System"
+    },
+    {
+      "default": "CONTRULE-.#####",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Naming Series",
+      "options": "CONTRULE-.#####"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Text",
+      "label": "Notes"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Contract",
+      "link_fieldname": "contract_rule"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR Tradehub",
+  "name": "Contract Rule",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Marketplace Manager",
+      "share": 0,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "rule_name, contract_template, status, trigger_point",
+  "show_name_in_global_search": 1,
+  "sort_field": "priority",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "green",
+      "title": "Active"
+    },
+    {
+      "color": "gray",
+      "title": "Inactive"
+    },
+    {
+      "color": "blue",
+      "title": "Draft"
+    },
+    {
+      "color": "orange",
+      "title": "Archived"
+    }
+  ],
+  "title_field": "rule_name",
+  "track_changes": 1
+}

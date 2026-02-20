@@ -1,0 +1,685 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "ACACT-.#####",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "action_type",
+    "severity",
+    "status",
+    "column_break_basic",
+    "tenant",
+    "created_by_user",
+    "creation_date",
+    "target_section",
+    "target_type",
+    "user",
+    "column_break_target",
+    "seller_profile",
+    "organization",
+    "action_details_section",
+    "reason_code",
+    "reason",
+    "detailed_reason",
+    "column_break_details",
+    "violation_type",
+    "violation_count",
+    "related_content_type",
+    "related_content",
+    "duration_section",
+    "is_permanent",
+    "start_date",
+    "end_date",
+    "column_break_duration",
+    "auto_lift",
+    "lifted_at",
+    "lifted_by",
+    "lifted_reason",
+    "restrictions_section",
+    "restrict_selling",
+    "restrict_buying",
+    "restrict_messaging",
+    "column_break_restrictions",
+    "restrict_reviews",
+    "restrict_listing_create",
+    "restrict_withdrawal",
+    "restrict_all_activity",
+    "escalation_section",
+    "previous_action",
+    "escalation_level",
+    "column_break_escalation",
+    "next_escalation_action",
+    "escalation_threshold",
+    "evidence_section",
+    "evidence",
+    "evidence_attachments",
+    "investigation_notes",
+    "appeal_section",
+    "is_appealable",
+    "appeal_status",
+    "appeal_submitted_at",
+    "column_break_appeal",
+    "appeal_reason",
+    "appeal_evidence",
+    "appeal_decision",
+    "appeal_decided_by",
+    "appeal_decided_at",
+    "appeal_response",
+    "notifications_section",
+    "notification_sent",
+    "notification_sent_at",
+    "notification_method",
+    "column_break_notifications",
+    "reminder_sent",
+    "expiry_warning_sent",
+    "audit_section",
+    "reviewed_by",
+    "reviewed_at",
+    "column_break_audit",
+    "approved_by",
+    "approved_at",
+    "notes_section",
+    "internal_notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "action_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Action Type",
+      "options": "Warning\nRestriction\nSuspension\nTemporary Ban\nPermanent Ban\nAccount Termination\nProbation\nFine\nCommission Increase\nFeature Limitation",
+      "reqd": 1,
+      "description": "Type of action taken against the account"
+    },
+    {
+      "fieldname": "severity",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Severity",
+      "options": "Low\nMedium\nHigh\nCritical",
+      "default": "Medium",
+      "reqd": 1,
+      "description": "Severity level of the action"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nPending Approval\nActive\nExpired\nLifted\nAppealed\nOverturned\nEscalated\nCancelled",
+      "reqd": 1,
+      "description": "Current status of the action"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "description": "The tenant this action belongs to"
+    },
+    {
+      "fieldname": "created_by_user",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1,
+      "description": "User who created this action"
+    },
+    {
+      "fieldname": "creation_date",
+      "fieldtype": "Datetime",
+      "label": "Creation Date",
+      "read_only": 1,
+      "description": "When this action was created"
+    },
+    {
+      "fieldname": "target_section",
+      "fieldtype": "Section Break",
+      "label": "Target Account"
+    },
+    {
+      "fieldname": "target_type",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Target Type",
+      "options": "User\nSeller Profile\nOrganization",
+      "reqd": 1,
+      "description": "Type of account being actioned"
+    },
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "User",
+      "options": "User",
+      "depends_on": "eval:doc.target_type=='User'",
+      "mandatory_depends_on": "eval:doc.target_type=='User'",
+      "description": "User account being actioned"
+    },
+    {
+      "fieldname": "column_break_target",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "seller_profile",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Seller Profile",
+      "options": "Seller Profile",
+      "depends_on": "eval:doc.target_type=='Seller Profile'",
+      "mandatory_depends_on": "eval:doc.target_type=='Seller Profile'",
+      "description": "Seller profile being actioned"
+    },
+    {
+      "fieldname": "organization",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Organization",
+      "options": "Organization",
+      "depends_on": "eval:doc.target_type=='Organization'",
+      "mandatory_depends_on": "eval:doc.target_type=='Organization'",
+      "description": "Organization being actioned"
+    },
+    {
+      "fieldname": "action_details_section",
+      "fieldtype": "Section Break",
+      "label": "Action Details"
+    },
+    {
+      "fieldname": "reason_code",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Reason Code",
+      "options": "\nPolicy Violation\nFraud\nCounterfeit Products\nIntellectual Property Violation\nProhibited Items\nMisleading Information\nPoor Service Quality\nLate Delivery\nOrder Cancellation Abuse\nReview Manipulation\nPayment Issues\nIdentity Fraud\nSpam\nHarassment\nSecurity Breach\nKYC Failure\nAML Violation\nTax Compliance\nDispute Abuse\nRefund Abuse\nOther",
+      "description": "Standardized reason code for the action"
+    },
+    {
+      "fieldname": "reason",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Reason",
+      "reqd": 1,
+      "description": "Brief reason for the action"
+    },
+    {
+      "fieldname": "detailed_reason",
+      "fieldtype": "Text Editor",
+      "label": "Detailed Reason",
+      "description": "Full explanation of why the action is being taken"
+    },
+    {
+      "fieldname": "column_break_details",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "violation_type",
+      "fieldtype": "Select",
+      "label": "Violation Type",
+      "options": "\nFirst Offense\nRepeat Offense\nEscalated Offense\nSevere Violation\nPattern Violation",
+      "description": "Classification of the violation"
+    },
+    {
+      "fieldname": "violation_count",
+      "fieldtype": "Int",
+      "label": "Violation Count",
+      "default": "1",
+      "description": "Number of times this type of violation has occurred"
+    },
+    {
+      "fieldname": "related_content_type",
+      "fieldtype": "Link",
+      "label": "Related Content Type",
+      "options": "DocType",
+      "description": "Type of content that triggered this action"
+    },
+    {
+      "fieldname": "related_content",
+      "fieldtype": "Dynamic Link",
+      "label": "Related Content",
+      "options": "related_content_type",
+      "description": "The specific content that triggered this action"
+    },
+    {
+      "fieldname": "duration_section",
+      "fieldtype": "Section Break",
+      "label": "Duration & Lifting"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_permanent",
+      "fieldtype": "Check",
+      "label": "Is Permanent",
+      "description": "Whether this action is permanent (no end date)"
+    },
+    {
+      "fieldname": "start_date",
+      "fieldtype": "Datetime",
+      "label": "Start Date",
+      "reqd": 1,
+      "description": "When the action takes effect"
+    },
+    {
+      "fieldname": "end_date",
+      "fieldtype": "Datetime",
+      "label": "End Date",
+      "depends_on": "eval:!doc.is_permanent",
+      "mandatory_depends_on": "eval:!doc.is_permanent && doc.action_type != 'Warning'",
+      "description": "When the action expires"
+    },
+    {
+      "fieldname": "column_break_duration",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_lift",
+      "fieldtype": "Check",
+      "label": "Auto Lift on Expiry",
+      "depends_on": "eval:!doc.is_permanent",
+      "description": "Automatically lift the action when it expires"
+    },
+    {
+      "fieldname": "lifted_at",
+      "fieldtype": "Datetime",
+      "label": "Lifted At",
+      "read_only": 1,
+      "depends_on": "eval:doc.status=='Lifted' || doc.status=='Overturned'",
+      "description": "When the action was lifted"
+    },
+    {
+      "fieldname": "lifted_by",
+      "fieldtype": "Link",
+      "label": "Lifted By",
+      "options": "User",
+      "read_only": 1,
+      "depends_on": "eval:doc.status=='Lifted' || doc.status=='Overturned'",
+      "description": "User who lifted the action"
+    },
+    {
+      "fieldname": "lifted_reason",
+      "fieldtype": "Small Text",
+      "label": "Lifted Reason",
+      "depends_on": "eval:doc.status=='Lifted' || doc.status=='Overturned'",
+      "description": "Reason for lifting the action early"
+    },
+    {
+      "fieldname": "restrictions_section",
+      "fieldtype": "Section Break",
+      "label": "Restrictions Applied",
+      "collapsible": 1,
+      "depends_on": "eval:doc.action_type=='Restriction' || doc.action_type=='Suspension'"
+    },
+    {
+      "default": "0",
+      "fieldname": "restrict_selling",
+      "fieldtype": "Check",
+      "label": "Restrict Selling",
+      "description": "Prevent the account from selling items"
+    },
+    {
+      "default": "0",
+      "fieldname": "restrict_buying",
+      "fieldtype": "Check",
+      "label": "Restrict Buying",
+      "description": "Prevent the account from buying items"
+    },
+    {
+      "default": "0",
+      "fieldname": "restrict_messaging",
+      "fieldtype": "Check",
+      "label": "Restrict Messaging",
+      "description": "Prevent the account from sending messages"
+    },
+    {
+      "fieldname": "column_break_restrictions",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "restrict_reviews",
+      "fieldtype": "Check",
+      "label": "Restrict Reviews",
+      "description": "Prevent the account from posting reviews"
+    },
+    {
+      "default": "0",
+      "fieldname": "restrict_listing_create",
+      "fieldtype": "Check",
+      "label": "Restrict Listing Creation",
+      "description": "Prevent the account from creating new listings"
+    },
+    {
+      "default": "0",
+      "fieldname": "restrict_withdrawal",
+      "fieldtype": "Check",
+      "label": "Restrict Withdrawals",
+      "description": "Prevent the account from withdrawing funds"
+    },
+    {
+      "default": "0",
+      "fieldname": "restrict_all_activity",
+      "fieldtype": "Check",
+      "label": "Restrict All Activity",
+      "description": "Full account freeze - prevents all activity"
+    },
+    {
+      "fieldname": "escalation_section",
+      "fieldtype": "Section Break",
+      "label": "Escalation",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "previous_action",
+      "fieldtype": "Link",
+      "label": "Previous Action",
+      "options": "Account Action",
+      "description": "Previous action this escalates from"
+    },
+    {
+      "fieldname": "escalation_level",
+      "fieldtype": "Int",
+      "label": "Escalation Level",
+      "default": "1",
+      "description": "Level of escalation (1 = first action, 2+ = escalated)"
+    },
+    {
+      "fieldname": "column_break_escalation",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "next_escalation_action",
+      "fieldtype": "Select",
+      "label": "Next Escalation Action",
+      "options": "\nWarning\nRestriction\nSuspension\nTemporary Ban\nPermanent Ban\nAccount Termination",
+      "description": "Action to take if violation recurs"
+    },
+    {
+      "fieldname": "escalation_threshold",
+      "fieldtype": "Int",
+      "label": "Escalation Threshold (days)",
+      "description": "Days within which repeat offense triggers escalation"
+    },
+    {
+      "fieldname": "evidence_section",
+      "fieldtype": "Section Break",
+      "label": "Evidence & Investigation"
+    },
+    {
+      "fieldname": "evidence",
+      "fieldtype": "Text Editor",
+      "label": "Evidence Summary",
+      "description": "Summary of evidence supporting this action"
+    },
+    {
+      "fieldname": "evidence_attachments",
+      "fieldtype": "Attach",
+      "label": "Evidence Attachments",
+      "description": "Files supporting the action (screenshots, logs, etc.)"
+    },
+    {
+      "fieldname": "investigation_notes",
+      "fieldtype": "Text Editor",
+      "label": "Investigation Notes",
+      "description": "Internal investigation notes (not shared with user)"
+    },
+    {
+      "fieldname": "appeal_section",
+      "fieldtype": "Section Break",
+      "label": "Appeal",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "is_appealable",
+      "fieldtype": "Check",
+      "label": "Is Appealable",
+      "description": "Whether this action can be appealed"
+    },
+    {
+      "fieldname": "appeal_status",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Appeal Status",
+      "options": "\nNot Appealed\nAppeal Submitted\nUnder Review\nApproved\nRejected\nPartially Approved",
+      "depends_on": "is_appealable",
+      "description": "Current status of any appeal"
+    },
+    {
+      "fieldname": "appeal_submitted_at",
+      "fieldtype": "Datetime",
+      "label": "Appeal Submitted At",
+      "read_only": 1,
+      "depends_on": "eval:doc.appeal_status && doc.appeal_status != 'Not Appealed'",
+      "description": "When the appeal was submitted"
+    },
+    {
+      "fieldname": "column_break_appeal",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "appeal_reason",
+      "fieldtype": "Text",
+      "label": "Appeal Reason",
+      "depends_on": "eval:doc.appeal_status && doc.appeal_status != 'Not Appealed'",
+      "description": "Reason given for the appeal"
+    },
+    {
+      "fieldname": "appeal_evidence",
+      "fieldtype": "Attach",
+      "label": "Appeal Evidence",
+      "depends_on": "eval:doc.appeal_status && doc.appeal_status != 'Not Appealed'",
+      "description": "Evidence submitted with the appeal"
+    },
+    {
+      "fieldname": "appeal_decision",
+      "fieldtype": "Small Text",
+      "label": "Appeal Decision",
+      "depends_on": "eval:['Approved', 'Rejected', 'Partially Approved'].includes(doc.appeal_status)",
+      "description": "Decision on the appeal"
+    },
+    {
+      "fieldname": "appeal_decided_by",
+      "fieldtype": "Link",
+      "label": "Appeal Decided By",
+      "options": "User",
+      "read_only": 1,
+      "depends_on": "eval:['Approved', 'Rejected', 'Partially Approved'].includes(doc.appeal_status)",
+      "description": "User who decided on the appeal"
+    },
+    {
+      "fieldname": "appeal_decided_at",
+      "fieldtype": "Datetime",
+      "label": "Appeal Decided At",
+      "read_only": 1,
+      "depends_on": "eval:['Approved', 'Rejected', 'Partially Approved'].includes(doc.appeal_status)",
+      "description": "When the appeal was decided"
+    },
+    {
+      "fieldname": "appeal_response",
+      "fieldtype": "Text Editor",
+      "label": "Appeal Response",
+      "depends_on": "eval:['Approved', 'Rejected', 'Partially Approved'].includes(doc.appeal_status)",
+      "description": "Response sent to the user about the appeal decision"
+    },
+    {
+      "fieldname": "notifications_section",
+      "fieldtype": "Section Break",
+      "label": "Notifications",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "notification_sent",
+      "fieldtype": "Check",
+      "label": "Notification Sent",
+      "read_only": 1,
+      "description": "Whether notification was sent to the affected account"
+    },
+    {
+      "fieldname": "notification_sent_at",
+      "fieldtype": "Datetime",
+      "label": "Notification Sent At",
+      "read_only": 1,
+      "description": "When the notification was sent"
+    },
+    {
+      "fieldname": "notification_method",
+      "fieldtype": "Select",
+      "label": "Notification Method",
+      "options": "\nEmail\nIn-App\nSMS\nAll Channels",
+      "description": "How the user was notified"
+    },
+    {
+      "fieldname": "column_break_notifications",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "reminder_sent",
+      "fieldtype": "Check",
+      "label": "Reminder Sent",
+      "read_only": 1,
+      "description": "Whether a reminder was sent during restriction"
+    },
+    {
+      "default": "0",
+      "fieldname": "expiry_warning_sent",
+      "fieldtype": "Check",
+      "label": "Expiry Warning Sent",
+      "read_only": 1,
+      "description": "Whether an expiry warning was sent"
+    },
+    {
+      "fieldname": "audit_section",
+      "fieldtype": "Section Break",
+      "label": "Audit Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "reviewed_by",
+      "fieldtype": "Link",
+      "label": "Reviewed By",
+      "options": "User",
+      "description": "User who reviewed this action"
+    },
+    {
+      "fieldname": "reviewed_at",
+      "fieldtype": "Datetime",
+      "label": "Reviewed At",
+      "description": "When this action was reviewed"
+    },
+    {
+      "fieldname": "column_break_audit",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "approved_by",
+      "fieldtype": "Link",
+      "label": "Approved By",
+      "options": "User",
+      "depends_on": "eval:doc.action_type != 'Warning'",
+      "description": "User who approved this action (for escalated actions)"
+    },
+    {
+      "fieldname": "approved_at",
+      "fieldtype": "Datetime",
+      "label": "Approved At",
+      "depends_on": "eval:doc.action_type != 'Warning'",
+      "description": "When this action was approved"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Internal Notes",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text Editor",
+      "label": "Internal Notes",
+      "description": "Notes visible only to administrators"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "User",
+      "link_fieldname": "email"
+    },
+    {
+      "group": "Escalation",
+      "link_doctype": "Account Action",
+      "link_fieldname": "previous_action"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Account Action",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Marketplace Admin",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 0,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "action_type, target_type, user, seller_profile, organization, reason",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "reason",
+  "track_changes": 1
+}

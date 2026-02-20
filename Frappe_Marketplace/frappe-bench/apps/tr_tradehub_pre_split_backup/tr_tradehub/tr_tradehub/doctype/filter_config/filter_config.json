@@ -1,0 +1,398 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "format:{category}-{filter_type}-{####}",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "config_name",
+    "enabled",
+    "column_break_basic",
+    "display_order",
+    "is_default",
+    "category_section",
+    "category",
+    "category_name",
+    "column_break_category",
+    "apply_to_subcategories",
+    "category_full_path",
+    "filter_definition_section",
+    "filter_type",
+    "filter_source",
+    "column_break_filter",
+    "attribute",
+    "attribute_name",
+    "source_field",
+    "display_section",
+    "filter_label",
+    "display_type",
+    "column_break_display",
+    "collapsed_by_default",
+    "show_count",
+    "max_visible_options",
+    "range_section",
+    "min_value",
+    "max_value",
+    "column_break_range",
+    "step_value",
+    "unit_label",
+    "url_section",
+    "url_parameter",
+    "seo_friendly_url",
+    "tenant_section",
+    "tenant",
+    "tenant_name",
+    "column_break_tenant",
+    "is_global",
+    "stats_section",
+    "usage_count"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "config_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Configuration Name",
+      "reqd": 1,
+      "description": "Descriptive name for this filter configuration"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled",
+      "description": "Whether this filter is active and shown to users"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Display Order",
+      "description": "Sort order for display (lower numbers appear first)"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default",
+      "description": "Apply this configuration to all categories without specific config"
+    },
+    {
+      "fieldname": "category_section",
+      "fieldtype": "Section Break",
+      "label": "Category"
+    },
+    {
+      "fieldname": "category",
+      "fieldtype": "Link",
+      "label": "Category",
+      "options": "Product Category",
+      "in_standard_filter": 1,
+      "mandatory_depends_on": "eval:!doc.is_default",
+      "description": "Product category this filter applies to"
+    },
+    {
+      "fetch_from": "category.category_name",
+      "fieldname": "category_name",
+      "fieldtype": "Data",
+      "label": "Category Name",
+      "read_only": 1,
+      "description": "Auto-filled from Category"
+    },
+    {
+      "fieldname": "column_break_category",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "apply_to_subcategories",
+      "fieldtype": "Check",
+      "label": "Apply to Subcategories",
+      "description": "Also apply this filter to all child categories"
+    },
+    {
+      "fetch_from": "category.full_path",
+      "fieldname": "category_full_path",
+      "fieldtype": "Data",
+      "label": "Category Path",
+      "read_only": 1,
+      "description": "Auto-filled from Category"
+    },
+    {
+      "fieldname": "filter_definition_section",
+      "fieldtype": "Section Break",
+      "label": "Filter Definition"
+    },
+    {
+      "default": "Attribute",
+      "fieldname": "filter_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Filter Type",
+      "options": "Attribute\nPrice\nBrand\nSeller\nCertificate\nRating\nStock Status\nCustom Field",
+      "reqd": 1,
+      "description": "Type of filter to apply"
+    },
+    {
+      "default": "Product Attribute",
+      "fieldname": "filter_source",
+      "fieldtype": "Select",
+      "label": "Filter Source",
+      "options": "Product Attribute\nProduct Field\nVariant Field\nCustom",
+      "description": "Source DocType for filter values"
+    },
+    {
+      "fieldname": "column_break_filter",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "attribute",
+      "fieldtype": "Link",
+      "label": "Product Attribute",
+      "options": "Product Attribute",
+      "depends_on": "eval:doc.filter_type=='Attribute'",
+      "mandatory_depends_on": "eval:doc.filter_type=='Attribute'",
+      "description": "Product Attribute to use for filtering"
+    },
+    {
+      "fetch_from": "attribute.attribute_name",
+      "fieldname": "attribute_name",
+      "fieldtype": "Data",
+      "label": "Attribute Name",
+      "read_only": 1,
+      "depends_on": "eval:doc.filter_type=='Attribute'",
+      "description": "Auto-filled from Product Attribute"
+    },
+    {
+      "fieldname": "source_field",
+      "fieldtype": "Data",
+      "label": "Source Field",
+      "depends_on": "eval:doc.filter_source=='Product Field' || doc.filter_source=='Variant Field' || doc.filter_source=='Custom'",
+      "description": "Field name to use as filter source (e.g., brand, seller, stock_qty)"
+    },
+    {
+      "fieldname": "display_section",
+      "fieldtype": "Section Break",
+      "label": "Display Settings"
+    },
+    {
+      "fieldname": "filter_label",
+      "fieldtype": "Data",
+      "label": "Filter Label",
+      "description": "Display label for the filter (defaults to attribute/field name)"
+    },
+    {
+      "default": "Checkbox",
+      "fieldname": "display_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Display Type",
+      "options": "Checkbox\nRadio Button\nDropdown\nMulti-Select Dropdown\nRange Slider\nPrice Range\nColor Swatch\nImage Swatch\nButton Group\nText Search",
+      "reqd": 1,
+      "description": "How to display this filter in the UI"
+    },
+    {
+      "fieldname": "column_break_display",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "collapsed_by_default",
+      "fieldtype": "Check",
+      "label": "Collapsed by Default",
+      "description": "Show filter in collapsed state initially"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_count",
+      "fieldtype": "Check",
+      "label": "Show Count",
+      "description": "Display product count next to each filter option"
+    },
+    {
+      "default": "10",
+      "fieldname": "max_visible_options",
+      "fieldtype": "Int",
+      "label": "Max Visible Options",
+      "description": "Maximum options to show before 'Show More' (0 = show all)"
+    },
+    {
+      "fieldname": "range_section",
+      "fieldtype": "Section Break",
+      "label": "Range Settings",
+      "collapsible": 1,
+      "depends_on": "eval:['Range Slider', 'Price Range'].includes(doc.display_type)"
+    },
+    {
+      "fieldname": "min_value",
+      "fieldtype": "Float",
+      "label": "Minimum Value",
+      "description": "Minimum value for range slider (auto-detected if not set)"
+    },
+    {
+      "fieldname": "max_value",
+      "fieldtype": "Float",
+      "label": "Maximum Value",
+      "description": "Maximum value for range slider (auto-detected if not set)"
+    },
+    {
+      "fieldname": "column_break_range",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "step_value",
+      "fieldtype": "Float",
+      "label": "Step Value",
+      "description": "Step increment for range slider"
+    },
+    {
+      "fieldname": "unit_label",
+      "fieldtype": "Data",
+      "label": "Unit Label",
+      "description": "Unit to display (e.g., USD, kg, cm)"
+    },
+    {
+      "fieldname": "url_section",
+      "fieldtype": "Section Break",
+      "label": "URL Settings",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "url_parameter",
+      "fieldtype": "Data",
+      "label": "URL Parameter",
+      "description": "Query parameter name for this filter (e.g., color, price_min)"
+    },
+    {
+      "default": "1",
+      "fieldname": "seo_friendly_url",
+      "fieldtype": "Check",
+      "label": "SEO Friendly URL",
+      "description": "Generate SEO-friendly URL paths (e.g., /category/color-red)"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Tenant Information"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "in_standard_filter": 1,
+      "description": "Tenant for multi-tenant isolation (empty for global configurations)"
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Tenant"
+    },
+    {
+      "fieldname": "column_break_tenant",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_global",
+      "fieldtype": "Check",
+      "label": "Is Global",
+      "description": "Global configurations are visible to all tenants"
+    },
+    {
+      "fieldname": "stats_section",
+      "fieldtype": "Section Break",
+      "label": "Statistics",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "usage_count",
+      "fieldtype": "Int",
+      "label": "Usage Count",
+      "read_only": 1,
+      "description": "Number of times this filter has been applied by users"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Category",
+      "link_doctype": "Product Category",
+      "link_fieldname": "category"
+    },
+    {
+      "group": "Attribute",
+      "link_doctype": "Product Attribute",
+      "link_fieldname": "attribute"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Filter Config",
+  "naming_rule": "Expression",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 0,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "config_name, category_name, filter_type, attribute_name",
+  "sort_field": "display_order",
+  "sort_order": "ASC",
+  "title_field": "config_name",
+  "track_changes": 1
+}

@@ -1,0 +1,113 @@
+{
+ "actions": [],
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pim_attribute",
+  "column_break_1",
+  "attribute_code",
+  "value_section",
+  "value",
+  "column_break_2",
+  "value_label",
+  "display_section",
+  "sort_order",
+  "column_break_3",
+  "color_hex",
+  "image"
+ ],
+ "fields": [
+  {
+   "fieldname": "pim_attribute",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PIM Attribute",
+   "options": "PIM Attribute",
+   "reqd": 1,
+   "description": "The variant axis attribute (e.g., Color, Size)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attribute_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Attribute Code",
+   "read_only": 1,
+   "fetch_from": "pim_attribute.attribute_code",
+   "description": "Auto-fetched code from PIM Attribute"
+  },
+  {
+   "fieldname": "value_section",
+   "fieldtype": "Section Break",
+   "label": "Value"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value",
+   "reqd": 1,
+   "description": "The actual value (e.g., 'red', 'XL', '42')"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "value_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value Label",
+   "description": "Display label for the value (e.g., 'Red', 'Extra Large', '42 EU')"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Options",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Sort Order",
+   "description": "Order of this axis value in the variant"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "color_hex",
+   "fieldtype": "Data",
+   "label": "Color Hex",
+   "description": "Hex color code for color attributes (e.g., #FF0000)"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "description": "Image/swatch for this axis value"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "PIM Variant Axis Value",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

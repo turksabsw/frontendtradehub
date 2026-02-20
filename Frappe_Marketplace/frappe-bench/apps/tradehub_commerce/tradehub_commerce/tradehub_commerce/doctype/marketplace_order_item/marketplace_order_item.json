@@ -1,0 +1,427 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "product_section",
+  "listing",
+  "listing_variant",
+  "seller",
+  "column_break_product",
+  "title",
+  "sku",
+  "primary_image",
+  "quantity_section",
+  "qty",
+  "delivered_qty",
+  "returned_qty",
+  "column_break_qty",
+  "stock_uom",
+  "fulfillment_status",
+  "pricing_section",
+  "currency",
+  "unit_price",
+  "compare_at_price",
+  "column_break_pricing",
+  "discount_type",
+  "discount_value",
+  "discount_amount",
+  "totals_section",
+  "line_subtotal",
+  "tax_rate",
+  "tax_amount",
+  "column_break_totals",
+  "line_total",
+  "commission_rate",
+  "commission_amount",
+  "shipping_section",
+  "weight",
+  "weight_uom",
+  "is_free_shipping",
+  "column_break_shipping",
+  "shipping_amount",
+  "shipping_method",
+  "handling_days",
+  "erpnext_section",
+  "erpnext_item",
+  "sales_order_item",
+  "column_break_erpnext",
+  "delivery_note_item",
+  "sales_invoice_item",
+  "tracking_section",
+  "sub_order",
+  "shipment",
+  "column_break_tracking",
+  "tracking_number",
+  "carrier",
+  "notes_section",
+  "item_notes",
+  "gift_message"
+ ],
+ "fields": [
+  {
+   "fieldname": "product_section",
+   "fieldtype": "Section Break",
+   "label": "Product"
+  },
+  {
+   "fieldname": "listing",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Listing",
+   "options": "Listing",
+   "reqd": 1
+  },
+  {
+   "fieldname": "listing_variant",
+   "fieldtype": "Link",
+   "label": "Listing Variant",
+   "options": "Listing Variant"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_product",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sku",
+   "fieldtype": "Data",
+   "label": "SKU",
+   "read_only": 1
+  },
+  {
+   "fieldname": "primary_image",
+   "fieldtype": "Data",
+   "label": "Primary Image",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quantity_section",
+   "fieldtype": "Section Break",
+   "label": "Quantity"
+  },
+  {
+   "default": "1",
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "precision": 3,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Quantity shipped/delivered",
+   "fieldname": "delivered_qty",
+   "fieldtype": "Float",
+   "label": "Delivered Qty",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Quantity returned",
+   "fieldname": "returned_qty",
+   "fieldtype": "Float",
+   "label": "Returned Qty",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Nos",
+   "fieldname": "stock_uom",
+   "fieldtype": "Link",
+   "label": "Stock UOM",
+   "options": "UOM"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "fulfillment_status",
+   "fieldtype": "Select",
+   "label": "Fulfillment Status",
+   "options": "Pending\nProcessing\nPacked\nShipped\nIn Transit\nOut for Delivery\nDelivered\nPartially Delivered\nReturned\nCancelled"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "description": "Original price (was:)",
+   "fieldname": "compare_at_price",
+   "fieldtype": "Currency",
+   "label": "Compare at Price",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "label": "Discount Type",
+   "options": "\nPercentage\nFixed"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_value",
+   "fieldtype": "Float",
+   "label": "Discount Value"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "default": "0",
+   "description": "unit_price * qty",
+   "fieldname": "line_subtotal",
+   "fieldtype": "Currency",
+   "label": "Line Subtotal",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "18",
+   "fieldname": "tax_rate",
+   "fieldtype": "Percent",
+   "label": "Tax Rate (%)"
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_totals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Final line total including tax",
+   "fieldname": "line_total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Line Total",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Commission rate for this item",
+   "fieldname": "commission_rate",
+   "fieldtype": "Percent",
+   "label": "Commission Rate (%)"
+  },
+  {
+   "default": "0",
+   "description": "Commission amount for this item",
+   "fieldname": "commission_amount",
+   "fieldtype": "Currency",
+   "label": "Commission Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "shipping_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight (kg)",
+   "precision": 3
+  },
+  {
+   "default": "Kg",
+   "fieldname": "weight_uom",
+   "fieldtype": "Link",
+   "label": "Weight UOM",
+   "options": "UOM"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_free_shipping",
+   "fieldtype": "Check",
+   "label": "Free Shipping"
+  },
+  {
+   "fieldname": "column_break_shipping",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "shipping_amount",
+   "fieldtype": "Currency",
+   "label": "Shipping Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "shipping_method",
+   "fieldtype": "Data",
+   "label": "Shipping Method"
+  },
+  {
+   "default": "1",
+   "fieldname": "handling_days",
+   "fieldtype": "Int",
+   "label": "Handling Days"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "erpnext_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration"
+  },
+  {
+   "description": "Linked ERPNext Item",
+   "fieldname": "erpnext_item",
+   "fieldtype": "Link",
+   "label": "ERPNext Item",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "description": "Linked ERPNext Sales Order Item",
+   "fieldname": "sales_order_item",
+   "fieldtype": "Data",
+   "label": "Sales Order Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_erpnext",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Linked ERPNext Delivery Note Item",
+   "fieldname": "delivery_note_item",
+   "fieldtype": "Data",
+   "label": "Delivery Note Item",
+   "read_only": 1
+  },
+  {
+   "description": "Linked ERPNext Sales Invoice Item",
+   "fieldname": "sales_invoice_item",
+   "fieldtype": "Data",
+   "label": "Sales Invoice Item",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Tracking"
+  },
+  {
+   "description": "Sub Order for this seller's items",
+   "fieldname": "sub_order",
+   "fieldtype": "Link",
+   "label": "Sub Order",
+   "options": "Sub Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shipment",
+   "fieldtype": "Link",
+   "label": "Shipment",
+   "options": "Marketplace Shipment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tracking",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tracking_number",
+   "fieldtype": "Data",
+   "label": "Tracking Number"
+  },
+  {
+   "fieldname": "carrier",
+   "fieldtype": "Data",
+   "label": "Carrier"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "item_notes",
+   "fieldtype": "Small Text",
+   "label": "Item Notes"
+  },
+  {
+   "fieldname": "gift_message",
+   "fieldtype": "Small Text",
+   "label": "Gift Message"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Marketplace Order Item",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "listing, title, seller",
+ "sort_field": "idx",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

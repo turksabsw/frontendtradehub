@@ -1,0 +1,2 @@
+# TR-TradeHub Dependencies
+# frappe - Core framework dependency is managed by bench

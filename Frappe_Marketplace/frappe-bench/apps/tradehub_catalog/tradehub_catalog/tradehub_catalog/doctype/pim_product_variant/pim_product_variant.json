@@ -1,0 +1,844 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:variant_code",
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_tab",
+  "basic_section",
+  "variant_code",
+  "product",
+  "column_break_basic_1",
+  "variant_name",
+  "is_active",
+  "identifiers_section",
+  "sku",
+  "barcode",
+  "column_break_ids_1",
+  "gtin",
+  "mpn",
+  "axis_values_tab",
+  "axis_values_section",
+  "axis_values",
+  "pricing_tab",
+  "pricing_section",
+  "price_override",
+  "sale_price",
+  "column_break_pricing_1",
+  "cost_price",
+  "compare_at_price",
+  "inventory_tab",
+  "inventory_section",
+  "stock_qty",
+  "warehouse",
+  "column_break_inventory_1",
+  "safety_stock",
+  "reorder_level",
+  "stock_status_section",
+  "is_in_stock",
+  "backorder_allowed",
+  "column_break_stock_1",
+  "reserved_qty",
+  "available_qty",
+  "dimensions_tab",
+  "dimensions_section",
+  "weight",
+  "weight_uom",
+  "column_break_dims_1",
+  "length",
+  "width",
+  "height",
+  "dimension_uom",
+  "packaging_section",
+  "package_weight",
+  "package_length",
+  "column_break_pkg_1",
+  "package_width",
+  "package_height",
+  "media_tab",
+  "media_section",
+  "images",
+  "main_image",
+  "amazon_tab",
+  "amazon_section",
+  "amazon_asin",
+  "amazon_sku",
+  "column_break_amazon_1",
+  "amazon_fnsku",
+  "amazon_condition",
+  "amazon_fba_section",
+  "amazon_fba_enabled",
+  "amazon_fba_inbound_qty",
+  "column_break_amazon_fba_1",
+  "amazon_fba_available_qty",
+  "amazon_fba_reserved_qty",
+  "ebay_tab",
+  "ebay_section",
+  "ebay_item_id",
+  "ebay_sku",
+  "column_break_ebay_1",
+  "ebay_variation_id",
+  "ebay_quantity",
+  "alibaba_tab",
+  "alibaba_section",
+  "alibaba_sku",
+  "alibaba_price",
+  "column_break_alibaba_1",
+  "alibaba_moq",
+  "alibaba_stock",
+  "trendyol_tab",
+  "trendyol_section",
+  "trendyol_barcode",
+  "trendyol_stock_code",
+  "column_break_trendyol_1",
+  "trendyol_quantity",
+  "trendyol_sale_price",
+  "hepsiburada_tab",
+  "hepsiburada_section",
+  "hepsiburada_sku",
+  "hepsiburada_merchant_sku",
+  "column_break_hepsiburada_1",
+  "hepsiburada_quantity",
+  "hepsiburada_listing_price",
+  "n11_tab",
+  "n11_section",
+  "n11_product_seller_code",
+  "n11_stock_quantity",
+  "column_break_n11_1",
+  "n11_display_price",
+  "n11_opt_price",
+  "system_tab",
+  "external_section",
+  "external_source",
+  "external_id",
+  "column_break_ext_1",
+  "magento_simple_id",
+  "drupal_variation_id",
+  "erpnext_section",
+  "erpnext_item_code",
+  "erpnext_last_sync",
+  "column_break_erpnext_1",
+  "sync_to_erpnext"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_tab",
+   "fieldtype": "Tab Break",
+   "label": "Basic Info"
+  },
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Variant Information"
+  },
+  {
+   "fieldname": "variant_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Variant Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique variant identifier (typically product_code + axis values)"
+  },
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Product",
+   "options": "PIM Product",
+   "reqd": 1,
+   "description": "Parent product this variant belongs to"
+  },
+  {
+   "fieldname": "column_break_basic_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "variant_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Variant Name",
+   "description": "Display name for the variant (auto-generated from axis values)"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active",
+   "description": "Enable/disable the variant"
+  },
+  {
+   "fieldname": "identifiers_section",
+   "fieldtype": "Section Break",
+   "label": "Identifiers"
+  },
+  {
+   "fieldname": "sku",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "SKU",
+   "description": "Stock Keeping Unit - unique inventory identifier"
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Data",
+   "label": "Barcode",
+   "description": "Variant barcode (Code39, Code128, etc.)"
+  },
+  {
+   "fieldname": "column_break_ids_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gtin",
+   "fieldtype": "Data",
+   "label": "GTIN",
+   "description": "Global Trade Item Number (8, 12, 13, or 14 digits)"
+  },
+  {
+   "fieldname": "mpn",
+   "fieldtype": "Data",
+   "label": "MPN",
+   "description": "Manufacturer Part Number"
+  },
+  {
+   "fieldname": "axis_values_tab",
+   "fieldtype": "Tab Break",
+   "label": "Axis Values"
+  },
+  {
+   "fieldname": "axis_values_section",
+   "fieldtype": "Section Break",
+   "label": "Variant Axis Values"
+  },
+  {
+   "fieldname": "axis_values",
+   "fieldtype": "Table",
+   "label": "Axis Values",
+   "options": "PIM Variant Axis Value",
+   "description": "The attribute values that define this variant (e.g., Color: Red, Size: XL)"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Price Override"
+  },
+  {
+   "fieldname": "price_override",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price Override",
+   "description": "Override parent product price for this variant"
+  },
+  {
+   "fieldname": "sale_price",
+   "fieldtype": "Currency",
+   "label": "Sale Price",
+   "description": "Promotional sale price"
+  },
+  {
+   "fieldname": "column_break_pricing_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cost_price",
+   "fieldtype": "Currency",
+   "label": "Cost Price",
+   "description": "Variant cost/purchase price"
+  },
+  {
+   "fieldname": "compare_at_price",
+   "fieldtype": "Currency",
+   "label": "Compare At Price",
+   "description": "Original price for showing discounts"
+  },
+  {
+   "fieldname": "inventory_tab",
+   "fieldtype": "Tab Break",
+   "label": "Inventory"
+  },
+  {
+   "fieldname": "inventory_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Management"
+  },
+  {
+   "default": "0",
+   "fieldname": "stock_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Stock Quantity",
+   "description": "Current stock quantity for this variant"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "description": "Default warehouse for this variant"
+  },
+  {
+   "fieldname": "column_break_inventory_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "safety_stock",
+   "fieldtype": "Float",
+   "label": "Safety Stock",
+   "description": "Minimum stock level to maintain"
+  },
+  {
+   "default": "0",
+   "fieldname": "reorder_level",
+   "fieldtype": "Float",
+   "label": "Reorder Level",
+   "description": "Stock level at which to trigger reorder"
+  },
+  {
+   "fieldname": "stock_status_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Status"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_in_stock",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is In Stock",
+   "description": "Variant is available for purchase"
+  },
+  {
+   "default": "0",
+   "fieldname": "backorder_allowed",
+   "fieldtype": "Check",
+   "label": "Backorder Allowed",
+   "description": "Allow orders when out of stock"
+  },
+  {
+   "fieldname": "column_break_stock_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "reserved_qty",
+   "fieldtype": "Float",
+   "label": "Reserved Quantity",
+   "read_only": 1,
+   "description": "Quantity reserved for pending orders"
+  },
+  {
+   "default": "0",
+   "fieldname": "available_qty",
+   "fieldtype": "Float",
+   "label": "Available Quantity",
+   "read_only": 1,
+   "description": "Stock minus reserved (auto-calculated)"
+  },
+  {
+   "fieldname": "dimensions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Dimensions"
+  },
+  {
+   "fieldname": "dimensions_section",
+   "fieldtype": "Section Break",
+   "label": "Product Dimensions"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "description": "Variant weight"
+  },
+  {
+   "default": "Kg",
+   "fieldname": "weight_uom",
+   "fieldtype": "Link",
+   "label": "Weight UOM",
+   "options": "UOM",
+   "description": "Weight unit of measure"
+  },
+  {
+   "fieldname": "column_break_dims_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length",
+   "description": "Product length"
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Float",
+   "label": "Width",
+   "description": "Product width"
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Float",
+   "label": "Height",
+   "description": "Product height"
+  },
+  {
+   "default": "cm",
+   "fieldname": "dimension_uom",
+   "fieldtype": "Link",
+   "label": "Dimension UOM",
+   "options": "UOM",
+   "description": "Dimension unit of measure"
+  },
+  {
+   "fieldname": "packaging_section",
+   "fieldtype": "Section Break",
+   "label": "Package Dimensions",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "package_weight",
+   "fieldtype": "Float",
+   "label": "Package Weight",
+   "description": "Total package weight including packaging"
+  },
+  {
+   "fieldname": "package_length",
+   "fieldtype": "Float",
+   "label": "Package Length",
+   "description": "Package length"
+  },
+  {
+   "fieldname": "column_break_pkg_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "package_width",
+   "fieldtype": "Float",
+   "label": "Package Width",
+   "description": "Package width"
+  },
+  {
+   "fieldname": "package_height",
+   "fieldtype": "Float",
+   "label": "Package Height",
+   "description": "Package height"
+  },
+  {
+   "fieldname": "media_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
+   "fieldname": "media_section",
+   "fieldtype": "Section Break",
+   "label": "Variant Media"
+  },
+  {
+   "fieldname": "images",
+   "fieldtype": "Table",
+   "label": "Images",
+   "options": "PIM Variant Media",
+   "description": "Variant-specific images and media"
+  },
+  {
+   "fieldname": "main_image",
+   "fieldtype": "Attach Image",
+   "label": "Main Image",
+   "description": "Primary image for this variant"
+  },
+  {
+   "fieldname": "amazon_tab",
+   "fieldtype": "Tab Break",
+   "label": "Amazon"
+  },
+  {
+   "fieldname": "amazon_section",
+   "fieldtype": "Section Break",
+   "label": "Amazon Identifiers"
+  },
+  {
+   "fieldname": "amazon_asin",
+   "fieldtype": "Data",
+   "label": "Amazon ASIN",
+   "description": "Amazon Standard Identification Number"
+  },
+  {
+   "fieldname": "amazon_sku",
+   "fieldtype": "Data",
+   "label": "Amazon SKU",
+   "description": "Seller SKU for Amazon"
+  },
+  {
+   "fieldname": "column_break_amazon_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amazon_fnsku",
+   "fieldtype": "Data",
+   "label": "Amazon FNSKU",
+   "description": "Fulfillment Network SKU (for FBA)"
+  },
+  {
+   "default": "New",
+   "fieldname": "amazon_condition",
+   "fieldtype": "Select",
+   "label": "Condition",
+   "options": "New\nRefurbished\nUsed - Like New\nUsed - Very Good\nUsed - Good\nUsed - Acceptable"
+  },
+  {
+   "fieldname": "amazon_fba_section",
+   "fieldtype": "Section Break",
+   "label": "Amazon FBA Inventory"
+  },
+  {
+   "default": "0",
+   "fieldname": "amazon_fba_enabled",
+   "fieldtype": "Check",
+   "label": "FBA Enabled",
+   "description": "Fulfilled by Amazon"
+  },
+  {
+   "fieldname": "amazon_fba_inbound_qty",
+   "fieldtype": "Int",
+   "label": "FBA Inbound Quantity",
+   "read_only": 1,
+   "description": "Quantity in transit to FBA warehouse"
+  },
+  {
+   "fieldname": "column_break_amazon_fba_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amazon_fba_available_qty",
+   "fieldtype": "Int",
+   "label": "FBA Available Quantity",
+   "read_only": 1,
+   "description": "Available quantity at FBA warehouse"
+  },
+  {
+   "fieldname": "amazon_fba_reserved_qty",
+   "fieldtype": "Int",
+   "label": "FBA Reserved Quantity",
+   "read_only": 1,
+   "description": "Reserved quantity at FBA warehouse"
+  },
+  {
+   "fieldname": "ebay_tab",
+   "fieldtype": "Tab Break",
+   "label": "eBay"
+  },
+  {
+   "fieldname": "ebay_section",
+   "fieldtype": "Section Break",
+   "label": "eBay Identifiers"
+  },
+  {
+   "fieldname": "ebay_item_id",
+   "fieldtype": "Data",
+   "label": "eBay Item ID",
+   "description": "eBay listing item number"
+  },
+  {
+   "fieldname": "ebay_sku",
+   "fieldtype": "Data",
+   "label": "eBay SKU",
+   "description": "Seller SKU for eBay variation"
+  },
+  {
+   "fieldname": "column_break_ebay_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ebay_variation_id",
+   "fieldtype": "Data",
+   "label": "eBay Variation ID",
+   "description": "eBay variation-level identifier"
+  },
+  {
+   "fieldname": "ebay_quantity",
+   "fieldtype": "Int",
+   "label": "eBay Quantity",
+   "description": "Listed quantity on eBay"
+  },
+  {
+   "fieldname": "alibaba_tab",
+   "fieldtype": "Tab Break",
+   "label": "Alibaba"
+  },
+  {
+   "fieldname": "alibaba_section",
+   "fieldtype": "Section Break",
+   "label": "Alibaba Identifiers"
+  },
+  {
+   "fieldname": "alibaba_sku",
+   "fieldtype": "Data",
+   "label": "Alibaba SKU",
+   "description": "Seller SKU for Alibaba"
+  },
+  {
+   "fieldname": "alibaba_price",
+   "fieldtype": "Currency",
+   "label": "Alibaba Price",
+   "description": "Alibaba selling price for this variant"
+  },
+  {
+   "fieldname": "column_break_alibaba_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "alibaba_moq",
+   "fieldtype": "Int",
+   "label": "Alibaba MOQ",
+   "description": "Minimum Order Quantity for Alibaba"
+  },
+  {
+   "fieldname": "alibaba_stock",
+   "fieldtype": "Int",
+   "label": "Alibaba Stock",
+   "description": "Available stock on Alibaba"
+  },
+  {
+   "fieldname": "trendyol_tab",
+   "fieldtype": "Tab Break",
+   "label": "Trendyol"
+  },
+  {
+   "fieldname": "trendyol_section",
+   "fieldtype": "Section Break",
+   "label": "Trendyol Identifiers"
+  },
+  {
+   "fieldname": "trendyol_barcode",
+   "fieldtype": "Data",
+   "label": "Trendyol Barcode",
+   "description": "Product barcode for Trendyol"
+  },
+  {
+   "fieldname": "trendyol_stock_code",
+   "fieldtype": "Data",
+   "label": "Trendyol Stock Code",
+   "description": "Stock code for Trendyol"
+  },
+  {
+   "fieldname": "column_break_trendyol_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trendyol_quantity",
+   "fieldtype": "Int",
+   "label": "Trendyol Quantity",
+   "description": "Available quantity on Trendyol"
+  },
+  {
+   "fieldname": "trendyol_sale_price",
+   "fieldtype": "Currency",
+   "label": "Trendyol Sale Price",
+   "description": "Selling price on Trendyol"
+  },
+  {
+   "fieldname": "hepsiburada_tab",
+   "fieldtype": "Tab Break",
+   "label": "Hepsiburada"
+  },
+  {
+   "fieldname": "hepsiburada_section",
+   "fieldtype": "Section Break",
+   "label": "Hepsiburada Identifiers"
+  },
+  {
+   "fieldname": "hepsiburada_sku",
+   "fieldtype": "Data",
+   "label": "Hepsiburada SKU",
+   "description": "Hepsiburada platform SKU"
+  },
+  {
+   "fieldname": "hepsiburada_merchant_sku",
+   "fieldtype": "Data",
+   "label": "Merchant SKU",
+   "description": "Seller's merchant SKU"
+  },
+  {
+   "fieldname": "column_break_hepsiburada_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hepsiburada_quantity",
+   "fieldtype": "Int",
+   "label": "Hepsiburada Quantity",
+   "description": "Available quantity on Hepsiburada"
+  },
+  {
+   "fieldname": "hepsiburada_listing_price",
+   "fieldtype": "Currency",
+   "label": "Hepsiburada Listing Price",
+   "description": "Listing price on Hepsiburada"
+  },
+  {
+   "fieldname": "n11_tab",
+   "fieldtype": "Tab Break",
+   "label": "N11"
+  },
+  {
+   "fieldname": "n11_section",
+   "fieldtype": "Section Break",
+   "label": "N11 Identifiers"
+  },
+  {
+   "fieldname": "n11_product_seller_code",
+   "fieldtype": "Data",
+   "label": "N11 Seller Code",
+   "description": "Seller product code for N11"
+  },
+  {
+   "fieldname": "n11_stock_quantity",
+   "fieldtype": "Int",
+   "label": "N11 Stock Quantity",
+   "description": "Stock quantity for N11"
+  },
+  {
+   "fieldname": "column_break_n11_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "n11_display_price",
+   "fieldtype": "Currency",
+   "label": "N11 Display Price",
+   "description": "Display price for N11"
+  },
+  {
+   "fieldname": "n11_opt_price",
+   "fieldtype": "Currency",
+   "label": "N11 OPT Price",
+   "description": "Optional sale price for N11"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
+  {
+   "fieldname": "external_section",
+   "fieldtype": "Section Break",
+   "label": "External System IDs"
+  },
+  {
+   "fieldname": "external_source",
+   "fieldtype": "Data",
+   "label": "External Source",
+   "description": "Name of external source system"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "label": "External ID",
+   "description": "ID in external source system"
+  },
+  {
+   "fieldname": "column_break_ext_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "magento_simple_id",
+   "fieldtype": "Data",
+   "label": "Magento Simple ID",
+   "description": "Original Magento simple product entity_id"
+  },
+  {
+   "fieldname": "drupal_variation_id",
+   "fieldtype": "Data",
+   "label": "Drupal Variation ID",
+   "description": "Original Drupal Commerce variation_id"
+  },
+  {
+   "fieldname": "erpnext_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration"
+  },
+  {
+   "fieldname": "erpnext_item_code",
+   "fieldtype": "Link",
+   "label": "ERPNext Item",
+   "options": "Item",
+   "description": "Linked ERPNext Item (if synced as separate item)"
+  },
+  {
+   "fieldname": "erpnext_last_sync",
+   "fieldtype": "Datetime",
+   "label": "ERPNext Last Sync",
+   "description": "Last sync to ERPNext"
+  },
+  {
+   "fieldname": "column_break_erpnext_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sync_to_erpnext",
+   "fieldtype": "Check",
+   "label": "Sync to ERPNext",
+   "description": "Enable automatic sync to ERPNext Item"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Parent",
+   "link_doctype": "PIM Product",
+   "link_fieldname": "name"
+  }
+ ],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "PIM Product Variant",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "sku,barcode,variant_name",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "variant_name",
+ "track_changes": 1
+}

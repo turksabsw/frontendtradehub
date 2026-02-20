@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "installment_number",
+  "due_date",
+  "column_break_schedule",
+  "amount",
+  "status",
+  "payment_details_section",
+  "paid_amount",
+  "paid_date",
+  "column_break_payment",
+  "payment_method",
+  "payment_reference",
+  "late_fees_section",
+  "is_overdue",
+  "days_overdue",
+  "column_break_late",
+  "late_fee_amount",
+  "total_due"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "fieldname": "installment_number",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Installment #",
+   "reqd": 1,
+   "description": "Sequential installment number",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Due Date",
+   "reqd": 1,
+   "description": "Date when this installment payment is due"
+  },
+  {
+   "fieldname": "column_break_schedule",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1,
+   "description": "Installment payment amount",
+   "non_negative": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nPartially Paid\nPaid\nOverdue\nWaived",
+   "reqd": 1,
+   "description": "Status of this installment payment"
+  },
+  {
+   "fieldname": "payment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Details",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "description": "Amount paid for this installment"
+  },
+  {
+   "fieldname": "paid_date",
+   "fieldtype": "Date",
+   "label": "Paid Date",
+   "description": "Date when payment was received"
+  },
+  {
+   "fieldname": "column_break_payment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Payment Method",
+   "options": "\nBank Transfer\nCredit Card\nLetter of Credit\nPayPal\nCash\nOther",
+   "description": "Method used for payment"
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference",
+   "description": "Reference number or transaction ID"
+  },
+  {
+   "fieldname": "late_fees_section",
+   "fieldtype": "Section Break",
+   "label": "Late Fees",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_overdue",
+   "fieldtype": "Check",
+   "label": "Is Overdue",
+   "read_only": 1,
+   "description": "Whether this installment is overdue"
+  },
+  {
+   "default": "0",
+   "fieldname": "days_overdue",
+   "fieldtype": "Int",
+   "label": "Days Overdue",
+   "read_only": 1,
+   "description": "Number of days past due date"
+  },
+  {
+   "fieldname": "column_break_late",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "late_fee_amount",
+   "fieldtype": "Currency",
+   "label": "Late Fee Amount",
+   "description": "Late fee applied to this installment"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_due",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Due",
+   "read_only": 1,
+   "description": "Total amount due (installment + late fees)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Payment Installment",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "installment_number",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

@@ -1,0 +1,791 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:provider_code",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "provider_name",
+    "provider_code",
+    "provider_type",
+    "column_break_basic",
+    "status",
+    "logo",
+    "website",
+    "description",
+    "contact_section",
+    "contact_person",
+    "contact_email",
+    "contact_phone",
+    "column_break_contact",
+    "support_email",
+    "support_phone",
+    "support_hours",
+    "api_configuration_section",
+    "api_enabled",
+    "api_endpoint",
+    "api_version",
+    "column_break_api",
+    "api_key",
+    "api_secret",
+    "api_username",
+    "api_password",
+    "api_settings_section",
+    "api_timeout",
+    "api_retry_count",
+    "column_break_api_settings",
+    "sandbox_mode",
+    "sandbox_endpoint",
+    "tracking_section",
+    "supports_tracking",
+    "tracking_url_template",
+    "tracking_update_frequency",
+    "column_break_tracking",
+    "supports_webhooks",
+    "webhook_url",
+    "webhook_secret",
+    "service_area_section",
+    "service_type",
+    "domestic_coverage",
+    "international_coverage",
+    "column_break_service_area",
+    "served_countries",
+    "excluded_regions",
+    "shipping_methods_section",
+    "supported_shipping_methods",
+    "default_shipping_method",
+    "column_break_shipping",
+    "supports_express",
+    "supports_same_day",
+    "supports_cod",
+    "supports_insurance",
+    "rate_section",
+    "rate_calculation_method",
+    "base_rate",
+    "rate_per_kg",
+    "column_break_rate",
+    "fuel_surcharge_percent",
+    "min_chargeable_weight",
+    "volumetric_divisor",
+    "packaging_section",
+    "max_weight_kg",
+    "max_length_cm",
+    "max_width_cm",
+    "max_height_cm",
+    "column_break_packaging",
+    "max_volume_cm3",
+    "max_declared_value",
+    "currency",
+    "integration_section",
+    "label_format",
+    "label_size",
+    "column_break_integration",
+    "supports_pickup",
+    "supports_dropoff",
+    "supports_return_label",
+    "performance_section",
+    "average_delivery_days",
+    "on_time_delivery_rate",
+    "damage_rate",
+    "column_break_performance",
+    "total_shipments",
+    "total_issues",
+    "last_used_at",
+    "settings_section",
+    "is_default",
+    "priority",
+    "notes",
+    "column_break_settings",
+    "enabled_for_sellers",
+    "enabled_for_marketplace",
+    "requires_contract"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "provider_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Provider Name",
+      "reqd": 1,
+      "description": "Full name of the logistics provider (e.g., DHL Express, UPS, Yurtici Kargo)"
+    },
+    {
+      "fieldname": "provider_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Provider Code",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique code identifier (e.g., DHL, UPS, YURTICI, MNG, ARAS)"
+    },
+    {
+      "default": "Carrier",
+      "fieldname": "provider_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Provider Type",
+      "options": "Carrier\nCourier\nFreight\nPost\nDropship\nFulfillment\nLast Mile",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nInactive\nSuspended\nTesting",
+      "reqd": 1
+    },
+    {
+      "fieldname": "logo",
+      "fieldtype": "Attach Image",
+      "label": "Logo",
+      "description": "Provider logo for display in shipping options"
+    },
+    {
+      "fieldname": "website",
+      "fieldtype": "Data",
+      "label": "Website",
+      "options": "URL"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "Brief description of the logistics provider and services"
+    },
+    {
+      "fieldname": "contact_section",
+      "fieldtype": "Section Break",
+      "label": "Contact Information"
+    },
+    {
+      "fieldname": "contact_person",
+      "fieldtype": "Data",
+      "label": "Contact Person",
+      "description": "Primary account manager or contact"
+    },
+    {
+      "fieldname": "contact_email",
+      "fieldtype": "Data",
+      "label": "Contact Email",
+      "options": "Email"
+    },
+    {
+      "fieldname": "contact_phone",
+      "fieldtype": "Data",
+      "label": "Contact Phone",
+      "options": "Phone"
+    },
+    {
+      "fieldname": "column_break_contact",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "support_email",
+      "fieldtype": "Data",
+      "label": "Support Email",
+      "options": "Email"
+    },
+    {
+      "fieldname": "support_phone",
+      "fieldtype": "Data",
+      "label": "Support Phone",
+      "options": "Phone"
+    },
+    {
+      "fieldname": "support_hours",
+      "fieldtype": "Data",
+      "label": "Support Hours",
+      "description": "e.g., Mon-Fri 09:00-18:00"
+    },
+    {
+      "fieldname": "api_configuration_section",
+      "fieldtype": "Section Break",
+      "label": "API Configuration",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "api_enabled",
+      "fieldtype": "Check",
+      "label": "API Enabled",
+      "description": "Enable API integration for automated shipping"
+    },
+    {
+      "depends_on": "eval:doc.api_enabled==1",
+      "fieldname": "api_endpoint",
+      "fieldtype": "Data",
+      "label": "API Endpoint",
+      "description": "Base URL for API calls (e.g., https://api.provider.com/v1)"
+    },
+    {
+      "depends_on": "eval:doc.api_enabled==1",
+      "fieldname": "api_version",
+      "fieldtype": "Data",
+      "label": "API Version",
+      "description": "API version number"
+    },
+    {
+      "fieldname": "column_break_api",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.api_enabled==1",
+      "fieldname": "api_key",
+      "fieldtype": "Password",
+      "label": "API Key",
+      "description": "API key or client ID for authentication"
+    },
+    {
+      "depends_on": "eval:doc.api_enabled==1",
+      "fieldname": "api_secret",
+      "fieldtype": "Password",
+      "label": "API Secret",
+      "description": "API secret or client secret for authentication"
+    },
+    {
+      "depends_on": "eval:doc.api_enabled==1",
+      "fieldname": "api_username",
+      "fieldtype": "Data",
+      "label": "API Username",
+      "description": "Username for API authentication (if required)"
+    },
+    {
+      "depends_on": "eval:doc.api_enabled==1",
+      "fieldname": "api_password",
+      "fieldtype": "Password",
+      "label": "API Password",
+      "description": "Password for API authentication (if required)"
+    },
+    {
+      "fieldname": "api_settings_section",
+      "fieldtype": "Section Break",
+      "label": "API Settings",
+      "depends_on": "eval:doc.api_enabled==1",
+      "collapsible": 1
+    },
+    {
+      "default": "30",
+      "fieldname": "api_timeout",
+      "fieldtype": "Int",
+      "label": "API Timeout (seconds)",
+      "description": "Maximum time to wait for API response"
+    },
+    {
+      "default": "3",
+      "fieldname": "api_retry_count",
+      "fieldtype": "Int",
+      "label": "API Retry Count",
+      "description": "Number of retries on API failure"
+    },
+    {
+      "fieldname": "column_break_api_settings",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "sandbox_mode",
+      "fieldtype": "Check",
+      "label": "Sandbox Mode",
+      "description": "Use sandbox/test environment instead of production"
+    },
+    {
+      "depends_on": "eval:doc.sandbox_mode==1",
+      "fieldname": "sandbox_endpoint",
+      "fieldtype": "Data",
+      "label": "Sandbox Endpoint",
+      "description": "Sandbox API endpoint for testing"
+    },
+    {
+      "fieldname": "tracking_section",
+      "fieldtype": "Section Break",
+      "label": "Tracking Configuration"
+    },
+    {
+      "default": "1",
+      "fieldname": "supports_tracking",
+      "fieldtype": "Check",
+      "label": "Supports Tracking",
+      "description": "Provider supports shipment tracking"
+    },
+    {
+      "depends_on": "eval:doc.supports_tracking==1",
+      "fieldname": "tracking_url_template",
+      "fieldtype": "Data",
+      "label": "Tracking URL Template",
+      "description": "URL template with {tracking_number} placeholder (e.g., https://provider.com/track/{tracking_number})"
+    },
+    {
+      "default": "60",
+      "depends_on": "eval:doc.supports_tracking==1",
+      "fieldname": "tracking_update_frequency",
+      "fieldtype": "Int",
+      "label": "Tracking Update Frequency (minutes)",
+      "description": "How often to check for tracking updates"
+    },
+    {
+      "fieldname": "column_break_tracking",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "supports_webhooks",
+      "fieldtype": "Check",
+      "label": "Supports Webhooks",
+      "description": "Provider can send tracking updates via webhooks"
+    },
+    {
+      "depends_on": "eval:doc.supports_webhooks==1",
+      "fieldname": "webhook_url",
+      "fieldtype": "Data",
+      "label": "Webhook URL",
+      "description": "Our endpoint URL for receiving webhook notifications",
+      "read_only": 1
+    },
+    {
+      "depends_on": "eval:doc.supports_webhooks==1",
+      "fieldname": "webhook_secret",
+      "fieldtype": "Password",
+      "label": "Webhook Secret",
+      "description": "Secret key for verifying webhook signatures"
+    },
+    {
+      "fieldname": "service_area_section",
+      "fieldtype": "Section Break",
+      "label": "Service Area"
+    },
+    {
+      "default": "Both",
+      "fieldname": "service_type",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Service Type",
+      "options": "Domestic Only\nInternational Only\nBoth",
+      "reqd": 1
+    },
+    {
+      "default": "1",
+      "depends_on": "eval:['Domestic Only', 'Both'].includes(doc.service_type)",
+      "fieldname": "domestic_coverage",
+      "fieldtype": "Check",
+      "label": "Full Domestic Coverage",
+      "description": "Covers all domestic regions"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:['International Only', 'Both'].includes(doc.service_type)",
+      "fieldname": "international_coverage",
+      "fieldtype": "Check",
+      "label": "Full International Coverage",
+      "description": "Covers all international destinations"
+    },
+    {
+      "fieldname": "column_break_service_area",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:['International Only', 'Both'].includes(doc.service_type)",
+      "fieldname": "served_countries",
+      "fieldtype": "Small Text",
+      "label": "Served Countries",
+      "description": "Comma-separated list of country codes (e.g., TR, US, DE, GB)"
+    },
+    {
+      "fieldname": "excluded_regions",
+      "fieldtype": "Small Text",
+      "label": "Excluded Regions",
+      "description": "Regions or areas not served by this provider"
+    },
+    {
+      "fieldname": "shipping_methods_section",
+      "fieldtype": "Section Break",
+      "label": "Shipping Methods"
+    },
+    {
+      "fieldname": "supported_shipping_methods",
+      "fieldtype": "Small Text",
+      "label": "Supported Shipping Methods",
+      "description": "Comma-separated list of shipping method codes this provider supports"
+    },
+    {
+      "fieldname": "default_shipping_method",
+      "fieldtype": "Data",
+      "label": "Default Shipping Method",
+      "description": "Default shipping method code"
+    },
+    {
+      "fieldname": "column_break_shipping",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "supports_express",
+      "fieldtype": "Check",
+      "label": "Supports Express Shipping"
+    },
+    {
+      "default": "0",
+      "fieldname": "supports_same_day",
+      "fieldtype": "Check",
+      "label": "Supports Same Day Delivery"
+    },
+    {
+      "default": "1",
+      "fieldname": "supports_cod",
+      "fieldtype": "Check",
+      "label": "Supports Cash on Delivery"
+    },
+    {
+      "default": "0",
+      "fieldname": "supports_insurance",
+      "fieldtype": "Check",
+      "label": "Supports Shipping Insurance"
+    },
+    {
+      "fieldname": "rate_section",
+      "fieldtype": "Section Break",
+      "label": "Rate Configuration",
+      "collapsible": 1
+    },
+    {
+      "default": "Weight Based",
+      "fieldname": "rate_calculation_method",
+      "fieldtype": "Select",
+      "label": "Rate Calculation Method",
+      "options": "Weight Based\nVolumetric\nHigher of Weight/Volume\nFlat Rate\nDistance Based\nAPI Based"
+    },
+    {
+      "default": "0",
+      "fieldname": "base_rate",
+      "fieldtype": "Currency",
+      "label": "Base Rate",
+      "description": "Base shipping rate before weight/distance charges"
+    },
+    {
+      "default": "0",
+      "fieldname": "rate_per_kg",
+      "fieldtype": "Currency",
+      "label": "Rate per KG",
+      "description": "Additional rate per kilogram"
+    },
+    {
+      "fieldname": "column_break_rate",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "fuel_surcharge_percent",
+      "fieldtype": "Percent",
+      "label": "Fuel Surcharge %",
+      "description": "Current fuel surcharge percentage"
+    },
+    {
+      "default": "0.5",
+      "fieldname": "min_chargeable_weight",
+      "fieldtype": "Float",
+      "label": "Min Chargeable Weight (KG)",
+      "description": "Minimum weight charged for shipping"
+    },
+    {
+      "default": "5000",
+      "fieldname": "volumetric_divisor",
+      "fieldtype": "Int",
+      "label": "Volumetric Divisor",
+      "description": "Divisor for calculating volumetric weight (typically 5000 or 6000)"
+    },
+    {
+      "fieldname": "packaging_section",
+      "fieldtype": "Section Break",
+      "label": "Packaging Limits",
+      "collapsible": 1
+    },
+    {
+      "default": "30",
+      "fieldname": "max_weight_kg",
+      "fieldtype": "Float",
+      "label": "Max Weight (KG)",
+      "description": "Maximum package weight accepted"
+    },
+    {
+      "default": "120",
+      "fieldname": "max_length_cm",
+      "fieldtype": "Float",
+      "label": "Max Length (CM)",
+      "description": "Maximum package length"
+    },
+    {
+      "default": "80",
+      "fieldname": "max_width_cm",
+      "fieldtype": "Float",
+      "label": "Max Width (CM)",
+      "description": "Maximum package width"
+    },
+    {
+      "default": "80",
+      "fieldname": "max_height_cm",
+      "fieldtype": "Float",
+      "label": "Max Height (CM)",
+      "description": "Maximum package height"
+    },
+    {
+      "fieldname": "column_break_packaging",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "max_volume_cm3",
+      "fieldtype": "Float",
+      "label": "Max Volume (CM3)",
+      "description": "Maximum package volume (0 = no limit)"
+    },
+    {
+      "default": "0",
+      "fieldname": "max_declared_value",
+      "fieldtype": "Currency",
+      "label": "Max Declared Value",
+      "description": "Maximum declared value for shipping (0 = no limit)"
+    },
+    {
+      "default": "TRY",
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency"
+    },
+    {
+      "fieldname": "integration_section",
+      "fieldtype": "Section Break",
+      "label": "Integration Features",
+      "collapsible": 1
+    },
+    {
+      "default": "PDF",
+      "fieldname": "label_format",
+      "fieldtype": "Select",
+      "label": "Label Format",
+      "options": "PDF\nZPL\nPNG\nEPL\nDPL"
+    },
+    {
+      "default": "4x6",
+      "fieldname": "label_size",
+      "fieldtype": "Select",
+      "label": "Label Size",
+      "options": "4x6\n4x8\nA4\nA5\nA6"
+    },
+    {
+      "fieldname": "column_break_integration",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "supports_pickup",
+      "fieldtype": "Check",
+      "label": "Supports Pickup Scheduling",
+      "description": "Can schedule package pickup from seller"
+    },
+    {
+      "default": "1",
+      "fieldname": "supports_dropoff",
+      "fieldtype": "Check",
+      "label": "Supports Dropoff Points",
+      "description": "Has dropoff locations/lockers"
+    },
+    {
+      "default": "0",
+      "fieldname": "supports_return_label",
+      "fieldtype": "Check",
+      "label": "Supports Return Labels",
+      "description": "Can generate prepaid return labels"
+    },
+    {
+      "fieldname": "performance_section",
+      "fieldtype": "Section Break",
+      "label": "Performance Metrics",
+      "collapsible": 1
+    },
+    {
+      "default": "3",
+      "fieldname": "average_delivery_days",
+      "fieldtype": "Float",
+      "label": "Average Delivery Days",
+      "precision": 1,
+      "read_only": 1,
+      "description": "Average delivery time in business days"
+    },
+    {
+      "default": "0",
+      "fieldname": "on_time_delivery_rate",
+      "fieldtype": "Percent",
+      "label": "On-Time Delivery Rate",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "damage_rate",
+      "fieldtype": "Percent",
+      "label": "Damage Rate",
+      "read_only": 1,
+      "description": "Percentage of shipments reported damaged"
+    },
+    {
+      "fieldname": "column_break_performance",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_shipments",
+      "fieldtype": "Int",
+      "label": "Total Shipments",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "total_issues",
+      "fieldtype": "Int",
+      "label": "Total Issues",
+      "read_only": 1,
+      "description": "Count of shipments with problems (delays, damages, losses)"
+    },
+    {
+      "fieldname": "last_used_at",
+      "fieldtype": "Datetime",
+      "label": "Last Used At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Settings"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default Provider",
+      "description": "Use as default when no specific provider is selected"
+    },
+    {
+      "default": "10",
+      "fieldname": "priority",
+      "fieldtype": "Int",
+      "label": "Priority",
+      "description": "Display order priority (lower = higher priority)"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes",
+      "description": "Internal notes about this provider"
+    },
+    {
+      "fieldname": "column_break_settings",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled_for_sellers",
+      "fieldtype": "Check",
+      "label": "Enabled for Sellers",
+      "description": "Sellers can select this provider for their shipments"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled_for_marketplace",
+      "fieldtype": "Check",
+      "label": "Enabled for Marketplace",
+      "description": "Available for marketplace-level shipping rules"
+    },
+    {
+      "default": "0",
+      "fieldname": "requires_contract",
+      "fieldtype": "Check",
+      "label": "Requires Contract",
+      "description": "Seller must have contract with provider to use"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Shipping",
+      "link_doctype": "Shipping Rule",
+      "link_fieldname": "logistics_provider"
+    },
+    {
+      "group": "Shipping",
+      "link_doctype": "Marketplace Shipment",
+      "link_fieldname": "logistics_provider"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Logistics Provider",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 0,
+      "read": 1,
+      "report": 0,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "provider_name, provider_type, service_type",
+  "sort_field": "priority",
+  "sort_order": "ASC",
+  "states": [
+    {
+      "color": "green",
+      "title": "Active"
+    },
+    {
+      "color": "gray",
+      "title": "Inactive"
+    },
+    {
+      "color": "red",
+      "title": "Suspended"
+    },
+    {
+      "color": "orange",
+      "title": "Testing"
+    }
+  ],
+  "title_field": "provider_name",
+  "track_changes": 1
+}

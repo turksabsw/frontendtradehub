@@ -1,0 +1,1130 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "intent_id",
+  "status",
+  "payment_type",
+  "column_break_basic",
+  "tenant",
+  "created_at",
+  "expires_at",
+  "order_section",
+  "marketplace_order",
+  "sub_order",
+  "cart",
+  "column_break_order",
+  "buyer",
+  "buyer_type",
+  "organization",
+  "amount_section",
+  "currency",
+  "amount",
+  "original_amount",
+  "column_break_amount",
+  "fee_amount",
+  "net_amount",
+  "exchange_rate",
+  "base_currency",
+  "base_amount",
+  "payment_method_section",
+  "payment_method",
+  "payment_gateway",
+  "column_break_method",
+  "card_brand",
+  "card_last_four",
+  "card_expiry_month",
+  "card_expiry_year",
+  "card_holder_name",
+  "bank_name",
+  "installment_section",
+  "has_installments",
+  "installment_count",
+  "installment_amount",
+  "column_break_installment",
+  "installment_fee",
+  "installment_total",
+  "installment_plan",
+  "gateway_section",
+  "gateway_intent_id",
+  "gateway_payment_id",
+  "gateway_reference",
+  "column_break_gateway",
+  "gateway_status",
+  "gateway_response",
+  "gateway_error_code",
+  "gateway_error_message",
+  "three_d_section",
+  "requires_3d_secure",
+  "three_d_status",
+  "three_d_callback_url",
+  "column_break_3d",
+  "three_d_html",
+  "three_d_flow_completed",
+  "three_d_version",
+  "authorization_section",
+  "authorized_at",
+  "authorization_code",
+  "authorization_expires",
+  "column_break_auth",
+  "capture_method",
+  "captured_at",
+  "captured_amount",
+  "refund_section",
+  "refund_status",
+  "refund_amount",
+  "refund_reason",
+  "column_break_refund",
+  "refunded_at",
+  "refund_gateway_id",
+  "partial_refunds",
+  "escrow_section",
+  "escrow_enabled",
+  "escrow_account",
+  "escrow_status",
+  "column_break_escrow",
+  "escrow_held_at",
+  "escrow_release_date",
+  "escrow_released_at",
+  "billing_section",
+  "billing_name",
+  "billing_email",
+  "billing_phone",
+  "column_break_billing",
+  "billing_address_line1",
+  "billing_address_line2",
+  "billing_city",
+  "billing_state",
+  "billing_postal_code",
+  "billing_country",
+  "billing_tax_id",
+  "metadata_section",
+  "description",
+  "statement_descriptor",
+  "receipt_email",
+  "column_break_meta",
+  "metadata",
+  "customer_ip",
+  "customer_user_agent",
+  "risk_section",
+  "risk_score",
+  "risk_level",
+  "fraud_flags",
+  "column_break_risk",
+  "fraud_check_status",
+  "fraud_check_response",
+  "is_flagged",
+  "webhook_section",
+  "last_webhook_at",
+  "webhook_count",
+  "last_webhook_event",
+  "column_break_webhook",
+  "webhook_verified",
+  "webhook_response",
+  "erpnext_section",
+  "erpnext_payment_entry",
+  "erpnext_journal_entry",
+  "column_break_erpnext",
+  "erpnext_sync_status",
+  "erpnext_sync_error",
+  "timestamps_section",
+  "processing_started_at",
+  "completed_at",
+  "failed_at",
+  "column_break_timestamps",
+  "cancelled_at",
+  "last_retry_at",
+  "retry_count",
+  "system_section",
+  "naming_series",
+  "internal_notes",
+  "error_log",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Information"
+  },
+  {
+   "description": "Unique payment intent identifier for external reference",
+   "fieldname": "intent_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Intent ID",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "default": "Created",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Created\nPending\nProcessing\nRequires Action\nRequires Capture\nAuthorized\nCaptured\nPaid\nPartially Paid\nFailed\nCancelled\nExpired\nRefunded\nPartially Refunded\nDisputed",
+   "reqd": 1
+  },
+  {
+   "default": "Checkout",
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payment Type",
+   "options": "Checkout\nTopup\nSubscription\nInvoice\nRefund\nPayout\nManual"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "default": "Now",
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "description": "Payment intent expiration time",
+   "fieldname": "expires_at",
+   "fieldtype": "Datetime",
+   "label": "Expires At"
+  },
+  {
+   "fieldname": "order_section",
+   "fieldtype": "Section Break",
+   "label": "Order Reference"
+  },
+  {
+   "fieldname": "marketplace_order",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Marketplace Order",
+   "options": "Marketplace Order"
+  },
+  {
+   "fieldname": "sub_order",
+   "fieldtype": "Link",
+   "label": "Sub Order",
+   "options": "Sub Order"
+  },
+  {
+   "description": "Cart if payment was initiated from cart",
+   "fieldname": "cart",
+   "fieldtype": "Link",
+   "label": "Cart",
+   "options": "Cart"
+  },
+  {
+   "fieldname": "column_break_order",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "default": "Individual",
+   "fieldname": "buyer_type",
+   "fieldtype": "Select",
+   "label": "Buyer Type",
+   "options": "Individual\nOrganization\nGuest"
+  },
+  {
+   "depends_on": "eval:doc.buyer_type=='Organization'",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization"
+  },
+  {
+   "fieldname": "amount_section",
+   "fieldtype": "Section Break",
+   "label": "Amount Details"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Total amount to be charged",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Original amount before discounts",
+   "fieldname": "original_amount",
+   "fieldtype": "Currency",
+   "label": "Original Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_amount",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Payment gateway fee",
+   "fieldname": "fee_amount",
+   "fieldtype": "Currency",
+   "label": "Fee Amount",
+   "options": "currency"
+  },
+  {
+   "default": "0",
+   "description": "Net amount after fees",
+   "fieldname": "net_amount",
+   "fieldtype": "Currency",
+   "label": "Net Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "precision": "9"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "base_currency",
+   "fieldtype": "Link",
+   "label": "Base Currency",
+   "options": "Currency"
+  },
+  {
+   "default": "0",
+   "description": "Amount in base currency",
+   "fieldname": "base_amount",
+   "fieldtype": "Currency",
+   "label": "Base Amount",
+   "options": "base_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_method_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Method"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payment Method",
+   "options": "\nCredit Card\nDebit Card\nBank Transfer\nWallet\nCash on Delivery\nBNPL\nOther"
+  },
+  {
+   "fieldname": "payment_gateway",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Payment Gateway",
+   "options": "\niyzico\nPayTR\nStripe\nPayPal\nManual"
+  },
+  {
+   "fieldname": "column_break_method",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:['Credit Card', 'Debit Card'].includes(doc.payment_method)",
+   "fieldname": "card_brand",
+   "fieldtype": "Select",
+   "label": "Card Brand",
+   "options": "\nVisa\nMastercard\nAmex\nTroy\nDiscover\nDiners\nJCB\nUnionPay\nOther"
+  },
+  {
+   "depends_on": "eval:['Credit Card', 'Debit Card'].includes(doc.payment_method)",
+   "fieldname": "card_last_four",
+   "fieldtype": "Data",
+   "label": "Card Last 4 Digits"
+  },
+  {
+   "depends_on": "eval:['Credit Card', 'Debit Card'].includes(doc.payment_method)",
+   "fieldname": "card_expiry_month",
+   "fieldtype": "Int",
+   "label": "Card Expiry Month"
+  },
+  {
+   "depends_on": "eval:['Credit Card', 'Debit Card'].includes(doc.payment_method)",
+   "fieldname": "card_expiry_year",
+   "fieldtype": "Int",
+   "label": "Card Expiry Year"
+  },
+  {
+   "depends_on": "eval:['Credit Card', 'Debit Card'].includes(doc.payment_method)",
+   "fieldname": "card_holder_name",
+   "fieldtype": "Data",
+   "label": "Card Holder Name"
+  },
+  {
+   "depends_on": "eval:doc.payment_method=='Bank Transfer'",
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "label": "Bank Name"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "installment_section",
+   "fieldtype": "Section Break",
+   "label": "Installments (Taksit)"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_installments",
+   "fieldtype": "Check",
+   "label": "Has Installments"
+  },
+  {
+   "default": "1",
+   "depends_on": "eval:doc.has_installments",
+   "fieldname": "installment_count",
+   "fieldtype": "Int",
+   "label": "Installment Count"
+  },
+  {
+   "depends_on": "eval:doc.has_installments",
+   "fieldname": "installment_amount",
+   "fieldtype": "Currency",
+   "label": "Installment Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_installment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.has_installments",
+   "fieldname": "installment_fee",
+   "fieldtype": "Currency",
+   "label": "Installment Fee",
+   "options": "currency"
+  },
+  {
+   "depends_on": "eval:doc.has_installments",
+   "fieldname": "installment_total",
+   "fieldtype": "Currency",
+   "label": "Total with Installments",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.has_installments",
+   "description": "JSON object with installment breakdown",
+   "fieldname": "installment_plan",
+   "fieldtype": "JSON",
+   "label": "Installment Plan"
+  },
+  {
+   "fieldname": "gateway_section",
+   "fieldtype": "Section Break",
+   "label": "Gateway Details"
+  },
+  {
+   "description": "Payment intent ID from gateway",
+   "fieldname": "gateway_intent_id",
+   "fieldtype": "Data",
+   "label": "Gateway Intent ID"
+  },
+  {
+   "description": "Payment ID from gateway after completion",
+   "fieldname": "gateway_payment_id",
+   "fieldtype": "Data",
+   "label": "Gateway Payment ID"
+  },
+  {
+   "description": "Additional gateway reference",
+   "fieldname": "gateway_reference",
+   "fieldtype": "Data",
+   "label": "Gateway Reference"
+  },
+  {
+   "fieldname": "column_break_gateway",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Status returned by gateway",
+   "fieldname": "gateway_status",
+   "fieldtype": "Data",
+   "label": "Gateway Status"
+  },
+  {
+   "description": "Full gateway response JSON",
+   "fieldname": "gateway_response",
+   "fieldtype": "JSON",
+   "label": "Gateway Response"
+  },
+  {
+   "fieldname": "gateway_error_code",
+   "fieldtype": "Data",
+   "label": "Gateway Error Code"
+  },
+  {
+   "fieldname": "gateway_error_message",
+   "fieldtype": "Small Text",
+   "label": "Gateway Error Message"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "three_d_section",
+   "fieldtype": "Section Break",
+   "label": "3D Secure"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_3d_secure",
+   "fieldtype": "Check",
+   "label": "Requires 3D Secure"
+  },
+  {
+   "depends_on": "eval:doc.requires_3d_secure",
+   "fieldname": "three_d_status",
+   "fieldtype": "Select",
+   "label": "3D Secure Status",
+   "options": "\nPending\nInitiated\nChallenge Required\nAuthenticated\nFailed\nNot Supported\nBypassed"
+  },
+  {
+   "depends_on": "eval:doc.requires_3d_secure",
+   "fieldname": "three_d_callback_url",
+   "fieldtype": "Data",
+   "label": "3D Callback URL"
+  },
+  {
+   "fieldname": "column_break_3d",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.requires_3d_secure",
+   "description": "3D Secure redirect HTML content",
+   "fieldname": "three_d_html",
+   "fieldtype": "Code",
+   "label": "3D Secure HTML",
+   "options": "HTML"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.requires_3d_secure",
+   "fieldname": "three_d_flow_completed",
+   "fieldtype": "Check",
+   "label": "3D Flow Completed"
+  },
+  {
+   "depends_on": "eval:doc.requires_3d_secure",
+   "fieldname": "three_d_version",
+   "fieldtype": "Select",
+   "label": "3D Secure Version",
+   "options": "\n1.0\n2.0\n2.1\n2.2"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "authorization_section",
+   "fieldtype": "Section Break",
+   "label": "Authorization & Capture"
+  },
+  {
+   "fieldname": "authorized_at",
+   "fieldtype": "Datetime",
+   "label": "Authorized At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "authorization_code",
+   "fieldtype": "Data",
+   "label": "Authorization Code"
+  },
+  {
+   "description": "When authorization expires",
+   "fieldname": "authorization_expires",
+   "fieldtype": "Datetime",
+   "label": "Authorization Expires"
+  },
+  {
+   "fieldname": "column_break_auth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Automatic",
+   "fieldname": "capture_method",
+   "fieldtype": "Select",
+   "label": "Capture Method",
+   "options": "Automatic\nManual"
+  },
+  {
+   "fieldname": "captured_at",
+   "fieldtype": "Datetime",
+   "label": "Captured At",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "captured_amount",
+   "fieldtype": "Currency",
+   "label": "Captured Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "refund_section",
+   "fieldtype": "Section Break",
+   "label": "Refund"
+  },
+  {
+   "default": "None",
+   "fieldname": "refund_status",
+   "fieldtype": "Select",
+   "label": "Refund Status",
+   "options": "None\nRequested\nPending\nProcessing\nRefunded\nPartially Refunded\nFailed\nRejected"
+  },
+  {
+   "default": "0",
+   "fieldname": "refund_amount",
+   "fieldtype": "Currency",
+   "label": "Refund Amount",
+   "options": "currency"
+  },
+  {
+   "depends_on": "eval:doc.refund_status!='None'",
+   "fieldname": "refund_reason",
+   "fieldtype": "Select",
+   "label": "Refund Reason",
+   "options": "\nCustomer Request\nOrder Cancelled\nDuplicate Payment\nFraud\nProduct Not Received\nProduct Not as Described\nOther"
+  },
+  {
+   "fieldname": "column_break_refund",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.refund_status!='None'",
+   "fieldname": "refunded_at",
+   "fieldtype": "Datetime",
+   "label": "Refunded At",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.refund_status!='None'",
+   "fieldname": "refund_gateway_id",
+   "fieldtype": "Data",
+   "label": "Refund Gateway ID"
+  },
+  {
+   "description": "JSON array of partial refunds",
+   "fieldname": "partial_refunds",
+   "fieldtype": "JSON",
+   "label": "Partial Refunds"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "escrow_section",
+   "fieldtype": "Section Break",
+   "label": "Escrow"
+  },
+  {
+   "default": "0",
+   "fieldname": "escrow_enabled",
+   "fieldtype": "Check",
+   "label": "Escrow Enabled"
+  },
+  {
+   "depends_on": "eval:doc.escrow_enabled",
+   "fieldname": "escrow_account",
+   "fieldtype": "Link",
+   "label": "Escrow Account",
+   "options": "Escrow Account"
+  },
+  {
+   "depends_on": "eval:doc.escrow_enabled",
+   "fieldname": "escrow_status",
+   "fieldtype": "Select",
+   "label": "Escrow Status",
+   "options": "\nPending\nHeld\nPartially Released\nReleased\nDisputed\nRefunded"
+  },
+  {
+   "fieldname": "column_break_escrow",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.escrow_enabled",
+   "fieldname": "escrow_held_at",
+   "fieldtype": "Datetime",
+   "label": "Escrow Held At"
+  },
+  {
+   "depends_on": "eval:doc.escrow_enabled",
+   "fieldname": "escrow_release_date",
+   "fieldtype": "Date",
+   "label": "Escrow Release Date"
+  },
+  {
+   "depends_on": "eval:doc.escrow_enabled",
+   "fieldname": "escrow_released_at",
+   "fieldtype": "Datetime",
+   "label": "Escrow Released At"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing Information"
+  },
+  {
+   "fieldname": "billing_name",
+   "fieldtype": "Data",
+   "label": "Billing Name"
+  },
+  {
+   "fieldname": "billing_email",
+   "fieldtype": "Data",
+   "label": "Billing Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "billing_phone",
+   "fieldtype": "Data",
+   "label": "Billing Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_billing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "billing_address_line1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "billing_address_line2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "billing_city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "billing_state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "billing_postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "billing_country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "description": "VKN or TCKN for Turkish billing",
+   "fieldname": "billing_tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "metadata_section",
+   "fieldtype": "Section Break",
+   "label": "Metadata"
+  },
+  {
+   "description": "Payment description shown on statements",
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  },
+  {
+   "description": "Short descriptor for bank statements",
+   "fieldname": "statement_descriptor",
+   "fieldtype": "Data",
+   "label": "Statement Descriptor"
+  },
+  {
+   "description": "Email to send receipt to",
+   "fieldname": "receipt_email",
+   "fieldtype": "Data",
+   "label": "Receipt Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Custom metadata JSON",
+   "fieldname": "metadata",
+   "fieldtype": "JSON",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "customer_ip",
+   "fieldtype": "Data",
+   "label": "Customer IP"
+  },
+  {
+   "fieldname": "customer_user_agent",
+   "fieldtype": "Small Text",
+   "label": "Customer User Agent"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "risk_section",
+   "fieldtype": "Section Break",
+   "label": "Risk & Fraud"
+  },
+  {
+   "default": "0",
+   "description": "Risk score from 0-100",
+   "fieldname": "risk_score",
+   "fieldtype": "Int",
+   "label": "Risk Score"
+  },
+  {
+   "default": "Low",
+   "fieldname": "risk_level",
+   "fieldtype": "Select",
+   "label": "Risk Level",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "description": "JSON array of triggered fraud flags",
+   "fieldname": "fraud_flags",
+   "fieldtype": "JSON",
+   "label": "Fraud Flags"
+  },
+  {
+   "fieldname": "column_break_risk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Not Checked",
+   "fieldname": "fraud_check_status",
+   "fieldtype": "Select",
+   "label": "Fraud Check Status",
+   "options": "Not Checked\nPending\nPassed\nReview Required\nFailed"
+  },
+  {
+   "fieldname": "fraud_check_response",
+   "fieldtype": "JSON",
+   "label": "Fraud Check Response"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_flagged",
+   "fieldtype": "Check",
+   "label": "Is Flagged for Review"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "webhook_section",
+   "fieldtype": "Section Break",
+   "label": "Webhook"
+  },
+  {
+   "fieldname": "last_webhook_at",
+   "fieldtype": "Datetime",
+   "label": "Last Webhook At",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "webhook_count",
+   "fieldtype": "Int",
+   "label": "Webhook Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_webhook_event",
+   "fieldtype": "Data",
+   "label": "Last Webhook Event"
+  },
+  {
+   "fieldname": "column_break_webhook",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "webhook_verified",
+   "fieldtype": "Check",
+   "label": "Webhook Verified"
+  },
+  {
+   "fieldname": "webhook_response",
+   "fieldtype": "JSON",
+   "label": "Webhook Response"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "erpnext_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration"
+  },
+  {
+   "fieldname": "erpnext_payment_entry",
+   "fieldtype": "Link",
+   "label": "ERPNext Payment Entry",
+   "options": "Payment Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "erpnext_journal_entry",
+   "fieldtype": "Link",
+   "label": "ERPNext Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_erpnext",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Not Synced",
+   "fieldname": "erpnext_sync_status",
+   "fieldtype": "Select",
+   "label": "ERPNext Sync Status",
+   "options": "Not Synced\nPending\nSynced\nFailed"
+  },
+  {
+   "fieldname": "erpnext_sync_error",
+   "fieldtype": "Small Text",
+   "label": "ERPNext Sync Error"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "Timestamps"
+  },
+  {
+   "fieldname": "processing_started_at",
+   "fieldtype": "Datetime",
+   "label": "Processing Started At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "failed_at",
+   "fieldtype": "Datetime",
+   "label": "Failed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cancelled_at",
+   "fieldtype": "Datetime",
+   "label": "Cancelled At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_retry_at",
+   "fieldtype": "Datetime",
+   "label": "Last Retry At",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "retry_count",
+   "fieldtype": "Int",
+   "label": "Retry Count",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System"
+  },
+  {
+   "default": "PI-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "PI-.YYYY.-.#####\nPAY-.#####"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "description": "Error log for debugging",
+   "fieldname": "error_log",
+   "fieldtype": "Text",
+   "label": "Error Log"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Payment Intent",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "has_web_view": 0,
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Marketplace Order",
+   "link_fieldname": "payment_intent"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Escrow Account",
+   "link_fieldname": "payment_intent"
+  },
+  {
+   "group": "ERPNext",
+   "link_doctype": "Payment Entry",
+   "link_fieldname": "payment_intent"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Payment Intent",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "intent_id, buyer, marketplace_order, status, payment_gateway, amount",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Created"
+  },
+  {
+   "color": "orange",
+   "title": "Pending"
+  },
+  {
+   "color": "yellow",
+   "title": "Processing"
+  },
+  {
+   "color": "blue",
+   "title": "Requires Action"
+  },
+  {
+   "color": "blue",
+   "title": "Requires Capture"
+  },
+  {
+   "color": "blue",
+   "title": "Authorized"
+  },
+  {
+   "color": "purple",
+   "title": "Captured"
+  },
+  {
+   "color": "green",
+   "title": "Paid"
+  },
+  {
+   "color": "green",
+   "title": "Partially Paid"
+  },
+  {
+   "color": "red",
+   "title": "Failed"
+  },
+  {
+   "color": "red",
+   "title": "Cancelled"
+  },
+  {
+   "color": "gray",
+   "title": "Expired"
+  },
+  {
+   "color": "orange",
+   "title": "Refunded"
+  },
+  {
+   "color": "orange",
+   "title": "Partially Refunded"
+  },
+  {
+   "color": "red",
+   "title": "Disputed"
+  }
+ ],
+ "title_field": "intent_id",
+ "track_changes": 1
+}

@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include tr_contract_center *.css
+recursive-include tr_contract_center *.csv
+recursive-include tr_contract_center *.html
+recursive-include tr_contract_center *.ico
+recursive-include tr_contract_center *.js
+recursive-include tr_contract_center *.json
+recursive-include tr_contract_center *.md
+recursive-include tr_contract_center *.png
+recursive-include tr_contract_center *.py
+recursive-include tr_contract_center *.svg
+recursive-include tr_contract_center *.txt
+recursive-exclude tr_contract_center *.pyc

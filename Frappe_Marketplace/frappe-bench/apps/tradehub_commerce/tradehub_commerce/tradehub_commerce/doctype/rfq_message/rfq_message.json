@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "thread",
+  "sender_type",
+  "sender",
+  "recipient",
+  "message",
+  "sent_at",
+  "read_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "thread",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Thread",
+   "options": "RFQ Message Thread",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sender_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Sender Type",
+   "options": "Buyer Profile\nSeller Profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sender",
+   "fieldtype": "Dynamic Link",
+   "label": "Sender",
+   "options": "sender_type"
+  },
+  {
+   "fieldname": "recipient",
+   "fieldtype": "Data",
+   "label": "Recipient"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Message",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sent_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Sent At"
+  },
+  {
+   "fieldname": "read_at",
+   "fieldtype": "Datetime",
+   "label": "Read At"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "RFQ Message",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "thread, sender_type, message",
+ "sort_field": "sent_at",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

@@ -1,0 +1,366 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:config_name",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "config_name",
+  "is_active",
+  "column_break_basic",
+  "is_default",
+  "tenant",
+  "category",
+  "performance_section",
+  "sales_weight",
+  "view_weight",
+  "column_break_performance",
+  "conversion_weight",
+  "ctr_weight",
+  "engagement_section",
+  "wishlist_weight",
+  "review_weight",
+  "column_break_engagement",
+  "rating_weight",
+  "quality_section",
+  "quality_score_weight",
+  "seller_score_weight",
+  "column_break_quality",
+  "recency_weight",
+  "stock_weight",
+  "boost_section",
+  "featured_boost",
+  "bestseller_boost",
+  "column_break_boost",
+  "new_arrival_boost",
+  "sale_boost",
+  "penalty_section",
+  "out_of_stock_penalty",
+  "low_rating_penalty",
+  "column_break_penalty",
+  "new_listing_boost_days",
+  "new_listing_boost_amount",
+  "algorithm_section",
+  "use_time_decay",
+  "decay_half_life_days",
+  "column_break_algorithm",
+  "normalize_scores",
+  "min_orders_for_conversion"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Configuration"
+  },
+  {
+   "description": "Unique name for this ranking configuration",
+   "fieldname": "config_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Configuration Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Use this config as the default when no category/tenant specific config exists",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Default"
+  },
+  {
+   "description": "Apply this config to a specific tenant only",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "description": "Apply this config to a specific category only",
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "performance_section",
+   "fieldtype": "Section Break",
+   "label": "Performance Weights"
+  },
+  {
+   "default": "25",
+   "description": "Weight for sales/order count (0-100)",
+   "fieldname": "sales_weight",
+   "fieldtype": "Float",
+   "label": "Sales Weight",
+   "precision": 2
+  },
+  {
+   "default": "10",
+   "description": "Weight for view count (0-100)",
+   "fieldname": "view_weight",
+   "fieldtype": "Float",
+   "label": "View Weight",
+   "precision": 2
+  },
+  {
+   "fieldname": "column_break_performance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "20",
+   "description": "Weight for conversion rate (0-100)",
+   "fieldname": "conversion_weight",
+   "fieldtype": "Float",
+   "label": "Conversion Rate Weight",
+   "precision": 2
+  },
+  {
+   "default": "10",
+   "description": "Weight for click-through rate (0-100)",
+   "fieldname": "ctr_weight",
+   "fieldtype": "Float",
+   "label": "CTR Weight",
+   "precision": 2
+  },
+  {
+   "fieldname": "engagement_section",
+   "fieldtype": "Section Break",
+   "label": "Engagement Weights"
+  },
+  {
+   "default": "5",
+   "description": "Weight for wishlist additions (0-100)",
+   "fieldname": "wishlist_weight",
+   "fieldtype": "Float",
+   "label": "Wishlist Weight",
+   "precision": 2
+  },
+  {
+   "default": "5",
+   "description": "Weight for review count (0-100)",
+   "fieldname": "review_weight",
+   "fieldtype": "Float",
+   "label": "Review Count Weight",
+   "precision": 2
+  },
+  {
+   "fieldname": "column_break_engagement",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "15",
+   "description": "Weight for average rating (0-100)",
+   "fieldname": "rating_weight",
+   "fieldtype": "Float",
+   "label": "Rating Weight",
+   "precision": 2
+  },
+  {
+   "fieldname": "quality_section",
+   "fieldtype": "Section Break",
+   "label": "Quality Weights"
+  },
+  {
+   "default": "5",
+   "description": "Weight for AI quality score (0-100)",
+   "fieldname": "quality_score_weight",
+   "fieldtype": "Float",
+   "label": "Quality Score Weight",
+   "precision": 2
+  },
+  {
+   "default": "5",
+   "description": "Weight for seller performance score (0-100)",
+   "fieldname": "seller_score_weight",
+   "fieldtype": "Float",
+   "label": "Seller Score Weight",
+   "precision": 2
+  },
+  {
+   "fieldname": "column_break_quality",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Weight for recency of last sale (0-100)",
+   "fieldname": "recency_weight",
+   "fieldtype": "Float",
+   "label": "Recency Weight",
+   "precision": 2
+  },
+  {
+   "default": "0",
+   "description": "Weight for stock availability (0-100)",
+   "fieldname": "stock_weight",
+   "fieldtype": "Float",
+   "label": "Stock Availability Weight",
+   "precision": 2
+  },
+  {
+   "fieldname": "boost_section",
+   "fieldtype": "Section Break",
+   "label": "Boost Settings"
+  },
+  {
+   "default": "10",
+   "description": "Additional points for featured listings",
+   "fieldname": "featured_boost",
+   "fieldtype": "Float",
+   "label": "Featured Boost",
+   "precision": 2
+  },
+  {
+   "default": "5",
+   "description": "Additional points for best seller listings",
+   "fieldname": "bestseller_boost",
+   "fieldtype": "Float",
+   "label": "Best Seller Boost",
+   "precision": 2
+  },
+  {
+   "fieldname": "column_break_boost",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "3",
+   "description": "Additional points for new arrivals",
+   "fieldname": "new_arrival_boost",
+   "fieldtype": "Float",
+   "label": "New Arrival Boost",
+   "precision": 2
+  },
+  {
+   "default": "2",
+   "description": "Additional points for items on sale",
+   "fieldname": "sale_boost",
+   "fieldtype": "Float",
+   "label": "Sale Boost",
+   "precision": 2
+  },
+  {
+   "fieldname": "penalty_section",
+   "fieldtype": "Section Break",
+   "label": "Penalty Settings"
+  },
+  {
+   "default": "-20",
+   "description": "Penalty for out of stock items (negative value)",
+   "fieldname": "out_of_stock_penalty",
+   "fieldtype": "Float",
+   "label": "Out of Stock Penalty",
+   "precision": 2
+  },
+  {
+   "default": "-10",
+   "description": "Penalty for low-rated items (<3 stars)",
+   "fieldname": "low_rating_penalty",
+   "fieldtype": "Float",
+   "label": "Low Rating Penalty",
+   "precision": 2
+  },
+  {
+   "fieldname": "column_break_penalty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "14",
+   "description": "Days to apply new listing boost",
+   "fieldname": "new_listing_boost_days",
+   "fieldtype": "Int",
+   "label": "New Listing Boost Days"
+  },
+  {
+   "default": "5",
+   "description": "Boost amount for new listings",
+   "fieldname": "new_listing_boost_amount",
+   "fieldtype": "Float",
+   "label": "New Listing Boost Amount",
+   "precision": 2
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "algorithm_section",
+   "fieldtype": "Section Break",
+   "label": "Algorithm Settings"
+  },
+  {
+   "default": "1",
+   "description": "Apply time decay to older data points",
+   "fieldname": "use_time_decay",
+   "fieldtype": "Check",
+   "label": "Use Time Decay"
+  },
+  {
+   "default": "30",
+   "depends_on": "eval:doc.use_time_decay",
+   "description": "Days until data points lose half their weight",
+   "fieldname": "decay_half_life_days",
+   "fieldtype": "Int",
+   "label": "Decay Half-Life (days)"
+  },
+  {
+   "fieldname": "column_break_algorithm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Normalize component scores before combining",
+   "fieldname": "normalize_scores",
+   "fieldtype": "Check",
+   "label": "Normalize Scores"
+  },
+  {
+   "default": "3",
+   "description": "Minimum orders required to calculate conversion rate",
+   "fieldname": "min_orders_for_conversion",
+   "fieldtype": "Int",
+   "label": "Min Orders for Conversion"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_single": 0,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Ranking Weight Config",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "config_name, tenant, category",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "config_name",
+ "track_changes": 1
+}

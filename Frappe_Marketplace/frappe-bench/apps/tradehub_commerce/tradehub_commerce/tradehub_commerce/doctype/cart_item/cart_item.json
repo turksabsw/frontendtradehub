@@ -1,0 +1,293 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "product_section",
+  "listing",
+  "listing_variant",
+  "seller",
+  "column_break_product",
+  "listing_title",
+  "listing_image",
+  "sku",
+  "quantity_section",
+  "qty",
+  "stock_uom",
+  "column_break_qty",
+  "available_qty",
+  "stock_status",
+  "pricing_section",
+  "currency",
+  "unit_price",
+  "original_price",
+  "column_break_pricing",
+  "price_changed",
+  "price_change_amount",
+  "totals_section",
+  "line_subtotal",
+  "discount_amount",
+  "column_break_totals",
+  "tax_amount",
+  "line_total",
+  "validation_section",
+  "is_valid",
+  "validation_message",
+  "column_break_validation",
+  "last_validated_at",
+  "added_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "product_section",
+   "fieldtype": "Section Break",
+   "label": "Product"
+  },
+  {
+   "fieldname": "listing",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Listing",
+   "options": "Listing",
+   "reqd": 1
+  },
+  {
+   "description": "Selected variant (if applicable)",
+   "fieldname": "listing_variant",
+   "fieldtype": "Link",
+   "label": "Listing Variant",
+   "options": "Listing Variant"
+  },
+  {
+   "description": "Seller of this product",
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_product",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "listing.title",
+   "fieldname": "listing_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Product Title",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "listing.primary_image",
+   "fieldname": "listing_image",
+   "fieldtype": "Data",
+   "label": "Image",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "listing.sku",
+   "fieldname": "sku",
+   "fieldtype": "Data",
+   "label": "SKU",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quantity_section",
+   "fieldtype": "Section Break",
+   "label": "Quantity"
+  },
+  {
+   "default": "1",
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "precision": 3,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "listing.stock_uom",
+   "fieldname": "stock_uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Current available quantity in stock",
+   "fieldname": "available_qty",
+   "fieldtype": "Float",
+   "label": "Available Stock",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "default": "In Stock",
+   "description": "Current stock status",
+   "fieldname": "stock_status",
+   "fieldtype": "Select",
+   "label": "Stock Status",
+   "options": "In Stock\nLow Stock\nOut of Stock\nBackorder Available",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "default": "TRY",
+   "fetch_from": "listing.currency",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "description": "Current unit price from listing",
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "description": "Price when item was added to cart",
+   "fieldname": "original_price",
+   "fieldtype": "Currency",
+   "label": "Original Price",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Flag indicating if price has changed since adding to cart",
+   "fieldname": "price_changed",
+   "fieldtype": "Check",
+   "label": "Price Changed",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Difference from original price (positive = increased, negative = decreased)",
+   "fieldname": "price_change_amount",
+   "fieldtype": "Currency",
+   "label": "Price Change",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "default": "0",
+   "description": "unit_price * qty",
+   "fieldname": "line_subtotal",
+   "fieldtype": "Currency",
+   "label": "Subtotal",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_totals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Line total including tax",
+   "fieldname": "line_total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "validation_section",
+   "fieldtype": "Section Break",
+   "label": "Validation"
+  },
+  {
+   "default": "1",
+   "description": "Whether this item is still valid for checkout",
+   "fieldname": "is_valid",
+   "fieldtype": "Check",
+   "label": "Valid",
+   "read_only": 1
+  },
+  {
+   "description": "Validation warning or error message",
+   "fieldname": "validation_message",
+   "fieldtype": "Small Text",
+   "label": "Status Message",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_validation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Last time price/stock was validated",
+   "fieldname": "last_validated_at",
+   "fieldtype": "Datetime",
+   "label": "Last Validated",
+   "read_only": 1
+  },
+  {
+   "description": "When this item was added to cart",
+   "fieldname": "added_at",
+   "fieldtype": "Datetime",
+   "label": "Added At",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Cart Item",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "listing, listing_title, seller",
+ "sort_field": "idx",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

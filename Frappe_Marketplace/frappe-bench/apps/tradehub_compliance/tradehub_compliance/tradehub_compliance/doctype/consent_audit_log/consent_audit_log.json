@@ -1,0 +1,185 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "naming_series",
+  "consent_record",
+  "action",
+  "column_break_basic",
+  "action_by",
+  "action_date",
+  "details_section",
+  "details",
+  "column_break_details",
+  "ip_address",
+  "user_agent",
+  "metadata_section",
+  "old_status",
+  "new_status",
+  "column_break_meta",
+  "party_type",
+  "party"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Audit Information"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CONSENT-AUDIT-.YYYY.-.#####",
+   "default": "CONSENT-AUDIT-.YYYY.-.#####",
+   "reqd": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "consent_record",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Consent Record",
+   "options": "Consent Record",
+   "reqd": 1,
+   "read_only": 0,
+   "description": "The consent record this log entry relates to"
+  },
+  {
+   "fieldname": "action",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Action",
+   "options": "Created\nStatus Change\nUpdated\nVerified\nExpiry Warning\nAuto Expired\nDeletion Attempted\nViewed\nExported\nOther",
+   "reqd": 1,
+   "read_only": 0
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "action_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Action By",
+   "options": "User",
+   "reqd": 1,
+   "read_only": 0,
+   "description": "User who performed the action"
+  },
+  {
+   "fieldname": "action_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Action Date",
+   "reqd": 1,
+   "read_only": 0,
+   "description": "When the action was performed"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Small Text",
+   "label": "Details",
+   "read_only": 0,
+   "description": "Details about the action"
+  },
+  {
+   "fieldname": "column_break_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address",
+   "read_only": 0,
+   "description": "IP address of the user"
+  },
+  {
+   "fieldname": "user_agent",
+   "fieldtype": "Small Text",
+   "label": "User Agent",
+   "read_only": 0,
+   "description": "Browser/device information"
+  },
+  {
+   "fieldname": "metadata_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Metadata",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "old_status",
+   "fieldtype": "Data",
+   "label": "Old Status",
+   "read_only": 0
+  },
+  {
+   "fieldname": "new_status",
+   "fieldtype": "Data",
+   "label": "New Status",
+   "read_only": 0
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Data",
+   "label": "Party Type",
+   "read_only": 0,
+   "description": "Cached party type for reporting"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Data",
+   "label": "Party",
+   "read_only": 0,
+   "description": "Cached party identifier for reporting"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Consent Audit Log",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "read_only": 0,
+ "search_fields": "consent_record, action, action_by",
+ "show_name_in_global_search": 0,
+ "sort_field": "action_date",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "action",
+ "track_changes": 0
+}

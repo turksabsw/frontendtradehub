@@ -1,0 +1,414 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:brand_name",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "brand_name",
+    "brand_code",
+    "column_break_basic",
+    "enabled",
+    "verification_status",
+    "branding_section",
+    "logo",
+    "description",
+    "tenant_section",
+    "tenant",
+    "tenant_name",
+    "column_break_tenant",
+    "is_global",
+    "ownership_section",
+    "registered_by",
+    "registered_by_name",
+    "column_break_ownership",
+    "registration_date",
+    "verification_section",
+    "verified_by",
+    "verified_by_name",
+    "column_break_verification",
+    "verification_date",
+    "verification_notes",
+    "additional_info_section",
+    "website",
+    "country_of_origin",
+    "column_break_additional",
+    "year_established",
+    "contact_email",
+    "seo_section",
+    "seo_title",
+    "seo_description",
+    "column_break_seo",
+    "seo_keywords",
+    "url_slug",
+    "display_section",
+    "display_order",
+    "featured",
+    "column_break_display",
+    "show_in_filters",
+    "product_count"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "brand_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Brand Name",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Display name of the brand"
+    },
+    {
+      "fieldname": "brand_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Brand Code",
+      "description": "Unique code for internal reference (optional)"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled",
+      "description": "Whether brand is active and visible"
+    },
+    {
+      "default": "Pending",
+      "fieldname": "verification_status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Verification Status",
+      "options": "Pending\nUnder Review\nVerified\nRejected",
+      "reqd": 1,
+      "description": "Current verification status of the brand"
+    },
+    {
+      "fieldname": "branding_section",
+      "fieldtype": "Section Break",
+      "label": "Branding"
+    },
+    {
+      "fieldname": "logo",
+      "fieldtype": "Attach Image",
+      "label": "Logo",
+      "description": "Brand logo image (recommended size: 400x400 pixels)"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text Editor",
+      "label": "Description",
+      "description": "Brand description and information"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Tenant Information"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "in_standard_filter": 1,
+      "description": "Tenant for multi-tenant isolation (empty for global brands)"
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Tenant"
+    },
+    {
+      "fieldname": "column_break_tenant",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_global",
+      "fieldtype": "Check",
+      "label": "Is Global",
+      "description": "Global brands are visible to all tenants"
+    },
+    {
+      "fieldname": "ownership_section",
+      "fieldtype": "Section Break",
+      "label": "Ownership",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "registered_by",
+      "fieldtype": "Link",
+      "label": "Registered By",
+      "options": "User",
+      "description": "User who registered this brand"
+    },
+    {
+      "fetch_from": "registered_by.full_name",
+      "fieldname": "registered_by_name",
+      "fieldtype": "Data",
+      "label": "Registered By Name",
+      "read_only": 1,
+      "description": "Auto-filled from Registered By"
+    },
+    {
+      "fieldname": "column_break_ownership",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Today",
+      "fieldname": "registration_date",
+      "fieldtype": "Date",
+      "label": "Registration Date",
+      "read_only": 1,
+      "description": "Date when brand was registered"
+    },
+    {
+      "fieldname": "verification_section",
+      "fieldtype": "Section Break",
+      "label": "Verification Details",
+      "collapsible": 1,
+      "depends_on": "eval:doc.verification_status != 'Pending'"
+    },
+    {
+      "fieldname": "verified_by",
+      "fieldtype": "Link",
+      "label": "Verified By",
+      "options": "User",
+      "read_only": 1,
+      "description": "User who verified this brand"
+    },
+    {
+      "fetch_from": "verified_by.full_name",
+      "fieldname": "verified_by_name",
+      "fieldtype": "Data",
+      "label": "Verified By Name",
+      "read_only": 1,
+      "description": "Auto-filled from Verified By"
+    },
+    {
+      "fieldname": "column_break_verification",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "verification_date",
+      "fieldtype": "Date",
+      "label": "Verification Date",
+      "read_only": 1,
+      "description": "Date when brand verification was completed"
+    },
+    {
+      "fieldname": "verification_notes",
+      "fieldtype": "Small Text",
+      "label": "Verification Notes",
+      "description": "Notes from verification process"
+    },
+    {
+      "fieldname": "additional_info_section",
+      "fieldtype": "Section Break",
+      "label": "Additional Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "website",
+      "fieldtype": "Data",
+      "label": "Website",
+      "options": "URL",
+      "description": "Official brand website URL"
+    },
+    {
+      "fieldname": "country_of_origin",
+      "fieldtype": "Link",
+      "label": "Country of Origin",
+      "options": "Country",
+      "description": "Country where the brand originated"
+    },
+    {
+      "fieldname": "column_break_additional",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "year_established",
+      "fieldtype": "Int",
+      "label": "Year Established",
+      "description": "Year the brand was established"
+    },
+    {
+      "fieldname": "contact_email",
+      "fieldtype": "Data",
+      "label": "Contact Email",
+      "options": "Email",
+      "description": "Brand contact email for inquiries"
+    },
+    {
+      "fieldname": "seo_section",
+      "fieldtype": "Section Break",
+      "label": "SEO",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "seo_title",
+      "fieldtype": "Data",
+      "label": "SEO Title",
+      "description": "Meta title for search engines (max 60 chars)"
+    },
+    {
+      "fieldname": "seo_description",
+      "fieldtype": "Small Text",
+      "label": "SEO Description",
+      "description": "Meta description for search engines (max 160 chars)"
+    },
+    {
+      "fieldname": "column_break_seo",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "seo_keywords",
+      "fieldtype": "Data",
+      "label": "SEO Keywords",
+      "description": "Comma-separated keywords for search"
+    },
+    {
+      "fieldname": "url_slug",
+      "fieldtype": "Data",
+      "label": "URL Slug",
+      "unique": 1,
+      "description": "SEO-friendly URL path (auto-generated from brand name)"
+    },
+    {
+      "fieldname": "display_section",
+      "fieldtype": "Section Break",
+      "label": "Display Settings",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "label": "Display Order",
+      "description": "Sort order for display (lower numbers appear first)"
+    },
+    {
+      "default": "0",
+      "fieldname": "featured",
+      "fieldtype": "Check",
+      "label": "Featured",
+      "description": "Highlight brand on homepage and listings"
+    },
+    {
+      "fieldname": "column_break_display",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "show_in_filters",
+      "fieldtype": "Check",
+      "label": "Show in Filters",
+      "description": "Display brand in product filters"
+    },
+    {
+      "default": "0",
+      "fieldname": "product_count",
+      "fieldtype": "Int",
+      "label": "Product Count",
+      "read_only": 1,
+      "description": "Number of active products with this brand"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Products",
+      "link_doctype": "SKU Product",
+      "link_fieldname": "brand"
+    },
+    {
+      "group": "Brand Management",
+      "link_doctype": "Brand Gating",
+      "link_fieldname": "brand"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Brand",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 0,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "brand_name, brand_code",
+  "sort_field": "display_order",
+  "sort_order": "ASC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Pending"
+    },
+    {
+      "color": "blue",
+      "title": "Under Review"
+    },
+    {
+      "color": "green",
+      "title": "Verified"
+    },
+    {
+      "color": "red",
+      "title": "Rejected"
+    }
+  ],
+  "title_field": "brand_name",
+  "track_changes": 1
+}

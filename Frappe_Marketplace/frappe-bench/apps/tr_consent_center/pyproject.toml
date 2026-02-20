@@ -1,0 +1,17 @@
+[project]
+name = "tr_consent_center"
+authors = [
+    { name = "TR TradeHub", email = "info@tr-tradehub.com"}
+]
+description = "KVKK/GDPR Compliant Consent Management System for Frappe Framework"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.dev-dependencies]
+# https://github.com/frappe/frappe
+frappe = "https://github.com/frappe/frappe"

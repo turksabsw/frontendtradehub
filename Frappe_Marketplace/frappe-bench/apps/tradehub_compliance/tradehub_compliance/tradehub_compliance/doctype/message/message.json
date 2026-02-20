@@ -1,0 +1,492 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "MSG-.#####",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "message_section",
+  "message_thread",
+  "thread_subject",
+  "column_break_message",
+  "message_type",
+  "status",
+  "sender_section",
+  "sender_type",
+  "sender_user",
+  "sender_name",
+  "column_break_sender",
+  "buyer",
+  "buyer_name",
+  "seller",
+  "seller_name",
+  "content_section",
+  "content",
+  "plain_text_content",
+  "attachments_section",
+  "has_attachments",
+  "attachments",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "timestamps_section",
+  "sent_at",
+  "column_break_timestamps",
+  "read_at",
+  "is_read",
+  "delivery_section",
+  "is_delivered",
+  "delivered_at",
+  "column_break_delivery",
+  "delivery_error",
+  "notification_sent",
+  "metadata_section",
+  "reply_to",
+  "reply_to_preview",
+  "column_break_metadata",
+  "is_system_message",
+  "is_edited",
+  "edited_at",
+  "flags_section",
+  "is_flagged",
+  "flag_reason",
+  "column_break_flags",
+  "is_deleted",
+  "deleted_at",
+  "deleted_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "message_section",
+   "fieldtype": "Section Break",
+   "label": "Message Information"
+  },
+  {
+   "fieldname": "message_thread",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Message Thread",
+   "options": "Message Thread",
+   "reqd": 1,
+   "description": "The conversation thread this message belongs to"
+  },
+  {
+   "fetch_from": "message_thread.subject",
+   "fieldname": "thread_subject",
+   "fieldtype": "Data",
+   "label": "Thread Subject",
+   "read_only": 1,
+   "description": "Auto-filled from Message Thread"
+  },
+  {
+   "fieldname": "column_break_message",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Text",
+   "fieldname": "message_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Message Type",
+   "options": "Text\nRich Text\nSystem Notification\nAuto Reply\nQuotation Response\nRFQ Response\nOrder Update\nShipping Update",
+   "reqd": 1,
+   "description": "Type of message content"
+  },
+  {
+   "default": "Sent",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nSent\nDelivered\nRead\nFailed",
+   "reqd": 1,
+   "description": "Current message delivery status"
+  },
+  {
+   "fieldname": "sender_section",
+   "fieldtype": "Section Break",
+   "label": "Sender Information"
+  },
+  {
+   "default": "Buyer",
+   "fieldname": "sender_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Sender Type",
+   "options": "Buyer\nSeller\nSystem\nSupport",
+   "reqd": 1,
+   "description": "Type of sender"
+  },
+  {
+   "fieldname": "sender_user",
+   "fieldtype": "Link",
+   "label": "Sender User",
+   "options": "User",
+   "description": "User account of the sender"
+  },
+  {
+   "fetch_from": "sender_user.full_name",
+   "fieldname": "sender_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sender Name",
+   "read_only": 1,
+   "description": "Auto-filled from User"
+  },
+  {
+   "fieldname": "column_break_sender",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "label": "Buyer",
+   "options": "Buyer Profile",
+   "description": "Buyer profile if sender is a buyer"
+  },
+  {
+   "fetch_from": "buyer.buyer_name",
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "label": "Seller",
+   "options": "Seller Profile",
+   "description": "Seller profile if sender is a seller"
+  },
+  {
+   "fetch_from": "seller.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Message Content"
+  },
+  {
+   "fieldname": "content",
+   "fieldtype": "Text Editor",
+   "label": "Message Content",
+   "reqd": 1,
+   "description": "The message content (supports rich text formatting)"
+  },
+  {
+   "fieldname": "plain_text_content",
+   "fieldtype": "Long Text",
+   "hidden": 1,
+   "label": "Plain Text Content",
+   "description": "Plain text version of message for notifications and search"
+  },
+  {
+   "fieldname": "attachments_section",
+   "fieldtype": "Section Break",
+   "label": "Attachments",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "has_attachments",
+   "fieldtype": "Check",
+   "label": "Has Attachments",
+   "read_only": 1,
+   "description": "Whether this message has file attachments"
+  },
+  {
+   "fieldname": "attachments",
+   "fieldtype": "JSON",
+   "label": "Attachments",
+   "description": "JSON array of attachment objects (file_url, file_name, file_type, file_size)"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information",
+   "collapsible": 1
+  },
+  {
+   "fetch_from": "message_thread.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "Auto-filled from Message Thread - Multi-tenant isolation field"
+  },
+  {
+   "fetch_from": "message_thread.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Message Thread"
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "Timestamps"
+  },
+  {
+   "fieldname": "sent_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Sent At",
+   "read_only": 1,
+   "description": "When the message was sent"
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "read_at",
+   "fieldtype": "Datetime",
+   "label": "Read At",
+   "read_only": 1,
+   "description": "When the message was read by recipient"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_read",
+   "fieldtype": "Check",
+   "label": "Is Read",
+   "description": "Whether the recipient has read this message"
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Status",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_delivered",
+   "fieldtype": "Check",
+   "label": "Is Delivered",
+   "description": "Whether message was delivered to recipient"
+  },
+  {
+   "fieldname": "delivered_at",
+   "fieldtype": "Datetime",
+   "label": "Delivered At",
+   "read_only": 1,
+   "description": "When the message was delivered"
+  },
+  {
+   "fieldname": "column_break_delivery",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivery_error",
+   "fieldtype": "Small Text",
+   "label": "Delivery Error",
+   "read_only": 1,
+   "description": "Error message if delivery failed"
+  },
+  {
+   "default": "0",
+   "fieldname": "notification_sent",
+   "fieldtype": "Check",
+   "label": "Notification Sent",
+   "description": "Whether email/push notification was sent"
+  },
+  {
+   "fieldname": "metadata_section",
+   "fieldtype": "Section Break",
+   "label": "Message Metadata",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "reply_to",
+   "fieldtype": "Link",
+   "label": "Reply To",
+   "options": "Message",
+   "description": "The message this is a reply to"
+  },
+  {
+   "fetch_from": "reply_to.plain_text_content",
+   "fieldname": "reply_to_preview",
+   "fieldtype": "Small Text",
+   "label": "Reply To Preview",
+   "read_only": 1,
+   "description": "Auto-filled preview of the message being replied to"
+  },
+  {
+   "fieldname": "column_break_metadata",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_system_message",
+   "fieldtype": "Check",
+   "label": "Is System Message",
+   "description": "Whether this is an auto-generated system message"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_edited",
+   "fieldtype": "Check",
+   "label": "Is Edited",
+   "description": "Whether this message has been edited"
+  },
+  {
+   "fieldname": "edited_at",
+   "fieldtype": "Datetime",
+   "label": "Edited At",
+   "read_only": 1,
+   "description": "When the message was last edited"
+  },
+  {
+   "fieldname": "flags_section",
+   "fieldtype": "Section Break",
+   "label": "Moderation Flags",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_flagged",
+   "fieldtype": "Check",
+   "label": "Is Flagged",
+   "description": "Whether this message has been flagged for review"
+  },
+  {
+   "fieldname": "flag_reason",
+   "fieldtype": "Small Text",
+   "label": "Flag Reason",
+   "depends_on": "is_flagged",
+   "description": "Reason for flagging the message"
+  },
+  {
+   "fieldname": "column_break_flags",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_deleted",
+   "fieldtype": "Check",
+   "label": "Is Deleted",
+   "description": "Soft delete - message hidden from view but retained"
+  },
+  {
+   "fieldname": "deleted_at",
+   "fieldtype": "Datetime",
+   "label": "Deleted At",
+   "read_only": 1,
+   "depends_on": "is_deleted",
+   "description": "When the message was deleted"
+  },
+  {
+   "fieldname": "deleted_by",
+   "fieldtype": "Link",
+   "label": "Deleted By",
+   "options": "User",
+   "read_only": 1,
+   "depends_on": "is_deleted",
+   "description": "Who deleted the message"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Thread",
+   "link_doctype": "Message Thread",
+   "link_fieldname": "message_thread"
+  },
+  {
+   "group": "Participants",
+   "link_doctype": "Buyer Profile",
+   "link_fieldname": "buyer"
+  },
+  {
+   "group": "Participants",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "seller"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Compliance",
+ "name": "Message",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Buyer",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "thread_subject, sender_name, content",
+ "sort_field": "sent_at",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Draft"
+  },
+  {
+   "color": "blue",
+   "title": "Sent"
+  },
+  {
+   "color": "cyan",
+   "title": "Delivered"
+  },
+  {
+   "color": "green",
+   "title": "Read"
+  },
+  {
+   "color": "red",
+   "title": "Failed"
+  }
+ ],
+ "title_field": "thread_subject",
+ "track_changes": 1
+}

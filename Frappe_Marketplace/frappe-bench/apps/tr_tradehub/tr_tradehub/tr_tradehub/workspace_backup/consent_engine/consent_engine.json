@@ -1,0 +1,98 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-break-consent-engine\", \"type\": \"card\", \"data\": {\"card_name\": \"Consent Engine\", \"col\": 12}}]",
+ "creation": "2026-02-13 10:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "orange",
+ "is_hidden": 0,
+ "label": "Consent Engine",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Engine",
+   "link_count": 0,
+   "link_to": "",
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Topic",
+   "link_count": 0,
+   "link_to": "Consent Topic",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Text",
+   "link_count": 0,
+   "link_to": "Consent Text",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Record",
+   "link_count": 0,
+   "link_to": "Consent Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Method",
+   "link_count": 0,
+   "link_to": "Consent Method",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Channel",
+   "link_count": 0,
+   "link_to": "Consent Channel",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Audit Log",
+   "link_count": 0,
+   "link_to": "Consent Audit Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-13 16:18:26.804617",
+ "modified_by": "Administrator",
+ "module": "TR TradeHub",
+ "name": "Consent Engine",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 20.0,
+ "shortcuts": [],
+ "title": "Consent Engine"
+}

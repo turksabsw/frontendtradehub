@@ -1,0 +1,522 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:class_code",
+  "creation": "2026-02-09 18:00:00.000000",
+  "doctype": "DocType",
+  "document_type": "Setup",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "class_name",
+    "class_code",
+    "column_break_basic_1",
+    "is_active",
+    "icon",
+    "description_section",
+    "description",
+    "attribute_groups_section",
+    "shared_attribute_groups",
+    "custom_fields_section",
+    "custom_field_definitions",
+    "form_layout_section",
+    "form_layout",
+    "column_break_form_1",
+    "form_columns",
+    "display_section",
+    "card_display_fields",
+    "workflow_section",
+    "workflow_template",
+    "default_status",
+    "column_break_workflow_1",
+    "require_approval",
+    "approval_workflow",
+    "allowed_statuses_section",
+    "allowed_statuses",
+    "commerce_rules_section",
+    "pricing_strategy",
+    "allow_variants",
+    "column_break_commerce_1",
+    "require_stock_tracking",
+    "allow_backorder",
+    "pricing_section",
+    "default_price_list",
+    "price_rounding_rule",
+    "column_break_pricing_1",
+    "min_margin_percent",
+    "max_discount_percent",
+    "inventory_section",
+    "default_warehouse",
+    "column_break_inv_1",
+    "default_uom",
+    "track_serial_numbers",
+    "permissions_section",
+    "role_permissions",
+    "url_seo_section",
+    "url_pattern",
+    "meta_title_template",
+    "column_break_seo_1",
+    "meta_description_template",
+    "canonical_url_pattern",
+    "search_config_section",
+    "search_configs",
+    "integration_section",
+    "sync_to_erpnext",
+    "erpnext_item_group",
+    "column_break_int_1",
+    "auto_create_item",
+    "sync_on_save",
+    "marketplace_section",
+    "allowed_channels",
+    "column_break_marketplace_1",
+    "default_export_channel",
+    "export_on_approval"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "class_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Class Name",
+      "reqd": 1,
+      "description": "Display name for the product class"
+    },
+    {
+      "fieldname": "class_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Class Code",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique identifier (lowercase, underscores only)"
+    },
+    {
+      "fieldname": "column_break_basic_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Is Active",
+      "description": "Enable/disable this product class"
+    },
+    {
+      "fieldname": "icon",
+      "fieldtype": "Data",
+      "label": "Icon",
+      "description": "Font Awesome icon class (e.g., fa-box, fa-cube)"
+    },
+    {
+      "fieldname": "description_section",
+      "fieldtype": "Section Break",
+      "label": "Description",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "Internal description of this product class"
+    },
+    {
+      "fieldname": "attribute_groups_section",
+      "fieldtype": "Section Break",
+      "label": "Shared Attribute Groups"
+    },
+    {
+      "fieldname": "shared_attribute_groups",
+      "fieldtype": "Table",
+      "label": "Attribute Groups",
+      "options": "Product Class Attribute Group",
+      "description": "PIM Attribute Groups shared by all products of this class"
+    },
+    {
+      "fieldname": "custom_fields_section",
+      "fieldtype": "Section Break",
+      "label": "Custom Field Definitions"
+    },
+    {
+      "fieldname": "custom_field_definitions",
+      "fieldtype": "Table",
+      "label": "Custom Fields",
+      "options": "Product Class Field",
+      "description": "Custom fields specific to this product class"
+    },
+    {
+      "fieldname": "form_layout_section",
+      "fieldtype": "Section Break",
+      "label": "Form Layout",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "form_layout",
+      "fieldtype": "Code",
+      "label": "Form Layout",
+      "options": "JSON",
+      "description": "JSON configuration for custom form layout and section ordering"
+    },
+    {
+      "fieldname": "column_break_form_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "2",
+      "fieldname": "form_columns",
+      "fieldtype": "Select",
+      "label": "Form Columns",
+      "options": "1\n2\n3",
+      "description": "Number of columns in the product form"
+    },
+    {
+      "fieldname": "display_section",
+      "fieldtype": "Section Break",
+      "label": "Card Display Fields"
+    },
+    {
+      "fieldname": "card_display_fields",
+      "fieldtype": "Table",
+      "label": "Display Fields",
+      "options": "Product Class Display Field",
+      "description": "Fields to display in product cards, lists, and detail views"
+    },
+    {
+      "fieldname": "workflow_section",
+      "fieldtype": "Section Break",
+      "label": "Workflow Settings"
+    },
+    {
+      "fieldname": "workflow_template",
+      "fieldtype": "Link",
+      "label": "Workflow Template",
+      "options": "Workflow",
+      "description": "Frappe Workflow to apply to products of this class"
+    },
+    {
+      "fieldname": "default_status",
+      "fieldtype": "Data",
+      "label": "Default Status",
+      "default": "draft",
+      "description": "Status code for new products (must match an allowed status)"
+    },
+    {
+      "fieldname": "column_break_workflow_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "require_approval",
+      "fieldtype": "Check",
+      "label": "Require Approval",
+      "description": "Products must be approved before publishing"
+    },
+    {
+      "fieldname": "approval_workflow",
+      "fieldtype": "Link",
+      "label": "Approval Workflow",
+      "options": "Workflow",
+      "depends_on": "require_approval",
+      "description": "Workflow for approval process"
+    },
+    {
+      "fieldname": "allowed_statuses_section",
+      "fieldtype": "Section Break",
+      "label": "Allowed Statuses"
+    },
+    {
+      "fieldname": "allowed_statuses",
+      "fieldtype": "Table",
+      "label": "Statuses",
+      "options": "Product Class Allowed Status",
+      "description": "Status definitions and transitions for products of this class"
+    },
+    {
+      "fieldname": "commerce_rules_section",
+      "fieldtype": "Section Break",
+      "label": "Commerce Rules"
+    },
+    {
+      "fieldname": "pricing_strategy",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Pricing Strategy",
+      "options": "Simple\nTiered\nVolume\nCustomer Group\nChannel Based\nDynamic",
+      "default": "Simple",
+      "description": "Default pricing strategy for products of this class"
+    },
+    {
+      "default": "1",
+      "fieldname": "allow_variants",
+      "fieldtype": "Check",
+      "label": "Allow Variants",
+      "description": "Products of this class can have variants"
+    },
+    {
+      "fieldname": "column_break_commerce_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "require_stock_tracking",
+      "fieldtype": "Check",
+      "label": "Require Stock Tracking",
+      "description": "Track inventory for products of this class"
+    },
+    {
+      "default": "0",
+      "fieldname": "allow_backorder",
+      "fieldtype": "Check",
+      "label": "Allow Backorder",
+      "description": "Allow ordering when out of stock"
+    },
+    {
+      "fieldname": "pricing_section",
+      "fieldtype": "Section Break",
+      "label": "Pricing Configuration",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "default_price_list",
+      "fieldtype": "Link",
+      "label": "Default Price List",
+      "options": "Price List",
+      "description": "Default price list for new products"
+    },
+    {
+      "fieldname": "price_rounding_rule",
+      "fieldtype": "Select",
+      "label": "Price Rounding Rule",
+      "options": "None\nNearest 0.01\nNearest 0.05\nNearest 0.10\nNearest 0.50\nNearest 1.00\nNearest 5.00\nNearest 10.00\nCustom",
+      "default": "None",
+      "description": "How to round calculated prices"
+    },
+    {
+      "fieldname": "column_break_pricing_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "min_margin_percent",
+      "fieldtype": "Percent",
+      "label": "Minimum Margin %",
+      "description": "Minimum profit margin required"
+    },
+    {
+      "default": "100",
+      "fieldname": "max_discount_percent",
+      "fieldtype": "Percent",
+      "label": "Maximum Discount %",
+      "description": "Maximum discount allowed"
+    },
+    {
+      "fieldname": "inventory_section",
+      "fieldtype": "Section Break",
+      "label": "Inventory Settings",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "default_warehouse",
+      "fieldtype": "Link",
+      "label": "Default Warehouse",
+      "options": "Warehouse",
+      "description": "Default warehouse for new products"
+    },
+    {
+      "fieldname": "column_break_inv_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_uom",
+      "fieldtype": "Link",
+      "label": "Default UOM",
+      "options": "UOM",
+      "description": "Default unit of measure"
+    },
+    {
+      "default": "0",
+      "fieldname": "track_serial_numbers",
+      "fieldtype": "Check",
+      "label": "Track Serial Numbers",
+      "description": "Enable serial number tracking"
+    },
+    {
+      "fieldname": "permissions_section",
+      "fieldtype": "Section Break",
+      "label": "Role Permissions"
+    },
+    {
+      "fieldname": "role_permissions",
+      "fieldtype": "Table",
+      "label": "Permissions",
+      "options": "Product Class Role Permission",
+      "description": "Role-based access permissions for products of this class"
+    },
+    {
+      "fieldname": "url_seo_section",
+      "fieldtype": "Section Break",
+      "label": "URL & SEO Patterns",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "url_pattern",
+      "fieldtype": "Data",
+      "label": "URL Pattern",
+      "default": "/products/{{ doc.product_code }}",
+      "description": "Jinja template for product URL (e.g., /products/{{ doc.product_code }})"
+    },
+    {
+      "fieldname": "meta_title_template",
+      "fieldtype": "Data",
+      "label": "Meta Title Template",
+      "default": "{{ doc.product_name }} | {{ doc.brand }}",
+      "description": "Jinja template for SEO meta title"
+    },
+    {
+      "fieldname": "column_break_seo_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "meta_description_template",
+      "fieldtype": "Small Text",
+      "label": "Meta Description Template",
+      "description": "Jinja template for SEO meta description"
+    },
+    {
+      "fieldname": "canonical_url_pattern",
+      "fieldtype": "Data",
+      "label": "Canonical URL Pattern",
+      "description": "Jinja template for canonical URL (optional)"
+    },
+    {
+      "fieldname": "search_config_section",
+      "fieldtype": "Section Break",
+      "label": "Search Configuration"
+    },
+    {
+      "fieldname": "search_configs",
+      "fieldtype": "Table",
+      "label": "Search Config",
+      "options": "Product Class Search Config",
+      "description": "Search, filter, and faceting configuration for products of this class"
+    },
+    {
+      "fieldname": "integration_section",
+      "fieldtype": "Section Break",
+      "label": "ERPNext Integration",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "sync_to_erpnext",
+      "fieldtype": "Check",
+      "label": "Sync to ERPNext",
+      "description": "Sync products to ERPNext Item"
+    },
+    {
+      "fieldname": "erpnext_item_group",
+      "fieldtype": "Link",
+      "label": "ERPNext Item Group",
+      "options": "Item Group",
+      "depends_on": "sync_to_erpnext",
+      "description": "Item Group for synced products in ERPNext"
+    },
+    {
+      "fieldname": "column_break_int_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_create_item",
+      "fieldtype": "Check",
+      "label": "Auto Create Item",
+      "depends_on": "sync_to_erpnext",
+      "description": "Automatically create ERPNext Item when product is created"
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_on_save",
+      "fieldtype": "Check",
+      "label": "Sync on Save",
+      "depends_on": "sync_to_erpnext",
+      "description": "Sync to ERPNext on every save"
+    },
+    {
+      "fieldname": "marketplace_section",
+      "fieldtype": "Section Break",
+      "label": "Marketplace Settings",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "allowed_channels",
+      "fieldtype": "Small Text",
+      "label": "Allowed Channels",
+      "description": "Comma-separated list of Sales Channel codes where products can be listed (empty = all)"
+    },
+    {
+      "fieldname": "column_break_marketplace_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_export_channel",
+      "fieldtype": "Link",
+      "label": "Default Export Channel",
+      "options": "Sales Channel",
+      "description": "Default channel for product export"
+    },
+    {
+      "default": "0",
+      "fieldname": "export_on_approval",
+      "fieldtype": "Check",
+      "label": "Export on Approval",
+      "description": "Automatically export to channels when product is approved"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-02-09 18:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Product Class",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Administrator",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "class_name",
+  "sort_order": "ASC",
+  "states": [],
+  "track_changes": 1
+}

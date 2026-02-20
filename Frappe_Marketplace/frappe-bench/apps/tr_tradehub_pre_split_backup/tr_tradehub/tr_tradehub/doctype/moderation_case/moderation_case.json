@@ -1,0 +1,868 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "MOD-.YYYY.-.#####",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "case_id",
+    "case_type",
+    "priority",
+    "status",
+    "column_break_basic",
+    "tenant",
+    "created_by_user",
+    "creation_date",
+    "content_section",
+    "content_type",
+    "content_id",
+    "content_title",
+    "column_break_content",
+    "content_owner",
+    "content_owner_type",
+    "content_created_at",
+    "content_snapshot",
+    "report_info_section",
+    "report_source",
+    "reporter",
+    "reporter_type",
+    "column_break_report",
+    "report_reason",
+    "report_category",
+    "report_subcategory",
+    "report_description",
+    "report_evidence",
+    "violation_section",
+    "violation_type",
+    "violation_severity",
+    "policy_violated",
+    "column_break_violation",
+    "is_repeat_offense",
+    "previous_violations_count",
+    "related_cases",
+    "auto_detection_section",
+    "is_auto_detected",
+    "detection_method",
+    "detection_confidence",
+    "column_break_detection",
+    "detection_flags",
+    "ai_analysis_result",
+    "review_section",
+    "assigned_to",
+    "assigned_at",
+    "review_started_at",
+    "column_break_review",
+    "review_completed_at",
+    "reviewed_by",
+    "review_time_seconds",
+    "decision_section",
+    "decision",
+    "decision_reason",
+    "decision_notes",
+    "column_break_decision",
+    "action_taken",
+    "content_action",
+    "account_action_link",
+    "warning_issued",
+    "appeal_section",
+    "is_appealable",
+    "appeal_status",
+    "appeal_submitted_at",
+    "column_break_appeal",
+    "appeal_reason",
+    "appeal_evidence",
+    "appeal_decision",
+    "appeal_decided_by",
+    "appeal_decided_at",
+    "appeal_response",
+    "escalation_section",
+    "is_escalated",
+    "escalation_level",
+    "escalated_to",
+    "column_break_escalation",
+    "escalation_reason",
+    "escalated_at",
+    "escalated_by",
+    "notifications_section",
+    "owner_notified",
+    "owner_notified_at",
+    "reporter_notified",
+    "column_break_notifications",
+    "reporter_notified_at",
+    "decision_notification_sent",
+    "metrics_section",
+    "queue_position",
+    "wait_time_hours",
+    "resolution_time_hours",
+    "column_break_metrics",
+    "sla_target_hours",
+    "sla_status",
+    "audit_section",
+    "internal_notes",
+    "moderation_history"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "description": "Auto-generated unique case identifier",
+      "fieldname": "case_id",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Case ID",
+      "read_only": 1,
+      "unique": 1
+    },
+    {
+      "default": "Content Report",
+      "fieldname": "case_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Case Type",
+      "options": "Content Report\nContent Review\nAppeal Review\nProactive Review\nQuality Audit\nCompliance Check\nIP Infringement\nCounterfeit Report\nSafety Concern\nLegal Request",
+      "reqd": 1,
+      "description": "Type of moderation case"
+    },
+    {
+      "default": "Medium",
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Priority",
+      "options": "Critical\nHigh\nMedium\nLow",
+      "reqd": 1,
+      "description": "Priority level for review queue"
+    },
+    {
+      "default": "Open",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Open\nAssigned\nIn Review\nPending Info\nEscalated\nResolved\nClosed\nAppealed\nReopened",
+      "reqd": 1,
+      "description": "Current status of the moderation case"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "description": "The tenant this case belongs to"
+    },
+    {
+      "fieldname": "created_by_user",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1,
+      "description": "User who created this case"
+    },
+    {
+      "fieldname": "creation_date",
+      "fieldtype": "Datetime",
+      "label": "Creation Date",
+      "read_only": 1,
+      "description": "When this case was created"
+    },
+    {
+      "fieldname": "content_section",
+      "fieldtype": "Section Break",
+      "label": "Content Under Review"
+    },
+    {
+      "fieldname": "content_type",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Content Type",
+      "options": "DocType",
+      "reqd": 1,
+      "description": "Type of content being reviewed (Listing, Review, Storefront, etc.)"
+    },
+    {
+      "fieldname": "content_id",
+      "fieldtype": "Dynamic Link",
+      "in_list_view": 1,
+      "label": "Content",
+      "options": "content_type",
+      "reqd": 1,
+      "description": "The specific content item being reviewed"
+    },
+    {
+      "fieldname": "content_title",
+      "fieldtype": "Data",
+      "label": "Content Title",
+      "read_only": 1,
+      "description": "Title or name of the content (auto-populated)"
+    },
+    {
+      "fieldname": "column_break_content",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "content_owner",
+      "fieldtype": "Dynamic Link",
+      "label": "Content Owner",
+      "options": "content_owner_type",
+      "description": "Owner of the content (User or Seller)"
+    },
+    {
+      "default": "User",
+      "fieldname": "content_owner_type",
+      "fieldtype": "Select",
+      "label": "Content Owner Type",
+      "options": "User\nSeller Profile\nOrganization",
+      "description": "Type of entity that owns the content"
+    },
+    {
+      "fieldname": "content_created_at",
+      "fieldtype": "Datetime",
+      "label": "Content Created At",
+      "read_only": 1,
+      "description": "When the content was originally created"
+    },
+    {
+      "fieldname": "content_snapshot",
+      "fieldtype": "JSON",
+      "label": "Content Snapshot",
+      "description": "Snapshot of content at time of case creation (for audit purposes)"
+    },
+    {
+      "fieldname": "report_info_section",
+      "fieldtype": "Section Break",
+      "label": "Report Information"
+    },
+    {
+      "default": "User Report",
+      "fieldname": "report_source",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Report Source",
+      "options": "User Report\nSeller Report\nAuto Detection\nAdmin Review\nExternal Report\nLegal Request\nGovernment Request\nBrand Protection\nQA Audit",
+      "description": "How this case was initiated"
+    },
+    {
+      "fieldname": "reporter",
+      "fieldtype": "Link",
+      "label": "Reporter",
+      "options": "User",
+      "depends_on": "eval:['User Report', 'Seller Report'].includes(doc.report_source)",
+      "description": "User who reported the content"
+    },
+    {
+      "fieldname": "reporter_type",
+      "fieldtype": "Select",
+      "label": "Reporter Type",
+      "options": "\nBuyer\nSeller\nCompetitor\nBrand Owner\nGeneral Public\nEmployee\nPartner",
+      "depends_on": "reporter",
+      "description": "Type of reporter"
+    },
+    {
+      "fieldname": "column_break_report",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "report_reason",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Report Reason",
+      "options": "\nProhibited Content\nCounterfeit Product\nIntellectual Property Violation\nMisleading Information\nFraud/Scam\nInappropriate Content\nHarassment\nSpam\nPrice Manipulation\nFake Reviews\nPolicy Violation\nSafety Concern\nLegal Issue\nPrivacy Violation\nHate Speech\nViolent Content\nAdult Content\nOther",
+      "description": "Main reason for the report"
+    },
+    {
+      "fieldname": "report_category",
+      "fieldtype": "Select",
+      "label": "Report Category",
+      "options": "\nProduct Listing\nProduct Image\nProduct Description\nReview\nSeller Profile\nStorefront\nMessage\nUser Profile\nOther",
+      "description": "Category of content issue"
+    },
+    {
+      "fieldname": "report_subcategory",
+      "fieldtype": "Data",
+      "label": "Report Subcategory",
+      "description": "More specific classification"
+    },
+    {
+      "fieldname": "report_description",
+      "fieldtype": "Text Editor",
+      "label": "Report Description",
+      "description": "Detailed description of the issue"
+    },
+    {
+      "fieldname": "report_evidence",
+      "fieldtype": "Attach",
+      "label": "Report Evidence",
+      "description": "Evidence submitted with the report"
+    },
+    {
+      "fieldname": "violation_section",
+      "fieldtype": "Section Break",
+      "label": "Violation Assessment"
+    },
+    {
+      "fieldname": "violation_type",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Violation Type",
+      "options": "\nNo Violation\nMinor Violation\nModerate Violation\nSevere Violation\nCritical Violation",
+      "description": "Assessed severity of the violation"
+    },
+    {
+      "fieldname": "violation_severity",
+      "fieldtype": "Int",
+      "label": "Violation Severity Score",
+      "description": "Severity score 0-100 (0 = no violation, 100 = critical)"
+    },
+    {
+      "fieldname": "policy_violated",
+      "fieldtype": "Select",
+      "label": "Policy Violated",
+      "options": "\nCommunity Guidelines\nProhibited Items Policy\nIntellectual Property Policy\nCounterfeit Policy\nListing Standards\nReview Guidelines\nSeller Conduct Policy\nAnti-Fraud Policy\nPrice Policy\nContent Policy\nPrivacy Policy\nSafety Policy\nTerms of Service\nLocal Laws\nMultiple Policies",
+      "description": "Specific policy that was violated"
+    },
+    {
+      "fieldname": "column_break_violation",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_repeat_offense",
+      "fieldtype": "Check",
+      "label": "Repeat Offense",
+      "description": "Whether this is a repeat violation by the same owner"
+    },
+    {
+      "default": "0",
+      "fieldname": "previous_violations_count",
+      "fieldtype": "Int",
+      "label": "Previous Violations Count",
+      "description": "Number of previous violations by this content owner"
+    },
+    {
+      "fieldname": "related_cases",
+      "fieldtype": "JSON",
+      "label": "Related Cases",
+      "description": "List of related moderation case IDs"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "auto_detection_section",
+      "fieldtype": "Section Break",
+      "label": "Auto Detection"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_auto_detected",
+      "fieldtype": "Check",
+      "label": "Auto Detected",
+      "description": "Whether this case was created by automated detection"
+    },
+    {
+      "depends_on": "is_auto_detected",
+      "fieldname": "detection_method",
+      "fieldtype": "Select",
+      "label": "Detection Method",
+      "options": "\nImage Recognition\nText Analysis\nML Classification\nKeyword Filter\nPattern Matching\nBehavior Analysis\nExternal API\nHash Matching\nPrice Anomaly\nDuplicate Detection",
+      "description": "Method used for auto-detection"
+    },
+    {
+      "depends_on": "is_auto_detected",
+      "fieldname": "detection_confidence",
+      "fieldtype": "Percent",
+      "label": "Detection Confidence",
+      "description": "Confidence level of the auto-detection (0-100%)"
+    },
+    {
+      "fieldname": "column_break_detection",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "is_auto_detected",
+      "fieldname": "detection_flags",
+      "fieldtype": "JSON",
+      "label": "Detection Flags",
+      "description": "Specific flags raised by auto-detection"
+    },
+    {
+      "depends_on": "is_auto_detected",
+      "fieldname": "ai_analysis_result",
+      "fieldtype": "JSON",
+      "label": "AI Analysis Result",
+      "description": "Full result from AI/ML analysis"
+    },
+    {
+      "fieldname": "review_section",
+      "fieldtype": "Section Break",
+      "label": "Review Assignment"
+    },
+    {
+      "fieldname": "assigned_to",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Assigned To",
+      "options": "User",
+      "description": "Moderator assigned to this case"
+    },
+    {
+      "fieldname": "assigned_at",
+      "fieldtype": "Datetime",
+      "label": "Assigned At",
+      "read_only": 1,
+      "description": "When the case was assigned"
+    },
+    {
+      "fieldname": "review_started_at",
+      "fieldtype": "Datetime",
+      "label": "Review Started At",
+      "read_only": 1,
+      "description": "When the moderator started reviewing"
+    },
+    {
+      "fieldname": "column_break_review",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "review_completed_at",
+      "fieldtype": "Datetime",
+      "label": "Review Completed At",
+      "read_only": 1,
+      "description": "When the review was completed"
+    },
+    {
+      "fieldname": "reviewed_by",
+      "fieldtype": "Link",
+      "label": "Reviewed By",
+      "options": "User",
+      "read_only": 1,
+      "description": "Moderator who completed the review"
+    },
+    {
+      "fieldname": "review_time_seconds",
+      "fieldtype": "Int",
+      "label": "Review Time (seconds)",
+      "read_only": 1,
+      "description": "Time spent on review in seconds"
+    },
+    {
+      "fieldname": "decision_section",
+      "fieldtype": "Section Break",
+      "label": "Decision & Action"
+    },
+    {
+      "fieldname": "decision",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Decision",
+      "options": "\nApproved\nRejected\nRemoved\nEdits Required\nWarning Issued\nAccount Action\nNo Action Needed\nEscalate\nPending Legal",
+      "description": "Final decision on the case"
+    },
+    {
+      "fieldname": "decision_reason",
+      "fieldtype": "Small Text",
+      "label": "Decision Reason",
+      "description": "Brief explanation for the decision"
+    },
+    {
+      "fieldname": "decision_notes",
+      "fieldtype": "Text Editor",
+      "label": "Decision Notes",
+      "description": "Detailed notes about the decision"
+    },
+    {
+      "fieldname": "column_break_decision",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "action_taken",
+      "fieldtype": "Select",
+      "label": "Action Taken",
+      "options": "\nNone\nContent Removed\nContent Hidden\nContent Edited\nContent Flagged\nWarning Sent\nAccount Warning\nAccount Restriction\nAccount Suspension\nAccount Ban\nListing Delisted\nListing Modified\nReview Rejected\nMultiple Actions",
+      "description": "Action taken on the content"
+    },
+    {
+      "fieldname": "content_action",
+      "fieldtype": "Select",
+      "label": "Content Action",
+      "options": "\nNo Change\nRemove\nHide\nEdit Required\nRestrict Visibility\nAdd Warning Label\nDelist\nRestore",
+      "description": "Specific action applied to the content"
+    },
+    {
+      "fieldname": "account_action_link",
+      "fieldtype": "Link",
+      "label": "Account Action",
+      "options": "Account Action",
+      "description": "Link to related account action if created"
+    },
+    {
+      "default": "0",
+      "fieldname": "warning_issued",
+      "fieldtype": "Check",
+      "label": "Warning Issued",
+      "description": "Whether a warning was issued to the content owner"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "appeal_section",
+      "fieldtype": "Section Break",
+      "label": "Appeal"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_appealable",
+      "fieldtype": "Check",
+      "label": "Is Appealable",
+      "description": "Whether this decision can be appealed"
+    },
+    {
+      "fieldname": "appeal_status",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Appeal Status",
+      "options": "\nNot Appealed\nAppeal Submitted\nUnder Review\nApproved\nRejected\nPartially Approved",
+      "depends_on": "is_appealable",
+      "description": "Current status of any appeal"
+    },
+    {
+      "fieldname": "appeal_submitted_at",
+      "fieldtype": "Datetime",
+      "label": "Appeal Submitted At",
+      "read_only": 1,
+      "depends_on": "eval:doc.appeal_status && doc.appeal_status != 'Not Appealed'",
+      "description": "When the appeal was submitted"
+    },
+    {
+      "fieldname": "column_break_appeal",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "appeal_reason",
+      "fieldtype": "Text",
+      "label": "Appeal Reason",
+      "depends_on": "eval:doc.appeal_status && doc.appeal_status != 'Not Appealed'",
+      "description": "Reason given for the appeal"
+    },
+    {
+      "fieldname": "appeal_evidence",
+      "fieldtype": "Attach",
+      "label": "Appeal Evidence",
+      "depends_on": "eval:doc.appeal_status && doc.appeal_status != 'Not Appealed'",
+      "description": "Evidence submitted with the appeal"
+    },
+    {
+      "fieldname": "appeal_decision",
+      "fieldtype": "Small Text",
+      "label": "Appeal Decision",
+      "depends_on": "eval:['Approved', 'Rejected', 'Partially Approved'].includes(doc.appeal_status)",
+      "description": "Decision on the appeal"
+    },
+    {
+      "fieldname": "appeal_decided_by",
+      "fieldtype": "Link",
+      "label": "Appeal Decided By",
+      "options": "User",
+      "read_only": 1,
+      "depends_on": "eval:['Approved', 'Rejected', 'Partially Approved'].includes(doc.appeal_status)",
+      "description": "User who decided on the appeal"
+    },
+    {
+      "fieldname": "appeal_decided_at",
+      "fieldtype": "Datetime",
+      "label": "Appeal Decided At",
+      "read_only": 1,
+      "depends_on": "eval:['Approved', 'Rejected', 'Partially Approved'].includes(doc.appeal_status)",
+      "description": "When the appeal was decided"
+    },
+    {
+      "fieldname": "appeal_response",
+      "fieldtype": "Text Editor",
+      "label": "Appeal Response",
+      "depends_on": "eval:['Approved', 'Rejected', 'Partially Approved'].includes(doc.appeal_status)",
+      "description": "Response sent to the content owner about the appeal decision"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "escalation_section",
+      "fieldtype": "Section Break",
+      "label": "Escalation"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_escalated",
+      "fieldtype": "Check",
+      "label": "Is Escalated",
+      "description": "Whether this case has been escalated"
+    },
+    {
+      "depends_on": "is_escalated",
+      "fieldname": "escalation_level",
+      "fieldtype": "Select",
+      "label": "Escalation Level",
+      "options": "\nLevel 1 - Team Lead\nLevel 2 - Senior Moderator\nLevel 3 - Manager\nLevel 4 - Legal\nLevel 5 - Executive",
+      "description": "Current escalation level"
+    },
+    {
+      "depends_on": "is_escalated",
+      "fieldname": "escalated_to",
+      "fieldtype": "Link",
+      "label": "Escalated To",
+      "options": "User",
+      "description": "User the case was escalated to"
+    },
+    {
+      "fieldname": "column_break_escalation",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "is_escalated",
+      "fieldname": "escalation_reason",
+      "fieldtype": "Small Text",
+      "label": "Escalation Reason",
+      "description": "Why the case was escalated"
+    },
+    {
+      "depends_on": "is_escalated",
+      "fieldname": "escalated_at",
+      "fieldtype": "Datetime",
+      "label": "Escalated At",
+      "read_only": 1,
+      "description": "When the case was escalated"
+    },
+    {
+      "depends_on": "is_escalated",
+      "fieldname": "escalated_by",
+      "fieldtype": "Link",
+      "label": "Escalated By",
+      "options": "User",
+      "read_only": 1,
+      "description": "Who escalated the case"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "notifications_section",
+      "fieldtype": "Section Break",
+      "label": "Notifications"
+    },
+    {
+      "default": "0",
+      "fieldname": "owner_notified",
+      "fieldtype": "Check",
+      "label": "Owner Notified",
+      "read_only": 1,
+      "description": "Whether content owner was notified"
+    },
+    {
+      "fieldname": "owner_notified_at",
+      "fieldtype": "Datetime",
+      "label": "Owner Notified At",
+      "read_only": 1,
+      "description": "When owner was notified"
+    },
+    {
+      "default": "0",
+      "fieldname": "reporter_notified",
+      "fieldtype": "Check",
+      "label": "Reporter Notified",
+      "read_only": 1,
+      "description": "Whether reporter was notified of outcome"
+    },
+    {
+      "fieldname": "column_break_notifications",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "reporter_notified_at",
+      "fieldtype": "Datetime",
+      "label": "Reporter Notified At",
+      "read_only": 1,
+      "description": "When reporter was notified"
+    },
+    {
+      "default": "0",
+      "fieldname": "decision_notification_sent",
+      "fieldtype": "Check",
+      "label": "Decision Notification Sent",
+      "read_only": 1,
+      "description": "Whether decision notification was sent"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "metrics_section",
+      "fieldtype": "Section Break",
+      "label": "Performance Metrics"
+    },
+    {
+      "fieldname": "queue_position",
+      "fieldtype": "Int",
+      "label": "Queue Position",
+      "read_only": 1,
+      "description": "Position in moderation queue when created"
+    },
+    {
+      "fieldname": "wait_time_hours",
+      "fieldtype": "Float",
+      "label": "Wait Time (hours)",
+      "precision": "2",
+      "read_only": 1,
+      "description": "Time spent waiting in queue"
+    },
+    {
+      "fieldname": "resolution_time_hours",
+      "fieldtype": "Float",
+      "label": "Resolution Time (hours)",
+      "precision": "2",
+      "read_only": 1,
+      "description": "Total time from creation to resolution"
+    },
+    {
+      "fieldname": "column_break_metrics",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "24",
+      "fieldname": "sla_target_hours",
+      "fieldtype": "Float",
+      "label": "SLA Target (hours)",
+      "precision": "2",
+      "description": "Target resolution time in hours"
+    },
+    {
+      "fieldname": "sla_status",
+      "fieldtype": "Select",
+      "label": "SLA Status",
+      "options": "\nOn Track\nAt Risk\nBreached\nExempt",
+      "read_only": 1,
+      "description": "Current SLA status"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "audit_section",
+      "fieldtype": "Section Break",
+      "label": "Audit Trail"
+    },
+    {
+      "fieldname": "internal_notes",
+      "fieldtype": "Text Editor",
+      "label": "Internal Notes",
+      "description": "Notes visible only to moderators and admins"
+    },
+    {
+      "fieldname": "moderation_history",
+      "fieldtype": "JSON",
+      "label": "Moderation History",
+      "read_only": 1,
+      "description": "Full history of actions taken on this case"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Account Action",
+      "link_fieldname": "account_action_link"
+    }
+  ],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Moderation Case",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Marketplace Admin",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 0,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 0,
+      "role": "Marketplace Moderator",
+      "share": 0,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "case_id, case_type, content_type, content_id, status, priority, report_reason",
+  "show_name_in_global_search": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "blue",
+      "title": "Open"
+    },
+    {
+      "color": "yellow",
+      "title": "Assigned"
+    },
+    {
+      "color": "orange",
+      "title": "In Review"
+    },
+    {
+      "color": "gray",
+      "title": "Pending Info"
+    },
+    {
+      "color": "red",
+      "title": "Escalated"
+    },
+    {
+      "color": "green",
+      "title": "Resolved"
+    },
+    {
+      "color": "gray",
+      "title": "Closed"
+    },
+    {
+      "color": "purple",
+      "title": "Appealed"
+    },
+    {
+      "color": "orange",
+      "title": "Reopened"
+    }
+  ],
+  "title_field": "case_id",
+  "track_changes": 1
+}

@@ -1,0 +1,1717 @@
+[
+  {
+    "doctype": "Product Class",
+    "class_name": "Physical Goods",
+    "class_code": "physical_goods",
+    "description": "Standard tangible products requiring stock tracking, shipping logistics, and physical warehousing. Suitable for electronics, apparel, home goods, and any products that need to be physically delivered.",
+    "is_active": 1,
+    "icon": "fa fa-box",
+    "form_columns": "2",
+    "default_status": "draft",
+    "pricing_strategy": "Simple",
+    "allow_variants": 1,
+    "require_stock_tracking": 1,
+    "allow_backorder": 0,
+    "price_rounding_rule": "Nearest 0.01",
+    "min_margin_percent": 15,
+    "max_discount_percent": 50,
+    "track_serial_numbers": 0,
+    "require_approval": 0,
+    "sync_to_erpnext": 1,
+    "auto_create_item": 1,
+    "sync_on_save": 1,
+    "export_on_approval": 0,
+    "url_pattern": "/products/{{ doc.product_code }}",
+    "meta_title_template": "{{ doc.product_name }} | {{ doc.brand }}",
+    "meta_description_template": "{{ doc.short_description or doc.product_name }}. Shop now for the best deals.",
+    "shared_attribute_groups": [
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "general",
+        "sort_order": 10,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "physical_properties",
+        "sort_order": 20,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "packaging_shipping",
+        "sort_order": 30,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "marketing",
+        "sort_order": 40,
+        "is_required": 0
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "compliance_safety",
+        "sort_order": 50,
+        "is_required": 0
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "warranty_support",
+        "sort_order": 60,
+        "is_required": 0
+      }
+    ],
+    "custom_field_definitions": [
+      {
+        "doctype": "Product Class Field",
+        "field_name": "requires_assembly",
+        "field_label": "Requires Assembly",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "0",
+        "sort_order": 10,
+        "description": "Check if product requires customer assembly"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "fragile",
+        "field_label": "Fragile Item",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "0",
+        "sort_order": 20,
+        "description": "Requires special handling during shipping"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "country_of_origin",
+        "field_label": "Country of Origin",
+        "fieldtype": "Link",
+        "options": "Country",
+        "is_required": 0,
+        "sort_order": 30,
+        "description": "Manufacturing country for customs"
+      }
+    ],
+    "card_display_fields": [
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "product_name",
+        "display_location": "Card Title",
+        "sort_order": 10,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "brand",
+        "display_location": "Card Subtitle",
+        "sort_order": 20,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "status",
+        "display_location": "Card Badge",
+        "sort_order": 30,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "base_price",
+        "field_label": "Price",
+        "display_location": "List View",
+        "sort_order": 40,
+        "format_template": "{{ frappe.format_currency(value) }}",
+        "show_label": 1
+      }
+    ],
+    "allowed_statuses": [
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Draft",
+        "status_code": "draft",
+        "color": "Gray",
+        "sort_order": 10,
+        "is_default": 1,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "pending_review,active"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Pending Review",
+        "status_code": "pending_review",
+        "color": "Orange",
+        "sort_order": 20,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "draft,active,rejected"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Active",
+        "status_code": "active",
+        "color": "Green",
+        "sort_order": 30,
+        "is_default": 0,
+        "is_active_status": 1,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "inactive,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Inactive",
+        "status_code": "inactive",
+        "color": "Yellow",
+        "sort_order": 40,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Discontinued",
+        "status_code": "discontinued",
+        "color": "Red",
+        "sort_order": 50,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 1,
+        "allowed_transitions": ""
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Rejected",
+        "status_code": "rejected",
+        "color": "Red",
+        "sort_order": 60,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "draft"
+      }
+    ],
+    "search_configs": [
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "product_name",
+        "field_label": "Name",
+        "search_type": "Full Text",
+        "is_enabled": 1,
+        "is_filterable": 0,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 2.0,
+        "filter_widget": "Auto",
+        "sort_order": 10,
+        "default_sort_direction": "ASC"
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "brand",
+        "field_label": "Brand",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 1,
+        "is_faceted": 1,
+        "boost_weight": 1.5,
+        "filter_widget": "Dropdown",
+        "sort_order": 20
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "base_price",
+        "field_label": "Price",
+        "search_type": "Range",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 1.0,
+        "filter_widget": "Range Slider",
+        "sort_order": 30,
+        "default_sort_direction": "ASC"
+      }
+    ]
+  },
+  {
+    "doctype": "Product Class",
+    "class_name": "Digital Products",
+    "class_code": "digital_products",
+    "description": "Downloadable or electronically delivered products including software, ebooks, music, videos, digital art, templates, and online courses. No physical inventory or shipping required.",
+    "is_active": 1,
+    "icon": "fa fa-cloud-download",
+    "form_columns": "2",
+    "default_status": "draft",
+    "pricing_strategy": "Simple",
+    "allow_variants": 1,
+    "require_stock_tracking": 0,
+    "allow_backorder": 1,
+    "price_rounding_rule": "Nearest 0.01",
+    "min_margin_percent": 50,
+    "max_discount_percent": 80,
+    "track_serial_numbers": 0,
+    "require_approval": 1,
+    "sync_to_erpnext": 0,
+    "auto_create_item": 0,
+    "sync_on_save": 0,
+    "export_on_approval": 1,
+    "url_pattern": "/digital/{{ doc.product_code }}",
+    "meta_title_template": "{{ doc.product_name }} - Digital Download",
+    "meta_description_template": "Download {{ doc.product_name }} instantly. {{ doc.short_description }}",
+    "shared_attribute_groups": [
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "general",
+        "sort_order": 10,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "technical_specifications",
+        "sort_order": 20,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "digital_assets",
+        "sort_order": 30,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "marketing",
+        "sort_order": 40,
+        "is_required": 0
+      }
+    ],
+    "custom_field_definitions": [
+      {
+        "doctype": "Product Class Field",
+        "field_name": "file_format",
+        "field_label": "File Format",
+        "fieldtype": "Select",
+        "options": "PDF\nEPUB\nMP3\nMP4\nZIP\nEXE\nDMG\nISO\nOther",
+        "is_required": 1,
+        "sort_order": 10,
+        "description": "Primary file format for download"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "file_size_mb",
+        "field_label": "File Size (MB)",
+        "fieldtype": "Float",
+        "is_required": 1,
+        "sort_order": 20,
+        "description": "Download file size in megabytes"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "download_limit",
+        "field_label": "Download Limit",
+        "fieldtype": "Int",
+        "is_required": 0,
+        "default_value": "5",
+        "sort_order": 30,
+        "description": "Maximum number of downloads per purchase (0 = unlimited)"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "license_type",
+        "field_label": "License Type",
+        "fieldtype": "Select",
+        "options": "Personal Use\nCommercial Use\nExtended License\nOpen Source\nSubscription",
+        "is_required": 1,
+        "sort_order": 40,
+        "description": "Type of license granted with purchase"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "version",
+        "field_label": "Version",
+        "fieldtype": "Data",
+        "is_required": 0,
+        "sort_order": 50,
+        "description": "Product version number (e.g., 2.1.0)"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "system_requirements",
+        "field_label": "System Requirements",
+        "fieldtype": "Text Editor",
+        "is_required": 0,
+        "sort_order": 60,
+        "description": "Minimum system requirements for software products"
+      }
+    ],
+    "card_display_fields": [
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "product_name",
+        "display_location": "Card Title",
+        "sort_order": 10,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "file_format",
+        "display_location": "Card Badge",
+        "sort_order": 20,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "file_size_mb",
+        "field_label": "Size",
+        "display_location": "Card Description",
+        "sort_order": 30,
+        "format_template": "{{ value }} MB",
+        "show_label": 1
+      }
+    ],
+    "allowed_statuses": [
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Draft",
+        "status_code": "draft",
+        "color": "Gray",
+        "sort_order": 10,
+        "is_default": 1,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "pending_review"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Pending Review",
+        "status_code": "pending_review",
+        "color": "Orange",
+        "sort_order": 20,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 0,
+        "allowed_transitions": "approved,rejected"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Approved",
+        "status_code": "approved",
+        "color": "Blue",
+        "sort_order": 30,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 0,
+        "allowed_transitions": "active"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Active",
+        "status_code": "active",
+        "color": "Green",
+        "sort_order": 40,
+        "is_default": 0,
+        "is_active_status": 1,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "inactive,archived"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Inactive",
+        "status_code": "inactive",
+        "color": "Yellow",
+        "sort_order": 50,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,archived"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Archived",
+        "status_code": "archived",
+        "color": "Gray",
+        "sort_order": 60,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 1,
+        "allowed_transitions": ""
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Rejected",
+        "status_code": "rejected",
+        "color": "Red",
+        "sort_order": 70,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "draft"
+      }
+    ],
+    "search_configs": [
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "product_name",
+        "search_type": "Full Text",
+        "is_enabled": 1,
+        "is_filterable": 0,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 2.0,
+        "filter_widget": "Auto",
+        "sort_order": 10
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "file_format",
+        "field_label": "Format",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 1,
+        "boost_weight": 1.0,
+        "filter_widget": "Checkbox List",
+        "sort_order": 20
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "license_type",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 1,
+        "boost_weight": 1.0,
+        "filter_widget": "Dropdown",
+        "sort_order": 30
+      }
+    ]
+  },
+  {
+    "doctype": "Product Class",
+    "class_name": "Services",
+    "class_code": "services",
+    "description": "Time-based or project-based professional services including consulting, maintenance, installation, training, and support contracts. Priced by time unit, project scope, or subscription.",
+    "is_active": 1,
+    "icon": "fa fa-briefcase",
+    "form_columns": "2",
+    "default_status": "draft",
+    "pricing_strategy": "Tiered",
+    "allow_variants": 1,
+    "require_stock_tracking": 0,
+    "allow_backorder": 1,
+    "price_rounding_rule": "Nearest 1.00",
+    "min_margin_percent": 30,
+    "max_discount_percent": 25,
+    "track_serial_numbers": 0,
+    "require_approval": 1,
+    "sync_to_erpnext": 1,
+    "auto_create_item": 1,
+    "sync_on_save": 0,
+    "export_on_approval": 0,
+    "url_pattern": "/services/{{ doc.product_code }}",
+    "meta_title_template": "{{ doc.product_name }} - Professional Services",
+    "meta_description_template": "{{ doc.short_description }}. Contact us for pricing and availability.",
+    "shared_attribute_groups": [
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "general",
+        "sort_order": 10,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "marketing",
+        "sort_order": 20,
+        "is_required": 0
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "compliance_safety",
+        "sort_order": 30,
+        "is_required": 0
+      }
+    ],
+    "custom_field_definitions": [
+      {
+        "doctype": "Product Class Field",
+        "field_name": "service_type",
+        "field_label": "Service Type",
+        "fieldtype": "Select",
+        "options": "Hourly\nDaily\nProject-Based\nSubscription\nRetainer\nOne-Time",
+        "is_required": 1,
+        "sort_order": 10,
+        "description": "How the service is billed"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "min_duration",
+        "field_label": "Minimum Duration",
+        "fieldtype": "Data",
+        "is_required": 0,
+        "sort_order": 20,
+        "description": "Minimum engagement duration (e.g., 2 hours, 1 month)"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "max_capacity",
+        "field_label": "Maximum Capacity",
+        "fieldtype": "Int",
+        "is_required": 0,
+        "sort_order": 30,
+        "description": "Maximum concurrent service engagements (0 = unlimited)"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "requires_booking",
+        "field_label": "Requires Booking",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "1",
+        "sort_order": 40,
+        "description": "Service requires advance booking/scheduling"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "cancellation_policy",
+        "field_label": "Cancellation Policy",
+        "fieldtype": "Text",
+        "is_required": 0,
+        "sort_order": 50,
+        "description": "Terms for service cancellation and refunds"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "service_location",
+        "field_label": "Service Location",
+        "fieldtype": "Select",
+        "options": "On-Site\nRemote\nHybrid\nCustomer Location",
+        "is_required": 0,
+        "sort_order": 60,
+        "description": "Where the service is delivered"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "deliverables",
+        "field_label": "Deliverables",
+        "fieldtype": "Text Editor",
+        "is_required": 0,
+        "sort_order": 70,
+        "description": "What the customer receives upon service completion"
+      }
+    ],
+    "card_display_fields": [
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "product_name",
+        "display_location": "Card Title",
+        "sort_order": 10,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "service_type",
+        "display_location": "Card Badge",
+        "sort_order": 20,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "service_location",
+        "display_location": "Card Subtitle",
+        "sort_order": 30,
+        "show_label": 0
+      }
+    ],
+    "allowed_statuses": [
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Draft",
+        "status_code": "draft",
+        "color": "Gray",
+        "sort_order": 10,
+        "is_default": 1,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "pending_approval"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Pending Approval",
+        "status_code": "pending_approval",
+        "color": "Orange",
+        "sort_order": 20,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,rejected"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Active",
+        "status_code": "active",
+        "color": "Green",
+        "sort_order": 30,
+        "is_default": 0,
+        "is_active_status": 1,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "paused,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Paused",
+        "status_code": "paused",
+        "color": "Yellow",
+        "sort_order": 40,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Discontinued",
+        "status_code": "discontinued",
+        "color": "Red",
+        "sort_order": 50,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 1,
+        "allowed_transitions": ""
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Rejected",
+        "status_code": "rejected",
+        "color": "Red",
+        "sort_order": 60,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "draft"
+      }
+    ],
+    "search_configs": [
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "product_name",
+        "search_type": "Full Text",
+        "is_enabled": 1,
+        "is_filterable": 0,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 2.0,
+        "sort_order": 10
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "service_type",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 1,
+        "boost_weight": 1.0,
+        "filter_widget": "Checkbox List",
+        "sort_order": 20
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "service_location",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 1,
+        "boost_weight": 1.0,
+        "filter_widget": "Dropdown",
+        "sort_order": 30
+      }
+    ]
+  },
+  {
+    "doctype": "Product Class",
+    "class_name": "Raw Materials",
+    "class_code": "raw_materials",
+    "description": "B2B industrial raw materials, chemicals, textiles, metals, and bulk commodities. Emphasis on trade terms, MOQ, certifications, and supply chain logistics. Typically sold in large quantities.",
+    "is_active": 1,
+    "icon": "fa fa-industry",
+    "form_columns": "2",
+    "default_status": "draft",
+    "pricing_strategy": "Volume",
+    "allow_variants": 1,
+    "require_stock_tracking": 1,
+    "allow_backorder": 1,
+    "price_rounding_rule": "Nearest 0.01",
+    "min_margin_percent": 10,
+    "max_discount_percent": 30,
+    "track_serial_numbers": 0,
+    "require_approval": 1,
+    "sync_to_erpnext": 1,
+    "auto_create_item": 1,
+    "sync_on_save": 1,
+    "export_on_approval": 0,
+    "url_pattern": "/materials/{{ doc.product_code }}",
+    "meta_title_template": "{{ doc.product_name }} - Industrial Raw Materials",
+    "meta_description_template": "Buy {{ doc.product_name }} in bulk. MOQ: {{ doc.moq }} {{ doc.default_uom }}. {{ doc.short_description }}",
+    "shared_attribute_groups": [
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "general",
+        "sort_order": 10,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "technical_specifications",
+        "sort_order": 20,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "physical_properties",
+        "sort_order": 30,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "packaging_shipping",
+        "sort_order": 40,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "trade_terms",
+        "sort_order": 50,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "compliance_safety",
+        "sort_order": 60,
+        "is_required": 1
+      }
+    ],
+    "custom_field_definitions": [
+      {
+        "doctype": "Product Class Field",
+        "field_name": "moq",
+        "field_label": "Minimum Order Quantity",
+        "fieldtype": "Int",
+        "is_required": 1,
+        "default_value": "1",
+        "sort_order": 10,
+        "description": "Minimum quantity per order"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "order_increment",
+        "field_label": "Order Increment",
+        "fieldtype": "Int",
+        "is_required": 0,
+        "default_value": "1",
+        "sort_order": 20,
+        "description": "Orders must be in multiples of this quantity"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "lead_time_days",
+        "field_label": "Lead Time (Days)",
+        "fieldtype": "Int",
+        "is_required": 1,
+        "default_value": "14",
+        "sort_order": 30,
+        "description": "Standard production/shipping lead time"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "grade",
+        "field_label": "Material Grade",
+        "fieldtype": "Data",
+        "is_required": 0,
+        "sort_order": 40,
+        "description": "Quality grade or specification (e.g., A1, Industrial, Food-Grade)"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "purity_percent",
+        "field_label": "Purity %",
+        "fieldtype": "Float",
+        "is_required": 0,
+        "sort_order": 50,
+        "description": "Material purity percentage"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "cas_number",
+        "field_label": "CAS Number",
+        "fieldtype": "Data",
+        "is_required": 0,
+        "sort_order": 60,
+        "description": "Chemical Abstracts Service registry number"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "hs_code",
+        "field_label": "HS Code",
+        "fieldtype": "Data",
+        "is_required": 0,
+        "sort_order": 70,
+        "description": "Harmonized System code for customs"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "incoterm",
+        "field_label": "Incoterm",
+        "fieldtype": "Select",
+        "options": "EXW\nFCA\nCPT\nCIP\nDAP\nDPU\nDDP\nFAS\nFOB\nCFR\nCIF",
+        "is_required": 0,
+        "default_value": "FOB",
+        "sort_order": 80,
+        "description": "Standard international commercial terms"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "storage_requirements",
+        "field_label": "Storage Requirements",
+        "fieldtype": "Text",
+        "is_required": 0,
+        "sort_order": 90,
+        "description": "Special storage conditions (temperature, humidity, etc.)"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "shelf_life_months",
+        "field_label": "Shelf Life (Months)",
+        "fieldtype": "Int",
+        "is_required": 0,
+        "sort_order": 100,
+        "description": "Product shelf life in months (0 = no expiry)"
+      }
+    ],
+    "card_display_fields": [
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "product_name",
+        "display_location": "Card Title",
+        "sort_order": 10,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "grade",
+        "display_location": "Card Badge",
+        "sort_order": 20,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "moq",
+        "field_label": "MOQ",
+        "display_location": "Card Description",
+        "sort_order": 30,
+        "format_template": "Min: {{ value }} units",
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "lead_time_days",
+        "field_label": "Lead Time",
+        "display_location": "Card Description",
+        "sort_order": 40,
+        "format_template": "{{ value }} days",
+        "show_label": 1
+      }
+    ],
+    "allowed_statuses": [
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Draft",
+        "status_code": "draft",
+        "color": "Gray",
+        "sort_order": 10,
+        "is_default": 1,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "pending_certification,active"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Pending Certification",
+        "status_code": "pending_certification",
+        "color": "Orange",
+        "sort_order": 20,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,rejected"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Active",
+        "status_code": "active",
+        "color": "Green",
+        "sort_order": 30,
+        "is_default": 0,
+        "is_active_status": 1,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "out_of_stock,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Out of Stock",
+        "status_code": "out_of_stock",
+        "color": "Yellow",
+        "sort_order": 40,
+        "is_default": 0,
+        "is_active_status": 1,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Discontinued",
+        "status_code": "discontinued",
+        "color": "Red",
+        "sort_order": 50,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 0,
+        "allowed_transitions": ""
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Rejected",
+        "status_code": "rejected",
+        "color": "Red",
+        "sort_order": 60,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "draft"
+      }
+    ],
+    "search_configs": [
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "product_name",
+        "search_type": "Full Text",
+        "is_enabled": 1,
+        "is_filterable": 0,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 2.0,
+        "sort_order": 10
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "grade",
+        "field_label": "Material Grade",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 1,
+        "is_faceted": 1,
+        "boost_weight": 1.5,
+        "filter_widget": "Dropdown",
+        "sort_order": 20
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "moq",
+        "field_label": "Min Order Qty",
+        "search_type": "Range",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 1.0,
+        "filter_widget": "Range Slider",
+        "sort_order": 30,
+        "default_sort_direction": "ASC"
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "lead_time_days",
+        "field_label": "Lead Time",
+        "search_type": "Range",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 1.0,
+        "filter_widget": "Range Slider",
+        "sort_order": 40,
+        "default_sort_direction": "ASC"
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "cas_number",
+        "field_label": "CAS Number",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 0,
+        "boost_weight": 1.0,
+        "filter_widget": "Text Input",
+        "sort_order": 50
+      }
+    ]
+  },
+  {
+    "doctype": "Product Class",
+    "class_name": "Custom/Made-to-Order",
+    "class_code": "custom_made_to_order",
+    "description": "Customizable and made-to-order products including personalized items, custom manufacturing, bespoke designs, and configurable products. Lead time and customization options are critical.",
+    "is_active": 1,
+    "icon": "fa fa-paint-brush",
+    "form_columns": "2",
+    "default_status": "draft",
+    "pricing_strategy": "Customer Group",
+    "allow_variants": 1,
+    "require_stock_tracking": 0,
+    "allow_backorder": 1,
+    "price_rounding_rule": "Nearest 1.00",
+    "min_margin_percent": 25,
+    "max_discount_percent": 15,
+    "track_serial_numbers": 1,
+    "require_approval": 1,
+    "sync_to_erpnext": 1,
+    "auto_create_item": 0,
+    "sync_on_save": 0,
+    "export_on_approval": 0,
+    "url_pattern": "/custom/{{ doc.product_code }}",
+    "meta_title_template": "Custom {{ doc.product_name }} - Made to Order",
+    "meta_description_template": "Create your personalized {{ doc.product_name }}. Production time: {{ doc.production_time_days }} days. {{ doc.short_description }}",
+    "shared_attribute_groups": [
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "general",
+        "sort_order": 10,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "physical_properties",
+        "sort_order": 20,
+        "is_required": 0
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "marketing",
+        "sort_order": 30,
+        "is_required": 0
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "digital_assets",
+        "sort_order": 40,
+        "is_required": 0
+      }
+    ],
+    "custom_field_definitions": [
+      {
+        "doctype": "Product Class Field",
+        "field_name": "customization_type",
+        "field_label": "Customization Type",
+        "fieldtype": "Select",
+        "options": "Engraving\nMonogram\nColor Choice\nSize Custom\nFull Custom Design\nConfiguration\nPersonalization",
+        "is_required": 1,
+        "sort_order": 10,
+        "description": "Type of customization offered"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "production_time_days",
+        "field_label": "Production Time (Days)",
+        "fieldtype": "Int",
+        "is_required": 1,
+        "default_value": "7",
+        "sort_order": 20,
+        "description": "Time required to produce the custom item"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "rush_available",
+        "field_label": "Rush Production Available",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "0",
+        "sort_order": 30,
+        "description": "Expedited production is available at additional cost"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "rush_surcharge_percent",
+        "field_label": "Rush Surcharge %",
+        "fieldtype": "Float",
+        "is_required": 0,
+        "default_value": "50",
+        "sort_order": 40,
+        "depends_on": "eval:doc.rush_available==1",
+        "description": "Additional charge for rush production"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "customization_options",
+        "field_label": "Customization Options",
+        "fieldtype": "Code",
+        "options": "JSON",
+        "is_required": 0,
+        "sort_order": 50,
+        "description": "JSON configuration for available customization options"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "proof_required",
+        "field_label": "Proof Approval Required",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "1",
+        "sort_order": 60,
+        "description": "Customer must approve proof before production"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "max_revisions",
+        "field_label": "Max Free Revisions",
+        "fieldtype": "Int",
+        "is_required": 0,
+        "default_value": "2",
+        "sort_order": 70,
+        "description": "Number of free design revisions included"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "no_return",
+        "field_label": "Non-Returnable",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "1",
+        "sort_order": 80,
+        "description": "Custom items cannot be returned",
+        "read_only": 0
+      }
+    ],
+    "card_display_fields": [
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "product_name",
+        "display_location": "Card Title",
+        "sort_order": 10,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "customization_type",
+        "display_location": "Card Badge",
+        "sort_order": 20,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "production_time_days",
+        "field_label": "Production",
+        "display_location": "Card Description",
+        "sort_order": 30,
+        "format_template": "{{ value }} days",
+        "show_label": 1
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "rush_available",
+        "field_label": "Rush",
+        "display_location": "Card Description",
+        "sort_order": 40,
+        "format_template": "{% if value %}Available{% endif %}",
+        "show_label": 1
+      }
+    ],
+    "allowed_statuses": [
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Draft",
+        "status_code": "draft",
+        "color": "Gray",
+        "sort_order": 10,
+        "is_default": 1,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "pending_review"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Pending Review",
+        "status_code": "pending_review",
+        "color": "Orange",
+        "sort_order": 20,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,rejected"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Active",
+        "status_code": "active",
+        "color": "Green",
+        "sort_order": 30,
+        "is_default": 0,
+        "is_active_status": 1,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "paused,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Paused",
+        "status_code": "paused",
+        "color": "Yellow",
+        "sort_order": 40,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Discontinued",
+        "status_code": "discontinued",
+        "color": "Red",
+        "sort_order": 50,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 1,
+        "allowed_transitions": ""
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Rejected",
+        "status_code": "rejected",
+        "color": "Red",
+        "sort_order": 60,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "draft"
+      }
+    ],
+    "search_configs": [
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "product_name",
+        "search_type": "Full Text",
+        "is_enabled": 1,
+        "is_filterable": 0,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 2.0,
+        "sort_order": 10
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "customization_type",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 1,
+        "boost_weight": 1.5,
+        "filter_widget": "Checkbox List",
+        "sort_order": 20
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "production_time_days",
+        "field_label": "Production Time",
+        "search_type": "Range",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 1.0,
+        "filter_widget": "Range Slider",
+        "sort_order": 30,
+        "default_sort_direction": "ASC"
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "rush_available",
+        "field_label": "Rush Available",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 1,
+        "boost_weight": 1.0,
+        "filter_widget": "Checkbox List",
+        "sort_order": 40
+      }
+    ]
+  },
+  {
+    "doctype": "Product Class",
+    "class_name": "Bundle/Kit",
+    "class_code": "bundle_kit",
+    "description": "Product bundles, kits, and packages composed of multiple individual items sold together. Includes gift sets, starter kits, multi-packs, and curated collections with special bundle pricing.",
+    "is_active": 1,
+    "icon": "fa fa-gift",
+    "form_columns": "2",
+    "default_status": "draft",
+    "pricing_strategy": "Simple",
+    "allow_variants": 0,
+    "require_stock_tracking": 1,
+    "allow_backorder": 0,
+    "price_rounding_rule": "Nearest 0.01",
+    "min_margin_percent": 20,
+    "max_discount_percent": 40,
+    "track_serial_numbers": 0,
+    "require_approval": 0,
+    "sync_to_erpnext": 1,
+    "auto_create_item": 1,
+    "sync_on_save": 1,
+    "export_on_approval": 0,
+    "url_pattern": "/bundles/{{ doc.product_code }}",
+    "meta_title_template": "{{ doc.product_name }} Bundle - Save {{ doc.bundle_discount_percent }}%",
+    "meta_description_template": "Get {{ doc.bundle_item_count }} items in this {{ doc.product_name }} bundle. {{ doc.short_description }}",
+    "shared_attribute_groups": [
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "general",
+        "sort_order": 10,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "packaging_shipping",
+        "sort_order": 20,
+        "is_required": 1
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "marketing",
+        "sort_order": 30,
+        "is_required": 0
+      },
+      {
+        "doctype": "Product Class Attribute Group",
+        "attribute_group": "digital_assets",
+        "sort_order": 40,
+        "is_required": 0
+      }
+    ],
+    "custom_field_definitions": [
+      {
+        "doctype": "Product Class Field",
+        "field_name": "bundle_type",
+        "field_label": "Bundle Type",
+        "fieldtype": "Select",
+        "options": "Fixed Bundle\nConfigurable Bundle\nGift Set\nStarter Kit\nMulti-Pack\nSubscription Box\nMystery Box",
+        "is_required": 1,
+        "sort_order": 10,
+        "description": "Type of bundle packaging"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "bundle_item_count",
+        "field_label": "Number of Items",
+        "fieldtype": "Int",
+        "is_required": 1,
+        "default_value": "2",
+        "sort_order": 20,
+        "description": "Total number of items in the bundle"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "bundle_components",
+        "field_label": "Bundle Components",
+        "fieldtype": "Code",
+        "options": "JSON",
+        "is_required": 0,
+        "sort_order": 30,
+        "description": "JSON array of component products with quantities"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "bundle_discount_percent",
+        "field_label": "Bundle Discount %",
+        "fieldtype": "Float",
+        "is_required": 0,
+        "default_value": "15",
+        "sort_order": 40,
+        "description": "Discount compared to buying items separately"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "individual_sale_allowed",
+        "field_label": "Individual Sale Allowed",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "0",
+        "sort_order": 50,
+        "description": "Bundle components can also be sold individually"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "substitutions_allowed",
+        "field_label": "Substitutions Allowed",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "0",
+        "sort_order": 60,
+        "description": "Customer can substitute bundle components"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "gift_wrap_available",
+        "field_label": "Gift Wrap Available",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "1",
+        "sort_order": 70,
+        "description": "Bundle can be gift wrapped"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "gift_message_allowed",
+        "field_label": "Gift Message Allowed",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "1",
+        "sort_order": 80,
+        "description": "Customer can include a gift message"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "limited_edition",
+        "field_label": "Limited Edition",
+        "fieldtype": "Check",
+        "is_required": 0,
+        "default_value": "0",
+        "sort_order": 90,
+        "description": "Bundle is a limited edition offering"
+      },
+      {
+        "doctype": "Product Class Field",
+        "field_name": "edition_size",
+        "field_label": "Edition Size",
+        "fieldtype": "Int",
+        "is_required": 0,
+        "sort_order": 100,
+        "depends_on": "eval:doc.limited_edition==1",
+        "description": "Total number available (for limited editions)"
+      }
+    ],
+    "card_display_fields": [
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "product_name",
+        "display_location": "Card Title",
+        "sort_order": 10,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "bundle_type",
+        "display_location": "Card Badge",
+        "sort_order": 20,
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "bundle_item_count",
+        "field_label": "Contains",
+        "display_location": "Card Subtitle",
+        "sort_order": 30,
+        "format_template": "{{ value }} items",
+        "show_label": 0
+      },
+      {
+        "doctype": "Product Class Display Field",
+        "field_name": "bundle_discount_percent",
+        "field_label": "Save",
+        "display_location": "Card Description",
+        "sort_order": 40,
+        "format_template": "Save {{ value }}%",
+        "show_label": 0,
+        "css_class": "text-success"
+      }
+    ],
+    "allowed_statuses": [
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Draft",
+        "status_code": "draft",
+        "color": "Gray",
+        "sort_order": 10,
+        "is_default": 1,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 1,
+        "allowed_transitions": "pending_stock_check,active"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Pending Stock Check",
+        "status_code": "pending_stock_check",
+        "color": "Blue",
+        "sort_order": 20,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,draft"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Active",
+        "status_code": "active",
+        "color": "Green",
+        "sort_order": 30,
+        "is_default": 0,
+        "is_active_status": 1,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "out_of_stock,seasonal_hold,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Out of Stock",
+        "status_code": "out_of_stock",
+        "color": "Yellow",
+        "sort_order": 40,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Seasonal Hold",
+        "status_code": "seasonal_hold",
+        "color": "Purple",
+        "sort_order": 50,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 1,
+        "allows_deletion": 0,
+        "allowed_transitions": "active,discontinued"
+      },
+      {
+        "doctype": "Product Class Allowed Status",
+        "status_name": "Discontinued",
+        "status_code": "discontinued",
+        "color": "Red",
+        "sort_order": 60,
+        "is_default": 0,
+        "is_active_status": 0,
+        "allows_editing": 0,
+        "allows_deletion": 1,
+        "allowed_transitions": ""
+      }
+    ],
+    "search_configs": [
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "product_name",
+        "search_type": "Full Text",
+        "is_enabled": 1,
+        "is_filterable": 0,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 2.0,
+        "sort_order": 10
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "bundle_type",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 1,
+        "boost_weight": 1.5,
+        "filter_widget": "Checkbox List",
+        "sort_order": 20
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "bundle_item_count",
+        "field_label": "Items in Bundle",
+        "search_type": "Range",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 1.0,
+        "filter_widget": "Range Slider",
+        "sort_order": 30,
+        "default_sort_direction": "ASC"
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "bundle_discount_percent",
+        "field_label": "Discount",
+        "search_type": "Range",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 1,
+        "is_faceted": 0,
+        "boost_weight": 1.0,
+        "filter_widget": "Range Slider",
+        "sort_order": 40,
+        "default_sort_direction": "DESC"
+      },
+      {
+        "doctype": "Product Class Search Config",
+        "field_name": "gift_wrap_available",
+        "field_label": "Gift Wrap",
+        "search_type": "Exact Match",
+        "is_enabled": 1,
+        "is_filterable": 1,
+        "is_sortable": 0,
+        "is_faceted": 1,
+        "boost_weight": 1.0,
+        "filter_widget": "Checkbox List",
+        "sort_order": 50
+      }
+    ]
+  }
+]

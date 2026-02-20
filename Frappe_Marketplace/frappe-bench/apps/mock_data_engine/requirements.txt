@@ -1,0 +1,20 @@
+# Frappe framework (installed via bench)
+# frappe
+
+# Data generation
+faker>=40.0.0
+
+# LLM providers
+google-genai
+openai
+anthropic
+ollama
+
+# Image provider
+pyunsplash
+
+# Configuration
+PyYAML
+
+# Turkish ID validation
+python-stdnum>=1.17

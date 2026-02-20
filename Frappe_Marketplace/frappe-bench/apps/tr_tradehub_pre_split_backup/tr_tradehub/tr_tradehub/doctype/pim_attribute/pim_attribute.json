@@ -1,0 +1,580 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:attribute_code",
+  "creation": "2026-02-09 18:00:00.000000",
+  "doctype": "DocType",
+  "document_type": "Setup",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "attribute_name",
+    "attribute_code",
+    "column_break_basic_1",
+    "attribute_type",
+    "attribute_group",
+    "settings_section",
+    "is_active",
+    "is_required",
+    "is_unique",
+    "is_filterable",
+    "column_break_settings_1",
+    "is_searchable",
+    "is_comparable",
+    "is_system",
+    "use_for_variant",
+    "localization_section",
+    "is_localizable",
+    "is_scopable",
+    "column_break_local_1",
+    "default_locale",
+    "default_scope",
+    "type_config_section",
+    "default_value",
+    "placeholder",
+    "column_break_type_1",
+    "min_value",
+    "max_value",
+    "validation_section",
+    "validation_regex",
+    "column_break_valid_1",
+    "validation_message",
+    "select_options_section",
+    "options",
+    "link_config_section",
+    "link_doctype",
+    "link_filters",
+    "column_break_link_1",
+    "link_display_field",
+    "measurement_section",
+    "measurement_unit",
+    "column_break_measure_1",
+    "measurement_precision",
+    "currency_section",
+    "currency_precision",
+    "column_break_currency_1",
+    "default_currency",
+    "file_config_section",
+    "allowed_extensions",
+    "column_break_file_1",
+    "max_file_size",
+    "marketplace_flags_section",
+    "used_by_amazon",
+    "amazon_attribute_name",
+    "column_break_amz",
+    "used_by_ebay",
+    "ebay_attribute_name",
+    "column_break_ebay",
+    "used_by_alibaba",
+    "alibaba_attribute_name",
+    "marketplace_flags_2_section",
+    "used_by_trendyol",
+    "trendyol_attribute_name",
+    "column_break_trendyol",
+    "used_by_hepsiburada",
+    "hepsiburada_attribute_name",
+    "column_break_hepsi",
+    "used_by_n11",
+    "n11_attribute_name",
+    "description_section",
+    "description",
+    "help_text"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "attribute_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Attribute Name",
+      "reqd": 1,
+      "description": "Display name for the attribute"
+    },
+    {
+      "fieldname": "attribute_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Attribute Code",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique identifier (lowercase, underscores only)"
+    },
+    {
+      "fieldname": "column_break_basic_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "attribute_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Attribute Type",
+      "options": "Text\nLong Text\nHTML\nInt\nFloat\nCurrency\nCheck\nSelect\nMultiselect\nColor\nSize\nDate\nDatetime\nLink\nImage\nFile\nMeasurement\nURL\nJSON\nTable\nRating\nPercent",
+      "reqd": 1,
+      "default": "Text",
+      "description": "Data type for attribute values"
+    },
+    {
+      "fieldname": "attribute_group",
+      "fieldtype": "Link",
+      "label": "Attribute Group",
+      "options": "PIM Attribute Group",
+      "in_standard_filter": 1,
+      "description": "Group for organizing attributes in forms"
+    },
+    {
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Behavior Settings"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Is Active"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_required",
+      "fieldtype": "Check",
+      "label": "Is Required",
+      "description": "Attribute must have a value"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_unique",
+      "fieldtype": "Check",
+      "label": "Is Unique",
+      "description": "Value must be unique across all products"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_filterable",
+      "fieldtype": "Check",
+      "label": "Is Filterable",
+      "description": "Can be used for filtering products"
+    },
+    {
+      "fieldname": "column_break_settings_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_searchable",
+      "fieldtype": "Check",
+      "label": "Is Searchable",
+      "description": "Included in full-text search"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_comparable",
+      "fieldtype": "Check",
+      "label": "Is Comparable",
+      "description": "Can be used in product comparisons"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_system",
+      "fieldtype": "Check",
+      "label": "Is System Attribute",
+      "description": "System-managed attribute (cannot be deleted)"
+    },
+    {
+      "default": "0",
+      "fieldname": "use_for_variant",
+      "fieldtype": "Check",
+      "label": "Use for Variant",
+      "description": "Can be used as a variant axis"
+    },
+    {
+      "fieldname": "localization_section",
+      "fieldtype": "Section Break",
+      "label": "Localization & Scoping"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_localizable",
+      "fieldtype": "Check",
+      "label": "Is Localizable",
+      "description": "Attribute values can be translated per locale"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_scopable",
+      "fieldtype": "Check",
+      "label": "Is Scopable",
+      "description": "Attribute values can differ per channel/scope"
+    },
+    {
+      "fieldname": "column_break_local_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_locale",
+      "fieldtype": "Data",
+      "label": "Default Locale",
+      "description": "Default locale for localized values (e.g., en_US)",
+      "depends_on": "is_localizable"
+    },
+    {
+      "fieldname": "default_scope",
+      "fieldtype": "Data",
+      "label": "Default Scope",
+      "description": "Default scope/channel for scoped values",
+      "depends_on": "is_scopable"
+    },
+    {
+      "fieldname": "type_config_section",
+      "fieldtype": "Section Break",
+      "label": "Type Configuration",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "default_value",
+      "fieldtype": "Data",
+      "label": "Default Value",
+      "description": "Default value for new products"
+    },
+    {
+      "fieldname": "placeholder",
+      "fieldtype": "Data",
+      "label": "Placeholder",
+      "description": "Placeholder text shown in input fields"
+    },
+    {
+      "fieldname": "column_break_type_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "min_value",
+      "fieldtype": "Float",
+      "label": "Minimum Value",
+      "description": "Minimum allowed value (for numeric types)",
+      "depends_on": "eval:['Int', 'Float', 'Currency', 'Percent', 'Rating'].includes(doc.attribute_type)"
+    },
+    {
+      "fieldname": "max_value",
+      "fieldtype": "Float",
+      "label": "Maximum Value",
+      "description": "Maximum allowed value (for numeric types)",
+      "depends_on": "eval:['Int', 'Float', 'Currency', 'Percent', 'Rating'].includes(doc.attribute_type)"
+    },
+    {
+      "fieldname": "validation_section",
+      "fieldtype": "Section Break",
+      "label": "Validation",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "validation_regex",
+      "fieldtype": "Data",
+      "label": "Validation Regex",
+      "description": "Regular expression for value validation"
+    },
+    {
+      "fieldname": "column_break_valid_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "validation_message",
+      "fieldtype": "Data",
+      "label": "Validation Message",
+      "description": "Custom error message for validation failures"
+    },
+    {
+      "fieldname": "select_options_section",
+      "fieldtype": "Section Break",
+      "label": "Select Options",
+      "depends_on": "eval:['Select', 'Multiselect', 'Color', 'Size'].includes(doc.attribute_type)",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "options",
+      "fieldtype": "Table",
+      "label": "Options",
+      "options": "PIM Attribute Option",
+      "description": "Available options for Select/Multiselect/Color/Size types"
+    },
+    {
+      "fieldname": "link_config_section",
+      "fieldtype": "Section Break",
+      "label": "Link Configuration",
+      "depends_on": "eval:doc.attribute_type === 'Link'",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "link_doctype",
+      "fieldtype": "Link",
+      "label": "Link DocType",
+      "options": "DocType",
+      "description": "Target DocType for Link type attributes"
+    },
+    {
+      "fieldname": "link_filters",
+      "fieldtype": "Code",
+      "label": "Link Filters",
+      "options": "JSON",
+      "description": "JSON filters for the linked DocType query"
+    },
+    {
+      "fieldname": "column_break_link_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "link_display_field",
+      "fieldtype": "Data",
+      "label": "Link Display Field",
+      "description": "Field to display from linked document"
+    },
+    {
+      "fieldname": "measurement_section",
+      "fieldtype": "Section Break",
+      "label": "Measurement Configuration",
+      "depends_on": "eval:doc.attribute_type === 'Measurement'",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "measurement_unit",
+      "fieldtype": "Select",
+      "label": "Measurement Unit",
+      "options": "\nmm\ncm\nm\nkm\nin\nft\nyd\nmg\ng\nkg\nlb\noz\nml\nl\ngal\nqt\npt\nsq_m\nsq_ft\ncubic_m\ncubic_ft",
+      "description": "Unit of measurement"
+    },
+    {
+      "fieldname": "column_break_measure_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "measurement_precision",
+      "fieldtype": "Int",
+      "label": "Measurement Precision",
+      "default": "2",
+      "description": "Number of decimal places"
+    },
+    {
+      "fieldname": "currency_section",
+      "fieldtype": "Section Break",
+      "label": "Currency Configuration",
+      "depends_on": "eval:doc.attribute_type === 'Currency'",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "currency_precision",
+      "fieldtype": "Int",
+      "label": "Currency Precision",
+      "default": "2",
+      "description": "Number of decimal places"
+    },
+    {
+      "fieldname": "column_break_currency_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_currency",
+      "fieldtype": "Link",
+      "label": "Default Currency",
+      "options": "Currency",
+      "description": "Default currency for this attribute"
+    },
+    {
+      "fieldname": "file_config_section",
+      "fieldtype": "Section Break",
+      "label": "File Configuration",
+      "depends_on": "eval:['File', 'Image'].includes(doc.attribute_type)",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "allowed_extensions",
+      "fieldtype": "Data",
+      "label": "Allowed Extensions",
+      "description": "Comma-separated list of allowed file extensions (e.g., pdf,doc,docx)"
+    },
+    {
+      "fieldname": "column_break_file_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "max_file_size",
+      "fieldtype": "Int",
+      "label": "Max File Size (KB)",
+      "description": "Maximum allowed file size in kilobytes"
+    },
+    {
+      "fieldname": "marketplace_flags_section",
+      "fieldtype": "Section Break",
+      "label": "Marketplace Integration",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "used_by_amazon",
+      "fieldtype": "Check",
+      "label": "Used by Amazon",
+      "description": "Attribute is mapped to Amazon catalog"
+    },
+    {
+      "fieldname": "amazon_attribute_name",
+      "fieldtype": "Data",
+      "label": "Amazon Attribute Name",
+      "description": "Corresponding Amazon attribute identifier",
+      "depends_on": "used_by_amazon"
+    },
+    {
+      "fieldname": "column_break_amz",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "used_by_ebay",
+      "fieldtype": "Check",
+      "label": "Used by eBay",
+      "description": "Attribute is mapped to eBay catalog"
+    },
+    {
+      "fieldname": "ebay_attribute_name",
+      "fieldtype": "Data",
+      "label": "eBay Attribute Name",
+      "description": "Corresponding eBay attribute identifier",
+      "depends_on": "used_by_ebay"
+    },
+    {
+      "fieldname": "column_break_ebay",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "used_by_alibaba",
+      "fieldtype": "Check",
+      "label": "Used by Alibaba",
+      "description": "Attribute is mapped to Alibaba catalog"
+    },
+    {
+      "fieldname": "alibaba_attribute_name",
+      "fieldtype": "Data",
+      "label": "Alibaba Attribute Name",
+      "description": "Corresponding Alibaba attribute identifier",
+      "depends_on": "used_by_alibaba"
+    },
+    {
+      "fieldname": "marketplace_flags_2_section",
+      "fieldtype": "Section Break",
+      "label": "Turkish Marketplaces",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "used_by_trendyol",
+      "fieldtype": "Check",
+      "label": "Used by Trendyol",
+      "description": "Attribute is mapped to Trendyol catalog"
+    },
+    {
+      "fieldname": "trendyol_attribute_name",
+      "fieldtype": "Data",
+      "label": "Trendyol Attribute Name",
+      "description": "Corresponding Trendyol attribute identifier",
+      "depends_on": "used_by_trendyol"
+    },
+    {
+      "fieldname": "column_break_trendyol",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "used_by_hepsiburada",
+      "fieldtype": "Check",
+      "label": "Used by Hepsiburada",
+      "description": "Attribute is mapped to Hepsiburada catalog"
+    },
+    {
+      "fieldname": "hepsiburada_attribute_name",
+      "fieldtype": "Data",
+      "label": "Hepsiburada Attribute Name",
+      "description": "Corresponding Hepsiburada attribute identifier",
+      "depends_on": "used_by_hepsiburada"
+    },
+    {
+      "fieldname": "column_break_hepsi",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "used_by_n11",
+      "fieldtype": "Check",
+      "label": "Used by N11",
+      "description": "Attribute is mapped to N11 catalog"
+    },
+    {
+      "fieldname": "n11_attribute_name",
+      "fieldtype": "Data",
+      "label": "N11 Attribute Name",
+      "description": "Corresponding N11 attribute identifier",
+      "depends_on": "used_by_n11"
+    },
+    {
+      "fieldname": "description_section",
+      "fieldtype": "Section Break",
+      "label": "Documentation",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "Internal description for administrators"
+    },
+    {
+      "fieldname": "help_text",
+      "fieldtype": "Small Text",
+      "label": "Help Text",
+      "description": "Help text displayed to users when filling this attribute"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-02-09 18:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "PIM Attribute",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Administrator",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "attribute_name",
+  "sort_order": "ASC",
+  "states": [],
+  "track_changes": 1
+}

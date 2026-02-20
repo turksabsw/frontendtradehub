@@ -1,0 +1,596 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "BG-.#####",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "brand_section",
+  "brand",
+  "brand_name",
+  "brand_code",
+  "column_break_brand",
+  "brand_verification_status",
+  "brand_logo",
+  "seller_section",
+  "seller",
+  "seller_name",
+  "seller_company",
+  "column_break_seller",
+  "seller_status",
+  "seller_verification_status",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "authorization_section",
+  "authorization_status",
+  "authorization_type",
+  "column_break_authorization",
+  "is_exclusive",
+  "priority_level",
+  "validity_section",
+  "valid_from",
+  "valid_to",
+  "column_break_validity",
+  "is_active",
+  "auto_renew",
+  "products_section",
+  "product_scope",
+  "allowed_categories",
+  "column_break_products",
+  "max_products",
+  "current_product_count",
+  "pricing_section",
+  "can_set_price",
+  "price_floor",
+  "column_break_pricing",
+  "price_ceiling",
+  "can_discount",
+  "buybox_section",
+  "eligible_for_buybox",
+  "buybox_priority_boost",
+  "column_break_buybox",
+  "suppress_unauthorized",
+  "authorization_details_section",
+  "authorized_by",
+  "authorized_by_name",
+  "authorization_date",
+  "column_break_auth_details",
+  "revoked_by",
+  "revoked_by_name",
+  "revocation_date",
+  "documents_section",
+  "authorization_document",
+  "authorization_certificate",
+  "column_break_documents",
+  "certificate_number",
+  "certificate_expiry",
+  "notes_section",
+  "authorization_notes",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "brand_section",
+   "fieldtype": "Section Break",
+   "label": "Brand Information"
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Brand",
+   "options": "Brand",
+   "reqd": 1,
+   "description": "Brand that this authorization is for"
+  },
+  {
+   "fetch_from": "brand.brand_name",
+   "fieldname": "brand_name",
+   "fieldtype": "Data",
+   "label": "Brand Name",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Auto-filled from Brand"
+  },
+  {
+   "fetch_from": "brand.brand_code",
+   "fieldname": "brand_code",
+   "fieldtype": "Data",
+   "label": "Brand Code",
+   "read_only": 1,
+   "description": "Auto-filled from Brand"
+  },
+  {
+   "fieldname": "column_break_brand",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "brand.verification_status",
+   "fieldname": "brand_verification_status",
+   "fieldtype": "Data",
+   "label": "Brand Verification Status",
+   "read_only": 1,
+   "description": "Auto-filled from Brand"
+  },
+  {
+   "fetch_from": "brand.logo",
+   "fieldname": "brand_logo",
+   "fieldtype": "Attach Image",
+   "label": "Brand Logo",
+   "read_only": 1,
+   "description": "Auto-filled from Brand"
+  },
+  {
+   "fieldname": "seller_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Information"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1,
+   "description": "Seller authorized to resell this brand"
+  },
+  {
+   "fetch_from": "seller.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.company_name",
+   "fieldname": "seller_company",
+   "fieldtype": "Data",
+   "label": "Seller Company",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "column_break_seller",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "seller.status",
+   "fieldname": "seller_status",
+   "fieldtype": "Data",
+   "label": "Seller Status",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.verification_status",
+   "fieldname": "seller_verification_status",
+   "fieldtype": "Data",
+   "label": "Seller Verification Status",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant"
+  },
+  {
+   "fetch_from": "seller.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "Auto-filled from Seller - Multi-tenant isolation field"
+  },
+  {
+   "fetch_from": "seller.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Seller"
+  },
+  {
+   "fieldname": "authorization_section",
+   "fieldtype": "Section Break",
+   "label": "Authorization"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "authorization_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Authorization Status",
+   "options": "Pending\nUnder Review\nApproved\nRejected\nSuspended\nExpired\nRevoked",
+   "reqd": 1,
+   "description": "Current status of the brand authorization"
+  },
+  {
+   "default": "Standard Reseller",
+   "fieldname": "authorization_type",
+   "fieldtype": "Select",
+   "label": "Authorization Type",
+   "options": "Standard Reseller\nAuthorized Distributor\nExclusive Distributor\nOfficial Partner\nManufacturer Direct",
+   "reqd": 1,
+   "description": "Type of brand authorization"
+  },
+  {
+   "fieldname": "column_break_authorization",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_exclusive",
+   "fieldtype": "Check",
+   "label": "Exclusive Authorization",
+   "description": "Whether this is an exclusive reseller agreement"
+  },
+  {
+   "default": "0",
+   "fieldname": "priority_level",
+   "fieldtype": "Int",
+   "label": "Priority Level",
+   "description": "Priority for displaying this seller (higher = more prominent)"
+  },
+  {
+   "fieldname": "validity_section",
+   "fieldtype": "Section Break",
+   "label": "Validity Period"
+  },
+  {
+   "default": "Today",
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid From",
+   "description": "Authorization start date"
+  },
+  {
+   "fieldname": "valid_to",
+   "fieldtype": "Date",
+   "label": "Valid To",
+   "description": "Authorization end date (leave empty for no expiry)"
+  },
+  {
+   "fieldname": "column_break_validity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "description": "Quick toggle for authorization status"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_renew",
+   "fieldtype": "Check",
+   "label": "Auto Renew",
+   "description": "Automatically renew authorization on expiry"
+  },
+  {
+   "fieldname": "products_section",
+   "fieldtype": "Section Break",
+   "label": "Product Restrictions",
+   "collapsible": 1
+  },
+  {
+   "default": "All Products",
+   "fieldname": "product_scope",
+   "fieldtype": "Select",
+   "label": "Product Scope",
+   "options": "All Products\nSpecific Categories\nSpecific Products",
+   "description": "Scope of products seller can list for this brand"
+  },
+  {
+   "fieldname": "allowed_categories",
+   "fieldtype": "Small Text",
+   "label": "Allowed Categories",
+   "depends_on": "eval:doc.product_scope == 'Specific Categories'",
+   "description": "Comma-separated category names (only for Specific Categories scope)"
+  },
+  {
+   "fieldname": "column_break_products",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_products",
+   "fieldtype": "Int",
+   "label": "Max Products",
+   "description": "Maximum products allowed for this brand (0 = unlimited)"
+  },
+  {
+   "default": "0",
+   "fieldname": "current_product_count",
+   "fieldtype": "Int",
+   "label": "Current Product Count",
+   "read_only": 1,
+   "description": "Current number of products listed by this seller for this brand"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing Restrictions",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "can_set_price",
+   "fieldtype": "Check",
+   "label": "Can Set Price",
+   "description": "Whether seller can set their own prices"
+  },
+  {
+   "default": "0",
+   "fieldname": "price_floor",
+   "fieldtype": "Percent",
+   "label": "Price Floor (%)",
+   "description": "Minimum price as percentage of MSRP (0 = no minimum)"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "price_ceiling",
+   "fieldtype": "Percent",
+   "label": "Price Ceiling (%)",
+   "description": "Maximum price as percentage of MSRP (0 = no maximum)"
+  },
+  {
+   "default": "1",
+   "fieldname": "can_discount",
+   "fieldtype": "Check",
+   "label": "Can Offer Discounts",
+   "description": "Whether seller can offer discounts on brand products"
+  },
+  {
+   "fieldname": "buybox_section",
+   "fieldtype": "Section Break",
+   "label": "Buy Box Settings",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "eligible_for_buybox",
+   "fieldtype": "Check",
+   "label": "Eligible for Buy Box",
+   "description": "Whether this seller can compete for Buy Box on brand products"
+  },
+  {
+   "default": "0",
+   "fieldname": "buybox_priority_boost",
+   "fieldtype": "Int",
+   "label": "Buy Box Priority Boost",
+   "description": "Additional points added to Buy Box score (0-20)"
+  },
+  {
+   "fieldname": "column_break_buybox",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "suppress_unauthorized",
+   "fieldtype": "Check",
+   "label": "Suppress Unauthorized Sellers",
+   "description": "Hide unauthorized sellers from Buy Box for this brand-seller"
+  },
+  {
+   "fieldname": "authorization_details_section",
+   "fieldtype": "Section Break",
+   "label": "Authorization Details"
+  },
+  {
+   "fieldname": "authorized_by",
+   "fieldtype": "Link",
+   "label": "Authorized By",
+   "options": "User",
+   "read_only": 1,
+   "description": "User who authorized this seller"
+  },
+  {
+   "fetch_from": "authorized_by.full_name",
+   "fieldname": "authorized_by_name",
+   "fieldtype": "Data",
+   "label": "Authorized By Name",
+   "read_only": 1,
+   "description": "Auto-filled from Authorized By"
+  },
+  {
+   "fieldname": "authorization_date",
+   "fieldtype": "Date",
+   "label": "Authorization Date",
+   "read_only": 1,
+   "description": "Date when authorization was granted"
+  },
+  {
+   "fieldname": "column_break_auth_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "revoked_by",
+   "fieldtype": "Link",
+   "label": "Revoked By",
+   "options": "User",
+   "read_only": 1,
+   "description": "User who revoked this authorization"
+  },
+  {
+   "fetch_from": "revoked_by.full_name",
+   "fieldname": "revoked_by_name",
+   "fieldtype": "Data",
+   "label": "Revoked By Name",
+   "read_only": 1,
+   "description": "Auto-filled from Revoked By"
+  },
+  {
+   "fieldname": "revocation_date",
+   "fieldtype": "Date",
+   "label": "Revocation Date",
+   "read_only": 1,
+   "description": "Date when authorization was revoked"
+  },
+  {
+   "fieldname": "documents_section",
+   "fieldtype": "Section Break",
+   "label": "Authorization Documents",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "authorization_document",
+   "fieldtype": "Attach",
+   "label": "Authorization Document",
+   "description": "Official authorization letter or agreement"
+  },
+  {
+   "fieldname": "authorization_certificate",
+   "fieldtype": "Attach",
+   "label": "Authorization Certificate",
+   "description": "Certificate of authorized reseller status"
+  },
+  {
+   "fieldname": "column_break_documents",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "certificate_number",
+   "fieldtype": "Data",
+   "label": "Certificate Number",
+   "description": "Authorization certificate number"
+  },
+  {
+   "fieldname": "certificate_expiry",
+   "fieldtype": "Date",
+   "label": "Certificate Expiry",
+   "description": "Authorization certificate expiry date"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "authorization_notes",
+   "fieldtype": "Small Text",
+   "label": "Authorization Notes",
+   "description": "Notes about the authorization (visible to seller)"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes",
+   "description": "Internal notes about this authorization (admin only)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Brand",
+   "link_doctype": "Brand",
+   "link_fieldname": "name"
+  },
+  {
+   "group": "Seller",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "name"
+  },
+  {
+   "group": "Products",
+   "link_doctype": "SKU Product",
+   "link_fieldname": "brand"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Brand Gating",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "if_owner": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "Buyer",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "brand_name, seller_name, authorization_status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Pending"
+  },
+  {
+   "color": "blue",
+   "title": "Under Review"
+  },
+  {
+   "color": "green",
+   "title": "Approved"
+  },
+  {
+   "color": "red",
+   "title": "Rejected"
+  },
+  {
+   "color": "orange",
+   "title": "Suspended"
+  },
+  {
+   "color": "gray",
+   "title": "Expired"
+  },
+  {
+   "color": "red",
+   "title": "Revoked"
+  }
+ ],
+ "title_field": "brand_name",
+ "track_changes": 1
+}

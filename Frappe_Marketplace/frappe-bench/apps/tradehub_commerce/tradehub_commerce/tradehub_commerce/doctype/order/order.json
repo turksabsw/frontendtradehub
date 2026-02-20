@@ -1,0 +1,938 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "ORD-.#####",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "order_info_section",
+  "order_number",
+  "status",
+  "column_break_order_info",
+  "order_date",
+  "order_type",
+  "priority",
+  "buyer_section",
+  "buyer",
+  "buyer_name",
+  "buyer_company",
+  "column_break_buyer",
+  "buyer_email",
+  "buyer_phone",
+  "buyer_segment",
+  "seller_section",
+  "seller",
+  "seller_name",
+  "seller_company",
+  "column_break_seller",
+  "seller_email",
+  "seller_phone",
+  "seller_tier",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "source_section",
+  "source_type",
+  "rfq",
+  "rfq_title",
+  "column_break_source",
+  "quotation",
+  "quotation_amount",
+  "sample_request",
+  "items_section",
+  "items",
+  "pricing_section",
+  "currency",
+  "subtotal",
+  "column_break_pricing",
+  "discount_percentage",
+  "discount_amount",
+  "total_section",
+  "tax_amount",
+  "tax_rate",
+  "column_break_total",
+  "shipping_cost",
+  "total_amount",
+  "payment_section",
+  "payment_status",
+  "payment_terms",
+  "column_break_payment",
+  "advance_percentage",
+  "advance_amount",
+  "advance_paid",
+  "advance_paid_date",
+  "payment_amounts_section",
+  "paid_amount",
+  "balance_amount",
+  "column_break_payment_amounts",
+  "last_payment_date",
+  "payment_method",
+  "delivery_section",
+  "incoterm",
+  "delivery_days",
+  "estimated_delivery_date",
+  "column_break_delivery",
+  "shipping_method",
+  "shipping_carrier",
+  "tracking_number",
+  "delivery_address_section",
+  "delivery_address",
+  "delivery_city",
+  "delivery_state",
+  "column_break_delivery_address",
+  "delivery_country",
+  "delivery_postal_code",
+  "delivery_contact_person",
+  "dates_section",
+  "confirmed_date",
+  "processing_start_date",
+  "column_break_dates",
+  "shipped_date",
+  "delivered_date",
+  "completed_date",
+  "linked_section",
+  "linked_sales_order",
+  "linked_purchase_order",
+  "column_break_linked",
+  "linked_invoice",
+  "linked_delivery_note",
+  "notes_section",
+  "buyer_notes",
+  "column_break_notes",
+  "seller_notes",
+  "internal_notes",
+  "cancellation_section",
+  "cancellation_reason",
+  "cancelled_by",
+  "column_break_cancellation",
+  "cancellation_date",
+  "refund_status",
+  "refund_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "order_info_section",
+   "fieldtype": "Section Break",
+   "label": "Order Information"
+  },
+  {
+   "fieldname": "order_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Order Number",
+   "read_only": 1,
+   "description": "Auto-generated order reference number"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending\nConfirmed\nProcessing\nReady to Ship\nShipped\nDelivered\nCompleted\nCancelled\nRefunded\nOn Hold",
+   "reqd": 1,
+   "description": "Current status of the order"
+  },
+  {
+   "fieldname": "column_break_order_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "order_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Order Date",
+   "reqd": 1,
+   "description": "Date when the order was created"
+  },
+  {
+   "default": "Standard",
+   "fieldname": "order_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Order Type",
+   "options": "Standard\nBulk\nSample\nCustom Production\nRFQ Order\nRepeat Order",
+   "reqd": 1,
+   "description": "Type of order - Standard (regular), Bulk (large quantity), Sample (sample order), Custom Production (special manufacturing), RFQ Order (from RFQ), Repeat Order (repeat of previous order)"
+  },
+  {
+   "default": "Normal",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nNormal\nHigh\nUrgent",
+   "description": "Priority level for processing this order"
+  },
+  {
+   "fieldname": "buyer_section",
+   "fieldtype": "Section Break",
+   "label": "Buyer Information"
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer",
+   "options": "Buyer Profile",
+   "reqd": 1,
+   "description": "The buyer placing this order"
+  },
+  {
+   "fetch_from": "buyer.buyer_name",
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fetch_from": "buyer.company_name",
+   "fieldname": "buyer_company",
+   "fieldtype": "Data",
+   "label": "Company Name",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fieldname": "column_break_buyer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "buyer.email",
+   "fieldname": "buyer_email",
+   "fieldtype": "Data",
+   "label": "Buyer Email",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fetch_from": "buyer.phone",
+   "fieldname": "buyer_phone",
+   "fieldtype": "Data",
+   "label": "Buyer Phone",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fetch_from": "buyer.segment",
+   "fieldname": "buyer_segment",
+   "fieldtype": "Data",
+   "label": "Buyer Segment",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fieldname": "seller_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Information"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1,
+   "description": "The seller fulfilling this order"
+  },
+  {
+   "fetch_from": "seller.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.company_name",
+   "fieldname": "seller_company",
+   "fieldtype": "Data",
+   "label": "Company Name",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "column_break_seller",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "seller.contact_email",
+   "fieldname": "seller_email",
+   "fieldtype": "Data",
+   "label": "Seller Email",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.contact_phone",
+   "fieldname": "seller_phone",
+   "fieldtype": "Data",
+   "label": "Seller Phone",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.tier_name",
+   "fieldname": "seller_tier",
+   "fieldtype": "Data",
+   "label": "Seller Tier",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information",
+   "collapsible": 1
+  },
+  {
+   "fetch_from": "buyer.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "Auto-filled from Buyer Profile - Multi-tenant isolation field"
+  },
+  {
+   "fetch_from": "buyer.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Buyer Profile"
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Order Source",
+   "collapsible": 1
+  },
+  {
+   "default": "Direct",
+   "fieldname": "source_type",
+   "fieldtype": "Select",
+   "label": "Source Type",
+   "options": "Direct\nRFQ\nQuotation\nSample Conversion\nRepeat",
+   "description": "How this order was created"
+  },
+  {
+   "fieldname": "rfq",
+   "fieldtype": "Link",
+   "label": "RFQ",
+   "options": "RFQ",
+   "depends_on": "eval:doc.source_type === 'RFQ' || doc.source_type === 'Quotation'",
+   "description": "The RFQ this order originated from"
+  },
+  {
+   "fetch_from": "rfq.title",
+   "fieldname": "rfq_title",
+   "fieldtype": "Data",
+   "label": "RFQ Title",
+   "read_only": 1,
+   "depends_on": "rfq",
+   "description": "Auto-filled from RFQ"
+  },
+  {
+   "fieldname": "column_break_source",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation",
+   "depends_on": "eval:doc.source_type === 'Quotation'",
+   "description": "The quotation this order is based on"
+  },
+  {
+   "fetch_from": "quotation.total_amount",
+   "fieldname": "quotation_amount",
+   "fieldtype": "Currency",
+   "label": "Quotation Amount",
+   "read_only": 1,
+   "depends_on": "quotation",
+   "description": "Auto-filled from Quotation"
+  },
+  {
+   "fieldname": "sample_request",
+   "fieldtype": "Link",
+   "label": "Sample Request",
+   "options": "Sample Request",
+   "depends_on": "eval:doc.source_type === 'Sample Conversion'",
+   "description": "The sample request this order is based on"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Order Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Order Item",
+   "reqd": 1,
+   "description": "Line items for this order"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "default": "USD",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1,
+   "description": "Currency for all pricing in this order"
+  },
+  {
+   "default": "0",
+   "fieldname": "subtotal",
+   "fieldtype": "Currency",
+   "label": "Subtotal",
+   "read_only": 1,
+   "description": "Sum of all item amounts before discounts and taxes"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_percentage",
+   "fieldtype": "Percent",
+   "label": "Discount %",
+   "description": "Overall discount percentage"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount",
+   "read_only": 1,
+   "description": "Calculated discount amount"
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "label": "Total"
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "description": "Applicable tax amount"
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_rate",
+   "fieldtype": "Percent",
+   "label": "Tax Rate",
+   "description": "Tax rate applied"
+  },
+  {
+   "fieldname": "column_break_total",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "shipping_cost",
+   "fieldtype": "Currency",
+   "label": "Shipping Cost",
+   "description": "Shipping/freight cost"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount",
+   "read_only": 1,
+   "description": "Final total amount (subtotal - discount + tax + shipping)"
+  },
+  {
+   "fieldname": "payment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Terms"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Payment Status",
+   "options": "Pending\nAdvance Received\nPartially Paid\nFully Paid\nOverdue\nRefunded",
+   "description": "Current payment status"
+  },
+  {
+   "fieldname": "payment_terms",
+   "fieldtype": "Select",
+   "label": "Payment Terms",
+   "options": "\n30% Advance, 70% Before Shipment\n50% Advance, 50% Before Shipment\n100% Advance\nLetter of Credit (LC)\nNet 30\nNet 60\nNet 90\nCustom",
+   "description": "Agreed payment terms"
+  },
+  {
+   "fieldname": "column_break_payment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "advance_percentage",
+   "fieldtype": "Percent",
+   "label": "Advance Payment %",
+   "description": "Required advance payment percentage"
+  },
+  {
+   "default": "0",
+   "fieldname": "advance_amount",
+   "fieldtype": "Currency",
+   "label": "Advance Amount",
+   "read_only": 1,
+   "description": "Calculated advance payment amount"
+  },
+  {
+   "default": "0",
+   "fieldname": "advance_paid",
+   "fieldtype": "Check",
+   "label": "Advance Paid",
+   "description": "Whether advance payment has been received"
+  },
+  {
+   "fieldname": "advance_paid_date",
+   "fieldtype": "Date",
+   "label": "Advance Paid Date",
+   "depends_on": "advance_paid",
+   "description": "Date when advance payment was received"
+  },
+  {
+   "fieldname": "payment_amounts_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Amounts",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "description": "Total amount paid so far"
+  },
+  {
+   "default": "0",
+   "fieldname": "balance_amount",
+   "fieldtype": "Currency",
+   "label": "Balance Amount",
+   "read_only": 1,
+   "description": "Remaining balance to be paid"
+  },
+  {
+   "fieldname": "column_break_payment_amounts",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_payment_date",
+   "fieldtype": "Date",
+   "label": "Last Payment Date",
+   "description": "Date of last payment received"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Payment Method",
+   "options": "\nBank Transfer\nCredit Card\nLetter of Credit\nPayPal\nOther",
+   "description": "Method of payment"
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Information"
+  },
+  {
+   "default": "EXW",
+   "fieldname": "incoterm",
+   "fieldtype": "Select",
+   "label": "Incoterm",
+   "options": "EXW\nFOB\nCIF\nDDP\nDAP\nFCA",
+   "description": "International Commercial Terms"
+  },
+  {
+   "fieldname": "delivery_days",
+   "fieldtype": "Int",
+   "label": "Delivery Days",
+   "description": "Estimated delivery time in days"
+  },
+  {
+   "fieldname": "estimated_delivery_date",
+   "fieldtype": "Date",
+   "label": "Estimated Delivery Date",
+   "description": "Expected delivery date"
+  },
+  {
+   "fieldname": "column_break_delivery",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipping_method",
+   "fieldtype": "Select",
+   "label": "Shipping Method",
+   "options": "\nSea Freight\nAir Freight\nLand Transport\nCourier\nMulti-Modal",
+   "description": "Shipping method"
+  },
+  {
+   "fieldname": "shipping_carrier",
+   "fieldtype": "Data",
+   "label": "Shipping Carrier",
+   "description": "Name of shipping carrier"
+  },
+  {
+   "fieldname": "tracking_number",
+   "fieldtype": "Data",
+   "label": "Tracking Number",
+   "description": "Shipment tracking number"
+  },
+  {
+   "fieldname": "delivery_address_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Address"
+  },
+  {
+   "fieldname": "delivery_address",
+   "fieldtype": "Small Text",
+   "label": "Delivery Address",
+   "description": "Complete delivery address"
+  },
+  {
+   "fieldname": "delivery_city",
+   "fieldtype": "Data",
+   "label": "City",
+   "description": "Delivery city"
+  },
+  {
+   "fieldname": "delivery_state",
+   "fieldtype": "Data",
+   "label": "State/Province",
+   "description": "Delivery state or province"
+  },
+  {
+   "fieldname": "column_break_delivery_address",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivery_country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "description": "Delivery country"
+  },
+  {
+   "fieldname": "delivery_postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code",
+   "description": "Delivery postal/zip code"
+  },
+  {
+   "fieldname": "delivery_contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person",
+   "description": "Contact person at delivery address"
+  },
+  {
+   "fieldname": "dates_section",
+   "fieldtype": "Section Break",
+   "label": "Key Dates",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "confirmed_date",
+   "fieldtype": "Datetime",
+   "label": "Confirmed Date",
+   "read_only": 1,
+   "description": "Date when order was confirmed"
+  },
+  {
+   "fieldname": "processing_start_date",
+   "fieldtype": "Datetime",
+   "label": "Processing Start Date",
+   "read_only": 1,
+   "description": "Date when processing/production started"
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipped_date",
+   "fieldtype": "Datetime",
+   "label": "Shipped Date",
+   "read_only": 1,
+   "description": "Date when order was shipped"
+  },
+  {
+   "fieldname": "delivered_date",
+   "fieldtype": "Datetime",
+   "label": "Delivered Date",
+   "read_only": 1,
+   "description": "Date when order was delivered"
+  },
+  {
+   "fieldname": "completed_date",
+   "fieldtype": "Datetime",
+   "label": "Completed Date",
+   "read_only": 1,
+   "description": "Date when order was marked complete"
+  },
+  {
+   "fieldname": "linked_section",
+   "fieldtype": "Section Break",
+   "label": "Linked Documents",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "linked_sales_order",
+   "fieldtype": "Data",
+   "label": "ERPNext Sales Order",
+   "read_only": 1,
+   "description": "Linked ERPNext Sales Order (if sync enabled)"
+  },
+  {
+   "fieldname": "linked_purchase_order",
+   "fieldtype": "Data",
+   "label": "ERPNext Purchase Order",
+   "read_only": 1,
+   "description": "Linked ERPNext Purchase Order (if sync enabled)"
+  },
+  {
+   "fieldname": "column_break_linked",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_invoice",
+   "fieldtype": "Data",
+   "label": "Linked Invoice",
+   "read_only": 1,
+   "description": "Linked invoice reference"
+  },
+  {
+   "fieldname": "linked_delivery_note",
+   "fieldtype": "Data",
+   "label": "Linked Delivery Note",
+   "read_only": 1,
+   "description": "Linked delivery note reference"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "buyer_notes",
+   "fieldtype": "Text",
+   "label": "Buyer Notes",
+   "description": "Notes from the buyer"
+  },
+  {
+   "fieldname": "column_break_notes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "seller_notes",
+   "fieldtype": "Text",
+   "label": "Seller Notes",
+   "description": "Notes from the seller"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text",
+   "label": "Internal Notes",
+   "description": "Internal notes (not visible to buyer/seller)"
+  },
+  {
+   "fieldname": "cancellation_section",
+   "fieldtype": "Section Break",
+   "label": "Cancellation and Refund",
+   "collapsible": 1,
+   "depends_on": "eval:doc.status === 'Cancelled' || doc.status === 'Refunded'"
+  },
+  {
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Small Text",
+   "label": "Cancellation Reason",
+   "depends_on": "eval:doc.status === 'Cancelled' || doc.status === 'Refunded'",
+   "description": "Reason for order cancellation"
+  },
+  {
+   "fieldname": "cancelled_by",
+   "fieldtype": "Select",
+   "label": "Cancelled By",
+   "options": "\nBuyer\nSeller\nSystem\nAdmin",
+   "depends_on": "eval:doc.status === 'Cancelled' || doc.status === 'Refunded'",
+   "description": "Who cancelled the order"
+  },
+  {
+   "fieldname": "column_break_cancellation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cancellation_date",
+   "fieldtype": "Datetime",
+   "label": "Cancellation Date",
+   "read_only": 1,
+   "depends_on": "eval:doc.status === 'Cancelled' || doc.status === 'Refunded'",
+   "description": "Date when order was cancelled"
+  },
+  {
+   "fieldname": "refund_status",
+   "fieldtype": "Select",
+   "label": "Refund Status",
+   "options": "\nNot Applicable\nPending\nProcessing\nCompleted\nPartial",
+   "depends_on": "eval:doc.status === 'Cancelled' || doc.status === 'Refunded'",
+   "description": "Status of refund if applicable"
+  },
+  {
+   "default": "0",
+   "fieldname": "refund_amount",
+   "fieldtype": "Currency",
+   "label": "Refund Amount",
+   "depends_on": "eval:doc.status === 'Cancelled' || doc.status === 'Refunded'",
+   "description": "Amount refunded"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Buyer Profile",
+   "link_fieldname": "buyer"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "seller"
+  },
+  {
+   "group": "Source",
+   "link_doctype": "RFQ",
+   "link_fieldname": "rfq"
+  },
+  {
+   "group": "Source",
+   "link_doctype": "Quotation",
+   "link_fieldname": "quotation"
+  },
+  {
+   "group": "Source",
+   "link_doctype": "Sample Request",
+   "link_fieldname": "sample_request"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "Order",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Buyer",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "if_owner": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "buyer_name, buyer_company, seller_name, seller_company, order_number",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Draft"
+  },
+  {
+   "color": "blue",
+   "title": "Pending"
+  },
+  {
+   "color": "cyan",
+   "title": "Confirmed"
+  },
+  {
+   "color": "orange",
+   "title": "Processing"
+  },
+  {
+   "color": "purple",
+   "title": "Ready to Ship"
+  },
+  {
+   "color": "yellow",
+   "title": "Shipped"
+  },
+  {
+   "color": "green",
+   "title": "Delivered"
+  },
+  {
+   "color": "green",
+   "title": "Completed"
+  },
+  {
+   "color": "red",
+   "title": "Cancelled"
+  },
+  {
+   "color": "red",
+   "title": "Refunded"
+  },
+  {
+   "color": "gray",
+   "title": "On Hold"
+  }
+ ],
+ "title_field": "order_number",
+ "track_changes": 1
+}

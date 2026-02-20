@@ -1,0 +1,297 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "MEDIA-.#####",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "title",
+    "file",
+    "column_break_basic",
+    "uploaded_by",
+    "uploaded_by_name",
+    "tenant",
+    "status",
+    "organization_section",
+    "folder",
+    "category",
+    "column_break_organization",
+    "tags",
+    "description",
+    "metadata_section",
+    "file_type",
+    "file_size",
+    "mime_type",
+    "column_break_metadata",
+    "image_width",
+    "image_height",
+    "file_url",
+    "usage_section",
+    "usage_count",
+    "last_used_at",
+    "column_break_usage",
+    "is_public",
+    "is_featured",
+    "timestamps_section",
+    "uploaded_at",
+    "modified_at"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "description": "Upload file (images, documents, videos up to 25MB)",
+      "fieldname": "file",
+      "fieldtype": "Attach",
+      "in_list_view": 1,
+      "label": "File",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "The user who uploaded this file (auto-populated)",
+      "fieldname": "uploaded_by",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Uploaded By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "uploaded_by.full_name",
+      "fieldname": "uploaded_by_name",
+      "fieldtype": "Data",
+      "label": "Uploader Name",
+      "read_only": 1
+    },
+    {
+      "description": "The tenant this media belongs to (for multi-tenant isolation)",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1
+    },
+    {
+      "default": "Active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nArchived\nPending Review\nRejected"
+    },
+    {
+      "fieldname": "organization_section",
+      "fieldtype": "Section Break",
+      "label": "Organization"
+    },
+    {
+      "description": "Virtual folder for organizing media files",
+      "fieldname": "folder",
+      "fieldtype": "Data",
+      "in_standard_filter": 1,
+      "label": "Folder"
+    },
+    {
+      "default": "General",
+      "fieldname": "category",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Category",
+      "options": "General\nProduct Images\nBrand Assets\nDocuments\nBanners\nAvatars\nThumbnails\nVideos\nOther"
+    },
+    {
+      "fieldname": "column_break_organization",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Comma-separated tags for search and filtering",
+      "fieldname": "tags",
+      "fieldtype": "Data",
+      "label": "Tags"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "metadata_section",
+      "fieldtype": "Section Break",
+      "label": "File Metadata",
+      "collapsible": 1
+    },
+    {
+      "description": "Detected file type",
+      "fieldname": "file_type",
+      "fieldtype": "Select",
+      "label": "File Type",
+      "options": "Image\nDocument\nVideo\nAudio\nArchive\nOther",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "description": "File size in bytes",
+      "fieldname": "file_size",
+      "fieldtype": "Int",
+      "label": "File Size (bytes)",
+      "read_only": 1
+    },
+    {
+      "description": "MIME type of the file",
+      "fieldname": "mime_type",
+      "fieldtype": "Data",
+      "label": "MIME Type",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_metadata",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.file_type=='Image'",
+      "description": "Image width in pixels",
+      "fieldname": "image_width",
+      "fieldtype": "Int",
+      "label": "Width (px)",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.file_type=='Image'",
+      "description": "Image height in pixels",
+      "fieldname": "image_height",
+      "fieldtype": "Int",
+      "label": "Height (px)",
+      "read_only": 1
+    },
+    {
+      "description": "Full URL to access the file",
+      "fieldname": "file_url",
+      "fieldtype": "Data",
+      "label": "File URL",
+      "read_only": 1
+    },
+    {
+      "fieldname": "usage_section",
+      "fieldtype": "Section Break",
+      "label": "Usage Statistics",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "description": "Number of times this media has been used",
+      "fieldname": "usage_count",
+      "fieldtype": "Int",
+      "label": "Usage Count",
+      "read_only": 1
+    },
+    {
+      "description": "Last time this media was used",
+      "fieldname": "last_used_at",
+      "fieldtype": "Datetime",
+      "label": "Last Used At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_usage",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "description": "Whether this file is publicly accessible without login",
+      "fieldname": "is_public",
+      "fieldtype": "Check",
+      "label": "Is Public"
+    },
+    {
+      "default": "0",
+      "description": "Mark as featured media for priority display",
+      "fieldname": "is_featured",
+      "fieldtype": "Check",
+      "label": "Is Featured"
+    },
+    {
+      "fieldname": "timestamps_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "uploaded_at",
+      "fieldtype": "Datetime",
+      "label": "Uploaded At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "modified_at",
+      "fieldtype": "Datetime",
+      "label": "Modified At",
+      "read_only": 1
+    }
+  ],
+  "image_field": "file",
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Media Library",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 0,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "All",
+      "share": 0,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "title, folder, category, tags, uploaded_by",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "title",
+  "track_changes": 1,
+  "track_seen": 1
+}

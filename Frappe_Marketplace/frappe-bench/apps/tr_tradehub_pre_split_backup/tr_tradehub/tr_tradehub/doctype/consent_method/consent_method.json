@@ -1,0 +1,200 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:method_name",
+  "creation": "2024-01-23 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "method_name",
+    "method_code",
+    "column_break_basic",
+    "enabled",
+    "display_order",
+    "details_section",
+    "description",
+    "method_type",
+    "column_break_details",
+    "icon",
+    "color",
+    "validation_section",
+    "requires_validation",
+    "validation_field",
+    "column_break_validation",
+    "validation_regex",
+    "validation_error_message",
+    "tenant_section",
+    "tenant",
+    "company"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "method_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Method Name",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Display name (e.g., 'Email', 'SMS', 'WhatsApp', 'Phone', 'Push Notification')"
+    },
+    {
+      "fieldname": "method_code",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Method Code",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Unique code for API use (e.g., 'EMAIL', 'SMS', 'WHATSAPP', 'PHONE', 'PUSH')"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled"
+    },
+    {
+      "default": "0",
+      "fieldname": "display_order",
+      "fieldtype": "Int",
+      "label": "Display Order"
+    },
+    {
+      "fieldname": "details_section",
+      "fieldtype": "Section Break",
+      "label": "Method Details"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "User-facing description of this communication method"
+    },
+    {
+      "fieldname": "method_type",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "Method Type",
+      "options": "Electronic\nVoice\nPhysical\nOther",
+      "default": "Electronic",
+      "reqd": 1,
+      "description": "Category of communication method"
+    },
+    {
+      "fieldname": "column_break_details",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "icon",
+      "fieldtype": "Data",
+      "label": "Icon",
+      "description": "Icon class for UI display (e.g., 'fa fa-envelope')"
+    },
+    {
+      "fieldname": "color",
+      "fieldtype": "Color",
+      "label": "Color"
+    },
+    {
+      "fieldname": "validation_section",
+      "fieldtype": "Section Break",
+      "label": "Contact Validation",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "requires_validation",
+      "fieldtype": "Check",
+      "label": "Requires Validation",
+      "description": "Whether the contact info for this method should be validated"
+    },
+    {
+      "fieldname": "validation_field",
+      "fieldtype": "Data",
+      "label": "Validation Field",
+      "depends_on": "requires_validation",
+      "description": "Field name on party DocType to validate (e.g., 'email', 'phone')"
+    },
+    {
+      "fieldname": "column_break_validation",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "validation_regex",
+      "fieldtype": "Data",
+      "label": "Validation Regex",
+      "depends_on": "requires_validation",
+      "description": "Regular expression for validating contact info"
+    },
+    {
+      "fieldname": "validation_error_message",
+      "fieldtype": "Data",
+      "label": "Validation Error Message",
+      "depends_on": "requires_validation",
+      "description": "Error message to show if validation fails"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Multi-Tenant",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant"
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-23 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR Tradehub",
+  "name": "Consent Method",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "read": 1,
+      "role": "All"
+    }
+  ],
+  "quick_entry": 1,
+  "search_fields": "method_name, method_code, method_type",
+  "show_name_in_global_search": 1,
+  "sort_field": "display_order",
+  "sort_order": "ASC",
+  "states": [],
+  "title_field": "method_name",
+  "track_changes": 1
+}

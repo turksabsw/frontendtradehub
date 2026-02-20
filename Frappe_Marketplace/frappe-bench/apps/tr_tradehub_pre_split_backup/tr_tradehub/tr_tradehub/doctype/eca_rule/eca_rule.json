@@ -1,0 +1,390 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "format:ECA-{####}",
+  "creation": "2026-02-09 18:00:00.000000",
+  "doctype": "DocType",
+  "document_type": "Setup",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "rule_name",
+    "rule_code",
+    "column_break_basic_1",
+    "is_active",
+    "priority",
+    "event_section",
+    "event_doctype",
+    "event_type",
+    "column_break_event_1",
+    "filter_doctype_field",
+    "filter_doctype_value",
+    "conditions_section",
+    "condition_logic",
+    "conditions",
+    "advanced_conditions_section",
+    "jinja_condition",
+    "python_condition",
+    "actions_section",
+    "actions",
+    "rate_limiting_section",
+    "max_executions_per_minute",
+    "cooldown_seconds",
+    "column_break_rate",
+    "max_daily_executions",
+    "rate_limit_scope",
+    "logging_section",
+    "enable_logging",
+    "log_level",
+    "column_break_log",
+    "log_condition_results",
+    "log_action_results",
+    "schedule_section",
+    "schedule_type",
+    "cron_expression",
+    "column_break_schedule",
+    "last_execution",
+    "next_execution",
+    "metadata_section",
+    "description",
+    "category",
+    "column_break_meta",
+    "created_by_user",
+    "tags"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "rule_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Rule Name",
+      "reqd": 1,
+      "description": "Display name for the rule"
+    },
+    {
+      "fieldname": "rule_code",
+      "fieldtype": "Data",
+      "label": "Rule Code",
+      "unique": 1,
+      "description": "Unique identifier for the rule (auto-generated if empty)"
+    },
+    {
+      "fieldname": "column_break_basic_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Is Active",
+      "description": "Enable or disable rule execution"
+    },
+    {
+      "fieldname": "priority",
+      "fieldtype": "Int",
+      "label": "Priority",
+      "default": "10",
+      "description": "Execution priority (lower = higher priority)"
+    },
+    {
+      "fieldname": "event_section",
+      "fieldtype": "Section Break",
+      "label": "Event Trigger"
+    },
+    {
+      "fieldname": "event_doctype",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Event DocType",
+      "options": "DocType",
+      "reqd": 1,
+      "description": "DocType to monitor for events"
+    },
+    {
+      "fieldname": "event_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Event Type",
+      "options": "before_insert\nafter_insert\nvalidate\nbefore_save\nafter_save\non_update\non_submit\non_cancel\non_trash\non_update_after_submit\nbefore_rename\nafter_rename\non_change",
+      "reqd": 1,
+      "default": "after_save",
+      "description": "Document event that triggers the rule"
+    },
+    {
+      "fieldname": "column_break_event_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "filter_doctype_field",
+      "fieldtype": "Data",
+      "label": "Filter Field",
+      "description": "Optional: field to filter which documents trigger this rule"
+    },
+    {
+      "fieldname": "filter_doctype_value",
+      "fieldtype": "Data",
+      "label": "Filter Value",
+      "description": "Value that filter field must match to trigger rule"
+    },
+    {
+      "fieldname": "conditions_section",
+      "fieldtype": "Section Break",
+      "label": "Conditions"
+    },
+    {
+      "fieldname": "condition_logic",
+      "fieldtype": "Select",
+      "label": "Condition Logic",
+      "options": "AND\nOR\nCustom",
+      "default": "AND",
+      "description": "How to combine conditions (AND = all must pass, OR = any must pass)"
+    },
+    {
+      "fieldname": "conditions",
+      "fieldtype": "Table",
+      "label": "Conditions",
+      "options": "ECA Rule Condition",
+      "description": "Field-based conditions to evaluate"
+    },
+    {
+      "fieldname": "advanced_conditions_section",
+      "fieldtype": "Section Break",
+      "label": "Advanced Conditions",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "jinja_condition",
+      "fieldtype": "Small Text",
+      "label": "Jinja Condition",
+      "description": "Jinja2 expression that must evaluate to True (e.g., {{ doc.amount > 1000 and doc.status == 'Draft' }})"
+    },
+    {
+      "fieldname": "python_condition",
+      "fieldtype": "Code",
+      "label": "Python Condition",
+      "options": "Python",
+      "description": "Python code that returns True/False. Available: doc, frappe, utils. Example: doc.amount > 1000"
+    },
+    {
+      "fieldname": "actions_section",
+      "fieldtype": "Section Break",
+      "label": "Actions"
+    },
+    {
+      "fieldname": "actions",
+      "fieldtype": "Table",
+      "label": "Actions",
+      "options": "ECA Rule Action",
+      "reqd": 1,
+      "description": "Actions to execute when conditions are met"
+    },
+    {
+      "fieldname": "rate_limiting_section",
+      "fieldtype": "Section Break",
+      "label": "Rate Limiting",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "max_executions_per_minute",
+      "fieldtype": "Int",
+      "label": "Max Executions/Minute",
+      "default": "0",
+      "description": "Maximum executions per minute (0 = unlimited)"
+    },
+    {
+      "fieldname": "cooldown_seconds",
+      "fieldtype": "Int",
+      "label": "Cooldown (seconds)",
+      "default": "0",
+      "description": "Minimum seconds between executions (0 = no cooldown)"
+    },
+    {
+      "fieldname": "column_break_rate",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "max_daily_executions",
+      "fieldtype": "Int",
+      "label": "Max Daily Executions",
+      "default": "0",
+      "description": "Maximum executions per day (0 = unlimited)"
+    },
+    {
+      "fieldname": "rate_limit_scope",
+      "fieldtype": "Select",
+      "label": "Rate Limit Scope",
+      "options": "Global\nPer Document\nPer User",
+      "default": "Global",
+      "description": "How to scope rate limiting"
+    },
+    {
+      "fieldname": "logging_section",
+      "fieldtype": "Section Break",
+      "label": "Logging",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "enable_logging",
+      "fieldtype": "Check",
+      "label": "Enable Logging",
+      "description": "Log rule executions to ECA Rule Log"
+    },
+    {
+      "fieldname": "log_level",
+      "fieldtype": "Select",
+      "label": "Log Level",
+      "options": "Error Only\nWarning\nInfo\nDebug",
+      "default": "Info",
+      "description": "Minimum log level to record"
+    },
+    {
+      "fieldname": "column_break_log",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "log_condition_results",
+      "fieldtype": "Check",
+      "label": "Log Condition Results",
+      "description": "Include condition evaluation details in log"
+    },
+    {
+      "default": "1",
+      "fieldname": "log_action_results",
+      "fieldtype": "Check",
+      "label": "Log Action Results",
+      "description": "Include action execution details in log"
+    },
+    {
+      "fieldname": "schedule_section",
+      "fieldtype": "Section Break",
+      "label": "Schedule (for Cron-based rules)",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "schedule_type",
+      "fieldtype": "Select",
+      "label": "Schedule Type",
+      "options": "Event-based\nCron",
+      "default": "Event-based",
+      "description": "Event-based triggers on doc events, Cron runs on schedule"
+    },
+    {
+      "fieldname": "cron_expression",
+      "fieldtype": "Data",
+      "label": "Cron Expression",
+      "description": "Cron schedule (e.g., '0 9 * * *' for daily at 9am)",
+      "depends_on": "eval:doc.schedule_type === 'Cron'"
+    },
+    {
+      "fieldname": "column_break_schedule",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "last_execution",
+      "fieldtype": "Datetime",
+      "label": "Last Execution",
+      "read_only": 1,
+      "description": "When the rule was last executed"
+    },
+    {
+      "fieldname": "next_execution",
+      "fieldtype": "Datetime",
+      "label": "Next Execution",
+      "read_only": 1,
+      "description": "When the rule will next execute (for Cron rules)"
+    },
+    {
+      "fieldname": "metadata_section",
+      "fieldtype": "Section Break",
+      "label": "Metadata",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description",
+      "description": "Internal description of what this rule does"
+    },
+    {
+      "fieldname": "category",
+      "fieldtype": "Select",
+      "label": "Category",
+      "options": "\nCommerce\nCommunication\nCompliance\nIntegration\nNotification\nWorkflow\nCustom",
+      "description": "Category for organizing rules"
+    },
+    {
+      "fieldname": "column_break_meta",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "created_by_user",
+      "fieldtype": "Link",
+      "label": "Created By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "tags",
+      "fieldtype": "Data",
+      "label": "Tags",
+      "description": "Comma-separated tags for filtering"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Logs",
+      "link_doctype": "ECA Rule Log",
+      "link_fieldname": "eca_rule"
+    }
+  ],
+  "modified": "2026-02-09 18:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "ECA Rule",
+  "naming_rule": "Expression",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Administrator",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "priority",
+  "sort_order": "ASC",
+  "states": [],
+  "track_changes": 1
+}

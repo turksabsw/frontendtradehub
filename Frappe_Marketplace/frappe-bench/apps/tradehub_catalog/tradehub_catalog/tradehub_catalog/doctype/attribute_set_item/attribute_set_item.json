@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "attribute",
+  "attribute_label",
+  "is_required",
+  "is_variant",
+  "is_filterable",
+  "display_order",
+  "default_value"
+ ],
+ "fields": [
+  {
+   "fieldname": "attribute",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Attribute",
+   "options": "Attribute",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "attribute.attribute_label",
+   "fieldname": "attribute_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Attribute Label",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Override: Is this attribute required for products in this category?",
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Required"
+  },
+  {
+   "default": "0",
+   "description": "Override: Use this attribute for creating product variants",
+   "fetch_from": "attribute.is_variant",
+   "fieldname": "is_variant",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Variant"
+  },
+  {
+   "default": "1",
+   "description": "Override: Show this attribute in filters",
+   "fetch_from": "attribute.is_filterable",
+   "fieldname": "is_filterable",
+   "fieldtype": "Check",
+   "label": "Is Filterable"
+  },
+  {
+   "default": "0",
+   "description": "Lower numbers appear first",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Display Order"
+  },
+  {
+   "description": "Default value for this attribute in this category",
+   "fieldname": "default_value",
+   "fieldtype": "Data",
+   "label": "Default Value"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Attribute Set Item",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

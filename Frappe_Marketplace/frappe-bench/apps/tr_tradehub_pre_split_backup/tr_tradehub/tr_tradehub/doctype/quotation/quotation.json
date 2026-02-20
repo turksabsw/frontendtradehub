@@ -1,0 +1,716 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "QUO-.#####",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "quotation_info_section",
+    "quotation_number",
+    "status",
+    "column_break_quotation_info",
+    "submission_date",
+    "validity_date",
+    "rfq_section",
+    "rfq",
+    "rfq_title",
+    "rfq_type",
+    "column_break_rfq",
+    "rfq_deadline",
+    "rfq_buyer",
+    "rfq_buyer_company",
+    "seller_section",
+    "seller",
+    "seller_name",
+    "seller_company",
+    "column_break_seller",
+    "seller_email",
+    "seller_phone",
+    "tenant_section",
+    "tenant",
+    "tenant_name",
+    "items_section",
+    "items",
+    "pricing_section",
+    "currency",
+    "subtotal",
+    "column_break_pricing",
+    "discount_percentage",
+    "discount_amount",
+    "total_section",
+    "tax_amount",
+    "shipping_cost",
+    "column_break_total",
+    "total_amount",
+    "delivery_section",
+    "delivery_days",
+    "estimated_delivery_date",
+    "column_break_delivery",
+    "incoterm",
+    "shipping_method",
+    "shipping_from",
+    "payment_section",
+    "payment_terms",
+    "payment_description",
+    "column_break_payment",
+    "advance_percentage",
+    "advance_amount",
+    "production_section",
+    "production_time_days",
+    "production_notes",
+    "column_break_production",
+    "minimum_order_quantity",
+    "capacity_per_month",
+    "certifications_section",
+    "available_certifications",
+    "certification_notes",
+    "notes_section",
+    "seller_notes",
+    "column_break_notes",
+    "terms_and_conditions",
+    "attachments_section",
+    "attachments",
+    "evaluation_section",
+    "buyer_evaluation_score",
+    "buyer_evaluation_notes",
+    "column_break_evaluation",
+    "rejection_reason",
+    "dates_section",
+    "created_date",
+    "submitted_date",
+    "column_break_dates",
+    "reviewed_date",
+    "decided_date",
+    "linked_section",
+    "linked_order",
+    "column_break_linked",
+    "linked_sales_order"
+  ],
+  "fields": [
+    {
+      "fieldname": "quotation_info_section",
+      "fieldtype": "Section Break",
+      "label": "Quotation Information"
+    },
+    {
+      "fieldname": "quotation_number",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Quotation Number",
+      "read_only": 1,
+      "description": "Auto-generated quotation reference number"
+    },
+    {
+      "default": "Draft",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Draft\nSubmitted\nUnder Review\nSelected\nRejected\nExpired\nCancelled",
+      "reqd": 1,
+      "description": "Current status of the quotation"
+    },
+    {
+      "fieldname": "column_break_quotation_info",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Today",
+      "fieldname": "submission_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Submission Date",
+      "description": "Date when the quotation was submitted"
+    },
+    {
+      "fieldname": "validity_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Validity Date",
+      "reqd": 1,
+      "description": "Date until which this quotation is valid"
+    },
+    {
+      "fieldname": "rfq_section",
+      "fieldtype": "Section Break",
+      "label": "RFQ Information"
+    },
+    {
+      "fieldname": "rfq",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "RFQ",
+      "options": "RFQ",
+      "reqd": 1,
+      "description": "The Request for Quotation this is responding to"
+    },
+    {
+      "fetch_from": "rfq.title",
+      "fieldname": "rfq_title",
+      "fieldtype": "Data",
+      "label": "RFQ Title",
+      "read_only": 1,
+      "description": "Auto-filled from RFQ"
+    },
+    {
+      "fetch_from": "rfq.rfq_type",
+      "fieldname": "rfq_type",
+      "fieldtype": "Data",
+      "label": "RFQ Type",
+      "read_only": 1,
+      "description": "Auto-filled from RFQ"
+    },
+    {
+      "fieldname": "column_break_rfq",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "rfq.submission_deadline",
+      "fieldname": "rfq_deadline",
+      "fieldtype": "Datetime",
+      "label": "RFQ Deadline",
+      "read_only": 1,
+      "description": "Auto-filled from RFQ"
+    },
+    {
+      "fetch_from": "rfq.buyer",
+      "fieldname": "rfq_buyer",
+      "fieldtype": "Link",
+      "label": "Buyer",
+      "options": "Buyer Profile",
+      "read_only": 1,
+      "description": "Auto-filled from RFQ"
+    },
+    {
+      "fetch_from": "rfq.buyer_company",
+      "fieldname": "rfq_buyer_company",
+      "fieldtype": "Data",
+      "label": "Buyer Company",
+      "read_only": 1,
+      "description": "Auto-filled from RFQ"
+    },
+    {
+      "fieldname": "seller_section",
+      "fieldtype": "Section Break",
+      "label": "Seller Information"
+    },
+    {
+      "fieldname": "seller",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Seller",
+      "options": "Seller Profile",
+      "reqd": 1,
+      "description": "The seller submitting this quotation"
+    },
+    {
+      "fetch_from": "seller.seller_name",
+      "fieldname": "seller_name",
+      "fieldtype": "Data",
+      "label": "Seller Name",
+      "read_only": 1,
+      "description": "Auto-filled from Seller Profile"
+    },
+    {
+      "fetch_from": "seller.company_name",
+      "fieldname": "seller_company",
+      "fieldtype": "Data",
+      "label": "Company Name",
+      "read_only": 1,
+      "description": "Auto-filled from Seller Profile"
+    },
+    {
+      "fieldname": "column_break_seller",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "seller.contact_email",
+      "fieldname": "seller_email",
+      "fieldtype": "Data",
+      "label": "Seller Email",
+      "read_only": 1,
+      "description": "Auto-filled from Seller Profile"
+    },
+    {
+      "fetch_from": "seller.contact_phone",
+      "fieldname": "seller_phone",
+      "fieldtype": "Data",
+      "label": "Seller Phone",
+      "read_only": 1,
+      "description": "Auto-filled from Seller Profile"
+    },
+    {
+      "fieldname": "tenant_section",
+      "fieldtype": "Section Break",
+      "label": "Tenant Information",
+      "collapsible": 1
+    },
+    {
+      "fetch_from": "seller.tenant",
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "label": "Tenant",
+      "options": "Tenant",
+      "read_only": 1,
+      "in_standard_filter": 1,
+      "description": "Auto-filled from Seller Profile - Multi-tenant isolation field"
+    },
+    {
+      "fetch_from": "seller.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Seller Profile"
+    },
+    {
+      "fieldname": "items_section",
+      "fieldtype": "Section Break",
+      "label": "Quotation Items"
+    },
+    {
+      "fieldname": "items",
+      "fieldtype": "Table",
+      "label": "Items",
+      "options": "Quotation Item",
+      "reqd": 1,
+      "description": "Line items with pricing for this quotation"
+    },
+    {
+      "fieldname": "pricing_section",
+      "fieldtype": "Section Break",
+      "label": "Pricing"
+    },
+    {
+      "default": "USD",
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "reqd": 1,
+      "description": "Currency for all pricing in this quotation"
+    },
+    {
+      "default": "0",
+      "fieldname": "subtotal",
+      "fieldtype": "Currency",
+      "label": "Subtotal",
+      "read_only": 1,
+      "description": "Sum of all item amounts before discounts and taxes"
+    },
+    {
+      "fieldname": "column_break_pricing",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "discount_percentage",
+      "fieldtype": "Percent",
+      "label": "Discount %",
+      "description": "Overall discount percentage"
+    },
+    {
+      "default": "0",
+      "fieldname": "discount_amount",
+      "fieldtype": "Currency",
+      "label": "Discount Amount",
+      "read_only": 1,
+      "description": "Calculated discount amount"
+    },
+    {
+      "fieldname": "total_section",
+      "fieldtype": "Section Break",
+      "label": "Total"
+    },
+    {
+      "default": "0",
+      "fieldname": "tax_amount",
+      "fieldtype": "Currency",
+      "label": "Tax Amount",
+      "description": "Applicable tax amount (if any)"
+    },
+    {
+      "default": "0",
+      "fieldname": "shipping_cost",
+      "fieldtype": "Currency",
+      "label": "Shipping Cost",
+      "description": "Estimated shipping/freight cost"
+    },
+    {
+      "fieldname": "column_break_total",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_amount",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "Total Amount",
+      "read_only": 1,
+      "description": "Final total amount (subtotal - discount + tax + shipping)"
+    },
+    {
+      "fieldname": "delivery_section",
+      "fieldtype": "Section Break",
+      "label": "Delivery Information"
+    },
+    {
+      "fieldname": "delivery_days",
+      "fieldtype": "Int",
+      "label": "Delivery Days",
+      "description": "Estimated delivery time in days after order confirmation"
+    },
+    {
+      "fieldname": "estimated_delivery_date",
+      "fieldtype": "Date",
+      "label": "Estimated Delivery Date",
+      "description": "Estimated delivery date"
+    },
+    {
+      "fieldname": "column_break_delivery",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "EXW",
+      "fieldname": "incoterm",
+      "fieldtype": "Select",
+      "label": "Incoterm",
+      "options": "EXW\nFOB\nCIF\nDDP\nDAP\nFCA",
+      "description": "International Commercial Terms for this quotation"
+    },
+    {
+      "fieldname": "shipping_method",
+      "fieldtype": "Select",
+      "label": "Shipping Method",
+      "options": "\nSea Freight\nAir Freight\nLand Transport\nCourier\nMulti-Modal",
+      "description": "Proposed shipping method"
+    },
+    {
+      "fieldname": "shipping_from",
+      "fieldtype": "Data",
+      "label": "Shipping From",
+      "description": "Origin location for shipping"
+    },
+    {
+      "fieldname": "payment_section",
+      "fieldtype": "Section Break",
+      "label": "Payment Terms"
+    },
+    {
+      "fieldname": "payment_terms",
+      "fieldtype": "Select",
+      "label": "Payment Terms",
+      "options": "\n30% Advance, 70% Before Shipment\n50% Advance, 50% Before Shipment\n100% Advance\nLetter of Credit (LC)\nNet 30\nNet 60\nNet 90\nCustom",
+      "description": "Proposed payment terms"
+    },
+    {
+      "fieldname": "payment_description",
+      "fieldtype": "Small Text",
+      "label": "Payment Description",
+      "depends_on": "eval:doc.payment_terms === 'Custom'",
+      "description": "Detailed payment terms description (required for custom terms)"
+    },
+    {
+      "fieldname": "column_break_payment",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "advance_percentage",
+      "fieldtype": "Percent",
+      "label": "Advance Payment %",
+      "description": "Required advance payment percentage"
+    },
+    {
+      "default": "0",
+      "fieldname": "advance_amount",
+      "fieldtype": "Currency",
+      "label": "Advance Amount",
+      "read_only": 1,
+      "description": "Calculated advance payment amount"
+    },
+    {
+      "fieldname": "production_section",
+      "fieldtype": "Section Break",
+      "label": "Production Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "production_time_days",
+      "fieldtype": "Int",
+      "label": "Production Time (Days)",
+      "description": "Estimated production time in days"
+    },
+    {
+      "fieldname": "production_notes",
+      "fieldtype": "Small Text",
+      "label": "Production Notes",
+      "description": "Notes about production process, capabilities, or constraints"
+    },
+    {
+      "fieldname": "column_break_production",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "minimum_order_quantity",
+      "fieldtype": "Float",
+      "label": "Minimum Order Quantity",
+      "description": "Minimum order quantity for this quotation to be valid"
+    },
+    {
+      "fieldname": "capacity_per_month",
+      "fieldtype": "Float",
+      "label": "Monthly Capacity",
+      "description": "Maximum production capacity per month"
+    },
+    {
+      "fieldname": "certifications_section",
+      "fieldtype": "Section Break",
+      "label": "Certifications",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "available_certifications",
+      "fieldtype": "Small Text",
+      "label": "Available Certifications",
+      "description": "List of certifications available for products in this quotation"
+    },
+    {
+      "fieldname": "certification_notes",
+      "fieldtype": "Small Text",
+      "label": "Certification Notes",
+      "description": "Notes about certification availability, timing, or costs"
+    },
+    {
+      "fieldname": "notes_section",
+      "fieldtype": "Section Break",
+      "label": "Notes and Terms"
+    },
+    {
+      "fieldname": "seller_notes",
+      "fieldtype": "Text",
+      "label": "Seller Notes",
+      "description": "Additional notes from the seller"
+    },
+    {
+      "fieldname": "column_break_notes",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "terms_and_conditions",
+      "fieldtype": "Text",
+      "label": "Terms and Conditions",
+      "description": "Terms and conditions for this quotation"
+    },
+    {
+      "fieldname": "attachments_section",
+      "fieldtype": "Section Break",
+      "label": "Attachments",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "attachments",
+      "fieldtype": "Table",
+      "label": "Attachments",
+      "options": "File Attachment",
+      "description": "Supporting documents, catalogs, certificates"
+    },
+    {
+      "fieldname": "evaluation_section",
+      "fieldtype": "Section Break",
+      "label": "Buyer Evaluation",
+      "collapsible": 1,
+      "depends_on": "eval:doc.status === 'Under Review' || doc.status === 'Selected' || doc.status === 'Rejected'"
+    },
+    {
+      "fieldname": "buyer_evaluation_score",
+      "fieldtype": "Rating",
+      "label": "Evaluation Score",
+      "description": "Buyer's evaluation score for this quotation"
+    },
+    {
+      "fieldname": "buyer_evaluation_notes",
+      "fieldtype": "Small Text",
+      "label": "Evaluation Notes",
+      "description": "Buyer's evaluation notes"
+    },
+    {
+      "fieldname": "column_break_evaluation",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "rejection_reason",
+      "fieldtype": "Small Text",
+      "label": "Rejection Reason",
+      "depends_on": "eval:doc.status === 'Rejected'",
+      "description": "Reason for rejection (visible when rejected)"
+    },
+    {
+      "fieldname": "dates_section",
+      "fieldtype": "Section Break",
+      "label": "Key Dates",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "created_date",
+      "fieldtype": "Datetime",
+      "label": "Created Date",
+      "read_only": 1,
+      "description": "Date when quotation was created"
+    },
+    {
+      "fieldname": "submitted_date",
+      "fieldtype": "Datetime",
+      "label": "Submitted Date",
+      "read_only": 1,
+      "description": "Date when quotation was submitted to buyer"
+    },
+    {
+      "fieldname": "column_break_dates",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "reviewed_date",
+      "fieldtype": "Datetime",
+      "label": "Reviewed Date",
+      "read_only": 1,
+      "description": "Date when buyer started reviewing"
+    },
+    {
+      "fieldname": "decided_date",
+      "fieldtype": "Datetime",
+      "label": "Decision Date",
+      "read_only": 1,
+      "description": "Date when final decision was made"
+    },
+    {
+      "fieldname": "linked_section",
+      "fieldtype": "Section Break",
+      "label": "Linked Documents",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "linked_order",
+      "fieldtype": "Link",
+      "label": "Linked Order",
+      "options": "Order",
+      "read_only": 1,
+      "description": "Order created from this quotation"
+    },
+    {
+      "fieldname": "column_break_linked",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "linked_sales_order",
+      "fieldtype": "Data",
+      "label": "ERPNext Sales Order",
+      "read_only": 1,
+      "description": "Linked ERPNext Sales Order (if sync enabled)"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "RFQ",
+      "link_fieldname": "rfq"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Seller Profile",
+      "link_fieldname": "seller"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Order",
+      "link_fieldname": "linked_order"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "Quotation",
+  "naming_rule": "Expression (old style)",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Seller",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "if_owner": 0,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Buyer",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "rfq_title, seller_name, seller_company",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Draft"
+    },
+    {
+      "color": "blue",
+      "title": "Submitted"
+    },
+    {
+      "color": "yellow",
+      "title": "Under Review"
+    },
+    {
+      "color": "green",
+      "title": "Selected"
+    },
+    {
+      "color": "red",
+      "title": "Rejected"
+    },
+    {
+      "color": "orange",
+      "title": "Expired"
+    },
+    {
+      "color": "gray",
+      "title": "Cancelled"
+    }
+  ],
+  "title_field": "rfq_title",
+  "track_changes": 1
+}

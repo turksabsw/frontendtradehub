@@ -1,0 +1,333 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:attribute_name",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "attribute_name",
+  "attribute_code",
+  "column_break_basic",
+  "enabled",
+  "is_variant_attribute",
+  "type_section",
+  "attribute_type",
+  "display_type",
+  "column_break_type",
+  "is_required",
+  "is_filterable",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "column_break_tenant",
+  "is_global",
+  "description_section",
+  "description",
+  "help_text",
+  "validation_section",
+  "min_value",
+  "max_value",
+  "column_break_validation",
+  "regex_pattern",
+  "validation_message",
+  "display_section",
+  "display_order",
+  "show_in_product_page",
+  "column_break_display",
+  "show_in_filters",
+  "show_in_comparison",
+  "stats_section",
+  "value_count",
+  "product_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "attribute_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Attribute Name",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Display name of the attribute (e.g., Color, Size, Material)"
+  },
+  {
+   "fieldname": "attribute_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Attribute Code",
+   "description": "Internal code for the attribute (auto-generated from name if not provided)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled",
+   "description": "Whether attribute is active and can be used"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_variant_attribute",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Variant Attribute",
+   "description": "Whether this attribute defines product variants (e.g., Color creates different SKUs)"
+  },
+  {
+   "fieldname": "type_section",
+   "fieldtype": "Section Break",
+   "label": "Attribute Type"
+  },
+  {
+   "default": "Select",
+   "fieldname": "attribute_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Attribute Type",
+   "options": "Select\nMulti-Select\nText\nNumber\nBoolean",
+   "reqd": 1,
+   "description": "Data type of the attribute values"
+  },
+  {
+   "default": "Dropdown",
+   "fieldname": "display_type",
+   "fieldtype": "Select",
+   "label": "Display Type",
+   "options": "Dropdown\nRadio Button\nCheckbox\nColor Swatch\nImage Swatch\nButton\nText Input\nNumber Input",
+   "description": "How to display this attribute in the product form"
+  },
+  {
+   "fieldname": "column_break_type",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "label": "Is Required",
+   "description": "Whether this attribute must be filled when creating a product"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_filterable",
+   "fieldtype": "Check",
+   "label": "Is Filterable",
+   "description": "Whether this attribute can be used to filter products in search"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "in_standard_filter": 1,
+   "description": "Tenant for multi-tenant isolation (empty for global attributes)"
+  },
+  {
+   "fetch_from": "tenant.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Tenant"
+  },
+  {
+   "fieldname": "column_break_tenant",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_global",
+   "fieldtype": "Check",
+   "label": "Is Global",
+   "description": "Global attributes are visible to all tenants"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Detailed description of the attribute"
+  },
+  {
+   "fieldname": "help_text",
+   "fieldtype": "Data",
+   "label": "Help Text",
+   "description": "Help text shown to users when filling this attribute"
+  },
+  {
+   "fieldname": "validation_section",
+   "fieldtype": "Section Break",
+   "label": "Validation Rules",
+   "collapsible": 1,
+   "depends_on": "eval:['Text', 'Number'].includes(doc.attribute_type)"
+  },
+  {
+   "fieldname": "min_value",
+   "fieldtype": "Float",
+   "label": "Minimum Value",
+   "description": "Minimum allowed value (for Number type)"
+  },
+  {
+   "fieldname": "max_value",
+   "fieldtype": "Float",
+   "label": "Maximum Value",
+   "description": "Maximum allowed value (for Number type)"
+  },
+  {
+   "fieldname": "column_break_validation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "regex_pattern",
+   "fieldtype": "Data",
+   "label": "Regex Pattern",
+   "description": "Regular expression pattern for validation (for Text type)"
+  },
+  {
+   "fieldname": "validation_message",
+   "fieldtype": "Data",
+   "label": "Validation Message",
+   "description": "Custom error message shown when validation fails"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order",
+   "description": "Sort order for display (lower numbers appear first)"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_in_product_page",
+   "fieldtype": "Check",
+   "label": "Show in Product Page",
+   "description": "Display this attribute on the product detail page"
+  },
+  {
+   "fieldname": "column_break_display",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_in_filters",
+   "fieldtype": "Check",
+   "label": "Show in Filters",
+   "description": "Display this attribute in product filters"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_in_comparison",
+   "fieldtype": "Check",
+   "label": "Show in Comparison",
+   "description": "Include this attribute in product comparison table"
+  },
+  {
+   "fieldname": "stats_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "value_count",
+   "fieldtype": "Int",
+   "label": "Value Count",
+   "read_only": 1,
+   "description": "Number of attribute values defined"
+  },
+  {
+   "default": "0",
+   "fieldname": "product_count",
+   "fieldtype": "Int",
+   "label": "Product Count",
+   "read_only": 1,
+   "description": "Number of products using this attribute"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Attribute Values",
+   "link_doctype": "Product Attribute Value",
+   "link_fieldname": "attribute"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Catalog",
+ "name": "Product Attribute",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 0,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Buyer",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "attribute_name, attribute_code, attribute_type",
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "title_field": "attribute_name",
+ "track_changes": 1
+}

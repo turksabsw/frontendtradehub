@@ -1,0 +1,112 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"card-break-0\",\"type\":\"card\",\"data\":{\"card_name\":\"Generation\",\"col\":4}},{\"id\":\"card-break-1\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}}]",
+ "creation": "2026-01-29 16:30:11.356532",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "quantity-1",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Mock Data Engine",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Generation",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mock Generation Request",
+   "link_count": 0,
+   "link_to": "Mock Generation Request",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mock Generation Profile",
+   "link_count": 0,
+   "link_to": "Mock Generation Profile",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mock Engine Settings",
+   "link_count": 0,
+   "link_to": "Mock Engine Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mock Field Mapping",
+   "link_count": 0,
+   "link_to": "Mock Field Mapping",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mock Industry",
+   "link_count": 0,
+   "link_to": "Mock Industry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-01-29 16:35:00.000000",
+ "modified_by": "Administrator",
+ "module": "Mock Data Engine",
+ "name": "Mock Data Engine",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "TR Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 2.0,
+ "shortcuts": [
+  {
+   "doc_view": "",
+   "label": "New Generation Request",
+   "link_to": "Mock Generation Request",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Settings",
+   "link_to": "Mock Engine Settings",
+   "type": "DocType"
+  }
+ ],
+ "title": "Mock Data Engine"
+}

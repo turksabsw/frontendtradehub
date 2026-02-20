@@ -1,0 +1,295 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-orders\", \"type\": \"card\", \"data\": {\"card_name\": \"Orders & Fulfillment\", \"col\": 4}}, {\"id\": \"card-rfq\", \"type\": \"card\", \"data\": {\"card_name\": \"RFQ & Quotation\", \"col\": 4}}, {\"id\": \"card-payments\", \"type\": \"card\", \"data\": {\"card_name\": \"Payments & Finance\", \"col\": 4}}, {\"id\": \"card-pricing\", \"type\": \"card\", \"data\": {\"card_name\": \"Pricing & Trade\", \"col\": 6}}, {\"id\": \"card-account\", \"type\": \"card\", \"data\": {\"card_name\": \"Account Management\", \"col\": 6}}]",
+ "creation": "2026-02-16 16:18:57.610361",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "comment",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "TradeHub Commerce",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Orders & Fulfillment",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cart",
+   "link_count": 0,
+   "link_to": "Cart",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marketplace Order",
+   "link_count": 0,
+   "link_to": "Marketplace Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Order",
+   "link_count": 0,
+   "link_to": "Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Order Event",
+   "link_count": 0,
+   "link_to": "Order Event",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sub Order",
+   "link_count": 0,
+   "link_to": "Sub Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ & Quotation",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quotation",
+   "link_count": 0,
+   "link_to": "Quotation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ",
+   "link_count": 0,
+   "link_to": "RFQ",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ Message",
+   "link_count": 0,
+   "link_to": "RFQ Message",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ Message Thread",
+   "link_count": 0,
+   "link_to": "RFQ Message Thread",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ NDA Link",
+   "link_count": 0,
+   "link_to": "RFQ NDA Link",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ Quote",
+   "link_count": 0,
+   "link_to": "RFQ Quote",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RFQ Quote Revision",
+   "link_count": 0,
+   "link_to": "RFQ Quote Revision",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payments & Finance",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Commission Plan",
+   "link_count": 0,
+   "link_to": "Commission Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Commission Rule",
+   "link_count": 0,
+   "link_to": "Commission Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Escrow Account",
+   "link_count": 0,
+   "link_to": "Escrow Account",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Escrow Event",
+   "link_count": 0,
+   "link_to": "Escrow Event",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payment Intent",
+   "link_count": 0,
+   "link_to": "Payment Intent",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payment Method",
+   "link_count": 0,
+   "link_to": "Payment Method",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payment Plan",
+   "link_count": 0,
+   "link_to": "Payment Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Rate",
+   "link_count": 0,
+   "link_to": "Tax Rate",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pricing & Trade",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Incoterm Price",
+   "link_count": 0,
+   "link_to": "Incoterm Price",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Account Management",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Account Action",
+   "link_count": 0,
+   "link_to": "Account Action",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-16 16:23:36.801804",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "TradeHub Commerce",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 3.0,
+ "shortcuts": [],
+ "title": "TradeHub Commerce"
+}

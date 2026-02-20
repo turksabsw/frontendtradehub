@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "quote",
+  "seller",
+  "seller_name",
+  "column_break_quote",
+  "total_amount",
+  "status",
+  "submitted_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "quote",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Quote",
+   "options": "RFQ Quote",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "quote.seller",
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "quote.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Seller Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_quote",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "quote.total_amount",
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "quote.status",
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "quote.creation",
+   "fieldname": "submitted_at",
+   "fieldtype": "Datetime",
+   "label": "Submitted At",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Commerce",
+ "name": "RFQ Quote Link",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

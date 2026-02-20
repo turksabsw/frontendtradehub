@@ -1,0 +1,812 @@
+[
+  {
+    "doctype": "City",
+    "city_code": "01",
+    "city_name": "Adana",
+    "region": "Akdeniz",
+    "is_active": 1,
+    "phone_code": "322",
+    "country": "Turkey",
+    "name": "01"
+  },
+  {
+    "doctype": "City",
+    "city_code": "02",
+    "city_name": "Adiyaman",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "416",
+    "country": "Turkey",
+    "name": "02"
+  },
+  {
+    "doctype": "City",
+    "city_code": "03",
+    "city_name": "Afyonkarahisar",
+    "region": "Ege",
+    "is_active": 1,
+    "phone_code": "272",
+    "country": "Turkey",
+    "name": "03"
+  },
+  {
+    "doctype": "City",
+    "city_code": "04",
+    "city_name": "Agri",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "472",
+    "country": "Turkey",
+    "name": "04"
+  },
+  {
+    "doctype": "City",
+    "city_code": "05",
+    "city_name": "Amasya",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "358",
+    "country": "Turkey",
+    "name": "05"
+  },
+  {
+    "doctype": "City",
+    "city_code": "06",
+    "city_name": "Ankara",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "312",
+    "country": "Turkey",
+    "name": "06"
+  },
+  {
+    "doctype": "City",
+    "city_code": "07",
+    "city_name": "Antalya",
+    "region": "Akdeniz",
+    "is_active": 1,
+    "phone_code": "242",
+    "country": "Turkey",
+    "name": "07"
+  },
+  {
+    "doctype": "City",
+    "city_code": "08",
+    "city_name": "Artvin",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "466",
+    "country": "Turkey",
+    "name": "08"
+  },
+  {
+    "doctype": "City",
+    "city_code": "09",
+    "city_name": "Aydin",
+    "region": "Ege",
+    "is_active": 1,
+    "phone_code": "256",
+    "country": "Turkey",
+    "name": "09"
+  },
+  {
+    "doctype": "City",
+    "city_code": "10",
+    "city_name": "Balikesir",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "266",
+    "country": "Turkey",
+    "name": "10"
+  },
+  {
+    "doctype": "City",
+    "city_code": "11",
+    "city_name": "Bilecik",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "228",
+    "country": "Turkey",
+    "name": "11"
+  },
+  {
+    "doctype": "City",
+    "city_code": "12",
+    "city_name": "Bingol",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "426",
+    "country": "Turkey",
+    "name": "12"
+  },
+  {
+    "doctype": "City",
+    "city_code": "13",
+    "city_name": "Bitlis",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "434",
+    "country": "Turkey",
+    "name": "13"
+  },
+  {
+    "doctype": "City",
+    "city_code": "14",
+    "city_name": "Bolu",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "374",
+    "country": "Turkey",
+    "name": "14"
+  },
+  {
+    "doctype": "City",
+    "city_code": "15",
+    "city_name": "Burdur",
+    "region": "Akdeniz",
+    "is_active": 1,
+    "phone_code": "248",
+    "country": "Turkey",
+    "name": "15"
+  },
+  {
+    "doctype": "City",
+    "city_code": "16",
+    "city_name": "Bursa",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "224",
+    "country": "Turkey",
+    "name": "16"
+  },
+  {
+    "doctype": "City",
+    "city_code": "17",
+    "city_name": "Canakkale",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "286",
+    "country": "Turkey",
+    "name": "17"
+  },
+  {
+    "doctype": "City",
+    "city_code": "18",
+    "city_name": "Cankiri",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "376",
+    "country": "Turkey",
+    "name": "18"
+  },
+  {
+    "doctype": "City",
+    "city_code": "19",
+    "city_name": "Corum",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "364",
+    "country": "Turkey",
+    "name": "19"
+  },
+  {
+    "doctype": "City",
+    "city_code": "20",
+    "city_name": "Denizli",
+    "region": "Ege",
+    "is_active": 1,
+    "phone_code": "258",
+    "country": "Turkey",
+    "name": "20"
+  },
+  {
+    "doctype": "City",
+    "city_code": "21",
+    "city_name": "Diyarbakir",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "412",
+    "country": "Turkey",
+    "name": "21"
+  },
+  {
+    "doctype": "City",
+    "city_code": "22",
+    "city_name": "Edirne",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "284",
+    "country": "Turkey",
+    "name": "22"
+  },
+  {
+    "doctype": "City",
+    "city_code": "23",
+    "city_name": "Elazig",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "424",
+    "country": "Turkey",
+    "name": "23"
+  },
+  {
+    "doctype": "City",
+    "city_code": "24",
+    "city_name": "Erzincan",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "446",
+    "country": "Turkey",
+    "name": "24"
+  },
+  {
+    "doctype": "City",
+    "city_code": "25",
+    "city_name": "Erzurum",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "442",
+    "country": "Turkey",
+    "name": "25"
+  },
+  {
+    "doctype": "City",
+    "city_code": "26",
+    "city_name": "Eskisehir",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "222",
+    "country": "Turkey",
+    "name": "26"
+  },
+  {
+    "doctype": "City",
+    "city_code": "27",
+    "city_name": "Gaziantep",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "342",
+    "country": "Turkey",
+    "name": "27"
+  },
+  {
+    "doctype": "City",
+    "city_code": "28",
+    "city_name": "Giresun",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "454",
+    "country": "Turkey",
+    "name": "28"
+  },
+  {
+    "doctype": "City",
+    "city_code": "29",
+    "city_name": "Gumushane",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "456",
+    "country": "Turkey",
+    "name": "29"
+  },
+  {
+    "doctype": "City",
+    "city_code": "30",
+    "city_name": "Hakkari",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "438",
+    "country": "Turkey",
+    "name": "30"
+  },
+  {
+    "doctype": "City",
+    "city_code": "31",
+    "city_name": "Hatay",
+    "region": "Akdeniz",
+    "is_active": 1,
+    "phone_code": "326",
+    "country": "Turkey",
+    "name": "31"
+  },
+  {
+    "doctype": "City",
+    "city_code": "32",
+    "city_name": "Isparta",
+    "region": "Akdeniz",
+    "is_active": 1,
+    "phone_code": "246",
+    "country": "Turkey",
+    "name": "32"
+  },
+  {
+    "doctype": "City",
+    "city_code": "33",
+    "city_name": "Mersin",
+    "region": "Akdeniz",
+    "is_active": 1,
+    "phone_code": "324",
+    "country": "Turkey",
+    "name": "33"
+  },
+  {
+    "doctype": "City",
+    "city_code": "34",
+    "city_name": "Istanbul",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "212",
+    "country": "Turkey",
+    "name": "34"
+  },
+  {
+    "doctype": "City",
+    "city_code": "35",
+    "city_name": "Izmir",
+    "region": "Ege",
+    "is_active": 1,
+    "phone_code": "232",
+    "country": "Turkey",
+    "name": "35"
+  },
+  {
+    "doctype": "City",
+    "city_code": "36",
+    "city_name": "Kars",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "474",
+    "country": "Turkey",
+    "name": "36"
+  },
+  {
+    "doctype": "City",
+    "city_code": "37",
+    "city_name": "Kastamonu",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "366",
+    "country": "Turkey",
+    "name": "37"
+  },
+  {
+    "doctype": "City",
+    "city_code": "38",
+    "city_name": "Kayseri",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "352",
+    "country": "Turkey",
+    "name": "38"
+  },
+  {
+    "doctype": "City",
+    "city_code": "39",
+    "city_name": "Kirklareli",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "288",
+    "country": "Turkey",
+    "name": "39"
+  },
+  {
+    "doctype": "City",
+    "city_code": "40",
+    "city_name": "Kirsehir",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "386",
+    "country": "Turkey",
+    "name": "40"
+  },
+  {
+    "doctype": "City",
+    "city_code": "41",
+    "city_name": "Kocaeli",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "262",
+    "country": "Turkey",
+    "name": "41"
+  },
+  {
+    "doctype": "City",
+    "city_code": "42",
+    "city_name": "Konya",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "332",
+    "country": "Turkey",
+    "name": "42"
+  },
+  {
+    "doctype": "City",
+    "city_code": "43",
+    "city_name": "Kutahya",
+    "region": "Ege",
+    "is_active": 1,
+    "phone_code": "274",
+    "country": "Turkey",
+    "name": "43"
+  },
+  {
+    "doctype": "City",
+    "city_code": "44",
+    "city_name": "Malatya",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "422",
+    "country": "Turkey",
+    "name": "44"
+  },
+  {
+    "doctype": "City",
+    "city_code": "45",
+    "city_name": "Manisa",
+    "region": "Ege",
+    "is_active": 1,
+    "phone_code": "236",
+    "country": "Turkey",
+    "name": "45"
+  },
+  {
+    "doctype": "City",
+    "city_code": "46",
+    "city_name": "Kahramanmaras",
+    "region": "Akdeniz",
+    "is_active": 1,
+    "phone_code": "344",
+    "country": "Turkey",
+    "name": "46"
+  },
+  {
+    "doctype": "City",
+    "city_code": "47",
+    "city_name": "Mardin",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "482",
+    "country": "Turkey",
+    "name": "47"
+  },
+  {
+    "doctype": "City",
+    "city_code": "48",
+    "city_name": "Mugla",
+    "region": "Ege",
+    "is_active": 1,
+    "phone_code": "252",
+    "country": "Turkey",
+    "name": "48"
+  },
+  {
+    "doctype": "City",
+    "city_code": "49",
+    "city_name": "Mus",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "436",
+    "country": "Turkey",
+    "name": "49"
+  },
+  {
+    "doctype": "City",
+    "city_code": "50",
+    "city_name": "Nevsehir",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "384",
+    "country": "Turkey",
+    "name": "50"
+  },
+  {
+    "doctype": "City",
+    "city_code": "51",
+    "city_name": "Nigde",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "388",
+    "country": "Turkey",
+    "name": "51"
+  },
+  {
+    "doctype": "City",
+    "city_code": "52",
+    "city_name": "Ordu",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "452",
+    "country": "Turkey",
+    "name": "52"
+  },
+  {
+    "doctype": "City",
+    "city_code": "53",
+    "city_name": "Rize",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "464",
+    "country": "Turkey",
+    "name": "53"
+  },
+  {
+    "doctype": "City",
+    "city_code": "54",
+    "city_name": "Sakarya",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "264",
+    "country": "Turkey",
+    "name": "54"
+  },
+  {
+    "doctype": "City",
+    "city_code": "55",
+    "city_name": "Samsun",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "362",
+    "country": "Turkey",
+    "name": "55"
+  },
+  {
+    "doctype": "City",
+    "city_code": "56",
+    "city_name": "Siirt",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "484",
+    "country": "Turkey",
+    "name": "56"
+  },
+  {
+    "doctype": "City",
+    "city_code": "57",
+    "city_name": "Sinop",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "368",
+    "country": "Turkey",
+    "name": "57"
+  },
+  {
+    "doctype": "City",
+    "city_code": "58",
+    "city_name": "Sivas",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "346",
+    "country": "Turkey",
+    "name": "58"
+  },
+  {
+    "doctype": "City",
+    "city_code": "59",
+    "city_name": "Tekirdag",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "282",
+    "country": "Turkey",
+    "name": "59"
+  },
+  {
+    "doctype": "City",
+    "city_code": "60",
+    "city_name": "Tokat",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "356",
+    "country": "Turkey",
+    "name": "60"
+  },
+  {
+    "doctype": "City",
+    "city_code": "61",
+    "city_name": "Trabzon",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "462",
+    "country": "Turkey",
+    "name": "61"
+  },
+  {
+    "doctype": "City",
+    "city_code": "62",
+    "city_name": "Tunceli",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "428",
+    "country": "Turkey",
+    "name": "62"
+  },
+  {
+    "doctype": "City",
+    "city_code": "63",
+    "city_name": "Sanliurfa",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "414",
+    "country": "Turkey",
+    "name": "63"
+  },
+  {
+    "doctype": "City",
+    "city_code": "64",
+    "city_name": "Usak",
+    "region": "Ege",
+    "is_active": 1,
+    "phone_code": "276",
+    "country": "Turkey",
+    "name": "64"
+  },
+  {
+    "doctype": "City",
+    "city_code": "65",
+    "city_name": "Van",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "432",
+    "country": "Turkey",
+    "name": "65"
+  },
+  {
+    "doctype": "City",
+    "city_code": "66",
+    "city_name": "Yozgat",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "354",
+    "country": "Turkey",
+    "name": "66"
+  },
+  {
+    "doctype": "City",
+    "city_code": "67",
+    "city_name": "Zonguldak",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "372",
+    "country": "Turkey",
+    "name": "67"
+  },
+  {
+    "doctype": "City",
+    "city_code": "68",
+    "city_name": "Aksaray",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "382",
+    "country": "Turkey",
+    "name": "68"
+  },
+  {
+    "doctype": "City",
+    "city_code": "69",
+    "city_name": "Bayburt",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "458",
+    "country": "Turkey",
+    "name": "69"
+  },
+  {
+    "doctype": "City",
+    "city_code": "70",
+    "city_name": "Karaman",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "338",
+    "country": "Turkey",
+    "name": "70"
+  },
+  {
+    "doctype": "City",
+    "city_code": "71",
+    "city_name": "Kirikkale",
+    "region": "Ic Anadolu",
+    "is_active": 1,
+    "phone_code": "318",
+    "country": "Turkey",
+    "name": "71"
+  },
+  {
+    "doctype": "City",
+    "city_code": "72",
+    "city_name": "Batman",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "488",
+    "country": "Turkey",
+    "name": "72"
+  },
+  {
+    "doctype": "City",
+    "city_code": "73",
+    "city_name": "Sirnak",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "486",
+    "country": "Turkey",
+    "name": "73"
+  },
+  {
+    "doctype": "City",
+    "city_code": "74",
+    "city_name": "Bartin",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "378",
+    "country": "Turkey",
+    "name": "74"
+  },
+  {
+    "doctype": "City",
+    "city_code": "75",
+    "city_name": "Ardahan",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "478",
+    "country": "Turkey",
+    "name": "75"
+  },
+  {
+    "doctype": "City",
+    "city_code": "76",
+    "city_name": "Igdir",
+    "region": "Dogu Anadolu",
+    "is_active": 1,
+    "phone_code": "476",
+    "country": "Turkey",
+    "name": "76"
+  },
+  {
+    "doctype": "City",
+    "city_code": "77",
+    "city_name": "Yalova",
+    "region": "Marmara",
+    "is_active": 1,
+    "phone_code": "226",
+    "country": "Turkey",
+    "name": "77"
+  },
+  {
+    "doctype": "City",
+    "city_code": "78",
+    "city_name": "Karabuk",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "370",
+    "country": "Turkey",
+    "name": "78"
+  },
+  {
+    "doctype": "City",
+    "city_code": "79",
+    "city_name": "Kilis",
+    "region": "Guneydogu Anadolu",
+    "is_active": 1,
+    "phone_code": "348",
+    "country": "Turkey",
+    "name": "79"
+  },
+  {
+    "doctype": "City",
+    "city_code": "80",
+    "city_name": "Osmaniye",
+    "region": "Akdeniz",
+    "is_active": 1,
+    "phone_code": "328",
+    "country": "Turkey",
+    "name": "80"
+  },
+  {
+    "doctype": "City",
+    "city_code": "81",
+    "city_name": "Duzce",
+    "region": "Karadeniz",
+    "is_active": 1,
+    "phone_code": "380",
+    "country": "Turkey",
+    "name": "81"
+  }
+]

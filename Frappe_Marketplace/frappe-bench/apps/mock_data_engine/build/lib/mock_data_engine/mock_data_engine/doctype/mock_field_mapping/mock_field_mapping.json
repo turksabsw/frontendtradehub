@@ -1,0 +1,384 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:mapping_name",
+  "creation": "2024-01-28 12:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "mapping_name",
+    "enabled",
+    "column_break_basic",
+    "priority",
+    "description",
+    "matching_criteria_section",
+    "match_type",
+    "field_pattern",
+    "column_break_matching",
+    "field_types",
+    "target_doctypes",
+    "generator_configuration_section",
+    "generator_type",
+    "column_break_generator",
+    "generator_method",
+    "faker_settings_section",
+    "faker_provider",
+    "faker_method",
+    "column_break_faker",
+    "faker_locale",
+    "faker_args",
+    "fixed_value_section",
+    "fixed_value",
+    "fixed_value_type",
+    "pattern_settings_section",
+    "pattern_template",
+    "pattern_variables",
+    "range_settings_section",
+    "min_value",
+    "max_value",
+    "column_break_range",
+    "decimal_places",
+    "turkish_validator_section",
+    "turkish_type",
+    "llm_settings_section",
+    "llm_prompt",
+    "llm_context_fields",
+    "advanced_settings_section",
+    "custom_function",
+    "validation_regex",
+    "fallback_value"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "description": "Unique name for this field mapping rule",
+      "fieldname": "mapping_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Mapping Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "default": "1",
+      "description": "Enable or disable this mapping",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Enabled"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "100",
+      "description": "Higher priority mappings are evaluated first (1-1000). Use lower numbers for more specific patterns.",
+      "fieldname": "priority",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Priority"
+    },
+    {
+      "description": "Description of what this mapping does",
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "matching_criteria_section",
+      "fieldtype": "Section Break",
+      "label": "Matching Criteria"
+    },
+    {
+      "default": "Contains",
+      "description": "How to match the field pattern against field names",
+      "fieldname": "match_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Match Type",
+      "options": "Exact\nContains\nStarts With\nEnds With\nRegex",
+      "reqd": 1
+    },
+    {
+      "description": "Pattern to match against field names. For Regex match type, use a valid regex pattern.",
+      "fieldname": "field_pattern",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Field Pattern",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_matching",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "Comma-separated list of Frappe field types this mapping applies to (e.g., 'Data,Small Text'). Leave empty to match all field types.",
+      "fieldname": "field_types",
+      "fieldtype": "Data",
+      "label": "Field Types"
+    },
+    {
+      "description": "Comma-separated list of DocType names to limit this mapping to. Leave empty to apply globally.",
+      "fieldname": "target_doctypes",
+      "fieldtype": "Small Text",
+      "label": "Target DocTypes"
+    },
+    {
+      "fieldname": "generator_configuration_section",
+      "fieldtype": "Section Break",
+      "label": "Generator Configuration"
+    },
+    {
+      "default": "Faker",
+      "description": "The type of data generator to use for matching fields",
+      "fieldname": "generator_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Generator Type",
+      "options": "Faker\nFixed Value\nPattern\nRange\nSelect Options\nTurkish Validator\nLLM\nCustom Function",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_generator",
+      "fieldtype": "Column Break"
+    },
+    {
+      "description": "The specific generator method to use (optional, for documentation)",
+      "fieldname": "generator_method",
+      "fieldtype": "Data",
+      "label": "Generator Method",
+      "read_only_depends_on": "eval:doc.generator_type !== 'Custom Function'"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Faker'",
+      "fieldname": "faker_settings_section",
+      "fieldtype": "Section Break",
+      "label": "Faker Settings"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Faker'",
+      "description": "Faker provider category (e.g., 'person', 'address', 'company', 'internet')",
+      "fieldname": "faker_provider",
+      "fieldtype": "Data",
+      "label": "Faker Provider",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Faker'"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Faker'",
+      "description": "Faker method to call (e.g., 'name', 'email', 'phone_number')",
+      "fieldname": "faker_method",
+      "fieldtype": "Data",
+      "label": "Faker Method",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Faker'"
+    },
+    {
+      "fieldname": "column_break_faker",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Faker'",
+      "description": "Override the default locale for this Faker method (e.g., 'tr_TR', 'en_US')",
+      "fieldname": "faker_locale",
+      "fieldtype": "Select",
+      "label": "Faker Locale Override",
+      "options": "\ntr_TR\nen_US\nen_GB\nde_DE\nfr_FR\nes_ES\nit_IT\npt_BR\nja_JP\nzh_CN\nar_SA"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Faker'",
+      "description": "JSON object with additional arguments to pass to the Faker method (e.g., {\"min_length\": 5, \"max_length\": 10})",
+      "fieldname": "faker_args",
+      "fieldtype": "Small Text",
+      "label": "Faker Arguments (JSON)"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Fixed Value'",
+      "fieldname": "fixed_value_section",
+      "fieldtype": "Section Break",
+      "label": "Fixed Value Settings"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Fixed Value'",
+      "description": "The fixed value to use for all matching fields",
+      "fieldname": "fixed_value",
+      "fieldtype": "Small Text",
+      "label": "Fixed Value",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Fixed Value'"
+    },
+    {
+      "default": "String",
+      "depends_on": "eval:doc.generator_type === 'Fixed Value'",
+      "description": "How to interpret the fixed value",
+      "fieldname": "fixed_value_type",
+      "fieldtype": "Select",
+      "label": "Fixed Value Type",
+      "options": "String\nInteger\nFloat\nBoolean\nJSON"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Pattern'",
+      "fieldname": "pattern_settings_section",
+      "fieldtype": "Section Break",
+      "label": "Pattern Settings"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Pattern'",
+      "description": "Pattern template with placeholders. Use {name}, {date}, {counter}, {uuid}, {random:N} (N random chars). Example: 'CUST-{date:%Y%m%d}-{counter:5}'",
+      "fieldname": "pattern_template",
+      "fieldtype": "Data",
+      "label": "Pattern Template",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Pattern'"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Pattern'",
+      "description": "JSON object with custom variables for the pattern (e.g., {\"prefix\": \"INV\"})",
+      "fieldname": "pattern_variables",
+      "fieldtype": "Small Text",
+      "label": "Pattern Variables (JSON)"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Range'",
+      "fieldname": "range_settings_section",
+      "fieldtype": "Section Break",
+      "label": "Range Settings"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Range'",
+      "description": "Minimum value for the range",
+      "fieldname": "min_value",
+      "fieldtype": "Float",
+      "label": "Minimum Value"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Range'",
+      "description": "Maximum value for the range",
+      "fieldname": "max_value",
+      "fieldtype": "Float",
+      "label": "Maximum Value"
+    },
+    {
+      "fieldname": "column_break_range",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.generator_type === 'Range'",
+      "description": "Number of decimal places for generated values (0 for integers)",
+      "fieldname": "decimal_places",
+      "fieldtype": "Int",
+      "label": "Decimal Places"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'Turkish Validator'",
+      "fieldname": "turkish_validator_section",
+      "fieldtype": "Section Break",
+      "label": "Turkish Validator Settings"
+    },
+    {
+      "default": "TCKN",
+      "depends_on": "eval:doc.generator_type === 'Turkish Validator'",
+      "description": "Type of Turkish identifier to generate",
+      "fieldname": "turkish_type",
+      "fieldtype": "Select",
+      "label": "Turkish Identifier Type",
+      "options": "TCKN\nVKN\nIBAN\nPhone\nPostal Code"
+    },
+    {
+      "collapsible": 1,
+      "depends_on": "eval:doc.generator_type === 'LLM'",
+      "fieldname": "llm_settings_section",
+      "fieldtype": "Section Break",
+      "label": "LLM Settings"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'LLM'",
+      "description": "Prompt to send to the LLM for generating the field value. Use {field_name}, {doctype}, {context} placeholders.",
+      "fieldname": "llm_prompt",
+      "fieldtype": "Text",
+      "label": "LLM Prompt",
+      "mandatory_depends_on": "eval:doc.generator_type === 'LLM'"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'LLM'",
+      "description": "Comma-separated list of other field names to include as context for the LLM",
+      "fieldname": "llm_context_fields",
+      "fieldtype": "Data",
+      "label": "Context Fields"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "advanced_settings_section",
+      "fieldtype": "Section Break",
+      "label": "Advanced Settings"
+    },
+    {
+      "depends_on": "eval:doc.generator_type === 'Custom Function'",
+      "description": "Python function path to call (e.g., 'mock_data_engine.generators.custom.my_generator'). Function should accept (field, doctype, context) arguments.",
+      "fieldname": "custom_function",
+      "fieldtype": "Data",
+      "label": "Custom Function",
+      "mandatory_depends_on": "eval:doc.generator_type === 'Custom Function'"
+    },
+    {
+      "description": "Optional regex pattern to validate generated values. If validation fails, fallback value is used.",
+      "fieldname": "validation_regex",
+      "fieldtype": "Data",
+      "label": "Validation Regex"
+    },
+    {
+      "description": "Value to use if generation or validation fails",
+      "fieldname": "fallback_value",
+      "fieldtype": "Small Text",
+      "label": "Fallback Value"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-28 12:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Mock Data Engine",
+  "name": "Mock Field Mapping",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Administrator",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "mapping_name,field_pattern,generator_type",
+  "sort_field": "priority",
+  "sort_order": "ASC",
+  "title_field": "mapping_name",
+  "track_changes": 1
+}

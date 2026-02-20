@@ -1,0 +1,560 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "field:tenant",
+  "creation": "2026-02-05 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_section",
+    "tenant",
+    "tenant_name",
+    "column_break_basic",
+    "enabled",
+    "debug_mode",
+    "connection_section",
+    "erpnext_site_url",
+    "erpnext_api_key",
+    "column_break_connection",
+    "erpnext_api_secret",
+    "connection_status",
+    "sync_toggles_section",
+    "sync_products",
+    "sync_sellers_to_suppliers",
+    "sync_buyers_to_customers",
+    "column_break_sync",
+    "sync_orders_to_sales_orders",
+    "sync_rfq_to_supplier_quotation",
+    "sync_inventory",
+    "product_sync_section",
+    "auto_create_items",
+    "auto_update_items",
+    "item_group_mapping",
+    "column_break_product",
+    "default_item_group",
+    "sync_product_images",
+    "sync_product_variants",
+    "order_sync_section",
+    "auto_create_sales_orders",
+    "auto_update_order_status",
+    "column_break_order",
+    "auto_create_delivery_notes",
+    "auto_create_sales_invoices",
+    "inventory_sync_section",
+    "sync_stock_levels",
+    "sync_warehouse",
+    "column_break_inventory",
+    "default_warehouse",
+    "sync_interval_minutes",
+    "webhook_section",
+    "enable_webhooks",
+    "webhook_secret",
+    "column_break_webhook",
+    "webhook_url",
+    "webhook_events",
+    "sync_schedule_section",
+    "enable_scheduled_sync",
+    "sync_frequency",
+    "column_break_schedule",
+    "last_sync_time",
+    "next_scheduled_sync",
+    "field_mapping_section",
+    "custom_field_mappings",
+    "error_handling_section",
+    "retry_failed_syncs",
+    "max_retry_attempts",
+    "column_break_error",
+    "notify_on_sync_failure",
+    "notification_email",
+    "system_section",
+    "last_connection_test",
+    "total_synced_products",
+    "column_break_system",
+    "total_synced_orders",
+    "sync_error_count"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Settings"
+    },
+    {
+      "fieldname": "tenant",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Tenant",
+      "options": "Tenant",
+      "reqd": 1,
+      "unique": 1,
+      "description": "Tenant this ERPNext integration configuration belongs to"
+    },
+    {
+      "fetch_from": "tenant.tenant_name",
+      "fieldname": "tenant_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Tenant Name",
+      "read_only": 1,
+      "description": "Auto-filled from Tenant"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Integration Enabled",
+      "description": "Enable or disable ERPNext integration for this tenant"
+    },
+    {
+      "default": "0",
+      "fieldname": "debug_mode",
+      "fieldtype": "Check",
+      "label": "Debug Mode",
+      "description": "Enable debug mode for integration operations (logs to console)"
+    },
+    {
+      "fieldname": "connection_section",
+      "fieldtype": "Section Break",
+      "label": "ERPNext Connection Settings"
+    },
+    {
+      "fieldname": "erpnext_site_url",
+      "fieldtype": "Data",
+      "label": "ERPNext Site URL",
+      "description": "URL of the ERPNext site to integrate with (leave empty if using same site)"
+    },
+    {
+      "fieldname": "erpnext_api_key",
+      "fieldtype": "Data",
+      "label": "API Key",
+      "description": "API Key for external ERPNext site authentication (leave empty if using same site)"
+    },
+    {
+      "fieldname": "column_break_connection",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "erpnext_api_secret",
+      "fieldtype": "Password",
+      "label": "API Secret",
+      "description": "API Secret for external ERPNext site authentication"
+    },
+    {
+      "default": "Not Tested",
+      "fieldname": "connection_status",
+      "fieldtype": "Select",
+      "label": "Connection Status",
+      "options": "Not Tested\nConnected\nFailed",
+      "read_only": 1,
+      "description": "Current connection status to ERPNext"
+    },
+    {
+      "fieldname": "sync_toggles_section",
+      "fieldtype": "Section Break",
+      "label": "Sync Toggles",
+      "description": "Enable or disable synchronization for each entity type"
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_products",
+      "fieldtype": "Check",
+      "label": "Sync Products to Items",
+      "description": "Synchronize Trade Hub SKU Products to ERPNext Items"
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_sellers_to_suppliers",
+      "fieldtype": "Check",
+      "label": "Sync Sellers to Suppliers",
+      "description": "Synchronize Trade Hub Seller Profiles to ERPNext Suppliers"
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_buyers_to_customers",
+      "fieldtype": "Check",
+      "label": "Sync Buyers to Customers",
+      "description": "Synchronize Trade Hub Buyer Profiles to ERPNext Customers"
+    },
+    {
+      "fieldname": "column_break_sync",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_orders_to_sales_orders",
+      "fieldtype": "Check",
+      "label": "Sync Orders to Sales Orders",
+      "description": "Synchronize Trade Hub Orders to ERPNext Sales Orders"
+    },
+    {
+      "default": "0",
+      "fieldname": "sync_rfq_to_supplier_quotation",
+      "fieldtype": "Check",
+      "label": "Sync RFQ to Supplier Quotation",
+      "description": "Synchronize Trade Hub RFQs to ERPNext Supplier Quotations"
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_inventory",
+      "fieldtype": "Check",
+      "label": "Sync Inventory",
+      "description": "Synchronize stock levels between Trade Hub and ERPNext"
+    },
+    {
+      "fieldname": "product_sync_section",
+      "fieldtype": "Section Break",
+      "label": "Product Sync Settings",
+      "depends_on": "eval:doc.sync_products",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_create_items",
+      "fieldtype": "Check",
+      "label": "Auto Create Items",
+      "description": "Automatically create ERPNext Items when new products are created in Trade Hub"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_update_items",
+      "fieldtype": "Check",
+      "label": "Auto Update Items",
+      "description": "Automatically update ERPNext Items when products are updated in Trade Hub"
+    },
+    {
+      "fieldname": "item_group_mapping",
+      "fieldtype": "Small Text",
+      "label": "Item Group Mapping",
+      "description": "JSON mapping from Trade Hub categories to ERPNext Item Groups"
+    },
+    {
+      "fieldname": "column_break_product",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_item_group",
+      "fieldtype": "Link",
+      "label": "Default Item Group",
+      "options": "Item Group",
+      "description": "Default ERPNext Item Group for products without mapping"
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_product_images",
+      "fieldtype": "Check",
+      "label": "Sync Product Images",
+      "description": "Include product images in synchronization"
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_product_variants",
+      "fieldtype": "Check",
+      "label": "Sync Product Variants",
+      "description": "Synchronize product variants as separate ERPNext Items"
+    },
+    {
+      "fieldname": "order_sync_section",
+      "fieldtype": "Section Break",
+      "label": "Order Sync Settings",
+      "depends_on": "eval:doc.sync_orders_to_sales_orders",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_create_sales_orders",
+      "fieldtype": "Check",
+      "label": "Auto Create Sales Orders",
+      "description": "Automatically create ERPNext Sales Orders when Trade Hub orders are confirmed"
+    },
+    {
+      "default": "1",
+      "fieldname": "auto_update_order_status",
+      "fieldtype": "Check",
+      "label": "Auto Update Order Status",
+      "description": "Automatically sync order status changes between Trade Hub and ERPNext"
+    },
+    {
+      "fieldname": "column_break_order",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "auto_create_delivery_notes",
+      "fieldtype": "Check",
+      "label": "Auto Create Delivery Notes",
+      "description": "Automatically create Delivery Notes when orders are shipped"
+    },
+    {
+      "default": "0",
+      "fieldname": "auto_create_sales_invoices",
+      "fieldtype": "Check",
+      "label": "Auto Create Sales Invoices",
+      "description": "Automatically create Sales Invoices from completed orders"
+    },
+    {
+      "fieldname": "inventory_sync_section",
+      "fieldtype": "Section Break",
+      "label": "Inventory Sync Settings",
+      "depends_on": "eval:doc.sync_inventory",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "sync_stock_levels",
+      "fieldtype": "Check",
+      "label": "Sync Stock Levels",
+      "description": "Synchronize stock quantities from ERPNext to Trade Hub"
+    },
+    {
+      "default": "0",
+      "fieldname": "sync_warehouse",
+      "fieldtype": "Check",
+      "label": "Sync Warehouse Data",
+      "description": "Include warehouse-specific stock data in synchronization"
+    },
+    {
+      "fieldname": "column_break_inventory",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_warehouse",
+      "fieldtype": "Link",
+      "label": "Default Warehouse",
+      "options": "Warehouse",
+      "description": "Default warehouse for inventory operations"
+    },
+    {
+      "default": "15",
+      "fieldname": "sync_interval_minutes",
+      "fieldtype": "Int",
+      "label": "Sync Interval (minutes)",
+      "description": "Interval for inventory sync in minutes (minimum: 5)"
+    },
+    {
+      "fieldname": "webhook_section",
+      "fieldtype": "Section Break",
+      "label": "Webhook Settings",
+      "collapsible": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "enable_webhooks",
+      "fieldtype": "Check",
+      "label": "Enable Webhooks",
+      "description": "Enable ERPNext webhooks for real-time sync"
+    },
+    {
+      "fieldname": "webhook_secret",
+      "fieldtype": "Password",
+      "label": "Webhook Secret",
+      "depends_on": "eval:doc.enable_webhooks",
+      "description": "Secret key for webhook signature verification"
+    },
+    {
+      "fieldname": "column_break_webhook",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "webhook_url",
+      "fieldtype": "Data",
+      "label": "Webhook Endpoint URL",
+      "read_only": 1,
+      "description": "URL for ERPNext to send webhook notifications"
+    },
+    {
+      "fieldname": "webhook_events",
+      "fieldtype": "Small Text",
+      "label": "Webhook Events",
+      "depends_on": "eval:doc.enable_webhooks",
+      "default": "Item,Sales Order,Delivery Note,Sales Invoice,Stock Ledger Entry",
+      "description": "Comma-separated list of ERPNext DocTypes to receive webhooks for"
+    },
+    {
+      "fieldname": "sync_schedule_section",
+      "fieldtype": "Section Break",
+      "label": "Sync Schedule",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "enable_scheduled_sync",
+      "fieldtype": "Check",
+      "label": "Enable Scheduled Sync",
+      "description": "Enable periodic background synchronization"
+    },
+    {
+      "default": "Hourly",
+      "fieldname": "sync_frequency",
+      "fieldtype": "Select",
+      "label": "Sync Frequency",
+      "options": "Every 15 Minutes\nEvery 30 Minutes\nHourly\nDaily\nWeekly",
+      "depends_on": "eval:doc.enable_scheduled_sync",
+      "description": "How often to run scheduled synchronization"
+    },
+    {
+      "fieldname": "column_break_schedule",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "last_sync_time",
+      "fieldtype": "Datetime",
+      "label": "Last Sync Time",
+      "read_only": 1,
+      "description": "Timestamp of the last successful synchronization"
+    },
+    {
+      "fieldname": "next_scheduled_sync",
+      "fieldtype": "Datetime",
+      "label": "Next Scheduled Sync",
+      "read_only": 1,
+      "description": "Timestamp of the next scheduled synchronization"
+    },
+    {
+      "fieldname": "field_mapping_section",
+      "fieldtype": "Section Break",
+      "label": "Custom Field Mappings",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "custom_field_mappings",
+      "fieldtype": "JSON",
+      "label": "Custom Field Mappings",
+      "description": "JSON configuration for custom field mappings between Trade Hub and ERPNext (use UI component)"
+    },
+    {
+      "fieldname": "error_handling_section",
+      "fieldtype": "Section Break",
+      "label": "Error Handling",
+      "collapsible": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "retry_failed_syncs",
+      "fieldtype": "Check",
+      "label": "Retry Failed Syncs",
+      "description": "Automatically retry failed synchronization attempts"
+    },
+    {
+      "default": "3",
+      "fieldname": "max_retry_attempts",
+      "fieldtype": "Int",
+      "label": "Max Retry Attempts",
+      "depends_on": "eval:doc.retry_failed_syncs",
+      "description": "Maximum number of retry attempts for failed syncs"
+    },
+    {
+      "fieldname": "column_break_error",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "notify_on_sync_failure",
+      "fieldtype": "Check",
+      "label": "Notify on Sync Failure",
+      "description": "Send email notification when synchronization fails"
+    },
+    {
+      "fieldname": "notification_email",
+      "fieldtype": "Data",
+      "label": "Notification Email",
+      "depends_on": "eval:doc.notify_on_sync_failure",
+      "description": "Email address for sync failure notifications"
+    },
+    {
+      "fieldname": "system_section",
+      "fieldtype": "Section Break",
+      "label": "System Information",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "last_connection_test",
+      "fieldtype": "Datetime",
+      "label": "Last Connection Test",
+      "read_only": 1,
+      "description": "Timestamp of the last connection test"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_synced_products",
+      "fieldtype": "Int",
+      "label": "Total Synced Products",
+      "read_only": 1,
+      "description": "Total number of products synchronized to ERPNext"
+    },
+    {
+      "fieldname": "column_break_system",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_synced_orders",
+      "fieldtype": "Int",
+      "label": "Total Synced Orders",
+      "read_only": 1,
+      "description": "Total number of orders synchronized to ERPNext"
+    },
+    {
+      "default": "0",
+      "fieldname": "sync_error_count",
+      "fieldtype": "Int",
+      "label": "Sync Error Count",
+      "read_only": 1,
+      "description": "Number of synchronization errors since last reset"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "issingle": 0,
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Tenant",
+      "link_fieldname": "name"
+    }
+  ],
+  "modified": "2026-02-05 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Tr Tradehub",
+  "name": "ERPNext Integration Settings",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "tenant, tenant_name, connection_status",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "gray",
+      "title": "Not Tested"
+    },
+    {
+      "color": "green",
+      "title": "Connected"
+    },
+    {
+      "color": "red",
+      "title": "Failed"
+    }
+  ],
+  "title_field": "tenant_name",
+  "track_changes": 1
+}

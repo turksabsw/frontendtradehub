@@ -1,0 +1,132 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:attribute_set_name",
+  "creation": "2024-01-01 00:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_section",
+    "attribute_set_name",
+    "column_break_1",
+    "is_active",
+    "description",
+    "attributes_section",
+    "attributes",
+    "settings_section",
+    "inherit_from",
+    "column_break_2",
+    "auto_include_inherited"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_section",
+      "fieldtype": "Section Break",
+      "label": "Basic Information"
+    },
+    {
+      "fieldname": "attribute_set_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Attribute Set Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "Is Active"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "attributes_section",
+      "fieldtype": "Section Break",
+      "label": "Attributes"
+    },
+    {
+      "fieldname": "attributes",
+      "fieldtype": "Table",
+      "label": "Attributes",
+      "options": "Attribute Set Item",
+      "reqd": 1
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "settings_section",
+      "fieldtype": "Section Break",
+      "label": "Inheritance Settings"
+    },
+    {
+      "description": "Inherit attributes from another Attribute Set",
+      "fieldname": "inherit_from",
+      "fieldtype": "Link",
+      "label": "Inherit From",
+      "options": "Attribute Set"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "1",
+      "depends_on": "inherit_from",
+      "description": "Automatically include inherited attributes in this set",
+      "fieldname": "auto_include_inherited",
+      "fieldtype": "Check",
+      "label": "Auto Include Inherited"
+    }
+  ],
+  "index_web_pages_for_search": 0,
+  "links": [],
+  "modified": "2024-01-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "TR TradeHub",
+  "name": "Attribute Set",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 0,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "All",
+      "share": 0,
+      "write": 0
+    }
+  ],
+  "quick_entry": 0,
+  "search_fields": "attribute_set_name",
+  "show_name_in_global_search": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "attribute_set_name",
+  "track_changes": 1
+}

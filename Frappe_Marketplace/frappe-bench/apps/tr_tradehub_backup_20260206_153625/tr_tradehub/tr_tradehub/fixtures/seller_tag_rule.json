@@ -1,0 +1,72 @@
+[
+  {
+    "doctype": "Seller Tag Rule",
+    "rule_name": "Trusted Seller Rule",
+    "target_tag": "TRUSTED_SELLER",
+    "enabled": 1,
+    "priority": 1,
+    "evaluation_schedule": "Daily",
+    "rule_json": "{\"logic\": \"AND\", \"groups\": [{\"group_logic\": \"AND\", \"conditions\": [{\"field\": \"total_orders\", \"operator\": \">=\", \"value\": 50}, {\"field\": \"avg_rating\", \"operator\": \">=\", \"value\": 4.5}, {\"field\": \"cancellation_rate\", \"operator\": \"<=\", \"value\": 5}]}, {\"group_logic\": \"OR\", \"conditions\": [{\"field\": \"verification_status\", \"operator\": \"==\", \"value\": \"Verified\"}, {\"field\": \"active_days\", \"operator\": \">=\", \"value\": 180}]}]}",
+    "rule_description": "Assign to sellers with 50+ orders, 4.5+ rating, low cancellation, and either verified or 6+ months active"
+  },
+  {
+    "doctype": "Seller Tag Rule",
+    "rule_name": "Fast Shipper Rule",
+    "target_tag": "FAST_SHIPPER",
+    "enabled": 1,
+    "priority": 2,
+    "evaluation_schedule": "Daily",
+    "rule_json": "{\"logic\": \"AND\", \"groups\": [{\"group_logic\": \"AND\", \"conditions\": [{\"field\": \"on_time_delivery_rate\", \"operator\": \">=\", \"value\": 95}, {\"field\": \"total_orders\", \"operator\": \">=\", \"value\": 20}]}]}",
+    "rule_description": "Assign to sellers with 95%+ on-time delivery and at least 20 orders"
+  },
+  {
+    "doctype": "Seller Tag Rule",
+    "rule_name": "Top Rated Rule",
+    "target_tag": "TOP_RATED",
+    "enabled": 1,
+    "priority": 3,
+    "evaluation_schedule": "Daily",
+    "rule_json": "{\"logic\": \"AND\", \"groups\": [{\"group_logic\": \"AND\", \"conditions\": [{\"field\": \"avg_rating\", \"operator\": \">=\", \"value\": 4.8}, {\"field\": \"total_reviews\", \"operator\": \">=\", \"value\": 25}, {\"field\": \"positive_review_rate\", \"operator\": \">=\", \"value\": 90}]}]}",
+    "rule_description": "Assign to sellers with 4.8+ rating, 25+ reviews, and 90%+ positive reviews"
+  },
+  {
+    "doctype": "Seller Tag Rule",
+    "rule_name": "Verified Business Rule",
+    "target_tag": "VERIFIED_BUSINESS",
+    "enabled": 1,
+    "priority": 4,
+    "evaluation_schedule": "Daily",
+    "rule_json": "{\"logic\": \"AND\", \"groups\": [{\"group_logic\": \"AND\", \"conditions\": [{\"field\": \"verification_status\", \"operator\": \"==\", \"value\": \"Verified\"}]}]}",
+    "rule_description": "Assign to sellers with verified business status"
+  },
+  {
+    "doctype": "Seller Tag Rule",
+    "rule_name": "High Volume Seller Rule",
+    "target_tag": "HIGH_VOLUME",
+    "enabled": 1,
+    "priority": 5,
+    "evaluation_schedule": "Daily",
+    "rule_json": "{\"logic\": \"AND\", \"groups\": [{\"group_logic\": \"AND\", \"conditions\": [{\"field\": \"total_orders\", \"operator\": \">=\", \"value\": 500}, {\"field\": \"total_sales_amount\", \"operator\": \">=\", \"value\": 100000}]}]}",
+    "rule_description": "Assign to sellers with 500+ orders and 100K+ total sales"
+  },
+  {
+    "doctype": "Seller Tag Rule",
+    "rule_name": "Responsive Seller Rule",
+    "target_tag": "RESPONSIVE",
+    "enabled": 1,
+    "priority": 6,
+    "evaluation_schedule": "Daily",
+    "rule_json": "{\"logic\": \"AND\", \"groups\": [{\"group_logic\": \"AND\", \"conditions\": [{\"field\": \"avg_response_time_hours\", \"operator\": \"<=\", \"value\": 4}, {\"field\": \"total_orders\", \"operator\": \">=\", \"value\": 10}]}]}",
+    "rule_description": "Assign to sellers who respond within 4 hours on average"
+  },
+  {
+    "doctype": "Seller Tag Rule",
+    "rule_name": "New Seller Rule",
+    "target_tag": "NEW_SELLER",
+    "enabled": 1,
+    "priority": 10,
+    "evaluation_schedule": "Daily",
+    "rule_json": "{\"logic\": \"AND\", \"groups\": [{\"group_logic\": \"AND\", \"conditions\": [{\"field\": \"active_days\", \"operator\": \"<=\", \"value\": 90}, {\"field\": \"total_orders\", \"operator\": \"<\", \"value\": 50}]}]}",
+    "rule_description": "Assign to sellers who joined within 90 days and have less than 50 orders"
+  }
+]

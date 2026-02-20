@@ -1,0 +1,58 @@
+[
+  {
+    "doctype": "Role Profile",
+    "role_profile": "Marka Sahibi Profili",
+    "roles": [
+      {
+        "role": "Marka Sahibi"
+      }
+    ],
+    "name": "Marka Sahibi Profili"
+  },
+  {
+    "doctype": "Role Profile",
+    "role_profile": "Alici Admin Profili",
+    "roles": [
+      {
+        "role": "Alici Admin"
+      },
+      {
+        "role": "Alici Editor"
+      }
+    ],
+    "name": "Alici Admin Profili"
+  },
+  {
+    "doctype": "Role Profile",
+    "role_profile": "Alici Editor Profili",
+    "roles": [
+      {
+        "role": "Alici Editor"
+      }
+    ],
+    "name": "Alici Editor Profili"
+  },
+  {
+    "doctype": "Role Profile",
+    "role_profile": "Satici Admin Profili",
+    "roles": [
+      {
+        "role": "Satici Admin"
+      },
+      {
+        "role": "Satici"
+      }
+    ],
+    "name": "Satici Admin Profili"
+  },
+  {
+    "doctype": "Role Profile",
+    "role_profile": "Satici Profili",
+    "roles": [
+      {
+        "role": "Satici"
+      }
+    ],
+    "name": "Satici Profili"
+  }
+]

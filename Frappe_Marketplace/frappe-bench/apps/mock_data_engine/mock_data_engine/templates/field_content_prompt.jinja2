@@ -1,0 +1,296 @@
+{#
+  Field Content Generation Prompt Template
+
+  This template generates prompts for AI to create content for a specific field.
+  Unlike doctype_prompt.jinja2 which generates multiple complete records,
+  this template generates content for a single complex field (e.g., descriptions,
+  notes, text content, code snippets).
+
+  Expected Variables:
+    - doctype: str - The DocType name (e.g., "Item", "Customer")
+    - fieldname: str - The field name (e.g., "description", "notes")
+    - fieldtype: str - The Frappe field type (e.g., "Text", "Long Text", "Text Editor")
+    - label: str - Human-readable field label (e.g., "Description", "Notes")
+    - context: dict - Additional context with keys:
+        - record: dict (optional) - Other field values in the same record
+        - industry: str (optional) - Industry context
+        - related_docs: list (optional) - Related document info
+        - custom_instructions: str (optional) - Custom generation instructions
+    - locale: str - Locale for content generation (e.g., "tr_TR", "en_US")
+    - max_length: int (optional) - Maximum character length
+
+  Returns:
+    AI should return ONLY the generated content text, no JSON wrapping.
+#}
+You are a content generation assistant for Frappe Framework. Your task is to generate realistic content for a single field.
+
+## Field Information
+
+- **DocType**: {{ doctype }}
+- **Field Name**: {{ fieldname }}
+- **Field Label**: {{ label }}
+- **Field Type**: {{ fieldtype }}
+
+{% if locale %}
+## Language & Locale
+
+Generate content in the language appropriate for locale: **{{ locale }}**
+
+{% if locale.startswith('tr') %}
+- Write content in **Turkish**
+- Use Turkish grammar, punctuation, and conventions
+- Use Turkish-specific terminology when applicable
+- Dates should be in DD.MM.YYYY format if mentioned
+- Currency should be TRY (Turkish Lira) if mentioned
+{% elif locale.startswith('en_US') %}
+- Write content in **American English**
+- Use American spelling and conventions (color, organize, etc.)
+- Dates should be in MM/DD/YYYY format if mentioned
+- Currency should be USD if mentioned
+{% elif locale.startswith('en_GB') or locale.startswith('en') %}
+- Write content in **British English**
+- Use British spelling and conventions (colour, organise, etc.)
+- Dates should be in DD/MM/YYYY format if mentioned
+- Currency should be GBP if mentioned
+{% elif locale.startswith('de') %}
+- Write content in **German**
+- Use German grammar and conventions
+- Dates should be in DD.MM.YYYY format if mentioned
+- Currency should be EUR if mentioned
+{% elif locale.startswith('fr') %}
+- Write content in **French**
+- Use French grammar and conventions
+- Dates should be in DD/MM/YYYY format if mentioned
+- Currency should be EUR if mentioned
+{% else %}
+- Write content appropriate for locale: {{ locale }}
+{% endif %}
+{% endif %}
+
+{% if context.industry %}
+## Industry Context
+
+Generate content relevant to the **{{ context.industry }}** industry sector.
+{% if context.industry.lower() in ['technology', 'software', 'it'] %}
+- Use technical terminology where appropriate
+- Reference software, systems, or digital concepts
+{% elif context.industry.lower() in ['retail', 'ecommerce', 'commerce'] %}
+- Reference products, sales, or customer service concepts
+{% elif context.industry.lower() in ['healthcare', 'medical', 'pharma'] %}
+- Use medical/healthcare terminology appropriately
+- Be professional and accurate
+{% elif context.industry.lower() in ['manufacturing', 'production', 'industrial'] %}
+- Reference production, quality, or manufacturing concepts
+{% elif context.industry.lower() in ['finance', 'banking', 'insurance'] %}
+- Use financial terminology appropriately
+- Be precise with any numerical references
+{% elif context.industry.lower() in ['education', 'academic'] %}
+- Use educational terminology
+- Reference learning, courses, or academic concepts
+{% endif %}
+{% endif %}
+
+{% if context.record %}
+## Record Context
+
+This field belongs to a record with the following values:
+{% for key, value in context.record.items() %}
+{% if value and key != fieldname %}
+- **{{ key }}**: {{ value }}
+{% endif %}
+{% endfor %}
+
+Generate content that is coherent with these existing field values.
+{% endif %}
+
+{% if context.related_docs %}
+## Related Documents
+
+{% for doc in context.related_docs %}
+- **{{ doc.doctype }}**: {{ doc.name }}{% if doc.description %} - {{ doc.description }}{% endif %}
+
+{% endfor %}
+{% endif %}
+
+## Content Requirements
+
+{% if fieldtype in ['Text', 'Small Text'] %}
+### Text Content
+- Generate a concise, single-paragraph text
+- Keep it brief and to the point
+{% if max_length %}
+- **Maximum {{ max_length }} characters**
+{% else %}
+- Target approximately 100-200 characters
+{% endif %}
+- Suitable for short descriptions or notes
+
+{% elif fieldtype == 'Long Text' %}
+### Long Text Content
+- Generate detailed, multi-paragraph content
+- Use proper paragraph structure
+{% if max_length %}
+- **Maximum {{ max_length }} characters**
+{% else %}
+- Target approximately 300-800 characters
+{% endif %}
+- Include relevant details and context
+- Suitable for detailed descriptions or documentation
+
+{% elif fieldtype == 'Text Editor' %}
+### Rich Text Content (HTML)
+- Generate content with **basic HTML formatting**
+- Use tags like: <p>, <strong>, <em>, <ul>, <li>, <ol>, <h3>, <h4>
+- Create well-structured, readable content
+{% if max_length %}
+- **Maximum {{ max_length }} characters** (including HTML tags)
+{% else %}
+- Target approximately 300-1000 characters
+{% endif %}
+- Include headings, lists, or emphasis where appropriate
+- Example structure:
+  ```html
+  <p>Introduction paragraph.</p>
+  <h4>Section Title</h4>
+  <ul>
+    <li>Key point one</li>
+    <li>Key point two</li>
+  </ul>
+  <p>Conclusion or additional details.</p>
+  ```
+
+{% elif fieldtype == 'Code' %}
+### Code Content
+{% if context.code_language %}
+- Generate a **{{ context.code_language }}** code snippet
+{% else %}
+- Generate a relevant code snippet (Python, JavaScript, SQL, or JSON preferred)
+{% endif %}
+- Write clean, readable code with comments if appropriate
+{% if max_length %}
+- **Maximum {{ max_length }} characters**
+{% else %}
+- Target approximately 100-500 characters
+{% endif %}
+- Make the code realistic and functional
+- Use proper indentation and formatting
+
+{% elif fieldtype == 'Markdown' %}
+### Markdown Content
+- Generate content using **Markdown formatting**
+- Use headings (#, ##), lists (-, *), bold (**), italic (*), code blocks (```)
+- Create well-structured, readable content
+{% if max_length %}
+- **Maximum {{ max_length }} characters**
+{% else %}
+- Target approximately 200-600 characters
+{% endif %}
+- Include appropriate formatting for the content type
+
+{% elif fieldtype == 'JSON' %}
+### JSON Content
+- Generate valid **JSON** content
+- Structure should be appropriate for the field context
+{% if context.json_schema %}
+- Follow this schema: {{ context.json_schema }}
+{% endif %}
+{% if max_length %}
+- **Maximum {{ max_length }} characters**
+{% else %}
+- Keep it concise but complete
+{% endif %}
+- Ensure proper JSON syntax (quoted strings, correct brackets)
+
+{% else %}
+### General Text Content
+- Generate appropriate text content for a {{ fieldtype }} field
+{% if max_length %}
+- **Maximum {{ max_length }} characters**
+{% else %}
+- Keep it concise and relevant
+{% endif %}
+{% endif %}
+
+{% if context.custom_instructions %}
+## Custom Instructions
+
+{{ context.custom_instructions }}
+{% endif %}
+
+## Content Pattern Guidelines
+
+Based on the field name "{{ fieldname }}" and label "{{ label }}":
+
+{% if 'description' in fieldname.lower() or 'description' in label.lower() %}
+- Generate a descriptive text explaining characteristics, features, or purpose
+- Be informative and clear
+{% endif %}
+
+{% if 'note' in fieldname.lower() or 'note' in label.lower() %}
+- Generate a note or observation
+- Keep it concise and actionable
+{% endif %}
+
+{% if 'comment' in fieldname.lower() or 'comment' in label.lower() %}
+- Generate a comment or feedback
+- Can be informal but professional
+{% endif %}
+
+{% if 'remark' in fieldname.lower() or 'remark' in label.lower() %}
+- Generate a remark or observation
+- Be specific and relevant
+{% endif %}
+
+{% if 'summary' in fieldname.lower() or 'summary' in label.lower() %}
+- Generate a brief summary
+- Highlight key points concisely
+{% endif %}
+
+{% if 'reason' in fieldname.lower() or 'reason' in label.lower() %}
+- Generate a reason or justification
+- Be clear and logical
+{% endif %}
+
+{% if 'instruction' in fieldname.lower() or 'instruction' in label.lower() %}
+- Generate instructions or guidance
+- Be clear and actionable
+{% endif %}
+
+{% if 'terms' in fieldname.lower() or 'condition' in fieldname.lower() %}
+- Generate terms or conditions text
+- Be formal and precise
+{% endif %}
+
+{% if 'address' in fieldname.lower() %}
+- Generate a realistic address
+{% if locale.startswith('tr') %}
+- Use Turkish address format: Street, District, City/Province
+{% elif locale.startswith('de') %}
+- Use German address format: Street Number, Postcode City
+{% elif locale.startswith('en') %}
+- Use standard address format
+{% endif %}
+{% endif %}
+
+{% if 'bio' in fieldname.lower() or 'biography' in fieldname.lower() or 'about' in fieldname.lower() %}
+- Generate a biographical description
+- Be professional and engaging
+{% endif %}
+
+{% if 'specification' in fieldname.lower() or 'spec' in fieldname.lower() %}
+- Generate technical specifications
+- Use clear, precise language
+- Include relevant technical details
+{% endif %}
+
+## Output Format
+
+**IMPORTANT**: Return ONLY the generated content itself. Do not include:
+- JSON formatting or wrapping
+- Field name prefixes
+- Quotes around the entire content (unless quoting within the content)
+- Explanations or meta-commentary
+
+Just output the raw content that should go into the "{{ fieldname }}" field.
+
+Generate the content now:
