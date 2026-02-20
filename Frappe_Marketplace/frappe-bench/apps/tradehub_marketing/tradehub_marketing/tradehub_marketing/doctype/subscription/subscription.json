@@ -1,0 +1,866 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "SUB-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "subscription_package",
+  "package_name",
+  "billing_period",
+  "column_break_basic",
+  "status",
+  "is_active",
+  "api_access_enabled",
+  "subscriber_section",
+  "subscriber_type",
+  "seller_profile",
+  "seller_name",
+  "column_break_subscriber",
+  "buyer_profile",
+  "organization",
+  "tenant",
+  "tenant_name",
+  "subscription_dates_section",
+  "start_date",
+  "end_date",
+  "trial_end_date",
+  "column_break_dates",
+  "next_billing_date",
+  "last_billing_date",
+  "cancellation_date",
+  "billing_section",
+  "current_price",
+  "currency",
+  "setup_fee_paid",
+  "column_break_billing",
+  "total_billed",
+  "total_paid",
+  "outstanding_amount",
+  "grace_period_section",
+  "grace_period_days",
+  "grace_period_start_date",
+  "grace_period_end_date",
+  "column_break_grace",
+  "in_grace_period",
+  "grace_period_warning_sent",
+  "suspension_warning_sent",
+  "suspension_section",
+  "is_suspended",
+  "suspended_at",
+  "suspended_reason",
+  "column_break_suspension",
+  "suspension_type",
+  "auto_suspend_enabled",
+  "can_reactivate",
+  "reactivation_section",
+  "last_reactivated_at",
+  "reactivation_count",
+  "column_break_reactivation",
+  "reactivation_notes",
+  "renewal_section",
+  "auto_renew",
+  "renewal_reminder_sent",
+  "renewal_reminder_date",
+  "column_break_renewal",
+  "failed_renewal_attempts",
+  "last_renewal_attempt",
+  "renewal_failure_reason",
+  "package_limits_section",
+  "max_products",
+  "max_orders_per_month",
+  "max_api_calls_per_day",
+  "column_break_limits",
+  "current_product_count",
+  "current_month_orders",
+  "current_day_api_calls",
+  "features_section",
+  "has_analytics",
+  "has_priority_support",
+  "has_api_access",
+  "column_break_features",
+  "has_bulk_import",
+  "has_advanced_reporting",
+  "commission_rate",
+  "payment_history_section",
+  "last_payment_date",
+  "last_payment_amount",
+  "last_payment_method",
+  "column_break_payment",
+  "payment_reference",
+  "next_payment_amount",
+  "upgrade_downgrade_section",
+  "previous_package",
+  "upgrade_date",
+  "downgrade_date",
+  "column_break_upgrade",
+  "prorate_amount",
+  "package_change_reason",
+  "notes_section",
+  "internal_notes",
+  "subscriber_notes",
+  "timestamps_section",
+  "created_at",
+  "modified_at",
+  "column_break_timestamps",
+  "created_by",
+  "modified_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Subscription Information"
+  },
+  {
+   "fieldname": "subscription_package",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Subscription Package",
+   "options": "Subscription Package",
+   "reqd": 1,
+   "description": "The subscription plan for this subscription"
+  },
+  {
+   "fetch_from": "subscription_package.package_name",
+   "fieldname": "package_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Package Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "subscription_package.billing_period",
+   "fieldname": "billing_period",
+   "fieldtype": "Data",
+   "label": "Billing Period",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nTrial\nActive\nPending Payment\nGrace Period\nSuspended\nCancelled\nExpired",
+   "reqd": 1,
+   "description": "Current status of the subscription"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "read_only": 1,
+   "description": "Automatically set based on status"
+  },
+  {
+   "default": "1",
+   "fieldname": "api_access_enabled",
+   "fieldtype": "Check",
+   "label": "API Access Enabled",
+   "description": "Whether API access is currently enabled for this subscriber"
+  },
+  {
+   "fieldname": "subscriber_section",
+   "fieldtype": "Section Break",
+   "label": "Subscriber Information"
+  },
+  {
+   "default": "Seller",
+   "fieldname": "subscriber_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Subscriber Type",
+   "options": "Seller\nBuyer\nOrganization",
+   "reqd": 1,
+   "description": "Type of subscriber for this subscription"
+  },
+  {
+   "depends_on": "eval:doc.subscriber_type=='Seller'",
+   "fieldname": "seller_profile",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller Profile",
+   "options": "Seller Profile",
+   "mandatory_depends_on": "eval:doc.subscriber_type=='Seller'",
+   "description": "The seller who owns this subscription"
+  },
+  {
+   "fetch_from": "seller_profile.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_subscriber",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.subscriber_type=='Buyer'",
+   "fieldname": "buyer_profile",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Buyer Profile",
+   "options": "User",
+   "mandatory_depends_on": "eval:doc.subscriber_type=='Buyer'",
+   "description": "The buyer who owns this subscription"
+  },
+  {
+   "depends_on": "eval:doc.subscriber_type=='Organization'",
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Organization",
+   "options": "Organization",
+   "mandatory_depends_on": "eval:doc.subscriber_type=='Organization'",
+   "description": "The organization that owns this subscription"
+  },
+  {
+   "fetch_from": "seller_profile.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1,
+   "description": "Auto-populated from seller/organization"
+  },
+  {
+   "fetch_from": "tenant.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "subscription_dates_section",
+   "fieldtype": "Section Break",
+   "label": "Subscription Dates"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1,
+   "description": "When the subscription started or will start"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date",
+   "description": "When the current subscription period ends"
+  },
+  {
+   "fieldname": "trial_end_date",
+   "fieldtype": "Date",
+   "label": "Trial End Date",
+   "description": "End date for trial period (if applicable)"
+  },
+  {
+   "fieldname": "column_break_dates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "next_billing_date",
+   "fieldtype": "Date",
+   "label": "Next Billing Date",
+   "description": "Date of the next billing cycle"
+  },
+  {
+   "fieldname": "last_billing_date",
+   "fieldtype": "Date",
+   "label": "Last Billing Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cancellation_date",
+   "fieldtype": "Date",
+   "label": "Cancellation Date",
+   "read_only": 1,
+   "description": "Date when subscription was cancelled"
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing Information"
+  },
+  {
+   "fetch_from": "subscription_package.price",
+   "fieldname": "current_price",
+   "fieldtype": "Currency",
+   "label": "Current Price",
+   "description": "Price per billing period"
+  },
+  {
+   "fetch_from": "subscription_package.currency",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "setup_fee_paid",
+   "fieldtype": "Check",
+   "label": "Setup Fee Paid",
+   "description": "Whether the one-time setup fee has been paid"
+  },
+  {
+   "fieldname": "column_break_billing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_billed",
+   "fieldtype": "Currency",
+   "label": "Total Billed",
+   "read_only": 1,
+   "description": "Total amount billed over subscription lifetime"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_paid",
+   "fieldtype": "Currency",
+   "label": "Total Paid",
+   "read_only": 1,
+   "description": "Total amount paid over subscription lifetime"
+  },
+  {
+   "default": "0",
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "label": "Outstanding Amount",
+   "read_only": 1,
+   "description": "Amount currently due"
+  },
+  {
+   "fieldname": "grace_period_section",
+   "fieldtype": "Section Break",
+   "label": "Grace Period"
+  },
+  {
+   "fetch_from": "subscription_package.grace_period_days",
+   "fieldname": "grace_period_days",
+   "fieldtype": "Int",
+   "label": "Grace Period (Days)",
+   "description": "Number of days after due date before suspension"
+  },
+  {
+   "fieldname": "grace_period_start_date",
+   "fieldtype": "Date",
+   "label": "Grace Period Start",
+   "read_only": 1,
+   "description": "When the grace period started"
+  },
+  {
+   "fieldname": "grace_period_end_date",
+   "fieldtype": "Date",
+   "label": "Grace Period End",
+   "read_only": 1,
+   "description": "When the grace period will end"
+  },
+  {
+   "fieldname": "column_break_grace",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "in_grace_period",
+   "fieldtype": "Check",
+   "label": "In Grace Period",
+   "read_only": 1,
+   "description": "Currently in grace period"
+  },
+  {
+   "default": "0",
+   "fieldname": "grace_period_warning_sent",
+   "fieldtype": "Check",
+   "label": "Grace Period Warning Sent",
+   "read_only": 1,
+   "description": "Warning notification has been sent"
+  },
+  {
+   "default": "0",
+   "fieldname": "suspension_warning_sent",
+   "fieldtype": "Check",
+   "label": "Suspension Warning Sent",
+   "read_only": 1,
+   "description": "Suspension warning notification has been sent"
+  },
+  {
+   "fieldname": "suspension_section",
+   "fieldtype": "Section Break",
+   "label": "Suspension Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_suspended",
+   "fieldtype": "Check",
+   "label": "Is Suspended",
+   "read_only": 1,
+   "description": "Whether the subscription is currently suspended"
+  },
+  {
+   "fieldname": "suspended_at",
+   "fieldtype": "Datetime",
+   "label": "Suspended At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "suspended_reason",
+   "fieldtype": "Small Text",
+   "label": "Suspension Reason",
+   "description": "Reason for suspension"
+  },
+  {
+   "fieldname": "column_break_suspension",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "suspension_type",
+   "fieldtype": "Select",
+   "label": "Suspension Type",
+   "options": "\nPayment Overdue\nManual\nPolicy Violation\nFraud\nOther",
+   "description": "Type/cause of suspension"
+  },
+  {
+   "fetch_from": "subscription_package.auto_suspend_on_overdue",
+   "fieldname": "auto_suspend_enabled",
+   "fieldtype": "Check",
+   "label": "Auto Suspend Enabled",
+   "read_only": 1,
+   "description": "Automatically suspend on overdue payment"
+  },
+  {
+   "default": "1",
+   "fieldname": "can_reactivate",
+   "fieldtype": "Check",
+   "label": "Can Reactivate",
+   "description": "Whether this subscription can be reactivated"
+  },
+  {
+   "fieldname": "reactivation_section",
+   "fieldtype": "Section Break",
+   "label": "Reactivation History",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "last_reactivated_at",
+   "fieldtype": "Datetime",
+   "label": "Last Reactivated At",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "reactivation_count",
+   "fieldtype": "Int",
+   "label": "Reactivation Count",
+   "read_only": 1,
+   "description": "Number of times this subscription has been reactivated"
+  },
+  {
+   "fieldname": "column_break_reactivation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reactivation_notes",
+   "fieldtype": "Small Text",
+   "label": "Reactivation Notes"
+  },
+  {
+   "fieldname": "renewal_section",
+   "fieldtype": "Section Break",
+   "label": "Renewal Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_renew",
+   "fieldtype": "Check",
+   "label": "Auto Renew",
+   "description": "Automatically renew subscription at end of billing period"
+  },
+  {
+   "default": "0",
+   "fieldname": "renewal_reminder_sent",
+   "fieldtype": "Check",
+   "label": "Renewal Reminder Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "renewal_reminder_date",
+   "fieldtype": "Date",
+   "label": "Renewal Reminder Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_renewal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "failed_renewal_attempts",
+   "fieldtype": "Int",
+   "label": "Failed Renewal Attempts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_renewal_attempt",
+   "fieldtype": "Datetime",
+   "label": "Last Renewal Attempt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "renewal_failure_reason",
+   "fieldtype": "Data",
+   "label": "Renewal Failure Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "package_limits_section",
+   "fieldtype": "Section Break",
+   "label": "Package Limits"
+  },
+  {
+   "fetch_from": "subscription_package.max_products",
+   "fieldname": "max_products",
+   "fieldtype": "Int",
+   "label": "Max Products",
+   "read_only": 1,
+   "description": "Maximum products allowed (0=unlimited)"
+  },
+  {
+   "fetch_from": "subscription_package.max_orders_per_month",
+   "fieldname": "max_orders_per_month",
+   "fieldtype": "Int",
+   "label": "Max Orders/Month",
+   "read_only": 1,
+   "description": "Maximum orders per month (0=unlimited)"
+  },
+  {
+   "fetch_from": "subscription_package.max_api_calls_per_day",
+   "fieldname": "max_api_calls_per_day",
+   "fieldtype": "Int",
+   "label": "Max API Calls/Day",
+   "read_only": 1,
+   "description": "Maximum API calls per day (0=unlimited)"
+  },
+  {
+   "fieldname": "column_break_limits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "current_product_count",
+   "fieldtype": "Int",
+   "label": "Current Products",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "current_month_orders",
+   "fieldtype": "Int",
+   "label": "Current Month Orders",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "current_day_api_calls",
+   "fieldtype": "Int",
+   "label": "Today's API Calls",
+   "read_only": 1
+  },
+  {
+   "fieldname": "features_section",
+   "fieldtype": "Section Break",
+   "label": "Included Features"
+  },
+  {
+   "fetch_from": "subscription_package.has_analytics",
+   "fieldname": "has_analytics",
+   "fieldtype": "Check",
+   "label": "Analytics",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "subscription_package.has_priority_support",
+   "fieldname": "has_priority_support",
+   "fieldtype": "Check",
+   "label": "Priority Support",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "subscription_package.has_api_access",
+   "fieldname": "has_api_access",
+   "fieldtype": "Check",
+   "label": "API Access",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_features",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "subscription_package.has_bulk_import",
+   "fieldname": "has_bulk_import",
+   "fieldtype": "Check",
+   "label": "Bulk Import",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "subscription_package.has_advanced_reporting",
+   "fieldname": "has_advanced_reporting",
+   "fieldtype": "Check",
+   "label": "Advanced Reporting",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "subscription_package.commission_rate",
+   "fieldname": "commission_rate",
+   "fieldtype": "Percent",
+   "label": "Commission Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_history_section",
+   "fieldtype": "Section Break",
+   "label": "Last Payment",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "last_payment_date",
+   "fieldtype": "Date",
+   "label": "Last Payment Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_payment_amount",
+   "fieldtype": "Currency",
+   "label": "Last Payment Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_payment_method",
+   "fieldtype": "Data",
+   "label": "Last Payment Method",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_payment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_payment_amount",
+   "fieldtype": "Currency",
+   "label": "Next Payment Amount",
+   "description": "Expected amount for next billing"
+  },
+  {
+   "fieldname": "upgrade_downgrade_section",
+   "fieldtype": "Section Break",
+   "label": "Package Changes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "previous_package",
+   "fieldtype": "Link",
+   "label": "Previous Package",
+   "options": "Subscription Package",
+   "read_only": 1
+  },
+  {
+   "fieldname": "upgrade_date",
+   "fieldtype": "Date",
+   "label": "Last Upgrade Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "downgrade_date",
+   "fieldtype": "Date",
+   "label": "Last Downgrade Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_upgrade",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "prorate_amount",
+   "fieldtype": "Currency",
+   "label": "Prorate Amount",
+   "read_only": 1,
+   "description": "Prorated amount from last package change"
+  },
+  {
+   "fieldname": "package_change_reason",
+   "fieldtype": "Small Text",
+   "label": "Package Change Reason"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text",
+   "label": "Internal Notes",
+   "description": "Internal notes (not visible to subscriber)"
+  },
+  {
+   "fieldname": "subscriber_notes",
+   "fieldtype": "Small Text",
+   "label": "Subscriber Notes",
+   "description": "Notes from the subscriber"
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "default": "now",
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_at",
+   "fieldtype": "Datetime",
+   "label": "Modified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_by",
+   "fieldtype": "Link",
+   "label": "Modified By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Package",
+   "link_doctype": "Subscription Package",
+   "link_fieldname": "name"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "name"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Payment Intent",
+   "link_fieldname": "subscription"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Marketing",
+ "name": "Subscription",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "subscription_package, seller_profile, status, package_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Draft"
+  },
+  {
+   "color": "blue",
+   "title": "Trial"
+  },
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "yellow",
+   "title": "Pending Payment"
+  },
+  {
+   "color": "orange",
+   "title": "Grace Period"
+  },
+  {
+   "color": "red",
+   "title": "Suspended"
+  },
+  {
+   "color": "gray",
+   "title": "Cancelled"
+  },
+  {
+   "color": "gray",
+   "title": "Expired"
+  }
+ ],
+ "title_field": "package_name",
+ "track_changes": 1
+}

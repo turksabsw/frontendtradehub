@@ -1,0 +1,836 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "PREM-BUYER-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "buyer_profile",
+  "buyer_name",
+  "buyer_type",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "tenant_name",
+  "premium_since",
+  "subscription_section",
+  "subscription_plan",
+  "subscription_plan_name",
+  "subscription_status",
+  "column_break_subscription",
+  "subscription_start_date",
+  "subscription_end_date",
+  "auto_renew",
+  "business_section",
+  "company_name",
+  "company_registration_number",
+  "year_established",
+  "column_break_business",
+  "industry_sector",
+  "employee_count_range",
+  "annual_revenue_range",
+  "procurement_section",
+  "annual_procurement_budget",
+  "procurement_budget_currency",
+  "main_sourcing_categories",
+  "column_break_procurement",
+  "procurement_frequency",
+  "average_order_value",
+  "preferred_payment_terms",
+  "sourcing_section",
+  "sourcing_regions",
+  "preferred_supplier_types",
+  "quality_requirements",
+  "column_break_sourcing",
+  "certification_requirements",
+  "compliance_requirements",
+  "sustainability_requirements",
+  "references_section",
+  "company_website",
+  "linkedin_profile",
+  "trade_references",
+  "column_break_references",
+  "bank_references",
+  "business_license",
+  "tax_certificate",
+  "verification_section",
+  "verification_level",
+  "kyc_verified",
+  "kyc_verified_at",
+  "column_break_verification",
+  "credit_verified",
+  "credit_score",
+  "credit_limit",
+  "premium_benefits_section",
+  "priority_support",
+  "dedicated_account_manager",
+  "account_manager",
+  "column_break_benefits",
+  "bulk_discount_rate",
+  "extended_payment_terms",
+  "early_access_products",
+  "api_access_section",
+  "api_access_level",
+  "api_key",
+  "api_requests_per_day",
+  "column_break_api",
+  "api_last_used",
+  "api_usage_this_month",
+  "purchase_history_section",
+  "total_orders",
+  "total_purchase_amount",
+  "total_purchase_currency",
+  "column_break_purchase_history",
+  "average_order_frequency_days",
+  "last_order_date",
+  "favorite_categories",
+  "performance_section",
+  "buyer_score",
+  "payment_reliability_rate",
+  "dispute_rate",
+  "column_break_performance",
+  "return_rate",
+  "repeat_purchase_rate",
+  "average_response_time_hours",
+  "communication_section",
+  "preferred_language",
+  "preferred_contact_method",
+  "timezone",
+  "column_break_communication",
+  "newsletter_subscribed",
+  "marketing_consent",
+  "sms_notifications",
+  "timestamps_section",
+  "created_at",
+  "modified_at",
+  "column_break_timestamps",
+  "created_by",
+  "modified_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "buyer_profile",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer Profile",
+   "options": "User",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Link to the User account for this premium buyer"
+  },
+  {
+   "fetch_from": "buyer_profile.full_name",
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer Name",
+   "read_only": 1
+  },
+  {
+   "default": "Business",
+   "fieldname": "buyer_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Buyer Type",
+   "options": "Individual\nBusiness\nEnterprise\nGovernment\nNon-Profit"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nActive\nSuspended\nExpired\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1,
+   "description": "Auto-populated from organization"
+  },
+  {
+   "fetch_from": "tenant.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "premium_since",
+   "fieldtype": "Date",
+   "label": "Premium Since",
+   "read_only": 1
+  },
+  {
+   "fieldname": "subscription_section",
+   "fieldtype": "Section Break",
+   "label": "Subscription Details"
+  },
+  {
+   "fieldname": "subscription_plan",
+   "fieldtype": "Link",
+   "label": "Subscription Plan",
+   "options": "Subscription Package",
+   "description": "Current premium subscription plan"
+  },
+  {
+   "fetch_from": "subscription_plan.plan_name",
+   "fieldname": "subscription_plan_name",
+   "fieldtype": "Data",
+   "label": "Plan Name",
+   "read_only": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "subscription_status",
+   "fieldtype": "Select",
+   "label": "Subscription Status",
+   "options": "Active\nPending Payment\nGrace Period\nExpired\nCancelled"
+  },
+  {
+   "fieldname": "column_break_subscription",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "subscription_start_date",
+   "fieldtype": "Date",
+   "label": "Subscription Start Date"
+  },
+  {
+   "fieldname": "subscription_end_date",
+   "fieldtype": "Date",
+   "label": "Subscription End Date"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_renew",
+   "fieldtype": "Check",
+   "label": "Auto Renew"
+  },
+  {
+   "fieldname": "business_section",
+   "fieldtype": "Section Break",
+   "label": "Business Information"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name",
+   "description": "Official company or organization name"
+  },
+  {
+   "fieldname": "company_registration_number",
+   "fieldtype": "Data",
+   "label": "Company Registration Number",
+   "description": "Business registration/incorporation number"
+  },
+  {
+   "fieldname": "year_established",
+   "fieldtype": "Int",
+   "label": "Year Established",
+   "description": "Year the company was founded"
+  },
+  {
+   "fieldname": "column_break_business",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "industry_sector",
+   "fieldtype": "Select",
+   "label": "Industry Sector",
+   "options": "\nRetail\nWholesale\nManufacturing\nConstruction\nTechnology\nHealthcare\nEducation\nHospitality\nTransportation\nAgriculture\nFinance\nReal Estate\nProfessional Services\nOther"
+  },
+  {
+   "fieldname": "employee_count_range",
+   "fieldtype": "Select",
+   "label": "Employee Count",
+   "options": "\n1-10\n11-50\n51-100\n101-500\n501-1000\n1001-5000\nAbove 5000"
+  },
+  {
+   "fieldname": "annual_revenue_range",
+   "fieldtype": "Select",
+   "label": "Annual Revenue Range",
+   "options": "\nBelow $100K\n$100K - $500K\n$500K - $1M\n$1M - $5M\n$5M - $10M\n$10M - $50M\n$50M - $100M\nAbove $100M"
+  },
+  {
+   "fieldname": "procurement_section",
+   "fieldtype": "Section Break",
+   "label": "Procurement Information"
+  },
+  {
+   "fieldname": "annual_procurement_budget",
+   "fieldtype": "Currency",
+   "label": "Annual Procurement Budget",
+   "description": "Estimated annual procurement spending"
+  },
+  {
+   "default": "USD",
+   "fieldname": "procurement_budget_currency",
+   "fieldtype": "Link",
+   "label": "Budget Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "main_sourcing_categories",
+   "fieldtype": "Small Text",
+   "label": "Main Sourcing Categories",
+   "description": "Primary product categories being sourced"
+  },
+  {
+   "fieldname": "column_break_procurement",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "procurement_frequency",
+   "fieldtype": "Select",
+   "label": "Procurement Frequency",
+   "options": "\nDaily\nWeekly\nBi-Weekly\nMonthly\nQuarterly\nAs Needed"
+  },
+  {
+   "fieldname": "average_order_value",
+   "fieldtype": "Currency",
+   "label": "Average Order Value",
+   "description": "Typical order size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "preferred_payment_terms",
+   "fieldtype": "Select",
+   "label": "Preferred Payment Terms",
+   "options": "\nImmediate\nNet 15\nNet 30\nNet 45\nNet 60\nNet 90\nLetter of Credit\nCash on Delivery"
+  },
+  {
+   "fieldname": "sourcing_section",
+   "fieldtype": "Section Break",
+   "label": "Sourcing Requirements",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "sourcing_regions",
+   "fieldtype": "Small Text",
+   "label": "Preferred Sourcing Regions",
+   "description": "Countries or regions preferred for sourcing"
+  },
+  {
+   "fieldname": "preferred_supplier_types",
+   "fieldtype": "Select",
+   "label": "Preferred Supplier Types",
+   "options": "\nManufacturer\nTrading Company\nDistributor\nWholesaler\nAny"
+  },
+  {
+   "fieldname": "quality_requirements",
+   "fieldtype": "Small Text",
+   "label": "Quality Requirements",
+   "description": "Minimum quality standards required"
+  },
+  {
+   "fieldname": "column_break_sourcing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "certification_requirements",
+   "fieldtype": "Small Text",
+   "label": "Certification Requirements",
+   "description": "Required supplier certifications (ISO, etc.)"
+  },
+  {
+   "fieldname": "compliance_requirements",
+   "fieldtype": "Small Text",
+   "label": "Compliance Requirements",
+   "description": "Regulatory compliance requirements"
+  },
+  {
+   "default": "0",
+   "fieldname": "sustainability_requirements",
+   "fieldtype": "Check",
+   "label": "Sustainability Requirements",
+   "description": "Requires suppliers with sustainability certifications"
+  },
+  {
+   "fieldname": "references_section",
+   "fieldtype": "Section Break",
+   "label": "References & Documents",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "company_website",
+   "fieldtype": "Data",
+   "label": "Company Website",
+   "options": "URL"
+  },
+  {
+   "fieldname": "linkedin_profile",
+   "fieldtype": "Data",
+   "label": "LinkedIn Profile",
+   "options": "URL"
+  },
+  {
+   "fieldname": "trade_references",
+   "fieldtype": "Small Text",
+   "label": "Trade References",
+   "description": "Names and contacts of trade references"
+  },
+  {
+   "fieldname": "column_break_references",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bank_references",
+   "fieldtype": "Small Text",
+   "label": "Bank References",
+   "description": "Bank reference information"
+  },
+  {
+   "fieldname": "business_license",
+   "fieldtype": "Attach",
+   "label": "Business License"
+  },
+  {
+   "fieldname": "tax_certificate",
+   "fieldtype": "Attach",
+   "label": "Tax Certificate"
+  },
+  {
+   "fieldname": "verification_section",
+   "fieldtype": "Section Break",
+   "label": "Verification & Credit"
+  },
+  {
+   "default": "Basic",
+   "fieldname": "verification_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Verification Level",
+   "options": "Basic\nStandard\nAdvanced\nPremium\nEnterprise"
+  },
+  {
+   "default": "0",
+   "fieldname": "kyc_verified",
+   "fieldtype": "Check",
+   "label": "KYC Verified",
+   "description": "Know Your Customer verification completed"
+  },
+  {
+   "depends_on": "eval:doc.kyc_verified==1",
+   "fieldname": "kyc_verified_at",
+   "fieldtype": "Datetime",
+   "label": "KYC Verified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_verification",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "credit_verified",
+   "fieldtype": "Check",
+   "label": "Credit Verified",
+   "description": "Credit check completed"
+  },
+  {
+   "depends_on": "eval:doc.credit_verified==1",
+   "fieldname": "credit_score",
+   "fieldtype": "Int",
+   "label": "Credit Score",
+   "description": "Internal credit score (0-1000)",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.credit_verified==1",
+   "fieldname": "credit_limit",
+   "fieldtype": "Currency",
+   "label": "Credit Limit",
+   "description": "Maximum credit extended to buyer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "premium_benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Premium Benefits"
+  },
+  {
+   "default": "1",
+   "fieldname": "priority_support",
+   "fieldtype": "Check",
+   "label": "Priority Support",
+   "description": "Access to priority customer support",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "dedicated_account_manager",
+   "fieldtype": "Check",
+   "label": "Dedicated Account Manager",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.dedicated_account_manager==1",
+   "fieldname": "account_manager",
+   "fieldtype": "Link",
+   "label": "Account Manager",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_benefits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "bulk_discount_rate",
+   "fieldtype": "Percent",
+   "label": "Bulk Discount Rate",
+   "description": "Additional discount on bulk orders",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "extended_payment_terms",
+   "fieldtype": "Check",
+   "label": "Extended Payment Terms",
+   "description": "Eligible for extended payment terms",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "early_access_products",
+   "fieldtype": "Check",
+   "label": "Early Access to Products",
+   "description": "Get early access to new products and deals",
+   "read_only": 1
+  },
+  {
+   "fieldname": "api_access_section",
+   "fieldtype": "Section Break",
+   "label": "API Access",
+   "collapsible": 1
+  },
+  {
+   "default": "None",
+   "fieldname": "api_access_level",
+   "fieldtype": "Select",
+   "label": "API Access Level",
+   "options": "None\nBasic\nStandard\nAdvanced\nEnterprise",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.api_access_level!='None'",
+   "fieldname": "api_key",
+   "fieldtype": "Data",
+   "label": "API Key",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.api_access_level!='None'",
+   "fieldname": "api_requests_per_day",
+   "fieldtype": "Int",
+   "label": "API Requests Per Day",
+   "description": "Maximum API requests allowed per day",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_api",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.api_access_level!='None'",
+   "fieldname": "api_last_used",
+   "fieldtype": "Datetime",
+   "label": "API Last Used",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.api_access_level!='None'",
+   "fieldname": "api_usage_this_month",
+   "fieldtype": "Int",
+   "label": "API Usage This Month",
+   "read_only": 1
+  },
+  {
+   "fieldname": "purchase_history_section",
+   "fieldtype": "Section Break",
+   "label": "Purchase History"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_orders",
+   "fieldtype": "Int",
+   "label": "Total Orders",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_purchase_amount",
+   "fieldtype": "Currency",
+   "label": "Total Purchase Amount",
+   "read_only": 1
+  },
+  {
+   "default": "USD",
+   "fieldname": "total_purchase_currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_purchase_history",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "average_order_frequency_days",
+   "fieldtype": "Int",
+   "label": "Avg Order Frequency (days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_order_date",
+   "fieldtype": "Date",
+   "label": "Last Order Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "favorite_categories",
+   "fieldtype": "Small Text",
+   "label": "Favorite Categories",
+   "description": "Most purchased product categories",
+   "read_only": 1
+  },
+  {
+   "fieldname": "performance_section",
+   "fieldtype": "Section Break",
+   "label": "Performance Metrics"
+  },
+  {
+   "default": "0",
+   "fieldname": "buyer_score",
+   "fieldtype": "Float",
+   "label": "Buyer Score",
+   "description": "Overall buyer reliability score (0-100)",
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "default": "100",
+   "fieldname": "payment_reliability_rate",
+   "fieldtype": "Percent",
+   "label": "Payment Reliability Rate",
+   "description": "Percentage of on-time payments",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "dispute_rate",
+   "fieldtype": "Percent",
+   "label": "Dispute Rate",
+   "description": "Percentage of orders with disputes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_performance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "return_rate",
+   "fieldtype": "Percent",
+   "label": "Return Rate",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "repeat_purchase_rate",
+   "fieldtype": "Percent",
+   "label": "Repeat Purchase Rate",
+   "description": "Rate of returning to same sellers",
+   "read_only": 1
+  },
+  {
+   "default": "24",
+   "fieldname": "average_response_time_hours",
+   "fieldtype": "Float",
+   "label": "Avg Response Time (hrs)",
+   "precision": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "communication_section",
+   "fieldtype": "Section Break",
+   "label": "Communication Preferences",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "preferred_language",
+   "fieldtype": "Link",
+   "label": "Preferred Language",
+   "options": "Language"
+  },
+  {
+   "default": "Email",
+   "fieldname": "preferred_contact_method",
+   "fieldtype": "Select",
+   "label": "Preferred Contact Method",
+   "options": "Email\nPhone\nWhatsApp\nIn-App Message"
+  },
+  {
+   "fieldname": "timezone",
+   "fieldtype": "Select",
+   "label": "Timezone",
+   "options": "\nUTC\nEurope/Istanbul\nEurope/London\nAmerica/New_York\nAmerica/Los_Angeles\nAsia/Shanghai\nAsia/Tokyo"
+  },
+  {
+   "fieldname": "column_break_communication",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "newsletter_subscribed",
+   "fieldtype": "Check",
+   "label": "Newsletter Subscribed"
+  },
+  {
+   "default": "0",
+   "fieldname": "marketing_consent",
+   "fieldtype": "Check",
+   "label": "Marketing Consent",
+   "description": "Consent to receive marketing communications"
+  },
+  {
+   "default": "0",
+   "fieldname": "sms_notifications",
+   "fieldtype": "Check",
+   "label": "SMS Notifications",
+   "description": "Receive SMS notifications for orders"
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_at",
+   "fieldtype": "Datetime",
+   "label": "Modified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_by",
+   "fieldtype": "Link",
+   "label": "Modified By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Orders",
+   "link_doctype": "Marketplace Order",
+   "link_fieldname": "buyer"
+  },
+  {
+   "group": "Activity",
+   "link_doctype": "Cart",
+   "link_fieldname": "buyer"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "Premium Buyer",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "buyer_profile, buyer_name, company_name, verification_level",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "yellow",
+   "title": "Pending"
+  },
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "red",
+   "title": "Suspended"
+  },
+  {
+   "color": "gray",
+   "title": "Expired"
+  },
+  {
+   "color": "gray",
+   "title": "Cancelled"
+  }
+ ],
+ "title_field": "buyer_name",
+ "track_changes": 1
+}

@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include tradehub_marketing *.css
+recursive-include tradehub_marketing *.csv
+recursive-include tradehub_marketing *.html
+recursive-include tradehub_marketing *.ico
+recursive-include tradehub_marketing *.js
+recursive-include tradehub_marketing *.json
+recursive-include tradehub_marketing *.md
+recursive-include tradehub_marketing *.png
+recursive-include tradehub_marketing *.py
+recursive-include tradehub_marketing *.svg
+recursive-include tradehub_marketing *.txt
+recursive-exclude tradehub_marketing *.pyc

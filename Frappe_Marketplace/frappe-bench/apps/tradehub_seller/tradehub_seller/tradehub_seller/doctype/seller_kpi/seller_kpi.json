@@ -1,0 +1,777 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "KPI-.YYYY.-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "seller",
+  "kpi_type",
+  "kpi_category",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "evaluation_period",
+  "period_section",
+  "period_type",
+  "period_start",
+  "period_end",
+  "column_break_period",
+  "period_label",
+  "is_current_period",
+  "auto_calculated",
+  "targets_section",
+  "target_value",
+  "target_type",
+  "minimum_threshold",
+  "column_break_targets",
+  "maximum_threshold",
+  "warning_threshold",
+  "critical_threshold",
+  "improvement_target",
+  "actual_values_section",
+  "actual_value",
+  "previous_value",
+  "value_change",
+  "column_break_actual",
+  "value_trend",
+  "percentage_of_target",
+  "deviation_from_target",
+  "last_calculated_at",
+  "evaluation_section",
+  "evaluation_status",
+  "performance_grade",
+  "score_contribution",
+  "column_break_evaluation",
+  "days_below_target",
+  "days_at_risk",
+  "consecutive_periods_below",
+  "metrics_section",
+  "sample_size",
+  "data_points_count",
+  "confidence_level",
+  "column_break_metrics",
+  "standard_deviation",
+  "variance",
+  "coefficient_of_variation",
+  "breakdown_section",
+  "breakdown_data",
+  "comparison_section",
+  "peer_average",
+  "peer_rank",
+  "peer_percentile",
+  "column_break_comparison",
+  "tier_average",
+  "category_average",
+  "platform_average",
+  "alerts_section",
+  "alerts_enabled",
+  "alert_on_warning",
+  "alert_on_critical",
+  "column_break_alerts",
+  "alert_recipients",
+  "last_alert_sent",
+  "alert_count",
+  "actions_section",
+  "action_required",
+  "recommended_action",
+  "action_deadline",
+  "column_break_actions",
+  "action_taken",
+  "action_taken_at",
+  "action_taken_by",
+  "notes_section",
+  "calculation_method",
+  "data_source",
+  "notes",
+  "timestamps_section",
+  "created_at",
+  "created_by",
+  "column_break_timestamps",
+  "modified_at",
+  "modified_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1,
+   "description": "The seller this KPI belongs to"
+  },
+  {
+   "default": "Order Fulfillment Rate",
+   "fieldname": "kpi_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "KPI Type",
+   "options": "Order Fulfillment Rate\nOn-Time Delivery Rate\nReturn Rate\nCancellation Rate\nResponse Time\nCustomer Satisfaction\nComplaint Rate\nDispute Rate\nRefund Rate\nShipment Tracking Rate\nReview Response Rate\nListing Quality Score\nInventory Accuracy\nOrder Acceptance Rate\nProcessing Time\nPackaging Quality\nShipping Label Accuracy\nCommunication Rating\nProduct Accuracy\nPolicy Compliance",
+   "reqd": 1,
+   "description": "Type of KPI being tracked"
+  },
+  {
+   "default": "Fulfillment",
+   "fieldname": "kpi_category",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "KPI Category",
+   "options": "Fulfillment\nDelivery\nQuality\nService\nCompliance\nEngagement\nFinancial",
+   "reqd": 1,
+   "description": "Category this KPI belongs to"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "On Track",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nActive\nOn Track\nAt Risk\nBelow Target\nCritical\nExceeding\nPaused\nExpired",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "description": "Tenant for multi-tenant isolation"
+  },
+  {
+   "fieldname": "evaluation_period",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Evaluation Period",
+   "description": "Period identifier (e.g., 2024-01, 2024-Q1, 2024-W05)"
+  },
+  {
+   "fieldname": "period_section",
+   "fieldtype": "Section Break",
+   "label": "Period Settings"
+  },
+  {
+   "default": "Monthly",
+   "fieldname": "period_type",
+   "fieldtype": "Select",
+   "label": "Period Type",
+   "options": "Daily\nWeekly\nBi-Weekly\nMonthly\nQuarterly\nHalf-Yearly\nAnnually\nRolling 7 Days\nRolling 30 Days\nRolling 90 Days\nCustom",
+   "reqd": 1,
+   "description": "Type of evaluation period"
+  },
+  {
+   "fieldname": "period_start",
+   "fieldtype": "Date",
+   "label": "Period Start",
+   "reqd": 1,
+   "description": "Start date of evaluation period"
+  },
+  {
+   "fieldname": "period_end",
+   "fieldtype": "Date",
+   "label": "Period End",
+   "reqd": 1,
+   "description": "End date of evaluation period"
+  },
+  {
+   "fieldname": "column_break_period",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "period_label",
+   "fieldtype": "Data",
+   "label": "Period Label",
+   "read_only": 1,
+   "description": "Human-readable period label"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_current_period",
+   "fieldtype": "Check",
+   "label": "Is Current Period",
+   "description": "Whether this is the active evaluation period"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_calculated",
+   "fieldtype": "Check",
+   "label": "Auto-Calculated",
+   "description": "Whether KPI value is automatically calculated from data"
+  },
+  {
+   "fieldname": "targets_section",
+   "fieldtype": "Section Break",
+   "label": "Targets & Thresholds"
+  },
+  {
+   "default": "0",
+   "fieldname": "target_value",
+   "fieldtype": "Float",
+   "label": "Target Value",
+   "precision": 2,
+   "reqd": 1,
+   "description": "Target value for this KPI"
+  },
+  {
+   "default": "Higher is Better",
+   "fieldname": "target_type",
+   "fieldtype": "Select",
+   "label": "Target Type",
+   "options": "Higher is Better\nLower is Better\nCloser to Target\nWithin Range",
+   "reqd": 1,
+   "description": "How to evaluate performance against target"
+  },
+  {
+   "default": "0",
+   "fieldname": "minimum_threshold",
+   "fieldtype": "Float",
+   "label": "Minimum Threshold",
+   "precision": 2,
+   "description": "Minimum acceptable value"
+  },
+  {
+   "fieldname": "column_break_targets",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "100",
+   "fieldname": "maximum_threshold",
+   "fieldtype": "Float",
+   "label": "Maximum Threshold",
+   "precision": 2,
+   "description": "Maximum possible value (e.g., 100 for percentages)"
+  },
+  {
+   "fieldname": "warning_threshold",
+   "fieldtype": "Float",
+   "label": "Warning Threshold",
+   "precision": 2,
+   "description": "Value that triggers warning status"
+  },
+  {
+   "fieldname": "critical_threshold",
+   "fieldtype": "Float",
+   "label": "Critical Threshold",
+   "precision": 2,
+   "description": "Value that triggers critical status"
+  },
+  {
+   "default": "0",
+   "fieldname": "improvement_target",
+   "fieldtype": "Float",
+   "label": "Improvement Target",
+   "precision": 2,
+   "description": "Expected improvement from previous period"
+  },
+  {
+   "fieldname": "actual_values_section",
+   "fieldtype": "Section Break",
+   "label": "Actual Values"
+  },
+  {
+   "default": "0",
+   "fieldname": "actual_value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual Value",
+   "precision": 2,
+   "description": "Current actual value for this KPI"
+  },
+  {
+   "default": "0",
+   "fieldname": "previous_value",
+   "fieldtype": "Float",
+   "label": "Previous Value",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Value from previous period"
+  },
+  {
+   "default": "0",
+   "fieldname": "value_change",
+   "fieldtype": "Float",
+   "label": "Value Change",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Change from previous period"
+  },
+  {
+   "fieldname": "column_break_actual",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Stable",
+   "fieldname": "value_trend",
+   "fieldtype": "Select",
+   "label": "Value Trend",
+   "options": "Improving\nStable\nDeclining\nVolatile\nNew",
+   "read_only": 1,
+   "description": "Trend direction based on recent values"
+  },
+  {
+   "default": "0",
+   "fieldname": "percentage_of_target",
+   "fieldtype": "Percent",
+   "label": "% of Target",
+   "read_only": 1,
+   "description": "Percentage of target achieved"
+  },
+  {
+   "default": "0",
+   "fieldname": "deviation_from_target",
+   "fieldtype": "Float",
+   "label": "Deviation from Target",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Absolute deviation from target value"
+  },
+  {
+   "fieldname": "last_calculated_at",
+   "fieldtype": "Datetime",
+   "label": "Last Calculated At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "evaluation_section",
+   "fieldtype": "Section Break",
+   "label": "Performance Evaluation"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "evaluation_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Evaluation Status",
+   "options": "Pending\nExceeding Target\nMeeting Target\nWithin Acceptable Range\nBelow Warning Threshold\nBelow Critical Threshold\nNot Applicable",
+   "description": "Overall evaluation of KPI performance"
+  },
+  {
+   "default": "Not Graded",
+   "fieldname": "performance_grade",
+   "fieldtype": "Select",
+   "label": "Performance Grade",
+   "options": "Not Graded\nA+\nA\nA-\nB+\nB\nB-\nC+\nC\nC-\nD\nF",
+   "description": "Letter grade for this KPI"
+  },
+  {
+   "default": "0",
+   "fieldname": "score_contribution",
+   "fieldtype": "Float",
+   "label": "Score Contribution",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Contribution to overall seller score"
+  },
+  {
+   "fieldname": "column_break_evaluation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "days_below_target",
+   "fieldtype": "Int",
+   "label": "Days Below Target",
+   "read_only": 1,
+   "description": "Number of days below target in this period"
+  },
+  {
+   "default": "0",
+   "fieldname": "days_at_risk",
+   "fieldtype": "Int",
+   "label": "Days At Risk",
+   "read_only": 1,
+   "description": "Number of days in at-risk status"
+  },
+  {
+   "default": "0",
+   "fieldname": "consecutive_periods_below",
+   "fieldtype": "Int",
+   "label": "Consecutive Periods Below Target",
+   "read_only": 1,
+   "description": "Number of consecutive periods below target"
+  },
+  {
+   "fieldname": "metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistical Metrics",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_size",
+   "fieldtype": "Int",
+   "label": "Sample Size",
+   "read_only": 1,
+   "description": "Number of orders/events evaluated"
+  },
+  {
+   "default": "0",
+   "fieldname": "data_points_count",
+   "fieldtype": "Int",
+   "label": "Data Points Count",
+   "read_only": 1,
+   "description": "Number of data points used in calculation"
+  },
+  {
+   "default": "0",
+   "fieldname": "confidence_level",
+   "fieldtype": "Percent",
+   "label": "Confidence Level",
+   "read_only": 1,
+   "description": "Statistical confidence in the calculated value"
+  },
+  {
+   "fieldname": "column_break_metrics",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "standard_deviation",
+   "fieldtype": "Float",
+   "label": "Standard Deviation",
+   "precision": 4,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "variance",
+   "fieldtype": "Float",
+   "label": "Variance",
+   "precision": 4,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "coefficient_of_variation",
+   "fieldtype": "Float",
+   "label": "Coefficient of Variation",
+   "precision": 4,
+   "read_only": 1,
+   "description": "CV = Standard Deviation / Mean"
+  },
+  {
+   "fieldname": "breakdown_section",
+   "fieldtype": "Section Break",
+   "label": "Value Breakdown",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "breakdown_data",
+   "fieldtype": "JSON",
+   "label": "Breakdown Data",
+   "description": "JSON object with detailed breakdown of KPI calculation"
+  },
+  {
+   "fieldname": "comparison_section",
+   "fieldtype": "Section Break",
+   "label": "Peer Comparison",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "peer_average",
+   "fieldtype": "Float",
+   "label": "Peer Average",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Average value across all sellers"
+  },
+  {
+   "default": "0",
+   "fieldname": "peer_rank",
+   "fieldtype": "Int",
+   "label": "Peer Rank",
+   "read_only": 1,
+   "description": "Rank among all sellers"
+  },
+  {
+   "default": "0",
+   "fieldname": "peer_percentile",
+   "fieldtype": "Float",
+   "label": "Peer Percentile",
+   "precision": 1,
+   "read_only": 1,
+   "description": "Percentile rank among peers"
+  },
+  {
+   "fieldname": "column_break_comparison",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "tier_average",
+   "fieldtype": "Float",
+   "label": "Tier Average",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Average for sellers in same tier"
+  },
+  {
+   "default": "0",
+   "fieldname": "category_average",
+   "fieldtype": "Float",
+   "label": "Category Average",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Average for sellers in same category"
+  },
+  {
+   "default": "0",
+   "fieldname": "platform_average",
+   "fieldtype": "Float",
+   "label": "Platform Average",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Platform-wide average for this KPI"
+  },
+  {
+   "fieldname": "alerts_section",
+   "fieldtype": "Section Break",
+   "label": "Alert Settings",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "alerts_enabled",
+   "fieldtype": "Check",
+   "label": "Alerts Enabled",
+   "description": "Enable alerts for this KPI"
+  },
+  {
+   "default": "1",
+   "fieldname": "alert_on_warning",
+   "fieldtype": "Check",
+   "label": "Alert on Warning",
+   "description": "Send alert when warning threshold breached"
+  },
+  {
+   "default": "1",
+   "fieldname": "alert_on_critical",
+   "fieldtype": "Check",
+   "label": "Alert on Critical",
+   "description": "Send alert when critical threshold breached"
+  },
+  {
+   "fieldname": "column_break_alerts",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "alert_recipients",
+   "fieldtype": "Small Text",
+   "label": "Alert Recipients",
+   "description": "Comma-separated email addresses for alerts"
+  },
+  {
+   "fieldname": "last_alert_sent",
+   "fieldtype": "Datetime",
+   "label": "Last Alert Sent",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "alert_count",
+   "fieldtype": "Int",
+   "label": "Alert Count",
+   "read_only": 1,
+   "description": "Number of alerts sent this period"
+  },
+  {
+   "fieldname": "actions_section",
+   "fieldtype": "Section Break",
+   "label": "Actions",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "action_required",
+   "fieldtype": "Check",
+   "label": "Action Required",
+   "description": "Whether seller action is required"
+  },
+  {
+   "fieldname": "recommended_action",
+   "fieldtype": "Small Text",
+   "label": "Recommended Action",
+   "description": "Recommended action to improve this KPI"
+  },
+  {
+   "fieldname": "action_deadline",
+   "fieldtype": "Date",
+   "label": "Action Deadline",
+   "description": "Deadline for taking action"
+  },
+  {
+   "fieldname": "column_break_actions",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "action_taken",
+   "fieldtype": "Small Text",
+   "label": "Action Taken",
+   "description": "Description of action taken"
+  },
+  {
+   "fieldname": "action_taken_at",
+   "fieldtype": "Datetime",
+   "label": "Action Taken At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "action_taken_by",
+   "fieldtype": "Link",
+   "label": "Action Taken By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes & Configuration",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "calculation_method",
+   "fieldtype": "Small Text",
+   "label": "Calculation Method",
+   "description": "Description of how this KPI is calculated"
+  },
+  {
+   "fieldname": "data_source",
+   "fieldtype": "Data",
+   "label": "Data Source",
+   "description": "Source of data for this KPI (e.g., Sub Order, Review)"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes",
+   "description": "Additional notes about this KPI record"
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "modified_at",
+   "fieldtype": "Datetime",
+   "label": "Modified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_by",
+   "fieldtype": "Link",
+   "label": "Modified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "kpi_period",
+   "fieldtype": "Select",
+   "label": "KPI Period",
+   "in_list_view": 0,
+   "options": "\nDaily\nWeekly\nMonthly\nQuarterly\nYearly"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "in_list_view": 0
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "seller"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Seller Score",
+   "link_fieldname": "seller"
+  }
+ ],
+ "modified": "2026-02-12 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Seller KPI",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "seller, kpi_type, kpi_category, evaluation_period, status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "seller",
+ "track_changes": 1
+}

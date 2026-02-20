@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "threshold_from",
+  "threshold_to",
+  "column_break_tier",
+  "rate",
+  "rate_type"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Minimum threshold (weight in kg or price)",
+   "fieldname": "threshold_from",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Threshold From",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Maximum threshold (0 = unlimited)",
+   "fieldname": "threshold_to",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Threshold To"
+  },
+  {
+   "fieldname": "column_break_tier",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Rate for this tier (fixed amount or percentage)",
+   "fieldname": "rate",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Rate",
+   "reqd": 1
+  },
+  {
+   "default": "Fixed",
+   "description": "Type of rate",
+   "fieldname": "rate_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Rate Type",
+   "options": "Fixed\nPercentage\nPer KG"
+  }
+ ],
+ "has_web_view": 0,
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Logistics",
+ "name": "Shipping Rate Tier",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "threshold_from",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

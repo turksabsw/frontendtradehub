@@ -1,0 +1,448 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "title",
+  "offer_code",
+  "column_break_basic",
+  "status",
+  "is_active",
+  "seller_section",
+  "seller",
+  "seller_name",
+  "column_break_seller",
+  "tenant",
+  "tenant_name",
+  "description_section",
+  "description",
+  "products_section",
+  "products",
+  "totals_section",
+  "total_products",
+  "total_quantity",
+  "column_break_totals",
+  "total_value",
+  "currency",
+  "requirements_section",
+  "minimum_quantity",
+  "minimum_order_value",
+  "column_break_requirements",
+  "target_buyer_levels",
+  "buyer_requirements",
+  "validity_section",
+  "valid_from",
+  "valid_until",
+  "column_break_validity",
+  "usage_limit",
+  "current_usage",
+  "pricing_section",
+  "pricing_type",
+  "discount_percentage",
+  "column_break_pricing",
+  "fixed_discount_amount",
+  "terms_section",
+  "terms_and_conditions",
+  "notes",
+  "system_section",
+  "naming_series",
+  "published_at",
+  "created_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Offer Details"
+  },
+  {
+   "description": "Title of the wholesale offer",
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "description": "Auto-generated unique offer identifier",
+   "fieldname": "offer_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Offer Code",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending Review\nActive\nExpired\nPaused\nCancelled\nCompleted",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "description": "Whether the offer is currently available",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "seller_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Information"
+  },
+  {
+   "description": "Seller creating this wholesale offer",
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "seller.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_seller",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "The tenant this offer belongs to (auto-populated from seller)",
+   "fetch_from": "seller.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "tenant.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "description": "Detailed description of the wholesale offer",
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "products_section",
+   "fieldtype": "Section Break",
+   "label": "Products"
+  },
+  {
+   "description": "Products included in this wholesale offer",
+   "fieldname": "products",
+   "fieldtype": "Table",
+   "label": "Products",
+   "options": "Wholesale Offer Product",
+   "reqd": 1
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Offer Totals"
+  },
+  {
+   "default": "0",
+   "description": "Total number of products in this offer",
+   "fieldname": "total_products",
+   "fieldtype": "Int",
+   "label": "Total Products",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Total quantity of all products",
+   "fieldname": "total_quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_totals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Total value of all products in the offer",
+   "fieldname": "total_value",
+   "fieldtype": "Currency",
+   "label": "Total Value",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requirements_section",
+   "fieldtype": "Section Break",
+   "label": "Buyer Requirements"
+  },
+  {
+   "default": "1",
+   "description": "Minimum quantity buyer must order to qualify for this offer",
+   "fieldname": "minimum_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Minimum Quantity",
+   "precision": 3,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Minimum order value required to qualify (0 = no minimum)",
+   "fieldname": "minimum_order_value",
+   "fieldtype": "Currency",
+   "label": "Minimum Order Value",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_requirements",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Restrict offer to specific buyer levels (comma-separated)",
+   "fieldname": "target_buyer_levels",
+   "fieldtype": "Small Text",
+   "label": "Target Buyer Levels"
+  },
+  {
+   "description": "Additional requirements or qualifications for buyers",
+   "fieldname": "buyer_requirements",
+   "fieldtype": "Small Text",
+   "label": "Buyer Requirements"
+  },
+  {
+   "fieldname": "validity_section",
+   "fieldtype": "Section Break",
+   "label": "Validity Period"
+  },
+  {
+   "description": "Date from which the offer becomes valid",
+   "fieldname": "valid_from",
+   "fieldtype": "Datetime",
+   "label": "Valid From",
+   "reqd": 1
+  },
+  {
+   "description": "Date until which the offer is valid",
+   "fieldname": "valid_until",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Valid Until",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_validity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Maximum number of times this offer can be used (0 = unlimited)",
+   "fieldname": "usage_limit",
+   "fieldtype": "Int",
+   "label": "Usage Limit"
+  },
+  {
+   "default": "0",
+   "description": "Number of times this offer has been used",
+   "fieldname": "current_usage",
+   "fieldtype": "Int",
+   "label": "Current Usage",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Wholesale Pricing"
+  },
+  {
+   "default": "Fixed Price",
+   "description": "How the wholesale pricing is calculated",
+   "fieldname": "pricing_type",
+   "fieldtype": "Select",
+   "label": "Pricing Type",
+   "options": "Fixed Price\nDiscount Percentage\nFixed Discount Amount"
+  },
+  {
+   "depends_on": "eval:doc.pricing_type=='Discount Percentage'",
+   "description": "Discount percentage off regular price",
+   "fieldname": "discount_percentage",
+   "fieldtype": "Percent",
+   "label": "Discount Percentage"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.pricing_type=='Fixed Discount Amount'",
+   "description": "Fixed amount discount off total order",
+   "fieldname": "fixed_discount_amount",
+   "fieldtype": "Currency",
+   "label": "Fixed Discount Amount",
+   "options": "currency"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "terms_section",
+   "fieldtype": "Section Break",
+   "label": "Terms & Notes"
+  },
+  {
+   "description": "Terms and conditions for this wholesale offer",
+   "fieldname": "terms_and_conditions",
+   "fieldtype": "Text Editor",
+   "label": "Terms and Conditions"
+  },
+  {
+   "description": "Internal notes (not visible to buyers)",
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System Information"
+  },
+  {
+   "default": "WSO-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "WSO-.#####"
+  },
+  {
+   "fieldname": "published_at",
+   "fieldtype": "Datetime",
+   "label": "Published At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "seller"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Marketing",
+ "name": "Wholesale Offer",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "title, offer_code, seller, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Draft"
+  },
+  {
+   "color": "orange",
+   "title": "Pending Review"
+  },
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "red",
+   "title": "Expired"
+  },
+  {
+   "color": "yellow",
+   "title": "Paused"
+  },
+  {
+   "color": "red",
+   "title": "Cancelled"
+  },
+  {
+   "color": "blue",
+   "title": "Completed"
+  }
+ ],
+ "title_field": "title",
+ "track_changes": 1
+}

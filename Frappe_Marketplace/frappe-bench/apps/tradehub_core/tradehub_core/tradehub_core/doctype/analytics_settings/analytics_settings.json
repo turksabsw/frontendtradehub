@@ -1,0 +1,63 @@
+{
+    "actions": [],
+    "allow_rename": 0,
+    "creation": "2026-02-16 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "basic_section",
+        "enable_analytics",
+        "enable_eca_rules",
+        "debug_mode"
+    ],
+    "fields": [
+        {
+            "fieldname": "basic_section",
+            "fieldtype": "Section Break",
+            "label": "Global Settings"
+        },
+        {
+            "default": "1",
+            "fieldname": "enable_analytics",
+            "fieldtype": "Check",
+            "label": "Enable Analytics"
+        },
+        {
+            "default": "1",
+            "fieldname": "enable_eca_rules",
+            "fieldtype": "Check",
+            "label": "Enable ECA Rules"
+        },
+        {
+            "default": "0",
+            "fieldname": "debug_mode",
+            "fieldtype": "Check",
+            "label": "Debug Mode"
+        }
+    ],
+    "index_web_pages_for_search": 0,
+    "issingle": 1,
+    "modified": "2026-02-16 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "TradeHub Core",
+    "name": "Analytics Settings",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "quick_entry": 0,
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "track_changes": 1
+}

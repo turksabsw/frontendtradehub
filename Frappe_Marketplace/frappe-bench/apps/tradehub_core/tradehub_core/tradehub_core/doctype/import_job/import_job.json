@@ -1,0 +1,643 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "job_code",
+  "job_name",
+  "import_type",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "seller",
+  "file_section",
+  "import_file",
+  "original_filename",
+  "file_format",
+  "column_break_file",
+  "file_size",
+  "has_header_row",
+  "delimiter",
+  "encoding",
+  "configuration_section",
+  "category",
+  "default_status",
+  "update_existing",
+  "column_break_config",
+  "skip_validation",
+  "stop_on_error",
+  "batch_size",
+  "column_mapping_section",
+  "column_mapping",
+  "field_defaults",
+  "progress_section",
+  "total_rows",
+  "processed_rows",
+  "successful_rows",
+  "column_break_progress",
+  "failed_rows",
+  "skipped_rows",
+  "progress_percent",
+  "timing_section",
+  "started_at",
+  "completed_at",
+  "duration_seconds",
+  "column_break_timing",
+  "estimated_time_remaining",
+  "rows_per_second",
+  "errors_section",
+  "errors",
+  "summary_section",
+  "summary",
+  "error_file_url",
+  "column_break_summary",
+  "success_file_url",
+  "log_file_url",
+  "notifications_section",
+  "notify_on_completion",
+  "notification_email",
+  "column_break_notify",
+  "notification_sent",
+  "notification_sent_at",
+  "retry_section",
+  "is_retry",
+  "retry_count",
+  "original_job",
+  "column_break_retry",
+  "last_retry_at",
+  "max_retries",
+  "system_section",
+  "naming_series",
+  "created_by",
+  "worker_id",
+  "column_break_system",
+  "job_id",
+  "priority"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "description": "Auto-generated unique job identifier",
+   "fieldname": "job_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Code",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "description": "Human-readable name for this import job",
+   "fieldname": "job_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Name",
+   "length": 255
+  },
+  {
+   "default": "Listing",
+   "fieldname": "import_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Import Type",
+   "options": "Listing\nListing Variant\nSKU\nCategory\nMedia Asset\nInventory Update\nPrice Update",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nValidating\nQueued\nProcessing\nPaused\nCompleted\nCompleted with Errors\nFailed\nCancelled",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "description": "The tenant this import belongs to"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "description": "The seller performing this import"
+  },
+  {
+   "fieldname": "file_section",
+   "fieldtype": "Section Break",
+   "label": "Import File"
+  },
+  {
+   "fieldname": "import_file",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Import File",
+   "reqd": 1
+  },
+  {
+   "fieldname": "original_filename",
+   "fieldtype": "Data",
+   "label": "Original Filename",
+   "length": 255,
+   "read_only": 1
+  },
+  {
+   "default": "CSV",
+   "fieldname": "file_format",
+   "fieldtype": "Select",
+   "label": "File Format",
+   "options": "CSV\nExcel (XLSX)\nExcel (XLS)\nJSON",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_file",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "File size in bytes",
+   "fieldname": "file_size",
+   "fieldtype": "Int",
+   "label": "File Size (bytes)",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "description": "First row contains column headers",
+   "fieldname": "has_header_row",
+   "fieldtype": "Check",
+   "label": "Has Header Row"
+  },
+  {
+   "default": ",",
+   "depends_on": "eval:doc.file_format=='CSV'",
+   "fieldname": "delimiter",
+   "fieldtype": "Select",
+   "label": "CSV Delimiter",
+   "options": ",\n;\n\\t\n|"
+  },
+  {
+   "default": "utf-8",
+   "fieldname": "encoding",
+   "fieldtype": "Select",
+   "label": "File Encoding",
+   "options": "utf-8\nutf-16\niso-8859-1\niso-8859-9\nwindows-1254\nwindows-1252"
+  },
+  {
+   "fieldname": "configuration_section",
+   "fieldtype": "Section Break",
+   "label": "Import Configuration"
+  },
+  {
+   "depends_on": "eval:['Listing', 'Listing Variant'].includes(doc.import_type)",
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Default Category",
+   "options": "Category",
+   "description": "Default category if not specified in data"
+  },
+  {
+   "default": "Draft",
+   "depends_on": "eval:doc.import_type=='Listing'",
+   "fieldname": "default_status",
+   "fieldtype": "Select",
+   "label": "Default Listing Status",
+   "options": "Draft\nPending Review\nActive"
+  },
+  {
+   "default": "0",
+   "description": "Update existing records if found by SKU/code",
+   "fieldname": "update_existing",
+   "fieldtype": "Check",
+   "label": "Update Existing Records"
+  },
+  {
+   "fieldname": "column_break_config",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Skip validation checks (use with caution)",
+   "fieldname": "skip_validation",
+   "fieldtype": "Check",
+   "label": "Skip Validation"
+  },
+  {
+   "default": "0",
+   "description": "Stop processing on first error",
+   "fieldname": "stop_on_error",
+   "fieldtype": "Check",
+   "label": "Stop on Error"
+  },
+  {
+   "default": "100",
+   "description": "Number of records to process in each batch",
+   "fieldname": "batch_size",
+   "fieldtype": "Int",
+   "label": "Batch Size"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "column_mapping_section",
+   "fieldtype": "Section Break",
+   "label": "Column Mapping"
+  },
+  {
+   "description": "JSON mapping of file columns to DocType fields",
+   "fieldname": "column_mapping",
+   "fieldtype": "JSON",
+   "label": "Column Mapping"
+  },
+  {
+   "description": "JSON object with default values for fields",
+   "fieldname": "field_defaults",
+   "fieldtype": "JSON",
+   "label": "Field Defaults"
+  },
+  {
+   "fieldname": "progress_section",
+   "fieldtype": "Section Break",
+   "label": "Progress"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_rows",
+   "fieldtype": "Int",
+   "label": "Total Rows",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "processed_rows",
+   "fieldtype": "Int",
+   "label": "Processed Rows",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "successful_rows",
+   "fieldtype": "Int",
+   "label": "Successful Rows",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_progress",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "failed_rows",
+   "fieldtype": "Int",
+   "label": "Failed Rows",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "skipped_rows",
+   "fieldtype": "Int",
+   "label": "Skipped Rows",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Completion percentage (0-100)",
+   "fieldname": "progress_percent",
+   "fieldtype": "Percent",
+   "label": "Progress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timing_section",
+   "fieldtype": "Section Break",
+   "label": "Timing"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "duration_seconds",
+   "fieldtype": "Int",
+   "label": "Duration (seconds)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Estimated seconds remaining",
+   "fieldname": "estimated_time_remaining",
+   "fieldtype": "Int",
+   "label": "Est. Time Remaining (sec)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "rows_per_second",
+   "fieldtype": "Float",
+   "label": "Rows per Second",
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.failed_rows > 0",
+   "fieldname": "errors_section",
+   "fieldtype": "Section Break",
+   "label": "Errors"
+  },
+  {
+   "fieldname": "errors",
+   "fieldtype": "Table",
+   "label": "Import Errors",
+   "options": "Import Job Error",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "summary_section",
+   "fieldtype": "Section Break",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Text",
+   "label": "Import Summary",
+   "read_only": 1
+  },
+  {
+   "description": "Download file with failed rows and error details",
+   "fieldname": "error_file_url",
+   "fieldtype": "Data",
+   "label": "Error Report File",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_summary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Download file with successfully imported rows",
+   "fieldname": "success_file_url",
+   "fieldtype": "Data",
+   "label": "Success Report File",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "description": "Full processing log file",
+   "fieldname": "log_file_url",
+   "fieldtype": "Data",
+   "label": "Log File",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notifications_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_completion",
+   "fieldtype": "Check",
+   "label": "Notify on Completion"
+  },
+  {
+   "depends_on": "eval:doc.notify_on_completion",
+   "fieldname": "notification_email",
+   "fieldtype": "Data",
+   "label": "Notification Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_notify",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "notification_sent",
+   "fieldtype": "Check",
+   "label": "Notification Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notification_sent_at",
+   "fieldtype": "Datetime",
+   "label": "Notification Sent At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "retry_section",
+   "fieldtype": "Section Break",
+   "label": "Retry Information"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_retry",
+   "fieldtype": "Check",
+   "label": "Is Retry Job",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "retry_count",
+   "fieldtype": "Int",
+   "label": "Retry Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "original_job",
+   "fieldtype": "Link",
+   "label": "Original Job",
+   "options": "Import Job",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_retry",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_retry_at",
+   "fieldtype": "Datetime",
+   "label": "Last Retry At",
+   "read_only": 1
+  },
+  {
+   "default": "3",
+   "fieldname": "max_retries",
+   "fieldtype": "Int",
+   "label": "Max Retries"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System Information"
+  },
+  {
+   "default": "IMP-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "IMP-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "description": "Background worker ID processing this job",
+   "fieldname": "worker_id",
+   "fieldtype": "Data",
+   "label": "Worker ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_system",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Background job/task ID",
+   "fieldname": "job_id",
+   "fieldtype": "Data",
+   "label": "Job ID",
+   "read_only": 1
+  },
+  {
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCritical"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "seller"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Listing",
+   "link_fieldname": "import_job"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "Import Job",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 0,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "job_code, job_name, import_type, seller, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Pending"
+  },
+  {
+   "color": "yellow",
+   "title": "Validating"
+  },
+  {
+   "color": "orange",
+   "title": "Queued"
+  },
+  {
+   "color": "blue",
+   "title": "Processing"
+  },
+  {
+   "color": "purple",
+   "title": "Paused"
+  },
+  {
+   "color": "green",
+   "title": "Completed"
+  },
+  {
+   "color": "yellow",
+   "title": "Completed with Errors"
+  },
+  {
+   "color": "red",
+   "title": "Failed"
+  },
+  {
+   "color": "red",
+   "title": "Cancelled"
+  }
+ ],
+ "title_field": "job_name",
+ "track_changes": 1
+}

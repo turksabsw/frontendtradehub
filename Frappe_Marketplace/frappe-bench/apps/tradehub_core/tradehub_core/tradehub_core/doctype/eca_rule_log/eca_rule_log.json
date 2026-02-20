@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "autoname": "format:ECALOG-{#####}",
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Other",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "eca_rule",
+  "rule_name",
+  "status",
+  "column_break_basic",
+  "trigger_doctype",
+  "trigger_document",
+  "trigger_event",
+  "trigger_section",
+  "trigger_user",
+  "trigger_time",
+  "column_break_trigger",
+  "execution_time_ms",
+  "condition_section",
+  "condition_result",
+  "condition_details",
+  "action_section",
+  "actions_executed",
+  "actions_succeeded",
+  "column_break_action",
+  "actions_failed",
+  "action_results",
+  "error_section",
+  "error_message",
+  "error_traceback"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "eca_rule",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "ECA Rule",
+   "options": "ECA Rule",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rule_name",
+   "fieldtype": "Data",
+   "label": "Rule Name",
+   "fetch_from": "eca_rule.rule_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Success\nPartial\nFailed\nSkipped\nError",
+   "reqd": 1,
+   "default": "Success"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trigger_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Trigger DocType",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "trigger_document",
+   "fieldtype": "Dynamic Link",
+   "label": "Trigger Document",
+   "options": "trigger_doctype"
+  },
+  {
+   "fieldname": "trigger_event",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Trigger Event"
+  },
+  {
+   "fieldname": "trigger_section",
+   "fieldtype": "Section Break",
+   "label": "Trigger Details"
+  },
+  {
+   "fieldname": "trigger_user",
+   "fieldtype": "Link",
+   "label": "Trigger User",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "trigger_time",
+   "fieldtype": "Datetime",
+   "label": "Trigger Time"
+  },
+  {
+   "fieldname": "column_break_trigger",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "execution_time_ms",
+   "fieldtype": "Float",
+   "label": "Execution Time (ms)",
+   "description": "Total execution time in milliseconds"
+  },
+  {
+   "fieldname": "condition_section",
+   "fieldtype": "Section Break",
+   "label": "Condition Evaluation",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "condition_result",
+   "fieldtype": "Check",
+   "label": "Conditions Passed",
+   "description": "Whether all conditions evaluated to True"
+  },
+  {
+   "fieldname": "condition_details",
+   "fieldtype": "Code",
+   "label": "Condition Details",
+   "options": "JSON",
+   "description": "JSON details of each condition evaluation"
+  },
+  {
+   "fieldname": "action_section",
+   "fieldtype": "Section Break",
+   "label": "Action Execution",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "actions_executed",
+   "fieldtype": "Int",
+   "label": "Actions Executed",
+   "default": "0"
+  },
+  {
+   "fieldname": "actions_succeeded",
+   "fieldtype": "Int",
+   "label": "Actions Succeeded",
+   "default": "0"
+  },
+  {
+   "fieldname": "column_break_action",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actions_failed",
+   "fieldtype": "Int",
+   "label": "Actions Failed",
+   "default": "0"
+  },
+  {
+   "fieldname": "action_results",
+   "fieldtype": "Code",
+   "label": "Action Results",
+   "options": "JSON",
+   "description": "JSON details of each action execution"
+  },
+  {
+   "fieldname": "error_section",
+   "fieldtype": "Section Break",
+   "label": "Errors",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "label": "Error Message"
+  },
+  {
+   "fieldname": "error_traceback",
+   "fieldtype": "Code",
+   "label": "Error Traceback",
+   "options": "Python"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "ECA Rule Log",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

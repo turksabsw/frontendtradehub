@@ -1,0 +1,78 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "listing",
+  "listing_title",
+  "column_break_product",
+  "quantity",
+  "unit_price",
+  "total_price"
+ ],
+ "fields": [
+  {
+   "fieldname": "listing",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Product",
+   "options": "Listing",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "listing.title",
+   "fieldname": "listing_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Product Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_product",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Quantity included in this wholesale offer",
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "precision": 3,
+   "reqd": 1
+  },
+  {
+   "description": "Wholesale unit price for this product",
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "reqd": 1
+  },
+  {
+   "description": "Total price (quantity x unit_price)",
+   "fieldname": "total_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Price",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Marketing",
+ "name": "Wholesale Offer Product",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "idx",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

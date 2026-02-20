@@ -1,0 +1,958 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "SELLER-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "seller_name",
+  "user",
+  "seller_type",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "organization",
+  "erpnext_supplier",
+  "contact_section",
+  "display_name",
+  "contact_email",
+  "contact_phone",
+  "column_break_contact",
+  "mobile",
+  "whatsapp",
+  "website",
+  "address_section",
+  "address_line_1",
+  "address_line_2",
+  "city",
+  "column_break_address",
+  "state",
+  "country",
+  "postal_code",
+  "addresses",
+  "locations_section",
+  "locations",
+  "tax_section",
+  "tax_id",
+  "tax_office",
+  "tax_id_type",
+  "column_break_tax",
+  "trade_registry_number",
+  "mersis_number",
+  "e_invoice_registered",
+  "e_invoice_alias",
+  "verification_section",
+  "verification_status",
+  "kyc_profile",
+  "verified_at",
+  "verified_by",
+  "column_break_verification",
+  "identity_verified",
+  "business_verified",
+  "bank_verified",
+  "verification_notes",
+  "banking_section",
+  "bank_accounts",
+  "payout_method",
+  "legacy_banking_section",
+  "bank_name",
+  "bank_branch",
+  "iban",
+  "column_break_banking",
+  "account_holder_name",
+  "swift_code",
+  "performance_section",
+  "seller_tier",
+  "seller_score",
+  "column_break_performance",
+  "total_sales_count",
+  "total_sales_amount",
+  "average_rating",
+  "total_reviews",
+  "metrics_section",
+  "order_fulfillment_rate",
+  "on_time_delivery_rate",
+  "return_rate",
+  "response_time_hours",
+  "column_break_metrics",
+  "cancellation_rate",
+  "complaint_rate",
+  "positive_feedback_rate",
+  "last_metrics_update",
+  "badges_section",
+  "seller_badges",
+  "badges",
+  "settings_section",
+  "commission_plan",
+  "default_shipping_rule",
+  "default_return_policy",
+  "column_break_settings",
+  "max_listings",
+  "auto_accept_orders",
+  "accepts_returns",
+  "vacation_mode",
+  "restrictions_section",
+  "is_restricted",
+  "restriction_reason",
+  "restricted_at",
+  "column_break_restrictions",
+  "can_sell",
+  "can_withdraw",
+  "can_create_listings",
+  "featured_section",
+  "is_featured",
+  "featured_from",
+  "featured_until",
+  "column_break_featured",
+  "is_top_seller",
+  "is_premium_seller",
+  "timestamps_section",
+  "joined_at",
+  "last_active_at",
+  "column_break_timestamps",
+  "created_by",
+  "modified_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "Individual",
+   "fieldname": "seller_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller Type",
+   "options": "Individual\nBusiness\nEnterprise",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nUnder Review\nActive\nSuspended\nBlocked\nInactive\nVacation",
+   "reqd": 1
+  },
+  {
+   "description": "The tenant this seller belongs to",
+   "fetch_from": "organization.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only_depends_on": "eval:doc.organization",
+   "reqd": 1
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization",
+   "description": "Business organization for this seller (if applicable)"
+  },
+  {
+   "fieldname": "erpnext_supplier",
+   "fieldtype": "Link",
+   "label": "ERPNext Supplier",
+   "options": "Supplier",
+   "description": "Linked ERPNext Supplier record for ERP integration"
+  },
+  {
+   "fieldname": "contact_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "display_name",
+   "fieldtype": "Data",
+   "label": "Display Name",
+   "description": "Public display name shown to buyers"
+  },
+  {
+   "fieldname": "contact_email",
+   "fieldtype": "Data",
+   "label": "Contact Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Contact Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "whatsapp",
+   "fieldtype": "Data",
+   "label": "WhatsApp",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_address",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "description": "Multiple addresses for this seller (warehouse, shipping, billing)",
+   "fieldname": "addresses",
+   "fieldtype": "Table",
+   "label": "Addresses",
+   "options": "Address Item"
+  },
+  {
+   "fieldname": "locations_section",
+   "fieldtype": "Section Break",
+   "label": "Locations"
+  },
+  {
+   "description": "Warehouses and stores for this seller",
+   "fieldname": "locations",
+   "fieldtype": "Table",
+   "label": "Locations",
+   "options": "Location Item"
+  },
+  {
+   "fieldname": "tax_section",
+   "fieldtype": "Section Break",
+   "label": "Tax Information"
+  },
+  {
+   "description": "VKN (10 digits for companies) or TCKN (11 digits for individuals)",
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "tax_office",
+   "fieldtype": "Data",
+   "label": "Tax Office"
+  },
+  {
+   "default": "TCKN",
+   "fieldname": "tax_id_type",
+   "fieldtype": "Select",
+   "label": "Tax ID Type",
+   "options": "TCKN\nVKN"
+  },
+  {
+   "fieldname": "column_break_tax",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Trade Registry Number (Ticaret Sicil No)",
+   "fieldname": "trade_registry_number",
+   "fieldtype": "Data",
+   "label": "Trade Registry Number"
+  },
+  {
+   "description": "MERSIS Number (16 digits)",
+   "fieldname": "mersis_number",
+   "fieldtype": "Data",
+   "label": "MERSIS Number"
+  },
+  {
+   "default": "0",
+   "description": "Registered for E-Fatura (Electronic Invoice)",
+   "fieldname": "e_invoice_registered",
+   "fieldtype": "Check",
+   "label": "E-Invoice Registered"
+  },
+  {
+   "depends_on": "eval:doc.e_invoice_registered==1",
+   "description": "E-Invoice portal alias (PK: or GB: prefix)",
+   "fieldname": "e_invoice_alias",
+   "fieldtype": "Data",
+   "label": "E-Invoice Alias"
+  },
+  {
+   "fieldname": "verification_section",
+   "fieldtype": "Section Break",
+   "label": "Verification"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "verification_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Verification Status",
+   "options": "Pending\nIn Review\nDocuments Requested\nVerified\nRejected",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "kyc_profile",
+   "fieldtype": "Link",
+   "label": "KYC Profile",
+   "options": "KYC Profile",
+   "description": "Linked KYC verification profile"
+  },
+  {
+   "fieldname": "verified_at",
+   "fieldtype": "Datetime",
+   "label": "Verified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_verification",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "identity_verified",
+   "fieldtype": "Check",
+   "label": "Identity Verified"
+  },
+  {
+   "default": "0",
+   "fieldname": "business_verified",
+   "fieldtype": "Check",
+   "label": "Business Verified"
+  },
+  {
+   "default": "0",
+   "fieldname": "bank_verified",
+   "fieldtype": "Check",
+   "label": "Bank Account Verified"
+  },
+  {
+   "fieldname": "verification_notes",
+   "fieldtype": "Small Text",
+   "label": "Verification Notes"
+  },
+  {
+   "fieldname": "banking_section",
+   "fieldtype": "Section Break",
+   "label": "Banking Information"
+  },
+  {
+   "fieldname": "bank_accounts",
+   "fieldtype": "Table",
+   "label": "Bank Accounts",
+   "options": "Seller Bank Account",
+   "description": "Multiple bank accounts for payouts"
+  },
+  {
+   "default": "Bank Transfer",
+   "fieldname": "payout_method",
+   "fieldtype": "Select",
+   "label": "Payout Method",
+   "options": "Bank Transfer\nPayPal\niyzico\nPapara"
+  },
+  {
+   "fieldname": "legacy_banking_section",
+   "fieldtype": "Section Break",
+   "label": "Legacy Banking Fields",
+   "collapsible": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "label": "Bank Name (Legacy)",
+   "hidden": 1,
+   "read_only": 1,
+   "description": "[DEPRECATED] Use Bank Accounts table instead"
+  },
+  {
+   "fieldname": "bank_branch",
+   "fieldtype": "Data",
+   "label": "Bank Branch (Legacy)",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "description": "[DEPRECATED] Use Bank Accounts table instead",
+   "fieldname": "iban",
+   "fieldtype": "Data",
+   "label": "IBAN (Legacy)",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_banking",
+   "fieldtype": "Column Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "account_holder_name",
+   "fieldtype": "Data",
+   "label": "Account Holder Name (Legacy)",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "swift_code",
+   "fieldtype": "Data",
+   "label": "SWIFT/BIC Code (Legacy)",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "performance_section",
+   "fieldtype": "Section Break",
+   "label": "Performance & Ratings"
+  },
+  {
+   "fieldname": "seller_tier",
+   "fieldtype": "Link",
+   "label": "Seller Tier",
+   "options": "Seller Tier",
+   "description": "Current tier based on performance"
+  },
+  {
+   "default": "0",
+   "description": "Overall seller score (0-100)",
+   "fieldname": "seller_score",
+   "fieldtype": "Float",
+   "label": "Seller Score",
+   "permlevel": 1,
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_performance",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_sales_count",
+   "fieldtype": "Int",
+   "label": "Total Sales Count",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_sales_amount",
+   "fieldtype": "Currency",
+   "label": "Total Sales Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Average rating from buyers (1-5 stars)",
+   "fieldname": "average_rating",
+   "fieldtype": "Float",
+   "label": "Average Rating",
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_reviews",
+   "fieldtype": "Int",
+   "label": "Total Reviews",
+   "read_only": 1
+  },
+  {
+   "fieldname": "metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Performance Metrics",
+   "collapsible": 1
+  },
+  {
+   "default": "100",
+   "description": "Percentage of orders successfully fulfilled",
+   "fieldname": "order_fulfillment_rate",
+   "fieldtype": "Percent",
+   "label": "Order Fulfillment Rate",
+   "read_only": 1
+  },
+  {
+   "default": "100",
+   "description": "Percentage of orders delivered on time",
+   "fieldname": "on_time_delivery_rate",
+   "fieldtype": "Percent",
+   "label": "On-Time Delivery Rate",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Percentage of orders returned",
+   "fieldname": "return_rate",
+   "fieldtype": "Percent",
+   "label": "Return Rate",
+   "read_only": 1
+  },
+  {
+   "default": "24",
+   "description": "Average response time to buyer messages (hours)",
+   "fieldname": "response_time_hours",
+   "fieldtype": "Float",
+   "label": "Avg Response Time (hrs)",
+   "precision": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_metrics",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Percentage of orders cancelled by seller",
+   "fieldname": "cancellation_rate",
+   "fieldtype": "Percent",
+   "label": "Cancellation Rate",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Percentage of orders with complaints",
+   "fieldname": "complaint_rate",
+   "fieldtype": "Percent",
+   "label": "Complaint Rate",
+   "read_only": 1
+  },
+  {
+   "default": "100",
+   "description": "Percentage of positive feedback",
+   "fieldname": "positive_feedback_rate",
+   "fieldtype": "Percent",
+   "label": "Positive Feedback Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_metrics_update",
+   "fieldtype": "Datetime",
+   "label": "Last Metrics Update",
+   "read_only": 1
+  },
+  {
+   "fieldname": "badges_section",
+   "fieldtype": "Section Break",
+   "label": "Badges & Achievements",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "seller_badges",
+   "fieldtype": "Table",
+   "label": "Badges",
+   "options": "Seller Badge",
+   "description": "Earned badges and achievements"
+  },
+  {
+   "description": "[DEPRECATED] JSON array of earned badges - use Badges table instead",
+   "fieldname": "badges",
+   "fieldtype": "JSON",
+   "label": "Badges (Legacy)",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Settings"
+  },
+  {
+   "fieldname": "commission_plan",
+   "fieldtype": "Link",
+   "label": "Commission Plan",
+   "options": "Commission Plan",
+   "description": "Active commission plan for this seller"
+  },
+  {
+   "fieldname": "default_shipping_rule",
+   "fieldtype": "Link",
+   "label": "Default Shipping Rule",
+   "options": "Shipping Rule"
+  },
+  {
+   "fieldname": "default_return_policy",
+   "fieldtype": "Data",
+   "label": "Default Return Policy"
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "100",
+   "description": "Maximum number of active listings allowed",
+   "fieldname": "max_listings",
+   "fieldtype": "Int",
+   "label": "Max Listings"
+  },
+  {
+   "default": "0",
+   "description": "Automatically accept orders without confirmation",
+   "fieldname": "auto_accept_orders",
+   "fieldtype": "Check",
+   "label": "Auto Accept Orders"
+  },
+  {
+   "default": "1",
+   "description": "This seller accepts returns",
+   "fieldname": "accepts_returns",
+   "fieldtype": "Check",
+   "label": "Accepts Returns"
+  },
+  {
+   "default": "0",
+   "description": "Seller is on vacation - no new orders accepted",
+   "fieldname": "vacation_mode",
+   "fieldtype": "Check",
+   "label": "Vacation Mode"
+  },
+  {
+   "fieldname": "restrictions_section",
+   "fieldtype": "Section Break",
+   "label": "Restrictions"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_restricted",
+   "fieldtype": "Check",
+   "label": "Is Restricted",
+   "permlevel": 1
+  },
+  {
+   "depends_on": "eval:doc.is_restricted==1",
+   "fieldname": "restriction_reason",
+   "fieldtype": "Small Text",
+   "label": "Restriction Reason"
+  },
+  {
+   "depends_on": "eval:doc.is_restricted==1",
+   "fieldname": "restricted_at",
+   "fieldtype": "Datetime",
+   "label": "Restricted At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_restrictions",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Can create and manage listings",
+   "fieldname": "can_sell",
+   "fieldtype": "Check",
+   "label": "Can Sell"
+  },
+  {
+   "default": "0",
+   "description": "Can request balance withdrawals",
+   "fieldname": "can_withdraw",
+   "fieldtype": "Check",
+   "label": "Can Withdraw"
+  },
+  {
+   "default": "0",
+   "description": "Can create new listings",
+   "fieldname": "can_create_listings",
+   "fieldtype": "Check",
+   "label": "Can Create Listings"
+  },
+  {
+   "fieldname": "featured_section",
+   "fieldtype": "Section Break",
+   "label": "Featured Status",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_featured",
+   "fieldtype": "Check",
+   "label": "Is Featured"
+  },
+  {
+   "depends_on": "eval:doc.is_featured==1",
+   "fieldname": "featured_from",
+   "fieldtype": "Datetime",
+   "label": "Featured From"
+  },
+  {
+   "depends_on": "eval:doc.is_featured==1",
+   "fieldname": "featured_until",
+   "fieldtype": "Datetime",
+   "label": "Featured Until"
+  },
+  {
+   "fieldname": "column_break_featured",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Recognized top seller with exceptional performance",
+   "fieldname": "is_top_seller",
+   "fieldtype": "Check",
+   "label": "Top Seller",
+   "permlevel": 1
+  },
+  {
+   "default": "0",
+   "description": "Premium seller with additional benefits",
+   "fieldname": "is_premium_seller",
+   "fieldtype": "Check",
+   "label": "Premium Seller",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "joined_at",
+   "fieldtype": "Datetime",
+   "label": "Joined At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_active_at",
+   "fieldtype": "Datetime",
+   "label": "Last Active At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_by",
+   "fieldtype": "Link",
+   "label": "Modified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "label": "District",
+   "options": "District"
+  },
+  {
+   "fieldname": "district_name",
+   "fieldtype": "Data",
+   "label": "District Name"
+  },
+  {
+   "fieldname": "neighborhood",
+   "fieldtype": "Link",
+   "label": "Neighborhood",
+   "options": "Neighborhood"
+  },
+  {
+   "fieldname": "neighborhood_name",
+   "fieldtype": "Data",
+   "label": "Neighborhood Name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Storefront",
+   "link_fieldname": "seller"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Listing",
+   "link_fieldname": "seller"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Sub Order",
+   "link_fieldname": "seller"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Review",
+   "link_fieldname": "seller"
+  }
+ ],
+ "modified": "2026-02-12 16:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Seller Profile",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Marka Sahibi",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Alici Admin",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "Alici Editor",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Satici Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Satici",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "seller_name, user, contact_email, city, seller_tier",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "seller_name",
+ "track_changes": 1
+}

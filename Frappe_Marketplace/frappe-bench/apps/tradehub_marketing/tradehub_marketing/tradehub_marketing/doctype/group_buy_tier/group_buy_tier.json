@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tier_name",
+  "min_quantity",
+  "max_quantity",
+  "share_percent",
+  "unit_price",
+  "discount_percent",
+  "is_active"
+ ],
+ "fields": [
+  {
+   "fieldname": "tier_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tier Name",
+   "reqd": 1,
+   "description": "Display name for this price tier (e.g., Bronze, Silver, Gold)"
+  },
+  {
+   "fieldname": "min_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Min Quantity",
+   "precision": 3,
+   "reqd": 1,
+   "description": "Minimum quantity for this tier"
+  },
+  {
+   "fieldname": "max_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Max Quantity",
+   "precision": 3,
+   "description": "Maximum quantity for this tier (0 = no limit)"
+  },
+  {
+   "fieldname": "share_percent",
+   "fieldtype": "Percent",
+   "label": "Share Percent",
+   "description": "Percentage of target quantity for this tier"
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "reqd": 1,
+   "description": "Price per unit at this tier"
+  },
+  {
+   "fieldname": "discount_percent",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Discount %",
+   "read_only": 1,
+   "description": "Discount percentage from max price"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Marketing",
+ "name": "Group Buy Tier",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "min_quantity",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

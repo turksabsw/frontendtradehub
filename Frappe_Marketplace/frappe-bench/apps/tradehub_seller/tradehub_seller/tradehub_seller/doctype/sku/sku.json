@@ -1,0 +1,739 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:sku_code",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "sku_code",
+  "sku_name",
+  "seller",
+  "column_break_basic",
+  "status",
+  "tenant",
+  "is_active",
+  "product_reference_section",
+  "product_type",
+  "listing",
+  "listing_variant",
+  "column_break_product",
+  "category",
+  "brand",
+  "manufacturer",
+  "inventory_section",
+  "warehouse",
+  "stock_qty",
+  "reserved_qty",
+  "column_break_inventory",
+  "available_qty",
+  "committed_qty",
+  "incoming_qty",
+  "stock_settings_section",
+  "track_inventory",
+  "allow_backorders",
+  "low_stock_threshold",
+  "column_break_stock_settings",
+  "reorder_level",
+  "reorder_qty",
+  "max_stock_level",
+  "identifiers_section",
+  "barcode",
+  "barcode_type",
+  "column_break_ids",
+  "gtin",
+  "upc",
+  "ean",
+  "mpn",
+  "pricing_section",
+  "currency",
+  "cost_price",
+  "selling_price",
+  "column_break_pricing",
+  "compare_at_price",
+  "profit_margin",
+  "last_purchase_price",
+  "physical_section",
+  "weight",
+  "weight_uom",
+  "column_break_physical",
+  "length",
+  "width",
+  "height",
+  "dimension_uom",
+  "storage_section",
+  "storage_location",
+  "bin_location",
+  "column_break_storage",
+  "shelf_life_days",
+  "expiry_date",
+  "is_perishable",
+  "supplier_section",
+  "default_supplier",
+  "supplier_sku",
+  "column_break_supplier",
+  "lead_time_days",
+  "minimum_order_qty",
+  "erpnext_section",
+  "erpnext_item",
+  "erpnext_warehouse",
+  "column_break_erp",
+  "sync_inventory",
+  "last_synced_at",
+  "statistics_section",
+  "total_sold",
+  "total_received",
+  "column_break_stats",
+  "last_sold_at",
+  "last_received_at",
+  "turnover_rate",
+  "audit_section",
+  "last_stock_count",
+  "last_stock_count_by",
+  "column_break_audit",
+  "stock_count_variance",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "description": "Unique Stock Keeping Unit code",
+   "fieldname": "sku_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "SKU Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "Human-readable name for this SKU",
+   "fieldname": "sku_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SKU Name",
+   "length": 500
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nOut of Stock\nDiscontinued\nPending",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "product_reference_section",
+   "fieldtype": "Section Break",
+   "label": "Product Reference"
+  },
+  {
+   "default": "Listing",
+   "description": "Whether this SKU is for a listing or variant",
+   "fieldname": "product_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Product Type",
+   "options": "Listing\nVariant\nStandalone",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.product_type=='Listing'",
+   "fieldname": "listing",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Listing",
+   "options": "Listing"
+  },
+  {
+   "depends_on": "eval:doc.product_type=='Variant'",
+   "fieldname": "listing_variant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Listing Variant",
+   "options": "Listing Variant"
+  },
+  {
+   "fieldname": "column_break_product",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Data",
+   "label": "Brand"
+  },
+  {
+   "fieldname": "manufacturer",
+   "fieldtype": "Data",
+   "label": "Manufacturer"
+  },
+  {
+   "fieldname": "inventory_section",
+   "fieldtype": "Section Break",
+   "label": "Inventory"
+  },
+  {
+   "description": "Warehouse or storage location",
+   "fieldname": "warehouse",
+   "fieldtype": "Data",
+   "label": "Warehouse"
+  },
+  {
+   "default": "0",
+   "description": "Physical stock on hand",
+   "fieldname": "stock_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Stock Quantity",
+   "precision": 3
+  },
+  {
+   "default": "0",
+   "description": "Quantity reserved for pending orders",
+   "fieldname": "reserved_qty",
+   "fieldtype": "Float",
+   "label": "Reserved Quantity",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_inventory",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Stock - Reserved = Available",
+   "fieldname": "available_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Available Quantity",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Quantity committed to customers",
+   "fieldname": "committed_qty",
+   "fieldtype": "Float",
+   "label": "Committed Quantity",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Quantity on order from suppliers",
+   "fieldname": "incoming_qty",
+   "fieldtype": "Float",
+   "label": "Incoming Quantity",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "track_inventory",
+   "fieldtype": "Check",
+   "label": "Track Inventory"
+  },
+  {
+   "default": "0",
+   "description": "Allow orders when out of stock",
+   "fieldname": "allow_backorders",
+   "fieldtype": "Check",
+   "label": "Allow Backorders"
+  },
+  {
+   "default": "5",
+   "description": "Alert when stock falls below this level",
+   "fieldname": "low_stock_threshold",
+   "fieldtype": "Float",
+   "label": "Low Stock Threshold",
+   "precision": 3
+  },
+  {
+   "fieldname": "column_break_stock_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "10",
+   "description": "Reorder when stock falls to this level",
+   "fieldname": "reorder_level",
+   "fieldtype": "Float",
+   "label": "Reorder Level",
+   "precision": 3
+  },
+  {
+   "default": "0",
+   "description": "Quantity to order when reordering",
+   "fieldname": "reorder_qty",
+   "fieldtype": "Float",
+   "label": "Reorder Quantity",
+   "precision": 3
+  },
+  {
+   "default": "0",
+   "description": "Maximum stock level (0 = unlimited)",
+   "fieldname": "max_stock_level",
+   "fieldtype": "Float",
+   "label": "Max Stock Level",
+   "precision": 3
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "identifiers_section",
+   "fieldtype": "Section Break",
+   "label": "Product Identifiers"
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Data",
+   "label": "Barcode"
+  },
+  {
+   "default": "EAN",
+   "fieldname": "barcode_type",
+   "fieldtype": "Select",
+   "label": "Barcode Type",
+   "options": "EAN\nUPC\nISBN\nCode-39\nCode-128\nGTIN\nOther"
+  },
+  {
+   "fieldname": "column_break_ids",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Global Trade Item Number",
+   "fieldname": "gtin",
+   "fieldtype": "Data",
+   "label": "GTIN"
+  },
+  {
+   "description": "Universal Product Code",
+   "fieldname": "upc",
+   "fieldtype": "Data",
+   "label": "UPC"
+  },
+  {
+   "description": "European Article Number",
+   "fieldname": "ean",
+   "fieldtype": "Data",
+   "label": "EAN"
+  },
+  {
+   "description": "Manufacturer Part Number",
+   "fieldname": "mpn",
+   "fieldtype": "Data",
+   "label": "MPN"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "description": "Your cost for this product",
+   "fieldname": "cost_price",
+   "fieldtype": "Currency",
+   "label": "Cost Price",
+   "options": "currency"
+  },
+  {
+   "fieldname": "selling_price",
+   "fieldtype": "Currency",
+   "label": "Selling Price",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "compare_at_price",
+   "fieldtype": "Currency",
+   "label": "Compare at Price",
+   "options": "currency"
+  },
+  {
+   "description": "Calculated (selling - cost) / cost * 100",
+   "fieldname": "profit_margin",
+   "fieldtype": "Percent",
+   "label": "Profit Margin",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_purchase_price",
+   "fieldtype": "Currency",
+   "label": "Last Purchase Price",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "physical_section",
+   "fieldtype": "Section Break",
+   "label": "Physical Attributes"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "precision": 3
+  },
+  {
+   "default": "Kg",
+   "fieldname": "weight_uom",
+   "fieldtype": "Link",
+   "label": "Weight UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "column_break_physical",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length (cm)",
+   "precision": 2
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Float",
+   "label": "Width (cm)",
+   "precision": 2
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Float",
+   "label": "Height (cm)",
+   "precision": 2
+  },
+  {
+   "default": "Centimeter",
+   "fieldname": "dimension_uom",
+   "fieldtype": "Link",
+   "label": "Dimension UOM",
+   "options": "UOM"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "storage_section",
+   "fieldtype": "Section Break",
+   "label": "Storage"
+  },
+  {
+   "description": "Physical storage location code",
+   "fieldname": "storage_location",
+   "fieldtype": "Data",
+   "label": "Storage Location"
+  },
+  {
+   "description": "Specific bin/shelf location",
+   "fieldname": "bin_location",
+   "fieldtype": "Data",
+   "label": "Bin Location"
+  },
+  {
+   "fieldname": "column_break_storage",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Number of days until expiry (for perishables)",
+   "fieldname": "shelf_life_days",
+   "fieldtype": "Int",
+   "label": "Shelf Life (Days)"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_perishable",
+   "fieldtype": "Check",
+   "label": "Is Perishable"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "supplier_section",
+   "fieldtype": "Section Break",
+   "label": "Supplier Information"
+  },
+  {
+   "fieldname": "default_supplier",
+   "fieldtype": "Link",
+   "label": "Default Supplier",
+   "options": "Supplier"
+  },
+  {
+   "description": "SKU code used by the supplier",
+   "fieldname": "supplier_sku",
+   "fieldtype": "Data",
+   "label": "Supplier SKU"
+  },
+  {
+   "fieldname": "column_break_supplier",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Days from order to delivery",
+   "fieldname": "lead_time_days",
+   "fieldtype": "Int",
+   "label": "Lead Time (Days)"
+  },
+  {
+   "description": "Minimum order quantity from supplier",
+   "fieldname": "minimum_order_qty",
+   "fieldtype": "Float",
+   "label": "Minimum Order Qty",
+   "precision": 3
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "erpnext_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration"
+  },
+  {
+   "description": "Linked ERPNext Item",
+   "fieldname": "erpnext_item",
+   "fieldtype": "Link",
+   "label": "ERPNext Item",
+   "options": "Item"
+  },
+  {
+   "description": "ERPNext Warehouse for stock sync",
+   "fieldname": "erpnext_warehouse",
+   "fieldtype": "Link",
+   "label": "ERPNext Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_erp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Sync inventory with ERPNext",
+   "fieldname": "sync_inventory",
+   "fieldtype": "Check",
+   "label": "Sync Inventory with ERPNext"
+  },
+  {
+   "fieldname": "last_synced_at",
+   "fieldtype": "Datetime",
+   "label": "Last Synced At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics"
+  },
+  {
+   "default": "0",
+   "description": "Total units sold",
+   "fieldname": "total_sold",
+   "fieldtype": "Float",
+   "label": "Total Sold",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Total units received",
+   "fieldname": "total_received",
+   "fieldtype": "Float",
+   "label": "Total Received",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_sold_at",
+   "fieldtype": "Datetime",
+   "label": "Last Sold At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_received_at",
+   "fieldtype": "Datetime",
+   "label": "Last Received At",
+   "read_only": 1
+  },
+  {
+   "description": "Inventory turnover rate (sold/avg stock)",
+   "fieldname": "turnover_rate",
+   "fieldtype": "Float",
+   "label": "Turnover Rate",
+   "precision": 2,
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "audit_section",
+   "fieldtype": "Section Break",
+   "label": "Audit & Notes"
+  },
+  {
+   "fieldname": "last_stock_count",
+   "fieldtype": "Datetime",
+   "label": "Last Stock Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_stock_count_by",
+   "fieldtype": "Link",
+   "label": "Counted By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_audit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Variance between counted and system stock",
+   "fieldname": "stock_count_variance",
+   "fieldtype": "Float",
+   "label": "Stock Count Variance",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Listing",
+   "link_fieldname": "listing"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Listing Variant",
+   "link_fieldname": "listing_variant"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "SKU",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "sku_code, sku_name, seller, barcode",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "gray",
+   "title": "Inactive"
+  },
+  {
+   "color": "red",
+   "title": "Out of Stock"
+  },
+  {
+   "color": "orange",
+   "title": "Discontinued"
+  },
+  {
+   "color": "yellow",
+   "title": "Pending"
+  }
+ ],
+ "title_field": "sku_name",
+ "track_changes": 1
+}

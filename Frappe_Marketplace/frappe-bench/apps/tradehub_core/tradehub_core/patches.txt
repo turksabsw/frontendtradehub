@@ -1,0 +1,1 @@
+tradehub_core.patches.migrate_buyer_flat_address

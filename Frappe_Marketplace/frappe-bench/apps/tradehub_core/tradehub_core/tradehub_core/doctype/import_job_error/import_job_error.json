@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "row_number",
+  "error_type",
+  "error_message",
+  "column_break_error",
+  "field_name",
+  "field_value",
+  "severity",
+  "details_section",
+  "row_data",
+  "stack_trace"
+ ],
+ "fields": [
+  {
+   "fieldname": "row_number",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Row Number",
+   "reqd": 1
+  },
+  {
+   "default": "Validation Error",
+   "fieldname": "error_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Error Type",
+   "options": "Validation Error\nDuplicate Record\nMissing Required Field\nInvalid Value\nReference Not Found\nPermission Error\nSystem Error\nFormat Error\nData Type Error\nConstraint Violation"
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Error Message",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_error",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Field that caused the error",
+   "fieldname": "field_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Field Name",
+   "length": 140
+  },
+  {
+   "description": "Value that caused the error",
+   "fieldname": "field_value",
+   "fieldtype": "Data",
+   "label": "Field Value",
+   "length": 255
+  },
+  {
+   "default": "Error",
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "label": "Severity",
+   "options": "Warning\nError\nCritical"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "description": "Original row data (JSON)",
+   "fieldname": "row_data",
+   "fieldtype": "JSON",
+   "label": "Row Data"
+  },
+  {
+   "description": "Technical error details for debugging",
+   "fieldname": "stack_trace",
+   "fieldtype": "Long Text",
+   "label": "Stack Trace"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "Import Job Error",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "row_number",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

@@ -1,0 +1,436 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:template_name",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "template_name",
+  "template_code",
+  "target_type",
+  "column_break_basic",
+  "status",
+  "is_default",
+  "version",
+  "target_settings_section",
+  "applicable_levels",
+  "applicable_categories",
+  "column_break_target",
+  "min_orders_required",
+  "min_days_active",
+  "evaluation_section",
+  "evaluation_period",
+  "evaluation_period_value",
+  "column_break_evaluation",
+  "evaluation_frequency",
+  "auto_evaluate",
+  "items_section",
+  "items",
+  "scoring_section",
+  "total_weight",
+  "passing_score",
+  "column_break_scoring",
+  "scoring_curve",
+  "normalize_scores",
+  "display_section",
+  "display_name",
+  "description",
+  "column_break_display",
+  "public_description",
+  "icon",
+  "color",
+  "notifications_section",
+  "notify_on_evaluation",
+  "notify_on_threshold_breach",
+  "column_break_notifications",
+  "notification_recipients",
+  "escalation_template",
+  "statistics_section",
+  "usage_count",
+  "last_evaluated_at",
+  "average_score",
+  "timestamps_section",
+  "created_at",
+  "modified_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Template Name",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique name for this KPI template (e.g., Standard Seller KPI, Premium Buyer KPI)"
+  },
+  {
+   "fieldname": "template_code",
+   "fieldtype": "Data",
+   "label": "Template Code",
+   "description": "Short code for programmatic use (e.g., STD_SELLER_KPI)"
+  },
+  {
+   "fieldname": "target_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Target Type",
+   "options": "Seller\nBuyer\nBoth",
+   "reqd": 1,
+   "default": "Seller",
+   "description": "Who this KPI template applies to"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nActive\nInactive\nDeprecated",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default Template",
+   "description": "Use this template when no specific template is assigned"
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Data",
+   "label": "Version",
+   "default": "1.0",
+   "description": "Version number of this template"
+  },
+  {
+   "fieldname": "target_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Target Settings"
+  },
+  {
+   "fieldname": "applicable_levels",
+   "fieldtype": "Small Text",
+   "label": "Applicable Levels",
+   "description": "Comma-separated list of level names this template applies to (empty = all levels)"
+  },
+  {
+   "fieldname": "applicable_categories",
+   "fieldtype": "Small Text",
+   "label": "Applicable Categories",
+   "description": "Comma-separated list of categories this template applies to (empty = all categories)"
+  },
+  {
+   "fieldname": "column_break_target",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_orders_required",
+   "fieldtype": "Int",
+   "label": "Minimum Orders Required",
+   "description": "Minimum number of orders before KPI evaluation (0 = no minimum)"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_days_active",
+   "fieldtype": "Int",
+   "label": "Minimum Days Active",
+   "description": "Minimum days since registration before KPI evaluation (0 = no minimum)"
+  },
+  {
+   "fieldname": "evaluation_section",
+   "fieldtype": "Section Break",
+   "label": "Evaluation Settings"
+  },
+  {
+   "fieldname": "evaluation_period",
+   "fieldtype": "Select",
+   "label": "Evaluation Period",
+   "options": "Daily\nWeekly\nMonthly\nQuarterly\nYearly\nCustom",
+   "default": "Monthly",
+   "description": "Time period for KPI data collection"
+  },
+  {
+   "depends_on": "eval:doc.evaluation_period=='Custom'",
+   "fieldname": "evaluation_period_value",
+   "fieldtype": "Int",
+   "label": "Custom Period (Days)",
+   "description": "Number of days for custom evaluation period"
+  },
+  {
+   "fieldname": "column_break_evaluation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evaluation_frequency",
+   "fieldtype": "Select",
+   "label": "Evaluation Frequency",
+   "options": "Daily\nWeekly\nMonthly\nOn Demand",
+   "default": "Weekly",
+   "description": "How often to run KPI evaluations"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_evaluate",
+   "fieldtype": "Check",
+   "label": "Auto Evaluate",
+   "description": "Automatically run evaluations on schedule"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "KPI Metrics"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "KPI Items",
+   "options": "KPI Template Item",
+   "reqd": 1,
+   "description": "Individual KPI metrics to measure"
+  },
+  {
+   "fieldname": "scoring_section",
+   "fieldtype": "Section Break",
+   "label": "Scoring Configuration"
+  },
+  {
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "label": "Total Weight",
+   "read_only": 1,
+   "precision": 2,
+   "description": "Sum of all KPI item weights (auto-calculated)"
+  },
+  {
+   "default": "60",
+   "fieldname": "passing_score",
+   "fieldtype": "Float",
+   "label": "Passing Score",
+   "precision": 2,
+   "description": "Minimum score to pass KPI evaluation (0-100)"
+  },
+  {
+   "fieldname": "column_break_scoring",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "scoring_curve",
+   "fieldtype": "Select",
+   "label": "Scoring Curve",
+   "options": "Linear\nBell Curve\nExponential\nStep",
+   "default": "Linear",
+   "description": "How to calculate final score from individual KPIs"
+  },
+  {
+   "default": "1",
+   "fieldname": "normalize_scores",
+   "fieldtype": "Check",
+   "label": "Normalize Scores",
+   "description": "Normalize final score to 0-100 scale"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings"
+  },
+  {
+   "fieldname": "display_name",
+   "fieldtype": "Data",
+   "label": "Display Name",
+   "description": "Name shown to users (can be different from template_name)"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Internal description of this template"
+  },
+  {
+   "fieldname": "column_break_display",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "public_description",
+   "fieldtype": "Text Editor",
+   "label": "Public Description",
+   "description": "Description shown to sellers/buyers about this KPI system"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Icon",
+   "description": "Icon name or class (e.g., fa-chart-bar, fa-trophy)"
+  },
+  {
+   "default": "#6c757d",
+   "fieldname": "color",
+   "fieldtype": "Color",
+   "label": "Color",
+   "description": "Color associated with this template"
+  },
+  {
+   "fieldname": "notifications_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_evaluation",
+   "fieldtype": "Check",
+   "label": "Notify on Evaluation",
+   "description": "Send notification when KPI is evaluated"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_threshold_breach",
+   "fieldtype": "Check",
+   "label": "Notify on Threshold Breach",
+   "description": "Send notification when KPI falls below warning/critical thresholds"
+  },
+  {
+   "fieldname": "column_break_notifications",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notification_recipients",
+   "fieldtype": "Small Text",
+   "label": "Notification Recipients",
+   "description": "Comma-separated email addresses or roles for notifications"
+  },
+  {
+   "fieldname": "escalation_template",
+   "fieldtype": "Link",
+   "label": "Escalation Template",
+   "options": "Email Template",
+   "description": "Email template for escalation notifications"
+  },
+  {
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "usage_count",
+   "fieldtype": "Int",
+   "label": "Usage Count",
+   "read_only": 1,
+   "description": "Number of times this template has been used for evaluation"
+  },
+  {
+   "fieldname": "last_evaluated_at",
+   "fieldtype": "Datetime",
+   "label": "Last Evaluated At",
+   "read_only": 1,
+   "description": "When this template was last used for evaluation"
+  },
+  {
+   "default": "0",
+   "fieldname": "average_score",
+   "fieldtype": "Float",
+   "label": "Average Score",
+   "read_only": 1,
+   "precision": 2,
+   "description": "Average score across all evaluations"
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_at",
+   "fieldtype": "Datetime",
+   "label": "Modified At",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "KPIs",
+   "link_doctype": "Seller KPI",
+   "link_fieldname": "kpi_template"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "KPI Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "template_name, template_code, target_type, status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Draft"
+  },
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "orange",
+   "title": "Inactive"
+  },
+  {
+   "color": "red",
+   "title": "Deprecated"
+  }
+ ],
+ "title_field": "template_name",
+ "track_changes": 1
+}

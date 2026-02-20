@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "attribute",
+  "attribute_value",
+  "display_value",
+  "color_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "attribute",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Attribute",
+   "options": "Attribute",
+   "reqd": 1
+  },
+  {
+   "description": "The selected value for this attribute",
+   "fieldname": "attribute_value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value",
+   "reqd": 1
+  },
+  {
+   "description": "Optional display name (if different from value)",
+   "fieldname": "display_value",
+   "fieldtype": "Data",
+   "label": "Display Value"
+  },
+  {
+   "depends_on": "eval:frappe.db.get_value('Attribute', doc.attribute, 'attribute_type')=='Color'",
+   "description": "Hex color code for color attributes",
+   "fieldname": "color_code",
+   "fieldtype": "Color",
+   "label": "Color Code"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Listing Variant Attribute",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "",
+ "sort_field": "idx",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

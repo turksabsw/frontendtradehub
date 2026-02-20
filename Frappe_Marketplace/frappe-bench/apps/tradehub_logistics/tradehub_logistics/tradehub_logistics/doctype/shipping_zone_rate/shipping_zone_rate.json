@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "zone_name",
+  "zone_code",
+  "countries",
+  "column_break_zone",
+  "regions",
+  "base_rate",
+  "rate_per_kg",
+  "estimated_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "zone_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Zone Name",
+   "reqd": 1,
+   "description": "Display name for this zone (e.g., Zone 1 - Marmara)"
+  },
+  {
+   "fieldname": "zone_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Zone Code",
+   "reqd": 1,
+   "description": "Unique zone identifier (e.g., Z1, MARMARA, INTERNATIONAL)"
+  },
+  {
+   "fieldname": "countries",
+   "fieldtype": "Small Text",
+   "label": "Countries",
+   "description": "Comma-separated country codes (e.g., TR, DE, FR). Leave empty for domestic zones."
+  },
+  {
+   "fieldname": "column_break_zone",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "regions",
+   "fieldtype": "Small Text",
+   "label": "Regions",
+   "description": "Comma-separated region/state codes (e.g., 34, 06, 35 for Istanbul, Ankara, Izmir)"
+  },
+  {
+   "default": "0",
+   "fieldname": "base_rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Base Rate",
+   "reqd": 1,
+   "description": "Base shipping rate for this zone"
+  },
+  {
+   "default": "0",
+   "fieldname": "rate_per_kg",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate per KG",
+   "description": "Additional rate per kilogram for this zone"
+  },
+  {
+   "default": "3",
+   "fieldname": "estimated_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Estimated Days",
+   "description": "Estimated delivery time in business days for this zone"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Logistics",
+ "name": "Shipping Zone Rate",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "idx",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

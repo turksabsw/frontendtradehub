@@ -1,0 +1,594 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:tenant",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "tenant",
+  "tenant_name",
+  "column_break_basic",
+  "enabled",
+  "debug_mode",
+  "server_section",
+  "server_url",
+  "keycloak_version",
+  "column_break_server",
+  "realm_name",
+  "well_known_url",
+  "client_section",
+  "client_id",
+  "client_secret",
+  "column_break_client",
+  "public_client",
+  "pkce_enabled",
+  "token_section",
+  "access_token_lifespan",
+  "refresh_token_lifespan",
+  "column_break_token",
+  "offline_session_enabled",
+  "offline_session_idle_timeout",
+  "user_management_section",
+  "auto_create_users",
+  "auto_update_user_info",
+  "column_break_user",
+  "sync_user_roles",
+  "sync_interval_minutes",
+  "default_roles_section",
+  "default_roles",
+  "column_break_roles",
+  "seller_role_name",
+  "buyer_role_name",
+  "attribute_mapping_section",
+  "email_attribute",
+  "first_name_attribute",
+  "last_name_attribute",
+  "column_break_attr",
+  "phone_attribute",
+  "tenant_attribute",
+  "user_type_attribute",
+  "admin_section",
+  "admin_username",
+  "admin_password",
+  "column_break_admin",
+  "admin_client_id",
+  "admin_client_secret",
+  "redirect_section",
+  "redirect_uri",
+  "post_logout_redirect_uri",
+  "column_break_redirect",
+  "allowed_redirect_uris",
+  "social_login_section",
+  "enable_google_login",
+  "enable_facebook_login",
+  "column_break_social",
+  "enable_apple_login",
+  "enable_linkedin_login",
+  "advanced_section",
+  "signature_algorithm",
+  "token_endpoint_auth_method",
+  "column_break_advanced",
+  "verify_ssl",
+  "connection_timeout",
+  "system_section",
+  "connection_status",
+  "last_connection_test",
+  "column_break_system",
+  "last_sync_date",
+  "total_users_synced"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Settings"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Tenant this Keycloak configuration belongs to"
+  },
+  {
+   "fetch_from": "tenant.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Tenant"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "SSO Enabled",
+   "description": "Enable or disable Keycloak SSO for this tenant"
+  },
+  {
+   "default": "0",
+   "fieldname": "debug_mode",
+   "fieldtype": "Check",
+   "label": "Debug Mode",
+   "description": "Enable debug mode for SSO operations (logs to console)"
+  },
+  {
+   "fieldname": "server_section",
+   "fieldtype": "Section Break",
+   "label": "Keycloak Server Configuration"
+  },
+  {
+   "fieldname": "server_url",
+   "fieldtype": "Data",
+   "label": "Server URL",
+   "reqd": 1,
+   "description": "Keycloak server URL (e.g., https://keycloak.example.com). Note: Do NOT include /auth/ suffix - it will be added automatically for older Keycloak versions"
+  },
+  {
+   "default": "18+",
+   "fieldname": "keycloak_version",
+   "fieldtype": "Select",
+   "label": "Keycloak Version",
+   "options": "18+\nPre-18 (Legacy)",
+   "description": "Keycloak version determines URL path format. Version 18+ does not use /auth/ prefix"
+  },
+  {
+   "fieldname": "column_break_server",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "realm_name",
+   "fieldtype": "Data",
+   "label": "Realm Name",
+   "reqd": 1,
+   "description": "Keycloak realm name (e.g., trade-hub-realm)"
+  },
+  {
+   "fieldname": "well_known_url",
+   "fieldtype": "Data",
+   "label": "OpenID Configuration URL",
+   "read_only": 1,
+   "description": "Auto-generated OpenID Connect discovery URL"
+  },
+  {
+   "fieldname": "client_section",
+   "fieldtype": "Section Break",
+   "label": "OAuth2 Client Configuration"
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID",
+   "reqd": 1,
+   "description": "OAuth2 client ID registered in Keycloak"
+  },
+  {
+   "fieldname": "client_secret",
+   "fieldtype": "Password",
+   "label": "Client Secret",
+   "depends_on": "eval:!doc.public_client",
+   "description": "OAuth2 client secret (not required for public clients)"
+  },
+  {
+   "fieldname": "column_break_client",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "public_client",
+   "fieldtype": "Check",
+   "label": "Public Client",
+   "description": "Enable for browser-based apps without client secret"
+  },
+  {
+   "default": "0",
+   "fieldname": "pkce_enabled",
+   "fieldtype": "Check",
+   "label": "PKCE Enabled",
+   "description": "Enable Proof Key for Code Exchange (recommended for public clients)"
+  },
+  {
+   "fieldname": "token_section",
+   "fieldtype": "Section Break",
+   "label": "Token Settings",
+   "collapsible": 1
+  },
+  {
+   "default": "300",
+   "fieldname": "access_token_lifespan",
+   "fieldtype": "Int",
+   "label": "Access Token Lifespan (seconds)",
+   "description": "Access token validity period in seconds (default: 300 = 5 minutes)"
+  },
+  {
+   "default": "1800",
+   "fieldname": "refresh_token_lifespan",
+   "fieldtype": "Int",
+   "label": "Refresh Token Lifespan (seconds)",
+   "description": "Refresh token validity period in seconds (default: 1800 = 30 minutes)"
+  },
+  {
+   "fieldname": "column_break_token",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "offline_session_enabled",
+   "fieldtype": "Check",
+   "label": "Offline Sessions Enabled",
+   "description": "Allow offline access tokens for long-running sessions"
+  },
+  {
+   "default": "2592000",
+   "fieldname": "offline_session_idle_timeout",
+   "fieldtype": "Int",
+   "label": "Offline Session Idle Timeout (seconds)",
+   "depends_on": "eval:doc.offline_session_enabled",
+   "description": "Offline session idle timeout in seconds (default: 2592000 = 30 days)"
+  },
+  {
+   "fieldname": "user_management_section",
+   "fieldtype": "Section Break",
+   "label": "User Management"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_create_users",
+   "fieldtype": "Check",
+   "label": "Auto Create Users",
+   "description": "Automatically create Frappe user when Keycloak user logs in"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_update_user_info",
+   "fieldtype": "Check",
+   "label": "Auto Update User Info",
+   "description": "Update Frappe user info from Keycloak on each login"
+  },
+  {
+   "fieldname": "column_break_user",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "sync_user_roles",
+   "fieldtype": "Check",
+   "label": "Sync User Roles",
+   "description": "Synchronize user roles from Keycloak to Frappe"
+  },
+  {
+   "default": "60",
+   "fieldname": "sync_interval_minutes",
+   "fieldtype": "Int",
+   "label": "Sync Interval (minutes)",
+   "depends_on": "eval:doc.sync_user_roles",
+   "description": "Interval for background user role synchronization"
+  },
+  {
+   "fieldname": "default_roles_section",
+   "fieldtype": "Section Break",
+   "label": "Default Role Assignments",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "default_roles",
+   "fieldtype": "Small Text",
+   "label": "Default Frappe Roles",
+   "description": "Comma-separated list of default Frappe roles for new users (e.g., Customer, Website User)"
+  },
+  {
+   "fieldname": "column_break_roles",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "seller",
+   "fieldname": "seller_role_name",
+   "fieldtype": "Data",
+   "label": "Keycloak Seller Role Name",
+   "description": "Keycloak role name that maps to Seller in Trade Hub"
+  },
+  {
+   "default": "buyer",
+   "fieldname": "buyer_role_name",
+   "fieldtype": "Data",
+   "label": "Keycloak Buyer Role Name",
+   "description": "Keycloak role name that maps to Buyer in Trade Hub"
+  },
+  {
+   "fieldname": "attribute_mapping_section",
+   "fieldtype": "Section Break",
+   "label": "User Attribute Mapping",
+   "collapsible": 1
+  },
+  {
+   "default": "email",
+   "fieldname": "email_attribute",
+   "fieldtype": "Data",
+   "label": "Email Attribute",
+   "description": "Keycloak attribute name for email"
+  },
+  {
+   "default": "given_name",
+   "fieldname": "first_name_attribute",
+   "fieldtype": "Data",
+   "label": "First Name Attribute",
+   "description": "Keycloak attribute name for first name"
+  },
+  {
+   "default": "family_name",
+   "fieldname": "last_name_attribute",
+   "fieldtype": "Data",
+   "label": "Last Name Attribute",
+   "description": "Keycloak attribute name for last name"
+  },
+  {
+   "fieldname": "column_break_attr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "phone_number",
+   "fieldname": "phone_attribute",
+   "fieldtype": "Data",
+   "label": "Phone Attribute",
+   "description": "Keycloak attribute name for phone number"
+  },
+  {
+   "default": "tenant_id",
+   "fieldname": "tenant_attribute",
+   "fieldtype": "Data",
+   "label": "Tenant Attribute",
+   "description": "Keycloak attribute name for tenant ID (for multi-tenant support)"
+  },
+  {
+   "default": "user_type",
+   "fieldname": "user_type_attribute",
+   "fieldtype": "Data",
+   "label": "User Type Attribute",
+   "description": "Keycloak attribute name for user type (buyer/seller)"
+  },
+  {
+   "fieldname": "admin_section",
+   "fieldtype": "Section Break",
+   "label": "Admin API Credentials",
+   "collapsible": 1,
+   "description": "Credentials for Keycloak Admin REST API (required for user management)"
+  },
+  {
+   "fieldname": "admin_username",
+   "fieldtype": "Data",
+   "label": "Admin Username",
+   "description": "Keycloak admin username for Admin REST API"
+  },
+  {
+   "fieldname": "admin_password",
+   "fieldtype": "Password",
+   "label": "Admin Password",
+   "description": "Keycloak admin password"
+  },
+  {
+   "fieldname": "column_break_admin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "admin_client_id",
+   "fieldtype": "Data",
+   "label": "Admin Client ID",
+   "default": "admin-cli",
+   "description": "Client ID for admin API access (usually admin-cli)"
+  },
+  {
+   "fieldname": "admin_client_secret",
+   "fieldtype": "Password",
+   "label": "Admin Client Secret",
+   "description": "Client secret for admin API access (if using confidential client)"
+  },
+  {
+   "fieldname": "redirect_section",
+   "fieldtype": "Section Break",
+   "label": "Redirect URIs"
+  },
+  {
+   "fieldname": "redirect_uri",
+   "fieldtype": "Data",
+   "label": "Redirect URI",
+   "description": "OAuth2 redirect URI after authentication (must match Keycloak client config exactly)"
+  },
+  {
+   "fieldname": "post_logout_redirect_uri",
+   "fieldtype": "Data",
+   "label": "Post Logout Redirect URI",
+   "description": "Redirect URI after logout"
+  },
+  {
+   "fieldname": "column_break_redirect",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "allowed_redirect_uris",
+   "fieldtype": "Small Text",
+   "label": "Allowed Redirect URIs",
+   "description": "Additional allowed redirect URIs (one per line) for multi-domain support"
+  },
+  {
+   "fieldname": "social_login_section",
+   "fieldtype": "Section Break",
+   "label": "Social Login Providers",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_google_login",
+   "fieldtype": "Check",
+   "label": "Enable Google Login",
+   "description": "Allow users to login via Google (must be configured in Keycloak)"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_facebook_login",
+   "fieldtype": "Check",
+   "label": "Enable Facebook Login",
+   "description": "Allow users to login via Facebook (must be configured in Keycloak)"
+  },
+  {
+   "fieldname": "column_break_social",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_apple_login",
+   "fieldtype": "Check",
+   "label": "Enable Apple Login",
+   "description": "Allow users to login via Apple (must be configured in Keycloak)"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_linkedin_login",
+   "fieldtype": "Check",
+   "label": "Enable LinkedIn Login",
+   "description": "Allow users to login via LinkedIn (must be configured in Keycloak)"
+  },
+  {
+   "fieldname": "advanced_section",
+   "fieldtype": "Section Break",
+   "label": "Advanced Settings",
+   "collapsible": 1
+  },
+  {
+   "default": "RS256",
+   "fieldname": "signature_algorithm",
+   "fieldtype": "Select",
+   "label": "Signature Algorithm",
+   "options": "RS256\nRS384\nRS512\nES256\nES384\nES512",
+   "description": "JWT signature algorithm (must match Keycloak realm settings)"
+  },
+  {
+   "default": "client_secret_post",
+   "fieldname": "token_endpoint_auth_method",
+   "fieldtype": "Select",
+   "label": "Token Endpoint Auth Method",
+   "options": "client_secret_post\nclient_secret_basic\nprivate_key_jwt\nclient_secret_jwt",
+   "depends_on": "eval:!doc.public_client",
+   "description": "Method to authenticate to token endpoint"
+  },
+  {
+   "fieldname": "column_break_advanced",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "verify_ssl",
+   "fieldtype": "Check",
+   "label": "Verify SSL",
+   "description": "Verify SSL certificates (disable only for development)"
+  },
+  {
+   "default": "30",
+   "fieldname": "connection_timeout",
+   "fieldtype": "Int",
+   "label": "Connection Timeout (seconds)",
+   "description": "Timeout for Keycloak API requests"
+  },
+  {
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "default": "Not Tested",
+   "fieldname": "connection_status",
+   "fieldtype": "Select",
+   "label": "Connection Status",
+   "options": "Not Tested\nConnected\nFailed",
+   "read_only": 1,
+   "description": "Current connection status to Keycloak server"
+  },
+  {
+   "fieldname": "last_connection_test",
+   "fieldtype": "Datetime",
+   "label": "Last Connection Test",
+   "read_only": 1,
+   "description": "Last time the Keycloak connection was tested"
+  },
+  {
+   "fieldname": "column_break_system",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_sync_date",
+   "fieldtype": "Datetime",
+   "label": "Last User Sync",
+   "read_only": 1,
+   "description": "Last time user roles were synchronized from Keycloak"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_users_synced",
+   "fieldtype": "Int",
+   "label": "Total Users Synced",
+   "read_only": 1,
+   "description": "Total number of users synchronized with Keycloak"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Tenant",
+   "link_fieldname": "name"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "Keycloak Settings",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "tenant, tenant_name, realm_name, client_id",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Not Tested"
+  },
+  {
+   "color": "green",
+   "title": "Connected"
+  },
+  {
+   "color": "red",
+   "title": "Failed"
+  }
+ ],
+ "title_field": "tenant_name",
+ "track_changes": 1
+}

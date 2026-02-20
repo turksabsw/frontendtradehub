@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "bank_section",
+  "bank_name",
+  "bank_branch",
+  "column_break_bank",
+  "swift_code",
+  "bank_country",
+  "account_section",
+  "account_holder_name",
+  "iban",
+  "column_break_account",
+  "account_number",
+  "currency",
+  "settings_section",
+  "is_default",
+  "is_verified",
+  "verified_at",
+  "column_break_settings",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "bank_section",
+   "fieldtype": "Section Break",
+   "label": "Bank Information"
+  },
+  {
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bank Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_branch",
+   "fieldtype": "Data",
+   "label": "Bank Branch"
+  },
+  {
+   "fieldname": "column_break_bank",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "SWIFT/BIC Code for international transfers",
+   "fieldname": "swift_code",
+   "fieldtype": "Data",
+   "label": "SWIFT/BIC Code"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "bank_country",
+   "fieldtype": "Link",
+   "label": "Bank Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "account_section",
+   "fieldtype": "Section Break",
+   "label": "Account Details"
+  },
+  {
+   "fieldname": "account_holder_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Account Holder Name",
+   "reqd": 1
+  },
+  {
+   "description": "International Bank Account Number (26 characters for Turkey, starts with TR)",
+   "fieldname": "iban",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "IBAN",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_account",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Local account number (if different from IBAN)",
+   "fieldname": "account_number",
+   "fieldtype": "Data",
+   "label": "Account Number"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "default": "0",
+   "description": "Primary bank account for payouts",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Default"
+  },
+  {
+   "default": "0",
+   "description": "Bank account has been verified",
+   "fieldname": "is_verified",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Verified"
+  },
+  {
+   "depends_on": "eval:doc.is_verified==1",
+   "fieldname": "verified_at",
+   "fieldtype": "Datetime",
+   "label": "Verified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Seller Bank Account",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "bank_name, account_holder_name, iban",
+ "sort_field": "idx",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

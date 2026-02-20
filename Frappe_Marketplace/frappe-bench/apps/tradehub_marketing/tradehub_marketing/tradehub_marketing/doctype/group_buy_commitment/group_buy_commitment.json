@@ -1,0 +1,328 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "group_buy",
+  "buyer",
+  "column_break_basic",
+  "status",
+  "commitment_date",
+  "quantity_section",
+  "quantity",
+  "unit_price",
+  "column_break_qty",
+  "total_amount",
+  "share_percent",
+  "pricing_section",
+  "price_locked",
+  "locked_at",
+  "column_break_pricing",
+  "contribution_factor",
+  "discount_percent",
+  "contact_section",
+  "contact_name",
+  "contact_phone",
+  "contact_email",
+  "column_break_contact",
+  "shipping_address",
+  "notes",
+  "cancellation_section",
+  "cancelled_at",
+  "cancellation_reason",
+  "refunded_at",
+  "refund_amount",
+  "system_section",
+  "naming_series",
+  "modified_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Commitment Information"
+  },
+  {
+   "fieldname": "group_buy",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Group Buy",
+   "options": "Group Buy",
+   "reqd": 1,
+   "description": "The group buy this commitment is for"
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer",
+   "options": "Buyer Profile",
+   "reqd": 1,
+   "description": "The buyer making this commitment"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nPayment Pending\nPaid\nCancelled\nRefunded\nExpired",
+   "reqd": 1,
+   "description": "Current status of the commitment"
+  },
+  {
+   "fieldname": "commitment_date",
+   "fieldtype": "Datetime",
+   "label": "Commitment Date",
+   "read_only": 1,
+   "description": "When the commitment was made"
+  },
+  {
+   "fieldname": "quantity_section",
+   "fieldtype": "Section Break",
+   "label": "Quantity & Pricing"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "precision": 3,
+   "reqd": 1,
+   "description": "Committed quantity"
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "read_only": 1,
+   "description": "Calculated unit price based on contribution"
+  },
+  {
+   "fieldname": "column_break_qty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount",
+   "read_only": 1,
+   "description": "Total commitment amount (quantity x unit_price)"
+  },
+  {
+   "fieldname": "share_percent",
+   "fieldtype": "Percent",
+   "label": "Share %",
+   "read_only": 1,
+   "description": "Buyer's share of total target quantity"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "price_locked",
+   "fieldtype": "Check",
+   "label": "Price Locked",
+   "read_only": 1,
+   "description": "Whether the price has been locked for payment"
+  },
+  {
+   "fieldname": "locked_at",
+   "fieldtype": "Datetime",
+   "label": "Price Locked At",
+   "read_only": 1,
+   "depends_on": "price_locked"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contribution_factor",
+   "fieldtype": "Float",
+   "label": "Contribution Factor (f_i)",
+   "precision": 4,
+   "read_only": 1,
+   "description": "Normalized contribution factor (0-1)"
+  },
+  {
+   "fieldname": "discount_percent",
+   "fieldtype": "Percent",
+   "label": "Discount %",
+   "read_only": 1,
+   "description": "Discount from max price"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "contact_section",
+   "fieldtype": "Section Break",
+   "label": "Contact & Shipping"
+  },
+  {
+   "fieldname": "contact_name",
+   "fieldtype": "Data",
+   "label": "Contact Name"
+  },
+  {
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Contact Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "contact_email",
+   "fieldtype": "Data",
+   "label": "Contact Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipping_address",
+   "fieldtype": "Small Text",
+   "label": "Shipping Address"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes",
+   "description": "Buyer notes for this commitment"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "cancellation_section",
+   "fieldtype": "Section Break",
+   "label": "Cancellation/Refund",
+   "depends_on": "eval:['Cancelled', 'Refunded'].includes(doc.status)"
+  },
+  {
+   "fieldname": "cancelled_at",
+   "fieldtype": "Datetime",
+   "label": "Cancelled At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Small Text",
+   "label": "Cancellation Reason"
+  },
+  {
+   "fieldname": "refunded_at",
+   "fieldtype": "Datetime",
+   "label": "Refunded At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "refund_amount",
+   "fieldtype": "Currency",
+   "label": "Refund Amount",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System Information"
+  },
+  {
+   "default": "GBC-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "GBC-.#####"
+  },
+  {
+   "default": "0",
+   "fieldname": "modified_count",
+   "fieldtype": "Int",
+   "label": "Modification Count",
+   "read_only": 1,
+   "description": "Number of times quantity was modified"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Group Buy Payment",
+   "link_fieldname": "commitment"
+  }
+ ],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Marketing",
+ "name": "Group Buy Commitment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "role": "All"
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "group_buy, buyer, status",
+ "sort_field": "commitment_date",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "orange",
+   "title": "Payment Pending"
+  },
+  {
+   "color": "blue",
+   "title": "Paid"
+  },
+  {
+   "color": "gray",
+   "title": "Cancelled"
+  },
+  {
+   "color": "purple",
+   "title": "Refunded"
+  },
+  {
+   "color": "red",
+   "title": "Expired"
+  }
+ ],
+ "track_changes": 1
+}

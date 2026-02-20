@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "creation": "2026-02-12 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "attribute",
+  "attribute_name",
+  "column_break_1",
+  "value",
+  "value_label",
+  "settings_section",
+  "unit",
+  "column_break_2",
+  "sort_order",
+  "is_variant_attribute"
+ ],
+ "fields": [
+  {
+   "fieldname": "attribute",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Attribute",
+   "options": "Attribute",
+   "reqd": 1,
+   "description": "Link to the attribute definition"
+  },
+  {
+   "fieldname": "attribute_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Attribute Name",
+   "read_only": 1,
+   "fetch_from": "attribute.attribute_name",
+   "description": "Auto-fetched attribute name"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value",
+   "reqd": 1,
+   "description": "Attribute value (e.g., 'Red', '100', 'Cotton')"
+  },
+  {
+   "fieldname": "value_label",
+   "fieldtype": "Data",
+   "label": "Value Label",
+   "description": "Display label for the value (optional, for localization)"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Data",
+   "label": "Unit",
+   "description": "Unit of measurement (e.g., 'cm', 'kg', 'pcs')"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Sort Order",
+   "description": "Display order of attributes"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_variant_attribute",
+   "fieldtype": "Check",
+   "label": "Is Variant Attribute",
+   "description": "If checked, this attribute creates product variants"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-12 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Listing Attribute Value",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "sort_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

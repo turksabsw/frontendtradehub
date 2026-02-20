@@ -1,0 +1,745 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:carrier_code",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "carrier_name",
+  "carrier_code",
+  "column_break_basic",
+  "enabled",
+  "is_default",
+  "carrier_type_section",
+  "carrier_type",
+  "service_methods",
+  "column_break_carrier_type",
+  "supports_tracking",
+  "supports_cod",
+  "supports_insurance",
+  "contact_section",
+  "contact_person",
+  "email",
+  "column_break_contact",
+  "phone",
+  "website",
+  "address_section",
+  "address",
+  "city",
+  "column_break_address",
+  "country",
+  "postal_code",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "column_break_tenant",
+  "is_global",
+  "service_areas_section",
+  "domestic_only",
+  "service_countries",
+  "column_break_service_areas",
+  "excluded_countries",
+  "service_regions",
+  "api_integration_section",
+  "has_api_integration",
+  "api_provider",
+  "api_version",
+  "column_break_api",
+  "api_endpoint",
+  "api_key",
+  "api_secret",
+  "api_account_number",
+  "api_config_section",
+  "api_environment",
+  "api_timeout",
+  "api_last_checked",
+  "column_break_api_config",
+  "api_status",
+  "api_error_message",
+  "supports_rate_api",
+  "supports_label_api",
+  "webhook_section",
+  "webhook_enabled",
+  "webhook_url",
+  "column_break_webhook",
+  "webhook_secret",
+  "webhook_events",
+  "tracking_section",
+  "tracking_url_template",
+  "tracking_api_enabled",
+  "column_break_tracking",
+  "tracking_update_frequency",
+  "rate_settings_section",
+  "default_transit_days",
+  "min_weight",
+  "max_weight",
+  "column_break_rates",
+  "weight_uom",
+  "dimensional_divisor",
+  "fuel_surcharge_percent",
+  "pricing_section",
+  "base_rate",
+  "rate_per_kg",
+  "column_break_pricing",
+  "currency",
+  "pricing_notes",
+  "branding_section",
+  "logo",
+  "description",
+  "display_section",
+  "display_order",
+  "show_in_checkout",
+  "column_break_display",
+  "featured",
+  "shipment_count",
+  "notes_section",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "carrier_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Carrier Name",
+   "reqd": 1,
+   "description": "Display name of the shipping carrier (e.g., FedEx, DHL, UPS)"
+  },
+  {
+   "fieldname": "carrier_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Carrier Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique code for the carrier (e.g., FEDEX, DHL, UPS)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled",
+   "description": "Whether this carrier is active and can be selected for shipments"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default",
+   "description": "Set as the default carrier for new shipments"
+  },
+  {
+   "fieldname": "carrier_type_section",
+   "fieldtype": "Section Break",
+   "label": "Carrier Type and Services"
+  },
+  {
+   "default": "Courier",
+   "fieldname": "carrier_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Carrier Type",
+   "options": "Courier\nFreight\nPostal\nExpress\nSpecialized\nLocal Delivery\nOther",
+   "reqd": 1,
+   "description": "Type of carrier - Courier (package), Freight (large cargo), Postal, Express, etc."
+  },
+  {
+   "fieldname": "service_methods",
+   "fieldtype": "Small Text",
+   "label": "Service Methods",
+   "description": "Available shipping methods (one per line: Ground, Air, Sea, Express, Economy, etc.)"
+  },
+  {
+   "fieldname": "column_break_carrier_type",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "supports_tracking",
+   "fieldtype": "Check",
+   "label": "Supports Tracking",
+   "description": "Whether this carrier provides shipment tracking"
+  },
+  {
+   "default": "0",
+   "fieldname": "supports_cod",
+   "fieldtype": "Check",
+   "label": "Supports COD",
+   "description": "Whether this carrier supports Cash on Delivery"
+  },
+  {
+   "default": "1",
+   "fieldname": "supports_insurance",
+   "fieldtype": "Check",
+   "label": "Supports Insurance",
+   "description": "Whether this carrier offers shipping insurance"
+  },
+  {
+   "fieldname": "contact_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person",
+   "description": "Primary contact person at the carrier"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email",
+   "description": "Contact email address"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone",
+   "description": "Contact phone number"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL",
+   "description": "Carrier's official website"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address",
+   "description": "Carrier's main office address"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "description": "City of main office"
+  },
+  {
+   "fieldname": "column_break_address",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "description": "Country of main office"
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code",
+   "description": "Postal/ZIP code of main office"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Information"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "in_standard_filter": 1,
+   "description": "Tenant for multi-tenant isolation (empty for global carriers)"
+  },
+  {
+   "fetch_from": "tenant.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Tenant"
+  },
+  {
+   "fieldname": "column_break_tenant",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_global",
+   "fieldtype": "Check",
+   "label": "Is Global",
+   "description": "Global carriers are visible to all tenants"
+  },
+  {
+   "fieldname": "service_areas_section",
+   "fieldtype": "Section Break",
+   "label": "Service Areas"
+  },
+  {
+   "default": "0",
+   "fieldname": "domestic_only",
+   "fieldtype": "Check",
+   "label": "Domestic Only",
+   "description": "Carrier only operates within a single country"
+  },
+  {
+   "fieldname": "service_countries",
+   "fieldtype": "Small Text",
+   "label": "Service Countries",
+   "description": "Countries where carrier operates (one country code per line, leave empty for worldwide)"
+  },
+  {
+   "fieldname": "column_break_service_areas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "excluded_countries",
+   "fieldtype": "Small Text",
+   "label": "Excluded Countries",
+   "description": "Countries where carrier does not operate (one country code per line)"
+  },
+  {
+   "fieldname": "service_regions",
+   "fieldtype": "Small Text",
+   "label": "Service Regions",
+   "description": "Specific regions or zones serviced (e.g., Europe, North America, Asia-Pacific)"
+  },
+  {
+   "fieldname": "api_integration_section",
+   "fieldtype": "Section Break",
+   "label": "API Integration",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "has_api_integration",
+   "fieldtype": "Check",
+   "label": "Has API Integration",
+   "description": "Whether carrier API integration is available"
+  },
+  {
+   "fieldname": "api_provider",
+   "fieldtype": "Select",
+   "label": "API Provider",
+   "options": "\nDirect\nEasyPost\nShippo\nShipStation\nAfterShip\nShipEngine\nYurtici\nAras\nMNG\nPTT\nSurat\nOther",
+   "depends_on": "has_api_integration",
+   "description": "API integration provider (Direct or via aggregator)"
+  },
+  {
+   "fieldname": "api_version",
+   "fieldtype": "Data",
+   "label": "API Version",
+   "depends_on": "has_api_integration",
+   "description": "API version (e.g., v1, v2)"
+  },
+  {
+   "fieldname": "column_break_api",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "api_endpoint",
+   "fieldtype": "Data",
+   "label": "API Endpoint",
+   "depends_on": "has_api_integration",
+   "description": "Base URL for API calls"
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API Key",
+   "depends_on": "has_api_integration",
+   "description": "API key for authentication"
+  },
+  {
+   "fieldname": "api_secret",
+   "fieldtype": "Password",
+   "label": "API Secret",
+   "depends_on": "has_api_integration",
+   "description": "API secret for authentication (if required)"
+  },
+  {
+   "fieldname": "api_account_number",
+   "fieldtype": "Data",
+   "label": "API Account Number",
+   "depends_on": "has_api_integration",
+   "description": "Account/customer number for carrier API"
+  },
+  {
+   "fieldname": "api_config_section",
+   "fieldtype": "Section Break",
+   "label": "API Configuration",
+   "collapsible": 1,
+   "depends_on": "has_api_integration"
+  },
+  {
+   "default": "Production",
+   "fieldname": "api_environment",
+   "fieldtype": "Select",
+   "label": "API Environment",
+   "options": "Sandbox\nProduction",
+   "depends_on": "has_api_integration",
+   "description": "API environment (use Sandbox for testing)"
+  },
+  {
+   "default": "30",
+   "fieldname": "api_timeout",
+   "fieldtype": "Int",
+   "label": "API Timeout (seconds)",
+   "depends_on": "has_api_integration",
+   "description": "Timeout for API requests in seconds"
+  },
+  {
+   "fieldname": "api_last_checked",
+   "fieldtype": "Datetime",
+   "label": "Last API Check",
+   "read_only": 1,
+   "depends_on": "has_api_integration",
+   "description": "Last time API connectivity was checked"
+  },
+  {
+   "fieldname": "column_break_api_config",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Unknown",
+   "fieldname": "api_status",
+   "fieldtype": "Select",
+   "label": "API Status",
+   "options": "Unknown\nOnline\nOffline\nError\nMaintenance",
+   "read_only": 1,
+   "depends_on": "has_api_integration",
+   "description": "Current API connectivity status"
+  },
+  {
+   "fieldname": "api_error_message",
+   "fieldtype": "Small Text",
+   "label": "API Error Message",
+   "read_only": 1,
+   "depends_on": "eval:doc.api_status=='Error'",
+   "description": "Last API error message"
+  },
+  {
+   "default": "0",
+   "fieldname": "supports_rate_api",
+   "fieldtype": "Check",
+   "label": "Supports Rate API",
+   "depends_on": "has_api_integration",
+   "description": "Carrier API supports real-time rate calculation"
+  },
+  {
+   "default": "0",
+   "fieldname": "supports_label_api",
+   "fieldtype": "Check",
+   "label": "Supports Label API",
+   "depends_on": "has_api_integration",
+   "description": "Carrier API supports shipping label generation"
+  },
+  {
+   "fieldname": "webhook_section",
+   "fieldtype": "Section Break",
+   "label": "Webhook Configuration",
+   "collapsible": 1,
+   "depends_on": "has_api_integration"
+  },
+  {
+   "default": "0",
+   "fieldname": "webhook_enabled",
+   "fieldtype": "Check",
+   "label": "Webhook Enabled",
+   "description": "Enable webhook notifications from carrier"
+  },
+  {
+   "fieldname": "webhook_url",
+   "fieldtype": "Data",
+   "label": "Webhook URL",
+   "depends_on": "webhook_enabled",
+   "description": "URL to receive webhook notifications"
+  },
+  {
+   "fieldname": "column_break_webhook",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "webhook_secret",
+   "fieldtype": "Password",
+   "label": "Webhook Secret",
+   "depends_on": "webhook_enabled",
+   "description": "Secret key for webhook signature verification"
+  },
+  {
+   "fieldname": "webhook_events",
+   "fieldtype": "Small Text",
+   "label": "Webhook Events",
+   "depends_on": "webhook_enabled",
+   "description": "Events to receive (one per line: tracking_update, delivered, exception, etc.)"
+  },
+  {
+   "fieldname": "tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Tracking Configuration"
+  },
+  {
+   "fieldname": "tracking_url_template",
+   "fieldtype": "Data",
+   "label": "Tracking URL Template",
+   "description": "URL template for tracking (use {tracking_number} placeholder)"
+  },
+  {
+   "default": "0",
+   "fieldname": "tracking_api_enabled",
+   "fieldtype": "Check",
+   "label": "Tracking API Enabled",
+   "depends_on": "has_api_integration",
+   "description": "Use API for tracking updates instead of URL"
+  },
+  {
+   "fieldname": "column_break_tracking",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "60",
+   "fieldname": "tracking_update_frequency",
+   "fieldtype": "Int",
+   "label": "Tracking Update Frequency (min)",
+   "depends_on": "tracking_api_enabled",
+   "description": "How often to poll for tracking updates (in minutes)"
+  },
+  {
+   "fieldname": "rate_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Rate Settings"
+  },
+  {
+   "default": "5",
+   "fieldname": "default_transit_days",
+   "fieldtype": "Int",
+   "label": "Default Transit Days",
+   "description": "Default estimated transit time in days"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_weight",
+   "fieldtype": "Float",
+   "label": "Minimum Weight",
+   "precision": 3,
+   "description": "Minimum shipment weight accepted"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_weight",
+   "fieldtype": "Float",
+   "label": "Maximum Weight",
+   "precision": 3,
+   "description": "Maximum shipment weight accepted (0 = no limit)"
+  },
+  {
+   "fieldname": "column_break_rates",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "kg",
+   "fieldname": "weight_uom",
+   "fieldtype": "Link",
+   "label": "Weight UOM",
+   "options": "UOM",
+   "description": "Unit of measure for weight"
+  },
+  {
+   "default": "5000",
+   "fieldname": "dimensional_divisor",
+   "fieldtype": "Int",
+   "label": "Dimensional Divisor",
+   "description": "Divisor for calculating dimensional weight (L x W x H / divisor)"
+  },
+  {
+   "default": "0",
+   "fieldname": "fuel_surcharge_percent",
+   "fieldtype": "Percent",
+   "label": "Fuel Surcharge",
+   "description": "Current fuel surcharge percentage applied to shipments"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "base_rate",
+   "fieldtype": "Currency",
+   "label": "Base Rate",
+   "description": "Base shipping rate before weight calculations"
+  },
+  {
+   "default": "0",
+   "fieldname": "rate_per_kg",
+   "fieldtype": "Currency",
+   "label": "Rate per KG",
+   "description": "Rate per kilogram (or per weight UOM)"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "USD",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "description": "Currency for pricing"
+  },
+  {
+   "fieldname": "pricing_notes",
+   "fieldtype": "Small Text",
+   "label": "Pricing Notes",
+   "description": "Additional notes about pricing (zones, surcharges, etc.)"
+  },
+  {
+   "fieldname": "branding_section",
+   "fieldtype": "Section Break",
+   "label": "Branding"
+  },
+  {
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo",
+   "description": "Carrier logo (recommended size: 200x200 pixels)"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "description": "Detailed description of the carrier and services offered"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order",
+   "description": "Sort order for display (lower numbers appear first)"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_in_checkout",
+   "fieldtype": "Check",
+   "label": "Show in Checkout",
+   "description": "Display this carrier as an option during checkout"
+  },
+  {
+   "fieldname": "column_break_display",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "featured",
+   "fieldtype": "Check",
+   "label": "Featured",
+   "description": "Highlight this carrier in listings"
+  },
+  {
+   "default": "0",
+   "fieldname": "shipment_count",
+   "fieldtype": "Int",
+   "label": "Shipment Count",
+   "read_only": 1,
+   "description": "Number of shipments using this carrier"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text",
+   "label": "Internal Notes",
+   "description": "Internal notes about this carrier (not visible to customers)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Shipments",
+   "link_doctype": "Shipment",
+   "link_fieldname": "carrier"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Logistics",
+ "name": "Carrier",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Buyer",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "carrier_name, carrier_code, carrier_type, country",
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "title_field": "carrier_name",
+ "track_changes": 1
+}

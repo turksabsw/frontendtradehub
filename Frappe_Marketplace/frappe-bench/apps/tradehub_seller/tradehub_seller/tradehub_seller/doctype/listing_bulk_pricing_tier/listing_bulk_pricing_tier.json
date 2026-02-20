@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "creation": "2026-02-12 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "min_qty",
+  "max_qty",
+  "column_break_1",
+  "price",
+  "discount_percentage",
+  "info_section",
+  "description",
+  "column_break_2",
+  "is_active"
+ ],
+ "fields": [
+  {
+   "fieldname": "min_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Minimum Quantity",
+   "reqd": 1,
+   "description": "Minimum quantity to qualify for this tier"
+  },
+  {
+   "fieldname": "max_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Maximum Quantity",
+   "description": "Maximum quantity for this tier (empty = unlimited)"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Unit Price",
+   "reqd": 1,
+   "description": "Price per unit at this tier"
+  },
+  {
+   "fieldname": "discount_percentage",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Discount %",
+   "description": "Discount percentage from base price (calculated)"
+  },
+  {
+   "fieldname": "info_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Info",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Optional description for this pricing tier"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "description": "Enable/disable this pricing tier"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-12 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Listing Bulk Pricing Tier",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "min_qty",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

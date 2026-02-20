@@ -1,0 +1,147 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-campaigns\", \"type\": \"card\", \"data\": {\"card_name\": \"Campaigns & Coupons\", \"col\": 4}}, {\"id\": \"card-group-buy\", \"type\": \"card\", \"data\": {\"card_name\": \"Group Buy\", \"col\": 4}}, {\"id\": \"card-subscriptions\", \"type\": \"card\", \"data\": {\"card_name\": \"Subscriptions & Storefront\", \"col\": 4}}]",
+ "creation": "2026-02-16 16:18:57.940816",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "shortcut",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "TradeHub Marketing",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Campaigns & Coupons",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Campaign",
+   "link_count": 0,
+   "link_to": "Campaign",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Coupon",
+   "link_count": 0,
+   "link_to": "Coupon",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Wholesale Offer",
+   "link_count": 0,
+   "link_to": "Wholesale Offer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Group Buy",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Group Buy",
+   "link_count": 0,
+   "link_to": "Group Buy",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Group Buy Commitment",
+   "link_count": 0,
+   "link_to": "Group Buy Commitment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Group Buy Payment",
+   "link_count": 0,
+   "link_to": "Group Buy Payment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subscriptions & Storefront",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Storefront",
+   "link_count": 0,
+   "link_to": "Storefront",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subscription",
+   "link_count": 0,
+   "link_to": "Subscription",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subscription Package",
+   "link_count": 0,
+   "link_to": "Subscription Package",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-16 16:24:07.431100",
+ "modified_by": "Administrator",
+ "module": "TradeHub Marketing",
+ "name": "TradeHub Marketing",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 8.0,
+ "shortcuts": [],
+ "title": "TradeHub Marketing"
+}

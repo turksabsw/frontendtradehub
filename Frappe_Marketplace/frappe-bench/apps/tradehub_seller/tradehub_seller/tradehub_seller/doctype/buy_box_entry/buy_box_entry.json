@@ -1,0 +1,600 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "BBX-.#####",
+ "creation": "2026-02-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "product_section",
+  "sku_product",
+  "product_name",
+  "product_sku_code",
+  "column_break_product",
+  "product_status",
+  "product_category",
+  "product_category_name",
+  "seller_section",
+  "seller",
+  "seller_name",
+  "seller_company",
+  "column_break_seller",
+  "seller_tier",
+  "seller_tier_name",
+  "seller_verification_status",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "pricing_section",
+  "offer_price",
+  "currency",
+  "column_break_pricing",
+  "min_order_quantity",
+  "max_order_quantity",
+  "price_includes_shipping",
+  "delivery_section",
+  "delivery_days",
+  "delivery_location",
+  "column_break_delivery",
+  "origin_country",
+  "shipping_method",
+  "stock_section",
+  "stock_available",
+  "stock_uom",
+  "column_break_stock",
+  "is_stock_guaranteed",
+  "last_stock_update",
+  "seller_metrics_section",
+  "seller_average_rating",
+  "seller_total_reviews",
+  "seller_on_time_delivery_rate",
+  "column_break_metrics",
+  "seller_response_rate",
+  "seller_refund_rate",
+  "seller_buy_box_win_rate",
+  "scoring_section",
+  "buy_box_score",
+  "price_score",
+  "delivery_score",
+  "column_break_scoring",
+  "rating_score",
+  "stock_score",
+  "is_winner",
+  "status_section",
+  "status",
+  "is_active",
+  "column_break_status",
+  "last_score_update",
+  "winner_since",
+  "notes_section",
+  "internal_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "product_section",
+   "fieldtype": "Section Break",
+   "label": "Product Information"
+  },
+  {
+   "fieldname": "sku_product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "SKU Product",
+   "options": "SKU Product",
+   "reqd": 1,
+   "description": "Product that this Buy Box entry is for"
+  },
+  {
+   "fetch_from": "sku_product.product_name",
+   "fieldname": "product_name",
+   "fieldtype": "Data",
+   "label": "Product Name",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Auto-filled from SKU Product"
+  },
+  {
+   "fetch_from": "sku_product.sku_code",
+   "fieldname": "product_sku_code",
+   "fieldtype": "Data",
+   "label": "Product SKU Code",
+   "read_only": 1,
+   "description": "Auto-filled from SKU Product"
+  },
+  {
+   "fieldname": "column_break_product",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "sku_product.status",
+   "fieldname": "product_status",
+   "fieldtype": "Data",
+   "label": "Product Status",
+   "read_only": 1,
+   "description": "Auto-filled from SKU Product"
+  },
+  {
+   "fetch_from": "sku_product.category",
+   "fieldname": "product_category",
+   "fieldtype": "Link",
+   "label": "Product Category",
+   "options": "Product Category",
+   "read_only": 1,
+   "description": "Auto-filled from SKU Product"
+  },
+  {
+   "fetch_from": "sku_product.category_name",
+   "fieldname": "product_category_name",
+   "fieldtype": "Data",
+   "label": "Category Name",
+   "read_only": 1,
+   "description": "Auto-filled from SKU Product"
+  },
+  {
+   "fieldname": "seller_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Information"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1,
+   "description": "Seller making this offer"
+  },
+  {
+   "fetch_from": "seller.seller_name",
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.organization",
+   "fieldname": "seller_company",
+   "fieldtype": "Data",
+   "label": "Seller Company",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "column_break_seller",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "seller.seller_tier",
+   "fieldname": "seller_tier",
+   "fieldtype": "Link",
+   "label": "Seller Tier",
+   "options": "Seller Tier",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.seller_tier",
+   "fieldname": "seller_tier_name",
+   "fieldtype": "Data",
+   "label": "Tier Name",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.verification_status",
+   "fieldname": "seller_verification_status",
+   "fieldtype": "Data",
+   "label": "Verification Status",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "tenant_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant"
+  },
+  {
+   "fetch_from": "seller.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "Auto-filled from Seller - Multi-tenant isolation field"
+  },
+  {
+   "fetch_from": "seller.tenant",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "read_only": 1,
+   "description": "Auto-filled from Seller"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "offer_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Offer Price",
+   "reqd": 1,
+   "description": "Price offered by seller for this product"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "description": "Currency for the offer price"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "min_order_quantity",
+   "fieldtype": "Float",
+   "label": "Min Order Quantity",
+   "description": "Minimum order quantity for this offer"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_order_quantity",
+   "fieldtype": "Float",
+   "label": "Max Order Quantity",
+   "description": "Maximum order quantity (0 = unlimited)"
+  },
+  {
+   "default": "0",
+   "fieldname": "price_includes_shipping",
+   "fieldtype": "Check",
+   "label": "Price Includes Shipping",
+   "description": "Whether the offer price includes shipping costs"
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery"
+  },
+  {
+   "default": "7",
+   "fieldname": "delivery_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Delivery Days",
+   "reqd": 1,
+   "description": "Estimated number of days to deliver"
+  },
+  {
+   "fieldname": "delivery_location",
+   "fieldtype": "Data",
+   "label": "Delivery Location",
+   "description": "Location where delivery is available"
+  },
+  {
+   "fieldname": "column_break_delivery",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "origin_country",
+   "fieldtype": "Link",
+   "label": "Origin Country",
+   "options": "Country",
+   "description": "Country where product ships from"
+  },
+  {
+   "fieldname": "shipping_method",
+   "fieldtype": "Select",
+   "label": "Shipping Method",
+   "options": "\nStandard\nExpress\nEconomy\nFreight\nSeller Delivery",
+   "description": "Shipping method used for delivery"
+  },
+  {
+   "fieldname": "stock_section",
+   "fieldtype": "Section Break",
+   "label": "Stock"
+  },
+  {
+   "default": "0",
+   "fieldname": "stock_available",
+   "fieldtype": "Float",
+   "label": "Stock Available",
+   "description": "Current stock quantity available from this seller"
+  },
+  {
+   "default": "Unit",
+   "fieldname": "stock_uom",
+   "fieldtype": "Link",
+   "label": "Stock UOM",
+   "options": "UOM",
+   "description": "Unit of measure for stock"
+  },
+  {
+   "fieldname": "column_break_stock",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_stock_guaranteed",
+   "fieldtype": "Check",
+   "label": "Stock Guaranteed",
+   "description": "Whether seller guarantees stock availability"
+  },
+  {
+   "fieldname": "last_stock_update",
+   "fieldtype": "Datetime",
+   "label": "Last Stock Update",
+   "read_only": 1,
+   "description": "When stock was last updated"
+  },
+  {
+   "fieldname": "seller_metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Seller Performance Metrics",
+   "collapsible": 1
+  },
+  {
+   "fetch_from": "seller.average_rating",
+   "fieldname": "seller_average_rating",
+   "fieldtype": "Float",
+   "label": "Seller Average Rating",
+   "read_only": 1,
+   "precision": 2,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.total_reviews",
+   "fieldname": "seller_total_reviews",
+   "fieldtype": "Int",
+   "label": "Total Reviews",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.on_time_delivery_rate",
+   "fieldname": "seller_on_time_delivery_rate",
+   "fieldtype": "Percent",
+   "label": "On-Time Delivery Rate",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "column_break_metrics",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "",
+   "fieldname": "seller_response_rate",
+   "fieldtype": "Percent",
+   "label": "Response Rate",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "seller.return_rate",
+   "fieldname": "seller_refund_rate",
+   "fieldtype": "Percent",
+   "label": "Refund Rate",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fetch_from": "",
+   "fieldname": "seller_buy_box_win_rate",
+   "fieldtype": "Percent",
+   "label": "Buy Box Win Rate",
+   "read_only": 1,
+   "description": "Auto-filled from Seller Profile"
+  },
+  {
+   "fieldname": "scoring_section",
+   "fieldtype": "Section Break",
+   "label": "Buy Box Scoring"
+  },
+  {
+   "default": "0",
+   "fieldname": "buy_box_score",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Buy Box Score",
+   "read_only": 1,
+   "precision": 2,
+   "description": "Overall Buy Box score (0-100)"
+  },
+  {
+   "default": "0",
+   "fieldname": "price_score",
+   "fieldtype": "Float",
+   "label": "Price Score",
+   "read_only": 1,
+   "precision": 2,
+   "description": "Score based on price competitiveness"
+  },
+  {
+   "default": "0",
+   "fieldname": "delivery_score",
+   "fieldtype": "Float",
+   "label": "Delivery Score",
+   "read_only": 1,
+   "precision": 2,
+   "description": "Score based on delivery time"
+  },
+  {
+   "fieldname": "column_break_scoring",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "rating_score",
+   "fieldtype": "Float",
+   "label": "Rating Score",
+   "read_only": 1,
+   "precision": 2,
+   "description": "Score based on seller rating"
+  },
+  {
+   "default": "0",
+   "fieldname": "stock_score",
+   "fieldtype": "Float",
+   "label": "Stock Score",
+   "read_only": 1,
+   "precision": 2,
+   "description": "Score based on stock availability"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_winner",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Buy Box Winner",
+   "read_only": 1,
+   "description": "Whether this entry currently wins the Buy Box"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nSuspended\nExpired",
+   "reqd": 1,
+   "description": "Current status of the Buy Box entry"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "description": "Quick toggle for entry activation"
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_score_update",
+   "fieldtype": "Datetime",
+   "label": "Last Score Update",
+   "read_only": 1,
+   "description": "When the Buy Box score was last calculated"
+  },
+  {
+   "fieldname": "winner_since",
+   "fieldtype": "Datetime",
+   "label": "Winner Since",
+   "read_only": 1,
+   "description": "When this entry started winning the Buy Box"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes",
+   "description": "Internal notes about this Buy Box entry"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Product",
+   "link_doctype": "SKU Product",
+   "link_fieldname": "name"
+  },
+  {
+   "group": "Seller",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "name"
+  }
+ ],
+ "modified": "2026-02-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Buy Box Entry",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Seller",
+   "share": 0,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "Buyer",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "product_name, seller_name, product_sku_code",
+ "sort_field": "buy_box_score",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "gray",
+   "title": "Inactive"
+  },
+  {
+   "color": "orange",
+   "title": "Suspended"
+  },
+  {
+   "color": "red",
+   "title": "Expired"
+  }
+ ],
+ "title_field": "product_name",
+ "track_changes": 1
+}

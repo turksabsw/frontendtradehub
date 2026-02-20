@@ -1,0 +1,587 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "title",
+  "seller",
+  "listing",
+  "column_break_basic",
+  "status",
+  "group_buy_type",
+  "tenant",
+  "description_section",
+  "description",
+  "short_description",
+  "primary_image",
+  "period_section",
+  "period_type",
+  "start_date",
+  "end_date",
+  "column_break_period",
+  "auto_activate",
+  "auto_complete",
+  "quantity_section",
+  "target_quantity",
+  "current_quantity",
+  "column_break_quantity",
+  "min_quantity",
+  "max_quantity_per_buyer",
+  "participant_count",
+  "pricing_section",
+  "currency",
+  "max_price",
+  "best_price",
+  "current_price",
+  "column_break_pricing",
+  "reference_share",
+  "alpha_factor",
+  "profitability_floor",
+  "tiers_section",
+  "tiers",
+  "shipping_section",
+  "shipping_type",
+  "flat_shipping_rate",
+  "column_break_shipping",
+  "free_shipping_threshold",
+  "ships_from",
+  "estimated_delivery_days",
+  "settings_section",
+  "requires_approval",
+  "allow_cancel_commitment",
+  "cancel_cutoff_hours",
+  "column_break_settings",
+  "is_featured",
+  "is_verified",
+  "visibility",
+  "statistics_section",
+  "total_commitment_amount",
+  "average_price",
+  "column_break_stats",
+  "view_count",
+  "funded_at",
+  "completed_at",
+  "system_section",
+  "naming_series",
+  "created_by",
+  "created_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "reqd": 1,
+   "description": "Group buy campaign title"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1,
+   "description": "Seller offering this group buy"
+  },
+  {
+   "fieldname": "listing",
+   "fieldtype": "Link",
+   "label": "Listing",
+   "options": "Listing",
+   "description": "Optional linked product listing"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending Approval\nScheduled\nActive\nFunded\nCompleted\nExpired\nCancelled",
+   "reqd": 1,
+   "description": "Current status of the group buy"
+  },
+  {
+   "default": "Standard",
+   "fieldname": "group_buy_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Group Buy Type",
+   "options": "Standard\nFlash\nPre-Order\nBulk",
+   "reqd": 1,
+   "description": "Type of group buying campaign"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "description": "The tenant this group buy belongs to"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "description": "Full description of the group buy offer"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description",
+   "length": 500,
+   "description": "Brief summary for listings and search results"
+  },
+  {
+   "fieldname": "primary_image",
+   "fieldtype": "Attach Image",
+   "label": "Primary Image",
+   "description": "Main image for the group buy"
+  },
+  {
+   "fieldname": "period_section",
+   "fieldtype": "Section Break",
+   "label": "Campaign Period"
+  },
+  {
+   "default": "Fixed",
+   "fieldname": "period_type",
+   "fieldtype": "Select",
+   "label": "Period Type",
+   "options": "Fixed\nOpen-Ended\nTarget-Based",
+   "reqd": 1,
+   "description": "How the campaign period is determined"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Datetime",
+   "label": "Start Date",
+   "reqd": 1,
+   "description": "When the group buy begins accepting commitments"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Datetime",
+   "label": "End Date",
+   "reqd": 1,
+   "description": "Deadline for reaching target quantity"
+  },
+  {
+   "fieldname": "column_break_period",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_activate",
+   "fieldtype": "Check",
+   "label": "Auto Activate at Start Date",
+   "description": "Automatically activate when start date is reached"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_complete",
+   "fieldtype": "Check",
+   "label": "Auto Complete When Funded",
+   "description": "Automatically process when target is reached"
+  },
+  {
+   "fieldname": "quantity_section",
+   "fieldtype": "Section Break",
+   "label": "Quantity Settings"
+  },
+  {
+   "fieldname": "target_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target Quantity",
+   "precision": 3,
+   "reqd": 1,
+   "description": "Total quantity needed to activate group buy pricing"
+  },
+  {
+   "default": "0",
+   "fieldname": "current_quantity",
+   "fieldtype": "Float",
+   "label": "Current Quantity",
+   "precision": 3,
+   "read_only": 1,
+   "description": "Total committed quantity so far"
+  },
+  {
+   "fieldname": "column_break_quantity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "min_quantity",
+   "fieldtype": "Float",
+   "label": "Min Quantity Per Buyer",
+   "precision": 3,
+   "description": "Minimum quantity a buyer must commit"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_quantity_per_buyer",
+   "fieldtype": "Float",
+   "label": "Max Quantity Per Buyer",
+   "precision": 3,
+   "description": "Maximum quantity per buyer (0 = no limit)"
+  },
+  {
+   "default": "0",
+   "fieldname": "participant_count",
+   "fieldtype": "Int",
+   "label": "Participant Count",
+   "read_only": 1,
+   "description": "Number of buyers who have committed"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Contribution-Based Pricing"
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "max_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Max Price (P_T)",
+   "options": "currency",
+   "reqd": 1,
+   "description": "Target price at minimum participation (highest price)"
+  },
+  {
+   "fieldname": "best_price",
+   "fieldtype": "Currency",
+   "label": "Best Price (P_best)",
+   "options": "currency",
+   "reqd": 1,
+   "description": "Best price at full contribution (lowest price)"
+  },
+  {
+   "fieldname": "current_price",
+   "fieldtype": "Currency",
+   "label": "Current Average Price",
+   "options": "currency",
+   "read_only": 1,
+   "description": "Current average price based on contributions"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.20",
+   "fieldname": "reference_share",
+   "fieldtype": "Float",
+   "label": "Reference Share (s_ref)",
+   "precision": 4,
+   "description": "Reference share ratio for max discount (default 20%)"
+  },
+  {
+   "default": "1.0",
+   "fieldname": "alpha_factor",
+   "fieldtype": "Float",
+   "label": "Alpha Factor",
+   "precision": 2,
+   "description": "Scaling factor for price calculation"
+  },
+  {
+   "fieldname": "profitability_floor",
+   "fieldtype": "Currency",
+   "label": "Profitability Floor",
+   "options": "currency",
+   "description": "Minimum acceptable average price for seller"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "tiers_section",
+   "fieldtype": "Section Break",
+   "label": "Price Tiers (Optional)"
+  },
+  {
+   "fieldname": "tiers",
+   "fieldtype": "Table",
+   "label": "Tiers",
+   "options": "Group Buy Tier",
+   "description": "Optional predefined price tiers for display"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "shipping_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping"
+  },
+  {
+   "default": "Seller Ships",
+   "fieldname": "shipping_type",
+   "fieldtype": "Select",
+   "label": "Shipping Type",
+   "options": "Seller Ships\nPlatform Ships\nBuyer Pickup"
+  },
+  {
+   "fieldname": "flat_shipping_rate",
+   "fieldtype": "Currency",
+   "label": "Flat Shipping Rate",
+   "options": "currency",
+   "description": "Flat shipping rate per order"
+  },
+  {
+   "fieldname": "column_break_shipping",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "free_shipping_threshold",
+   "fieldtype": "Currency",
+   "label": "Free Shipping Threshold",
+   "options": "currency",
+   "description": "Order amount for free shipping"
+  },
+  {
+   "fieldname": "ships_from",
+   "fieldtype": "Data",
+   "label": "Ships From",
+   "description": "Origin location for shipping"
+  },
+  {
+   "fieldname": "estimated_delivery_days",
+   "fieldtype": "Int",
+   "label": "Estimated Delivery Days",
+   "description": "Expected delivery time after group buy completes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_approval",
+   "fieldtype": "Check",
+   "label": "Requires Admin Approval",
+   "description": "Group buy requires admin approval before going live"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_cancel_commitment",
+   "fieldtype": "Check",
+   "label": "Allow Cancel Commitment",
+   "description": "Allow buyers to cancel their commitments"
+  },
+  {
+   "default": "24",
+   "fieldname": "cancel_cutoff_hours",
+   "fieldtype": "Int",
+   "label": "Cancel Cutoff Hours",
+   "depends_on": "allow_cancel_commitment",
+   "description": "Hours before end date when cancellation is no longer allowed"
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_featured",
+   "fieldtype": "Check",
+   "label": "Featured",
+   "description": "Show in featured group buys section"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_verified",
+   "fieldtype": "Check",
+   "label": "Verified",
+   "description": "Platform has verified this group buy"
+  },
+  {
+   "default": "Public",
+   "fieldname": "visibility",
+   "fieldtype": "Select",
+   "label": "Visibility",
+   "options": "Public\nPrivate\nInvite Only"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_commitment_amount",
+   "fieldtype": "Currency",
+   "label": "Total Commitment Amount",
+   "options": "currency",
+   "read_only": 1,
+   "description": "Sum of all commitment amounts"
+  },
+  {
+   "default": "0",
+   "fieldname": "average_price",
+   "fieldtype": "Currency",
+   "label": "Average Price",
+   "options": "currency",
+   "read_only": 1,
+   "description": "Average price across all commitments"
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "view_count",
+   "fieldtype": "Int",
+   "label": "View Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "funded_at",
+   "fieldtype": "Datetime",
+   "label": "Funded At",
+   "read_only": 1,
+   "description": "When target was reached"
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1,
+   "description": "When group buy was completed"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System Information"
+  },
+  {
+   "default": "GB-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "GB-.#####"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Group Buy Commitment",
+   "link_fieldname": "group_buy"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Group Buy Payment",
+   "link_fieldname": "group_buy"
+  }
+ ],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Marketing",
+ "name": "Group Buy",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "All"
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "title, seller, status, group_buy_type",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "gray",
+   "title": "Draft"
+  },
+  {
+   "color": "orange",
+   "title": "Pending Approval"
+  },
+  {
+   "color": "blue",
+   "title": "Scheduled"
+  },
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "purple",
+   "title": "Funded"
+  },
+  {
+   "color": "blue",
+   "title": "Completed"
+  },
+  {
+   "color": "red",
+   "title": "Expired"
+  },
+  {
+   "color": "gray",
+   "title": "Cancelled"
+  }
+ ],
+ "title_field": "title",
+ "track_changes": 1
+}

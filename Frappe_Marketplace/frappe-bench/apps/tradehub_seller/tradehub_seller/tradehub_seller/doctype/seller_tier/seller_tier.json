@@ -1,0 +1,616 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:tier_code",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "tier_name",
+  "tier_code",
+  "tier_level",
+  "column_break_basic",
+  "status",
+  "is_default",
+  "tenant",
+  "description_section",
+  "short_description",
+  "full_description",
+  "badge_section",
+  "badge_icon",
+  "badge_color",
+  "badge_image",
+  "column_break_badge",
+  "display_order",
+  "show_in_marketplace",
+  "show_badge_on_listings",
+  "requirements_section",
+  "min_seller_score",
+  "min_total_sales_count",
+  "min_total_sales_amount",
+  "column_break_requirements",
+  "min_active_months",
+  "min_average_rating",
+  "min_positive_feedback_rate",
+  "max_return_rate",
+  "metrics_requirements_section",
+  "min_order_fulfillment_rate",
+  "min_on_time_delivery_rate",
+  "max_cancellation_rate",
+  "column_break_metrics_req",
+  "max_complaint_rate",
+  "max_response_time_hours",
+  "benefits_section",
+  "commission_discount_percent",
+  "reduced_payout_hold_days",
+  "priority_support",
+  "column_break_benefits",
+  "featured_placement",
+  "increased_listing_limit",
+  "listing_limit_bonus",
+  "additional_benefits_section",
+  "early_payout_access",
+  "premium_badge_display",
+  "analytics_access",
+  "column_break_additional",
+  "promotional_credits",
+  "promotional_credit_amount",
+  "priority_listing_boost",
+  "custom_benefits_section",
+  "custom_benefits",
+  "upgrade_section",
+  "next_tier",
+  "previous_tier",
+  "auto_upgrade",
+  "column_break_upgrade",
+  "auto_downgrade",
+  "downgrade_grace_days",
+  "upgrade_notification_days",
+  "stats_section",
+  "total_sellers",
+  "active_sellers",
+  "avg_seller_performance",
+  "column_break_stats",
+  "last_stats_update",
+  "timestamps_section",
+  "created_by",
+  "created_at",
+  "column_break_timestamps",
+  "modified_by",
+  "modified_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "tier_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tier Name",
+   "reqd": 1,
+   "description": "Display name for this tier (e.g., Bronze, Silver, Gold)"
+  },
+  {
+   "fieldname": "tier_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tier Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique identifier code (e.g., BRONZE, SILVER, GOLD)"
+  },
+  {
+   "default": "1",
+   "fieldname": "tier_level",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tier Level",
+   "reqd": 1,
+   "description": "Numeric level for ordering (1=lowest, higher=better)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nDeprecated",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default Tier",
+   "description": "Default tier for new sellers"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "description": "Tenant-specific tier (leave blank for platform-wide)"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description",
+   "description": "Brief description shown in tier listings"
+  },
+  {
+   "fieldname": "full_description",
+   "fieldtype": "Text Editor",
+   "label": "Full Description",
+   "description": "Detailed description of tier benefits and requirements"
+  },
+  {
+   "fieldname": "badge_section",
+   "fieldtype": "Section Break",
+   "label": "Badge & Display"
+  },
+  {
+   "fieldname": "badge_icon",
+   "fieldtype": "Data",
+   "label": "Badge Icon",
+   "description": "Icon class name (e.g., fa-star, fa-medal, fa-crown)"
+  },
+  {
+   "default": "#cd7f32",
+   "fieldname": "badge_color",
+   "fieldtype": "Color",
+   "label": "Badge Color",
+   "description": "Color for badge display"
+  },
+  {
+   "fieldname": "badge_image",
+   "fieldtype": "Attach Image",
+   "label": "Badge Image",
+   "description": "Custom badge image (optional)"
+  },
+  {
+   "fieldname": "column_break_badge",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order",
+   "description": "Order in tier listings (lower = first)"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_in_marketplace",
+   "fieldtype": "Check",
+   "label": "Show in Marketplace",
+   "description": "Display this tier badge on seller profiles"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_badge_on_listings",
+   "fieldtype": "Check",
+   "label": "Show Badge on Listings",
+   "description": "Display tier badge on product listings"
+  },
+  {
+   "fieldname": "requirements_section",
+   "fieldtype": "Section Break",
+   "label": "Minimum Requirements"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_seller_score",
+   "fieldtype": "Float",
+   "label": "Min Seller Score",
+   "precision": 2,
+   "description": "Minimum seller score required (0-100)"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_total_sales_count",
+   "fieldtype": "Int",
+   "label": "Min Total Sales",
+   "description": "Minimum number of completed sales"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_total_sales_amount",
+   "fieldtype": "Currency",
+   "label": "Min Total Sales Amount",
+   "description": "Minimum total sales value"
+  },
+  {
+   "fieldname": "column_break_requirements",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_active_months",
+   "fieldtype": "Int",
+   "label": "Min Active Months",
+   "description": "Minimum months as active seller"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_average_rating",
+   "fieldtype": "Float",
+   "label": "Min Average Rating",
+   "precision": 2,
+   "description": "Minimum average rating (1-5 stars)"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_positive_feedback_rate",
+   "fieldtype": "Percent",
+   "label": "Min Positive Feedback Rate",
+   "description": "Minimum positive feedback percentage"
+  },
+  {
+   "default": "100",
+   "fieldname": "max_return_rate",
+   "fieldtype": "Percent",
+   "label": "Max Return Rate",
+   "description": "Maximum return rate allowed"
+  },
+  {
+   "fieldname": "metrics_requirements_section",
+   "fieldtype": "Section Break",
+   "label": "Performance Metrics Requirements",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "min_order_fulfillment_rate",
+   "fieldtype": "Percent",
+   "label": "Min Order Fulfillment Rate",
+   "description": "Minimum order fulfillment percentage"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_on_time_delivery_rate",
+   "fieldtype": "Percent",
+   "label": "Min On-Time Delivery Rate",
+   "description": "Minimum on-time delivery percentage"
+  },
+  {
+   "default": "100",
+   "fieldname": "max_cancellation_rate",
+   "fieldtype": "Percent",
+   "label": "Max Cancellation Rate",
+   "description": "Maximum order cancellation rate"
+  },
+  {
+   "fieldname": "column_break_metrics_req",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "100",
+   "fieldname": "max_complaint_rate",
+   "fieldtype": "Percent",
+   "label": "Max Complaint Rate",
+   "description": "Maximum complaint rate allowed"
+  },
+  {
+   "default": "72",
+   "fieldname": "max_response_time_hours",
+   "fieldtype": "Float",
+   "label": "Max Response Time (hrs)",
+   "precision": 1,
+   "description": "Maximum average response time in hours"
+  },
+  {
+   "fieldname": "benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Tier Benefits"
+  },
+  {
+   "default": "0",
+   "fieldname": "commission_discount_percent",
+   "fieldtype": "Percent",
+   "label": "Commission Discount (%)",
+   "description": "Percentage discount on commission rates"
+  },
+  {
+   "default": "0",
+   "fieldname": "reduced_payout_hold_days",
+   "fieldtype": "Int",
+   "label": "Reduced Payout Hold Days",
+   "description": "Reduction in payout hold period (days)"
+  },
+  {
+   "default": "0",
+   "fieldname": "priority_support",
+   "fieldtype": "Check",
+   "label": "Priority Support",
+   "description": "Access to priority customer support"
+  },
+  {
+   "fieldname": "column_break_benefits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "featured_placement",
+   "fieldtype": "Check",
+   "label": "Featured Placement",
+   "description": "Eligibility for featured seller placement"
+  },
+  {
+   "default": "0",
+   "fieldname": "increased_listing_limit",
+   "fieldtype": "Check",
+   "label": "Increased Listing Limit",
+   "description": "Higher maximum listing count"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.increased_listing_limit==1",
+   "fieldname": "listing_limit_bonus",
+   "fieldtype": "Int",
+   "label": "Listing Limit Bonus",
+   "description": "Additional listings allowed"
+  },
+  {
+   "fieldname": "additional_benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Benefits",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "early_payout_access",
+   "fieldtype": "Check",
+   "label": "Early Payout Access",
+   "description": "Can request early payouts"
+  },
+  {
+   "default": "0",
+   "fieldname": "premium_badge_display",
+   "fieldtype": "Check",
+   "label": "Premium Badge Display",
+   "description": "Enhanced badge visibility"
+  },
+  {
+   "default": "0",
+   "fieldname": "analytics_access",
+   "fieldtype": "Check",
+   "label": "Advanced Analytics Access",
+   "description": "Access to advanced analytics dashboard"
+  },
+  {
+   "fieldname": "column_break_additional",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "promotional_credits",
+   "fieldtype": "Check",
+   "label": "Monthly Promotional Credits",
+   "description": "Receive monthly promotional credits"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.promotional_credits==1",
+   "fieldname": "promotional_credit_amount",
+   "fieldtype": "Currency",
+   "label": "Monthly Credit Amount",
+   "description": "Amount of promotional credits per month"
+  },
+  {
+   "default": "0",
+   "fieldname": "priority_listing_boost",
+   "fieldtype": "Check",
+   "label": "Priority Listing Boost",
+   "description": "Listings get priority in search results"
+  },
+  {
+   "fieldname": "custom_benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Custom Benefits",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "custom_benefits",
+   "fieldtype": "JSON",
+   "label": "Custom Benefits",
+   "description": "JSON array of additional custom benefits"
+  },
+  {
+   "fieldname": "upgrade_section",
+   "fieldtype": "Section Break",
+   "label": "Tier Progression"
+  },
+  {
+   "fieldname": "next_tier",
+   "fieldtype": "Link",
+   "label": "Next Tier",
+   "options": "Seller Tier",
+   "description": "Tier to upgrade to"
+  },
+  {
+   "fieldname": "previous_tier",
+   "fieldtype": "Link",
+   "label": "Previous Tier",
+   "options": "Seller Tier",
+   "description": "Tier to downgrade to"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_upgrade",
+   "fieldtype": "Check",
+   "label": "Auto Upgrade",
+   "description": "Automatically upgrade sellers when eligible"
+  },
+  {
+   "fieldname": "column_break_upgrade",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_downgrade",
+   "fieldtype": "Check",
+   "label": "Auto Downgrade",
+   "description": "Automatically downgrade sellers who no longer qualify"
+  },
+  {
+   "default": "30",
+   "depends_on": "eval:doc.auto_downgrade==1",
+   "fieldname": "downgrade_grace_days",
+   "fieldtype": "Int",
+   "label": "Downgrade Grace Days",
+   "description": "Days of grace period before downgrade"
+  },
+  {
+   "default": "7",
+   "fieldname": "upgrade_notification_days",
+   "fieldtype": "Int",
+   "label": "Upgrade Notification Days",
+   "description": "Days before upgrade to notify seller"
+  },
+  {
+   "fieldname": "stats_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_sellers",
+   "fieldtype": "Int",
+   "label": "Total Sellers",
+   "read_only": 1,
+   "description": "Total sellers in this tier"
+  },
+  {
+   "default": "0",
+   "fieldname": "active_sellers",
+   "fieldtype": "Int",
+   "label": "Active Sellers",
+   "read_only": 1,
+   "description": "Currently active sellers in this tier"
+  },
+  {
+   "default": "0",
+   "fieldname": "avg_seller_performance",
+   "fieldtype": "Float",
+   "label": "Avg Seller Performance",
+   "precision": 2,
+   "read_only": 1,
+   "description": "Average performance score of sellers in this tier"
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_stats_update",
+   "fieldtype": "Datetime",
+   "label": "Last Stats Update",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_timestamps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "modified_by",
+   "fieldtype": "Link",
+   "label": "Modified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_at",
+   "fieldtype": "Datetime",
+   "label": "Modified At",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "seller_tier"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Commission Plan",
+   "link_fieldname": "min_seller_tier"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Seller Tier",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "tier_name, tier_code, tier_level, status",
+ "show_name_in_global_search": 1,
+ "sort_field": "tier_level",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "tier_name",
+ "track_changes": 1
+}

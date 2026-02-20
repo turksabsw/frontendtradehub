@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "product",
+  "product_title",
+  "column_break_main",
+  "relation_type",
+  "display_order"
+ ],
+ "fields": [
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Product",
+   "options": "Listing",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "product.title",
+   "fieldname": "product_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Product Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Related",
+   "fieldname": "relation_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Relation Type",
+   "options": "Related\nSimilar\nAccessory\nReplacement\nFrequently Bought Together\nCustomers Also Viewed",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Lower numbers appear first",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Display Order"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Related Listing Product",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "product, relation_type",
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "track_changes": 0
+}

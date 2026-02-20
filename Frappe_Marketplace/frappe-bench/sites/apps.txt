@@ -1,0 +1,14 @@
+frappe
+erpnext
+frappe_guardian
+tradehub_core
+tradehub_catalog
+tradehub_seller
+tradehub_compliance
+tradehub_commerce
+tradehub_logistics
+tradehub_marketing
+tr_tradehub
+tr_consent_center
+tr_contract_center
+mock_data_engine

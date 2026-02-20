@@ -1,0 +1,432 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:level_name",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "level_name",
+  "level_code",
+  "level_rank",
+  "column_break_basic",
+  "status",
+  "is_default",
+  "icon",
+  "color",
+  "thresholds_section",
+  "qualification_type",
+  "column_break_thresholds",
+  "threshold_value",
+  "threshold_currency",
+  "threshold_period",
+  "order_threshold_section",
+  "min_order_count",
+  "min_order_amount",
+  "column_break_order",
+  "min_purchase_frequency",
+  "evaluation_period_months",
+  "benefits_section",
+  "benefits",
+  "display_section",
+  "display_name",
+  "description",
+  "badge_image",
+  "column_break_display",
+  "public_description",
+  "terms_and_conditions",
+  "promotion_section",
+  "is_promoted",
+  "promotion_message",
+  "column_break_promotion",
+  "upgrade_message",
+  "next_level",
+  "progression_section",
+  "auto_upgrade",
+  "auto_downgrade",
+  "column_break_progression",
+  "downgrade_grace_period_days",
+  "notify_on_level_change",
+  "statistics_section",
+  "buyer_count",
+  "last_calculated_at",
+  "timestamps_section",
+  "created_at",
+  "modified_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "level_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Level Name",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique name for this buyer level (e.g., Bronze, Silver, Gold, Platinum)"
+  },
+  {
+   "fieldname": "level_code",
+   "fieldtype": "Data",
+   "label": "Level Code",
+   "description": "Short code for programmatic use (e.g., BRONZE, SILVER, GOLD)"
+  },
+  {
+   "fieldname": "level_rank",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Level Rank",
+   "reqd": 1,
+   "description": "Numeric rank for ordering levels (1=lowest, higher=better)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nDeprecated",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default Level",
+   "description": "New buyers are automatically assigned to this level"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Icon",
+   "description": "Icon name or class (e.g., fa-medal, fa-crown, fa-star)"
+  },
+  {
+   "default": "#6c757d",
+   "fieldname": "color",
+   "fieldtype": "Color",
+   "label": "Color",
+   "description": "Color associated with this level for display"
+  },
+  {
+   "fieldname": "thresholds_section",
+   "fieldtype": "Section Break",
+   "label": "Qualification Thresholds"
+  },
+  {
+   "fieldname": "qualification_type",
+   "fieldtype": "Select",
+   "label": "Qualification Type",
+   "options": "Purchase Amount\nOrder Count\nPoints\nManual Assignment\nCombined",
+   "default": "Purchase Amount",
+   "description": "How buyers qualify for this level"
+  },
+  {
+   "fieldname": "column_break_thresholds",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "threshold_value",
+   "fieldtype": "Float",
+   "label": "Threshold Value",
+   "precision": 2,
+   "description": "Minimum value required to reach this level"
+  },
+  {
+   "fieldname": "threshold_currency",
+   "fieldtype": "Link",
+   "label": "Threshold Currency",
+   "options": "Currency",
+   "description": "Currency for purchase amount threshold"
+  },
+  {
+   "fieldname": "threshold_period",
+   "fieldtype": "Select",
+   "label": "Threshold Period",
+   "options": "\nLifetime\nYearly\nQuarterly\nMonthly",
+   "default": "Yearly",
+   "description": "Time period for calculating threshold"
+  },
+  {
+   "fieldname": "order_threshold_section",
+   "fieldtype": "Section Break",
+   "label": "Order-Based Thresholds",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "min_order_count",
+   "fieldtype": "Int",
+   "label": "Minimum Order Count",
+   "description": "Minimum number of orders required"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_order_amount",
+   "fieldtype": "Currency",
+   "label": "Minimum Order Amount",
+   "description": "Minimum total order amount required"
+  },
+  {
+   "fieldname": "column_break_order",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_purchase_frequency",
+   "fieldtype": "Int",
+   "label": "Min Purchase Frequency",
+   "description": "Minimum purchases per month to maintain level"
+  },
+  {
+   "default": "12",
+   "fieldname": "evaluation_period_months",
+   "fieldtype": "Int",
+   "label": "Evaluation Period (Months)",
+   "description": "Number of months to evaluate for qualification"
+  },
+  {
+   "fieldname": "benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Level Benefits"
+  },
+  {
+   "fieldname": "benefits",
+   "fieldtype": "Table",
+   "label": "Benefits",
+   "options": "Buyer Level Benefit",
+   "description": "Benefits available at this level"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings"
+  },
+  {
+   "fieldname": "display_name",
+   "fieldtype": "Data",
+   "label": "Display Name",
+   "description": "Name shown to buyers (can be different from level_name)"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Internal description of this level"
+  },
+  {
+   "fieldname": "badge_image",
+   "fieldtype": "Attach Image",
+   "label": "Badge Image",
+   "description": "Badge image displayed for this level"
+  },
+  {
+   "fieldname": "column_break_display",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "public_description",
+   "fieldtype": "Text Editor",
+   "label": "Public Description",
+   "description": "Description shown to buyers on their profile and level pages"
+  },
+  {
+   "fieldname": "terms_and_conditions",
+   "fieldtype": "Text Editor",
+   "label": "Terms and Conditions",
+   "description": "Terms that buyers must accept for this level"
+  },
+  {
+   "fieldname": "promotion_section",
+   "fieldtype": "Section Break",
+   "label": "Promotion & Upgrade",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_promoted",
+   "fieldtype": "Check",
+   "label": "Is Promoted",
+   "description": "Actively promote this level to lower-tier buyers"
+  },
+  {
+   "depends_on": "eval:doc.is_promoted==1",
+   "fieldname": "promotion_message",
+   "fieldtype": "Small Text",
+   "label": "Promotion Message",
+   "description": "Message shown when promoting this level"
+  },
+  {
+   "fieldname": "column_break_promotion",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "upgrade_message",
+   "fieldtype": "Small Text",
+   "label": "Upgrade Message",
+   "description": "Message shown when buyer upgrades to this level"
+  },
+  {
+   "fieldname": "next_level",
+   "fieldtype": "Link",
+   "label": "Next Level",
+   "options": "Buyer Level",
+   "description": "The next level buyers can progress to"
+  },
+  {
+   "fieldname": "progression_section",
+   "fieldtype": "Section Break",
+   "label": "Automatic Progression",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_upgrade",
+   "fieldtype": "Check",
+   "label": "Auto Upgrade",
+   "description": "Automatically upgrade buyers when they meet criteria"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_downgrade",
+   "fieldtype": "Check",
+   "label": "Auto Downgrade",
+   "description": "Automatically downgrade buyers who no longer meet criteria"
+  },
+  {
+   "fieldname": "column_break_progression",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "30",
+   "fieldname": "downgrade_grace_period_days",
+   "fieldtype": "Int",
+   "label": "Downgrade Grace Period (Days)",
+   "description": "Days to wait before downgrading a buyer"
+  },
+  {
+   "default": "1",
+   "fieldname": "notify_on_level_change",
+   "fieldtype": "Check",
+   "label": "Notify on Level Change",
+   "description": "Send notification when buyer's level changes"
+  },
+  {
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "buyer_count",
+   "fieldtype": "Int",
+   "label": "Buyer Count",
+   "read_only": 1,
+   "description": "Number of buyers at this level"
+  },
+  {
+   "fieldname": "last_calculated_at",
+   "fieldtype": "Datetime",
+   "label": "Last Calculated At",
+   "read_only": 1,
+   "description": "When statistics were last calculated"
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_at",
+   "fieldtype": "Datetime",
+   "label": "Modified At",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Buyers",
+   "link_doctype": "Buyer Profile",
+   "link_fieldname": "buyer_level"
+  },
+  {
+   "group": "Buyers",
+   "link_doctype": "Premium Buyer",
+   "link_fieldname": "buyer_level"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "Buyer Level",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "level_name, level_code, level_rank, status",
+ "sort_field": "level_rank",
+ "sort_order": "ASC",
+ "states": [
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "gray",
+   "title": "Inactive"
+  },
+  {
+   "color": "red",
+   "title": "Deprecated"
+  }
+ ],
+ "title_field": "level_name",
+ "track_changes": 1
+}

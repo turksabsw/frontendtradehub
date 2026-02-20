@@ -1,0 +1,673 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:package_name",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "package_name",
+  "package_code",
+  "package_rank",
+  "column_break_basic",
+  "status",
+  "is_default",
+  "icon",
+  "color",
+  "pricing_section",
+  "billing_period",
+  "price",
+  "currency",
+  "column_break_pricing",
+  "setup_fee",
+  "trial_days",
+  "auto_renew",
+  "discount_section",
+  "annual_discount_percent",
+  "column_break_discount",
+  "promotional_price",
+  "promotion_valid_until",
+  "limits_section",
+  "max_products",
+  "max_skus_per_product",
+  "max_orders_per_month",
+  "column_break_limits",
+  "max_storage_mb",
+  "max_api_calls_per_day",
+  "max_team_members",
+  "features_section",
+  "has_analytics",
+  "has_priority_support",
+  "has_custom_domain",
+  "has_api_access",
+  "column_break_features",
+  "has_bulk_import",
+  "has_advanced_reporting",
+  "has_multi_warehouse",
+  "has_white_label",
+  "commission_section",
+  "commission_rate",
+  "transaction_fee_percent",
+  "column_break_commission",
+  "minimum_transaction_fee",
+  "fee_cap_per_transaction",
+  "grace_period_section",
+  "grace_period_days",
+  "suspension_warning_days",
+  "column_break_grace",
+  "auto_suspend_on_overdue",
+  "suspend_after_days",
+  "display_section",
+  "display_name",
+  "short_description",
+  "column_break_display",
+  "full_description",
+  "badge_image",
+  "highlight_features",
+  "visibility_section",
+  "is_public",
+  "is_featured",
+  "column_break_visibility",
+  "target_audience",
+  "display_order",
+  "upgrade_section",
+  "upgrade_path",
+  "downgrade_path",
+  "column_break_upgrade",
+  "allow_upgrade",
+  "allow_downgrade",
+  "prorate_on_change",
+  "statistics_section",
+  "subscriber_count",
+  "active_subscriber_count",
+  "column_break_statistics",
+  "total_revenue",
+  "last_calculated_at",
+  "timestamps_section",
+  "created_at",
+  "modified_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "package_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Package Name",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique name for this subscription package (e.g., Free, Basic, Professional, Enterprise)"
+  },
+  {
+   "fieldname": "package_code",
+   "fieldtype": "Data",
+   "label": "Package Code",
+   "description": "Short code for programmatic use (e.g., FREE, BASIC, PRO, ENTERPRISE)"
+  },
+  {
+   "fieldname": "package_rank",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Package Rank",
+   "reqd": 1,
+   "description": "Numeric rank for ordering packages (1=lowest tier, higher=better)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nDeprecated",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default Package",
+   "description": "New sellers are automatically assigned to this package"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Icon",
+   "description": "Icon name or class (e.g., fa-box, fa-rocket, fa-crown, fa-building)"
+  },
+  {
+   "default": "#6c757d",
+   "fieldname": "color",
+   "fieldtype": "Color",
+   "label": "Color",
+   "description": "Color associated with this package for display"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "billing_period",
+   "fieldtype": "Select",
+   "label": "Billing Period",
+   "options": "Monthly\nQuarterly\nSemi-Annual\nAnnual\nLifetime",
+   "default": "Monthly",
+   "reqd": 1,
+   "description": "How often the subscription is billed"
+  },
+  {
+   "default": "0",
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price",
+   "reqd": 1,
+   "description": "Subscription price per billing period"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "default": "TRY",
+   "description": "Currency for pricing"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "setup_fee",
+   "fieldtype": "Currency",
+   "label": "Setup Fee",
+   "description": "One-time setup fee for new subscribers"
+  },
+  {
+   "default": "0",
+   "fieldname": "trial_days",
+   "fieldtype": "Int",
+   "label": "Trial Days",
+   "description": "Number of free trial days before billing starts"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_renew",
+   "fieldtype": "Check",
+   "label": "Auto Renew",
+   "description": "Automatically renew subscription at end of billing period"
+  },
+  {
+   "fieldname": "discount_section",
+   "fieldtype": "Section Break",
+   "label": "Discounts",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "annual_discount_percent",
+   "fieldtype": "Percent",
+   "label": "Annual Discount",
+   "description": "Discount percentage when paying annually"
+  },
+  {
+   "fieldname": "column_break_discount",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "promotional_price",
+   "fieldtype": "Currency",
+   "label": "Promotional Price",
+   "description": "Special promotional price (if applicable)"
+  },
+  {
+   "fieldname": "promotion_valid_until",
+   "fieldtype": "Date",
+   "label": "Promotion Valid Until",
+   "description": "End date for promotional pricing"
+  },
+  {
+   "fieldname": "limits_section",
+   "fieldtype": "Section Break",
+   "label": "Package Limits"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_products",
+   "fieldtype": "Int",
+   "label": "Max Products",
+   "description": "Maximum number of products allowed (0=unlimited)"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_skus_per_product",
+   "fieldtype": "Int",
+   "label": "Max SKUs per Product",
+   "description": "Maximum SKU variants per product (0=unlimited)"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_orders_per_month",
+   "fieldtype": "Int",
+   "label": "Max Orders per Month",
+   "description": "Maximum orders processed per month (0=unlimited)"
+  },
+  {
+   "fieldname": "column_break_limits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_storage_mb",
+   "fieldtype": "Int",
+   "label": "Max Storage (MB)",
+   "description": "Maximum storage space in megabytes (0=unlimited)"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_api_calls_per_day",
+   "fieldtype": "Int",
+   "label": "Max API Calls/Day",
+   "description": "Maximum API calls per day (0=unlimited)"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_team_members",
+   "fieldtype": "Int",
+   "label": "Max Team Members",
+   "description": "Maximum team members allowed (0=unlimited)"
+  },
+  {
+   "fieldname": "features_section",
+   "fieldtype": "Section Break",
+   "label": "Features Included"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_analytics",
+   "fieldtype": "Check",
+   "label": "Analytics Dashboard",
+   "description": "Access to analytics and reporting dashboard"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_priority_support",
+   "fieldtype": "Check",
+   "label": "Priority Support",
+   "description": "Access to priority customer support"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_custom_domain",
+   "fieldtype": "Check",
+   "label": "Custom Domain",
+   "description": "Ability to use custom domain for store"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_api_access",
+   "fieldtype": "Check",
+   "label": "API Access",
+   "description": "Access to API for integrations"
+  },
+  {
+   "fieldname": "column_break_features",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_bulk_import",
+   "fieldtype": "Check",
+   "label": "Bulk Import/Export",
+   "description": "Ability to bulk import and export products"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_advanced_reporting",
+   "fieldtype": "Check",
+   "label": "Advanced Reporting",
+   "description": "Access to advanced reporting features"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_multi_warehouse",
+   "fieldtype": "Check",
+   "label": "Multi-Warehouse",
+   "description": "Support for multiple warehouse locations"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_white_label",
+   "fieldtype": "Check",
+   "label": "White Label",
+   "description": "Remove platform branding"
+  },
+  {
+   "fieldname": "commission_section",
+   "fieldtype": "Section Break",
+   "label": "Commission & Fees"
+  },
+  {
+   "default": "0",
+   "fieldname": "commission_rate",
+   "fieldtype": "Percent",
+   "label": "Commission Rate",
+   "description": "Platform commission rate on sales"
+  },
+  {
+   "default": "0",
+   "fieldname": "transaction_fee_percent",
+   "fieldtype": "Percent",
+   "label": "Transaction Fee",
+   "description": "Additional transaction fee percentage"
+  },
+  {
+   "fieldname": "column_break_commission",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "minimum_transaction_fee",
+   "fieldtype": "Currency",
+   "label": "Minimum Transaction Fee",
+   "description": "Minimum fee per transaction"
+  },
+  {
+   "default": "0",
+   "fieldname": "fee_cap_per_transaction",
+   "fieldtype": "Currency",
+   "label": "Fee Cap per Transaction",
+   "description": "Maximum fee cap per transaction (0=no cap)"
+  },
+  {
+   "fieldname": "grace_period_section",
+   "fieldtype": "Section Break",
+   "label": "Grace Period & Suspension"
+  },
+  {
+   "default": "7",
+   "fieldname": "grace_period_days",
+   "fieldtype": "Int",
+   "label": "Grace Period (Days)",
+   "description": "Days after due date before subscription is considered overdue"
+  },
+  {
+   "default": "3",
+   "fieldname": "suspension_warning_days",
+   "fieldtype": "Int",
+   "label": "Warning Days Before Suspension",
+   "description": "Days before suspension to send warning notification"
+  },
+  {
+   "fieldname": "column_break_grace",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_suspend_on_overdue",
+   "fieldtype": "Check",
+   "label": "Auto Suspend on Overdue",
+   "description": "Automatically suspend API access when subscription is overdue"
+  },
+  {
+   "default": "14",
+   "fieldname": "suspend_after_days",
+   "fieldtype": "Int",
+   "label": "Suspend After (Days)",
+   "description": "Days after due date to suspend access (including grace period)"
+  },
+  {
+   "fieldname": "display_section",
+   "fieldtype": "Section Break",
+   "label": "Display Settings"
+  },
+  {
+   "fieldname": "display_name",
+   "fieldtype": "Data",
+   "label": "Display Name",
+   "description": "Name shown to customers (can be different from package_name)"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description",
+   "description": "Brief description for pricing cards"
+  },
+  {
+   "fieldname": "column_break_display",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_description",
+   "fieldtype": "Text Editor",
+   "label": "Full Description",
+   "description": "Detailed description of the package"
+  },
+  {
+   "fieldname": "badge_image",
+   "fieldtype": "Attach Image",
+   "label": "Badge Image",
+   "description": "Badge or icon image for the package"
+  },
+  {
+   "fieldname": "highlight_features",
+   "fieldtype": "Small Text",
+   "label": "Highlight Features",
+   "description": "Key features to highlight (one per line)"
+  },
+  {
+   "fieldname": "visibility_section",
+   "fieldtype": "Section Break",
+   "label": "Visibility",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_public",
+   "fieldtype": "Check",
+   "label": "Is Public",
+   "description": "Show this package on public pricing page"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_featured",
+   "fieldtype": "Check",
+   "label": "Is Featured",
+   "description": "Highlight this package as recommended"
+  },
+  {
+   "fieldname": "column_break_visibility",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_audience",
+   "fieldtype": "Select",
+   "label": "Target Audience",
+   "options": "\nSmall Business\nMedium Business\nEnterprise\nIndividual Sellers",
+   "description": "Primary target audience for this package"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order",
+   "description": "Order in which package appears on pricing page"
+  },
+  {
+   "fieldname": "upgrade_section",
+   "fieldtype": "Section Break",
+   "label": "Upgrade & Downgrade",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "upgrade_path",
+   "fieldtype": "Link",
+   "label": "Upgrade To",
+   "options": "Subscription Package",
+   "description": "Recommended package to upgrade to"
+  },
+  {
+   "fieldname": "downgrade_path",
+   "fieldtype": "Link",
+   "label": "Downgrade To",
+   "options": "Subscription Package",
+   "description": "Package to downgrade to if needed"
+  },
+  {
+   "fieldname": "column_break_upgrade",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_upgrade",
+   "fieldtype": "Check",
+   "label": "Allow Upgrade",
+   "description": "Allow subscribers to upgrade from this package"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_downgrade",
+   "fieldtype": "Check",
+   "label": "Allow Downgrade",
+   "description": "Allow subscribers to downgrade from this package"
+  },
+  {
+   "default": "1",
+   "fieldname": "prorate_on_change",
+   "fieldtype": "Check",
+   "label": "Prorate on Package Change",
+   "description": "Prorate charges when upgrading/downgrading"
+  },
+  {
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "subscriber_count",
+   "fieldtype": "Int",
+   "label": "Total Subscribers",
+   "read_only": 1,
+   "description": "Total number of subscribers on this package"
+  },
+  {
+   "default": "0",
+   "fieldname": "active_subscriber_count",
+   "fieldtype": "Int",
+   "label": "Active Subscribers",
+   "read_only": 1,
+   "description": "Number of currently active subscribers"
+  },
+  {
+   "fieldname": "column_break_statistics",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_revenue",
+   "fieldtype": "Currency",
+   "label": "Total Revenue",
+   "read_only": 1,
+   "description": "Total revenue generated from this package"
+  },
+  {
+   "fieldname": "last_calculated_at",
+   "fieldtype": "Datetime",
+   "label": "Last Calculated At",
+   "read_only": 1,
+   "description": "When statistics were last calculated"
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "System Information",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Datetime",
+   "label": "Created At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_at",
+   "fieldtype": "Datetime",
+   "label": "Modified At",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Subscriptions",
+   "link_doctype": "Subscription",
+   "link_fieldname": "subscription_package"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Marketing",
+ "name": "Subscription Package",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "package_name, package_code, status, billing_period",
+ "sort_field": "package_rank",
+ "sort_order": "ASC",
+ "states": [
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "gray",
+   "title": "Inactive"
+  },
+  {
+   "color": "red",
+   "title": "Deprecated"
+  }
+ ],
+ "title_field": "package_name",
+ "track_changes": 1
+}

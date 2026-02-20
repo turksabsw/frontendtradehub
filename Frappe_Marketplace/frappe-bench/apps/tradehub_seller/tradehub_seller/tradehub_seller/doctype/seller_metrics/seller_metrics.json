@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2024-01-23 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "seller_section",
+  "seller",
+  "calculation_date",
+  "order_metrics_section",
+  "total_orders",
+  "total_sales_amount",
+  "last_order_date",
+  "column_break_orders",
+  "cancellation_rate",
+  "return_rate",
+  "on_time_delivery_rate",
+  "listing_metrics_section",
+  "listing_count",
+  "active_listing_count",
+  "review_metrics_section",
+  "avg_rating",
+  "total_reviews",
+  "column_break_reviews",
+  "positive_review_rate",
+  "complaint_rate",
+  "activity_metrics_section",
+  "active_days",
+  "avg_response_time_hours",
+  "column_break_activity",
+  "repeat_customer_rate",
+  "status_section",
+  "verification_status",
+  "premium_seller"
+ ],
+ "fields": [
+  {
+   "fieldname": "seller_section",
+   "fieldtype": "Section Break",
+   "label": "Seller"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "calculation_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Calculation Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "order_metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Order Metrics"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_orders",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Orders"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_sales_amount",
+   "fieldtype": "Currency",
+   "label": "Total Sales Amount"
+  },
+  {
+   "fieldname": "last_order_date",
+   "fieldtype": "Date",
+   "label": "Last Order Date"
+  },
+  {
+   "fieldname": "column_break_orders",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "cancellation_rate",
+   "fieldtype": "Percent",
+   "label": "Cancellation Rate"
+  },
+  {
+   "default": "0",
+   "fieldname": "return_rate",
+   "fieldtype": "Percent",
+   "label": "Return Rate"
+  },
+  {
+   "default": "0",
+   "fieldname": "on_time_delivery_rate",
+   "fieldtype": "Percent",
+   "label": "On-Time Delivery Rate"
+  },
+  {
+   "fieldname": "listing_metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Listing Metrics"
+  },
+  {
+   "default": "0",
+   "fieldname": "listing_count",
+   "fieldtype": "Int",
+   "label": "Total Listings"
+  },
+  {
+   "default": "0",
+   "fieldname": "active_listing_count",
+   "fieldtype": "Int",
+   "label": "Active Listings"
+  },
+  {
+   "fieldname": "review_metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Review Metrics"
+  },
+  {
+   "default": "0",
+   "fieldname": "avg_rating",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Average Rating",
+   "precision": 2
+  },
+  {
+   "default": "0",
+   "fieldname": "total_reviews",
+   "fieldtype": "Int",
+   "label": "Total Reviews"
+  },
+  {
+   "fieldname": "column_break_reviews",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "positive_review_rate",
+   "fieldtype": "Percent",
+   "label": "Positive Review Rate"
+  },
+  {
+   "default": "0",
+   "fieldname": "complaint_rate",
+   "fieldtype": "Percent",
+   "label": "Complaint Rate"
+  },
+  {
+   "fieldname": "activity_metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Activity Metrics"
+  },
+  {
+   "default": "0",
+   "fieldname": "active_days",
+   "fieldtype": "Int",
+   "label": "Active Days"
+  },
+  {
+   "default": "0",
+   "fieldname": "avg_response_time_hours",
+   "fieldtype": "Float",
+   "label": "Avg Response Time (hrs)",
+   "precision": 1
+  },
+  {
+   "fieldname": "column_break_activity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "repeat_customer_rate",
+   "fieldtype": "Percent",
+   "label": "Repeat Customer Rate"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "verification_status",
+   "fieldtype": "Data",
+   "label": "Verification Status"
+  },
+  {
+   "default": "0",
+   "fieldname": "premium_seller",
+   "fieldtype": "Check",
+   "label": "Premium Seller"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2024-01-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Seller Metrics",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "seller, calculation_date",
+ "sort_field": "calculation_date",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

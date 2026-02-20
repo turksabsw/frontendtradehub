@@ -1,0 +1,539 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "variant_code",
+  "listing",
+  "seller",
+  "column_break_basic",
+  "status",
+  "is_default",
+  "tenant",
+  "attributes_section",
+  "variant_name",
+  "variant_title",
+  "column_break_attrs",
+  "variant_attributes",
+  "pricing_section",
+  "currency",
+  "base_price",
+  "selling_price",
+  "column_break_pricing",
+  "compare_at_price",
+  "cost_price",
+  "price_includes_tax",
+  "inventory_section",
+  "sku",
+  "barcode",
+  "barcode_type",
+  "column_break_inventory",
+  "stock_qty",
+  "reserved_qty",
+  "available_qty",
+  "track_inventory",
+  "allow_backorders",
+  "low_stock_threshold",
+  "identifiers_section",
+  "mpn",
+  "gtin",
+  "column_break_ids",
+  "ean",
+  "upc",
+  "media_section",
+  "primary_image",
+  "images",
+  "physical_section",
+  "weight",
+  "weight_uom",
+  "column_break_physical",
+  "length",
+  "width",
+  "height",
+  "dimension_uom",
+  "erpnext_section",
+  "erpnext_item",
+  "column_break_erp",
+  "erpnext_item_variant",
+  "statistics_section",
+  "view_count",
+  "order_count",
+  "column_break_stats",
+  "last_sold_at",
+  "system_section",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "description": "Auto-generated unique variant identifier",
+   "fieldname": "variant_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Variant Code",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "listing",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Listing",
+   "options": "Listing",
+   "reqd": 1
+  },
+  {
+   "description": "Auto-populated from listing",
+   "fetch_from": "listing.seller",
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive\nOut of Stock\nDiscontinued",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Is this the default variant shown when listing is viewed",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Is Default Variant"
+  },
+  {
+   "fetch_from": "listing.tenant",
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "read_only": 1
+  },
+  {
+   "fieldname": "attributes_section",
+   "fieldtype": "Section Break",
+   "label": "Variant Attributes"
+  },
+  {
+   "description": "Auto-generated from attribute values (e.g., 'Red - XL')",
+   "fieldname": "variant_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Variant Name",
+   "read_only": 1
+  },
+  {
+   "description": "Optional custom title for this variant",
+   "fieldname": "variant_title",
+   "fieldtype": "Data",
+   "label": "Variant Title",
+   "length": 500
+  },
+  {
+   "fieldname": "column_break_attrs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Attribute values that define this variant",
+   "fieldname": "variant_attributes",
+   "fieldtype": "Table",
+   "label": "Variant Attributes",
+   "options": "Listing Variant Attribute",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "default": "TRY",
+   "fetch_from": "listing.currency",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "description": "Original price before any discounts (leave blank to use listing price)",
+   "fieldname": "base_price",
+   "fieldtype": "Currency",
+   "label": "Base Price",
+   "options": "currency"
+  },
+  {
+   "description": "Selling price for this variant (leave blank to use listing price)",
+   "fieldname": "selling_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Selling Price",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Compare at price (strikethrough)",
+   "fieldname": "compare_at_price",
+   "fieldtype": "Currency",
+   "label": "Compare at Price",
+   "options": "currency"
+  },
+  {
+   "description": "Your cost for this variant",
+   "fieldname": "cost_price",
+   "fieldtype": "Currency",
+   "label": "Cost Price",
+   "options": "currency"
+  },
+  {
+   "default": "1",
+   "fetch_from": "listing.price_includes_tax",
+   "fieldname": "price_includes_tax",
+   "fieldtype": "Check",
+   "label": "Price Includes Tax"
+  },
+  {
+   "fieldname": "inventory_section",
+   "fieldtype": "Section Break",
+   "label": "Inventory"
+  },
+  {
+   "description": "Unique SKU for this variant",
+   "fieldname": "sku",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "SKU",
+   "unique": 1
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Data",
+   "label": "Barcode"
+  },
+  {
+   "default": "EAN",
+   "fieldname": "barcode_type",
+   "fieldtype": "Select",
+   "label": "Barcode Type",
+   "options": "EAN\nUPC\nISBN\nCode-39\nCode-128\nGTIN\nOther"
+  },
+  {
+   "fieldname": "column_break_inventory",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "stock_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Stock Quantity",
+   "precision": 3
+  },
+  {
+   "default": "0",
+   "description": "Quantity reserved in carts/pending orders",
+   "fieldname": "reserved_qty",
+   "fieldtype": "Float",
+   "label": "Reserved Quantity",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Stock - Reserved = Available",
+   "fieldname": "available_qty",
+   "fieldtype": "Float",
+   "label": "Available Quantity",
+   "precision": 3,
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "track_inventory",
+   "fieldtype": "Check",
+   "label": "Track Inventory"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_backorders",
+   "fieldtype": "Check",
+   "label": "Allow Backorders"
+  },
+  {
+   "default": "5",
+   "fieldname": "low_stock_threshold",
+   "fieldtype": "Float",
+   "label": "Low Stock Threshold",
+   "precision": 3
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "identifiers_section",
+   "fieldtype": "Section Break",
+   "label": "Product Identifiers"
+  },
+  {
+   "description": "Manufacturer Part Number",
+   "fieldname": "mpn",
+   "fieldtype": "Data",
+   "label": "MPN"
+  },
+  {
+   "description": "Global Trade Item Number",
+   "fieldname": "gtin",
+   "fieldtype": "Data",
+   "label": "GTIN"
+  },
+  {
+   "fieldname": "column_break_ids",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "European Article Number",
+   "fieldname": "ean",
+   "fieldtype": "Data",
+   "label": "EAN"
+  },
+  {
+   "description": "Universal Product Code",
+   "fieldname": "upc",
+   "fieldtype": "Data",
+   "label": "UPC"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "media_section",
+   "fieldtype": "Section Break",
+   "label": "Media"
+  },
+  {
+   "description": "Main image for this variant (overrides listing image)",
+   "fieldname": "primary_image",
+   "fieldtype": "Attach Image",
+   "label": "Primary Image"
+  },
+  {
+   "description": "Additional images for this variant (JSON array of URLs)",
+   "fieldname": "images",
+   "fieldtype": "JSON",
+   "label": "Images"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "physical_section",
+   "fieldtype": "Section Break",
+   "label": "Physical Attributes"
+  },
+  {
+   "description": "Weight for this variant (overrides listing weight)",
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "precision": 3
+  },
+  {
+   "default": "Kg",
+   "fieldname": "weight_uom",
+   "fieldtype": "Link",
+   "label": "Weight UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "column_break_physical",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length (cm)",
+   "precision": 2
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Float",
+   "label": "Width (cm)",
+   "precision": 2
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Float",
+   "label": "Height (cm)",
+   "precision": 2
+  },
+  {
+   "default": "Centimeter",
+   "fieldname": "dimension_uom",
+   "fieldtype": "Link",
+   "label": "Dimension UOM",
+   "options": "UOM"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "erpnext_section",
+   "fieldtype": "Section Break",
+   "label": "ERPNext Integration"
+  },
+  {
+   "description": "Linked ERPNext Item (parent)",
+   "fetch_from": "listing.erpnext_item",
+   "fieldname": "erpnext_item",
+   "fieldtype": "Link",
+   "label": "ERPNext Item",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_erp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Linked ERPNext Item Variant",
+   "fieldname": "erpnext_item_variant",
+   "fieldtype": "Link",
+   "label": "ERPNext Item Variant",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "statistics_section",
+   "fieldtype": "Section Break",
+   "label": "Statistics"
+  },
+  {
+   "default": "0",
+   "fieldname": "view_count",
+   "fieldtype": "Int",
+   "label": "View Count",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "order_count",
+   "fieldtype": "Int",
+   "label": "Order Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_sold_at",
+   "fieldtype": "Datetime",
+   "label": "Last Sold At",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System"
+  },
+  {
+   "default": "VAR-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "VAR-.#####"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Listing",
+   "link_fieldname": "listing"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "SKU",
+   "link_fieldname": "listing_variant"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Listing Variant",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "variant_code, variant_name, sku, listing",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "green",
+   "title": "Active"
+  },
+  {
+   "color": "gray",
+   "title": "Inactive"
+  },
+  {
+   "color": "red",
+   "title": "Out of Stock"
+  },
+  {
+   "color": "orange",
+   "title": "Discontinued"
+  }
+ ],
+ "title_field": "variant_name",
+ "track_changes": 1
+}

@@ -1,0 +1,256 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"card-seller-mgmt\", \"type\": \"card\", \"data\": {\"card_name\": \"Seller Management\", \"col\": 4}}, {\"id\": \"card-performance\", \"type\": \"card\", \"data\": {\"card_name\": \"Performance & KPI\", \"col\": 4}}, {\"id\": \"card-listings\", \"type\": \"card\", \"data\": {\"card_name\": \"Listings & Products\", \"col\": 4}}, {\"id\": \"card-tags\", \"type\": \"card\", \"data\": {\"card_name\": \"Seller Tags\", \"col\": 4}}]",
+ "creation": "2026-02-16 16:18:57.316929",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "sell",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "TradeHub Seller",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Management",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Premium Seller",
+   "link_count": 0,
+   "link_to": "Premium Seller",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Application",
+   "link_count": 0,
+   "link_to": "Seller Application",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Balance",
+   "link_count": 0,
+   "link_to": "Seller Balance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Profile",
+   "link_count": 0,
+   "link_to": "Seller Profile",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Store",
+   "link_count": 0,
+   "link_to": "Seller Store",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Performance & KPI",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "KPI Template",
+   "link_count": 0,
+   "link_to": "KPI Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller KPI",
+   "link_count": 0,
+   "link_to": "Seller KPI",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Level",
+   "link_count": 0,
+   "link_to": "Seller Level",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Metrics",
+   "link_count": 0,
+   "link_to": "Seller Metrics",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Score",
+   "link_count": 0,
+   "link_to": "Seller Score",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Tier",
+   "link_count": 0,
+   "link_to": "Seller Tier",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Listings & Products",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Buy Box Entry",
+   "link_count": 0,
+   "link_to": "Buy Box Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Listing",
+   "link_count": 0,
+   "link_to": "Listing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Listing Variant",
+   "link_count": 0,
+   "link_to": "Listing Variant",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "SKU",
+   "link_count": 0,
+   "link_to": "SKU",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "SKU Product",
+   "link_count": 0,
+   "link_to": "SKU Product",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Tags",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Tag",
+   "link_count": 0,
+   "link_to": "Seller Tag",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Tag Assignment",
+   "link_count": 0,
+   "link_to": "Seller Tag Assignment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Tag Rule",
+   "link_count": 0,
+   "link_to": "Seller Tag Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-16 16:24:13.496631",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "TradeHub Seller",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "Tradehub",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 7.0,
+ "shortcuts": [],
+ "title": "TradeHub Seller"
+}

@@ -1,0 +1,396 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "TEN-.#####",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "tenant_name",
+  "company_name",
+  "column_break_1",
+  "status",
+  "subscription_tier",
+  "contact_section",
+  "contact_email",
+  "contact_phone",
+  "column_break_2",
+  "website",
+  "address_section",
+  "address_line_1",
+  "address_line_2",
+  "city",
+  "column_break_3",
+  "state",
+  "country",
+  "postal_code",
+  "tax_section",
+  "tax_id",
+  "tax_office",
+  "column_break_4",
+  "default_tax_rate",
+  "e_invoice_enabled",
+  "e_archive_enabled",
+  "settings_section",
+  "max_sellers",
+  "max_listings_per_seller",
+  "column_break_5",
+  "commission_rate",
+  "currency",
+  "timestamps_section",
+  "subscription_start_date",
+  "subscription_end_date",
+  "column_break_6",
+  "created_by",
+  "modified_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tenant Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nActive\nSuspended\nCancelled",
+   "reqd": 1
+  },
+  {
+   "default": "Basic",
+   "fieldname": "subscription_tier",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Subscription Tier",
+   "options": "Free\nBasic\nProfessional\nEnterprise",
+   "permlevel": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_section",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "contact_email",
+   "fieldtype": "Data",
+   "label": "Contact Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Contact Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "fieldname": "tax_section",
+   "fieldtype": "Section Break",
+   "label": "Tax Information"
+  },
+  {
+   "description": "VKN (Vergi Kimlik Numarasi) for companies or TCKN for individuals",
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID (VKN/TCKN)"
+  },
+  {
+   "fieldname": "tax_office",
+   "fieldtype": "Data",
+   "label": "Tax Office"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Default tax rate for this tenant's marketplace. If not set, uses system default (18% KDV).",
+   "fieldname": "default_tax_rate",
+   "fieldtype": "Link",
+   "label": "Default Tax Rate",
+   "options": "Tax Rate"
+  },
+  {
+   "default": "0",
+   "description": "Enable E-Fatura (Electronic Invoice) for B2B transactions",
+   "fieldname": "e_invoice_enabled",
+   "fieldtype": "Check",
+   "label": "E-Invoice Enabled"
+  },
+  {
+   "default": "0",
+   "description": "Enable E-Arsiv for B2C transactions",
+   "fieldname": "e_archive_enabled",
+   "fieldtype": "Check",
+   "label": "E-Archive Enabled"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Settings"
+  },
+  {
+   "default": "10",
+   "description": "Maximum number of seller accounts allowed",
+   "fieldname": "max_sellers",
+   "fieldtype": "Int",
+   "label": "Max Sellers",
+   "permlevel": 1
+  },
+  {
+   "default": "100",
+   "description": "Maximum listings per seller account",
+   "fieldname": "max_listings_per_seller",
+   "fieldtype": "Int",
+   "label": "Max Listings per Seller",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "10.00",
+   "description": "Default platform commission rate percentage",
+   "fieldname": "commission_rate",
+   "fieldtype": "Percent",
+   "label": "Commission Rate (%)",
+   "permlevel": 1
+  },
+  {
+   "default": "TRY",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Default Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "timestamps_section",
+   "fieldtype": "Section Break",
+   "label": "Subscription Details"
+  },
+  {
+   "fieldname": "subscription_start_date",
+   "fieldtype": "Date",
+   "label": "Subscription Start Date"
+  },
+  {
+   "fieldname": "subscription_end_date",
+   "fieldtype": "Date",
+   "label": "Subscription End Date"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modified_by",
+   "fieldtype": "Link",
+   "label": "Modified By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Sellers",
+   "link_doctype": "Seller Profile",
+   "link_fieldname": "tenant"
+  },
+  {
+   "group": "Organizations",
+   "link_doctype": "Organization",
+   "link_fieldname": "tenant"
+  },
+  {
+   "group": "Orders",
+   "link_doctype": "Marketplace Order",
+   "link_fieldname": "tenant"
+  },
+  {
+   "group": "Products",
+   "link_doctype": "Listing",
+   "link_fieldname": "tenant"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "Tenant",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Marka Sahibi",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Alici Admin",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Alici Editor",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Satici Admin",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Satici",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "search_fields": "tenant_name, company_name, contact_email",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "tenant_name",
+ "track_changes": 1
+}

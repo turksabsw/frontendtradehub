@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "creation": "2026-02-12 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "category",
+  "category_name",
+  "column_break_1",
+  "interest_level",
+  "is_primary",
+  "source",
+  "info_section",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Category",
+   "options": "Category",
+   "reqd": 1,
+   "description": "Product category the buyer is interested in"
+  },
+  {
+   "fieldname": "category_name",
+   "fieldtype": "Data",
+   "fetch_from": "category.category_name",
+   "in_list_view": 1,
+   "label": "Category Name",
+   "read_only": 1,
+   "description": "Auto-fetched from Category"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "interest_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Interest Level",
+   "options": "Low\nMedium\nHigh\nVery High",
+   "description": "How interested the buyer is in this category"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_primary",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Primary Interest",
+   "description": "Mark as buyer's primary category of interest"
+  },
+  {
+   "default": "Manual",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Manual\nBrowsing History\nPurchase History\nSearch History\nRegistration",
+   "description": "How this interest was identified"
+  },
+  {
+   "fieldname": "info_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Info",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes",
+   "description": "Additional notes about buyer's interest in this category"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-12 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "Buyer Interest Category",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

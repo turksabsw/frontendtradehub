@@ -1,0 +1,626 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "event_info_section",
+  "shipment",
+  "tracking_number",
+  "carrier",
+  "column_break_event",
+  "event_timestamp",
+  "event_code",
+  "event_status",
+  "event_details_section",
+  "event_type",
+  "event_description",
+  "is_milestone",
+  "column_break_details",
+  "severity",
+  "is_exception",
+  "exception_type",
+  "location_section",
+  "location_name",
+  "facility_name",
+  "facility_type",
+  "column_break_location",
+  "city",
+  "state",
+  "postal_code",
+  "country",
+  "geo_section",
+  "latitude",
+  "longitude",
+  "location_type",
+  "column_break_geo",
+  "is_origin",
+  "is_destination",
+  "address_line",
+  "delivery_section",
+  "signed_by",
+  "signature_image",
+  "proof_of_delivery_image",
+  "column_break_delivery",
+  "delivery_location_type",
+  "delivery_instructions",
+  "left_at",
+  "attempt_section",
+  "attempt_number",
+  "reason_code",
+  "reason_description",
+  "column_break_attempt",
+  "reschedule_date",
+  "next_action",
+  "additional_data_section",
+  "carrier_event_code",
+  "carrier_event_description",
+  "carrier_status_code",
+  "column_break_carrier_data",
+  "raw_event_data",
+  "estimated_delivery_date",
+  "estimated_delivery_time",
+  "weight_at_event",
+  "order_reference_section",
+  "marketplace_order",
+  "sub_order",
+  "seller",
+  "column_break_order_ref",
+  "buyer",
+  "tenant",
+  "notification_section",
+  "notification_sent",
+  "notification_type",
+  "notification_sent_at",
+  "column_break_notification",
+  "notification_recipient",
+  "notification_status",
+  "sms_sent",
+  "email_sent",
+  "push_sent",
+  "system_section",
+  "naming_series",
+  "source",
+  "synced_at",
+  "sync_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_info_section",
+   "fieldtype": "Section Break",
+   "label": "Tracking Event"
+  },
+  {
+   "fieldname": "shipment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Shipment",
+   "options": "Marketplace Shipment",
+   "reqd": 1
+  },
+  {
+   "description": "Carrier tracking number",
+   "fieldname": "tracking_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tracking Number"
+  },
+  {
+   "fieldname": "carrier",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Carrier",
+   "options": "\nYurtici Kargo\nAras Kargo\nMNG Kargo\nSuratKargo\nPTT Kargo\nUPS\nDHL\nFedEx\nTrendyol Express\nHepsiJet\nOther"
+  },
+  {
+   "fieldname": "column_break_event",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Now",
+   "fieldname": "event_timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event Timestamp",
+   "reqd": 1
+  },
+  {
+   "description": "Carrier-specific event code",
+   "fieldname": "event_code",
+   "fieldtype": "Data",
+   "label": "Event Code"
+  },
+  {
+   "default": "Info",
+   "fieldname": "event_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event Status",
+   "options": "Pending\nLabel Created\nPicked Up\nIn Transit\nAt Facility\nOut for Delivery\nDelivery Attempted\nDelivered\nException\nReturning\nReturned\nCancelled\nHeld\nInfo"
+  },
+  {
+   "fieldname": "event_details_section",
+   "fieldtype": "Section Break",
+   "label": "Event Details"
+  },
+  {
+   "fieldname": "event_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event Type",
+   "options": "Shipment Created\nLabel Printed\nPickup Scheduled\nPickup Completed\nPickup Failed\nArrived at Origin Facility\nDeparted Origin Facility\nIn Transit\nArrived at Facility\nDeparted Facility\nArrived at Destination City\nArrived at Destination Facility\nOut for Delivery\nDelivery Attempted\nDelivered\nSigned For\nLeft at Door\nDelivered to Neighbor\nDelivered to Safe Place\nDelivered to Pickup Point\nDelivered to Locker\nDelivery Exception\nAddress Issue\nRecipient Unavailable\nRefused\nDamaged\nLost\nCustoms Hold\nCustoms Cleared\nWeather Delay\nHoliday Delay\nReturn Initiated\nReturning to Sender\nReturned to Sender\nRedirected\nHeld at Location\nAvailable for Pickup\nPickup Expired\nCancelled\nStatus Update\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "event_description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Major tracking milestone (e.g., picked up, delivered)",
+   "fieldname": "is_milestone",
+   "fieldtype": "Check",
+   "label": "Is Milestone"
+  },
+  {
+   "fieldname": "column_break_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Info",
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "label": "Severity",
+   "options": "Info\nWarning\nError\nCritical"
+  },
+  {
+   "default": "0",
+   "description": "Is this an exception or problem event",
+   "fieldname": "is_exception",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Is Exception"
+  },
+  {
+   "depends_on": "eval:doc.is_exception",
+   "fieldname": "exception_type",
+   "fieldtype": "Select",
+   "label": "Exception Type",
+   "options": "\nAddress Issue\nRecipient Not Available\nBusiness Closed\nRefused by Recipient\nPackage Damaged\nPackage Lost\nCustoms Issue\nWeather Delay\nNatural Disaster\nSecurity Issue\nPayment Required\nIncomplete Address\nWrong Address\nAccess Issue\nNo Safe Location\nPackage Too Large\nPackage Held\nDelivery Attempt Failed\nOther"
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location"
+  },
+  {
+   "description": "Location name or description",
+   "fieldname": "location_name",
+   "fieldtype": "Data",
+   "label": "Location Name"
+  },
+  {
+   "description": "Name of facility (hub, warehouse, branch)",
+   "fieldname": "facility_name",
+   "fieldtype": "Data",
+   "label": "Facility Name"
+  },
+  {
+   "fieldname": "facility_type",
+   "fieldtype": "Select",
+   "label": "Facility Type",
+   "options": "\nOrigin Facility\nDistribution Center\nSorting Hub\nLocal Branch\nDelivery Station\nPickup Point\nLocker\nCustoms Facility\nAirport\nPort\nDestination Facility\nOther"
+  },
+  {
+   "fieldname": "column_break_location",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State/Province"
+  },
+  {
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "default": "Turkey",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "geo_section",
+   "fieldtype": "Section Break",
+   "label": "Geo Coordinates"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "6"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "6"
+  },
+  {
+   "fieldname": "location_type",
+   "fieldtype": "Select",
+   "label": "Location Type",
+   "options": "\nResidential\nCommercial\nIndustrial\nPO Box\nPickup Point\nLocker\nFacility\nOther"
+  },
+  {
+   "fieldname": "column_break_geo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_origin",
+   "fieldtype": "Check",
+   "label": "Is Origin Location"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_destination",
+   "fieldtype": "Check",
+   "label": "Is Destination Location"
+  },
+  {
+   "fieldname": "address_line",
+   "fieldtype": "Data",
+   "label": "Address Line"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.event_type=='Delivered' || doc.event_type=='Signed For'",
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Details"
+  },
+  {
+   "description": "Name of person who signed for delivery",
+   "fieldname": "signed_by",
+   "fieldtype": "Data",
+   "label": "Signed By"
+  },
+  {
+   "fieldname": "signature_image",
+   "fieldtype": "Attach Image",
+   "label": "Signature Image"
+  },
+  {
+   "fieldname": "proof_of_delivery_image",
+   "fieldtype": "Attach Image",
+   "label": "Proof of Delivery"
+  },
+  {
+   "fieldname": "column_break_delivery",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivery_location_type",
+   "fieldtype": "Select",
+   "label": "Delivery Location",
+   "options": "\nFront Door\nBack Door\nSide Door\nGarage\nPorch\nMailroom\nReception\nConcierge\nNeighbor\nLocker\nPickup Point\nSafe Place\nOther"
+  },
+  {
+   "fieldname": "delivery_instructions",
+   "fieldtype": "Small Text",
+   "label": "Delivery Instructions"
+  },
+  {
+   "description": "Where the package was left",
+   "fieldname": "left_at",
+   "fieldtype": "Data",
+   "label": "Left At"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.is_exception || doc.event_type=='Delivery Attempted'",
+   "fieldname": "attempt_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Attempt"
+  },
+  {
+   "default": "0",
+   "fieldname": "attempt_number",
+   "fieldtype": "Int",
+   "label": "Attempt Number"
+  },
+  {
+   "description": "Reason code for failed delivery",
+   "fieldname": "reason_code",
+   "fieldtype": "Data",
+   "label": "Reason Code"
+  },
+  {
+   "fieldname": "reason_description",
+   "fieldtype": "Small Text",
+   "label": "Reason Description"
+  },
+  {
+   "fieldname": "column_break_attempt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reschedule_date",
+   "fieldtype": "Date",
+   "label": "Reschedule Date"
+  },
+  {
+   "description": "Next action to be taken",
+   "fieldname": "next_action",
+   "fieldtype": "Select",
+   "label": "Next Action",
+   "options": "\nReattempt Delivery\nHold at Location\nReturn to Sender\nRedirect\nContact Recipient\nAwait Instructions\nNo Action Required"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "additional_data_section",
+   "fieldtype": "Section Break",
+   "label": "Carrier Data"
+  },
+  {
+   "description": "Original carrier event code",
+   "fieldname": "carrier_event_code",
+   "fieldtype": "Data",
+   "label": "Carrier Event Code"
+  },
+  {
+   "description": "Original carrier event description",
+   "fieldname": "carrier_event_description",
+   "fieldtype": "Small Text",
+   "label": "Carrier Description"
+  },
+  {
+   "description": "Carrier-specific status code",
+   "fieldname": "carrier_status_code",
+   "fieldtype": "Data",
+   "label": "Carrier Status Code"
+  },
+  {
+   "fieldname": "column_break_carrier_data",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Raw event data from carrier API",
+   "fieldname": "raw_event_data",
+   "fieldtype": "JSON",
+   "label": "Raw Event Data"
+  },
+  {
+   "fieldname": "estimated_delivery_date",
+   "fieldtype": "Date",
+   "label": "Estimated Delivery Date"
+  },
+  {
+   "fieldname": "estimated_delivery_time",
+   "fieldtype": "Time",
+   "label": "Estimated Delivery Time"
+  },
+  {
+   "description": "Weight recorded at this event",
+   "fieldname": "weight_at_event",
+   "fieldtype": "Float",
+   "label": "Weight at Event"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "order_reference_section",
+   "fieldtype": "Section Break",
+   "label": "Order Reference"
+  },
+  {
+   "fieldname": "marketplace_order",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Marketplace Order",
+   "options": "Marketplace Order"
+  },
+  {
+   "fieldname": "sub_order",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Sub Order",
+   "options": "Sub Order"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Seller",
+   "options": "Seller Profile"
+  },
+  {
+   "fieldname": "column_break_order_ref",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "label": "Buyer",
+   "options": "User"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "notification_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "0",
+   "fieldname": "notification_sent",
+   "fieldtype": "Check",
+   "label": "Notification Sent"
+  },
+  {
+   "depends_on": "eval:doc.notification_sent",
+   "fieldname": "notification_type",
+   "fieldtype": "Select",
+   "label": "Notification Type",
+   "options": "\nEmail\nSMS\nPush\nIn-App\nWebhook\nMultiple"
+  },
+  {
+   "depends_on": "eval:doc.notification_sent",
+   "fieldname": "notification_sent_at",
+   "fieldtype": "Datetime",
+   "label": "Notification Sent At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_notification",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.notification_sent",
+   "fieldname": "notification_recipient",
+   "fieldtype": "Data",
+   "label": "Notification Recipient"
+  },
+  {
+   "depends_on": "eval:doc.notification_sent",
+   "fieldname": "notification_status",
+   "fieldtype": "Select",
+   "label": "Notification Status",
+   "options": "\nQueued\nSent\nDelivered\nFailed\nBounced"
+  },
+  {
+   "default": "0",
+   "fieldname": "sms_sent",
+   "fieldtype": "Check",
+   "label": "SMS Sent"
+  },
+  {
+   "default": "0",
+   "fieldname": "email_sent",
+   "fieldtype": "Check",
+   "label": "Email Sent"
+  },
+  {
+   "default": "0",
+   "fieldname": "push_sent",
+   "fieldtype": "Check",
+   "label": "Push Notification Sent"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_section",
+   "fieldtype": "Section Break",
+   "label": "System"
+  },
+  {
+   "default": "TE-.YYYY.-.######",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "TE-.YYYY.-.######\nTRKEVT-.#####"
+  },
+  {
+   "default": "Carrier API",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Carrier API\nManual Entry\nWebhook\nImport\nScraping\nThird Party API\nSystem"
+  },
+  {
+   "description": "When this event was synced from carrier",
+   "fieldname": "synced_at",
+   "fieldtype": "Datetime",
+   "label": "Synced At",
+   "read_only": 1
+  },
+  {
+   "description": "Unique sync identifier to prevent duplicates",
+   "fieldname": "sync_id",
+   "fieldtype": "Data",
+   "label": "Sync ID",
+   "unique": 1
+  }
+ ],
+ "has_web_view": 0,
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "links": [
+  {
+   "group": "Related",
+   "link_doctype": "Marketplace Shipment",
+   "link_fieldname": "shipment"
+  },
+  {
+   "group": "Related",
+   "link_doctype": "Sub Order",
+   "link_fieldname": "sub_order"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Logistics",
+ "name": "Tracking Event",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "quick_entry": 0,
+ "read_only": 0,
+ "search_fields": "tracking_number, carrier, event_type, city, shipment",
+ "show_name_in_global_search": 0,
+ "sort_field": "event_timestamp",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "event_description",
+ "track_changes": 0
+}

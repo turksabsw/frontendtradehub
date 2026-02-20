@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "benefit_name",
+  "benefit_type",
+  "benefit_code",
+  "column_break_main",
+  "value",
+  "value_type",
+  "is_active",
+  "details_section",
+  "description",
+  "icon",
+  "display_order"
+ ],
+ "fields": [
+  {
+   "fieldname": "benefit_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Benefit Name",
+   "reqd": 1,
+   "description": "Display name of the benefit"
+  },
+  {
+   "fieldname": "benefit_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Benefit Type",
+   "options": "Commission Reduction\nPriority Listing\nFeatured Placement\nIncreased Product Limit\nAdvanced Analytics\nAPI Access\nDedicated Support\nMarketing Credits\nBadge Display\nRFQ Access\nBulk Upload\nExport Tools\nPremium Tools\nTraining Access\nCustom\nOther",
+   "reqd": 1,
+   "description": "Category of the benefit"
+  },
+  {
+   "fieldname": "benefit_code",
+   "fieldtype": "Data",
+   "label": "Benefit Code",
+   "description": "Unique identifier code for programmatic use (e.g., COMMISSION_REDUCTION, PRIORITY_LISTING)"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value",
+   "description": "Benefit value (e.g., 5 for 5% commission reduction, 100 for product limit)"
+  },
+  {
+   "fieldname": "value_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Value Type",
+   "options": "Percentage\nFixed Amount\nCount\nBoolean\nText\nMultiplier",
+   "default": "Percentage",
+   "description": "How to interpret the value"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "description": "Whether this benefit is currently active"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Detailed description of the benefit for display to sellers"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Icon",
+   "description": "Icon name or class for display (e.g., fa-star, fa-chart-line)"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order",
+   "description": "Order in which to display this benefit (lower numbers first)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Seller",
+ "name": "Seller Level Benefit",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "benefit_name, benefit_type, benefit_code",
+ "sort_field": "display_order",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

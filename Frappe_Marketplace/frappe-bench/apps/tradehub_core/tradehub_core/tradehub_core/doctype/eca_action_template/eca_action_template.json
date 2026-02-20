@@ -1,0 +1,148 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:template_code",
+ "creation": "2026-02-09 18:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_section",
+  "template_name",
+  "template_code",
+  "column_break_basic",
+  "action_type",
+  "is_active",
+  "category",
+  "config_section",
+  "config",
+  "description_section",
+  "description",
+  "usage_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Template Name",
+   "reqd": 1,
+   "description": "Display name for the template"
+  },
+  {
+   "fieldname": "template_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Template Code",
+   "reqd": 1,
+   "unique": 1,
+   "description": "Unique identifier (lowercase with underscores)"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "action_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Action Type",
+   "options": "Send Email\nSystem Notification\nWebhook\nSet Field\nCreate Document\nUpdate Document\nDelete Document\nCustom Method\nLog Message",
+   "reqd": 1,
+   "default": "Send Email",
+   "description": "Type of action this template configures"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "\nCommerce\nCommunication\nCompliance\nIntegration\nNotification\nWorkflow\nCustom",
+   "description": "Category for organizing templates"
+  },
+  {
+   "fieldname": "config_section",
+   "fieldtype": "Section Break",
+   "label": "Configuration"
+  },
+  {
+   "fieldname": "config",
+   "fieldtype": "Code",
+   "label": "Configuration",
+   "options": "JSON",
+   "reqd": 1,
+   "description": "JSON configuration for the action template. Structure depends on action_type."
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Documentation",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "description": "Brief description of what this template does"
+  },
+  {
+   "fieldname": "usage_notes",
+   "fieldtype": "Text",
+   "label": "Usage Notes",
+   "description": "Detailed notes on how to use this template"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-09 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "ECA Action Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "template_name",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "country",
+  "city",
+  "column_break_zone",
+  "postal_code_from",
+  "postal_code_to",
+  "zone_name"
+ ],
+ "fields": [
+  {
+   "default": "Turkey",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "description": "Leave blank for entire country",
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City"
+  },
+  {
+   "fieldname": "column_break_zone",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Starting postal code (leave blank for all)",
+   "fieldname": "postal_code_from",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Postal Code From"
+  },
+  {
+   "description": "Ending postal code (leave blank for all)",
+   "fieldname": "postal_code_to",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Postal Code To"
+  },
+  {
+   "description": "Optional zone name for display",
+   "fieldname": "zone_name",
+   "fieldtype": "Data",
+   "label": "Zone Name"
+  }
+ ],
+ "has_web_view": 0,
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Logistics",
+ "name": "Shipping Zone",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "search_fields": "country, city",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

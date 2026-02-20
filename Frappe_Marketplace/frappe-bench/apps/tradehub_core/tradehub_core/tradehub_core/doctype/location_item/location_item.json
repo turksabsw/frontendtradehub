@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "location_type",
+  "location_name",
+  "location_code",
+  "is_default",
+  "is_active",
+  "column_break_1",
+  "city",
+  "city_name",
+  "district",
+  "district_name",
+  "neighborhood",
+  "neighborhood_name",
+  "column_break_2",
+  "street_address",
+  "building_info",
+  "postal_code",
+  "operations_section",
+  "operating_hours",
+  "storage_capacity",
+  "column_break_3",
+  "contact_person",
+  "phone",
+  "email",
+  "notes"
+ ],
+ "fields": [
+  {
+   "default": "Warehouse",
+   "description": "Type of location (Warehouse, Store, Distribution Center)",
+   "fieldname": "location_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Location Type",
+   "options": "Warehouse\nStore\nDistribution Center\nPickup Point\nReturn Center",
+   "reqd": 1
+  },
+  {
+   "description": "A friendly name for this location (e.g., 'Istanbul Main Warehouse')",
+   "fieldname": "location_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location Name",
+   "reqd": 1
+  },
+  {
+   "description": "Internal code for tracking (e.g., 'WH-IST-001')",
+   "fieldname": "location_code",
+   "fieldtype": "Data",
+   "label": "Location Code",
+   "unique": 0
+  },
+  {
+   "default": "0",
+   "description": "Mark as default location for this type",
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Default"
+  },
+  {
+   "default": "1",
+   "description": "Whether this location is currently active",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Select the city (Il)",
+   "fieldname": "city",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "City (Il)",
+   "options": "City",
+   "reqd": 1
+  },
+  {
+   "description": "City name (auto-fetched from City)",
+   "fetch_from": "city.city_name",
+   "fieldname": "city_name",
+   "fieldtype": "Data",
+   "label": "City Name",
+   "read_only": 1
+  },
+  {
+   "description": "Select the district (Ilce)",
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "label": "District (Ilce)",
+   "options": "District"
+  },
+  {
+   "description": "District name (auto-fetched from District)",
+   "fetch_from": "district.district_name",
+   "fieldname": "district_name",
+   "fieldtype": "Data",
+   "label": "District Name",
+   "read_only": 1
+  },
+  {
+   "description": "Select the neighborhood (Mahalle)",
+   "fieldname": "neighborhood",
+   "fieldtype": "Link",
+   "label": "Neighborhood (Mahalle)",
+   "options": "Neighborhood"
+  },
+  {
+   "description": "Neighborhood name (auto-fetched from Neighborhood)",
+   "fetch_from": "neighborhood.neighborhood_name",
+   "fieldname": "neighborhood_name",
+   "fieldtype": "Data",
+   "label": "Neighborhood Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Full street address with street name and number",
+   "fieldname": "street_address",
+   "fieldtype": "Small Text",
+   "label": "Street Address",
+   "reqd": 1
+  },
+  {
+   "description": "Building name, floor, unit number, etc.",
+   "fieldname": "building_info",
+   "fieldtype": "Data",
+   "label": "Building/Floor/Unit"
+  },
+  {
+   "description": "Postal/ZIP code",
+   "fieldname": "postal_code",
+   "fieldtype": "Data",
+   "label": "Postal Code"
+  },
+  {
+   "fieldname": "operations_section",
+   "fieldtype": "Section Break",
+   "label": "Operations & Contact"
+  },
+  {
+   "description": "Operating hours (e.g., 'Mon-Fri: 09:00-18:00')",
+   "fieldname": "operating_hours",
+   "fieldtype": "Data",
+   "label": "Operating Hours"
+  },
+  {
+   "description": "Storage capacity in square meters or cubic meters",
+   "fieldname": "storage_capacity",
+   "fieldtype": "Data",
+   "label": "Storage Capacity"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Name of the contact person at this location",
+   "fieldname": "contact_person",
+   "fieldtype": "Data",
+   "label": "Contact Person"
+  },
+  {
+   "description": "Phone number for this location",
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "description": "Email address for this location",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "description": "Additional notes about this location",
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "TradeHub Core",
+ "name": "Location Item",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}
