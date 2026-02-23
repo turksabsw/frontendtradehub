@@ -1,0 +1,39 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Glob(./**)",
+      "Grep(./**)",
+      "Read(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/worktrees/tasks/001-headless-frontend-v1/**)",
+      "Write(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/worktrees/tasks/001-headless-frontend-v1/**)",
+      "Edit(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/worktrees/tasks/001-headless-frontend-v1/**)",
+      "Glob(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/worktrees/tasks/001-headless-frontend-v1/**)",
+      "Grep(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/worktrees/tasks/001-headless-frontend-v1/**)",
+      "Read(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/worktrees/tasks/001-headless-frontend-v1/.auto-claude/specs/001-headless-frontend-v1/**)",
+      "Write(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/worktrees/tasks/001-headless-frontend-v1/.auto-claude/specs/001-headless-frontend-v1/**)",
+      "Edit(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/worktrees/tasks/001-headless-frontend-v1/.auto-claude/specs/001-headless-frontend-v1/**)",
+      "Read(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/**)",
+      "Write(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/**)",
+      "Edit(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/**)",
+      "Glob(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/**)",
+      "Grep(/home/ali/Masa\u00fcst\u00fc/frontendtradehub/.auto-claude/**)",
+      "Bash(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__context7__resolve-library-id(*)",
+      "mcp__context7__query-docs(*)",
+      "mcp__graphiti-memory__search_nodes(*)",
+      "mcp__graphiti-memory__search_facts(*)",
+      "mcp__graphiti-memory__add_episode(*)",
+      "mcp__graphiti-memory__get_episodes(*)",
+      "mcp__graphiti-memory__get_entity_edge(*)"
+    ]
+  }
+}
