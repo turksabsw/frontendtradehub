@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath, URL } from 'node:url'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [vue(), tailwindcss()],
   resolve: {
@@ -12,10 +11,11 @@ export default defineConfig({
     }
   },
   server: {
-    port: 8080,
+    port: 3000,
+    allowedHosts: ['marketplace.local', 'localhost'],
     proxy: {
-      '^/(api|login|logout|assets|files)': {
-        target: 'http://tr_tradehub.localhost:8000',
+      '^/(api|assets|files)': {
+        target: 'http://marketplace.local:8080',
         changeOrigin: true,
         ws: true
       }
