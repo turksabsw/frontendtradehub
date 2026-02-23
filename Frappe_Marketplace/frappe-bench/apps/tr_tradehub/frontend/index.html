@@ -1,13 +1,32 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TR TradeHub</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="tr" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TradeHub B2B - Satıcı Paneli</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            rail: { DEFAULT:'#0f0f12', hover:'#1a1a23', icon:'#5a5b75', active:'#6c5dd3' },
+            panel: { DEFAULT:'#1c1c26', border:'#26263a', heading:'#6e6e82', item:'#9a9aaf', hover:'#24243a', active:'#6c5dd3' },
+            surface: { DEFAULT:'#f6f6f9', card:'#ffffff', border:'#e8e8ef' }
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="h-full font-sans antialiased">
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>

@@ -1,33 +1,81 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+
+// Layout
+import AppLayout from '@/components/layout/AppLayout.vue'
+
+// Views (lazy-loaded)
+const LoginView = () => import('@/views/auth/LoginView.vue')
+const DashboardView = () => import('@/views/DashboardView.vue')
+const ProductAddView = () => import('@/views/ProductAddView.vue')
+const DocTypeListView = () => import('@/views/DocTypeListView.vue')
 
 const routes = [
+  // Auth (no layout)
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/auth/LoginView.vue'),
-    meta: { requiresGuest: true },
+    component: LoginView,
+    meta: { guest: true },
   },
-  {
-    path: '/register',
-    name: 'Register',
-    component: () => import('@/views/auth/RegisterView.vue'),
-    meta: { requiresGuest: true },
-  },
-  {
-    path: '/forgot-password',
-    name: 'ForgotPassword',
-    component: () => import('@/views/auth/ForgotPasswordView.vue'),
-    meta: { requiresGuest: true },
-  },
+
+  // App routes (with layout)
   {
     path: '/',
-    name: 'Dashboard',
-    component: () => import('@/views/DashboardView.vue'),
+    component: AppLayout,
     meta: { requiresAuth: true },
+    children: [
+      {
+        path: '',
+        redirect: '/dashboard',
+      },
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: DashboardView,
+        meta: { title: 'Genel Bakış', breadcrumb: 'Genel Bakış' },
+      },
+      {
+        path: 'app/product-add',
+        name: 'ProductAdd',
+        component: ProductAddView,
+        meta: { title: 'Yeni Ürün Ekle', breadcrumb: 'Yeni Ürün Ekle' },
+      },
+      // Generic DocType List
+      {
+        path: 'app/:doctype',
+        name: 'DocTypeList',
+        component: DocTypeListView,
+        meta: { title: 'Liste', breadcrumb: 'Liste' },
+      },
+      // Generic DocType Form (detail view)
+      {
+        path: 'app/:doctype/:name',
+        name: 'DocTypeForm',
+        component: () => import('@/views/DocTypeFormView.vue'),
+        meta: { title: 'Detay', breadcrumb: 'Detay' },
+      },
+      // Report views
+      {
+        path: 'app/report/:report',
+        name: 'ReportView',
+        component: DocTypeListView, // Reuse list view for now
+        meta: { title: 'Rapor', breadcrumb: 'Rapor' },
+      },
+      // Messaging
+      {
+        path: 'messaging/:tab?',
+        name: 'Messaging',
+        component: DashboardView, // Placeholder
+        meta: { title: 'Mesajlar', breadcrumb: 'Mesajlar' },
+      },
+    ],
   },
+
+  // Catch-all
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/',
+    redirect: '/login',
   },
 ]
 
@@ -36,24 +84,30 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach(async (to) => {
-  const { useAuthStore } = await import('@/stores/auth')
+// Navigation guard - Headless modda daima auth zorunlu
+router.beforeEach(async (to, from, next) => {
   const auth = useAuthStore()
 
-  if (!auth.isInitialized) {
-    await auth.initAuth()
+  // Try to fetch user if not loaded yet
+  if (!auth.isAuthenticated && !to.meta.guest) {
+    try {
+      await auth.fetchUser()
+    } catch {
+      // Not logged in - ignore
+    }
   }
 
-  auth.clearMessages()
-
-  if (to.meta.requiresAuth && !auth.isAuthenticated) {
-    auth.returnUrl = to.fullPath
-    return { name: 'Login' }
+  // Redirect to login if not authenticated (applies in both DEV and PROD)
+  if (!to.meta.guest && !auth.isAuthenticated) {
+    return next({ path: '/login', query: { redirect: to.fullPath } })
   }
 
-  if (to.meta.requiresGuest && auth.isAuthenticated) {
-    return { name: 'Dashboard' }
+  // Redirect away from login if already authenticated
+  if (to.meta.guest && auth.isAuthenticated) {
+    return next('/dashboard')
   }
+
+  next()
 })
 
 export default router

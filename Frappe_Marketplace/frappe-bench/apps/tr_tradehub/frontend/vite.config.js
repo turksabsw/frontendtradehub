@@ -1,24 +1,43 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import tailwindcss from '@tailwindcss/vite'
-import { fileURLToPath, URL } from 'node:url'
+import path from 'path'
 
 export default defineConfig({
-  plugins: [vue(), tailwindcss()],
+  plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   server: {
-    port: 3000,
-    allowedHosts: ['marketplace.local', 'localhost'],
+    port: 8082,
+    strictPort: true,
     proxy: {
-      '^/(api|assets|files)': {
-        target: 'http://marketplace.local:8080',
+      '/api': {
+        target: 'http://localhost:8080',
         changeOrigin: true,
-        ws: true
-      }
-    }
-  }
+        secure: false,
+        headers: {
+          Host: 'marketplace.local:8080',
+        },
+      },
+      '/assets': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false,
+        headers: {
+          Host: 'marketplace.local:8080',
+        },
+      },
+      '/socket.io': {
+        target: 'http://localhost:9000',
+        ws: true,
+        changeOrigin: true,
+      },
+    },
+  },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+  },
 })
