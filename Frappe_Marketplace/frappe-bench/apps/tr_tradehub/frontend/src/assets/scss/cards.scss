@@ -1,0 +1,116 @@
+@use 'variables' as *;
+
+// ── Card ─────────────────────────────────────────────────────
+.card {
+    background: $l-bg;
+    border: 1px solid $l-border-alt;
+    border-radius: 12px;
+    padding: 20px;
+    transition: box-shadow $t-slow;
+
+    &:hover {
+        box-shadow: 0 2px 12px rgba(#000, 0.04);
+    }
+
+    @include dark {
+        background-color: $d-bg-card !important;
+        border-color: $d-border !important;
+        box-shadow: 0 1px 4px rgba(#000, 0.3) !important;
+
+        &:hover {
+            box-shadow: 0 2px 8px rgba(#000, 0.4) !important;
+        }
+    }
+}
+
+// ── KPI Card ─────────────────────────────────────────────────
+.kpi-card {
+    background: $l-bg;
+    border: 1px solid $l-border-alt;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all $t-slow;
+    position: relative;
+    animation: fadeUp 0.35s ease both;
+
+    &:hover {
+        box-shadow: 0 4px 20px rgba(#000, 0.06);
+        transform: translateY(-1px);
+    }
+
+    // Staggered entrance delays
+    @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+            animation-delay: #{($i - 1) * 0.06}s;
+        }
+    }
+
+    @include dark {
+        background: $d-bg-card !important;
+        border-color: $d-border !important;
+
+        &:hover {
+            box-shadow: 0 4px 20px rgba(#000, 0.3) !important;
+        }
+    }
+}
+
+// ── Badge ────────────────────────────────────────────────────
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 600;
+
+    @include dark {
+        border: 1px solid rgba(#fff, 0.08) !important;
+    }
+}
+
+// Badge background overrides in dark mode
+html.dark {
+
+    .bg-amber-50,
+    .bg-amber-100,
+    .bg-yellow-50,
+    .bg-yellow-100 {
+        background-color: rgba($c-warning, 0.12) !important;
+    }
+
+    .bg-emerald-50,
+    .bg-green-50,
+    .bg-green-100,
+    .bg-emerald-100 {
+        background-color: rgba($c-success, 0.12) !important;
+    }
+
+    .bg-red-50,
+    .bg-red-100 {
+        background-color: rgba($c-error, 0.12) !important;
+    }
+
+    .bg-blue-50,
+    .bg-blue-100 {
+        background-color: rgba($c-info, 0.12) !important;
+    }
+
+    .bg-violet-50,
+    .bg-violet-100 {
+        background-color: rgba($brand, 0.12) !important;
+    }
+
+    // Badge text
+    .text-amber-600 {
+        color: #fbbf24 !important;
+    }
+
+    .text-emerald-600 {
+        color: #34d399 !important;
+    }
+
+    .text-red-600 {
+        color: #f87171 !important;
+    }
+}

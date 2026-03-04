@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full flex-shrink-0 border-b border-white/5 relative">
+  <div class="w-full flex-shrink-0 border-b sidebar-rail-border relative">
     <button
-      class="w-full flex flex-col items-center justify-center h-[68px] gap-1 hover:bg-[#1a1a23] transition-all cursor-pointer"
+      class="w-full flex flex-col items-center justify-center h-[68px] gap-1 tenant-switcher-btn transition-all cursor-pointer"
       @click="tenant.toggleDropdown()"
     >
       <div
@@ -11,8 +11,8 @@
         <span class="text-white text-[11px] font-extrabold">{{ tenant.activeTenant?.initials }}</span>
       </div>
       <div class="flex items-center gap-0.5">
-        <span class="text-[9px] font-semibold text-[#6e6e82] truncate max-w-[58px]">{{ tenant.shortName }}</span>
-        <i class="fas fa-chevron-down text-[7px] text-[#6e6e82]"></i>
+        <span class="text-[9px] font-semibold tenant-switcher-label truncate max-w-[58px]">{{ tenant.shortName }}</span>
+        <i class="fas fa-chevron-down text-[7px] tenant-switcher-label"></i>
       </div>
     </button>
 
@@ -20,11 +20,11 @@
     <Transition name="dropdown">
       <div
         v-if="tenant.dropdownOpen"
-        class="absolute top-full left-0 mt-1 ml-1 w-64 bg-[#1e1e2d] border border-[#26263a] rounded-xl shadow-2xl shadow-black/30 z-[100] overflow-hidden"
+        class="absolute top-full left-0 mt-1 ml-1 w-64 tenant-switcher-dropdown border rounded-xl shadow-2xl z-[100] overflow-hidden"
       >
-        <div class="px-4 py-3 border-b border-[#26263a]">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#6e6e82]">Tenant Seçimi</p>
-          <p class="text-[10px] text-[#9a9aaf] mt-0.5">Yetkili olduğunuz organizasyonlar</p>
+        <div class="px-4 py-3 border-b tenant-switcher-dropdown-border">
+          <p class="text-[10px] font-bold uppercase tracking-wider tenant-switcher-heading">Tenant Seçimi</p>
+          <p class="text-[10px] tenant-switcher-subtext mt-0.5">Yetkili olduğunuz organizasyonlar</p>
         </div>
         <div class="py-1.5 max-h-60 overflow-y-auto panel-scroll">
           <button
@@ -41,8 +41,8 @@
               <span class="text-white text-[10px] font-bold">{{ t.initials }}</span>
             </div>
             <div class="flex-1 min-w-0 text-left">
-              <p class="text-[12px] font-semibold text-white truncate">{{ t.name }}</p>
-              <p class="text-[10px] text-[#9a9aaf]">{{ t.role }}</p>
+              <p class="text-[12px] font-semibold tenant-switcher-item-name truncate">{{ t.name }}</p>
+              <p class="text-[10px] tenant-switcher-subtext">{{ t.role }}</p>
             </div>
             <i
               v-show="tenant.activeTenantId === t.id"
@@ -50,7 +50,7 @@
             ></i>
           </button>
         </div>
-        <div class="px-4 py-2.5 border-t border-[#26263a]">
+        <div class="px-4 py-2.5 border-t tenant-switcher-dropdown-border">
           <a href="#" class="flex items-center gap-2 text-[11px] text-[#6c5dd3] font-medium hover:text-white transition-colors">
             <i class="fas fa-plus text-[9px]"></i>Yeni Organizasyon Ekle
           </a>

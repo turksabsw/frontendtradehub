@@ -1,0 +1,429 @@
+@use 'variables' as *;
+
+// ── Icon Button ──────────────────────────────────────────────
+.hdr-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all $t-base;
+    flex-shrink: 0;
+
+    color: $l-text-500;
+
+    &:hover {
+        background: $l-bg-muted;
+        color: $l-text-700;
+    }
+
+    &:active {
+        background: $l-border;
+    }
+
+    @include dark {
+        color: $d-text-muted;
+
+        &:hover {
+            background: $d-bg-hover;
+            color: $d-text;
+        }
+    }
+}
+
+// ── Dropdown Panel ───────────────────────────────────────────
+.hdr-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    background: $l-bg;
+    border: 1px solid $l-border;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(#000, 0.1), 0 2px 10px rgba(#000, 0.04);
+    z-index: 60;
+    overflow: hidden;
+
+    @include dark {
+        background-color: $d-bg-elevated !important;
+        border-color: $d-border !important;
+        box-shadow: 0 8px 32px rgba(#000, 0.5) !important;
+    }
+}
+
+.hdr-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background $t-fast;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+
+    color: $l-text-600;
+
+    &:hover {
+        background: $l-bg-muted;
+    }
+
+    @include dark {
+        color: $d-text !important;
+        background-color: transparent !important;
+
+        &:hover {
+            background-color: $d-bg-hover !important;
+        }
+    }
+}
+
+// ── Legacy Header Buttons ────────────────────────────────────
+.hdr-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all $t-fast;
+    font-size: 14px;
+
+    color: $l-text-400;
+
+    &:hover {
+        background: $l-bg-muted;
+        color: $l-text-700;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    @include dark {
+        color: $d-text-muted !important;
+        background-color: transparent !important;
+
+        &:hover {
+            background-color: $d-bg-hover !important;
+            color: $d-text !important;
+        }
+    }
+}
+
+.hdr-btn-outlined {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    background: $l-bg;
+    border: 1px solid $l-border;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all $t-fast;
+    text-decoration: none;
+
+    color: $l-text-700;
+
+    &:hover {
+        background: #f9fafb;
+        border-color: $l-text-300;
+    }
+
+    @include dark {
+        background-color: $d-bg-card !important;
+        border-color: $d-border !important;
+        color: $d-text !important;
+
+        &:hover {
+            background-color: $d-bg-hover !important;
+            border-color: $brand !important;
+        }
+    }
+}
+
+// hdr-btn-primary is intentionally mode-agnostic (dark bg works on both)
+.hdr-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: #1b1c22;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all $t-base;
+    text-decoration: none;
+
+    &:hover {
+        background: #2d2e37;
+        box-shadow: 0 4px 12px rgba(#000, 0.15);
+    }
+}
+
+// ── Tab Buttons ──────────────────────────────────────────────
+.tab-btn {
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all $t-fast;
+    border: none;
+    background: transparent;
+
+    color: $l-text-400;
+
+    &.active {
+        color: $brand;
+        background: #f0edff;
+    }
+
+    &:hover:not(.active) {
+        color: $l-text-700;
+        background: $l-bg-muted;
+    }
+}
+
+// ── Dropdown Items ───────────────────────────────────────────
+.dd-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background $t-fast;
+
+    color: $l-text-600;
+
+    &:hover {
+        background: $l-bg-muted;
+    }
+
+    @include dark {
+        color: $d-text !important;
+        background-color: transparent !important;
+
+        &:hover {
+            background-color: $d-bg-hover !important;
+        }
+    }
+}
+
+// ── Submenu (hover-triggered) ────────────────────────────────
+.sub-menu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 220px;
+    background: $l-bg;
+    border: 1px solid $l-border;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(#000, 0.1);
+    padding: 6px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-8px);
+    transition: all $t-slow;
+    z-index: 70;
+    margin-left: 4px;
+
+    .group\/sub:hover & {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    @include dark {
+        background: $d-bg-elevated;
+        border-color: $d-border;
+        box-shadow: 0 8px 24px rgba(#000, 0.4);
+    }
+}
+
+// ── Quick Links Grid ─────────────────────────────────────────
+.ql-grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    background: $l-bg;
+    transition: background-color $t-base;
+    text-decoration: none;
+
+    &:hover {
+        background: $l-bg-subtle;
+    }
+
+    @include dark {
+        background: $d-bg-card;
+
+        &:hover {
+            background: $d-bg-elevated;
+        }
+
+        .text-gray-700 {
+            color: $d-text !important;
+        }
+
+        .text-gray-400 {
+            color: #7d8590 !important;
+        }
+    }
+}
+
+// ── Notification Items ───────────────────────────────────────
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background $t-fast;
+
+    &:hover {
+        background: $l-bg-subtle;
+    }
+
+    &.unread {
+        background: #fafaff;
+    }
+
+    @include dark {
+        background-color: $d-bg-card !important;
+        border-color: $d-border-inner !important;
+
+        &:hover {
+            background-color: $d-bg-elevated !important;
+        }
+
+        &.unread {
+            background-color: #1a2233 !important;
+        }
+    }
+}
+
+// Notification dots (shared base via placeholder)
+%notif-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.notif-dot-blue {
+    @extend %notif-dot;
+    background: $brand;
+}
+
+.notif-dot-green {
+    @extend %notif-dot;
+    background: $c-success;
+}
+
+.notif-dot-amber {
+    @extend %notif-dot;
+    background: $c-warning;
+}
+
+.notif-dot-gray {
+    @extend %notif-dot;
+    background: $l-text-300;
+}
+
+// ── Search Results ───────────────────────────────────────────
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background $t-fast;
+
+    &:hover {
+        background: $l-bg-subtle;
+    }
+
+    .result-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        flex-shrink: 0;
+    }
+
+    .result-text {
+        flex: 1;
+        min-width: 0;
+
+        .title {
+            font-size: 13px;
+            font-weight: 500;
+            color: $l-text-900;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            color: $l-text-400;
+        }
+    }
+
+    @include dark {
+        &:hover {
+            background: $d-bg-hover !important;
+        }
+
+        .result-icon {
+            background-color: rgba($brand, 0.15) !important;
+        }
+
+        .result-text {
+            .title {
+                color: $d-text-hi !important;
+            }
+
+            .subtitle {
+                color: $d-text-muted !important;
+            }
+        }
+
+        mark {
+            background-color: rgba(#facc15, 0.2) !important;
+            color: #fbbf24 !important;
+        }
+    }
+}
+
+.search-result-category {
+    padding: 8px 14px 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    color: $l-text-400;
+
+    @include dark {
+        color: $d-text-muted !important;
+    }
+}

@@ -14,19 +14,19 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8000',
         changeOrigin: true,
         secure: false,
         headers: {
-          Host: 'marketplace.local:8080',
+          Host: 'marketplace.local:8000',
         },
       },
       '/assets': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8000',
         changeOrigin: true,
         secure: false,
         headers: {
-          Host: 'marketplace.local:8080',
+          Host: 'marketplace.local:8000',
         },
       },
       '/socket.io': {

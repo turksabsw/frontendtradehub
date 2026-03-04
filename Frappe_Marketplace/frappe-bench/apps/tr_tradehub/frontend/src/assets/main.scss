@@ -1,0 +1,13 @@
+// ============================================================
+// TradeHub B2B — Stylesheet Entry Point
+// Tailwind base is loaded via CDN in index.html.
+// ============================================================
+
+@use 'scss/variables';
+@use 'scss/base';
+@use 'scss/sidebar';
+@use 'scss/header';
+@use 'scss/cards';
+@use 'scss/tables';
+@use 'scss/forms';
+@use 'scss/animations';

@@ -1,0 +1,190 @@
+@use 'variables' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+// ── Scrollbar ────────────────────────────────────────────────
+.rail-scroll,
+.panel-scroll {
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.panel-scroll {
+    &:hover::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba($brand, 0.15);
+        border-radius: 10px;
+
+        &:hover {
+            background: rgba($brand, 0.3);
+        }
+
+        @include dark {
+            background: rgba($brand, 0.3) !important;
+        }
+    }
+}
+
+// ── HTML / Theme Transition ──────────────────────────────────
+html {
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+html.dark {
+    color-scheme: dark;
+
+    body {
+        background-color: $d-bg !important;
+        color: $d-text !important;
+    }
+
+    // Page background
+    .bg-\[#f6f6f9\] {
+        background-color: $d-bg !important;
+    }
+
+    // ── Tailwind Background Overrides ───────────────────────────
+    .bg-white,
+    [class*="bg-white"],
+    .bg-gray-50,
+    .bg-gray-100,
+    .bg-gray-50\/80,
+    [class*="bg-gray-50"],
+    [class*="bg-gray-100"] {
+        --tw-bg-opacity: 1 !important;
+        background-color: $d-bg-card !important;
+    }
+
+    // ── Tailwind Border Overrides ────────────────────────────────
+    .border-gray-50,
+    .border-gray-100,
+    .border-gray-200,
+    .border-gray-300,
+    .border-\[#e8e8ef\],
+    [class*="border-gray-"] {
+        --tw-border-opacity: 1 !important;
+        border-color: $d-border !important;
+    }
+
+    .divide-gray-50>*+*,
+    .divide-gray-100>*+* {
+        border-color: $d-border !important;
+    }
+
+    // ── Tailwind Text Overrides ──────────────────────────────────
+    .text-gray-900 {
+        color: $d-text-max !important;
+    }
+
+    .text-gray-800 {
+        color: $d-text-hi !important;
+    }
+
+    .text-gray-700 {
+        color: $d-text !important;
+    }
+
+    .text-gray-600 {
+        color: #b1bac4 !important;
+    }
+
+    .text-gray-500 {
+        color: $d-text-muted !important;
+    }
+
+    .text-gray-400 {
+        color: #7d8590 !important;
+    }
+
+    .text-gray-300 {
+        color: $d-text-faint !important;
+    }
+
+    .text-violet-600 {
+        color: #8b7cf7 !important;
+    }
+
+    .text-violet-700 {
+        color: #9d8cf8 !important;
+    }
+
+    // ── Tailwind Hover / Border-radius overrides ─────────────────
+    .hover\:bg-gray-100:hover,
+    .hover\:bg-gray-50:hover {
+        background-color: $d-bg-hover !important;
+    }
+
+    .rounded-xl,
+    .rounded-lg,
+    .rounded-2xl,
+    .rounded-full {
+        border-color: $d-border !important;
+    }
+
+    // Generic dropdown containers (Tailwind rounded-xl shadow-xl combos)
+    [class*="rounded-xl"][class*="shadow-xl"] {
+        background-color: $d-bg-elevated !important;
+        border-color: $d-border !important;
+    }
+
+    // ── Layout Elements ──────────────────────────────────────────
+    header {
+        background-color: $d-bg-card !important;
+        border-color: $d-border !important;
+    }
+
+    footer {
+        background-color: $d-bg !important;
+        border-top-color: $d-border !important;
+        color: $d-text-faint !important;
+    }
+
+    .page-content {
+        background-color: $d-bg !important;
+    }
+
+    // ── Global Elements ──────────────────────────────────────────
+    a {
+        color: inherit;
+
+        &:hover {
+            color: #8b7cf7;
+        }
+    }
+
+    svg {
+        color: inherit;
+    }
+
+    button:disabled {
+        opacity: 0.4 !important;
+        color: $d-text-faint !important;
+    }
+
+    .toast-container {
+        color: $d-text !important;
+    }
+}
+
+// ── Focus & Selection ────────────────────────────────────────
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+    outline: none;
+}
+
+::selection {
+    background: rgba($brand, 0.12);
+}
+
+// ── Mobile ───────────────────────────────────────────────────
+@media (max-width: 1023px) {
+    #sidePanel {
+        display: none;
+    }
+}

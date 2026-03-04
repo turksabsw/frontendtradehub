@@ -1,14 +1,14 @@
 <template>
   <aside
     id="sidePanel"
-    class="fixed top-0 left-[82px] z-40 h-screen bg-[#1c1c26] border-r border-[#26263a] flex flex-col transition-all duration-200"
+    class="fixed top-0 left-[82px] z-40 h-screen sidebar-panel border-r sidebar-panel-border flex flex-col transition-all duration-200"
     :style="{ width: nav.panelCollapsed ? '0px' : '296px', overflow: nav.panelCollapsed ? 'hidden' : 'visible' }"
   >
     <!-- Panel Header -->
-    <div class="flex items-center justify-between h-[64px] px-5 border-b border-[#26263a] flex-shrink-0">
-      <span class="text-[15px] font-bold text-white tracking-tight">{{ nav.sectionTitle }}</span>
+    <div class="flex items-center justify-between h-[64px] px-5 border-b sidebar-panel-border flex-shrink-0">
+      <span class="text-[15px] font-bold sidebar-panel-title tracking-tight">{{ nav.sectionTitle }}</span>
       <button
-        class="w-7 h-7 rounded-md flex items-center justify-center text-[#6e6e82] hover:text-white hover:bg-[#24243a] transition-all"
+        class="w-7 h-7 rounded-md flex items-center justify-center sidebar-panel-close-btn transition-all"
         @click="nav.togglePanel()"
         title="Paneli Kapat"
       >

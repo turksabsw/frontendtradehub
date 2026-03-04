@@ -1,0 +1,89 @@
+@use 'variables' as *;
+
+// ── Table Header Cell ────────────────────────────────────────
+.tbl-th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+
+    color: $l-text-400;
+
+    @include dark {
+        background-color: $d-bg !important;
+        color: $d-text-muted !important;
+        border-color: $d-border !important;
+    }
+}
+
+// ── Table Row ────────────────────────────────────────────────
+.tbl-row {
+    transition: background $t-fast;
+
+    &:hover {
+        background: #fafafc;
+    }
+
+    @include dark {
+        background-color: $d-bg-card !important;
+        border-color: $d-border-inner !important;
+
+        &:hover {
+            background-color: $d-bg-elevated !important;
+        }
+    }
+}
+
+// ── Table Cell ───────────────────────────────────────────────
+.tbl-td {
+    padding: 12px 16px;
+    font-size: 12px;
+    white-space: nowrap;
+
+    @include dark {
+        color: $d-text !important;
+    }
+
+    &.font-semibold,
+    .text-gray-900 {
+        @include dark {
+            color: $d-text-hi !important;
+        }
+    }
+}
+
+html.dark td.font-semibold {
+    color: $d-text-hi !important;
+}
+
+// ── Generic Table Elements ───────────────────────────────────
+// For tables that don't use .tbl-* component classes
+html.dark {
+    table {
+        border-color: $d-border !important;
+    }
+
+    thead,
+    th {
+        background-color: $d-bg !important;
+        color: $d-text-muted !important;
+        border-color: $d-border !important;
+    }
+
+    tbody tr {
+        border-color: $d-border-inner !important;
+
+        td {
+            background-color: $d-bg-card !important;
+            color: $d-text !important;
+            border-color: $d-border-inner !important;
+        }
+
+        &:hover td {
+            background-color: $d-bg-elevated !important;
+        }
+    }
+}

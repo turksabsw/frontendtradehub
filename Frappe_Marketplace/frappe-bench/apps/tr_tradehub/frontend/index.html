@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="tr" class="h-full">
 <head>
+  <!-- Pre-render theme to prevent flash of wrong theme -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('th-theme') || 'system';
+      var isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) document.documentElement.classList.add('dark');
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TradeHub B2B - Satıcı Paneli</title>

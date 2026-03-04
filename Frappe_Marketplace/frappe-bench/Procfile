@@ -3,15 +3,16 @@ redis_cache: redis-server config/redis_cache.conf
 redis_queue: redis-server config/redis_queue.conf
 
 
-web: cd /home/ali/Masaüstü/İstoç\ Güncel\ Proje/Frappe_Mock_Data/Frappe_Marketplace/frappe-bench && bench serve --port 8080
+web: bench serve  --port 8000
 
 
 socketio: /home/ali/.nvm/versions/node/v24.12.0/bin/node apps/frappe/socketio.js
 
 
+watch: bench watch
 
 
-schedule: cd /home/ali/Masaüstü/İstoç\ Güncel\ Proje/Frappe_Mock_Data/Frappe_Marketplace/frappe-bench && FRAPPE_SITE=marketplace.local bench schedule
+schedule: cd /home/ali/Masaüstü/frontendtradehub/Frappe_Marketplace/frappe-bench && rm -f config/scheduler_process* && sleep 3 && FRAPPE_SITE=marketplace.local bench schedule
 
-worker:  cd /home/ali/Masaüstü/İstoç\ Güncel\ Proje/Frappe_Mock_Data/Frappe_Marketplace/frappe-bench && FRAPPE_SITE=marketplace.local bench worker 1>> logs/worker.log 2>> logs/worker.error.log
+worker:  bench worker 1>> logs/worker.log 2>> logs/worker.error.log
 

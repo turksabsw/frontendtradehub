@@ -1,0 +1,464 @@
+@use 'variables' as *;
+
+// ── Rail & Panel Containers ──────────────────────────────────
+.sidebar-rail {
+    background-color: $l-bg-soft;
+
+    @include dark {
+        background-color: $d-rail-bg;
+    }
+}
+
+.sidebar-rail-border {
+    border-color: $l-border;
+
+    @include dark {
+        border-color: rgba(#ffffff, 0.05);
+    }
+}
+
+.sidebar-panel {
+    background-color: $l-bg;
+
+    @include dark {
+        background-color: $d-panel-bg;
+    }
+}
+
+.sidebar-panel-border {
+    border-color: $l-border-alt;
+
+    @include dark {
+        border-color: $d-panel-border;
+    }
+}
+
+.sidebar-panel-title {
+    color: $l-text-900;
+
+    @include dark {
+        color: #ffffff;
+    }
+}
+
+.sidebar-panel-close-btn {
+    color: $l-text-400;
+
+    &:hover {
+        color: $l-text-600;
+        background-color: $l-bg-muted;
+    }
+
+    @include dark {
+        color: #6e6e82;
+
+        &:hover {
+            color: #ffffff;
+            background-color: $d-item-hover;
+        }
+    }
+}
+
+// ── Rail Icon ────────────────────────────────────────────────
+.rail-icon {
+    width: 64px;
+    height: 54px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all $t-base;
+    border: none;
+    background: transparent;
+    position: relative;
+
+    color: $l-text-500;
+
+    &:hover {
+        color: $l-text-700;
+        background: $l-border;
+    }
+
+    &.active {
+        color: #ffffff;
+        background: $brand;
+        box-shadow: 0 4px 14px $brand-glow;
+    }
+
+    @include dark {
+        color: #5a5b75;
+
+        &:hover {
+            color: #ffffff;
+            background: #1a1a23;
+        }
+    }
+}
+
+.rail-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 0.7;
+    transition: opacity $t-base;
+
+    .rail-icon:hover &,
+    .rail-icon.active & {
+        opacity: 1;
+    }
+}
+
+// ── Tenant Switcher ──────────────────────────────────────────
+.tenant-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all $t-fast;
+
+    &:hover {
+        background: rgba($brand, 0.06);
+    }
+
+    &.active {
+        background: rgba($brand, 0.08);
+    }
+
+    @include dark {
+        &:hover {
+            background: rgba($brand, 0.08);
+        }
+
+        &.active {
+            background: rgba($brand, 0.12);
+        }
+    }
+}
+
+.tenant-switcher-btn {
+    &:hover {
+        background-color: #eef0f3;
+    }
+
+    @include dark {
+        &:hover {
+            background-color: #1a1a23;
+        }
+    }
+}
+
+.tenant-switcher-label {
+    color: $l-text-500;
+
+    @include dark {
+        color: #6e6e82;
+    }
+}
+
+.tenant-switcher-dropdown {
+    background-color: $l-bg;
+    border-color: $l-border;
+    box-shadow: 0 10px 30px rgba(#000, 0.1);
+
+    @include dark {
+        background-color: #1e1e2d;
+        border-color: $d-panel-border;
+        box-shadow: 0 10px 30px rgba(#000, 0.4);
+    }
+}
+
+.tenant-switcher-dropdown-border {
+    border-color: $l-border;
+
+    @include dark {
+        border-color: $d-panel-border;
+    }
+}
+
+.tenant-switcher-heading {
+    color: $l-text-500;
+
+    @include dark {
+        color: #6e6e82;
+    }
+}
+
+.tenant-switcher-subtext {
+    color: $l-text-400;
+
+    @include dark {
+        color: #9a9aaf;
+    }
+}
+
+.tenant-switcher-item-name {
+    color: $l-text-900;
+
+    @include dark {
+        color: #ffffff;
+    }
+}
+
+// ── Panel Group (collapsible) ────────────────────────────────
+.panel-group {
+    &.collapsible {
+        overflow: hidden;
+        transition:
+            max-height $t-spring-slow,
+            opacity 0.25s ease,
+            padding $t-spring-slow,
+            margin $t-spring-slow;
+        max-height: 0;
+        opacity: 0;
+        padding: 0;
+        margin: 0;
+        border-left: 2px solid transparent;
+        margin-left: 14px;
+
+        &.open {
+            max-height: 800px;
+            opacity: 1;
+            padding: 4px 0 6px;
+            margin-top: 2px;
+            border-left-color: rgba($brand, 0.15);
+        }
+    }
+
+    &:not(.collapsible) {
+        padding: 2px 0 6px;
+    }
+}
+
+// ── Panel Group Title ────────────────────────────────────────
+.panel-group-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    height: 36px;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    border-radius: 8px;
+    user-select: none;
+    transition: all $t-panel;
+    position: relative;
+    border: 1px solid transparent;
+
+    // Light
+    color: $l-text-500;
+
+    &:hover {
+        color: $l-text-700;
+        background: rgba($brand, 0.06);
+        border-color: rgba($brand, 0.08);
+    }
+
+    &.open {
+        color: $l-text-900;
+        background: rgba($brand, 0.08);
+        border-color: rgba($brand, 0.12);
+    }
+
+    // Dark
+    @include dark {
+        color: #6e6e82;
+
+        &:hover {
+            color: #b0b0c8;
+            background: rgba($brand, 0.06);
+            border-color: rgba($brand, 0.08);
+        }
+
+        &.open {
+            color: #c8c8e0;
+            background: rgba($brand, 0.08);
+            border-color: rgba($brand, 0.12);
+        }
+    }
+
+    // Left accent bar
+    &::before {
+        content: '';
+        width: 3px;
+        height: 14px;
+        border-radius: 2px;
+        flex-shrink: 0;
+        transition: all $t-spring;
+        background: $l-text-300;
+
+        @include dark {
+            background: #33334a;
+        }
+    }
+
+    &:hover::before {
+        background: rgba($brand, 0.5);
+        height: 16px;
+    }
+
+    &.open::before {
+        background: $brand;
+        height: 18px;
+        box-shadow: 0 0 8px rgba($brand, 0.4);
+    }
+
+    // Chevron
+    &::after {
+        content: '\f078';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 8px;
+        transition: all $t-spring-slow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        flex-shrink: 0;
+        margin-left: auto;
+
+        color: $l-text-400;
+
+        @include dark {
+            color: #4a4a60;
+        }
+    }
+
+    &:hover::after {
+        color: $brand;
+        background: rgba($brand, 0.08);
+
+        @include dark {
+            color: #8b7fe8;
+            background: rgba($brand, 0.1);
+        }
+    }
+
+    &.open::after {
+        transform: rotate(180deg);
+        color: $brand;
+        background: rgba($brand, 0.1);
+    }
+}
+
+// ── Panel Group Count Badge ──────────────────────────────────
+.pg-count {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    line-height: 1.4;
+    flex-shrink: 0;
+    transition: all $t-panel;
+    letter-spacing: normal;
+    text-transform: none;
+    min-width: 22px;
+    text-align: center;
+
+    color: $l-text-500;
+    background: rgba(#000, 0.05);
+
+    @include dark {
+        color: #5a5a70;
+        background: rgba(#fff, 0.06);
+    }
+
+    .panel-group-title:hover & {
+        color: $brand;
+        background: rgba($brand, 0.1);
+    }
+
+    html.dark .panel-group-title:hover & {
+        color: #8b7fe8;
+        background: rgba($brand, 0.12);
+    }
+
+    .panel-group-title.open & {
+        color: #fff;
+        background: $brand;
+        box-shadow: 0 2px 8px rgba($brand, 0.3);
+    }
+}
+
+// ── Panel Item ───────────────────────────────────────────────
+.panel-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px;
+    border-radius: 7px;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all $t-base;
+    transform: translateX(0);
+    line-height: 1.3;
+
+    color: $l-text-500;
+
+    &:hover {
+        color: $l-text-900;
+        background: $l-bg-muted;
+        transform: translateX(3px);
+    }
+
+    &.active {
+        color: $brand;
+        background: rgba($brand, 0.08);
+        font-weight: 600;
+    }
+
+    @include dark {
+        color: #b1bac4;
+
+        &:hover {
+            color: #ffffff;
+            background: rgba($brand, 0.1);
+        }
+
+        &.active {
+            color: #ffffff;
+            background: rgba($brand, 0.18);
+        }
+    }
+}
+
+.panel-item-icon {
+    width: 18px;
+    text-align: center;
+    font-size: 12px;
+    flex-shrink: 0;
+
+    color: $l-text-400;
+
+    @include dark {
+        color: #6e6e82;
+    }
+
+    .panel-item:hover &,
+    .panel-item.active & {
+        color: $brand;
+    }
+}
+
+// ── Panel Section ────────────────────────────────────────────
+.panel-section {
+    @include dark {
+        background-color: $d-bg !important;
+    }
+}

@@ -1,0 +1,63 @@
+// ============================================================
+// TradeHub B2B — Design Tokens & Mixins
+// ============================================================
+
+// --- Brand ---
+$brand: #6c5dd3;
+$brand-glow: rgba(#6c5dd3, 0.35);
+
+// --- Light Palette ---
+$l-bg: #ffffff;
+$l-bg-soft: #f8f9fb;
+$l-bg-muted: #f3f4f6;
+$l-bg-subtle: #f9fafb;
+$l-border: #e5e7eb;
+$l-border-alt: #e8e8ef;
+$l-text-900: #1f2937;
+$l-text-700: #374151;
+$l-text-600: #4b5563;
+$l-text-500: #6b7280;
+$l-text-400: #9ca3af;
+$l-text-300: #d1d5db;
+
+// --- Dark Palette ---
+$d-bg: #0d1117;
+$d-bg-card: #161b22;
+$d-bg-elevated: #1c2128;
+$d-bg-hover: #21262d;
+$d-border: #30363d;
+$d-border-inner: #21262d;
+$d-text: #d1d5db;
+$d-text-hi: #e6edf3;
+$d-text-max: #f0f6fc;
+$d-text-muted: #8b949e;
+$d-text-faint: #6e7681;
+
+// --- Sidebar Dark Specifics ---
+$d-rail-bg: #0f0f12;
+$d-panel-bg: #1c1c26;
+$d-panel-border: #26263a;
+$d-item-hover: #24243a;
+
+// --- Status Colors ---
+$c-success: #10b981;
+$c-warning: #f59e0b;
+$c-error: #ef4444;
+$c-info: #3b82f6;
+
+// --- Transitions ---
+$t-fast: 0.12s ease;
+$t-base: 0.15s ease;
+$t-slow: 0.2s ease;
+$t-panel: 0.18s ease;
+$t-spring: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+$t-spring-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// --- Dark Mode Mixin ---
+// Usage: @include dark { color: red; }
+// Outputs: html.dark .current-selector { color: red; }
+@mixin dark {
+    html.dark & {
+        @content;
+    }
+}
