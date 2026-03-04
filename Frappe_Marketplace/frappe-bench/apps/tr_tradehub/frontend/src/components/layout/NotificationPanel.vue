@@ -3,7 +3,7 @@
     <div
       v-if="notifications.panelOpen"
       id="notificationPanel"
-      class="fixed top-[60px] right-6 w-[380px] bg-white border border-gray-200 rounded-xl shadow-xl shadow-black/5 z-50 overflow-hidden"
+      class="fixed top-[60px] right-2 sm:right-6 w-[calc(100vw-16px)] sm:w-[380px] bg-white border border-gray-200 rounded-xl shadow-xl shadow-black/5 z-50 overflow-hidden"
       @click.stop
     >
       <div class="flex items-center justify-between px-5 py-3 border-b border-gray-100">

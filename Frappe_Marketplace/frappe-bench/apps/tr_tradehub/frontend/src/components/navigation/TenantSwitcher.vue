@@ -15,8 +15,6 @@
         <i class="fas fa-chevron-down text-[7px] tenant-switcher-label"></i>
       </div>
     </button>
-
-    <!-- Dropdown -->
     <Transition name="dropdown">
       <div
         v-if="tenant.dropdownOpen"
@@ -34,20 +32,14 @@
             :class="{ active: tenant.activeTenantId === t.id }"
             @click="handleSwitch(t.id, t.name)"
           >
-            <div
-              class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br"
-              :class="t.gradient"
-            >
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br" :class="t.gradient">
               <span class="text-white text-[10px] font-bold">{{ t.initials }}</span>
             </div>
             <div class="flex-1 min-w-0 text-left">
               <p class="text-[12px] font-semibold tenant-switcher-item-name truncate">{{ t.name }}</p>
               <p class="text-[10px] tenant-switcher-subtext">{{ t.role }}</p>
             </div>
-            <i
-              v-show="tenant.activeTenantId === t.id"
-              class="fas fa-check text-[10px] text-green-400"
-            ></i>
+            <i v-show="tenant.activeTenantId === t.id" class="fas fa-check text-[10px] text-green-400"></i>
           </button>
         </div>
         <div class="px-4 py-2.5 border-t tenant-switcher-dropdown-border">

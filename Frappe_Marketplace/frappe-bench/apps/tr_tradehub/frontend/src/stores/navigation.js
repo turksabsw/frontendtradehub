@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { panelSections, sectionTitles } from '@/data/navigation'
+import { useSidebarStore } from '@/stores/sidebar'
 
 export const useNavigationStore = defineStore('navigation', () => {
   const activeSection = ref('dashboard')
   const activePanelItem = ref(null) // doctype or route
-  const panelCollapsed = ref(false)
   const openGroups = ref(new Set())
 
   const sectionTitle = computed(() => sectionTitles[activeSection.value] || 'TradeHub')
@@ -20,17 +20,12 @@ export const useNavigationStore = defineStore('navigation', () => {
     if (firstCollapsible) {
       openGroups.value.add(firstCollapsible.title)
     }
-    if (panelCollapsed.value) {
-      panelCollapsed.value = false
-    }
+    // Open sidebar panel if collapsed
+    useSidebarStore().openPanel()
   }
 
   function setActiveItem(itemKey) {
     activePanelItem.value = itemKey
-  }
-
-  function togglePanel() {
-    panelCollapsed.value = !panelCollapsed.value
   }
 
   function toggleGroup(groupTitle) {
@@ -50,13 +45,11 @@ export const useNavigationStore = defineStore('navigation', () => {
   return {
     activeSection,
     activePanelItem,
-    panelCollapsed,
     openGroups,
     sectionTitle,
     currentGroups,
     switchSection,
     setActiveItem,
-    togglePanel,
     toggleGroup,
     isGroupOpen,
   }

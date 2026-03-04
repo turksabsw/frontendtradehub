@@ -85,7 +85,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import AuthLayout from '@/components/AuthLayout.vue'
+import AuthLayout from '@/layouts/AuthLayout.vue'
 
 const auth = useAuthStore()
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Page Header -->
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
       <div>
         <h1 class="text-[15px] font-bold text-gray-900">{{ doctypeLabel }}</h1>
         <p class="text-xs text-gray-400">{{ totalCount }} kayıt bulundu</p>
@@ -18,8 +18,8 @@
 
     <!-- Filters Bar -->
     <div class="card mb-5 !p-3">
-      <div class="flex items-center gap-3 flex-wrap">
-        <div class="relative flex-1 min-w-[200px]">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-wrap">
+        <div class="relative flex-1 min-w-0 sm:min-w-[200px]">
           <i class="fas fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
           <input
             v-model="searchQuery"

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- KPI Row -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4 lg:gap-5 mb-6">
       <div v-for="(kpi, i) in kpis" :key="i" class="kpi-card">
         <div class="flex items-center justify-between">
           <div>
@@ -26,7 +26,7 @@
     </div>
 
     <!-- Charts Row 1 - Revenue Line + Order Status Donut -->
-    <div class="grid grid-cols-1 xl:grid-cols-3 gap-5 mb-6">
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-5 mb-6">
       <div class="xl:col-span-2 card">
         <div class="flex items-center justify-between mb-1">
           <div>
@@ -57,7 +57,7 @@
     </div>
 
     <!-- Charts Row 2 - Category Bar + Heatmap -->
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-5 mb-6">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-5 mb-6">
       <div class="card">
         <div class="mb-1">
           <h3 class="text-[14px] font-bold text-gray-900">Kategori Bazlı Satış</h3>
@@ -75,7 +75,7 @@
     </div>
 
     <!-- Bottom Row - Table + RFQ + Activity -->
-    <div class="grid grid-cols-1 xl:grid-cols-3 gap-5 mb-6">
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-5 mb-6">
       <!-- Orders Table -->
       <div class="xl:col-span-2 card p-0 overflow-hidden">
         <div class="flex items-center justify-between px-5 pt-5 pb-3">
@@ -159,7 +159,7 @@
     </div>
 
     <!-- Charts Row 3 - Scatter + Gauge -->
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-5">
       <div class="card">
         <div class="mb-1">
           <h3 class="text-[14px] font-bold text-gray-900">Fiyat vs Satış Hacmi</h3>

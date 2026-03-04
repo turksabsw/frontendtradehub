@@ -1,17 +1,17 @@
 <template>
   <div>
     <!-- Header -->
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
       <div class="flex items-center gap-3">
-        <button @click="goBack" class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
+        <button @click="goBack" class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors flex-shrink-0">
           <i class="fas fa-arrow-left text-xs"></i>
         </button>
-        <div>
-          <h1 class="text-[15px] font-bold text-gray-900">{{ docName }}</h1>
+        <div class="min-w-0">
+          <h1 class="text-[15px] font-bold text-gray-900 truncate">{{ docName }}</h1>
           <p class="text-xs text-gray-400">{{ doctypeLabel }}</p>
         </div>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 flex-shrink-0">
         <button class="hdr-btn-outlined" @click="goBack">Geri</button>
         <button class="hdr-btn-primary" @click="saveDoc">
           <i class="fas fa-floppy-disk mr-1.5 text-xs"></i>Kaydet
@@ -31,7 +31,7 @@
         <h3 class="text-sm font-bold text-gray-900 mb-4">
           <i class="fas fa-file-lines text-violet-500 mr-2"></i>Döküman Bilgileri
         </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div v-for="(value, key) in docData" :key="key">
             <label class="form-label">{{ formatFieldLabel(key) }}</label>
             <input

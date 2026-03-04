@@ -1,15 +1,15 @@
 <template>
   <aside
     id="sidePanel"
-    class="fixed top-0 left-[82px] z-40 h-screen sidebar-panel border-r sidebar-panel-border flex flex-col transition-all duration-200"
-    :style="{ width: nav.panelCollapsed ? '0px' : '296px', overflow: nav.panelCollapsed ? 'hidden' : 'visible' }"
+    class="sidebar-panel border-r sidebar-panel-border flex flex-col transition-all duration-200 sticky top-0 h-screen flex-shrink-0 overflow-hidden"
+    :style="{ width: sidebar.panelVisible ? panelWidth : '0px' }"
   >
     <!-- Panel Header -->
-    <div class="flex items-center justify-between h-[64px] px-5 border-b sidebar-panel-border flex-shrink-0">
-      <span class="text-[15px] font-bold sidebar-panel-title tracking-tight">{{ nav.sectionTitle }}</span>
+    <div class="flex items-center justify-between h-[56px] px-4 border-b sidebar-panel-border flex-shrink-0">
+      <span class="text-[15px] font-bold sidebar-panel-title tracking-tight truncate">{{ nav.sectionTitle }}</span>
       <button
-        class="w-7 h-7 rounded-md flex items-center justify-center sidebar-panel-close-btn transition-all"
-        @click="nav.togglePanel()"
+        class="w-7 h-7 rounded-md flex items-center justify-center sidebar-panel-close-btn transition-all flex-shrink-0"
+        @click="sidebar.togglePanel()"
         title="Paneli Kapat"
       >
         <i class="fas fa-angles-left text-sm"></i>
@@ -56,11 +56,23 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useNavigationStore } from '@/stores/navigation'
+import { useSidebarStore } from '@/stores/sidebar'
+import { useBreakpoint } from '@/composables/useBreakpoint'
 import { useRoute } from 'vue-router'
 
 const nav = useNavigationStore()
+const sidebar = useSidebarStore()
+const { isXl, is2xl } = useBreakpoint()
 const route = useRoute()
+
+// Responsive panel width: narrower on smaller screens
+const panelWidth = computed(() => {
+  if (is2xl.value) return '240px'
+  if (isXl.value) return '220px'
+  return '200px'
+})
 
 function getItemRoute(item) {
   if (item.route) return item.route

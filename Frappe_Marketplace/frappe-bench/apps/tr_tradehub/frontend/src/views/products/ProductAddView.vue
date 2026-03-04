@@ -1,17 +1,17 @@
 <template>
   <div>
     <!-- Header Row -->
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
       <div class="flex items-center gap-3">
-        <button @click="$router.push('/dashboard')" class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
+        <button @click="$router.push('/dashboard')" class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors flex-shrink-0">
           <i class="fas fa-arrow-left text-xs"></i>
         </button>
-        <div>
+        <div class="min-w-0">
           <h1 class="text-[15px] font-bold text-gray-900">Yeni Ürün Ekle</h1>
           <p class="text-xs text-gray-400">Ürün bilgilerini doldurun ve yayınlayın</p>
         </div>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 flex-shrink-0 flex-wrap">
         <button class="hdr-btn-outlined" @click="$router.push('/dashboard')">İptal</button>
         <button class="hdr-btn-outlined" @click="saveDraft"><i class="fas fa-floppy-disk mr-1.5 text-xs"></i>Taslak</button>
         <button class="hdr-btn-primary" @click="submitForm"><i class="fas fa-check mr-1.5 text-xs"></i>Yayınla</button>
@@ -19,7 +19,7 @@
     </div>
 
     <!-- Form Grid -->
-    <div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-5">
       <!-- Left: Main content (2 cols) -->
       <div class="xl:col-span-2 space-y-5">
         <!-- Basic Info -->
@@ -71,7 +71,7 @@
         <!-- Pricing & Stock -->
         <div class="card">
           <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-tag text-emerald-500 mr-2"></i>Fiyatlandırma & Stok</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <label class="form-label">Birim Fiyat (₺) <span class="text-red-500">*</span></label>
               <input v-model="form.price" type="number" class="form-input" placeholder="0.00">
@@ -124,7 +124,7 @@
         <!-- Shipping -->
         <div class="card">
           <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-truck-fast text-orange-500 mr-2"></i>Kargo & Teslimat</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <label class="form-label">Kargo Ağırlığı (kg)</label>
               <input v-model="form.weight" type="number" class="form-input" placeholder="0.00">
